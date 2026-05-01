@@ -329,6 +329,7 @@ def render_html(items: list[Item], top_n: int, *, page_date: datetime | None = N
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<meta name="theme-color" content="#0f0f10">',
+        '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}</style>",
         "</head><body>",
@@ -431,6 +432,7 @@ def wrap_synthesis_html(md_text: str, *, page_date: datetime | None = None) -> s
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<meta name="theme-color" content="#0f0f10">',
+        '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}\n"
         # Extra prose styles for the synthesis view

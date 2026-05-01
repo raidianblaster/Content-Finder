@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0f0f10">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 <title>AI Digest — Fri 01 May 2026</title>
 <style>
 :root {
@@ -51,58 +52,161 @@ footer {
   color: var(--muted); font-size: .78rem; text-align: center;
 }
 footer a { color: var(--muted); }
-
-.digest-body { max-width: 100%; }
-.digest-body h2 { font-size: 1.1rem; margin: 1.5rem 0 .5rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-.digest-body h2:first-child { border-top: none; padding-top: 0; }
-.digest-body ul { padding-left: 1.25rem; margin: .5rem 0; }
-.digest-body li { margin-bottom: .5rem; font-size: .95rem; }
-.digest-body a { color: var(--accent); }
-.digest-body p { margin: .5rem 0; font-size: .95rem; }
-.digest-body strong { font-weight: 600; }
 </style>
 </head><body>
 <header>
 <h1>AI Digest — Fri 01 May 2026</h1>
-<div class="meta">Claude-synthesised brief · agentic AI &amp; LLM trends</div>
+<div class="meta">26 items · top 25 shown · agentic AI &amp; LLM trends</div>
 <nav><a href="archive.html">← previous digests</a></nav>
 </header>
-<div class="digest-body"><h2>AI Product Manager Daily Brief — April 30, 2026</h2>
-<hr />
-<h3>Top Story</h3>
-<p>The UK AI Security Institute has evaluated GPT-5.5's cyber capabilities and found them <strong>comparable to Claude Mythos</strong> — but with a critical twist: OpenAI initially made GPT-5.5 broadly available, then reversed course and restricted access to its cyber-capable variant, mirroring the same Mythos restrictions OpenAI had publicly criticized Anthropic for. For an AI PM navigating enterprise risk and vendor selection, this signals that frontier cyber-capable models are entering a new regulatory chokepoint regardless of provider, and that competitive posturing may not predict actual access policies.</p>
-<hr />
-<h3>Models &amp; Capability Releases</h3>
-<ul>
-<li><strong>GPT-5.5 cyber capabilities evaluated by UK AI Security Institute</strong> — Found comparable to Claude Mythos for finding security vulnerabilities; OpenAI subsequently restricted access after initially offering it publicly. <a href="https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/">TechCrunch</a></li>
-<li><strong>Mistral Medium 3.5 released</strong> — New mid-tier model with agentic and remote-agent capabilities, raising the competitive bar for cost-efficient enterprise inference. <a href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5">Mistral AI</a></li>
-<li><strong>Granite 4.1 LLMs: How They're Built</strong> — IBM releases technical details on its Granite 4.1 series, relevant for regulated-industry teams evaluating on-prem or open-weight alternatives. <a href="https://huggingface.co/blog/ibm-granite/granite-4-1">Hugging Face</a></li>
-<li><strong>LLM 0.32a0/0.32a1 (Simon Willison's CLI library)</strong> — Major backwards-compatible refactor moves beyond prompt/response pairs, now natively modeling tool-calling conversations; important for teams building LLM tooling in Python. <a href="https://simonwillison.net/2026/Apr/29/llm/">Simon Willison</a></li>
-</ul>
-<hr />
-<h3>Agentic Engineering &amp; Tooling</h3>
-<ul>
-<li><strong>Codex CLI 0.128.0 adds <code>/goal</code> with looping until completion or token budget exhaustion</strong> — Implements a persistent goal-tracking loop, a meaningful step toward reliable long-horizon agentic coding tasks. <a href="https://simonwillison.net/2026/Apr/30/codex-goals/">Simon Willison</a></li>
-<li><strong>Claude Code routes requests differently based on commit message keywords ("HERMES.md", "OpenClaw")</strong> — Triggers extra billing tiers or refusals based on hidden prompt logic; a significant trust and cost-control issue for enterprise teams using Claude Code in CI/CD. <a href="https://github.com/anthropics/claude-code/issues/53262">GitHub Issue</a></li>
-<li><strong>Pu.sh: full coding-agent harness in 400 lines of shell</strong> — Lightweight, auditable alternative for teams wanting agentic coding pipelines without heavy framework dependencies. <a href="https://pu.dev/">pu.dev</a></li>
-<li><strong>Kanwas: open-source shared context board for teams and agents</strong> — Provides a shared persistent context layer across human and agent collaborators, addressing a real gap in multi-agent coordination. <a href="https://github.com/kanwas-ai/kanwas">GitHub</a></li>
-<li><strong>Agentic test harness for AI game playtesting</strong> — Practical case study of using agents for automated QA, with transferable patterns for other testing domains. <a href="https://blog.jeffschomay.com/letting-ai-play-my-game">Jeff Schomay</a></li>
-<li><strong>Alignment whack-a-mole: finetuning reactivates recall of copyrighted content in LLMs</strong> — Research showing safety-aligned models can have copyright guardrails bypassed via finetuning; critical risk signal for enterprise fine-tuning programs. <a href="https://github.com/cauchy221/Alignment-Whack-a-Mole-Code">GitHub</a></li>
-</ul>
-<hr />
-<h3>Enterprise, Regulation &amp; Governance</h3>
-<ul>
-<li><strong>Anthropic's Claude Code pricing and access controversies eroding developer goodwill</strong> — Pragmatic Engineer covers keyword-triggered billing surprises and outages, alongside GitHub Copilot price hikes; a cautionary signal for PMs building internal tooling dependencies on third-party coding agents. <a href="https://newsletter.pragmaticengineer.com/p/the-pulse-github-breaks">The Pragmatic Engineer</a></li>
-<li><strong>Zig open-source project maintains firm blanket ban on all LLM contributions</strong> — One of the most explicit anti-AI policies in major OSS, citing fundamental differences in error types; PMs managing inner-source or OSS-adjacent contributions should note how communities are codifying AI use norms. <a href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/">Simon Willison</a></li>
-<li><strong>Detecting LLM-assisted contributions: Andrew Kelley (Zig) notes "LLM hallucinations vs. human mistakes are easy to distinguish"</strong> — Has implications for code review policies and AI use disclosure in regulated engineering teams. <a href="https://simonwillison.net/2026/Apr/30/andrew-kelley/">Simon Willison</a></li>
-<li><strong>New structured output benchmark for deterministic LLM outputs</strong> — Targets a real enterprise pain point around reliability; worth tracking for teams requiring consistent JSON/schema-bound responses. <a href="https://interfaze.ai/blog/introducing-structured-output-benchmark">Interfaze.ai</a></li>
-</ul>
-<hr />
-<h3>Worth a Deeper Read</h3>
-<ul>
-<li><strong><a href="https://www.latent.space/p/ainews-agents-for-everything-else">Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work</a></strong> — Latent Space's reflection on coding agents "breaking containment" into broader knowledge work; useful framing for PMs scoping next-wave agent deployments.</li>
-<li><strong><a href="https://newsletter.pragmaticengineer.com/p/building-pi-and-what-makes-self-modifying">Building Pi and what makes self-modifying software so fascinating</a></strong> — Mario Zechner and Armin Ronacher argue human judgment remains central in agent-driven development; essential reading for PMs calibrating automation vs. oversight.</li>
-<li><strong><a href="https://newsletter.pragmaticengineer.com/p/the-pulse-github-breaks">The Pragmatic Engineer: AI load breaks GitHub — why not other vendors?</a></strong> — Examines infrastructure resilience differences across AI coding tool vendors; relevant for enterprise reliability planning.</li>
-<li><strong><a href="https://www.maxtaylor.me/articles/i-benchmarked-caveman-against-two-words">Claude Code's caveman plugin vs. "be brief" — benchmarked</a></strong> — Practical prompt-engineering comparison with quantified results; useful for teams trying to reduce token costs in agentic coding workflows.</li>
-</ul></div>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/#atom-everything" rel="noopener" target="_blank">Our evaluation of OpenAI&#x27;s GPT-5.5 cyber capabilities</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 21h ago · <span class="score-pill">score 15.7</span></div>
+<div class="summary">Our evaluation of OpenAI&amp;#x27;s GPT-5.5 cyber capabilities The UK&#x27;s AI Security Institute previously evaluated Claude Mythos : now they&#x27;ve evaluated GPT-5.5 for finding security vulnerability and found it to be comparable to Mythos, but unlike Mythos it&#x27;s generally available right now. Tags: ai , openai , generative-ai , llms , anthropic , claude , ai-security-research , gpt</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/andrew-kelley/#atom-everything" rel="noopener" target="_blank">Quoting Andrew Kelley</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 23h ago · <span class="score-pill">score 10.7</span></div>
+<div class="summary">It&#x27;s a common misconception that we can&#x27;t tell who is using LLM and who is not. I&#x27;m sure we didn&#x27;t catch 100% of LLM-assisted PRs over the past few months, but the kind of mistakes humans make are fundamentally different than LLM hallucinations, making them easy to spot. Furthermore, people who come from the world of agentic coding have a certain digital smell that is not obvious to them but is obvious to those who abstain. It&#x27;s like when a smoker walks into the room, everybody who doesn&#x27;t smoke</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/andrew-kelley/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://twitter.com/theo/status/2049645973350363168" rel="noopener" target="_blank">Claude Code refuses requests or charges extra if your commits mention &quot;OpenClaw&quot;</a></h2>
+<div class="meta">Hacker News · twitter.com · 22h ago · <span class="score-pill">score 9.7</span></div>
+<div class="summary">1201 points · 661 comments · query: LLM</div>
+<a class="read-more" href="https://twitter.com/theo/status/2049645973350363168" rel="noopener" target="_blank">Read on twitter.com →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/#atom-everything" rel="noopener" target="_blank">The Zig project&#x27;s rationale for their firm anti-AI contribution policy</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 43h ago · <span class="score-pill">score 9.5</span></div>
+<div class="summary">Zig has one of the most stringent anti-LLM policies of any major open source project: No LLMs for issues. No LLMs for pull requests. No LLMs for comments on the bug tracker, including translation. English is encouraged, but not required. You are welcome to post in your native language and rely on others to have their own translation tools of choice to interpret your words. The most prominent project written in Zig may be the Bun JavaScript runtime, which was acquired by Anthropic in December 202</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://blog.jeffschomay.com/letting-ai-play-my-game" rel="noopener" target="_blank">Letting AI play my game – building an agentic test harness to help play-testing</a></h2>
+<div class="meta">Hacker News · blog.jeffschomay.com · 47h ago · <span class="score-pill">score 8.7</span></div>
+<div class="summary">132 points · 32 comments · query: AI agents</div>
+<a class="read-more" href="https://blog.jeffschomay.com/letting-ai-play-my-game" rel="noopener" target="_blank">Read on blog.jeffschomay.com →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/codex-goals/#atom-everything" rel="noopener" target="_blank">Codex CLI 0.128.0 adds /goal</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 21h ago · <span class="score-pill">score 8.7</span></div>
+<div class="summary">Codex CLI 0.128.0 adds /goal The latest version of OpenAI&#x27;s Codex CLI coding agent adds their own version of the Ralph loop : you can now set a /goal and Codex will keep on looping until it evaluates that the goal has been completed... or the configured token budget has been exhausted. It looks like the feature is mainly implemented though the goals/continuation.md and goals/budget_limit.md prompts, which are automatically injected at the end of a turn. Via @fcoury Tags: ai , openai , prompt-eng</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/codex-goals/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://dpa-international.com/general-news/urn:newsml:dpa.com:20090101:260430-930-14717/" rel="noopener" target="_blank">Belgium stops decommissioning nuclear power plants</a></h2>
+<div class="meta">Hacker News · dpa-international.com · 24h ago · <span class="score-pill">score 8.7</span></div>
+<div class="summary">830 points · 869 comments · query: MCP</div>
+<a class="read-more" href="https://dpa-international.com/general-news/urn:newsml:dpa.com:20090101:260430-930-14717/" rel="noopener" target="_blank">Read on dpa-international.com →</a>
+</article>
+<article>
+<h2><a href="https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/" rel="noopener" target="_blank">After dissing Anthropic for limiting Mythos, OpenAI restricts access to Cyber</a></h2>
+<div class="meta">Hacker News · techcrunch.com · 2h ago · <span class="score-pill">score 8.7</span></div>
+<div class="summary">71 points · 43 comments · query: LLM</div>
+<a class="read-more" href="https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/" rel="noopener" target="_blank">Read on techcrunch.com →</a>
+</article>
+<article>
+<h2><a href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5" rel="noopener" target="_blank">Mistral Medium 3.5</a></h2>
+<div class="meta">Hacker News · mistral.ai · 45h ago · <span class="score-pill">score 8.5</span></div>
+<div class="summary">492 points · 229 comments · query: AI agents</div>
+<a class="read-more" href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5" rel="noopener" target="_blank">Read on mistral.ai →</a>
+</article>
+<article>
+<h2><a href="https://www.latent.space/p/ainews-agents-for-everything-else" rel="noopener" target="_blank">[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work</a></h2>
+<div class="meta">Latent Space · latent.space · 15h ago · <span class="score-pill">score 7.8</span></div>
+<div class="summary">a quiet day lets us reflect on coding agents &quot;breaking containment&quot;</div>
+<a class="read-more" href="https://www.latent.space/p/ainews-agents-for-everything-else" rel="noopener" target="_blank">Read on latent.space →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/" rel="noopener" target="_blank">The Zig project&#x27;s rationale for their anti-AI contribution policy</a></h2>
+<div class="meta">Hacker News · simonwillison.net · 34h ago · <span class="score-pill">score 7.6</span></div>
+<div class="summary">656 points · 442 comments · query: LLM</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://github.com/anthropics/claude-code/issues/53262" rel="noopener" target="_blank">HERMES.md in commit messages causes requests to route to extra usage billing</a></h2>
+<div class="meta">Hacker News · github.com · 41h ago · <span class="score-pill">score 7.5</span></div>
+<div class="summary">1235 points · 517 comments · query: Anthropic</div>
+<a class="read-more" href="https://github.com/anthropics/claude-code/issues/53262" rel="noopener" target="_blank">Read on github.com →</a>
+</article>
+<article>
+<h2><a href="https://interfaze.ai/blog/introducing-structured-output-benchmark" rel="noopener" target="_blank">Show HN: A new benchmark for testing LLMs for deterministic outputs</a></h2>
+<div class="meta">Hacker News · interfaze.ai · 44h ago · <span class="score-pill">score 7.0</span></div>
+<div class="summary">58 points · 24 comments · query: Claude</div>
+<a class="read-more" href="https://interfaze.ai/blog/introducing-structured-output-benchmark" rel="noopener" target="_blank">Read on interfaze.ai →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/30/rss-vibe-coded-apps/#atom-everything" rel="noopener" target="_blank">We need RSS for sharing abundant vibe-coded apps</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 26h ago · <span class="score-pill">score 6.7</span></div>
+<div class="summary">We need RSS for sharing abundant vibe-coded apps Matt Webb: I would love an RSS web feed for all those various tools and apps pages, each item with an “Install” button. (But install to where?) The lesson here is that when vibe-coding accelerates app development, apps become more personal, more situated, and more frequent. Shipping a tool or a micro-app is less like launching a website and more like posting on a blog. This inspired me to have Claude add an Atom feed (and icon) to my /elsewhere/to</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/30/rss-vibe-coded-apps/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://newsletter.pragmaticengineer.com/p/the-pulse-github-breaks" rel="noopener" target="_blank">The Pulse: AI load breaks GitHub – why not other vendors?</a></h2>
+<div class="meta">The Pragmatic Engineer · newsletter.pragmaticengineer.com · 30h ago · <span class="score-pill">score 6.6</span></div>
+<div class="summary">Also: Anthropic&amp;#8217;s speed run to break devs&amp;#8217; goodwill, big price increases from GitHub Copilot, Mitchell Hashimoto on the &amp;#8220;building block economy,&amp;#8221; and more</div>
+<a class="read-more" href="https://newsletter.pragmaticengineer.com/p/the-pulse-github-breaks" rel="noopener" target="_blank">Read on newsletter.pragmaticengineer.com →</a>
+</article>
+<article>
+<h2><a href="https://github.com/darrylmorley/whatcable" rel="noopener" target="_blank">Show HN: WhatCable, a tiny menu bar app for inspecting USB-C cables</a></h2>
+<div class="meta">Hacker News · github.com · 3h ago · <span class="score-pill">score 6.6</span></div>
+<div class="summary">168 points · 54 comments · query: agentic</div>
+<a class="read-more" href="https://github.com/darrylmorley/whatcable" rel="noopener" target="_blank">Read on github.com →</a>
+</article>
+<article>
+<h2><a href="https://github.com/cauchy221/Alignment-Whack-a-Mole-Code" rel="noopener" target="_blank">Alignment whack-a-mole: Finetuning activates recall of copyrighted books in LLMs</a></h2>
+<div class="meta">Hacker News · github.com · 33h ago · <span class="score-pill">score 6.5</span></div>
+<div class="summary">192 points · 161 comments · query: LLM</div>
+<a class="read-more" href="https://github.com/cauchy221/Alignment-Whack-a-Mole-Code" rel="noopener" target="_blank">Read on github.com →</a>
+</article>
+<article>
+<h2><a href="https://simonwillison.net/2026/Apr/29/llm-3/#atom-everything" rel="noopener" target="_blank">llm 0.32a1</a></h2>
+<div class="meta">Simon Willison · simonwillison.net · 44h ago · <span class="score-pill">score 6.5</span></div>
+<div class="summary">Release: llm 0.32a1 Fixed a bug in 0.32a0 where tool-calling conversations were not correctly reinflated from SQLite. #1426 Tags: llm</div>
+<a class="read-more" href="https://simonwillison.net/2026/Apr/29/llm-3/#atom-everything" rel="noopener" target="_blank">Read on simonwillison.net →</a>
+</article>
+<article>
+<h2><a href="https://github.com/kanwas-ai/kanwas" rel="noopener" target="_blank">Show HN: Kanwas, open-source shared context board for teams and agents</a></h2>
+<div class="meta">Hacker News · github.com · 24h ago · <span class="score-pill">score 6.3</span></div>
+<div class="summary">56 points · 8 comments · query: AI agents</div>
+<a class="read-more" href="https://github.com/kanwas-ai/kanwas" rel="noopener" target="_blank">Read on github.com →</a>
+</article>
+<article>
+<h2><a href="https://labs.watchtowr.com/the-internet-is-falling-down-falling-down-falling-down-cpanel-whm-authentication-bypass-cve-2026-41940/" rel="noopener" target="_blank">CPanel and WHM Authentication Bypass – CVE-2026-41940</a></h2>
+<div class="meta">Hacker News · labs.watchtowr.com · 13h ago · <span class="score-pill">score 6.1</span></div>
+<div class="summary">122 points · 48 comments · query: MCP</div>
+<a class="read-more" href="https://labs.watchtowr.com/the-internet-is-falling-down-falling-down-falling-down-cpanel-whm-authentication-bypass-cve-2026-41940/" rel="noopener" target="_blank">Read on labs.watchtowr.com →</a>
+</article>
+<article>
+<h2><a href="https://markready.io/blog/fcc-accredited-test-labs-complete-guide" rel="noopener" target="_blank">The FCC is about to ban 21% of its test labs today. I mapped them all</a></h2>
+<div class="meta">Hacker News · markready.io · 22h ago · <span class="score-pill">score 6.0</span></div>
+<div class="summary">129 points · 81 comments · query: MCP</div>
+<a class="read-more" href="https://markready.io/blog/fcc-accredited-test-labs-complete-guide" rel="noopener" target="_blank">Read on markready.io →</a>
+</article>
+<article>
+<h2><a href="https://pu.dev/" rel="noopener" target="_blank">Show HN: Pu.sh – a full coding-agent harness in 400 lines of shell</a></h2>
+<div class="meta">Hacker News · pu.dev · 15h ago · <span class="score-pill">score 5.7</span></div>
+<div class="summary">84 points · 21 comments · query: AI agents</div>
+<a class="read-more" href="https://pu.dev/" rel="noopener" target="_blank">Read on pu.dev →</a>
+</article>
+<article>
+<h2><a href="https://www.maxtaylor.me/articles/i-benchmarked-caveman-against-two-words" rel="noopener" target="_blank">I benchmarked Claude Code&#x27;s caveman plugin against &quot;be brief.&quot;</a></h2>
+<div class="meta">Hacker News · maxtaylor.me · 39h ago · <span class="score-pill">score 5.4</span></div>
+<div class="summary">88 points · 66 comments · query: Claude</div>
+<a class="read-more" href="https://www.maxtaylor.me/articles/i-benchmarked-caveman-against-two-words" rel="noopener" target="_blank">Read on maxtaylor.me →</a>
+</article>
+<article>
+<h2><a href="https://www.techmeme.com/260430/p66#a260430p66" rel="noopener" target="_blank">Musk v. Altman: OpenAI lawyers claim Shivon Zilis, a longtime Musk employee and mother to four of his children, acted as a covert liaison between him and OpenAI (Wired)</a></h2>
+<div class="meta">Techmeme · techmeme.com · 17h ago · <span class="score-pill">score 4.8</span></div>
+<div class="summary">Wired : Musk v. Altman: OpenAI lawyers claim Shivon Zilis, a longtime Musk employee and mother to four of his children, acted as a covert liaison between him and OpenAI &amp;nbsp; &amp;mdash;&amp;nbsp; Messages presented at trial reveal how Zilis, the mother of four of Musk&#x27;s children, acted as an intermediary between him and OpenAI.</div>
+<a class="read-more" href="https://www.techmeme.com/260430/p66#a260430p66" rel="noopener" target="_blank">Read on techmeme.com →</a>
+</article>
+<article>
+<h2><a href="https://status.claude.com/incidents/2gf1jpyty350" rel="noopener" target="_blank">Claude.ai and API unavailable [fixed]</a></h2>
+<div class="meta">Hacker News · status.claude.com · 35h ago · <span class="score-pill">score 4.8</span></div>
+<div class="summary">118 points · 120 comments · query: Claude</div>
+<a class="read-more" href="https://status.claude.com/incidents/2gf1jpyty350" rel="noopener" target="_blank">Read on status.claude.com →</a>
+</article>
 <footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></footer></body></html>
