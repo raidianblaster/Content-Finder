@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write   # needed to commit the generated digest back
 
+env:
+  # Opt into Node.js 24 for JS actions (Node 20 is deprecated; default flips June 2026).
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 concurrency:
   group: daily-digest
   cancel-in-progress: false
