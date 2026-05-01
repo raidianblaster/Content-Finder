@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Digest — Archive</title>
+<style>
+:root {
+  --bg: #fafafa; --fg: #1a1a1a; --muted: #666;
+  --accent: #0066cc; --border: #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f10; --fg: #e8e8e8; --muted: #9a9a9a;
+    --accent: #7aa2ff; --border: #232325;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem;
+}
+header { margin-bottom: 1.5rem; }
+header h1 { margin: 0 0 .25rem; font-size: 1.4rem; }
+header nav { margin-top: .75rem; font-size: .9rem; }
+header nav a { color: var(--accent); text-decoration: none; }
+ul.digests { list-style: none; padding: 0; margin: 0; }
+ul.digests li {
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+}
+ul.digests a {
+  color: var(--fg); text-decoration: none;
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem;
+}
+ul.digests a:hover { color: var(--accent); }
+ul.digests .date { font-size: 1rem; font-weight: 500; }
+ul.digests .day { color: var(--muted); font-size: .85rem; }
+</style>
+</head><body>
+<header>
+<h1>AI Digest archive</h1>
+<nav><a href="index.html">← latest digest</a></nav>
+</header>
+<ul class="digests">
+<li><a href="archive/2026-05-01.html"><span class="date">01 May 2026</span><span class="day">Friday</span></a></li>
+</ul></body></html>
