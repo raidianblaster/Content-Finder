@@ -40,13 +40,14 @@ jobs:
         run: echo "today=$(TZ=Asia/Hong_Kong date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
       - name: Generate digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           mkdir -p docs/archive
           python content_finder.py \
-            --no-summarize \
-            --format html \
             --days 2 \
             --top 30 \
+            --format html \
             --out docs/index.html
           cp docs/index.html "docs/archive/${{ steps.date.outputs.today }}.html"
 
