@@ -65,6 +65,7 @@ RSS_SOURCES: list[tuple[str, str]] = [
     ("arXiv cs.AI",               "https://rss.arxiv.org/rss/cs.AI"),
     ("Stratechery",               "https://stratechery.com/feed/"),
     ("Last Week in AI",           "https://lastweekin.ai/feed"),
+    ("MindStudio",                "https://www.mindstudio.ai/rss.xml"),
     ("Dwarkesh Podcast",          "https://www.dwarkesh.com/feed"),
     ("NIST News",                 "https://www.nist.gov/news-events/news/rss.xml"),
     ("EU AI Office",              "https://digital-strategy.ec.europa.eu/en/rss.xml"),
