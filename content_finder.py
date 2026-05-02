@@ -510,12 +510,12 @@ body {
 /* Article list + section labels */
 .article-list { padding-bottom: 24px; }
 .section-label {
-  padding: 14px 20px 6px;
+  padding: 16px 20px 8px;
   display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 600;
   color: var(--purple);
   letter-spacing: 0.06em; text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-0);
 }
 .section-label::after {
   content: ""; flex: 1; height: 1px; background: var(--border);
@@ -552,18 +552,31 @@ body {
 .tag-Research   { color: var(--slate);  background: var(--slate-bg);   border-color: oklch(68% 0.12 260 / 0.3); }
 
 .item-title {
-  display: block; width: 100%; min-height: 44px;
+  display: flex; align-items: flex-start; gap: 10px;
+  width: 100%; min-height: 44px;
   background: none; border: none; padding: 0;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-align: left; cursor: pointer;
-  font-family: inherit; font-size: 15px; font-weight: 500;
-  color: var(--fg); line-height: 1.45; text-wrap: pretty;
+  font-family: inherit;
+  color: var(--fg);
 }
-.item-title:hover { color: var(--purple); }
-.item-body { display: none; margin-bottom: 12px; }
+.item-title-text {
+  flex: 1; min-width: 0;
+  font-size: 15px; font-weight: 500; line-height: 1.4;
+  text-wrap: pretty;
+}
+.item-title-chev {
+  flex-shrink: 0; padding-top: 3px;
+  font-size: 12px; color: var(--fg-dim);
+  transition: transform .15s, color .15s;
+}
+.item-title:hover .item-title-text { color: var(--purple); }
+.item-title:hover .item-title-chev { color: var(--purple); }
+.item.is-expanded .item-title-chev { transform: rotate(180deg); color: var(--purple); }
+.item-body { display: none; margin-top: 8px; margin-bottom: 12px; }
 .item.is-expanded .item-body { display: block; }
 .item-snippet {
-  font-size: 14px; color: var(--fg-mid); line-height: 1.7;
+  font-size: 14px; color: var(--fg-mid); line-height: 1.65;
   margin-bottom: 10px;
 }
 
@@ -598,12 +611,19 @@ body {
 .collapse-btn:hover { color: var(--fg); border-color: var(--fg-mid); }
 
 .item .meta {
-  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
-  margin-top: 6px;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  margin-top: 4px;
 }
-.item.is-expanded .meta { margin-top: 0; }
-.item .meta .source { font-size: 13px; color: var(--fg-mid); }
-.item .meta .date   { font-size: 13px; color: var(--fg-dim); }
+.item .meta .source {
+  font-size: 12px; color: var(--fg-mid); font-weight: 500;
+}
+.item .meta .source::before {
+  content: ""; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--fg-dim); margin-right: 8px;
+  vertical-align: middle;
+}
+.item .meta .date { font-size: 12px; color: var(--fg-dim); }
 .score-pill {
   font-family: "DM Mono", monospace;
   font-size: 11px;
@@ -633,7 +653,9 @@ _TAG_ELEMENT_RE = re.compile(
     r'^(<li([^>]*)>)(.*?)(</li>)\s*$',
     re.DOTALL,
 )
-_TAG_SUFFIX_RE = re.compile(r'\s*\{tags:\s*([^}]*)\}\s*$')
+# Match the {tags: ...} literal at the tail of a bullet, tolerating an
+# optional closing </p> tag (markdown wraps loose-list items in <p>).
+_TAG_SUFFIX_RE = re.compile(r'\s*\{tags:\s*([^}]*)\}\s*(</p>)?\s*$')
 _BODY_LI_RE = re.compile(r'<li\b[^>]*>.*?</li>', re.DOTALL)
 
 
@@ -664,7 +686,10 @@ def transform_tag_element(snippet: str) -> tuple[str, set[str]]:
     suffix = _TAG_SUFFIX_RE.search(content)
     if suffix:
         tag_list = _canonicalize_tags(suffix.group(1))
-        content = content[: suffix.start()].rstrip()
+        # Re-attach the closing </p> if the suffix consumed it, so the LI
+        # stays well-formed for the structured card parser downstream.
+        closing = suffix.group(2) or ""
+        content = content[: suffix.start()].rstrip() + closing
     else:
         tag_list = []
     new_open = f'<li{attrs} data-tags="{" ".join(tag_list)}">'
@@ -843,10 +868,43 @@ _LI_OUTER_RE = re.compile(r'<li([^>]*)>(.*)</li>', re.DOTALL)
 _LI_TITLE_RE = re.compile(r'\s*<strong>(.*?)</strong>\s*[—–-]?\s*', re.DOTALL)
 _LI_SO_WHAT_RE = re.compile(r'<strong>\s*So what:?\s*</strong>\s*', re.IGNORECASE)
 _LI_LINK_RE = re.compile(r'<a\s+[^>]*href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL)
+# Markdown link literal that survives if the markdown extension somehow misses it.
+_RAW_MD_LINK_RE = re.compile(r'\[([^\]]+)\]\((https?://[^)\s]+)\)')
+
+
+def _strip_p_wrapper(content: str) -> str:
+    """Drop a leading ``<p>`` and trailing ``</p>`` if the LI is loose-list shaped.
+
+    Python markdown wraps each ``<li>`` content in ``<p>...</p>`` whenever the
+    source markdown has blank lines between bullets. The card parser keys on
+    the raw inline HTML, so we normalise both shapes here.
+    """
+    s = content.strip()
+    s = re.sub(r'^<p>\s*', '', s)
+    s = re.sub(r'\s*</p>\s*$', '', s)
+    return s
+
+
+def _convert_raw_md_links(content: str) -> str:
+    """Last-resort: convert ``[label](url)`` literals to real ``<a>`` tags.
+
+    Only fires if some markdown link slipped past the renderer (e.g. nested
+    in a way the ``extra`` extension doesn't expand). Keeps the page clean.
+    """
+    def repl(m: re.Match) -> str:
+        label = html.escape(m.group(1).strip())
+        href = html.escape(m.group(2))
+        return f'<a href="{href}">{label}</a>'
+    return _RAW_MD_LINK_RE.sub(repl, content)
 
 
 def _parse_synthesis_li(li_html: str, item_id: int) -> str:
-    """Convert a `<li>` carrying a structured synthesis bullet into a card."""
+    """Convert a `<li>` carrying a structured synthesis bullet into a card.
+
+    Handles both tight-list (`<li><strong>...`) and loose-list
+    (`<li><p><strong>...`) shapes, and tolerates Claude moving the source
+    link before/after the ``**So what:**`` clause.
+    """
     outer = _LI_OUTER_RE.match(li_html)
     if not outer:
         return li_html
@@ -854,48 +912,108 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
     data_tags_match = re.search(r'data-tags="([^"]*)"', attrs)
     data_tags = data_tags_match.group(1) if data_tags_match else ""
 
+    # Normalise both list shapes and rescue any literal markdown links.
+    content = _convert_raw_md_links(_strip_p_wrapper(content))
+
     title_m = _LI_TITLE_RE.match(content)
     if not title_m:
-        # Bullet doesn't follow the **Headline** — body. shape; render as
-        # a minimal card so the filter still works on it.
-        body_clean = re.sub(r'<[^>]+>', '', content).strip()
-        return (
-            f'<article class="item" data-tags="{html.escape(data_tags)}" '
-            f'id="item-{item_id}">'
-            f'{_render_tag_chips(data_tags)}'
-            f'<button type="button" class="item-title">{html.escape(body_clean)}</button>'
-            f'</article>'
+        # Fallback: no leading <strong> headline. Take the first sentence
+        # (text before the em-dash) as the headline; if no em-dash, take
+        # the first ~80 chars. Still honour any source link found in the
+        # bullet so the card stays usable.
+        plain = re.sub(r'<[^>]+>', '', content).strip()
+        # Drop any trailing {tags:...} literal that escaped earlier passes.
+        plain = re.sub(r'\s*\{tags:[^}]*\}\s*$', '', plain).strip()
+        if "—" in plain:
+            headline, _, body_text = plain.partition("—")
+        elif " - " in plain:
+            headline, _, body_text = plain.partition(" - ")
+        else:
+            headline = plain[:80].rstrip(".") + ("…" if len(plain) > 80 else "")
+            body_text = plain[80:].strip()
+        url, source_name = "", ""
+        link_m = _LI_LINK_RE.search(content)
+        if link_m:
+            url = link_m.group(1)
+            source_name = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+        return _build_card_html(
+            item_id=item_id,
+            data_tags=data_tags,
+            title=html.escape(headline.strip()),
+            snippet=html.escape(body_text.strip()) if body_text.strip() else "",
+            so_what="",
+            url=url,
+            source_name=source_name,
         )
 
     title = title_m.group(1).strip()
     rest = content[title_m.end():]
+    # Strip any trailing {tags:...} literal that escaped earlier passes.
+    rest = re.sub(r'\s*\{tags:[^}]*\}\s*$', '', rest).strip()
 
     sw_m = _LI_SO_WHAT_RE.search(rest)
     if sw_m:
-        snippet = rest[:sw_m.start()].rstrip(" .").rstrip()
+        snippet_html = rest[:sw_m.start()]
         after_sw = rest[sw_m.end():]
     else:
-        snippet = rest.strip()
+        snippet_html = rest
         after_sw = ""
 
-    link_m = _LI_LINK_RE.search(after_sw)
-    if link_m:
+    # Source link can appear before OR after "So what:" — search the whole
+    # bullet and use the LAST <a> as the citation. That tolerates Claude
+    # putting the link wherever feels natural in the prose.
+    all_links = list(_LI_LINK_RE.finditer(rest))
+    if all_links:
+        link_m = all_links[-1]
         url = link_m.group(1)
         source_name = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
-        so_what = after_sw[:link_m.start()].rstrip(" .").rstrip()
+        # Strip the source-link span out of whichever slice it landed in.
+        link_slice_start, link_slice_end = link_m.span()
+        if sw_m and link_slice_start >= sw_m.end():
+            local_start = link_slice_start - sw_m.end()
+            local_end = link_slice_end - sw_m.end()
+            after_sw = (after_sw[:local_start] + after_sw[local_end:]).strip()
+        else:
+            local_start = link_slice_start
+            local_end = link_slice_end
+            snippet_html = (snippet_html[:local_start] + snippet_html[local_end:]).strip()
     else:
-        url = ""
-        source_name = ""
-        so_what = after_sw.rstrip(" .").rstrip()
+        url, source_name = "", ""
 
-    snippet = snippet.strip()
-    so_what = so_what.strip()
+    snippet = snippet_html.strip().rstrip(" .").rstrip()
+    so_what = after_sw.strip().rstrip(" .").rstrip()
 
+    return _build_card_html(
+        item_id=item_id,
+        data_tags=data_tags,
+        title=title,
+        snippet=snippet,
+        so_what=so_what,
+        url=url,
+        source_name=source_name,
+    )
+
+
+def _build_card_html(
+    *,
+    item_id: int,
+    data_tags: str,
+    title: str,
+    snippet: str,
+    so_what: str,
+    url: str,
+    source_name: str,
+) -> str:
+    """Assemble a synthesis-card ``<article>``. Both structured and fallback
+    code paths render through here so the markup stays consistent."""
     parts = [
         f'<article class="item" data-tags="{html.escape(data_tags)}" '
         f'id="item-{item_id}">',
         _render_tag_chips(data_tags),
-        f'<button type="button" class="item-title">{title}</button>',
+        '<button type="button" class="item-title">'
+        f'<span class="item-title-text">{title}</span>'
+        '<span class="item-title-chev" aria-hidden="true">▾</span>'
+        '</button>',
         '<div class="item-body">',
     ]
     if snippet:
@@ -1085,7 +1203,10 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
     tier = _score_tier(item.score)
     parts = [
         f'<article class="item" id="item-{item_id}">',
-        f'<button type="button" class="item-title">{html.escape(item.title)}</button>',
+        '<button type="button" class="item-title">'
+        f'<span class="item-title-text">{html.escape(item.title)}</span>'
+        '<span class="item-title-chev" aria-hidden="true">▾</span>'
+        '</button>',
         '<div class="item-body">',
     ]
     if item.summary:
