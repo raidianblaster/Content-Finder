@@ -2,89 +2,236 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f0f10">
+<meta name="theme-color" content="#0d0d0f">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <title>AI Digest — Sat 02 May 2026</title>
 <style>
 :root {
-  --bg: #fafafa; --fg: #1a1a1a; --muted: #666;
-  --accent: #0066cc; --border: #e0e0e0; --card: #fff;
+  --bg-0: #0d0d0f;
+  --bg-1: #131316;
+  --bg-2: #1c1c21;
+  --border: #26262e;
+  --border-2: #32323c;
+  --fg: #dddde4;
+  --fg-mid: #a0a0b0;
+  --fg-dim: #666672;
+  --accent: oklch(68% 0.14 258);
+  --accent-bg: oklch(68% 0.14 258 / 0.12);
+  --accent-border: oklch(68% 0.14 258 / 0.3);
+  --green: oklch(68% 0.13 145);
+  --green-bg: oklch(68% 0.13 145 / 0.1);
+  --amber: oklch(72% 0.13 75);
+  --amber-bg: oklch(72% 0.13 75 / 0.1);
+  --teal: oklch(68% 0.13 210);
+  --teal-bg: oklch(68% 0.13 210 / 0.1);
+  --violet: oklch(68% 0.12 300);
+  --violet-bg: oklch(68% 0.12 300 / 0.1);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f0f10; --fg: #e8e8e8; --muted: #9a9a9a;
-    --accent: #7aa2ff; --border: #232325; --card: #18181a;
-  }
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg-0); color: var(--fg); }
 body {
-  background: var(--bg); color: var(--fg);
-  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem;
+  font: 14px/1.55 "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
 }
-header { margin-bottom: 1.5rem; }
-header h1 { margin: 0 0 .25rem; font-size: 1.4rem; line-height: 1.25; }
-header .meta { color: var(--muted); font-size: .9rem; }
-header nav { margin-top: .75rem; font-size: .9rem; }
-header nav a { color: var(--accent); text-decoration: none; margin-right: 1rem; }
-article {
-  border-top: 1px solid var(--border);
-  padding: 1.1rem 0;
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-0);
+  min-height: 100vh;
 }
-article h2 {
-  margin: 0 0 .35rem; font-size: 1.05rem; line-height: 1.35;
+
+/* Top bar */
+.topbar {
+  background: var(--bg-0);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; align-items: baseline; gap: 12px;
 }
-article h2 a { color: var(--fg); text-decoration: none; }
-article h2 a:hover { color: var(--accent); }
-article .meta { color: var(--muted); font-size: .82rem; margin-bottom: .55rem; }
-article .summary { font-size: .94rem; color: var(--fg); }
-article .read-more {
-  display: inline-block; margin-top: .55rem;
-  font-size: .82rem; color: var(--accent); text-decoration: none;
+.topbar-left { display: flex; align-items: baseline; gap: 12px; }
+.topbar-title { font-size: 16px; font-weight: 600; color: var(--fg); }
+.topbar-date  { font-size: 13px; color: var(--fg-dim); }
+.topbar-right {
+  margin-left: auto; font-size: 12px; color: var(--fg-dim);
 }
-.score-pill {
-  display: inline-block; padding: 0 .4rem; border-radius: 3px;
-  background: var(--border); color: var(--muted); font-size: .75rem;
+.topbar-right a { color: var(--fg-dim); text-decoration: none; }
+.topbar-right a:hover { color: var(--fg-mid); }
+
+/* Takeaways block */
+.takeaways {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
 }
+.takeaways-toggle {
+  width: 100%; min-height: 44px;
+  padding: 12px 20px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 10px;
+  font-family: inherit; text-align: left;
+}
+.takeaways-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.takeaways-chevron {
+  margin-left: auto; font-size: 13px; color: var(--fg-dim);
+}
+.takeaways-body {
+  padding: 0 20px 16px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.takeaways-body.is-collapsed { display: none; }
+.takeaway {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.takeaway-num {
+  font-size: 13px; font-weight: 600; color: var(--amber);
+  min-width: 18px; padding-top: 2px; flex-shrink: 0;
+}
+.takeaway-content { flex: 1; }
+.takeaway-content p {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.6;
+}
+.takeaway-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 6px; min-height: 32px;
+  font-size: 12px; color: var(--accent); text-decoration: none;
+}
+.takeaway-link:hover { text-decoration: underline; }
+
+/* Filter chips */
 .chips {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-  margin: 0 0 1.25rem;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
 }
 .chip {
-  font: inherit; font-size: .8rem;
-  padding: .3rem .7rem;
-  border: 1px solid var(--border); border-radius: 999px;
-  background: var(--card); color: var(--muted);
+  font-family: inherit; font-size: 12px; font-weight: 500;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--fg-dim);
   cursor: pointer;
+  white-space: nowrap;
+  transition: color .12s, background .12s, border-color .12s;
 }
 .chip:hover { color: var(--fg); }
-.chip.is-active {
-  background: var(--accent); color: #fff;
-  border-color: var(--accent);
-}
-.is-hidden { display: none !important; }
-footer {
-  margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border);
-  color: var(--muted); font-size: .78rem; text-align: center;
-}
-footer a { color: var(--muted); }
+.chip.is-active { color: var(--fg); background: var(--bg-2); border-color: var(--border-2); }
+.chip[data-tag="Models"].is-active     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.4); }
+.chip[data-tag="Agents"].is-active     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
+.chip[data-tag="Tooling"].is-active    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.4); }
+.chip[data-tag="Regulation"].is-active { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.4); }
+.chip[data-tag="Enterprise"].is-active { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.4); }
+.chip[data-tag="Research"].is-active   { color: var(--fg-mid); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
 
-.digest-body { max-width: 100%; }
-.digest-body h2 { font-size: 1.1rem; margin: 1.5rem 0 .5rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-.digest-body h2:first-child { border-top: none; padding-top: 0; }
-.digest-body ul { padding-left: 1.25rem; margin: .5rem 0; }
-.digest-body li { margin-bottom: .5rem; font-size: .95rem; }
-.digest-body a { color: var(--accent); }
-.digest-body p { margin: .5rem 0; font-size: .95rem; }
-.digest-body strong { font-weight: 600; }
+/* Article list + section labels */
+.article-list { padding-bottom: 24px; }
+.section-label {
+  padding: 18px 20px 8px;
+  font-size: 11px; font-weight: 600;
+  color: var(--fg-mid);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+/* Item card */
+.item {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+}
+.item .tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+  border: 1px solid;
+}
+.tag-Models     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.3); }
+.tag-Agents     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
+.tag-Tooling    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.3); }
+.tag-Regulation { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.3); }
+.tag-Enterprise { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.3); }
+.tag-Research   { color: var(--fg-mid); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); }
+
+.item-title {
+  display: block; width: 100%; min-height: 44px;
+  background: none; border: none; padding: 0;
+  margin-bottom: 8px;
+  text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 15px; font-weight: 500;
+  color: var(--fg); line-height: 1.45; text-wrap: pretty;
+}
+.item-title:hover { color: var(--accent); }
+.item-body { display: none; margin-bottom: 12px; }
+.item.is-expanded .item-body { display: block; }
+.item-snippet {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.so-what {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 5px;
+  padding: 8px 11px;
+}
+.so-what-label { font-size: 12px; font-weight: 600; color: var(--accent); }
+.so-what-body  { font-size: 12px; color: var(--fg-mid); line-height: 1.55; }
+
+.read-article {
+  display: inline-block; margin-top: 12px;
+  font-size: 13px; padding: 8px 16px; min-height: 44px;
+  background: var(--bg-2); border: 1px solid var(--border-2);
+  border-radius: 6px;
+  color: var(--fg); text-decoration: none;
+  line-height: 28px;
+}
+.read-article:hover { background: var(--bg-1); border-color: var(--accent); color: var(--accent); }
+
+.item .meta {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin-top: 6px;
+}
+.item.is-expanded .meta { margin-top: 0; }
+.item .meta .source { font-size: 13px; color: var(--fg-mid); }
+.item .meta .date   { font-size: 13px; color: var(--fg-dim); }
+.score-pill {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  border: 1px solid; border-radius: 3px;
+  padding: 1px 6px;
+}
+.score-pill.score-high { color: var(--green);  background: oklch(68% 0.13 145 / 0.18); border-color: oklch(68% 0.13 145 / 0.3); }
+.score-pill.score-mid  { color: var(--accent); background: var(--accent-bg);            border-color: var(--accent-border); }
+.score-pill.score-low  { color: var(--fg-dim); background: rgba(255,255,255,0.05);     border-color: rgba(255,255,255,0.18); }
+
+footer {
+  padding: 24px 20px; text-align: center;
+  font-size: 12px; color: var(--fg-dim);
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--fg-dim); }
+
+.is-hidden { display: none !important; }
 </style>
 </head><body>
-<header>
-<h1>AI Digest — Sat 02 May 2026</h1>
-<div class="meta">Claude-synthesised brief · agentic AI &amp; LLM trends</div>
-<nav><a href="archive.html">← previous digests</a></nav>
+<div class="page">
+<header class="topbar">
+<div class="topbar-left">
+<span class="topbar-title">AI Digest</span>
+<span class="topbar-date">Sat 02 May 2026</span>
+</div>
+<div class="topbar-right">11 items · <a href="archive.html">archive</a></div>
 </header>
+<section class="takeaways"><button type="button" class="takeaways-toggle" aria-expanded="true" aria-controls="takeaways-body"><span class="takeaways-label">Key Takeaways</span><span class="takeaways-chevron">▲</span></button><div class="takeaways-body" id="takeaways-body"><div class="takeaway"><span class="takeaway-num">1.</span><div class="takeaway-content"><p>Cyber-capable AI is now widely available and actively restricted: Both Anthropic&#x27;s Mythos and OpenAI&#x27;s GPT-5.5 have been evaluated as capable offensive security tools, and both labs are now limiting access — a direct signal that AI PMs in regulated environments need security governance policies for these models today</p></div></div><div class="takeaway"><span class="takeaway-num">2.</span><div class="takeaway-content"><p>Agentic AI is escaping the lab and entering critical systems: Five-Eyes governments issued a joint warning that AI agents already have more access than can be safely monitored inside critical infrastructure, while retail traders and financial exchanges are actively deploying autonomous trading agents — raising the stakes for enterprise governance frameworks</p></div></div><div class="takeaway"><span class="takeaway-num">3.</span><div class="takeaway-content"><p>The coding agent landscape is maturing and fracturing: Codex CLI, Claude Code, and GitHub Copilot are all moving fast but generating user-trust incidents (Claude Code&#x27;s &quot;OpenClaw&quot; behavior, Copilot price hikes) — PMs should monitor reliability and brand-safety risks as these tools deepen into developer workflows</p></div></div></div></section>
 <div class="chips" role="tablist">
 <button type="button" class="chip is-active" data-tag="all">All</button>
 <button type="button" class="chip" data-tag="Models">Models</button>
@@ -94,68 +241,13 @@ footer a { color: var(--muted); }
 <button type="button" class="chip" data-tag="Enterprise">Enterprise</button>
 <button type="button" class="chip" data-tag="Research">Research</button>
 </div>
-<div class="digest-body"><h2>Key takeaways</h2>
-<ul>
-<li data-tags=""><strong>Cyber capability evaluations are triggering access restrictions at both Anthropic and OpenAI</strong>, signalling that regulated-sector AI PMs should expect frontier model access for security-adjacent use cases to narrow, not expand, in the near term.</li>
-<li data-tags=""><strong>Agent architecture assumptions are being challenged from multiple directions</strong>: new research suggests simple system-prompt self-orchestration beats complex frameworks for procedural tasks, while separate work finds multi-agent "wisdom of crowds" can degrade into consensus bias — PMs should pressure-test orchestration choices before committing to heavyweight frameworks.</li>
-<li data-tags=""><strong>Safety and governance tooling for agents is maturing rapidly</strong>, from MCP credential-propagation benchmarks to clinical guardrail frameworks to EHR-embedded continuous governance models — regulated-sector PMs have more reference architectures to cite, and more attack surfaces to audit.</li>
-</ul>
-<hr />
-<h2>Top story</h2>
-<ul>
-<li data-tags="Models Regulation Enterprise"><strong>OpenAI restricts access to its "Cyber" model after criticising Anthropic for doing the same with Mythos</strong> — Having publicly pushed back on Anthropic's decision to limit access to Claude Mythos due to cyber-risk concerns, OpenAI has now applied equivalent restrictions to its own GPT-5.5 cyber-capable model. The UK AI Security Institute evaluated GPT-5.5 and found it comparable to Mythos in finding security vulnerabilities. <strong>So what:</strong> For AI PMs in regulated environments, this confirms that frontier cyber-capable models will be gated regardless of vendor; build roadmaps assuming restricted or staged access rather than open availability. <a href="https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/">TechCrunch via Hacker News</a></li>
-</ul>
-<hr />
-<h2>Models &amp; capability releases</h2>
-<ul>
-<li data-tags="">
-<p><strong>UK AI Security Institute finds GPT-5.5 cyber capabilities on par with Claude Mythos</strong> — The same government body that evaluated Mythos for vulnerability-finding has now assessed GPT-5.5 and rated it comparably dangerous — notable because GPT-5.5 was briefly generally available before restrictions were applied. <strong>So what:</strong> PMs proposing any security-adjacent LLM use case should proactively engage their legal and compliance teams now; government evaluations are actively shaping which models can be deployed and by whom. <a href="https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/#atom-everything">Simon Willison</a> {tags: Models, Regulation, Research}</p>
-</li>
-<li data-tags="">
-<p><strong>Claude Code reportedly filters or surcharges requests based on commit message content referencing competitors</strong> — A viral thread flagged that Claude Code behaves differently when project context mentions "OpenClaw," raising questions about model behaviour triggered by environmental signals rather than explicit instructions. <strong>So what:</strong> PMs deploying agentic coding tools in enterprise environments need to audit how ambient context (repo names, commit messages, config files) may silently alter model behaviour — particularly relevant for compliance and reproducibility requirements. <a href="https://twitter.com/theo/status/2049645973350363168">Hacker News / Twitter</a> {tags: Models, Agents, Enterprise}</p>
-</li>
-</ul>
-<hr />
-<h2>Agentic engineering &amp; tooling</h2>
-<ul>
-<li data-tags="">
-<p><strong>New research argues system-prompt self-orchestration beats agent frameworks like LangGraph and CrewAI for procedural tasks</strong> — A controlled comparison across three domains found that placing the full procedure in the system prompt and letting the model self-orchestrate consistently outperformed external orchestrators that inject routing instructions at every turn. <strong>So what:</strong> Before committing engineering resources to complex orchestration frameworks, PMs should benchmark the simpler prompt-based baseline — particularly where tasks are well-defined and procedural, as is common in regulated workflows. <a href="https://arxiv.org/abs/2604.27891">arXiv</a> {tags: Agents, Tooling, Research}</p>
-</li>
-<li data-tags="">
-<p><strong>MCPHunt benchmark reveals non-adversarial credential propagation across multi-server MCP agents</strong> — The first controlled benchmark isolating cross-boundary credential leakage in MCP multi-server setups finds that faithful tool composition alone — not malicious behaviour — can propagate credentials across trust boundaries due to workflow topology. <strong>So what:</strong> PMs adopting MCP-based agent architectures must treat credential isolation as a first-class design requirement, not an afterthought; this benchmark gives security teams a concrete test suite to demand. <a href="https://arxiv.org/abs/2604.27819">arXiv</a> {tags: Agents, Tooling, Regulation}</p>
-</li>
-<li data-tags="">
-<p><strong>The "Inverse-Wisdom Law" paper formalises how agent swarms can converge on wrong answers through consensus bias</strong> — Across 12,804 trajectories and 36 experiments, multi-agent systems showed a "Consensus Paradox" where architectural agreement is prioritised over logical truth, undermining the assumed wisdom-of-crowds benefit of swarms. <strong>So what:</strong> PMs designing multi-agent review or decision-support systems for high-stakes regulated contexts should build in adversarial or dissenting agent roles, and not assume that more agents equals more accuracy. <a href="https://arxiv.org/abs/2604.27274">arXiv</a> {tags: Agents, Research}</p>
-</li>
-<li data-tags="">
-<p><strong>Safe Bilevel Delegation (SBD) proposes a runtime framework for dynamically adjusting safety-efficiency trade-offs in multi-agent task delegation</strong> — Unlike design-time architecture choices, SBD adjusts delegation safety constraints as task context changes during execution, addressing a gap in current multi-agent safety tooling. <strong>So what:</strong> For PMs building agentic pipelines in regulated domains, runtime-adjustable safety constraints are a more defensible architecture than fixed design-time guardrails — SBD offers a formal reference point for those conversations with risk and compliance. <a href="https://arxiv.org/abs/2604.27358">arXiv</a> {tags: Agents, Regulation}</p>
-</li>
-</ul>
-<hr />
-<h2>Enterprise, regulation &amp; governance</h2>
-<ul>
-<li data-tags="">
-<p><strong>CareGuardAI presents a multi-agent guardrail system for clinical safety in patient-facing LLMs</strong> — The framework addresses the gap where AI responses can be conditionally correct but medically inappropriate, using context-aware guardrails and hallucination mitigation layers designed for healthcare deployment. <strong>So what:</strong> PMs in healthcare or similarly regulated sectors now have a published architectural pattern for layering clinical safety checks on top of general-purpose LLMs — useful both for product design and for satisfying auditors. <a href="https://arxiv.org/abs/2604.26959">arXiv</a> {tags: Agents, Regulation, Enterprise}</p>
-</li>
-<li data-tags="">
-<p><strong>End-to-end governance framework for an EHR-embedded clinical AI agent demonstrates continuous post-deployment monitoring</strong> — The paper details rubric validation, live feedback loops, performance monitoring, cost tracking, and gated experimentation applied to a real deployed clinical agent, offering a template for ongoing AI governance rather than point-in-time evaluation. <strong>So what:</strong> Regulated-sector PMs should use this as a reference architecture for presenting AI governance plans to compliance and clinical stakeholders — "evaluate once, deploy" is no longer an acceptable posture. <a href="https://arxiv.org/abs/2604.27309">arXiv</a> {tags: Enterprise, Regulation}</p>
-</li>
-<li data-tags="">
-<p><strong>Knowledge graph framework for LLM-based policy compliance reasoning shows promise for automating regulatory Q&amp;A</strong> — Researchers built knowledge graphs from AI risk policy documents and used an agentic retrieval system to answer compliance questions, outperforming flat RAG baselines on structured policy reasoning. <strong>So what:</strong> PMs managing AI governance processes in large organisations should watch this space closely — automated policy compliance reasoning could significantly reduce the manual burden of keeping AI systems aligned with fast-changing regulations. <a href="https://arxiv.org/abs/2604.27713">arXiv</a> {tags: Regulation, Agents, Enterprise}</p>
-</li>
-<li data-tags="">
-<p><strong>LLM jailbreaking benchmark against NERC standards finds critical infrastructure AI assistants are vulnerable to insider prompt attacks</strong> — Testing LLMs deployed as electric grid compliance assistants, researchers found safety alignments can be circumvented by authorised users crafting adversarial prompts, with outputs that violate NERC regulatory standards. <strong>So what:</strong> PMs deploying LLMs as compliance or operations assistants in critical infrastructure must treat insider adversarial prompting as a design-time threat model, not just an external attack surface. <a href="https://arxiv.org/abs/2604.23341">arXiv</a> {tags: Regulation, Enterprise}</p>
-</li>
-</ul>
-<hr />
-<h2>Worth a deeper read</h2>
-<ul>
-<li data-tags=""><strong>"Contextual Agentic Memory is a Memo, Not True Memory"</strong> — Argues that vector stores, RAG, and scratchpads implement lookup, not memory, and that conflating the two has provable consequences for agent capability, long-term learning, and security. <strong>So what:</strong> PMs architecting agents that</li>
-</ul></div>
+<div class="article-list"><div class="section-label">Top Story</div><article class="item" data-tags="Regulation Agents Enterprise" id="item-1"><div class="tags"><span class="tag tag-Regulation">Regulation</span><span class="tag tag-Agents">Agents</span><span class="tag tag-Enterprise">Enterprise</span></div><button type="button" class="item-title">Five-Eyes publish joint agentic AI safety guidance</button><div class="item-body"><p class="item-snippet">The US, UK, Australia, Canada, and New Zealand released coordinated guidance warning that organizations are deploying agentic AI systems with more system access than can be safely monitored, with agents already present inside critical infrastructure</p><div class="so-what"><span class="so-what-label">So what:</span> <span class="so-what-body">For AI PMs in regulated enterprises, this is a direct policy signal: any agentic deployment must now be scoped with least-privilege access controls and audit trails, or risk being out of step with emerging cross-jurisdictional guidance</span></div><a class="read-article" href="https://www.techmeme.com/260501/p18#a260501p18" target="_blank" rel="noopener">Read article →</a></div><div class="meta"><span class="source">CyberScoop via Techmeme</span></div></article><div class="section-label">Models &amp; Capabilities</div><article class="item" data-tags="" id="item-2"><button type="button" class="item-title">OpenAI restricts GPT-5.5 Cyber access after criticising Anthropic for doing the same with Mythos — The UK AI Security Institute found GPT-5.5 comparable to Claude Mythos in finding security vulnerabilities; OpenAI has now restricted access to the model, mirroring the Anthropic move they previously criticised. So what: The convergence of both major labs gating offensive-security-capable models suggests a new norm of controlled access tiers — PMs procuring these models for security use cases should plan for access reviews and potential supply-side changes. Simon Willison / TechCrunch via Hacker News {tags: Models, Regulation}</button></article><article class="item" data-tags="" id="item-3"><button type="button" class="item-title">xAI launches Grok 4.3 with always-on reasoning, 1M token context, and low API pricing — The release adds a large context window and competitive pricing alongside a Custom Voices voice-cloning suite, positioning Grok as a cost-effective alternative to OpenAI and Anthropic in both reasoning and multimodal tasks. So what: For PMs constrained by budget or context-length limits, Grok 4.3&#x27;s pricing and 1M token window is worth benchmarking — especially for document-heavy regulated workflows — though xAI&#x27;s governance posture remains less mature than incumbents. VentureBeat via Techmeme {tags: Models, Enterprise}</button></article><div class="section-label">Agentic Engineering</div><article class="item" data-tags="" id="item-4"><button type="button" class="item-title">Codex CLI 0.128.0 adds /goal for persistent looping until task completion — OpenAI&#x27;s Codex CLI now lets users set a high-level goal and the agent loops autonomously until it self-evaluates success or hits a token budget, implemented via injected continuation prompts. So what: The token-budget guard is a practical pattern worth adopting in any agentic build — PMs should evaluate whether goal-oriented looping introduces unacceptable autonomy risk in their compliance environment before enabling it. Simon Willison {tags: Agents, Tooling}</button></article><article class="item" data-tags="" id="item-5"><button type="button" class="item-title">Claude Code reportedly alters behavior based on commit message content mentioning &quot;OpenClaw&quot; — Users observed Claude Code refusing requests or applying different pricing when repository commits reference a competitor name, raising questions about undisclosed behavioral triggers in agentic coding tools. So what: This incident highlights a real enterprise risk: AI coding agents may have opaque behavioral policies that affect output or cost in ways not documented — PMs should audit tooling for hidden moderation logic before org-wide rollout. Hacker News / Twitter {tags: Agents, Tooling, Enterprise}</button></article><article class="item" data-tags="" id="item-6"><button type="button" class="item-title">Retail traders are deploying AI agents on Polymarket and Bybit via agent-friendly APIs — Exchanges are building out interfaces specifically designed for autonomous AI trading agents, with early retail adopters already running live bots making real financial decisions. So what: The emergence of exchange-native agentic interfaces signals that autonomous AI action in high-stakes, regulated domains (finance) is ahead of governance — a preview of the liability and compliance questions that will hit enterprise AI PMs next. Bloomberg via Techmeme {tags: Agents, Regulation}</button></article><article class="item" data-tags="" id="item-7"><button type="button" class="item-title">Web2BigTable introduces a bi-level multi-agent system for internet-scale structured extraction — The arXiv paper proposes separating &quot;depth&quot; (deep reasoning over a single target) from &quot;breadth&quot; (structured aggregation across many entities) into distinct agent layers, addressing a core failure mode in current agentic search. So what: PMs building knowledge or research automation products should track this architectural pattern — the depth/breadth separation is a practical framework for scoping agent tasks without over-engineering a monolithic pipeline. arXiv {tags: Agents, Research}</button></article><div class="section-label">Enterprise &amp; Regulation</div><article class="item" data-tags="" id="item-8"><button type="button" class="item-title">CareGuardAI proposes context-aware multi-agent guardrails for patient-facing LLMs — The paper addresses the problem that LLM responses in healthcare can be conditionally correct but clinically inappropriate, proposing layered agent-based safety checks that interpret patient context before surfacing answers. So what: For AI PMs in health or other high-stakes regulated sectors, this is a useful architectural reference: single-layer content filtering is insufficient and multi-agent safety review is emerging as the standard pattern. arXiv {tags: Regulation, Agents, Enterprise}</button></article><article class="item" data-tags="" id="item-9"><button type="button" class="item-title">GitHub AI load causes outage; Copilot raises prices amid Anthropic partnership friction — The Pragmatic Engineer reports that GitHub&#x27;s infrastructure buckled under AI-driven load, while Copilot pricing increased and Anthropic&#x27;s speed of changes is straining developer goodwill. So what: PMs relying on GitHub Copilot as a standard enterprise tool should model cost escalation into their roadmaps and assess whether infrastructure reliability meets their SLA requirements. The Pragmatic Engineer {tags: Enterprise, Tooling}</button></article><div class="section-label">Worth a Deeper Read</div><article class="item" data-tags="" id="item-10"><button type="button" class="item-title">&quot;Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work&quot; — Latent Space&#x27;s AINews reflects on coding agents &quot;breaking containment&quot; into knowledge and creative work domains, with analysis of how use-case specialization is emerging across tools. So what: PMs should read this to sharpen their agent positioning strategy — the market is segmenting by task type, and buying or building the wrong agent for the wrong workflow is an increasingly costly mistake. Latent Space {tags: Agents, Enterprise}</button></article><article class="item" data-tags="" id="item-11"><button type="button" class="item-title">Andrew Kelley on detecting LLM-assisted contributions in open source — Willison quotes Kelley observing that LLM-generated code has a distinctive &quot;digital smell&quot; detectable by experienced maintainers, distinct from human error patterns. So what: For AI PMs overseeing developer tooling adoption, this is a signal that LLM-assisted work is becoming legible — and that transparency policies around AI-assisted contributions may soon be a community and compliance expectation. [Simon Willison](https://simonwillison.net/2026/Apr/30/andrew-</button></article></div>
 <footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></footer>
+</div>
 
 <script>
 (function () {
+  // Topic filter chips
   var chips = document.querySelectorAll('.chip');
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
@@ -172,6 +264,26 @@ footer a { color: var(--muted); }
       });
     });
   });
+
+  // Item expand/collapse on title click
+  document.querySelectorAll('.item-title').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.item');
+      if (item) item.classList.toggle('is-expanded');
+    });
+  });
+
+  // Takeaways collapsible
+  var toggle = document.querySelector('.takeaways-toggle');
+  if (toggle) {
+    var body = document.querySelector('.takeaways-body');
+    var chevron = toggle.querySelector('.takeaways-chevron');
+    toggle.addEventListener('click', function () {
+      var collapsed = body.classList.toggle('is-collapsed');
+      toggle.setAttribute('aria-expanded', String(!collapsed));
+      if (chevron) chevron.textContent = collapsed ? '▼' : '▲';
+    });
+  }
 })();
 </script>
 
