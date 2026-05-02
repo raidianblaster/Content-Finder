@@ -284,6 +284,26 @@ def dedupe(items: list[Item]) -> list[Item]:
     return out
 
 
+def apply_source_cap(items: list[Item], max_per_source: int) -> list[Item]:
+    """Keep at most `max_per_source` items per source, preferring higher scores.
+
+    Why: a single hot day on arXiv or Simon Willison can otherwise crowd out
+    the rest. Balancing per-source preserves diversity for the synthesis
+    layer and the no-summarize ranked view alike.
+    """
+    if max_per_source <= 0:
+        return items
+    by_source: dict[str, int] = {}
+    out: list[Item] = []
+    for it in sorted(items, key=lambda x: x.score, reverse=True):
+        cnt = by_source.get(it.source, 0)
+        if cnt >= max_per_source:
+            continue
+        by_source[it.source] = cnt + 1
+        out.append(it)
+    return out
+
+
 # --------------------------------------------------------------------------- #
 # Output
 # --------------------------------------------------------------------------- #
@@ -309,68 +329,217 @@ def render_plain(items: list[Item], top_n: int) -> str:
 
 HTML_CSS = """
 :root {
-  --bg: #fafafa; --fg: #1a1a1a; --muted: #666;
-  --accent: #0066cc; --border: #e0e0e0; --card: #fff;
+  --bg-0: #0d0d0f;
+  --bg-1: #131316;
+  --bg-2: #1c1c21;
+  --border: #26262e;
+  --border-2: #32323c;
+  --fg: #dddde4;
+  --fg-mid: #a0a0b0;
+  --fg-dim: #666672;
+  --accent: oklch(68% 0.14 258);
+  --accent-bg: oklch(68% 0.14 258 / 0.12);
+  --accent-border: oklch(68% 0.14 258 / 0.3);
+  --green: oklch(68% 0.13 145);
+  --green-bg: oklch(68% 0.13 145 / 0.1);
+  --amber: oklch(72% 0.13 75);
+  --amber-bg: oklch(72% 0.13 75 / 0.1);
+  --teal: oklch(68% 0.13 210);
+  --teal-bg: oklch(68% 0.13 210 / 0.1);
+  --violet: oklch(68% 0.12 300);
+  --violet-bg: oklch(68% 0.12 300 / 0.1);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f0f10; --fg: #e8e8e8; --muted: #9a9a9a;
-    --accent: #7aa2ff; --border: #232325; --card: #18181a;
-  }
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg-0); color: var(--fg); }
 body {
-  background: var(--bg); color: var(--fg);
-  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem;
+  font: 14px/1.55 "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
 }
-header { margin-bottom: 1.5rem; }
-header h1 { margin: 0 0 .25rem; font-size: 1.4rem; line-height: 1.25; }
-header .meta { color: var(--muted); font-size: .9rem; }
-header nav { margin-top: .75rem; font-size: .9rem; }
-header nav a { color: var(--accent); text-decoration: none; margin-right: 1rem; }
-article {
-  border-top: 1px solid var(--border);
-  padding: 1.1rem 0;
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-0);
+  min-height: 100vh;
 }
-article h2 {
-  margin: 0 0 .35rem; font-size: 1.05rem; line-height: 1.35;
+
+/* Top bar */
+.topbar {
+  background: var(--bg-0);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; align-items: baseline; gap: 12px;
 }
-article h2 a { color: var(--fg); text-decoration: none; }
-article h2 a:hover { color: var(--accent); }
-article .meta { color: var(--muted); font-size: .82rem; margin-bottom: .55rem; }
-article .summary { font-size: .94rem; color: var(--fg); }
-article .read-more {
-  display: inline-block; margin-top: .55rem;
-  font-size: .82rem; color: var(--accent); text-decoration: none;
+.topbar-left { display: flex; align-items: baseline; gap: 12px; }
+.topbar-title { font-size: 16px; font-weight: 600; color: var(--fg); }
+.topbar-date  { font-size: 13px; color: var(--fg-dim); }
+.topbar-right {
+  margin-left: auto; font-size: 12px; color: var(--fg-dim);
 }
-.score-pill {
-  display: inline-block; padding: 0 .4rem; border-radius: 3px;
-  background: var(--border); color: var(--muted); font-size: .75rem;
+.topbar-right a { color: var(--fg-dim); text-decoration: none; }
+.topbar-right a:hover { color: var(--fg-mid); }
+
+/* Takeaways block */
+.takeaways {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
 }
+.takeaways-toggle {
+  width: 100%; min-height: 44px;
+  padding: 12px 20px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 10px;
+  font-family: inherit; text-align: left;
+}
+.takeaways-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--amber);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.takeaways-chevron {
+  margin-left: auto; font-size: 13px; color: var(--fg-dim);
+}
+.takeaways-body {
+  padding: 0 20px 16px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.takeaways-body.is-collapsed { display: none; }
+.takeaway {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.takeaway-num {
+  font-size: 13px; font-weight: 600; color: var(--amber);
+  min-width: 18px; padding-top: 2px; flex-shrink: 0;
+}
+.takeaway-content { flex: 1; }
+.takeaway-content p {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.6;
+}
+.takeaway-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 6px; min-height: 32px;
+  font-size: 12px; color: var(--accent); text-decoration: none;
+}
+.takeaway-link:hover { text-decoration: underline; }
+
+/* Filter chips */
 .chips {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-  margin: 0 0 1.25rem;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
 }
 .chip {
-  font: inherit; font-size: .8rem;
-  padding: .3rem .7rem;
-  border: 1px solid var(--border); border-radius: 999px;
-  background: var(--card); color: var(--muted);
+  font-family: inherit; font-size: 12px; font-weight: 500;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--fg-dim);
   cursor: pointer;
+  white-space: nowrap;
+  transition: color .12s, background .12s, border-color .12s;
 }
 .chip:hover { color: var(--fg); }
-.chip.is-active {
-  background: var(--accent); color: #fff;
-  border-color: var(--accent);
+.chip.is-active { color: var(--fg); background: var(--bg-2); border-color: var(--border-2); }
+.chip[data-tag="Models"].is-active     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.4); }
+.chip[data-tag="Agents"].is-active     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
+.chip[data-tag="Tooling"].is-active    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.4); }
+.chip[data-tag="Regulation"].is-active { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.4); }
+.chip[data-tag="Enterprise"].is-active { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.4); }
+.chip[data-tag="Research"].is-active   { color: var(--fg-mid); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+
+/* Article list + section labels */
+.article-list { padding-bottom: 24px; }
+.section-label {
+  padding: 18px 20px 8px;
+  font-size: 11px; font-weight: 600;
+  color: var(--fg-mid);
+  letter-spacing: 0.05em; text-transform: uppercase;
 }
-.is-hidden { display: none !important; }
+
+/* Item card */
+.item {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+}
+.item .tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+  border: 1px solid;
+}
+.tag-Models     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.3); }
+.tag-Agents     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
+.tag-Tooling    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.3); }
+.tag-Regulation { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.3); }
+.tag-Enterprise { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.3); }
+.tag-Research   { color: var(--fg-mid); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); }
+
+.item-title {
+  display: block; width: 100%; min-height: 44px;
+  background: none; border: none; padding: 0;
+  margin-bottom: 8px;
+  text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 15px; font-weight: 500;
+  color: var(--fg); line-height: 1.45; text-wrap: pretty;
+}
+.item-title:hover { color: var(--accent); }
+.item-body { display: none; margin-bottom: 12px; }
+.item.is-expanded .item-body { display: block; }
+.item-snippet {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.so-what {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 5px;
+  padding: 8px 11px;
+}
+.so-what-label { font-size: 12px; font-weight: 600; color: var(--accent); }
+.so-what-body  { font-size: 12px; color: var(--fg-mid); line-height: 1.55; }
+
+.read-article {
+  display: inline-block; margin-top: 12px;
+  font-size: 13px; padding: 8px 16px; min-height: 44px;
+  background: var(--bg-2); border: 1px solid var(--border-2);
+  border-radius: 6px;
+  color: var(--fg); text-decoration: none;
+  line-height: 28px;
+}
+.read-article:hover { background: var(--bg-1); border-color: var(--accent); color: var(--accent); }
+
+.item .meta {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin-top: 6px;
+}
+.item.is-expanded .meta { margin-top: 0; }
+.item .meta .source { font-size: 13px; color: var(--fg-mid); }
+.item .meta .date   { font-size: 13px; color: var(--fg-dim); }
+.score-pill {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  border: 1px solid; border-radius: 3px;
+  padding: 1px 6px;
+}
+.score-pill.score-high { color: var(--green);  background: oklch(68% 0.13 145 / 0.18); border-color: oklch(68% 0.13 145 / 0.3); }
+.score-pill.score-mid  { color: var(--accent); background: var(--accent-bg);            border-color: var(--accent-border); }
+.score-pill.score-low  { color: var(--fg-dim); background: rgba(255,255,255,0.05);     border-color: rgba(255,255,255,0.18); }
+
 footer {
-  margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border);
-  color: var(--muted); font-size: .78rem; text-align: center;
+  padding: 24px 20px; text-align: center;
+  font-size: 12px; color: var(--fg-dim);
+  border-top: 1px solid var(--border);
 }
-footer a { color: var(--muted); }
+footer a { color: var(--fg-dim); }
+
+.is-hidden { display: none !important; }
 """
 
 
@@ -444,9 +613,10 @@ def render_chip_bar() -> str:
     return "\n".join(parts)
 
 
-CHIP_FILTER_JS = """
+INTERACTIONS_JS = """
 <script>
 (function () {
+  // Topic filter chips
   var chips = document.querySelectorAll('.chip');
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
@@ -463,54 +633,343 @@ CHIP_FILTER_JS = """
       });
     });
   });
+
+  // Item expand/collapse on title click
+  document.querySelectorAll('.item-title').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.item');
+      if (item) item.classList.toggle('is-expanded');
+    });
+  });
+
+  // Takeaways collapsible
+  var toggle = document.querySelector('.takeaways-toggle');
+  if (toggle) {
+    var body = document.querySelector('.takeaways-body');
+    var chevron = toggle.querySelector('.takeaways-chevron');
+    toggle.addEventListener('click', function () {
+      var collapsed = body.classList.toggle('is-collapsed');
+      toggle.setAttribute('aria-expanded', String(!collapsed));
+      if (chevron) chevron.textContent = collapsed ? '▼' : '▲';
+    });
+  }
 })();
 </script>
 """
 
+# Backwards-compat alias for any external imports.
+CHIP_FILTER_JS = INTERACTIONS_JS
 
-def render_html(items: list[Item], top_n: int, *, page_date: date | None = None) -> str:
-    page_date = page_date or today_hkt()
+
+# --------------------------------------------------------------------------- #
+# Card rendering helpers
+# --------------------------------------------------------------------------- #
+
+# Display labels for synthesis section headings (per design handoff).
+_SECTION_LABELS = {
+    "key takeaways": "Key Takeaways",
+    "top story": "Top Story",
+    "models & capability releases": "Models & Capabilities",
+    "agentic engineering & tooling": "Agentic Engineering",
+    "enterprise, regulation & governance": "Enterprise & Regulation",
+    "worth a deeper read": "Worth a Deeper Read",
+}
+
+
+def _section_display_label(raw: str) -> str:
+    # The raw heading text comes from a regex-stripped <h2>, so HTML entities
+    # are still entity-encoded (e.g. "Models &amp; capability releases"). The
+    # taxonomy map keys on plain text, so decode before lookup.
+    decoded = html.unescape(raw).strip()
+    return _SECTION_LABELS.get(decoded.lower(), decoded)
+
+
+def _score_tier(score: float) -> str:
+    if score >= 8.5:
+        return "high"
+    if score >= 7.0:
+        return "mid"
+    return "low"
+
+
+def _format_age(age_hours: float) -> str:
+    return (
+        f"{int(age_hours)}h ago" if age_hours < 48
+        else f"{int(age_hours / 24)}d ago"
+    )
+
+
+def _render_tag_chips(data_tags: str) -> str:
+    if not data_tags:
+        return ""
+    chips = "".join(
+        f'<span class="tag tag-{html.escape(t)}">{html.escape(t)}</span>'
+        for t in data_tags.split() if t
+    )
+    return f'<div class="tags">{chips}</div>' if chips else ""
+
+
+_LI_OUTER_RE = re.compile(r'<li([^>]*)>(.*)</li>', re.DOTALL)
+_LI_TITLE_RE = re.compile(r'\s*<strong>(.*?)</strong>\s*[—–-]?\s*', re.DOTALL)
+_LI_SO_WHAT_RE = re.compile(r'<strong>\s*So what:?\s*</strong>\s*', re.IGNORECASE)
+_LI_LINK_RE = re.compile(r'<a\s+[^>]*href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL)
+
+
+def _parse_synthesis_li(li_html: str, item_id: int) -> str:
+    """Convert a `<li>` carrying a structured synthesis bullet into a card."""
+    outer = _LI_OUTER_RE.match(li_html)
+    if not outer:
+        return li_html
+    attrs, content = outer.group(1), outer.group(2)
+    data_tags_match = re.search(r'data-tags="([^"]*)"', attrs)
+    data_tags = data_tags_match.group(1) if data_tags_match else ""
+
+    title_m = _LI_TITLE_RE.match(content)
+    if not title_m:
+        # Bullet doesn't follow the **Headline** — body. shape; render as
+        # a minimal card so the filter still works on it.
+        body_clean = re.sub(r'<[^>]+>', '', content).strip()
+        return (
+            f'<article class="item" data-tags="{html.escape(data_tags)}" '
+            f'id="item-{item_id}">'
+            f'{_render_tag_chips(data_tags)}'
+            f'<button type="button" class="item-title">{html.escape(body_clean)}</button>'
+            f'</article>'
+        )
+
+    title = title_m.group(1).strip()
+    rest = content[title_m.end():]
+
+    sw_m = _LI_SO_WHAT_RE.search(rest)
+    if sw_m:
+        snippet = rest[:sw_m.start()].rstrip(" .").rstrip()
+        after_sw = rest[sw_m.end():]
+    else:
+        snippet = rest.strip()
+        after_sw = ""
+
+    link_m = _LI_LINK_RE.search(after_sw)
+    if link_m:
+        url = link_m.group(1)
+        source_name = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+        so_what = after_sw[:link_m.start()].rstrip(" .").rstrip()
+    else:
+        url = ""
+        source_name = ""
+        so_what = after_sw.rstrip(" .").rstrip()
+
+    snippet = snippet.strip()
+    so_what = so_what.strip()
+
+    parts = [
+        f'<article class="item" data-tags="{html.escape(data_tags)}" '
+        f'id="item-{item_id}">',
+        _render_tag_chips(data_tags),
+        f'<button type="button" class="item-title">{title}</button>',
+        '<div class="item-body">',
+    ]
+    if snippet:
+        parts.append(f'<p class="item-snippet">{snippet}</p>')
+    if so_what:
+        parts.append(
+            '<div class="so-what">'
+            '<span class="so-what-label">So what:</span> '
+            f'<span class="so-what-body">{so_what}</span>'
+            '</div>'
+        )
+    if url:
+        parts.append(
+            f'<a class="read-article" href="{html.escape(url)}" '
+            f'target="_blank" rel="noopener">Read article →</a>'
+        )
+    parts.append('</div>')
+    if source_name:
+        parts.append(
+            '<div class="meta">'
+            f'<span class="source">{html.escape(source_name)}</span>'
+            '</div>'
+        )
+    parts.append('</article>')
+    return "".join(parts)
+
+
+_H2_RE = re.compile(r'<h2[^>]*>(.*?)</h2>', re.DOTALL)
+_BODY_LI_OUTER_RE = re.compile(r'<li[^>]*>.*?</li>', re.DOTALL)
+
+
+def _split_synthesis_sections(body_html: str) -> list[tuple[str, str]]:
+    """Slice the body HTML into [(section_title, section_inner_html), …]."""
+    matches = list(_H2_RE.finditer(body_html))
+    sections: list[tuple[str, str]] = []
+    for i, m in enumerate(matches):
+        title = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(body_html)
+        sections.append((title, body_html[start:end]))
+    return sections
+
+
+def _extract_takeaways(
+    body_html: str,
+) -> tuple[list[dict], list[tuple[str, str]]]:
+    """Pull the Key Takeaways section out of the body.
+
+    Returns (takeaways, remaining_sections).
+    """
+    sections = _split_synthesis_sections(body_html)
+    takeaways: list[dict] = []
+    rest: list[tuple[str, str]] = []
+    for title, content in sections:
+        if title.strip().lower() == "key takeaways":
+            for li in _BODY_LI_OUTER_RE.finditer(content):
+                inner = re.sub(r'^<li[^>]*>', '', li.group(0))
+                inner = re.sub(r'</li>\s*$', '', inner)
+                link_m = _LI_LINK_RE.search(inner)
+                href = link_m.group(1) if link_m else None
+                label = (
+                    re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+                    if link_m else None
+                )
+                text_html = inner
+                if link_m:
+                    text_html = inner[:link_m.start()] + inner[link_m.end():]
+                text = re.sub(r'<[^>]+>', '', text_html).strip().rstrip(" .")
+                takeaways.append({"text": text, "href": href, "label": label})
+        else:
+            rest.append((title, content))
+    return takeaways, rest
+
+
+def render_takeaways_section(takeaways: list[dict]) -> str:
+    if not takeaways:
+        return ""
+    parts = [
+        '<section class="takeaways">',
+        '<button type="button" class="takeaways-toggle" '
+        'aria-expanded="true" aria-controls="takeaways-body">',
+        '<span class="takeaways-label">Key Takeaways</span>',
+        '<span class="takeaways-chevron">▲</span>',
+        '</button>',
+        '<div class="takeaways-body" id="takeaways-body">',
+    ]
+    for i, t in enumerate(takeaways, 1):
+        parts.append('<div class="takeaway">')
+        parts.append(f'<span class="takeaway-num">{i}.</span>')
+        parts.append('<div class="takeaway-content">')
+        parts.append(f'<p>{html.escape(t["text"])}</p>')
+        if t.get("href"):
+            label = t.get("label") or "Source"
+            parts.append(
+                f'<a class="takeaway-link" href="{html.escape(t["href"])}" '
+                f'target="_blank" rel="noopener">'
+                f'{html.escape(label)} ↓</a>'
+            )
+        parts.append('</div>')
+        parts.append('</div>')
+    parts.append('</div>')
+    parts.append('</section>')
+    return "".join(parts)
+
+
+def _render_synthesis_sections(rest_sections: list[tuple[str, str]]) -> tuple[str, int]:
+    parts: list[str] = ['<div class="article-list">']
+    item_id = 0
+    for title, content in rest_sections:
+        label = _section_display_label(title)
+        parts.append(f'<div class="section-label">{html.escape(label)}</div>')
+        for li_m in _BODY_LI_OUTER_RE.finditer(content):
+            item_id += 1
+            parts.append(_parse_synthesis_li(li_m.group(0), item_id))
+    parts.append('</div>')
+    return "".join(parts), item_id
+
+
+def _render_ranked_card(item: Item, item_id: int) -> str:
+    age = _format_age(item.age_hours)
+    tier = _score_tier(item.score)
+    parts = [
+        f'<article class="item" id="item-{item_id}">',
+        f'<button type="button" class="item-title">{html.escape(item.title)}</button>',
+        '<div class="item-body">',
+    ]
+    if item.summary:
+        parts.append(f'<p class="item-snippet">{html.escape(item.summary)}</p>')
+    parts.append(
+        f'<a class="read-article" href="{html.escape(item.url)}" '
+        f'target="_blank" rel="noopener">Read article →</a>'
+    )
+    parts.append('</div>')
+    parts.append('<div class="meta">')
+    parts.append(f'<span class="source">{html.escape(item.source)}</span>')
+    parts.append(f'<span class="date">{age}</span>')
+    parts.append(
+        f'<span class="score-pill score-{tier}">{item.score:.1f}</span>'
+    )
+    parts.append('</div>')
+    parts.append('</article>')
+    return "".join(parts)
+
+
+def _page_shell(
+    page_date: date,
+    item_count: int,
+    *,
+    takeaways_html: str = "",
+    body_html: str = "",
+    sub_label: str | None = None,
+) -> str:
     title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
-    parts: list[str] = [
+    short_date = page_date.strftime("%a %d %b %Y")
+    return "\n".join([
         "<!doctype html>",
         '<html lang="en"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        '<meta name="theme-color" content="#0f0f10">',
+        '<meta name="theme-color" content="#0d0d0f">',
         '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
+        '<link rel="preconnect" href="https://fonts.googleapis.com">',
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+        '<link href="https://fonts.googleapis.com/css2?'
+        'family=DM+Sans:wght@300;400;500;600&'
+        'family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">',
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}</style>",
         "</head><body>",
-        "<header>",
-        f"<h1>{html.escape(title)}</h1>",
-        f'<div class="meta">{len(items)} items · top {min(top_n, len(items))} shown · agentic AI &amp; LLM trends</div>',
-        '<nav><a href="archive.html">← previous digests</a></nav>',
+        '<div class="page">',
+        '<header class="topbar">',
+        '<div class="topbar-left">',
+        '<span class="topbar-title">AI Digest</span>',
+        f'<span class="topbar-date">{html.escape(short_date)}</span>',
+        '</div>',
+        f'<div class="topbar-right">{item_count} items '
+        '· <a href="archive.html">archive</a></div>',
         "</header>",
-    ]
-    for it in items[:top_n]:
-        age = f"{int(it.age_hours)}h ago" if it.age_hours < 48 else f"{int(it.age_hours / 24)}d ago"
-        parts.append("<article>")
-        parts.append(
-            f'<h2><a href="{html.escape(it.url)}" rel="noopener" target="_blank">'
-            f"{html.escape(it.title)}</a></h2>"
-        )
-        parts.append(
-            f'<div class="meta">{html.escape(it.source)} · '
-            f"{html.escape(it.domain)} · {age} · "
-            f'<span class="score-pill">score {it.score:.1f}</span></div>'
-        )
-        if it.summary:
-            parts.append(f'<div class="summary">{html.escape(it.summary)}</div>')
-        parts.append(
-            f'<a class="read-more" href="{html.escape(it.url)}" '
-            f'rel="noopener" target="_blank">Read on {html.escape(it.domain)} →</a>'
-        )
-        parts.append("</article>")
-    parts.append(
-        '<footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">'
-        "Content Finder</a></footer></body></html>"
+        takeaways_html or "",
+        render_chip_bar(),
+        body_html,
+        '<footer>Generated by '
+        '<a href="https://github.com/raidianblaster/Content-Finder">'
+        "Content Finder</a></footer>",
+        "</div>",
+        INTERACTIONS_JS,
+        "</body></html>",
+    ])
+
+
+def render_html(items: list[Item], top_n: int, *, page_date: date | None = None) -> str:
+    """No-summarize ranked list, rendered with the Variant A card layout."""
+    page_date = page_date or today_hkt()
+    shown = items[:top_n]
+    body_parts = ['<div class="article-list">']
+    for i, it in enumerate(shown, 1):
+        body_parts.append(_render_ranked_card(it, i))
+    body_parts.append('</div>')
+    return _page_shell(
+        page_date,
+        item_count=len(shown),
+        takeaways_html="",
+        body_html="".join(body_parts),
     )
-    return "\n".join(parts)
 
 
 SYSTEM_PROMPT = """You are a research analyst writing a daily news brief for an
@@ -594,51 +1053,30 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
 
 
 def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
-    """Wrap a Claude-synthesised markdown brief in the HTML page shell."""
+    """Render a Claude-synthesised brief in the Variant A card layout."""
     import markdown as md_lib
     page_date = page_date or today_hkt()
-    title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
+
     body_html = md_lib.markdown(md_text, extensions=["extra"])
     body_html, _seen_tags = _process_tags_in_body(body_html)
-    return "\n".join([
-        "<!doctype html>",
-        '<html lang="en"><head>',
-        '<meta charset="utf-8">',
-        '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        '<meta name="theme-color" content="#0f0f10">',
-        '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
-        f"<title>{html.escape(title)}</title>",
-        f"<style>{HTML_CSS}\n"
-        # Extra prose styles for the synthesis view
-        ".digest-body { max-width: 100%; }\n"
-        ".digest-body h2 { font-size: 1.1rem; margin: 1.5rem 0 .5rem; border-top: 1px solid var(--border); padding-top: 1rem; }\n"
-        ".digest-body h2:first-child { border-top: none; padding-top: 0; }\n"
-        ".digest-body ul { padding-left: 1.25rem; margin: .5rem 0; }\n"
-        ".digest-body li { margin-bottom: .5rem; font-size: .95rem; }\n"
-        ".digest-body a { color: var(--accent); }\n"
-        ".digest-body p { margin: .5rem 0; font-size: .95rem; }\n"
-        ".digest-body strong { font-weight: 600; }\n"
-        "</style>",
-        "</head><body>",
-        "<header>",
-        f"<h1>{html.escape(title)}</h1>",
-        '<div class="meta">Claude-synthesised brief · agentic AI &amp; LLM trends</div>',
-        '<nav><a href="archive.html">← previous digests</a></nav>',
-        "</header>",
-        render_chip_bar(),
-        f'<div class="digest-body">{body_html}</div>',
-        '<footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">'
-        "Content Finder</a></footer>",
-        CHIP_FILTER_JS,
-        "</body></html>",
-    ])
+
+    takeaways, rest = _extract_takeaways(body_html)
+    takeaways_html = render_takeaways_section(takeaways)
+    items_html, item_count = _render_synthesis_sections(rest)
+
+    return _page_shell(
+        page_date,
+        item_count=item_count,
+        takeaways_html=takeaways_html,
+        body_html=items_html,
+    )
 
 
 # --------------------------------------------------------------------------- #
 # Entry point
 # --------------------------------------------------------------------------- #
 
-def gather(days: int, hn_min_points: int) -> list[Item]:
+def gather(days: int, hn_min_points: int, max_per_source: int = 3) -> list[Item]:
     since = datetime.now(timezone.utc) - timedelta(days=days)
     items: list[Item] = []
 
@@ -659,7 +1097,7 @@ def gather(days: int, hn_min_points: int) -> list[Item]:
 
     # Drop items with no keyword signal (pure noise).
     items = [it for it in items if keyword_score(f"{it.title} {it.summary}") > 0]
-    return dedupe(items)
+    return apply_source_cap(dedupe(items), max_per_source=max_per_source)
 
 
 def main() -> int:
@@ -670,6 +1108,9 @@ def main() -> int:
                         help="Number of items in plain output (default 25)")
     parser.add_argument("--hn-min-points", type=int, default=50,
                         help="HN minimum points threshold (default 50)")
+    parser.add_argument("--max-per-source", type=int, default=3,
+                        help="Cap items per source for diversity (default 3, "
+                             "0 disables)")
     parser.add_argument("--no-summarize", action="store_true",
                         help="Skip Claude synthesis, dump ranked list")
     parser.add_argument("--format", choices=["markdown", "html"], default="markdown",
@@ -684,7 +1125,7 @@ def main() -> int:
           f"{len(RSS_SOURCES)} feeds + {len(HN_QUERIES)} HN queries...",
           file=sys.stderr)
 
-    items = gather(args.days, args.hn_min_points)
+    items = gather(args.days, args.hn_min_points, max_per_source=args.max_per_source)
     print(f"[info] {len(items)} relevant items after filtering", file=sys.stderr)
 
     if not items:

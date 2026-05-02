@@ -90,11 +90,13 @@ def test_full_synthesis_pipeline_with_fixture():
     assert 'class="chips"' in out
     assert out.count("data-tag=") >= 7
 
-    # (b) at least one rendered <li> with data-tags
-    assert re.search(r'<li[^>]*data-tags="[^"]+"', out)
+    # (b) at least one rendered element with data-tags (post-redesign this is
+    # the <article> card; pre-redesign it was the <li>).
+    assert re.search(r'data-tags="[A-Z][^"]*"', out)
 
-    # (c) Key takeaways comes before Top story in the rendered HTML
-    assert out.index("Key takeaways") < out.index("Top story")
+    # (c) Key Takeaways block comes before the Top Story section in the page
+    # (design relabels sections to title-case display labels).
+    assert out.index("Key Takeaways") < out.index("Top Story")
 
     # (d) no leftover {tags: literal anywhere in the output
     assert "{tags:" not in out
