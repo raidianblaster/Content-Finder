@@ -16,12 +16,34 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Iterable
 from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 import feedparser
 import httpx
+
+
+HK_TZ = ZoneInfo("Asia/Hong_Kong")
+
+
+def today_hkt(now: datetime | None = None) -> date:
+    """Return today's calendar date in Hong Kong (HKT, UTC+8).
+
+    Why: GitHub Actions runs in UTC, so a 23:00-UTC cron lands at 07:00 HKT
+    the *next* day. Using `datetime.now()` for the page header puts the wrong
+    date on every cron run; we anchor on HKT instead.
+    """
+    now = now or datetime.now(timezone.utc)
+    return now.astimezone(HK_TZ).date()
+
+
+# Fixed taxonomy used both in the LLM prompt and the chip filter bar.
+TAG_TAXONOMY: list[str] = [
+    "Models", "Agents", "Tooling", "Regulation", "Enterprise", "Research",
+]
+_TAG_LOOKUP = {t.lower(): t for t in TAG_TAXONOMY}
 
 
 # --------------------------------------------------------------------------- #
@@ -40,6 +62,12 @@ RSS_SOURCES: list[tuple[str, str]] = [
     ("One Useful Thing",          "https://www.oneusefulthing.org/feed"),
     ("Interconnects (Lambert)",   "https://www.interconnects.ai/feed"),
     ("The Pragmatic Engineer",    "https://newsletter.pragmaticengineer.com/feed"),
+    ("arXiv cs.AI",               "https://rss.arxiv.org/rss/cs.AI"),
+    ("Stratechery",               "https://stratechery.com/feed/"),
+    ("Last Week in AI",           "https://lastweekin.ai/feed"),
+    ("Dwarkesh Podcast",          "https://www.dwarkesh.com/feed"),
+    ("NIST News",                 "https://www.nist.gov/news-events/news/rss.xml"),
+    ("EU AI Office",              "https://digital-strategy.ec.europa.eu/en/rss.xml"),
 ]
 
 # Keyword queries against the HN Algolia API (story tag, last week).
@@ -51,6 +79,9 @@ HN_QUERIES: list[str] = [
     "Anthropic",
     "MCP",
     "AI regulation",
+    "RAG",
+    "eval",
+    "fine-tuning",
 ]
 
 # Weighted keywords used to score generic feed items.
@@ -215,9 +246,15 @@ def score_item(item: Item) -> float:
         "AI Snake Oil": 2,
         "Interconnects (Lambert)": 2,
         "One Useful Thing": 2,
+        "Stratechery": 2,
+        "arXiv cs.AI": 2,
+        "NIST News": 2,
+        "EU AI Office": 2,
+        "Dwarkesh Podcast": 2,
         "Techmeme": 1,
         "The Pragmatic Engineer": 1,
         "Hugging Face Blog": 1,
+        "Last Week in AI": 1,
     }
     src_bonus = trusted.get(item.source, 0)
 
@@ -312,6 +349,23 @@ article .read-more {
   display: inline-block; padding: 0 .4rem; border-radius: 3px;
   background: var(--border); color: var(--muted); font-size: .75rem;
 }
+.chips {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  margin: 0 0 1.25rem;
+}
+.chip {
+  font: inherit; font-size: .8rem;
+  padding: .3rem .7rem;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--card); color: var(--muted);
+  cursor: pointer;
+}
+.chip:hover { color: var(--fg); }
+.chip.is-active {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent);
+}
+.is-hidden { display: none !important; }
 footer {
   margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border);
   color: var(--muted); font-size: .78rem; text-align: center;
@@ -320,8 +374,102 @@ footer a { color: var(--muted); }
 """
 
 
-def render_html(items: list[Item], top_n: int, *, page_date: datetime | None = None) -> str:
-    page_date = page_date or datetime.now()
+# --------------------------------------------------------------------------- #
+# Tag post-processing + chip filter
+# --------------------------------------------------------------------------- #
+
+_TAG_ELEMENT_RE = re.compile(
+    r'^(<li([^>]*)>)(.*?)(</li>)\s*$',
+    re.DOTALL,
+)
+_TAG_SUFFIX_RE = re.compile(r'\s*\{tags:\s*([^}]*)\}\s*$')
+_BODY_LI_RE = re.compile(r'<li\b[^>]*>.*?</li>', re.DOTALL)
+
+
+def _canonicalize_tags(raw: str) -> list[str]:
+    """Normalise a comma-separated tag list to canonical taxonomy casing."""
+    out: list[str] = []
+    seen: set[str] = set()
+    for part in raw.split(","):
+        key = part.strip().lower()
+        if not key:
+            continue
+        canonical = _TAG_LOOKUP.get(key)
+        if canonical and canonical not in seen:
+            out.append(canonical)
+            seen.add(canonical)
+    return out
+
+
+def transform_tag_element(snippet: str) -> tuple[str, set[str]]:
+    """Strip a `{tags: …}` suffix from a single `<li>` and attach `data-tags`.
+
+    Returns the rewritten element and the set of canonical tags found.
+    """
+    m = _TAG_ELEMENT_RE.match(snippet)
+    if not m:
+        return snippet, set()
+    _open, attrs, content, close = m.groups()
+    suffix = _TAG_SUFFIX_RE.search(content)
+    if suffix:
+        tag_list = _canonicalize_tags(suffix.group(1))
+        content = content[: suffix.start()].rstrip()
+    else:
+        tag_list = []
+    new_open = f'<li{attrs} data-tags="{" ".join(tag_list)}">'
+    return new_open + content + close, set(tag_list)
+
+
+def _process_tags_in_body(body_html: str) -> tuple[str, set[str]]:
+    seen: set[str] = set()
+
+    def repl(m: re.Match) -> str:
+        new, tags = transform_tag_element(m.group(0))
+        seen.update(tags)
+        return new
+
+    return _BODY_LI_RE.sub(repl, body_html), seen
+
+
+def render_chip_bar() -> str:
+    parts = ['<div class="chips" role="tablist">']
+    parts.append(
+        '<button type="button" class="chip is-active" data-tag="all">All</button>'
+    )
+    for tag in TAG_TAXONOMY:
+        parts.append(
+            f'<button type="button" class="chip" data-tag="{tag}">{tag}</button>'
+        )
+    parts.append("</div>")
+    return "\n".join(parts)
+
+
+CHIP_FILTER_JS = """
+<script>
+(function () {
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var tag = chip.dataset.tag;
+      chips.forEach(function (c) {
+        c.classList.toggle('is-active', c === chip);
+      });
+      document.querySelectorAll('[data-tags]').forEach(function (el) {
+        var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+        // Untagged items (e.g. Key takeaways bullets) stay visible under
+        // every filter — they're synthesis, not topic-scoped.
+        var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+        el.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+})();
+</script>
+"""
+
+
+def render_html(items: list[Item], top_n: int, *, page_date: date | None = None) -> str:
+    page_date = page_date or today_hkt()
     title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
     parts: list[str] = [
         "<!doctype html>",
@@ -368,21 +516,46 @@ def render_html(items: list[Item], top_n: int, *, page_date: datetime | None = N
 SYSTEM_PROMPT = """You are a research analyst writing a daily news brief for an
 AI Product Manager who works in a large, highly regulated corporation. They
 have limited access to bleeding-edge models and tools, so they rely on this
-brief to track industry trends.
+brief to track industry trends and decide what to watch.
 
 Given a list of articles (titles, sources, URLs, snippets), produce a concise
-markdown digest with these sections, in this order:
+markdown brief structured exactly as below:
 
-1. **Top story** — the single most important development today, 2–3 sentences
-   on what happened and why it matters for an AI PM.
-2. **Models & capability releases** — bullets, one line each, link inline.
-3. **Agentic engineering & tooling** — agents, frameworks, MCP, dev tools.
-4. **Enterprise, regulation & governance** — adoption, policy, safety, risk.
-5. **Worth a deeper read** — 2–4 longform / analysis pieces.
+## Key takeaways
 
-Rules:
-- Skip any section that has no relevant items rather than padding.
-- Each bullet: "**Headline** — one-sentence why-it-matters [Source](url)".
+3 bullets at the very top of the brief, before any other section. Each bullet
+is 1–2 sentences. Each takeaway should synthesise across multiple stories —
+not just summarise a single one — answering "what does today's news mean for
+an AI PM?". This block sits ABOVE every other section.
+
+## Top story
+- **Headline** — 2 sentences on what happened today and the context around
+  it. **So what:** 1–2 sentences on the strategic implication for an AI PM
+  in a regulated environment. [Source](url) {tags: <Tag1>, <Tag2>}
+
+## Models & capability releases
+- bullets in the same shape as Top story (model launches, capability changes).
+
+## Agentic engineering & tooling
+- bullets in the same shape (agents, frameworks, MCP, dev tools).
+
+## Enterprise, regulation & governance
+- bullets in the same shape (adoption, policy, safety, risk).
+
+## Worth a deeper read
+- 2–4 longform / analysis pieces, same bullet shape.
+
+Per-bullet rules:
+- Every bullet (including Top story) ends with a `{tags: …}` suffix listing
+  1–3 tags drawn ONLY from this fixed taxonomy:
+  Models, Agents, Tooling, Regulation, Enterprise, Research.
+- Every story bullet (every section after Key takeaways) must include a
+  bolded **So what:** clause naming the PM-level implication.
+- Each bullet shape: "**Headline** — what happened. **So what:** why it
+  matters [Source](url) {tags: …}".
+
+Brief-wide rules:
+- Skip any section that has no relevant items — do not pad.
 - Drop low-signal items (vendor fluff, rumours, duplicates).
 - Prefer named primary sources over aggregators when both appear.
 - No preamble, no closing remarks. Markdown only.
@@ -420,12 +593,13 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
     return resp.content[0].text
 
 
-def wrap_synthesis_html(md_text: str, *, page_date: datetime | None = None) -> str:
+def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
     """Wrap a Claude-synthesised markdown brief in the HTML page shell."""
     import markdown as md_lib
-    page_date = page_date or datetime.now()
+    page_date = page_date or today_hkt()
     title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
     body_html = md_lib.markdown(md_text, extensions=["extra"])
+    body_html, _seen_tags = _process_tags_in_body(body_html)
     return "\n".join([
         "<!doctype html>",
         '<html lang="en"><head>',
@@ -451,9 +625,12 @@ def wrap_synthesis_html(md_text: str, *, page_date: datetime | None = None) -> s
         '<div class="meta">Claude-synthesised brief · agentic AI &amp; LLM trends</div>',
         '<nav><a href="archive.html">← previous digests</a></nav>',
         "</header>",
+        render_chip_bar(),
         f'<div class="digest-body">{body_html}</div>',
         '<footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">'
-        "Content Finder</a></footer></body></html>",
+        "Content Finder</a></footer>",
+        CHIP_FILTER_JS,
+        "</body></html>",
     ])
 
 
@@ -514,15 +691,17 @@ def main() -> int:
         print("No relevant items found in window. Try --days 7.", file=sys.stderr)
         return 1
 
+    page_date = today_hkt()
+
     if args.no_summarize:
         if args.format == "html":
-            output = render_html(items, top_n=args.top)
+            output = render_html(items, top_n=args.top, page_date=page_date)
         else:
             output = render_plain(items, top_n=args.top)
     else:
         md_output = synthesize_with_claude(items, model=args.model)
         if args.format == "html":
-            output = wrap_synthesis_html(md_output)
+            output = wrap_synthesis_html(md_output, page_date=page_date)
         else:
             output = md_output
 
