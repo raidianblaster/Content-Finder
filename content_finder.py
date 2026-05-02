@@ -329,25 +329,36 @@ def render_plain(items: list[Item], top_n: int) -> str:
 
 HTML_CSS = """
 :root {
-  --bg-0: #0d0d0f;
-  --bg-1: #131316;
-  --bg-2: #1c1c21;
-  --border: #26262e;
-  --border-2: #32323c;
-  --fg: #dddde4;
-  --fg-mid: #a0a0b0;
-  --fg-dim: #666672;
-  --accent: oklch(68% 0.14 258);
-  --accent-bg: oklch(68% 0.14 258 / 0.12);
-  --accent-border: oklch(68% 0.14 258 / 0.3);
+  /* Backgrounds — Route A spec */
+  --bg-0: #0a0a0d;
+  --bg-1: #111116;
+  --bg-2: #18181f;
+  --bg-3: #202028;
+  --bg-4: #28282f;
+  --border: #22222c;
+  --border-2: #2e2e3a;
+  --fg: #e2e2ea;
+  --fg-mid: #9a9ab0;
+  --fg-dim: #606072;
+  /* Purple — primary accent (hue 292) */
+  --purple: oklch(65% 0.22 292);
+  --purple-bright: oklch(72% 0.24 292);
+  --purple-soft: oklch(65% 0.22 292 / 0.15);
+  --purple-border: oklch(65% 0.22 292 / 0.35);
+  --purple-dim: oklch(65% 0.22 292 / 0.08);
+  /* Backwards-compat aliases — earlier code referred to --accent. */
+  --accent: var(--purple);
+  --accent-bg: var(--purple-soft);
+  --accent-border: var(--purple-border);
+  /* Secondary accents */
   --green: oklch(68% 0.13 145);
   --green-bg: oklch(68% 0.13 145 / 0.1);
   --amber: oklch(72% 0.13 75);
   --amber-bg: oklch(72% 0.13 75 / 0.1);
   --teal: oklch(68% 0.13 210);
   --teal-bg: oklch(68% 0.13 210 / 0.1);
-  --violet: oklch(68% 0.12 300);
-  --violet-bg: oklch(68% 0.12 300 / 0.1);
+  --slate: oklch(68% 0.12 260);
+  --slate-bg: oklch(68% 0.12 260 / 0.1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg-0); color: var(--fg); }
@@ -392,34 +403,83 @@ body {
 }
 .takeaways-label {
   font-size: 11px; font-weight: 600;
-  color: var(--amber);
-  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--purple);
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+.takeaways-count {
+  margin-left: 4px; font-size: 11px; color: var(--purple); opacity: 0.6;
 }
 .takeaways-chevron {
   margin-left: auto; font-size: 13px; color: var(--fg-dim);
+  display: inline-block; transition: transform 0.15s;
+}
+.takeaways-toggle[aria-expanded="false"] .takeaways-chevron {
+  transform: rotate(180deg);
 }
 .takeaways-body {
-  padding: 0 20px 16px;
-  display: flex; flex-direction: column; gap: 12px;
+  padding: 4px 20px 18px;
+  display: flex; flex-direction: column; gap: 16px;
 }
 .takeaways-body.is-collapsed { display: none; }
 .takeaway {
   display: flex; gap: 10px; align-items: flex-start;
 }
 .takeaway-num {
-  font-size: 13px; font-weight: 600; color: var(--amber);
-  min-width: 18px; padding-top: 2px; flex-shrink: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 12px; font-weight: 700; color: var(--purple);
+  min-width: 20px; padding-top: 3px; flex-shrink: 0;
 }
-.takeaway-content { flex: 1; }
+.takeaway-content { flex: 1; min-width: 0; }
 .takeaway-content p {
-  font-size: 14px; color: var(--fg-mid); line-height: 1.6;
+  font-size: 14px; color: var(--fg-mid); line-height: 1.65;
 }
-.takeaway-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  margin-top: 6px; min-height: 32px;
-  font-size: 12px; color: var(--accent); text-decoration: none;
+.takeaway-links {
+  margin-top: 8px; display: flex; flex-direction: column; gap: 4px;
 }
-.takeaway-link:hover { text-decoration: underline; }
+.takeaway-link-row {
+  display: flex; align-items: center; gap: 6px;
+  min-height: 28px;
+  background: none; border: none; padding: 2px 6px;
+  margin-left: -6px; margin-right: -6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit; text-align: left;
+  text-decoration: none;
+  transition: background .12s, color .12s;
+  width: 100%;
+}
+.takeaway-link-row:hover {
+  background: var(--purple-dim);
+}
+.takeaway-link-tick {
+  display: inline-block; width: 2px; height: 12px;
+  background: var(--purple); border-radius: 1px; flex-shrink: 0;
+  transition: background .12s;
+}
+.takeaway-link-row:hover .takeaway-link-tick {
+  background: var(--purple-bright);
+}
+.takeaway-link-label {
+  font-size: 12px; color: var(--purple);
+  text-decoration: underline;
+  text-decoration-color: var(--purple-border);
+  text-underline-offset: 2px;
+}
+.takeaway-link-row:hover .takeaway-link-label {
+  color: var(--purple-bright);
+  text-decoration-color: var(--purple);
+}
+.takeaway-link-source {
+  font-size: 11px; color: var(--fg-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.takeaway-link-arrow {
+  font-size: 11px; color: var(--fg-dim); margin-left: auto;
+  transition: color .12s;
+}
+.takeaway-link-row:hover .takeaway-link-arrow {
+  color: var(--purple-bright);
+}
 
 /* Filter chips */
 .chips {
@@ -439,27 +499,38 @@ body {
   transition: color .12s, background .12s, border-color .12s;
 }
 .chip:hover { color: var(--fg); }
-.chip.is-active { color: var(--fg); background: var(--bg-2); border-color: var(--border-2); }
+.chip.is-active { color: var(--fg); background: var(--bg-3); border-color: var(--border-2); }
 .chip[data-tag="Models"].is-active     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.4); }
-.chip[data-tag="Agents"].is-active     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
+.chip[data-tag="Agents"].is-active     { color: var(--purple); background: var(--purple-soft); border-color: var(--purple-border); }
 .chip[data-tag="Tooling"].is-active    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.4); }
 .chip[data-tag="Regulation"].is-active { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.4); }
-.chip[data-tag="Enterprise"].is-active { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.4); }
-.chip[data-tag="Research"].is-active   { color: var(--fg-mid); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+.chip[data-tag="Enterprise"].is-active { color: var(--purple); background: var(--purple-dim); border-color: var(--purple-border); }
+.chip[data-tag="Research"].is-active   { color: var(--slate);  background: var(--slate-bg);  border-color: oklch(68% 0.12 260 / 0.4); }
 
 /* Article list + section labels */
 .article-list { padding-bottom: 24px; }
 .section-label {
-  padding: 18px 20px 8px;
+  padding: 14px 20px 6px;
+  display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 600;
-  color: var(--fg-mid);
-  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--purple);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.section-label::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
 }
 
 /* Item card */
 .item {
   border-bottom: 1px solid var(--border);
-  padding: 16px 20px;
+  padding: 14px 20px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.item.is-expanded {
+  border-left-color: var(--purple);
+  background: var(--purple-dim);
 }
 .item .tags {
   display: flex; gap: 6px; flex-wrap: wrap;
@@ -473,12 +544,12 @@ body {
   letter-spacing: 0.01em;
   border: 1px solid;
 }
-.tag-Models     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.3); }
-.tag-Agents     { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-border); }
-.tag-Tooling    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.3); }
-.tag-Regulation { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.3); }
-.tag-Enterprise { color: var(--violet); background: var(--violet-bg); border-color: oklch(68% 0.12 300 / 0.3); }
-.tag-Research   { color: var(--fg-mid); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); }
+.tag-Models     { color: var(--green);  background: var(--green-bg);   border-color: oklch(68% 0.13 145 / 0.3); }
+.tag-Agents     { color: var(--purple); background: oklch(65% 0.22 292 / 0.12); border-color: var(--purple-border); }
+.tag-Tooling    { color: var(--teal);   background: var(--teal-bg);    border-color: oklch(68% 0.13 210 / 0.3); }
+.tag-Regulation { color: var(--amber);  background: var(--amber-bg);   border-color: oklch(72% 0.13 75 / 0.3); }
+.tag-Enterprise { color: var(--purple); background: var(--purple-dim); border-color: var(--purple-border); }
+.tag-Research   { color: var(--slate);  background: var(--slate-bg);   border-color: oklch(68% 0.12 260 / 0.3); }
 
 .item-title {
   display: block; width: 100%; min-height: 44px;
@@ -488,7 +559,7 @@ body {
   font-family: inherit; font-size: 15px; font-weight: 500;
   color: var(--fg); line-height: 1.45; text-wrap: pretty;
 }
-.item-title:hover { color: var(--accent); }
+.item-title:hover { color: var(--purple); }
 .item-body { display: none; margin-bottom: 12px; }
 .item.is-expanded .item-body { display: block; }
 .item-snippet {
@@ -497,23 +568,34 @@ body {
 }
 
 .so-what {
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
   border-radius: 5px;
   padding: 8px 11px;
 }
-.so-what-label { font-size: 12px; font-weight: 600; color: var(--accent); }
+.so-what-label { font-size: 12px; font-weight: 600; color: var(--purple); }
 .so-what-body  { font-size: 12px; color: var(--fg-mid); line-height: 1.55; }
 
-.read-article {
-  display: inline-block; margin-top: 12px;
-  font-size: 13px; padding: 8px 16px; min-height: 44px;
-  background: var(--bg-2); border: 1px solid var(--border-2);
-  border-radius: 6px;
-  color: var(--fg); text-decoration: none;
-  line-height: 28px;
+.item-actions {
+  display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;
 }
-.read-article:hover { background: var(--bg-1); border-color: var(--accent); color: var(--accent); }
+.read-article {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; padding: 8px 16px; min-height: 40px;
+  background: var(--purple-soft); border: 1px solid var(--purple-border);
+  border-radius: 6px;
+  color: var(--purple-bright); text-decoration: none;
+  font-family: inherit;
+}
+.read-article:hover { background: var(--purple-dim); border-color: var(--purple-bright); }
+.collapse-btn {
+  display: inline-flex; align-items: center;
+  font-size: 13px; padding: 8px 14px; min-height: 40px;
+  background: none; border: 1px solid var(--border-2);
+  border-radius: 6px; color: var(--fg-dim);
+  cursor: pointer; font-family: inherit;
+}
+.collapse-btn:hover { color: var(--fg); border-color: var(--fg-mid); }
 
 .item .meta {
   display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
@@ -529,7 +611,7 @@ body {
   padding: 1px 6px;
 }
 .score-pill.score-high { color: var(--green);  background: oklch(68% 0.13 145 / 0.18); border-color: oklch(68% 0.13 145 / 0.3); }
-.score-pill.score-mid  { color: var(--accent); background: var(--accent-bg);            border-color: var(--accent-border); }
+.score-pill.score-mid  { color: var(--purple); background: var(--purple-soft);          border-color: var(--purple-border); }
 .score-pill.score-low  { color: var(--fg-dim); background: rgba(255,255,255,0.05);     border-color: rgba(255,255,255,0.18); }
 
 footer {
@@ -618,19 +700,21 @@ INTERACTIONS_JS = """
 (function () {
   // Topic filter chips
   var chips = document.querySelectorAll('.chip');
+  function applyFilter(tag) {
+    chips.forEach(function (c) {
+      c.classList.toggle('is-active', c.dataset.tag === tag);
+    });
+    document.querySelectorAll('[data-tags]').forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      // Untagged items (e.g. Key takeaways bullets) stay visible under
+      // every filter — they're synthesis, not topic-scoped.
+      var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+      el.classList.toggle('is-hidden', !show);
+    });
+  }
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
-      var tag = chip.dataset.tag;
-      chips.forEach(function (c) {
-        c.classList.toggle('is-active', c === chip);
-      });
-      document.querySelectorAll('[data-tags]').forEach(function (el) {
-        var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
-        // Untagged items (e.g. Key takeaways bullets) stay visible under
-        // every filter — they're synthesis, not topic-scoped.
-        var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
-        el.classList.toggle('is-hidden', !show);
-      });
+      applyFilter(chip.dataset.tag);
     });
   });
 
@@ -642,17 +726,63 @@ INTERACTIONS_JS = """
     });
   });
 
+  // Item explicit collapse button
+  document.querySelectorAll('.collapse-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.item');
+      if (item) item.classList.remove('is-expanded');
+    });
+  });
+
   // Takeaways collapsible
-  var toggle = document.querySelector('.takeaways-toggle');
-  if (toggle) {
-    var body = document.querySelector('.takeaways-body');
-    var chevron = toggle.querySelector('.takeaways-chevron');
-    toggle.addEventListener('click', function () {
-      var collapsed = body.classList.toggle('is-collapsed');
-      toggle.setAttribute('aria-expanded', String(!collapsed));
-      if (chevron) chevron.textContent = collapsed ? '▼' : '▲';
+  var takeawaysToggle = document.querySelector('.takeaways-toggle');
+  var takeawaysBody = document.querySelector('.takeaways-body');
+  function setTakeawaysCollapsed(collapsed) {
+    if (!takeawaysBody || !takeawaysToggle) return;
+    takeawaysBody.classList.toggle('is-collapsed', collapsed);
+    takeawaysToggle.setAttribute('aria-expanded', String(!collapsed));
+    var chev = takeawaysToggle.querySelector('.takeaways-chevron');
+    if (chev) chev.textContent = collapsed ? '▼' : '▲';
+  }
+  if (takeawaysToggle) {
+    takeawaysToggle.addEventListener('click', function () {
+      setTakeawaysCollapsed(!takeawaysBody.classList.contains('is-collapsed'));
     });
   }
+
+  // Takeaway → article link navigation (Route A spec §4 + §10).
+  // Each link row carries data-item-url; we look up the matching .item by its
+  // .read-article href, expand it, clear the filter, collapse takeaways and
+  // scroll into view.
+  function navigateToItem(itemUrl) {
+    if (!itemUrl) return;
+    var matchLink = document.querySelector(
+      '.item .read-article[href="' + itemUrl.replace(/"/g, '\\\\"') + '"]'
+    );
+    var item = matchLink ? matchLink.closest('.item') : null;
+    if (!item) {
+      // Fallback: open the source URL in a new tab if no in-page card matches.
+      window.open(itemUrl, '_blank', 'noopener');
+      return;
+    }
+    applyFilter('all');
+    document.querySelectorAll('.item.is-expanded').forEach(function (el) {
+      if (el !== item) el.classList.remove('is-expanded');
+    });
+    item.classList.add('is-expanded');
+    setTakeawaysCollapsed(true);
+    setTimeout(function () {
+      item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
+  // Expose for inline onclicks if ever needed; primary path is event listener.
+  window.navigateToItem = navigateToItem;
+  document.querySelectorAll('.takeaway-link-row').forEach(function (btn) {
+    btn.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      navigateToItem(btn.dataset.itemUrl);
+    });
+  });
 })();
 </script>
 """
@@ -777,11 +907,16 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
             f'<span class="so-what-body">{so_what}</span>'
             '</div>'
         )
+    parts.append('<div class="item-actions">')
     if url:
         parts.append(
             f'<a class="read-article" href="{html.escape(url)}" '
             f'target="_blank" rel="noopener">Read article →</a>'
         )
+    parts.append(
+        '<button type="button" class="collapse-btn">Collapse</button>'
+    )
+    parts.append('</div>')
     parts.append('</div>')
     if source_name:
         parts.append(
@@ -809,12 +944,17 @@ def _split_synthesis_sections(body_html: str) -> list[tuple[str, str]]:
     return sections
 
 
+_LI_LINK_ITER_RE = re.compile(r'<a\s+[^>]*href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL)
+
+
 def _extract_takeaways(
     body_html: str,
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """Pull the Key Takeaways section out of the body.
 
-    Returns (takeaways, remaining_sections).
+    Returns (takeaways, remaining_sections). Each takeaway is::
+
+        {"text": "...", "links": [{"href": ..., "label": ...}, ...]}
     """
     sections = _split_synthesis_sections(body_html)
     takeaways: list[dict] = []
@@ -824,30 +964,70 @@ def _extract_takeaways(
             for li in _BODY_LI_OUTER_RE.finditer(content):
                 inner = re.sub(r'^<li[^>]*>', '', li.group(0))
                 inner = re.sub(r'</li>\s*$', '', inner)
-                link_m = _LI_LINK_RE.search(inner)
-                href = link_m.group(1) if link_m else None
-                label = (
-                    re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
-                    if link_m else None
-                )
-                text_html = inner
-                if link_m:
-                    text_html = inner[:link_m.start()] + inner[link_m.end():]
+                links: list[dict] = []
+                for link_m in _LI_LINK_ITER_RE.finditer(inner):
+                    label = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+                    if not label:
+                        continue
+                    links.append({"href": link_m.group(1), "label": label})
+                text_html = _LI_LINK_ITER_RE.sub('', inner)
                 text = re.sub(r'<[^>]+>', '', text_html).strip().rstrip(" .")
-                takeaways.append({"text": text, "href": href, "label": label})
+                takeaways.append({"text": text, "links": links})
         else:
             rest.append((title, content))
     return takeaways, rest
 
 
-def render_takeaways_section(takeaways: list[dict]) -> str:
+def _build_url_to_source_map(
+    rest_sections: list[tuple[str, str]],
+) -> dict[str, str]:
+    """Pre-scan rendered sections to map source-URLs back to display source names.
+
+    Used so each takeaway link row can show the publication name
+    ("Anthropic Blog", "Latent Space") next to the underlined label, per
+    Route A spec §4.
+    """
+    url_to_source: dict[str, str] = {}
+    for _title, content in rest_sections:
+        for li_m in _BODY_LI_OUTER_RE.finditer(content):
+            link_m = _LI_LINK_RE.search(li_m.group(0))
+            if not link_m:
+                continue
+            url = link_m.group(1)
+            source = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+            if url and source and url not in url_to_source:
+                url_to_source[url] = source
+    return url_to_source
+
+
+def _domain_label(url: str) -> str:
+    try:
+        host = urlparse(url).netloc.replace("www.", "")
+        return host or url
+    except Exception:
+        return url
+
+
+def render_takeaways_section(
+    takeaways: list[dict],
+    url_to_source: dict[str, str] | None = None,
+) -> str:
+    """Render the collapsible Key Takeaways panel.
+
+    Each takeaway carries a ``links`` list (per ``_extract_takeaways``); for
+    backwards compatibility a single ``href``/``label`` pair is also accepted.
+    Link rows render as ``<button class="takeaway-link-row" data-item-url>``
+    so the page JS can navigate to the matching feed item (Route A spec §4).
+    """
     if not takeaways:
         return ""
+    url_to_source = url_to_source or {}
     parts = [
         '<section class="takeaways">',
         '<button type="button" class="takeaways-toggle" '
         'aria-expanded="true" aria-controls="takeaways-body">',
         '<span class="takeaways-label">Key Takeaways</span>',
+        f'<span class="takeaways-count">{len(takeaways)}</span>',
         '<span class="takeaways-chevron">▲</span>',
         '</button>',
         '<div class="takeaways-body" id="takeaways-body">',
@@ -857,13 +1037,29 @@ def render_takeaways_section(takeaways: list[dict]) -> str:
         parts.append(f'<span class="takeaway-num">{i}.</span>')
         parts.append('<div class="takeaway-content">')
         parts.append(f'<p>{html.escape(t["text"])}</p>')
-        if t.get("href"):
-            label = t.get("label") or "Source"
-            parts.append(
-                f'<a class="takeaway-link" href="{html.escape(t["href"])}" '
-                f'target="_blank" rel="noopener">'
-                f'{html.escape(label)} ↓</a>'
-            )
+
+        # Normalise: support both new (`links: [...]`) and legacy
+        # (`href`/`label`) shapes so callers stay backward-compatible.
+        link_items = list(t.get("links") or [])
+        if not link_items and t.get("href"):
+            link_items = [{"href": t["href"], "label": t.get("label") or "Source"}]
+
+        if link_items:
+            parts.append('<div class="takeaway-links">')
+            for lnk in link_items:
+                href = lnk.get("href") or ""
+                label = lnk.get("label") or "Source"
+                source = url_to_source.get(href) or _domain_label(href)
+                parts.append(
+                    '<button type="button" class="takeaway-link-row" '
+                    f'data-item-url="{html.escape(href)}">'
+                    '<span class="takeaway-link-tick" aria-hidden="true"></span>'
+                    f'<span class="takeaway-link-label">{html.escape(label)}</span>'
+                    f'<span class="takeaway-link-source">{html.escape(source)}</span>'
+                    '<span class="takeaway-link-arrow" aria-hidden="true">↓</span>'
+                    '</button>'
+                )
+            parts.append('</div>')
         parts.append('</div>')
         parts.append('</div>')
     parts.append('</div>')
@@ -894,10 +1090,15 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
     ]
     if item.summary:
         parts.append(f'<p class="item-snippet">{html.escape(item.summary)}</p>')
+    parts.append('<div class="item-actions">')
     parts.append(
         f'<a class="read-article" href="{html.escape(item.url)}" '
         f'target="_blank" rel="noopener">Read article →</a>'
     )
+    parts.append(
+        '<button type="button" class="collapse-btn">Collapse</button>'
+    )
+    parts.append('</div>')
     parts.append('</div>')
     parts.append('<div class="meta">')
     parts.append(f'<span class="source">{html.escape(item.source)}</span>')
@@ -925,7 +1126,7 @@ def _page_shell(
         '<html lang="en"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        '<meta name="theme-color" content="#0d0d0f">',
+        '<meta name="theme-color" content="#0a0a0d">',
         '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
@@ -986,6 +1187,16 @@ markdown brief structured exactly as below:
 is 1–2 sentences. Each takeaway should synthesise across multiple stories —
 not just summarise a single one — answering "what does today's news mean for
 an AI PM?". This block sits ABOVE every other section.
+
+After the synthesis text, EACH takeaway bullet MUST end with one or two inline
+markdown links pointing at the source article(s) the synthesis is drawn from.
+Use the EXACT same article URL that appears in the bullet below (so the UI
+can scroll the reader to that card). The label should be a short 2–5 word
+hook, not the full headline. Format:
+
+  - Synthesis text in 1–2 sentences. [Short hook](https://exact-source-url) [Other hook](https://other-url)
+
+Two links per takeaway when the takeaway spans multiple stories; otherwise one.
 
 ## Top story
 - **Headline** — 2 sentences on what happened today and the context around
@@ -1061,7 +1272,8 @@ def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
     body_html, _seen_tags = _process_tags_in_body(body_html)
 
     takeaways, rest = _extract_takeaways(body_html)
-    takeaways_html = render_takeaways_section(takeaways)
+    url_to_source = _build_url_to_source_map(rest)
+    takeaways_html = render_takeaways_section(takeaways, url_to_source)
     items_html, item_count = _render_synthesis_sections(rest)
 
     return _page_shell(

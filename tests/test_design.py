@@ -19,10 +19,18 @@ import content_finder as cf
 def test_html_css_includes_dark_design_tokens():
     css = cf.HTML_CSS
     for token in ["--bg-0", "--bg-1", "--bg-2", "--border", "--fg", "--fg-mid",
-                  "--fg-dim", "--accent", "--green", "--amber"]:
+                  "--fg-dim", "--purple", "--green", "--amber"]:
         assert token in css, f"missing token: {token}"
-    assert "#0d0d0f" in css
-    assert "#131316" in css
+    # Route A spec values (hue-292 purple, deeper backgrounds)
+    assert "#0a0a0d" in css
+    assert "#111116" in css
+
+
+def test_css_purple_accent_hue_292():
+    """Route A spec replaces hue-258 blue accent with hue-292 purple."""
+    css = cf.HTML_CSS
+    assert "--purple:" in css or "--purple " in css
+    assert "292" in css  # primary purple hue from the spec
 
 
 def test_dm_sans_dm_mono_loaded_via_google_fonts():
@@ -191,3 +199,68 @@ def test_expand_collapse_js_present():
     assert "item-title" in out
     # is-expanded class is the trigger for showing the expanded body
     assert "is-expanded" in out
+
+
+# ---------------------------------------------------------------------------
+# Route A spec — takeaway → article link rows (the piece previously missing)
+# ---------------------------------------------------------------------------
+
+FIXTURE_LINKS = """## Key takeaways
+- Agentic infra is converging across vendors. [Claude 4 native MCP](https://anthropic.com/blog) [MCP hits 50k](https://latent.space/)
+- EU Act deadline is most actionable. [EU AI Act update](https://importai.com/)
+- Open models closing the gap on coding. [Llama 4 Scout](https://simonwillison.net/)
+
+## Top story
+- **Five Eyes guidance** — detail. **So what:** implication. [Five Eyes](https://example.com/five-eyes) {tags: Regulation, Agents}
+
+## Models & capability releases
+- **Llama 4 Scout drops** — 17B MoE model. **So what:** open coding gap narrows. [Simon Willison](https://simonwillison.net/) {tags: Models, Tooling}
+"""
+
+
+def test_system_prompt_instructs_source_links_in_takeaways():
+    """SYSTEM_PROMPT must tell Claude to ground each takeaway with [label](url) links."""
+    prompt = cf.SYSTEM_PROMPT
+    kta_block = prompt.split("Key takeaways")[1].split("Top story")[0].lower()
+    # The block describing takeaway format must mention links/url syntax.
+    assert "link" in kta_block or "[" in kta_block
+
+
+def test_takeaway_links_render_multiple_per_takeaway():
+    """All [label](url) links in a takeaway bullet must surface in the output."""
+    out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
+    # Both links from takeaway 1
+    assert "Claude 4 native MCP" in out
+    assert "MCP hits 50k" in out
+    # Single link from takeaway 2
+    assert "EU AI Act update" in out
+    # Spec arrow indicator (link rows end with "↓")
+    assert "↓" in out
+    # No leftover {tags: literal anywhere
+    assert "{tags:" not in out
+
+
+def test_takeaway_links_have_navigation_hooks():
+    """Each takeaway link must carry a hook (data-item-url) so JS can scroll/expand."""
+    out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
+    # Link rows expose the source URL so navigateToItem() can find the matching card.
+    assert "data-item-url" in out
+    # The matching ranked/synthesis card carries the same URL on its read-article link.
+    assert "https://simonwillison.net/" in out
+
+
+def test_navigate_to_item_js_present():
+    """navigateToItem must be in the page script — collapses takeaways, scrolls, expands."""
+    out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
+    assert "navigateToItem" in out
+
+
+def test_takeaway_count_badge_in_toggle():
+    """Toggle button must show the count of takeaways (Route A spec section 3)."""
+    out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
+    toggle = re.search(
+        r'<button[^>]*class="takeaways-toggle"[^>]*>.*?</button>', out, re.DOTALL,
+    )
+    assert toggle is not None
+    # FIXTURE_MD has 3 takeaway bullets
+    assert "3" in toggle.group(0)
