@@ -12,7 +12,7 @@ and either prints the ranked list or asks Claude to synthesise a themed brief.
 ## Setup
 
 ```bash
-cd /Users/aidanbonel/00-Claudecode-projects/Content-Finder
+cd Content-Finder
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
