@@ -134,6 +134,83 @@ def test_no_raw_markdown_leaks_anywhere_in_output():
     assert "](http" not in out, "raw markdown link syntax in output"
 
 
+# --- Bug 8: stray ** in titles is scrubbed, never rendered literally ------ #
+
+def test_synthesis_card_strips_unmatched_bold_marker_from_title():
+    """Unclosed **bold leaks `**` into title text; the renderer must scrub it.
+
+    Reproduces the item-12 case in the live 2026-05-06 digest, where a
+    Simon Willison newsletter bullet rendered as ``**Simon Willison …`` in
+    the title text.
+    """
+    md = """## Top story
+
+- **Real bullet** — Body sentence. **So what:** Implication. [Source](https://x.example) {tags: Models}
+
+- **Truncated headline that lost its closer — Body sentence. {tags: Tooling}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
+    titles = re.findall(
+        r'<span class="item-title-text">(.*?)</span>',
+        out, re.DOTALL,
+    )
+    assert titles, "no titles rendered at all"
+    for title in titles:
+        assert "**" not in title, f"raw `**` leaked into title: {title!r}"
+
+
+def test_build_card_html_strips_asterisks_from_title_directly():
+    """Unit-level guarantee: _build_card_html scrubs `**` regardless of caller."""
+    out = cf._build_card_html(
+        item_id=1,
+        data_tags="Models",
+        title="**Simon Willison newsletter: Opus 4",
+        snippet="Body text.",
+        so_what="Implication.",
+        url="https://example.com/x",
+        source_name="Simon Willison",
+    )
+    assert "**" not in out, "raw `**` leaked from _build_card_html title"
+    assert "Simon Willison newsletter: Opus 4" in out
+
+
+# --- Bug 9: cards with no body, no so-what, no url AND no source are skipped — #
+
+def test_empty_synthesis_card_is_skipped_entirely():
+    """A bullet that produces no snippet, so-what, url, or source is render-noise."""
+    md = """## Top story
+
+- **Good bullet** — Real body. **So what:** Real implication. [Source](https://x.example) {tags: Models}
+"""
+    # Build a deliberately-empty card directly to confirm the skip rule.
+    empty = cf._build_card_html(
+        item_id=99,
+        data_tags="",
+        title="Title with no body",
+        snippet="",
+        so_what="",
+        url="",
+        source_name="",
+    )
+    assert empty == "", f"empty card should render to '', got: {empty!r}"
+
+    # And a normal card still renders.
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
+    articles = re.findall(r'<article class="item"[^>]*>', out)
+    assert len(articles) == 1
+
+
+def test_card_with_only_source_or_url_still_renders():
+    """A card with a usable source link is still meaningful — don't over-skip."""
+    out = cf._build_card_html(
+        item_id=1, data_tags="Models", title="Title",
+        snippet="", so_what="",
+        url="https://example.com/x", source_name="Example",
+    )
+    assert out, "card with url+source got skipped"
+    assert 'href="https://example.com/x"' in out
+
+
 # --- Bug 7: fallback path is sane when bullet shape is unrecognised ------- #
 
 def test_fallback_card_does_not_dump_raw_markdown():
