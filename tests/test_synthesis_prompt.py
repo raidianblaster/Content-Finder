@@ -31,3 +31,34 @@ def test_prompt_lists_fixed_tag_taxonomy():
 def test_prompt_forbids_preamble_and_closing():
     p = cf.SYSTEM_PROMPT
     assert "No preamble" in p
+
+
+def test_prompt_forbids_literal_source_as_link_label():
+    """2026-05-06 prod regression: the prompt's `[Source](url)` placeholder
+    was copied verbatim into every card. The prompt must explicitly forbid
+    the literal word "Source" (and similar generic labels) as the link text,
+    and give a concrete example of the expected substitution.
+    """
+    p = cf.SYSTEM_PROMPT
+    lower = p.lower()
+    # Must explicitly call out that "Source" is NOT the literal label to use.
+    # Either by forbidding it or by showing a concrete substitute example.
+    assert (
+        "not the literal word" in lower
+        or "must be the publication" in lower
+        or "must be the source name" in lower
+    ), "prompt should explicitly forbid using 'Source' as the literal link label"
+    # And there must be at least one concrete example link with a real
+    # publication name (not the word 'Source').
+    import re as _re
+    examples = _re.findall(r'\[([^\]]+)\]\(https?://[^)]+\)', p)
+    real_publication_examples = [
+        e for e in examples
+        if e.strip().lower() not in {
+            "source", "read more", "read", "link", "article", "here", "more",
+        }
+    ]
+    assert real_publication_examples, (
+        "prompt must include at least one concrete `[Publication name](url)` "
+        "example so the model has a real pattern to copy"
+    )

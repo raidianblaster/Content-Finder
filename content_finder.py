@@ -978,7 +978,7 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
             snippet=html.escape(body_text.strip()) if body_text.strip() else "",
             so_what="",
             url=url,
-            source_name=source_name,
+            source_name=_resolve_source_name(source_name, url),
         )
 
     title = title_m.group(1).strip()
@@ -1025,7 +1025,7 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
         snippet=snippet,
         so_what=so_what,
         url=url,
-        source_name=source_name,
+        source_name=_resolve_source_name(source_name, url),
     )
 
 
@@ -1167,6 +1167,53 @@ def _domain_label(url: str) -> str:
         return host or url
     except Exception:
         return url
+
+
+# Built once: domain → display source name, derived from RSS_SOURCES so the
+# fallback name table stays in lockstep with what we actually fetch. New feeds
+# added to RSS_SOURCES get a sensible fallback automatically.
+_DOMAIN_TO_SOURCE: dict[str, str] = {
+    urlparse(_url).netloc.replace("www.", ""): _name
+    for _name, _url in RSS_SOURCES
+}
+
+# Generic link labels Claude sometimes emits when it copies the prompt's shape
+# placeholder verbatim instead of substituting a real publication name.
+_GENERIC_SOURCE_LABELS: frozenset[str] = frozenset({
+    "source", "read more", "read", "link", "article", "here", "more",
+})
+
+
+def _prettify_source_from_url(url: str) -> str:
+    """Best-effort source name derived from a URL. Used as a fallback when the
+    LLM emitted a generic link label instead of a real publication name.
+    """
+    if not url:
+        return ""
+    try:
+        host = urlparse(url).netloc.replace("www.", "")
+    except Exception:
+        return url
+    if not host:
+        return url
+    if host in _DOMAIN_TO_SOURCE:
+        return _DOMAIN_TO_SOURCE[host]
+    if host == "arxiv.org" or host.endswith(".arxiv.org"):
+        m = re.search(r"/(?:abs|pdf)/(\d+\.\d+)", url)
+        return f"arXiv {m.group(1)}" if m else "arXiv"
+    if host in {"news.ycombinator.com", "ycombinator.com"}:
+        return "Hacker News"
+    return host
+
+
+def _resolve_source_name(source_name: str, url: str) -> str:
+    """If the LLM emitted a generic link label, derive a real source name
+    from the URL. Otherwise return the LLM's label unchanged.
+    """
+    if source_name and source_name.strip().lower() not in _GENERIC_SOURCE_LABELS:
+        return source_name
+    fallback = _prettify_source_from_url(url)
+    return fallback or source_name
 
 
 def render_takeaways_section(
@@ -1365,7 +1412,7 @@ Two links per takeaway when the takeaway spans multiple stories; otherwise one.
 ## Top story
 - **Headline** — 2 sentences on what happened today and the context around
   it. **So what:** 1–2 sentences on the strategic implication for an AI PM
-  in a regulated environment. [Source](url) {tags: <Tag1>, <Tag2>}
+  in a regulated environment. [Publication name](url) {tags: <Tag1>, <Tag2>}
 
 ## Models & capability releases
 - bullets in the same shape as Top story (model launches, capability changes).
@@ -1386,7 +1433,20 @@ Per-bullet rules:
 - Every story bullet (every section after Key takeaways) must include a
   bolded **So what:** clause naming the PM-level implication.
 - Each bullet shape: "**Headline** — what happened. **So what:** why it
-  matters [Source](url) {tags: …}".
+  matters [Publication name](url) {tags: …}".
+
+Source link label rules (load-bearing — the UI displays this verbatim):
+- The link label MUST be the publication name from the article's source field.
+  Examples: [Stratechery](https://stratechery.com/2026/...),
+  [arXiv 2605.00334](https://arxiv.org/abs/2605.00334),
+  [Anthropic](https://www.anthropic.com/news/...),
+  [Hacker News](https://news.ycombinator.com/item?id=...).
+- The link label is NOT the literal word "Source" or any generic placeholder
+  like "Read more", "Article", "Link", "Here". Those words are placeholders
+  in this spec, not labels to copy verbatim into your output.
+- For arXiv, use "arXiv <paper-id>" (e.g. "arXiv 2507.01955"). For aggregator
+  posts that cite a primary source, you may use "<Primary> via <Aggregator>"
+  (e.g. "The Information via Techmeme").
 
 Brief-wide rules:
 - Skip any section that has no relevant items — do not pad.

@@ -211,6 +211,67 @@ def test_card_with_only_source_or_url_still_renders():
     assert 'href="https://example.com/x"' in out
 
 
+# --- Bug 10: generic LLM link labels get a useful source, not literal "Source" — #
+#
+# 2026-05-06 prod regression: every card on the live page rendered with the
+# literal source name "Source" because Claude copied the prompt placeholder
+# `[Source](url)` verbatim. Cover the case so the fallback can't silently
+# break again. Pair with the prompt fix in SYSTEM_PROMPT.
+
+GENERIC_LABEL_FIXTURE = """## Top story
+
+- **Stratechery on AI earnings** — Body sentence about earnings divergence. **So what:** Strategic implication. [Source](https://stratechery.com/2026/google-earnings-meta-earnings/) {tags: Enterprise}
+
+- **arXiv paper on agent benchmarks** — Body about benchmarks. **So what:** Implication. [Read more](https://arxiv.org/abs/2605.00334) {tags: Research}
+
+- **Cloudflare on agents** — Body. **So what:** Implication. [Link](https://blog.cloudflare.com/agents-stripe-projects/) {tags: Tooling}
+
+- **Anthropic news** — Body. **So what:** Implication. [Article](https://www.anthropic.com/news/some-update) {tags: Models}
+"""
+
+
+def test_generic_link_label_falls_back_to_useful_source_name():
+    """If the LLM emits `[Source]`, `[Read more]`, etc., the renderer must
+    derive a real source name from the URL — never display the literal
+    placeholder word."""
+    out = cf.wrap_synthesis_html(GENERIC_LABEL_FIXTURE, page_date=date(2026, 5, 6))
+    articles = re.findall(
+        r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL,
+    )
+    assert len(articles) == 4
+
+    sources_in_meta = []
+    for art in articles:
+        m = re.search(r'<span class="source">([^<]+)</span>', art)
+        sources_in_meta.append(m.group(1) if m else None)
+
+    # Literal placeholder words must never reach the rendered .source span.
+    for src in sources_in_meta:
+        assert src, "card missing .source meta entirely"
+        assert src.strip().lower() not in {
+            "source", "read more", "read", "link", "article", "here", "more",
+        }, f"generic placeholder leaked into source: {src!r}"
+
+    # And the derived names should be recognisable for these well-known domains.
+    assert sources_in_meta[0] == "Stratechery"
+    assert sources_in_meta[1] == "arXiv 2605.00334"
+    # Cloudflare blog isn't in RSS_SOURCES — domain fallback is acceptable.
+    assert "cloudflare" in sources_in_meta[2].lower()
+    assert sources_in_meta[3] == "Anthropic News"
+
+
+def test_real_source_names_are_preserved_unchanged():
+    """The fallback must NOT clobber a perfectly-good source name the LLM
+    already provided. Regression guard for over-eager replacement."""
+    md = """## Top story
+
+- **Headline** — Body. **So what:** Implication. [Stratechery](https://stratechery.com/2026/x/) {tags: Enterprise}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
+    m = re.search(r'<span class="source">([^<]+)</span>', out)
+    assert m and m.group(1) == "Stratechery"
+
+
 # --- Bug 7: fallback path is sane when bullet shape is unrecognised ------- #
 
 def test_fallback_card_does_not_dump_raw_markdown():
