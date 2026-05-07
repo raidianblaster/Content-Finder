@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import os
 import re
 import sys
@@ -17,6 +18,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
@@ -171,6 +173,7 @@ class Item:
     summary: str = ""
     score: float = 0.0
     extra: dict = field(default_factory=dict)
+    first_seen: "date | None" = None
 
     @property
     def domain(self) -> str:
@@ -302,11 +305,143 @@ def score_item(item: Item) -> float:
     return base + 2 * recency + src_bonus + hn_bonus
 
 
+# --------------------------------------------------------------------------- #
+# Cross-day dedup state (dedup-state.json)
+# --------------------------------------------------------------------------- #
+
+DEDUP_STATE_PATH = Path("dedup-state.json")
+DEDUP_STATE_VERSION = 1
+DEDUP_TTL_DAYS = 5
+DEDUP_MAX_AGE_DAYS = 30
+MIN_RENDERED_ITEMS = 10
+
+
+def load_dedup_state(path: "Path | str") -> dict[str, str]:
+    """Load the cross-day dedup state file.
+
+    Returns a flat {canonical_url: ISO_first_seen_date} map. Missing,
+    malformed, or unknown-version files return {} so the daily cron is
+    never broken by state-file corruption.
+    """
+    p = Path(path)
+    if not p.exists():
+        return {}
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"[warn] dedup-state load failed ({exc}); proceeding with empty state",
+              file=sys.stderr)
+        return {}
+    if not isinstance(data, dict):
+        return {}
+    if data.get("version") != DEDUP_STATE_VERSION:
+        return {}
+    entries = data.get("entries")
+    if not isinstance(entries, dict):
+        return {}
+    return {str(k): str(v) for k, v in entries.items()}
+
+
+def save_dedup_state(path: "Path | str", state: dict[str, str]) -> None:
+    """Atomically write the dedup state to disk (write-temp + rename)."""
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    payload = {"version": DEDUP_STATE_VERSION, "entries": dict(state)}
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2,
+                              sort_keys=True), encoding="utf-8")
+    tmp.replace(p)
+
+
+def update_seen_state(
+    state: dict[str, str],
+    items: list["Item"],
+    *,
+    today: date,
+    max_age_days: int,
+) -> dict[str, str]:
+    """Return a new state map with today's items added and old entries pruned.
+
+    Semantics:
+    - Items not in state get today's date.
+    - Items already in state keep their (earlier) first_seen date.
+    - Entries older than max_age_days (inclusive boundary kept) are dropped.
+    - Entries with corrupt date strings are dropped (defensive).
+    """
+    out: dict[str, str] = {}
+    cutoff = today - timedelta(days=max_age_days)
+    for url, raw in state.items():
+        try:
+            d = date.fromisoformat(raw)
+        except ValueError:
+            continue
+        if d >= cutoff:
+            out[url] = raw
+    today_iso = today.isoformat()
+    for it in items:
+        canon = canonical_url(it.url)
+        out.setdefault(canon, today_iso)
+    return out
+
+
+def topup_to_minimum(
+    *,
+    fresh: list["Item"],
+    filtered_out: list["Item"],
+    minimum: int,
+) -> list["Item"]:
+    """If `fresh` has fewer than `minimum` items, top up from `filtered_out`
+    by score (highest first). Topped-up items retain their first_seen flag
+    so the renderer can show the resurfacing badge. Source cap is applied
+    later in the pipeline.
+    """
+    if len(fresh) >= minimum:
+        return list(fresh)
+    needed = minimum - len(fresh)
+    topup = sorted(filtered_out, key=lambda x: x.score, reverse=True)[:needed]
+    return list(fresh) + topup
+
+
+def annotate_first_seen(items: list["Item"], state: dict[str, str]) -> None:
+    """Set Item.first_seen on every item whose canonical URL is in state."""
+    for it in items:
+        canon = canonical_url(it.url)
+        raw = state.get(canon)
+        if not raw:
+            continue
+        try:
+            it.first_seen = date.fromisoformat(raw)
+        except ValueError:
+            continue
+
+
+def filter_unseen(
+    items: list["Item"], *, today: date, ttl_days: int
+) -> list["Item"]:
+    """Drop items first seen within `ttl_days` of today (inclusive boundary).
+
+    Items with no first_seen always pass through. ttl_days <= 0 disables
+    filtering entirely (used by --dedup-ttl-days 0).
+    """
+    if ttl_days <= 0:
+        return list(items)
+    out: list[Item] = []
+    for it in items:
+        if it.first_seen is None:
+            out.append(it)
+            continue
+        age_days = (today - it.first_seen).days
+        if age_days > ttl_days:
+            out.append(it)
+    return out
+
+
 def canonical_url(url: str) -> str:
     """Strip query string and trailing slash for cross-run URL comparison.
 
-    Extracted from dedupe() so future cross-day dedup can match URLs the same
-    way today's within-run dedup does.
+    The same canonicalization is used by within-run dedup() and by the
+    cross-day dedup-state filter, so a URL with a tracker tomorrow still
+    matches the bare URL stored today.
     """
     return url.split("?")[0].rstrip("/")
 
@@ -677,6 +812,10 @@ body {
 .score-pill.score-high { color: var(--green);  background: oklch(68% 0.13 145 / 0.18); border-color: oklch(68% 0.13 145 / 0.3); }
 .score-pill.score-mid  { color: var(--purple); background: var(--purple-soft);          border-color: var(--purple-border); }
 .score-pill.score-low  { color: var(--fg-dim); background: rgba(255,255,255,0.05);     border-color: rgba(255,255,255,0.18); }
+.resurfacing {
+  font-size: 12px; color: var(--fg-dim);
+  cursor: help; user-select: none;
+}
 
 footer {
   padding: 24px 20px; text-align: center;
@@ -1360,6 +1499,11 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
     parts.append(
         f'<span class="score-pill score-{tier}">{item.score:.1f}</span>'
     )
+    if item.first_seen is not None:
+        parts.append(
+            f'<span class="resurfacing" '
+            f'title="First seen {item.first_seen.isoformat()}">↻</span>'
+        )
     parts.append('</div>')
     parts.append('</article>')
     return "".join(parts)
@@ -1555,7 +1699,16 @@ def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
 # Entry point
 # --------------------------------------------------------------------------- #
 
-def gather(days: int, hn_min_points: int, max_per_source: int = 3) -> list[Item]:
+def gather(
+    days: int,
+    hn_min_points: int,
+    max_per_source: int = 3,
+    *,
+    dedup_state: "dict[str, str] | None" = None,
+    today: "date | None" = None,
+    ttl_days: int = DEDUP_TTL_DAYS,
+    minimum_items: int = MIN_RENDERED_ITEMS,
+) -> list[Item]:
     since = datetime.now(timezone.utc) - timedelta(days=days)
     items: list[Item] = []
 
@@ -1576,7 +1729,23 @@ def gather(days: int, hn_min_points: int, max_per_source: int = 3) -> list[Item]
 
     # Drop items with no keyword signal (pure noise).
     items = [it for it in items if keyword_score(f"{it.title} {it.summary}") > 0]
-    return apply_source_cap(dedupe(items), max_per_source=max_per_source)
+    items = dedupe(items)
+
+    # Cross-day dedup: annotate with first_seen, filter by TTL, top up if needed.
+    if dedup_state is not None:
+        annotate_first_seen(items, dedup_state)
+        today = today or today_hkt()
+        fresh = filter_unseen(items, today=today, ttl_days=ttl_days)
+        if len(fresh) < minimum_items:
+            fresh_set = {id(it) for it in fresh}
+            filtered_out = [it for it in items if id(it) not in fresh_set]
+            items = topup_to_minimum(
+                fresh=fresh, filtered_out=filtered_out, minimum=minimum_items
+            )
+        else:
+            items = fresh
+
+    return apply_source_cap(items, max_per_source=max_per_source)
 
 
 def main() -> int:
@@ -1598,20 +1767,38 @@ def main() -> int:
                         help="Anthropic model id for synthesis")
     parser.add_argument("--out", default="-",
                         help="Output path or '-' for stdout (default '-')")
+    parser.add_argument("--no-dedup-state", action="store_true",
+                        help="Skip cross-day dedup state load + save")
+    parser.add_argument("--dedup-state-path", default=str(DEDUP_STATE_PATH),
+                        help=f"Path to cross-day dedup state file "
+                             f"(default {DEDUP_STATE_PATH})")
+    parser.add_argument("--dedup-ttl-days", type=int, default=DEDUP_TTL_DAYS,
+                        help=f"Days an item stays banned after first seen "
+                             f"(default {DEDUP_TTL_DAYS}, 0 disables filter "
+                             f"but still records state)")
     args = parser.parse_args()
 
     print(f"[info] gathering last {args.days}d from "
           f"{len(RSS_SOURCES)} feeds + {len(HN_QUERIES)} HN queries...",
           file=sys.stderr)
 
-    items = gather(args.days, args.hn_min_points, max_per_source=args.max_per_source)
+    page_date = today_hkt()
+    state_path = Path(args.dedup_state_path)
+    dedup_state = None if args.no_dedup_state else load_dedup_state(state_path)
+
+    items = gather(
+        args.days,
+        args.hn_min_points,
+        max_per_source=args.max_per_source,
+        dedup_state=dedup_state,
+        today=page_date,
+        ttl_days=args.dedup_ttl_days,
+    )
     print(f"[info] {len(items)} relevant items after filtering", file=sys.stderr)
 
     if not items:
         print("No relevant items found in window. Try --days 7.", file=sys.stderr)
         return 1
-
-    page_date = today_hkt()
 
     if args.no_summarize:
         if args.format == "html":
@@ -1631,6 +1818,19 @@ def main() -> int:
         with open(args.out, "w") as f:
             f.write(output)
         print(f"[info] wrote {args.out}", file=sys.stderr)
+
+    # Update dedup state only after a successful render — items must have been
+    # visible to the user before being banned.
+    if dedup_state is not None:
+        rendered = items[:args.top]
+        new_state = update_seen_state(
+            dedup_state, rendered,
+            today=page_date, max_age_days=DEDUP_MAX_AGE_DAYS,
+        )
+        save_dedup_state(state_path, new_state)
+        print(f"[info] dedup-state: {len(new_state)} entries "
+              f"({len(rendered)} rendered today)", file=sys.stderr)
+
     return 0
 
 
