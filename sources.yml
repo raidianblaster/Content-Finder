@@ -1,0 +1,129 @@
+# Content Finder — source configuration
+#
+# Edit this file from the GitHub web UI (mobile-friendly) to add/remove
+# sources without touching Python.
+#
+# rss_sources:
+#   name   — display name used in the digest and scoring
+#   url    — must be https://
+#   trust  — integer 0-5 credibility bonus applied by score_item()
+#             0 (or omitted) = no bonus; 3 = highly trusted
+#
+# keyword_weights:
+#   Integer keys (higher = more weight).  Terms are matched case-insensitively
+#   against item title + summary.
+#
+# hn_queries:
+#   Strings sent to the HN Algolia search API.
+
+rss_sources:
+  - name: "Simon Willison"
+    url: "https://simonwillison.net/atom/everything/"
+    trust: 3
+  - name: "Anthropic News"
+    url: "https://www.anthropic.com/rss.xml"
+    trust: 3
+  - name: "Hugging Face Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+    trust: 1
+  - name: "Latent Space"
+    url: "https://www.latent.space/feed"
+    trust: 2
+  - name: "Techmeme"
+    url: "https://www.techmeme.com/feed.xml"
+    trust: 1
+  - name: "Import AI (Jack Clark)"
+    url: "https://importai.substack.com/feed"
+    trust: 2
+  - name: "AI Snake Oil"
+    url: "https://www.aisnakeoil.com/feed"
+    trust: 2
+  - name: "One Useful Thing"
+    url: "https://www.oneusefulthing.org/feed"
+    trust: 2
+  - name: "Interconnects (Lambert)"
+    url: "https://www.interconnects.ai/feed"
+    trust: 2
+  - name: "The Pragmatic Engineer"
+    url: "https://newsletter.pragmaticengineer.com/feed"
+    trust: 1
+  - name: "arXiv cs.AI"
+    url: "https://rss.arxiv.org/rss/cs.AI"
+    trust: 2
+  - name: "Stratechery"
+    url: "https://stratechery.com/feed/"
+    trust: 2
+  - name: "Last Week in AI"
+    url: "https://lastweekin.ai/feed"
+    trust: 1
+  - name: "MindStudio"
+    url: "https://www.mindstudio.ai/rss.xml"
+    trust: 0
+  - name: "Dwarkesh Podcast"
+    url: "https://www.dwarkesh.com/feed"
+    trust: 2
+  - name: "NIST News"
+    url: "https://www.nist.gov/news-events/news/rss.xml"
+    trust: 2
+  - name: "EU AI Office"
+    url: "https://digital-strategy.ec.europa.eu/en/rss.xml"
+    trust: 2
+
+hn_queries:
+  - "AI agents"
+  - "agentic"
+  - "LLM"
+  - "Claude"
+  - "Anthropic"
+  - "MCP"
+  - "AI regulation"
+  - "RAG"
+  - "eval"
+  - "fine-tuning"
+
+keyword_weights:
+  3:
+    - "agentic"
+    - "ai agent"
+    - "autonomous agent"
+    - "tool use"
+    - "tool-use"
+    - "mcp"
+    - "model context protocol"
+    - "function calling"
+    - "computer use"
+    - "multi-agent"
+  2:
+    - "llm"
+    - "claude"
+    - "gpt-"
+    - "gemini"
+    - "anthropic"
+    - "openai"
+    - "deepmind"
+    - "foundation model"
+    - "frontier model"
+    - "rag "
+    - "retrieval-augmented"
+    - "fine-tuning"
+    - "ai coding"
+    - "copilot"
+    - "cursor"
+    - "codex"
+  1:
+    - "regulation"
+    - "eu ai act"
+    - "compliance"
+    - "governance"
+    - "safety"
+    - "alignment"
+    - "enterprise ai"
+    - "evaluation"
+    - "benchmark"
+    - "open source"
+    - "open-source"
+    - "hallucination"
+    - "embedding"
+    - "vector"
+    - "product manager"
+    - "guardrails"

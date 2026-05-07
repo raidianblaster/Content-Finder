@@ -23,6 +23,7 @@ from zoneinfo import ZoneInfo
 
 import feedparser
 import httpx
+import yaml
 
 
 HK_TZ = ZoneInfo("Asia/Hong_Kong")
@@ -47,63 +48,114 @@ _TAG_LOOKUP = {t.lower(): t for t in TAG_TAXONOMY}
 
 
 # --------------------------------------------------------------------------- #
-# Sources
+# Source configuration — loaded from sources.yml
 # --------------------------------------------------------------------------- #
 
-# Curated for credibility on agentic AI / LLM industry coverage.
-RSS_SOURCES: list[tuple[str, str]] = [
-    ("Simon Willison",            "https://simonwillison.net/atom/everything/"),
-    ("Anthropic News",            "https://www.anthropic.com/rss.xml"),
-    ("Hugging Face Blog",         "https://huggingface.co/blog/feed.xml"),
-    ("Latent Space",              "https://www.latent.space/feed"),
-    ("Techmeme",                  "https://www.techmeme.com/feed.xml"),
-    ("Import AI (Jack Clark)",    "https://importai.substack.com/feed"),
-    ("AI Snake Oil",              "https://www.aisnakeoil.com/feed"),
-    ("One Useful Thing",          "https://www.oneusefulthing.org/feed"),
-    ("Interconnects (Lambert)",   "https://www.interconnects.ai/feed"),
-    ("The Pragmatic Engineer",    "https://newsletter.pragmaticengineer.com/feed"),
-    ("arXiv cs.AI",               "https://rss.arxiv.org/rss/cs.AI"),
-    ("Stratechery",               "https://stratechery.com/feed/"),
-    ("Last Week in AI",           "https://lastweekin.ai/feed"),
-    ("MindStudio",                "https://www.mindstudio.ai/rss.xml"),
-    ("Dwarkesh Podcast",          "https://www.dwarkesh.com/feed"),
-    ("NIST News",                 "https://www.nist.gov/news-events/news/rss.xml"),
-    ("EU AI Office",              "https://digital-strategy.ec.europa.eu/en/rss.xml"),
-]
+@dataclass
+class SourceConfig:
+    rss_sources: list[tuple[str, str]]    # (name, url)
+    hn_queries: list[str]
+    keyword_weights: dict[int, list[str]]
+    trusted_weights: dict[str, int]        # source_name → credibility bonus
 
-# Keyword queries against the HN Algolia API (story tag, last week).
-HN_QUERIES: list[str] = [
-    "AI agents",
-    "agentic",
-    "LLM",
-    "Claude",
-    "Anthropic",
-    "MCP",
-    "AI regulation",
-    "RAG",
-    "eval",
-    "fine-tuning",
-]
 
-# Weighted keywords used to score generic feed items.
-KEYWORD_WEIGHTS: dict[int, list[str]] = {
-    3: [
-        "agentic", "ai agent", "autonomous agent", "tool use", "tool-use",
-        "mcp", "model context protocol", "function calling", "computer use",
-        "multi-agent",
-    ],
-    2: [
-        "llm", "claude", "gpt-", "gemini", "anthropic", "openai", "deepmind",
-        "foundation model", "frontier model", "rag ", "retrieval-augmented",
-        "fine-tuning", "ai coding", "copilot", "cursor", "codex",
-    ],
-    1: [
-        "regulation", "eu ai act", "compliance", "governance", "safety",
-        "alignment", "enterprise ai", "evaluation", "benchmark", "open source",
-        "open-source", "hallucination", "embedding", "vector",
-        "product manager", "guardrails",
-    ],
-}
+def load_sources(path: "Path | None" = None) -> SourceConfig:
+    """Load and validate sources.yml.  Raises FileNotFoundError or ValueError on bad input."""
+    from pathlib import Path as _Path
+
+    if path is None:
+        path = _Path(__file__).resolve().parent / "sources.yml"
+
+    path = _Path(path)
+    if not path.exists():
+        raise FileNotFoundError(f"sources.yml not found at {path}")
+
+    with path.open(encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh) or {}
+
+    # --- required top-level keys ---
+    for key in ("rss_sources", "hn_queries", "keyword_weights"):
+        if key not in raw:
+            raise ValueError(f"sources.yml missing required key: '{key}'")
+
+    # --- rss_sources ---
+    rss_raw = raw["rss_sources"]
+    if not isinstance(rss_raw, list) or len(rss_raw) == 0:
+        raise ValueError("rss_sources must be a non-empty list")
+
+    rss_sources: list[tuple[str, str]] = []
+    trusted_weights: dict[str, int] = {}
+    seen_names: set[str] = set()
+
+    for i, entry in enumerate(rss_raw):
+        if not isinstance(entry, dict):
+            raise ValueError(f"rss_sources[{i}] must be a mapping, got {type(entry).__name__}")
+        if "name" not in entry:
+            raise ValueError(f"rss_sources[{i}] missing required field 'name'")
+        if "url" not in entry:
+            raise ValueError(f"rss_sources[{i}] missing required field 'url'")
+
+        name = str(entry["name"]).strip()
+        url = str(entry["url"]).strip()
+        trust = int(entry.get("trust", 0))
+
+        if not name:
+            raise ValueError(f"rss_sources[{i}] 'name' must not be empty")
+        if name in seen_names:
+            raise ValueError(f"Duplicate source name in rss_sources: {name!r}")
+        if not url.startswith("https://"):
+            raise ValueError(
+                f"rss_sources entry {name!r} url must start with https://, got {url!r}"
+            )
+        if not (0 <= trust <= 5):
+            raise ValueError(
+                f"rss_sources entry {name!r} trust={trust} is out of range 0-5"
+            )
+
+        seen_names.add(name)
+        rss_sources.append((name, url))
+        if trust > 0:
+            trusted_weights[name] = trust
+
+    # --- hn_queries ---
+    hn_raw = raw["hn_queries"]
+    if not isinstance(hn_raw, list) or len(hn_raw) == 0:
+        raise ValueError("hn_queries must be a non-empty list")
+    hn_queries: list[str] = []
+    for i, q in enumerate(hn_raw):
+        if not isinstance(q, str) or not q.strip():
+            raise ValueError(f"hn_queries[{i}] must be a non-empty string, got {q!r}")
+        hn_queries.append(q)
+
+    # --- keyword_weights ---
+    kw_raw = raw["keyword_weights"]
+    if not isinstance(kw_raw, dict) or len(kw_raw) == 0:
+        raise ValueError("keyword_weights must be a non-empty mapping")
+    keyword_weights: dict[int, list[str]] = {}
+    for k, terms in kw_raw.items():
+        if not isinstance(k, int) or k <= 0:
+            raise ValueError(
+                f"keyword_weights key must be a positive integer, got {k!r}"
+            )
+        if not isinstance(terms, list):
+            raise ValueError(f"keyword_weights[{k}] must be a list, got {type(terms).__name__}")
+        keyword_weights[k] = [str(t) for t in terms]
+
+    return SourceConfig(
+        rss_sources=rss_sources,
+        hn_queries=hn_queries,
+        keyword_weights=keyword_weights,
+        trusted_weights=trusted_weights,
+    )
+
+
+# Load once at import time so module-level constants stay backward-compatible.
+_SOURCE_CFG: SourceConfig = load_sources()
+
+RSS_SOURCES: list[tuple[str, str]] = _SOURCE_CFG.rss_sources
+HN_QUERIES: list[str] = _SOURCE_CFG.hn_queries
+KEYWORD_WEIGHTS: dict[int, list[str]] = _SOURCE_CFG.keyword_weights
+_TRUSTED_WEIGHTS: dict[str, int] = _SOURCE_CFG.trusted_weights
 
 
 # --------------------------------------------------------------------------- #
@@ -238,26 +290,8 @@ def score_item(item: Item) -> float:
     age_days = item.age_hours / 24
     recency = max(0.0, 7 - age_days) / 7  # 0..1
 
-    # Source-credibility bonus.
-    trusted = {
-        "Simon Willison": 3,
-        "Anthropic News": 3,
-        "Import AI (Jack Clark)": 2,
-        "Latent Space": 2,
-        "AI Snake Oil": 2,
-        "Interconnects (Lambert)": 2,
-        "One Useful Thing": 2,
-        "Stratechery": 2,
-        "arXiv cs.AI": 2,
-        "NIST News": 2,
-        "EU AI Office": 2,
-        "Dwarkesh Podcast": 2,
-        "Techmeme": 1,
-        "The Pragmatic Engineer": 1,
-        "Hugging Face Blog": 1,
-        "Last Week in AI": 1,
-    }
-    src_bonus = trusted.get(item.source, 0)
+    # Source-credibility bonus (loaded from sources.yml).
+    src_bonus = _TRUSTED_WEIGHTS.get(item.source, 0)
 
     # HN points contribute lightly (caps to avoid drowning the rest).
     hn_bonus = 0.0
