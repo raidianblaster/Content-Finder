@@ -52,7 +52,8 @@ def test_main_passes_hkt_date_to_renderers(tmp_path, monkeypatch):
     out_path: Path = tmp_path / "out.html"
     monkeypatch.setattr(
         "sys.argv",
-        ["content_finder.py", "--days", "1", "--format", "html", "--out", str(out_path)],
+        ["content_finder.py", "--days", "1", "--format", "html",
+         "--out", str(out_path), "--no-dedup-state"],
     )
 
     rc = cf.main()

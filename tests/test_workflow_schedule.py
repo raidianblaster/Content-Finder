@@ -41,3 +41,25 @@ def test_cron_minute_targets_morning_hkt_delivery():
     assert hour_utc == 22, (
         f"cron hour is {hour_utc} UTC; digest target is 06:xx HKT (= 22:xx UTC)."
     )
+
+
+def test_workflow_commits_dedup_state_alongside_digest():
+    """Cross-day dedup is only useful if the state file persists across runs.
+    The workflow must include dedup-state.json in its `git add` step."""
+    text = WORKFLOW.read_text()
+    assert "dedup-state.json" in text, (
+        "daily.yml must `git add dedup-state.json` so cross-day dedup state "
+        "survives between runs"
+    )
+
+
+def test_dedup_state_not_in_gitignore():
+    """If the state file is gitignored, `git add` silently skips it and the
+    cross-day dedup state never gets committed."""
+    gitignore = WORKFLOW.parent.parent.parent / ".gitignore"
+    if not gitignore.exists():
+        return
+    lines = [ln.strip() for ln in gitignore.read_text().splitlines()]
+    assert "dedup-state.json" not in lines, (
+        ".gitignore must not exclude dedup-state.json — it has to be committed."
+    )
