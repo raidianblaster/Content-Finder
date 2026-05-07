@@ -1334,7 +1334,7 @@ def _page_shell(
     short_date = page_date.strftime("%a %d %b %Y")
     return "\n".join([
         "<!doctype html>",
-        '<html lang="en"><head>',
+        '<html lang="en" data-theme="dark"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<meta name="theme-color" content="#0a0a0d">',

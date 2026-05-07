@@ -1,50 +1,368 @@
 <!doctype html>
-<html lang="en"><head>
+<html lang="en" data-theme="dark"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0d">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <title>AI Digest — Archive</title>
 <style>
 :root {
-  --bg: #fafafa; --fg: #1a1a1a; --muted: #666;
-  --accent: #0066cc; --border: #e0e0e0;
+  /* Backgrounds — Route A spec */
+  --bg-0: #0a0a0d;
+  --bg-1: #111116;
+  --bg-2: #18181f;
+  --bg-3: #202028;
+  --bg-4: #28282f;
+  --border: #22222c;
+  --border-2: #2e2e3a;
+  --fg: #e2e2ea;
+  --fg-mid: #9a9ab0;
+  --fg-dim: #606072;
+  /* Purple — primary accent (hue 292) */
+  --purple: oklch(65% 0.22 292);
+  --purple-bright: oklch(72% 0.24 292);
+  --purple-soft: oklch(65% 0.22 292 / 0.15);
+  --purple-border: oklch(65% 0.22 292 / 0.35);
+  --purple-dim: oklch(65% 0.22 292 / 0.08);
+  /* Backwards-compat aliases — earlier code referred to --accent. */
+  --accent: var(--purple);
+  --accent-bg: var(--purple-soft);
+  --accent-border: var(--purple-border);
+  /* Secondary accents */
+  --green: oklch(68% 0.13 145);
+  --green-bg: oklch(68% 0.13 145 / 0.1);
+  --amber: oklch(72% 0.13 75);
+  --amber-bg: oklch(72% 0.13 75 / 0.1);
+  --teal: oklch(68% 0.13 210);
+  --teal-bg: oklch(68% 0.13 210 / 0.1);
+  --slate: oklch(68% 0.12 260);
+  --slate-bg: oklch(68% 0.12 260 / 0.1);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f0f10; --fg: #e8e8e8; --muted: #9a9a9a;
-    --accent: #7aa2ff; --border: #232325;
-  }
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg-0); color: var(--fg); }
 body {
-  background: var(--bg); color: var(--fg);
-  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem;
+  font: 14px/1.55 "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
 }
-header { margin-bottom: 1.5rem; }
-header h1 { margin: 0 0 .25rem; font-size: 1.4rem; }
-header nav { margin-top: .75rem; font-size: .9rem; }
-header nav a { color: var(--accent); text-decoration: none; }
-ul.digests { list-style: none; padding: 0; margin: 0; }
-ul.digests li {
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-0);
+  min-height: 100vh;
+}
+
+/* Top bar */
+.topbar {
+  background: var(--bg-0);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.topbar-left { display: flex; align-items: baseline; gap: 12px; }
+.topbar-title { font-size: 16px; font-weight: 600; color: var(--fg); }
+.topbar-date  { font-size: 13px; color: var(--fg-dim); }
+.topbar-right {
+  margin-left: auto; font-size: 12px; color: var(--fg-dim);
+}
+.topbar-right a { color: var(--fg-dim); text-decoration: none; }
+.topbar-right a:hover { color: var(--fg-mid); }
+
+/* Takeaways block */
+.takeaways {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
+}
+.takeaways-toggle {
+  width: 100%; min-height: 44px;
+  padding: 12px 20px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 10px;
+  font-family: inherit; text-align: left;
+}
+.takeaways-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--purple);
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+.takeaways-count {
+  margin-left: 4px; font-size: 11px; color: var(--purple); opacity: 0.6;
+}
+.takeaways-chevron {
+  margin-left: auto; font-size: 13px; color: var(--fg-dim);
+  display: inline-block; transition: transform 0.15s;
+}
+.takeaways-toggle[aria-expanded="false"] .takeaways-chevron {
+  transform: rotate(180deg);
+}
+.takeaways-body {
+  padding: 4px 20px 18px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.takeaways-body.is-collapsed { display: none; }
+.takeaway {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.takeaway-num {
+  font-family: "DM Mono", monospace;
+  font-size: 12px; font-weight: 700; color: var(--purple);
+  min-width: 20px; padding-top: 3px; flex-shrink: 0;
+}
+.takeaway-content { flex: 1; min-width: 0; }
+.takeaway-content p {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.65;
+}
+.takeaway-links {
+  margin-top: 8px; display: flex; flex-direction: column; gap: 4px;
+}
+.takeaway-link-row {
+  display: flex; align-items: center; gap: 6px;
+  min-height: 28px;
+  background: none; border: none; padding: 2px 6px;
+  margin-left: -6px; margin-right: -6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit; text-align: left;
+  text-decoration: none;
+  transition: background .12s, color .12s;
+  width: 100%;
+}
+.takeaway-link-row:hover {
+  background: var(--purple-dim);
+}
+.takeaway-link-tick {
+  display: inline-block; width: 2px; height: 12px;
+  background: var(--purple); border-radius: 1px; flex-shrink: 0;
+  transition: background .12s;
+}
+.takeaway-link-row:hover .takeaway-link-tick {
+  background: var(--purple-bright);
+}
+.takeaway-link-label {
+  font-size: 12px; color: var(--purple);
+  text-decoration: underline;
+  text-decoration-color: var(--purple-border);
+  text-underline-offset: 2px;
+}
+.takeaway-link-row:hover .takeaway-link-label {
+  color: var(--purple-bright);
+  text-decoration-color: var(--purple);
+}
+.takeaway-link-source {
+  font-size: 11px; color: var(--fg-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.takeaway-link-arrow {
+  font-size: 11px; color: var(--fg-dim); margin-left: auto;
+  transition: color .12s;
+}
+.takeaway-link-row:hover .takeaway-link-arrow {
+  color: var(--purple-bright);
+}
+
+/* Filter chips */
+.chips {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.chip {
+  font-family: inherit; font-size: 12px; font-weight: 500;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--fg-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .12s, background .12s, border-color .12s;
+}
+.chip:hover { color: var(--fg); }
+.chip.is-active { color: var(--fg); background: var(--bg-3); border-color: var(--border-2); }
+.chip[data-tag="Models"].is-active     { color: var(--green);  background: var(--green-bg);  border-color: oklch(68% 0.13 145 / 0.4); }
+.chip[data-tag="Agents"].is-active     { color: var(--purple); background: var(--purple-soft); border-color: var(--purple-border); }
+.chip[data-tag="Tooling"].is-active    { color: var(--teal);   background: var(--teal-bg);   border-color: oklch(68% 0.13 210 / 0.4); }
+.chip[data-tag="Regulation"].is-active { color: var(--amber);  background: var(--amber-bg);  border-color: oklch(72% 0.13 75 / 0.4); }
+.chip[data-tag="Enterprise"].is-active { color: var(--purple); background: var(--purple-dim); border-color: var(--purple-border); }
+.chip[data-tag="Research"].is-active   { color: var(--slate);  background: var(--slate-bg);  border-color: oklch(68% 0.12 260 / 0.4); }
+
+/* Article list + section labels */
+.article-list { padding-bottom: 24px; }
+.section-label {
+  padding: 16px 20px 8px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600;
+  color: var(--purple);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--bg-0);
+}
+.section-label::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Item card */
+.item {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.item.is-expanded {
+  border-left-color: var(--purple);
+  background: var(--purple-dim);
+}
+.item .tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+  border: 1px solid;
+}
+.tag-Models     { color: var(--green);  background: var(--green-bg);   border-color: oklch(68% 0.13 145 / 0.3); }
+.tag-Agents     { color: var(--purple); background: oklch(65% 0.22 292 / 0.12); border-color: var(--purple-border); }
+.tag-Tooling    { color: var(--teal);   background: var(--teal-bg);    border-color: oklch(68% 0.13 210 / 0.3); }
+.tag-Regulation { color: var(--amber);  background: var(--amber-bg);   border-color: oklch(72% 0.13 75 / 0.3); }
+.tag-Enterprise { color: var(--purple); background: var(--purple-dim); border-color: var(--purple-border); }
+.tag-Research   { color: var(--slate);  background: var(--slate-bg);   border-color: oklch(68% 0.12 260 / 0.3); }
+
+.item-title {
+  display: flex; align-items: flex-start; gap: 10px;
+  width: 100%; min-height: 44px;
+  background: none; border: none; padding: 0;
+  margin-bottom: 6px;
+  text-align: left; cursor: pointer;
+  font-family: inherit;
+  color: var(--fg);
+}
+.item-title-text {
+  flex: 1; min-width: 0;
+  font-size: 15px; font-weight: 500; line-height: 1.4;
+  text-wrap: pretty;
+}
+.item-title-chev {
+  flex-shrink: 0; padding-top: 3px;
+  font-size: 12px; color: var(--fg-dim);
+  transition: transform .15s, color .15s;
+}
+.item-title:hover .item-title-text { color: var(--purple); }
+.item-title:hover .item-title-chev { color: var(--purple); }
+.item.is-expanded .item-title-chev { transform: rotate(180deg); color: var(--purple); }
+.item-body { display: none; margin-top: 8px; margin-bottom: 12px; }
+.item.is-expanded .item-body { display: block; }
+.item-snippet {
+  font-size: 14px; color: var(--fg-mid); line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.so-what {
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  border-radius: 5px;
+  padding: 8px 11px;
+}
+.so-what-label { font-size: 12px; font-weight: 600; color: var(--purple); }
+.so-what-body  { font-size: 12px; color: var(--fg-mid); line-height: 1.55; }
+
+.item-actions {
+  display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;
+}
+.read-article {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; padding: 8px 16px; min-height: 40px;
+  background: var(--purple-soft); border: 1px solid var(--purple-border);
+  border-radius: 6px;
+  color: var(--purple-bright); text-decoration: none;
+  font-family: inherit;
+}
+.read-article:hover { background: var(--purple-dim); border-color: var(--purple-bright); }
+.collapse-btn {
+  display: inline-flex; align-items: center;
+  font-size: 13px; padding: 8px 14px; min-height: 40px;
+  background: none; border: 1px solid var(--border-2);
+  border-radius: 6px; color: var(--fg-dim);
+  cursor: pointer; font-family: inherit;
+}
+.collapse-btn:hover { color: var(--fg); border-color: var(--fg-mid); }
+
+.item .meta {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  margin-top: 4px;
+}
+.item .meta .source {
+  font-size: 12px; color: var(--fg-mid); font-weight: 500;
+}
+.item .meta .source::before {
+  content: ""; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--fg-dim); margin-right: 8px;
+  vertical-align: middle;
+}
+.item .meta .date { font-size: 12px; color: var(--fg-dim); }
+.score-pill {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  border: 1px solid; border-radius: 3px;
+  padding: 1px 6px;
+}
+.score-pill.score-high { color: var(--green);  background: oklch(68% 0.13 145 / 0.18); border-color: oklch(68% 0.13 145 / 0.3); }
+.score-pill.score-mid  { color: var(--purple); background: var(--purple-soft);          border-color: var(--purple-border); }
+.score-pill.score-low  { color: var(--fg-dim); background: rgba(255,255,255,0.05);     border-color: rgba(255,255,255,0.18); }
+
+footer {
+  padding: 24px 20px; text-align: center;
+  font-size: 12px; color: var(--fg-dim);
   border-top: 1px solid var(--border);
-  padding: 1rem 0;
+}
+footer a { color: var(--fg-dim); }
+
+.is-hidden { display: none !important; }
+
+.archive-intro {
+  padding: 16px 20px 4px;
+  font-size: 13px; color: var(--fg-mid);
+}
+ul.digests {
+  list-style: none; padding: 0; margin: 0;
+}
+ul.digests li {
+  border-bottom: 1px solid var(--border);
 }
 ul.digests a {
-  color: var(--fg); text-decoration: none;
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 1rem;
+  padding: 14px 20px;
+  color: var(--fg); text-decoration: none;
+  transition: background 0.15s, color 0.15s;
 }
-ul.digests a:hover { color: var(--accent); }
-ul.digests .date { font-size: 1rem; font-weight: 500; }
-ul.digests .day { color: var(--muted); font-size: .85rem; }
+ul.digests a:hover { background: var(--purple-dim); color: var(--purple); }
+ul.digests .date { font-size: 15px; font-weight: 500; }
+ul.digests .day  { font-size: 12px; color: var(--fg-dim); }
+ul.digests .empty {
+  padding: 14px 20px; color: var(--fg-dim); font-size: 14px;
+}
+footer {
+  padding: 24px 20px; font-size: 12px; color: var(--fg-dim);
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--fg-mid); }
 </style>
 </head><body>
-<header>
-<h1>AI Digest archive</h1>
-<nav><a href="index.html">← latest digest</a></nav>
+<div class="page">
+<header class="topbar">
+<div class="topbar-left">
+<span class="topbar-title">AI Digest</span>
+<span class="topbar-date">Archive</span>
+</div>
+<div class="topbar-right"><a href="index.html">← latest</a></div>
 </header>
+<div class="archive-intro">7 archived digests.</div>
 <ul class="digests">
 <li><a href="archive/2026-05-07.html"><span class="date">07 May 2026</span><span class="day">Thursday</span></a></li>
 <li><a href="archive/2026-05-06.html"><span class="date">06 May 2026</span><span class="day">Wednesday</span></a></li>
@@ -53,4 +371,7 @@ ul.digests .day { color: var(--muted); font-size: .85rem; }
 <li><a href="archive/2026-05-03.html"><span class="date">03 May 2026</span><span class="day">Sunday</span></a></li>
 <li><a href="archive/2026-05-02.html"><span class="date">02 May 2026</span><span class="day">Saturday</span></a></li>
 <li><a href="archive/2026-05-01.html"><span class="date">01 May 2026</span><span class="day">Friday</span></a></li>
-</ul></body></html>
+</ul>
+<footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></footer>
+</div>
+</body></html>
