@@ -302,13 +302,22 @@ def score_item(item: Item) -> float:
     return base + 2 * recency + src_bonus + hn_bonus
 
 
+def canonical_url(url: str) -> str:
+    """Strip query string and trailing slash for cross-run URL comparison.
+
+    Extracted from dedupe() so future cross-day dedup can match URLs the same
+    way today's within-run dedup does.
+    """
+    return url.split("?")[0].rstrip("/")
+
+
 def dedupe(items: list[Item]) -> list[Item]:
     """Drop near-duplicate titles / same URLs across sources."""
     seen_urls: set[str] = set()
     seen_titles: set[str] = set()
     out: list[Item] = []
     for it in sorted(items, key=lambda x: x.score, reverse=True):
-        u = it.url.split("?")[0].rstrip("/")
+        u = canonical_url(it.url)
         t_norm = re.sub(r"[^a-z0-9 ]+", "", it.title.lower()).strip()
         t_key = " ".join(t_norm.split()[:8])
         if u in seen_urls or (t_key and t_key in seen_titles):
