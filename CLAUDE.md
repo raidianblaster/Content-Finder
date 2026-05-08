@@ -57,6 +57,16 @@ Every feature and bugfix in this repo follows test-driven development. Not negot
 
 If a test is genuinely hard to write, that's a design signal — pause and ask whether the code under test should be restructured (extract a pure function, push I/O to the edge), not whether the test can be skipped.
 
+## Session start checklist
+
+Before writing any code, always run:
+
+```bash
+git pull origin main
+```
+
+`docs/index.html` is overwritten by a nightly cron — local copies go stale fast. Skipping the pull risks a merge conflict when pushing, and the cron's version of the file is always the one that should be preserved.
+
 ## Common commands
 
 ```bash
