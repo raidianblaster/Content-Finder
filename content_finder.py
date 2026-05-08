@@ -825,6 +825,17 @@ footer {
 footer a { color: var(--fg-dim); }
 
 .is-hidden { display: none !important; }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .item-title { font-size: 17px; }
+  .item-summary, .item-body p { font-size: 15px; }
+  .so-what-body { font-size: 14px; }
+  .chip { font-size: 13px; }
+  .topbar-title { font-size: 18px; }
+  .topbar-date { font-size: 14px; }
+  .meta, .item .meta .date, .score-pill, .tag-pill { font-size: 12px; }
+}
 """
 
 
