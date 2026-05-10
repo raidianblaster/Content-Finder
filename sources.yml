@@ -23,6 +23,15 @@ rss_sources:
   - name: "Anthropic News"
     url: "https://www.anthropic.com/rss.xml"
     trust: 3
+  - name: "OpenAI News"
+    url: "https://openai.com/news/rss.xml"
+    trust: 3
+  - name: "Google DeepMind"
+    url: "https://deepmind.google/blog/rss.xml"
+    trust: 3
+  - name: "Marcus on AI (Gary Marcus)"
+    url: "https://garymarcus.substack.com/feed"
+    trust: 2
   - name: "Hugging Face Blog"
     url: "https://huggingface.co/blog/feed.xml"
     trust: 1
