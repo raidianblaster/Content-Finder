@@ -1126,6 +1126,22 @@ def _convert_raw_md_links(content: str) -> str:
     return _RAW_MD_LINK_RE.sub(repl, content)
 
 
+def _html_text(value: str) -> str:
+    """Render untrusted Markdown-derived fragments as inert text."""
+    return html.escape(html.unescape(value), quote=False)
+
+
+def _safe_http_url(url: str) -> str:
+    """Return a link URL only when it is safe to render as an article href."""
+    try:
+        parsed = urlparse(url)
+    except Exception:
+        return ""
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return ""
+    return url
+
+
 def _parse_synthesis_li(li_html: str, item_id: int) -> str:
     """Convert a `<li>` carrying a structured synthesis bullet into a card.
 
@@ -1167,8 +1183,8 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
         return _build_card_html(
             item_id=item_id,
             data_tags=data_tags,
-            title=html.escape(headline.strip()),
-            snippet=html.escape(body_text.strip()) if body_text.strip() else "",
+            title=headline.strip(),
+            snippet=body_text.strip() if body_text.strip() else "",
             so_what="",
             url=url,
             source_name=_resolve_source_name(source_name, url),
@@ -1241,7 +1257,10 @@ def _build_card_html(
         return ""
     # Title scrub: strip stray `**` markdown markers (unclosed bold from
     # truncated upstream content). Real headlines never contain literal `**`.
-    title = title.replace("**", "")
+    title = _html_text(title.replace("**", ""))
+    snippet = _html_text(snippet)
+    so_what = _html_text(so_what)
+    safe_url = _safe_http_url(url)
     parts = [
         f'<article class="item" data-tags="{html.escape(data_tags)}" '
         f'id="item-{item_id}">',
@@ -1262,9 +1281,9 @@ def _build_card_html(
             '</div>'
         )
     parts.append('<div class="item-actions">')
-    if url:
+    if safe_url:
         parts.append(
-            f'<a class="read-article" href="{html.escape(url)}" '
+            f'<a class="read-article" href="{html.escape(safe_url, quote=True)}" '
             f'target="_blank" rel="noopener">Read article →</a>'
         )
     parts.append(

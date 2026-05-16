@@ -211,6 +211,37 @@ def test_card_with_only_source_or_url_still_renders():
     assert 'href="https://example.com/x"' in out
 
 
+def test_synthesis_html_escapes_untrusted_card_text():
+    """Feed/LLM text is untrusted; rendered cards must not preserve raw HTML."""
+    md = """## Top story
+
+- **<img src=x onerror=alert(1)>** — body <script>alert(2)</script>. **So what:** <img src=x onerror=alert(3)> [Source](https://x.example) {tags: Models}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 16))
+    assert "<img src=x onerror=alert(1)>" not in out
+    assert "<img src=x onerror=alert(3)>" not in out
+    assert "<script>alert(2)</script>" not in out
+    assert "&lt;img src=x onerror=alert(1)&gt;" in out
+    assert "&lt;script&gt;alert(2)&lt;/script&gt;" in out
+    assert "&lt;img src=x onerror=alert(3)&gt;" in out
+
+
+def test_synthesis_card_drops_non_http_source_links():
+    """Only http(s) source URLs should become clickable article links."""
+    out = cf._build_card_html(
+        item_id=1,
+        data_tags="Models",
+        title="Title",
+        snippet="Body",
+        so_what="Implication",
+        url="javascript:alert(1)",
+        source_name="Source",
+    )
+    assert "javascript:" not in out
+    assert 'class="read-article"' not in out
+    assert 'class="source"' in out
+
+
 # --- Bug 10: generic LLM link labels get a useful source, not literal "Source" — #
 #
 # 2026-05-06 prod regression: every card on the live page rendered with the
