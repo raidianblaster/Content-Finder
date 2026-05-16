@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Iterable
-from urllib.parse import urlparse
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 from zoneinfo import ZoneInfo
 
 import feedparser
@@ -445,7 +445,25 @@ def canonical_url(url: str) -> str:
     cross-day dedup-state filter, so a URL with a tracker tomorrow still
     matches the bare URL stored today.
     """
-    return url.split("?")[0].rstrip("/")
+    parsed = urlparse(url)
+    path = parsed.path.rstrip("/")
+    host = parsed.netloc.replace("www.", "")
+
+    query = ""
+    if host == "news.ycombinator.com" and path == "/item":
+        for key, value in parse_qsl(parsed.query, keep_blank_values=True):
+            if key == "id" and value:
+                query = urlencode({"id": value})
+                break
+
+    return urlunparse((
+        parsed.scheme,
+        parsed.netloc,
+        path,
+        "",
+        query,
+        "",
+    ))
 
 
 def dedupe(items: list[Item]) -> list[Item]:
