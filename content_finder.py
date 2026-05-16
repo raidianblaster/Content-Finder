@@ -200,7 +200,9 @@ def _to_utc(struct_time) -> datetime:
 def fetch_rss(source: str, url: str, since: datetime) -> list[Item]:
     items: list[Item] = []
     try:
-        parsed = feedparser.parse(url, request_headers={"User-Agent": "ContentFinder/1.0"})
+        r = httpx.get(url, headers={"User-Agent": "ContentFinder/1.0"}, timeout=15)
+        r.raise_for_status()
+        parsed = feedparser.parse(r.content)
     except Exception as exc:
         print(f"[warn] {source}: {exc}", file=sys.stderr)
         return items
