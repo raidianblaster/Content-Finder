@@ -55,13 +55,20 @@ def test_A5_idempotent():
         assert once == twice, f"not idempotent: {u!r} -> {once!r} -> {twice!r}"
 
 
-def test_A6_hn_discussion_url_collapses_documents_existing_behavior():
-    # Pre-existing behavior: dedupe() strips ?id=, so all bare HN discussion
-    # URLs canonicalize to the same string. This test exists to flag the
-    # collapse if canonical_url is later changed without considering HN.
+def test_A6_hn_discussion_url_preserves_item_id():
+    # HN discussion URLs use the query string as their stable item identity.
+    # Preserve `id` there while still stripping tracker params elsewhere.
     a = cf.canonical_url("https://news.ycombinator.com/item?id=1")
     b = cf.canonical_url("https://news.ycombinator.com/item?id=2")
-    assert a == b == "https://news.ycombinator.com/item"
+    assert a == "https://news.ycombinator.com/item?id=1"
+    assert b == "https://news.ycombinator.com/item?id=2"
+
+
+def test_A6b_hn_discussion_url_strips_non_id_params():
+    assert (
+        cf.canonical_url("https://news.ycombinator.com/item?id=42&utm_source=x")
+        == "https://news.ycombinator.com/item?id=42"
+    )
 
 
 def _item(url: str, title: str, score: float = 5.0) -> cf.Item:
@@ -679,3 +686,15 @@ def test_A7_dedupe_url_collapse_behavior_unchanged_after_refactor():
     urls = [it.url for it in out]
     # The bare URL (highest score in the canonical-collapsed group) wins.
     assert urls == ["https://example.com/a", "https://example.com/b"]
+
+
+def test_A8_dedupe_keeps_distinct_hn_discussion_urls():
+    items = [
+        _item("https://news.ycombinator.com/item?id=1", "HN one", score=10),
+        _item("https://news.ycombinator.com/item?id=2", "HN two", score=9),
+    ]
+    out = cf.dedupe(items)
+    assert [it.url for it in out] == [
+        "https://news.ycombinator.com/item?id=1",
+        "https://news.ycombinator.com/item?id=2",
+    ]
