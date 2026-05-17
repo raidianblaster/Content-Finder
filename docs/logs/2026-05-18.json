@@ -1,0 +1,480 @@
+{
+  "date": "2026-05-18",
+  "prompt_version": "v1",
+  "pipeline": {
+    "fetched": 71,
+    "after_keyword_filter": 42,
+    "after_dedupe": 38,
+    "after_ttl_filter": 33,
+    "after_source_cap": 10
+  },
+  "dropped_keyword": [
+    {
+      "title": "[AINews] Cerebras' $60B IPO: Slowly, then All at Once",
+      "url": "https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then",
+      "source": "Latent Space",
+      "score": 3.49,
+      "age_days": 1.8
+    },
+    {
+      "title": "Warelay -> OpenClaw",
+      "url": "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.68,
+      "age_days": 1.1
+    },
+    {
+      "title": "Quoting Julia Evans",
+      "url": "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.64,
+      "age_days": 1.3
+    },
+    {
+      "title": "inaturalist-clumper 0.1",
+      "url": "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Ciridae, which is developing AI to streamline back-office operations for real-economy businesses, raised a $20M seed led by Accel, with a16z participating (Jack Kubinec/Fortune)",
+      "url": "https://www.techmeme.com/260517/p14#a260517p14",
+      "source": "Techmeme",
+      "score": 3.0,
+      "age_days": 0.0
+    },
+    {
+      "title": "Source: Shein is acquiring DTC clothing retailer Everlane, which focuses on sustainability and \"radical transparency\", in a $100M deal (Lauren Sherman/Puck)",
+      "url": "https://www.techmeme.com/260517/p13#a260517p13",
+      "source": "Techmeme",
+      "score": 2.98,
+      "age_days": 0.1
+    },
+    {
+      "title": "Grafana says hackers have accessed its GitHub environment and demanded a ransom to prevent the release of its codebase; Grafana refused to pay (The Hacker News)",
+      "url": "https://www.techmeme.com/260517/p11#a260517p11",
+      "source": "Techmeme",
+      "score": 2.95,
+      "age_days": 0.2
+    },
+    {
+      "title": "Analysis: mass adoption of smartphones and social media may be a primary driver of declining birthrates globally, in part by reducing in-person socializing (John Burn-Murdoch/Financial Times)",
+      "url": "https://www.techmeme.com/260517/p10#a260517p10",
+      "source": "Techmeme",
+      "score": 2.94,
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: DayOne, the spinoff of China's largest data center operator GDS Holdings, plans dual IPO in Singapore and NY, seeking to raise $5B at a ~$20B valuation (Owen Walker/Financial Times)",
+      "url": "https://www.techmeme.com/260517/p8#a260517p8",
+      "source": "Techmeme",
+      "score": 2.92,
+      "age_days": 0.3
+    },
+    {
+      "title": "Sources: Apple's revamped Siri may launch in beta, and will have an option to auto-delete chats; Apple plans to add Suggested Genmoji to iOS 27 and iPadOS 27 (Mark Gurman/Bloomberg)",
+      "url": "https://www.techmeme.com/260517/p7#a260517p7",
+      "source": "Techmeme",
+      "score": 2.9,
+      "age_days": 0.3
+    },
+    {
+      "title": "Developers say Chinese AI labs lead US rivals in video generation, as ByteDance and Kuaishou train models on vast short-form video libraries from their own apps (Eleanor Olcott/Financial Times)",
+      "url": "https://www.techmeme.com/260517/p6#a260517p6",
+      "source": "Techmeme",
+      "score": 2.87,
+      "age_days": 0.5
+    },
+    {
+      "title": "A profile of SAS CEO Jim Goodnight, the 83-year-old who co-founded the 50-year-old analytics firm and holds a ~67% stake worth $13.3B, as AI tests SAS' strategy (Phoebe Liu/Forbes)",
+      "url": "https://www.techmeme.com/260517/p5#a260517p5",
+      "source": "Techmeme",
+      "score": 2.83,
+      "age_days": 0.6
+    },
+    {
+      "title": "Experts: Stuxnet-linked Fast16 malware, designed to subvert nuclear weapons testing simulations, was likely part of a campaign to slow Iran's nuclear ambitions (Kim Zetter/ZERO DAY)",
+      "url": "https://www.techmeme.com/260517/p4#a260517p4",
+      "source": "Techmeme",
+      "score": 2.8,
+      "age_days": 0.7
+    },
+    {
+      "title": "Milan-based Webidoo, which develops an operational layer designed to help SMBs access AI tools, raised $25M led by IXC3 for North American expansion (David Cendon Garcia/EU-Startups)",
+      "url": "https://www.techmeme.com/260517/p2#a260517p2",
+      "source": "Techmeme",
+      "score": 2.78,
+      "age_days": 0.8
+    },
+    {
+      "title": "Filings: in Q1, Trump traded $220M-$750M in NVDA, MSFT, AMZN, META, ORCL, and other stocks; millions of dollars of NVDA were bought shortly before major news (Kevin Breuninger/CNBC)",
+      "url": "https://www.techmeme.com/260517/p1#a260517p1",
+      "source": "Techmeme",
+      "score": 2.78,
+      "age_days": 0.8
+    },
+    {
+      "title": "Latest open artifacts (#21): Open model bonanza! Gemma 4, DeepSeek V4, Kimi K2.6, MiMo 2.5, GLM-5.1 & others. On CAISI's V4 assessment.",
+      "url": "https://www.interconnects.ai/p/latest-open-artifacts-21-open-model",
+      "source": "Interconnects (Lambert)",
+      "score": 3.64,
+      "age_days": 1.3
+    },
+    {
+      "title": "Mozilla to UK regulators: VPNs are essential privacy and security tools",
+      "url": "https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/",
+      "source": "Hacker News",
+      "score": 5.8,
+      "age_days": 0.7
+    },
+    {
+      "title": "'No way to prevent this,' says only package manager where this regularly happens",
+      "url": "https://kevinpatel.xyz/posts/no-way-to-prevent-this/",
+      "source": "Hacker News",
+      "score": 5.45,
+      "age_days": 1.9
+    },
+    {
+      "title": "PART Telescopes \u2013 Bringing radio astronomy within reach of rural schools",
+      "url": "https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2",
+      "source": "Hacker News",
+      "score": 2.88,
+      "age_days": 1.3
+    },
+    {
+      "title": "Greek Alphabet Cards",
+      "url": "https://labs.randomquark.com/alphabet_cards/",
+      "source": "Hacker News",
+      "score": 3.01,
+      "age_days": 1.5
+    },
+    {
+      "title": "A Meta employee gets real about the horror of working there",
+      "url": "https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/",
+      "source": "Hacker News",
+      "score": 2.6,
+      "age_days": 1.4
+    },
+    {
+      "title": "Magical Realism: \u201cNorthern Exposure\u201d 25 Years Later (2015)",
+      "url": "https://www.rogerebert.com/streaming/magical-realism-nothern-exposure-25-years-later",
+      "source": "Hacker News",
+      "score": 1.96,
+      "age_days": 1.9
+    },
+    {
+      "title": "Ask HN: When did computers stop being fun?",
+      "url": "https://news.ycombinator.com/item?id=48164173",
+      "source": "Hacker News",
+      "score": 2.32,
+      "age_days": 1.0
+    },
+    {
+      "title": "The mistake of conflating intelligence and power",
+      "url": "https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence",
+      "source": "Dwarkesh Podcast",
+      "score": 3.67,
+      "age_days": 1.2
+    },
+    {
+      "title": "Notes on pretraining parallelisms and failed training runs.",
+      "url": "https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms",
+      "source": "Dwarkesh Podcast",
+      "score": 3.67,
+      "age_days": 1.2
+    },
+    {
+      "title": "RLVR might be disproportionately bad at science",
+      "url": "https://www.dwarkesh.com/p/rlvr-might-be-disproportionately",
+      "source": "Dwarkesh Podcast",
+      "score": 3.67,
+      "age_days": 1.2
+    },
+    {
+      "title": "How to Negotiate Agent Access in Enterprise Software Contracts",
+      "url": "https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "age_days": 2.0
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "How to Build an AI Agent with Persistent Memory Using RAG and Vector Search",
+      "url": "https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/",
+      "source": "MindStudio",
+      "score": 9.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-17"
+    },
+    {
+      "title": "Claude for Legal Teams: How Anthropic's MCP Connectors Work for Law Firms",
+      "url": "https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/",
+      "source": "MindStudio",
+      "score": 9.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-17"
+    },
+    {
+      "title": "Multi-Agent Orchestration vs Single Model: Why 100+ Agents Beat One Frontier Model",
+      "url": "https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/",
+      "source": "MindStudio",
+      "score": 9.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-17"
+    },
+    {
+      "title": "Moving away from Tailwind, and learning to structure my CSS",
+      "url": "https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/",
+      "source": "Hacker News",
+      "score": 8.55,
+      "age_days": 1.6,
+      "first_seen": "2026-05-17"
+    },
+    {
+      "title": "OpenAI and Malta partner to bring ChatGPT Plus to all citizens",
+      "url": "https://openai.com/index/malta-chatgpt-plus-partnership",
+      "source": "OpenAI News",
+      "score": 6.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-17"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Anthropic vs OpenAI Business Adoption: What the Data Says About Enterprise AI",
+      "url": "https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Use the Claude Agent SDK to Deploy Agentic Workflows to Modal or Trigger.dev",
+      "url": "https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Progressive Disclosure in AI Agent Design? How Skills Load Context Efficiently",
+      "url": "https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Project Glasswing? Anthropic's Controlled Cybersecurity AI Rollout Explained",
+      "url": "https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "DeepSeek-V4-Flash means LLM steering is interesting again",
+      "url": "https://www.seangoedecke.com/steering-vectors/",
+      "source": "Hacker News",
+      "score": 6.21,
+      "age_days": 1.3
+    },
+    {
+      "title": "MCP Hello Page",
+      "url": "https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page",
+      "source": "Hacker News",
+      "score": 5.97,
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: Semble \u2013 Code search for agents that uses 98% fewer tokens than grep",
+      "url": "https://github.com/MinishLab/semble",
+      "source": "Hacker News",
+      "score": 5.88,
+      "age_days": 0.3
+    },
+    {
+      "title": "Playing Atari ST Music on the Amiga with Zero CPU",
+      "url": "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/",
+      "source": "Hacker News",
+      "score": 5.82,
+      "age_days": 0.6
+    },
+    {
+      "title": "Claude Cloud Routines vs Scheduled Tasks: Which Should You Use?",
+      "url": "https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/",
+      "source": "MindStudio",
+      "score": 5.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Claude for Small Business: Pre-Built Agents for Finance, HR, Sales, and Ops",
+      "url": "https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/",
+      "source": "MindStudio",
+      "score": 5.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "OpenAI partners with Malta's AI for All initiative to give citizens a free year of ChatGPT Plus if they complete a University of Malta AI literacy course (Cointelegraph)",
+      "url": "https://www.techmeme.com/260516/p13#a260516p13",
+      "source": "Techmeme",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "How to Generate AI Videos with Claude Code, HyperFrames, and ElevenLabs",
+      "url": "https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Use the Notion Developer Platform with AI Agents: CLI, Webhooks, and SDK",
+      "url": "https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Time-Aware AI Agents: How Thinking Machines' Interaction Model Changes Automation",
+      "url": "https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Are Agentic Work Units? How Salesforce AgentForce Pricing Works",
+      "url": "https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How diamonds are made",
+      "url": "https://diamond.jaydip.me/",
+      "source": "Hacker News",
+      "score": 4.22,
+      "age_days": 2.0
+    },
+    {
+      "title": "AI Cybersecurity in 2026: How Claude Mythos and GPT 5.5 Are Finding Zero-Day Exploits",
+      "url": "https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Deploy Claude Agents That Run While You Sleep: 3 Methods Compared",
+      "url": "https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Mega Skills vs Modular Skills in Claude Code: Why Architecture Matters",
+      "url": "https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Build Modular Claude Skills That Chain Into Skill Systems",
+      "url": "https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Gemini Spark? Google's 24/7 Agent That Learns From Your Behavior",
+      "url": "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is an Orchestrator Skill? How to Wire Claude Skills Into End-to-End Systems",
+      "url": "https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Thinking Machines Labs? Mira Murati's New AI Company Explained",
+      "url": "https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    }
+  ],
+  "final": [
+    {
+      "title": "Zerostack \u2013 A Unix-inspired coding agent written in pure Rust",
+      "url": "https://crates.io/crates/zerostack/1.0.0",
+      "source": "Hacker News",
+      "score": 8.71,
+      "age_days": 1.0
+    },
+    {
+      "title": "Gemini 3.2 Flash vs Claude Opus 4.7: What to Expect from Google I/O",
+      "url": "https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/",
+      "source": "MindStudio",
+      "score": 8.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Agentic RAG? How Multi-Layer Retrieval Beats Standard Vector Search",
+      "url": "https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/",
+      "source": "MindStudio",
+      "score": 7.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Hosting a website on an 8-bit microcontroller",
+      "url": "https://maurycyz.com/projects/mcusite/",
+      "source": "Hacker News",
+      "score": 7.03,
+      "age_days": 0.9
+    },
+    {
+      "title": "Analysis: 34 leading AI startups are generating ~$80B in annualized revenue, up 112% from six months ago, with Anthropic and OpenAI capturing 89% of the revenue (The Information)",
+      "url": "https://www.techmeme.com/260517/p12#a260517p12",
+      "source": "Techmeme",
+      "score": 6.97,
+      "age_days": 0.1
+    },
+    {
+      "title": "King's Cross, where Google's new UK HQ is due to open later this year, has become London's new tech, VC, and AI hub, attracting OpenAI, Anthropic, and others (John Gapper/Financial Times)",
+      "url": "https://www.techmeme.com/260517/p3#a260517p3",
+      "source": "Techmeme",
+      "score": 6.79,
+      "age_days": 0.7
+    },
+    {
+      "title": "Apple Silicon costs more than OpenRouter",
+      "url": "https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html",
+      "source": "Hacker News",
+      "score": 6.73,
+      "age_days": 0.5
+    },
+    {
+      "title": "Agentic SaaS Pricing: What Salesforce AgentForce and Microsoft Copilot Credits Mean for Builders",
+      "url": "https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Publicis agrees to acquire LiveRamp, which allows companies to share and build new data sets and models that can power agentic frameworks, for $2.2B in cash (Alison Weissbrot/Adweek)",
+      "url": "https://www.techmeme.com/260517/p9#a260517p9",
+      "source": "Techmeme",
+      "score": 5.93,
+      "age_days": 0.3
+    },
+    {
+      "title": "GDS weighs in on the NHS's decision to retreat from Open Source",
+      "url": "https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything",
+      "source": "Simon Willison",
+      "score": 5.92,
+      "age_days": 0.3
+    }
+  ]
+}
