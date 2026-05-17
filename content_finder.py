@@ -187,6 +187,62 @@ class Item:
         return (datetime.now(timezone.utc) - self.published).total_seconds() / 3600
 
 
+@dataclass
+class FilterLog:
+    """Structured record of every filtering decision made during a single gather() run."""
+    date: str
+    prompt_version: str
+    fetched: int = 0
+    after_keyword: int = 0
+    after_dedupe: int = 0
+    after_ttl: int = 0
+    after_source_cap: int = 0
+    dropped_keyword: list = field(default_factory=list)
+    dropped_dedupe: list = field(default_factory=list)
+    dropped_ttl: list = field(default_factory=list)
+    dropped_source_cap: list = field(default_factory=list)
+    final: list = field(default_factory=list)
+
+    def to_dict(self) -> dict:
+        return {
+            "date": self.date,
+            "prompt_version": self.prompt_version,
+            "pipeline": {
+                "fetched": self.fetched,
+                "after_keyword_filter": self.after_keyword,
+                "after_dedupe": self.after_dedupe,
+                "after_ttl_filter": self.after_ttl,
+                "after_source_cap": self.after_source_cap,
+            },
+            "dropped_keyword": self.dropped_keyword,
+            "dropped_dedupe": self.dropped_dedupe,
+            "dropped_ttl": self.dropped_ttl,
+            "dropped_source_cap": self.dropped_source_cap,
+            "final": self.final,
+        }
+
+
+def _item_log_dict(it: "Item") -> dict:
+    d = {
+        "title": it.title,
+        "url": it.url,
+        "source": it.source,
+        "score": round(it.score, 2),
+        "age_days": round(it.age_hours / 24, 1),
+    }
+    if it.first_seen is not None:
+        d["first_seen"] = it.first_seen.isoformat()
+    return d
+
+
+def write_filter_log(log: FilterLog, out_dir: Path) -> None:
+    """Write log as JSON to <out_dir>/logs/YYYY-MM-DD.json."""
+    log_dir = out_dir / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    path = log_dir / f"{log.date}.json"
+    path.write_text(json.dumps(log.to_dict(), indent=2))
+
+
 # --------------------------------------------------------------------------- #
 # Fetchers
 # --------------------------------------------------------------------------- #
@@ -1690,7 +1746,10 @@ def gather(
     today: "date | None" = None,
     ttl_days: int = DEDUP_TTL_DAYS,
     minimum_items: int = MIN_RENDERED_ITEMS,
-) -> list[Item]:
+) -> "tuple[list[Item], FilterLog]":
+    run_date = today or today_hkt()
+    log = FilterLog(date=str(run_date), prompt_version=PROMPT_VERSION)
+
     since = datetime.now(timezone.utc) - timedelta(days=days)
     items: list[Item] = []
 
@@ -1709,15 +1768,37 @@ def gather(
     for it in items:
         it.score = score_item(it)
 
+    log.fetched = len(items)
+
     # Drop items with no keyword signal (pure noise).
+    by_url_pre = {it.url: it for it in items}
     items = [it for it in items if keyword_score(f"{it.title} {it.summary}") > 0]
+    after_keyword_urls = {it.url for it in items}
+    log.dropped_keyword = [
+        _item_log_dict(it) for url, it in by_url_pre.items()
+        if url not in after_keyword_urls
+    ]
+    log.after_keyword = len(items)
+
+    by_url_pre = {it.url: it for it in items}
     items = dedupe(items)
+    after_dedupe_urls = {it.url for it in items}
+    log.dropped_dedupe = [
+        _item_log_dict(it) for url, it in by_url_pre.items()
+        if url not in after_dedupe_urls
+    ]
+    log.after_dedupe = len(items)
 
     # Cross-day dedup: annotate with first_seen, filter by TTL, top up if needed.
     if dedup_state is not None:
         annotate_first_seen(items, dedup_state)
         today = today or today_hkt()
         fresh = filter_unseen(items, today=today, ttl_days=ttl_days)
+
+        pre_ttl_urls = {it.url for it in items}
+        fresh_urls = {it.url for it in fresh}
+        ttl_dropped_map = {it.url: it for it in items if it.url not in fresh_urls}
+
         if len(fresh) < minimum_items:
             fresh_set = {id(it) for it in fresh}
             filtered_out = [it for it in items if id(it) not in fresh_set]
@@ -1727,7 +1808,27 @@ def gather(
         else:
             items = fresh
 
-    return apply_source_cap(items, max_per_source=max_per_source)
+        # Items TTL-filtered and not rescued by topup
+        final_urls_after_ttl = {it.url for it in items}
+        log.dropped_ttl = [
+            _item_log_dict(it) for url, it in ttl_dropped_map.items()
+            if url not in final_urls_after_ttl
+        ]
+        log.after_ttl = len(items)
+    else:
+        log.after_ttl = len(items)
+
+    pre_cap = {it.url: it for it in items}
+    final_items = apply_source_cap(items, max_per_source=max_per_source)
+    final_urls = {it.url for it in final_items}
+    log.dropped_source_cap = [
+        _item_log_dict(it) for url, it in pre_cap.items()
+        if url not in final_urls
+    ]
+    log.after_source_cap = len(final_items)
+    log.final = [_item_log_dict(it) for it in final_items]
+
+    return final_items, log
 
 
 def main() -> int:
@@ -1768,7 +1869,7 @@ def main() -> int:
     state_path = Path(args.dedup_state_path)
     dedup_state = None if args.no_dedup_state else load_dedup_state(state_path)
 
-    items = gather(
+    items, filter_log = gather(
         args.days,
         args.hn_min_points,
         max_per_source=args.max_per_source,
@@ -1797,9 +1898,11 @@ def main() -> int:
     if args.out == "-":
         print(output)
     else:
-        with open(args.out, "w") as f:
+        out_path = Path(args.out)
+        with open(out_path, "w") as f:
             f.write(output)
         print(f"[info] wrote {args.out}", file=sys.stderr)
+        write_filter_log(filter_log, out_path.parent)
 
     # Update dedup state only after a successful render — items must have been
     # visible to the user before being banned.

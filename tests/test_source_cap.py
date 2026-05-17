@@ -59,6 +59,6 @@ def test_gather_applies_source_cap(monkeypatch):
     monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
     monkeypatch.setattr(cf, "dedupe", lambda items: fake_items)
 
-    out = cf.gather(days=1, hn_min_points=50)
+    out, _ = cf.gather(days=1, hn_min_points=50)
 
     assert sum(1 for it in out if it.source == "arXiv cs.AI") <= 3

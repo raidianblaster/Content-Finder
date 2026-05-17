@@ -43,7 +43,10 @@ def test_main_passes_hkt_date_to_renderers(tmp_path, monkeypatch):
     )
     fake_item.score = 5.0
 
-    monkeypatch.setattr(cf, "gather", lambda *a, **kw: [fake_item])
+    monkeypatch.setattr(cf, "gather", lambda *a, **kw: (
+        [fake_item],
+        cf.FilterLog(date="2026-05-02", prompt_version=cf.PROMPT_VERSION),
+    ))
     monkeypatch.setattr(cf, "today_hkt", lambda now=None: date(2026, 5, 2))
     monkeypatch.setattr(
         cf, "synthesize_with_claude", lambda items, model: "## Key takeaways\n- a\n- b\n- c\n"

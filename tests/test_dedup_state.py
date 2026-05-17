@@ -521,7 +521,7 @@ def _bypass_fetchers(monkeypatch, items_to_return):
 def test_F1_no_state_passes_all_items(monkeypatch):
     items = [_scored(f"https://x/{i}", 10.0 - i) for i in range(5)]
     _bypass_fetchers(monkeypatch, items)
-    out = cf.gather(days=2, hn_min_points=50, max_per_source=10, dedup_state=None)
+    out, _ = cf.gather(days=2, hn_min_points=50, max_per_source=10, dedup_state=None)
     assert len(out) == 5
     assert all(it.first_seen is None for it in out)
 
@@ -533,7 +533,7 @@ def test_F2_state_filters_seen_items(monkeypatch):
         "https://x/0": (TODAY - timedelta(days=1)).isoformat(),
         "https://x/1": (TODAY - timedelta(days=1)).isoformat(),
     }
-    out = cf.gather(
+    out, _ = cf.gather(
         days=2, hn_min_points=50, max_per_source=10,
         dedup_state=state, today=TODAY, ttl_days=5,
         minimum_items=10,
@@ -553,7 +553,7 @@ def test_F3_topup_kicks_in_when_pool_below_minimum(monkeypatch):
         f"https://x/{i}": (TODAY - timedelta(days=1)).isoformat()
         for i in range(10)
     }
-    out = cf.gather(
+    out, _ = cf.gather(
         days=2, hn_min_points=50, max_per_source=10,
         dedup_state=state, today=TODAY, ttl_days=5,
         minimum_items=10,
@@ -584,7 +584,7 @@ def test_F4_filter_runs_before_source_cap(monkeypatch):
     _bypass_fetchers(monkeypatch, items)
     state = {f"https://a/{i}": (TODAY - timedelta(days=1)).isoformat()
              for i in range(3)}
-    out = cf.gather(
+    out, _ = cf.gather(
         days=2, hn_min_points=50, max_per_source=3,
         dedup_state=state, today=TODAY, ttl_days=5,
         minimum_items=0,  # disable topup so we see the post-cap effect
@@ -648,6 +648,7 @@ def test_G6b_successful_render_does_update_state(monkeypatch, tmp_path):
     state_path = tmp_path / "dedup-state.json"
     items = [_scored(f"https://fresh/{i}", 20.0 - i) for i in range(15)]
     _bypass_fetchers(monkeypatch, items)
+    monkeypatch.setattr(cf, "today_hkt", lambda now=None: TODAY)
 
     monkeypatch.setattr(sys, "argv", [
         "content_finder.py",
