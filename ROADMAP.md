@@ -9,11 +9,16 @@ category, then phased by suggested order of work.
 
 Current scorer: keyword match + recency + source-trust + HN points.
 
-- **Cross-day deduplication.** Today's Stratechery piece resurfaces for days as feeds catch up. Add a `seen.json` state file tracking item URLs/titles across runs.
+- **Cross-day deduplication.** Today's Stratechery piece resurfaces for days as feeds catch up. Two-stage check inside a 72-hour window:
+  1. **Canonical URL match** — strip UTM params, fragments, mobile prefixes (`m.`, `amp.`), trailing slashes; compare normalised URLs.
+  2. **SimHash over title + summary** — catches the same story rewritten by aggregators. Configurable Hamming-distance threshold; log dedup metrics in the run summary.
+  State lives in `seen.json` (or a single sqlite file with hand-written DDL once it grows past trivial).
 - **Source diversity cap.** Limit each source to N items per digest so one hot day on Simon Willison doesn't take 7 of the top 10.
-- **Cluster detection.** When N sources cover the same news, merge into one entry with all source links. Avoids duplicate noise.
+- **Cluster detection.** When N sources cover the same news, merge into one entry with all source links. Trending sub-section uses **z-score on rolling 7- and 30-day theme frequency** to flag heating-up vs cooling-down topics — not just "multiple sources today."
 - **Personalised weights.** A `weights.local.yml` you tune over time ("boost regulation +2, demote AI coding tools -1"). No ML, just config.
+- **Source credibility scoring v1.** Replace the static `+3/+2/+1` trust weights with computed per source: **timeliness** (lead vs lag on stories that later cluster), **originality** (broke vs aggregated), **signal density** (claims per token in structured summaries), **feedback-weighted accuracy** (from §5 hype-filter agreement). Use scores to weight items in synthesis. Static weights stay as the seed/fallback.
 - **Click-feedback loop.** Track which items you actually open, learn from it. (Needs frontend instrumentation; later.)
+- **Filter-log review harness (stage 1 landed).** Per-run filter log at `docs/logs/<date>.json` plus a labelable HTML page at `docs/review/<date>.html` (built by `review.py`). Verdicts persist in localStorage and export as `feedback/<date>.jsonl`. Next stages: Haiku judge to triage the long tail (`docs/review/<date>.judge.json`), then side-by-side prompt-replay comparing `prompts/synthesis_system.md` versions against labelled `final` items.
 
 ## 2. Tags & topic sorting
 
@@ -27,7 +32,7 @@ Three tiers:
 
 - Move `RSS_SOURCES`, `HN_QUERIES`, `KEYWORD_WEIGHTS` from Python into a `sources.yml` config. Editable from the GitHub mobile web UI on iPad.
 - A `--add-source <URL>` command that auto-discovers the feed, validates it, appends to `sources.yml`, and commits.
-- A weekly health-check job that flags feeds returning errors or zero items in 14 days.
+- A weekly health-check job that flags feeds returning errors or zero items in 14 days. Concrete shape: per-source `last_success_at`, `consecutive_failures`, ETag/`Last-Modified` for conditional GETs, and a green/yellow/red flag surfaced in the run summary. Required input for the unsubscribe dashboard (Phase 9).
 - **Suggested additions** to evaluate: arXiv cs.AI, Dwarkesh Podcast, Stratechery (headlines), Last Week in AI, Ben's Bites, NIST AI RMF blog, EU AI Office, GitHub release feeds for `anthropics/`, `openai/`, `langchain-ai/`.
 
 ## 4. Frontend
@@ -48,6 +53,7 @@ Ranked by impact per hour of effort:
 Requires Anthropic API key (~$2–5/month at this volume).
 
 - **Per-item "PM angle"** — one-line synthesis: *"Why this matters: signals enterprise vendors are bundling agent infra — relevant to your buy-vs-build evaluation."* For a PM who can't play with tools firsthand, this annotation is the product. Without it the tool is yet another feed reader; with it, it's a personal AI industry analyst.
+  - **Output shape is locked.** Use Anthropic tool-use to enforce a JSON schema per item: `{tldr, what_changed, why_it_matters, claims[], code_or_api_changes[], numbers[], governance_signals[], open_questions[]}`. Stored alongside the item; rendered as the "PM angle" line plus collapsible detail. Free-form text is a dead end — every later feature (citations, trends, credibility scoring, weekly rollup) reads from this shape.
 - **Hype filter** — Claude badges vendor PR / overhype vs substantive reporting (🎙️ marketing vs 🔬 substantive).
 - **Weekly exec summary** every Friday — 5-bullet "what changed in agentic AI this week," shareable in team chat / LinkedIn.
 - **Q&A over the archive** — "What's happened with MCP adoption since January?" — answers from indexed past digests.
@@ -132,6 +138,48 @@ remain key-free indefinitely but the weekly's value is mostly in synthesis.
 
 ---
 
+## 9. Newsletter consolidation (the unsubscribe goal)
+
+The product north star from `CLAUDE.md` operationalised. The user is paying time-tax on a stack of AI/PM newsletters — Substacks, Last Week in AI, Ben's Bites, etc. This phase makes Content Finder good enough to *replace* those subscriptions, then proves it source-by-source.
+
+Don't start until §5 (LLM annotation, JSON schema) is solid — synthesis quality has to be high enough that you'd actually trust it as a replacement.
+
+### 9.1 — Source registry import
+
+`content_finder.py sources import <file>` takes a list of newsletter names or URLs (one per line) and creates `pending` entries. Idempotent on re-import. List/show/delete subcommands.
+
+### 9.2 — Feed auto-discovery
+
+For each pending source, try in order:
+1. `<name>.substack.com/feed` (most newsletters live here).
+2. Fetch the homepage and look for `<link rel="alternate" type="application/rss+xml">`.
+3. Common paths: `/feed`, `/rss`, `/feed.xml`, `/atom.xml`.
+
+Each candidate is fetched and validated: must parse, must contain ≥1 item from the last 60 days. Per-strategy unit tests with recorded fixtures.
+
+### 9.3 — Mapping confidence + manual confirmation
+
+Each candidate gets a confidence score (0–1) from: domain match with input, recency of items, title overlap with the user-provided name. `content_finder.py sources confirm` walks the user through pending sources showing the top candidate and recent titles, prompts `[y/n/skip/manual]`. Confirmed → `active`; ambiguous → `needs_fallback`.
+
+### 9.4 — Unsubscribe dashboard
+
+`content_finder.py unsubscribe` (or a static HTML page) listing each source with: status pill, 14-day capture rate, items synthesized in last 7 days, recommendation, and the unsubscribe URL if found in feed metadata.
+
+Recommendation logic:
+- `safe_to_unsubscribe` — 14 days green health AND ≥3 items captured AND items appeared in synthesised digest.
+- `keep_email` — green health but capture below threshold (the newsletter has signal you'd lose).
+- `needs_fallback` — auto-discovery failed or feed is incomplete vs. email version.
+
+This is the surface that closes the loop. Without it, "I aggregate your newsletters" is a claim; with it, it's a defended decision.
+
+### 9.5 — Forwarding-alias fallback (optional, may skip)
+
+For `needs_fallback` sources only — and only if there are any newsletters the user actually cares about that lack a usable feed. Setup: Cloudflare Email Routing → dedicated mailbox → IMAP poller parses incoming HTML emails into items, tagged `source-forwarded`.
+
+⚠️ **Conflicts with the "PWA + GitHub Pages is the ceiling" constraint** — an IMAP poller can't run inside the GH Actions cron the same way. Defer until Phase 9.4 surfaces a real list of `needs_fallback` sources worth the infra cost. For most newsletters (Substack, Beehiiv, Ghost), 9.2 will succeed and this stage isn't needed.
+
+---
+
 ## Suggested phasing
 
 | Phase | Theme | Items | Effort | Unlocks |
@@ -139,8 +187,9 @@ remain key-free indefinitely but the weekly's value is mostly in synthesis.
 | **Now (this week)** | Reduce noise, look better | Cross-day dedup · source diversity cap · `sources.yml` config · og:image previews · reading-time | ~2–3 hrs | Cleaner daily digests immediately |
 | **Next (week 2)** | Tags & navigation | Keyword auto-tagging · filter chips · client-side archive search · PWA install | ~3–4 hrs | iPad feels like a real app, fast topic filtering |
 | **2.5 (week 3)** | **Weekly rollup layer** | Sunday cron · `docs/weekly/` archive · heuristic rollup first, LLM rollup once API key arrives · optional email | ~3 hrs heuristic · +1 hr LLM | Shareable artefact for org / LinkedIn; trigger for API key |
-| **Then (week 4+)** | LLM intelligence layer | Anthropic key · per-item PM angle · narrated weekly · hype filter | ~2 hrs + ongoing API cost | Tool becomes irreplaceable |
-| **Later** | Role-specific extensions | Regulation tracker page · vendor capability log · Telegram alerts · talking-points generator | varies | Personal AI-strategy ops platform |
+| **Then (week 4+)** | LLM intelligence layer | Anthropic key · per-item PM angle (JSON schema) · narrated weekly · hype filter | ~2 hrs + ongoing API cost | Tool becomes irreplaceable |
+| **Unsubscribe milestone** | Newsletter consolidation (§9) | Source import · auto-discovery · confidence-scored confirm · unsubscribe dashboard | ~3–4 hrs | One-by-one defended unsubscribes — the product north star |
+| **Later** | Role-specific extensions | Regulation tracker page · vendor capability log · Telegram alerts · talking-points generator · source credibility v1 | varies | Personal AI-strategy ops platform |
 
 ---
 
@@ -156,3 +205,7 @@ remain key-free indefinitely but the weekly's value is mostly in synthesis.
 - User accounts / multi-user.
 - Comments / social.
 - Real-time push (daily cadence is the point).
+- **Modularising `content_finder.py` into a `contentfinder/` package.** Single-file is the deliberate identity at current scale (~1500 LOC). Reconsider only if the file passes ~3000 lines.
+- **ORM + migration runner.** A flat `seen.json` or single sqlite file with hand-written DDL is enough until the corpus crosses ~100k items.
+- **Pluggable `SourceAdapter` protocol.** Premature abstraction for ~15 sources. The two existing fetchers (`fetch_rss`, `fetch_hn`) plus a Substack-aware shim cover the planned newsletter expansion.
+- **Vector DB.** sqlite-vec / sqlite-vss covers the corpus for years. Don't reach for Pinecone/Weaviate/pgvector.
