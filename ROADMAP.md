@@ -18,7 +18,24 @@ Current scorer: keyword match + recency + source-trust + HN points.
 - **Personalised weights.** A `weights.local.yml` you tune over time ("boost regulation +2, demote AI coding tools -1"). No ML, just config.
 - **Source credibility scoring v1.** Replace the static `+3/+2/+1` trust weights with computed per source: **timeliness** (lead vs lag on stories that later cluster), **originality** (broke vs aggregated), **signal density** (claims per token in structured summaries), **feedback-weighted accuracy** (from §5 hype-filter agreement). Use scores to weight items in synthesis. Static weights stay as the seed/fallback.
 - **Click-feedback loop.** Track which items you actually open, learn from it. (Needs frontend instrumentation; later.)
-- **Filter-log review harness (stage 1 landed).** Per-run filter log at `docs/logs/<date>.json` plus a labelable HTML page at `docs/review/<date>.html` (built by `review.py`). Verdicts persist in localStorage and export as `feedback/<date>.jsonl`. Next stages: Haiku judge to triage the long tail (`docs/review/<date>.judge.json`), then side-by-side prompt-replay comparing `prompts/synthesis_system.md` versions against labelled `final` items.
+- **Filter-log review harness — 3 stages.** A semi-automated loop for catching filtering mistakes and iterating on the synthesis prompt.
+  - **Stage 1 (landed, PR #7).** Per-run filter log at `docs/logs/<date>.json` plus a labelable HTML page at `docs/review/<date>.html` (built by `review.py`). Verdicts persist in localStorage and export as `feedback/<date>.jsonl`.
+  - **Stage 2 (landed, PRs #8 + #10).** Haiku judge in `judge.py` triages the long tail and writes `docs/review/<date>.judge.json`; suspect cards get highlighted server-side in the review HTML. Surfaces likely false-negatives (good items dropped by keyword/source-cap) and likely false-positives (low-quality items in `final`).
+  - **Stage 3 (pending — see below).** Side-by-side prompt-replay comparing versions of `prompts/synthesis_system.md` against labelled `final` items.
+  - **Blocked on data, not code.** Stage 3 needs a labelled golden set to compare prompts against. Use the harness first; label ≥30 items across a week before building. Issue [#9](https://github.com/raidianblaster/Content-Finder/issues/9) (logging item summaries) is the one cheap prep-work item to land in parallel so feedback rows carry the full text the synthesis prompt would see.
+
+### Stage 3 spec — prompt-replay (next implementation)
+
+New file `compare_prompts.py`. CLI: `python compare_prompts.py <date> <promptA.md> <promptB.md>`.
+
+- Reads `docs/logs/<date>.json` and `feedback/<date>.jsonl` (if present).
+- Loads both prompt files. Bumps `PROMPT_VERSION` only on user-accepted promotion — comparisons are tagged with a transient version string (`v1`, `v1+exp`) so they don't pollute attribution in past digests.
+- Re-runs `synthesize_with_claude()` against that day's `final` items twice, once per prompt. The model is Sonnet/Haiku — same as production synthesis, not Haiku-the-judge.
+- Writes `experiments/<date>/<promptA>_vs_<promptB>.html` with two-column layout, per-bullet 👍/👎/skip buttons backed by localStorage.
+- Verdicts export to `feedback/prompts.jsonl` (separate stream from the item feedback). Each line: `{date, prompt_a, prompt_b, bullet_id, item_url, preferred: "a"|"b"|"neither", note, labelled_at}`.
+- Acceptance: side-by-side renders for a real day, both columns are clearly attributed to their prompt version, verdicts round-trip through localStorage.
+
+Defer (Stage 3.5, optional): aggregating `feedback/prompts.jsonl` into a "which prompt wins" report; auto-promoting a new prompt to `synthesis_system.md` after N wins.
 
 ## 2. Tags & topic sorting
 
