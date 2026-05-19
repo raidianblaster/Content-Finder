@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Review — 2026-05-17</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg-0: #0a0a0d; --bg-1: #111116; --bg-2: #1a1a22;
+  --border: #2a2a35; --fg: #e8e8f0; --fg-mid: #a0a0b0; --fg-dim: #6a6a80;
+  --purple: hsl(292 60% 65%); --green: #6ee7b7; --amber: #fcd34d; --red: #fca5a5;
+  --keep-bg: rgba(110, 231, 183, 0.15); --drop-bg: rgba(252, 165, 165, 0.18);
+  --unsure-bg: rgba(252, 211, 77, 0.18);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 16px 96px; background: var(--bg-0); color: var(--fg);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px; line-height: 1.5;
+}
+header {
+  padding: 24px 0 16px; border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--fg-mid); font-size: 13px; }
+.pipeline {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-mid); margin-top: 8px;
+}
+section { margin-bottom: 32px; }
+section h2 {
+  font-size: 16px; margin: 0 0 4px; color: var(--purple);
+}
+section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
+.card {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.card.verdict-keep { background: var(--keep-bg); border-color: var(--green); }
+.card.verdict-drop { background: var(--drop-bg); border-color: var(--red); }
+.card.verdict-unsure { background: var(--unsure-bg); border-color: var(--amber); }
+.card .title {
+  font-weight: 500; margin-bottom: 4px; display: block;
+  color: var(--fg); text-decoration: none;
+}
+.card .title:hover { color: var(--purple); text-decoration: underline; }
+.card .meta {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); margin-bottom: 8px;
+}
+.card .meta .sep { margin: 0 6px; opacity: 0.5; }
+.verdicts { display: flex; gap: 6px; }
+.verdicts button {
+  background: var(--bg-2); border: 1px solid var(--border); color: var(--fg-mid);
+  font-family: inherit; font-size: 12px; padding: 4px 10px; border-radius: 4px;
+  cursor: pointer;
+}
+.verdicts button:hover { color: var(--fg); border-color: var(--fg-dim); }
+.verdicts button.active[data-verdict="keep"] {
+  background: var(--green); color: var(--bg-0); border-color: var(--green);
+}
+.verdicts button.active[data-verdict="drop"] {
+  background: var(--red); color: var(--bg-0); border-color: var(--red);
+}
+.verdicts button.active[data-verdict="unsure"] {
+  background: var(--amber); color: var(--bg-0); border-color: var(--amber);
+}
+.note-input {
+  display: none; margin-top: 8px; width: 100%; background: var(--bg-2);
+  border: 1px solid var(--border); color: var(--fg); padding: 6px 8px;
+  border-radius: 4px; font-family: inherit; font-size: 13px;
+}
+.card.has-verdict .note-input { display: block; }
+footer {
+  position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-1);
+  border-top: 1px solid var(--border); padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+}
+footer .count { color: var(--fg-mid); flex: 1; }
+footer button {
+  background: var(--purple); border: 0; color: var(--bg-0); font-weight: 500;
+  padding: 6px 14px; border-radius: 4px; cursor: pointer; font-family: inherit;
+  font-size: 12px;
+}
+footer button.secondary { background: var(--bg-2); color: var(--fg); }
+footer .hint { color: var(--fg-dim); font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Filter-log review — 2026-05-17</h1>
+  <div class="sub">prompt version <code>v1</code> · label each item <code>keep / drop / unsure</code>, then download as <code>feedback/2026-05-17.jsonl</code>.</div>
+  <div class="pipeline">fetched: 69 · after_keyword_filter: 41 · after_dedupe: 39 · after_ttl_filter: 31 · after_source_cap: 9</div>
+</header>
+<section>
+  <h2>Final — kept in today&#x27;s digest <span style="color:var(--fg-dim);font-weight:400">(9)</span></h2>
+  <div class="blurb">Items that survived every filter. Mark drop if you&#x27;d have cut them.</div>
+  <div class="card" data-url="https://crates.io/crates/zerostack/1.0.0" data-stage="final">
+    <a class="title" href="https://crates.io/crates/zerostack/1.0.0" target="_blank" rel="noopener">Zerostack – A Unix-inspired coding agent written in pure Rust</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 8.82</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://crates.io/crates/zerostack/1.0.0">keep ✓</button>
+      <button data-verdict="drop" data-url="https://crates.io/crates/zerostack/1.0.0">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://crates.io/crates/zerostack/1.0.0">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://crates.io/crates/zerostack/1.0.0">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/" target="_blank" rel="noopener">Gemini 3.2 Flash vs Claude Opus 4.7: What to Expect from Google I/O</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 8.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/" target="_blank" rel="noopener">What Is Agentic RAG? How Multi-Layer Retrieval Beats Standard Vector Search</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 7.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p3#a260517p3" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260517/p3#a260517p3" target="_blank" rel="noopener">King&#x27;s Cross, where Google&#x27;s new UK HQ is due to open later this year, has become London&#x27;s new tech, VC, and AI hub, attracting OpenAI, Anthropic, and others (John Gapper/Financial Times)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 6.81</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p3#a260517p3">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p3#a260517p3">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p3#a260517p3">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p3#a260517p3">
+  </div>
+  <div class="card" data-url="https://maurycyz.com/projects/mcusite/" data-stage="final">
+    <a class="title" href="https://maurycyz.com/projects/mcusite/" target="_blank" rel="noopener">Hosting a website on an 8-bit microcontroller</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.5</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://maurycyz.com/projects/mcusite/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://maurycyz.com/projects/mcusite/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://maurycyz.com/projects/mcusite/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://maurycyz.com/projects/mcusite/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/" target="_blank" rel="noopener">Agentic SaaS Pricing: What Salesforce AgentForce and Microsoft Copilot Credits Mean for Builders</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/">
+  </div>
+  <div class="card" data-url="https://www.seangoedecke.com/steering-vectors/" data-stage="final">
+    <a class="title" href="https://www.seangoedecke.com/steering-vectors/" target="_blank" rel="noopener">DeepSeek-V4-Flash means LLM steering is interesting again</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.18</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.seangoedecke.com/steering-vectors/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.seangoedecke.com/steering-vectors/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.seangoedecke.com/steering-vectors/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.seangoedecke.com/steering-vectors/">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p12#a260516p12" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260516/p12#a260516p12" target="_blank" rel="noopener">Nectar Social, which offers an agentic OS for marketers, raised a $30M Series A led by Menlo Ventures, with GV and True Ventures among investors (Dominic-Madori Davis/TechCrunch)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 5.77</span><span class="sep">·</span><span>0.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p12#a260516p12">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p12#a260516p12">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p12#a260516p12">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p12#a260516p12">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p13#a260516p13" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260516/p13#a260516p13" target="_blank" rel="noopener">OpenAI partners with Malta&#x27;s AI for All initiative to give citizens a free year of ChatGPT Plus if they complete a University of Malta AI literacy course (Cointelegraph)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.79</span><span class="sep">·</span><span>0.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p13#a260516p13">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p13#a260516p13">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p13#a260516p13">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p13#a260516p13">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Source cap <span style="color:var(--fg-dim);font-weight:400">(22)</span></h2>
+  <div class="blurb">Cut because the source already had its quota for the day.</div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/" target="_blank" rel="noopener">Anthropic vs OpenAI Business Adoption: What the Data Says About Enterprise AI</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/" target="_blank" rel="noopener">How to Use the Claude Agent SDK to Deploy Agentic Workflows to Modal or Trigger.dev</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/" target="_blank" rel="noopener">What Is Progressive Disclosure in AI Agent Design? How Skills Load Context Efficiently</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/" target="_blank" rel="noopener">What Is Project Glasswing? Anthropic&#x27;s Controlled Cybersecurity AI Rollout Explained</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/">
+  </div>
+  <div class="card" data-url="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page" target="_blank" rel="noopener">MCP Hello Page</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.96</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page">
+  </div>
+  <div class="card" data-url="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/" data-stage="dropped_source_cap">
+    <a class="title" href="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/" target="_blank" rel="noopener">Playing Atari ST Music on the Amiga with Zero CPU</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.66</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/">
+  </div>
+  <div class="card" data-url="https://github.com/gdevic/FPGA-Calculator" data-stage="dropped_source_cap">
+    <a class="title" href="https://github.com/gdevic/FPGA-Calculator" target="_blank" rel="noopener">I designed a nibble-oriented CPU in Verilog to build a scientific calculator</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.65</span><span class="sep">·</span><span>1.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/gdevic/FPGA-Calculator">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/gdevic/FPGA-Calculator">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/gdevic/FPGA-Calculator">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/gdevic/FPGA-Calculator">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/" target="_blank" rel="noopener">Claude Cloud Routines vs Scheduled Tasks: Which Should You Use?</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 5.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/" target="_blank" rel="noopener">Claude for Small Business: Pre-Built Agents for Finance, HR, Sales, and Ops</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 5.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/">
+  </div>
+  <div class="card" data-url="https://lock.cmpxchg8b.com/umatrix.html" data-stage="dropped_source_cap">
+    <a class="title" href="https://lock.cmpxchg8b.com/umatrix.html" target="_blank" rel="noopener">Building a UMatrix Replacement</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.18</span><span class="sep">·</span><span>1.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://lock.cmpxchg8b.com/umatrix.html">keep ✓</button>
+      <button data-verdict="drop" data-url="https://lock.cmpxchg8b.com/umatrix.html">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://lock.cmpxchg8b.com/umatrix.html">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://lock.cmpxchg8b.com/umatrix.html">
+  </div>
+  <div class="card" data-url="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html" target="_blank" rel="noopener">Apple Silicon costs more than OpenRouter</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.55</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/" target="_blank" rel="noopener">How to Generate AI Videos with Claude Code, HyperFrames, and ElevenLabs</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 4.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/" target="_blank" rel="noopener">How to Use the Notion Developer Platform with AI Agents: CLI, Webhooks, and SDK</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 4.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/" target="_blank" rel="noopener">Time-Aware AI Agents: How Thinking Machines&#x27; Interaction Model Changes Automation</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 4.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/" target="_blank" rel="noopener">What Are Agentic Work Units? How Salesforce AgentForce Pricing Works</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 4.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/" target="_blank" rel="noopener">AI Cybersecurity in 2026: How Claude Mythos and GPT 5.5 Are Finding Zero-Day Exploits</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/" target="_blank" rel="noopener">How to Deploy Claude Agents That Run While You Sleep: 3 Methods Compared</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/" target="_blank" rel="noopener">Mega Skills vs Modular Skills in Claude Code: Why Architecture Matters</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/" target="_blank" rel="noopener">How to Build Modular Claude Skills That Chain Into Skill Systems</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/" target="_blank" rel="noopener">What Is Gemini Spark? Google&#x27;s 24/7 Agent That Learns From Your Behavior</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/" target="_blank" rel="noopener">What Is an Orchestrator Skill? How to Wire Claude Skills Into End-to-End Systems</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/" target="_blank" rel="noopener">What Is Thinking Machines Labs? Mira Murati&#x27;s New AI Company Explained</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/">
+  </div>
+</section>
+<section>
+  <h2>Dropped: TTL (cross-day) <span style="color:var(--fg-dim);font-weight:400">(8)</span></h2>
+  <div class="blurb">Cut because we already showed this story on a prior day.</div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/" data-stage="dropped_ttl">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/" target="_blank" rel="noopener">How to Build an AI Agent with Persistent Memory Using RAG and Vector Search</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 9.46</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/" data-stage="dropped_ttl">
+    <a class="title" href="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/" target="_blank" rel="noopener">Claude for Legal Teams: How Anthropic&#x27;s MCP Connectors Work for Law Firms</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 9.46</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/" data-stage="dropped_ttl">
+    <a class="title" href="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/" target="_blank" rel="noopener">Multi-Agent Orchestration vs Single Model: Why 100+ Agents Beat One Frontier Model</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 9.46</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/">
+  </div>
+  <div class="card" data-url="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/" data-stage="dropped_ttl">
+    <a class="title" href="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/" target="_blank" rel="noopener">Moving away from Tailwind, and learning to structure my CSS</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 8.66</span><span class="sep">·</span><span>1.2d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/">
+  </div>
+  <div class="card" data-url="https://github.com/chiennv2000/orthrus" data-stage="dropped_ttl">
+    <a class="title" href="https://github.com/chiennv2000/orthrus" target="_blank" rel="noopener">Orthrus-Qwen3: up to 7.8×tokens/forward on Qwen3, identical output distribution</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.87</span><span class="sep">·</span><span>1.6d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/chiennv2000/orthrus">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/chiennv2000/orthrus">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/chiennv2000/orthrus">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/chiennv2000/orthrus">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p9#a260516p9" data-stage="dropped_ttl">
+    <a class="title" href="https://www.techmeme.com/260516/p9#a260516p9" target="_blank" rel="noopener">SF vibes are frenetic over the huge divide in outcomes and career uncertainty for software engineers; over 5 years ~10K people in AI attained retirement wealth (Deedy/@deedydas)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 6.68</span><span class="sep">·</span><span>1.1d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p9#a260516p9">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p9#a260516p9">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p9#a260516p9">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p9#a260516p9">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p6#a260516p6" data-stage="dropped_ttl">
+    <a class="title" href="https://www.techmeme.com/260516/p6#a260516p6" target="_blank" rel="noopener">In an experiment that let Claude, ChatGPT, Gemini, and Grok run radio stations, Claude tried to incite a revolution and Gemini cheerfully detailed tragic events (Terrence O&#x27;Brien/The Verge)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 6.63</span><span class="sep">·</span><span>1.3d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p6#a260516p6">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p6#a260516p6">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p6#a260516p6">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p6#a260516p6">
+  </div>
+  <div class="card" data-url="https://openai.com/index/malta-chatgpt-plus-partnership" data-stage="dropped_ttl">
+    <a class="title" href="https://openai.com/index/malta-chatgpt-plus-partnership" target="_blank" rel="noopener">OpenAI and Malta partner to bring ChatGPT Plus to all citizens</a>
+    <div class="meta"><span class="src">OpenAI News</span><span class="sep">·</span><span>score 6.46</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-05-17</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://openai.com/index/malta-chatgpt-plus-partnership">keep ✓</button>
+      <button data-verdict="drop" data-url="https://openai.com/index/malta-chatgpt-plus-partnership">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://openai.com/index/malta-chatgpt-plus-partnership">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://openai.com/index/malta-chatgpt-plus-partnership">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Keyword filter <span style="color:var(--fg-dim);font-weight:400">(27)</span></h2>
+  <div class="blurb">Cut because the title + summary contained no scored keywords. Voluminous — skim, don&#x27;t read every one.</div>
+  <div class="card" data-url="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then" data-stage="dropped_keyword">
+    <a class="title" href="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then" target="_blank" rel="noopener">[AINews] Cerebras&#x27; $60B IPO: Slowly, then All at Once</a>
+    <div class="meta"><span class="src">Latent Space</span><span class="sep">·</span><span>score 3.51</span><span class="sep">·</span><span>1.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything" target="_blank" rel="noopener">Warelay -&gt; OpenClaw</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.7</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything" target="_blank" rel="noopener">Quoting Julia Evans</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.66</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything" target="_blank" rel="noopener">inaturalist-clumper 0.1</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything">
+  </div>
+  <div class="card" data-url="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the" data-stage="dropped_keyword">
+    <a class="title" href="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the" target="_blank" rel="noopener">The illusion of Generative AI, the insanity of massive bets on hyperscaling, and the case for world models and neurosymbolic AI</a>
+    <div class="meta"><span class="src">Marcus on AI (Gary Marcus)</span><span class="sep">·</span><span>score 3.84</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the">keep ✓</button>
+      <button data-verdict="drop" data-url="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p6#a260517p6" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260517/p6#a260517p6" target="_blank" rel="noopener">Developers say Chinese AI labs lead US rivals in video generation, as ByteDance and Kuaishou train models on vast short-form video libraries from their own apps (Eleanor Olcott/Financial Times)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.89</span><span class="sep">·</span><span>0.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p6#a260517p6">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p6#a260517p6">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p6#a260517p6">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p6#a260517p6">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p5#a260517p5" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260517/p5#a260517p5" target="_blank" rel="noopener">A profile of SAS CEO Jim Goodnight, the 83-year-old who co-founded the 50-year-old analytics firm and holds a ~67% stake worth $13.3B, as AI tests SAS&#x27; strategy (Phoebe Liu/Forbes)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.85</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p5#a260517p5">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p5#a260517p5">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p5#a260517p5">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p5#a260517p5">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p4#a260517p4" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260517/p4#a260517p4" target="_blank" rel="noopener">Experts: Stuxnet-linked Fast16 malware, designed to subvert nuclear weapons testing simulations, was likely part of a campaign to slow Iran&#x27;s nuclear ambitions (Kim Zetter/ZERO DAY)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.82</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p4#a260517p4">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p4#a260517p4">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p4#a260517p4">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p4#a260517p4">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p2#a260517p2" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260517/p2#a260517p2" target="_blank" rel="noopener">Milan-based Webidoo, which develops an operational layer designed to help SMBs access AI tools, raised $25M led by IXC3 for North American expansion (David Cendon Garcia/EU-Startups)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p2#a260517p2">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p2#a260517p2">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p2#a260517p2">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p2#a260517p2">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260517/p1#a260517p1" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260517/p1#a260517p1" target="_blank" rel="noopener">Filings: in Q1, Trump traded $220M-$750M in NVDA, MSFT, AMZN, META, ORCL, and other stocks; millions of dollars of NVDA were bought shortly before major news (Kevin Breuninger/CNBC)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260517/p1#a260517p1">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260517/p1#a260517p1">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260517/p1#a260517p1">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260517/p1#a260517p1">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p11#a260516p11" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260516/p11#a260516p11" target="_blank" rel="noopener">Vietnam&#x27;s government, which once saw video games as a social risk, named gaming as one of its key cultural industries in 2025 and now promotes them at expos (Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.71</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p11#a260516p11">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p11#a260516p11">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p11#a260516p11">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p11#a260516p11">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p10#a260516p10" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260516/p10#a260516p10" target="_blank" rel="noopener">Hill County, which faced eight new data centers, passed what may be Texas&#x27; first county-wide ban on them, for one year; the state trails only VA in data centers (Mike Lee/Politico)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.7</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p10#a260516p10">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p10#a260516p10">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p10#a260516p10">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p10#a260516p10">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p8#a260516p8" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260516/p8#a260516p8" target="_blank" rel="noopener">ASML will partner with Tata Electronics to help it bring an $11B 300mm chip factory online in Gujarat, expanding India&#x27;s ability to produce chips domestically (Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.67</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p8#a260516p8">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p8#a260516p8">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p8#a260516p8">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p8#a260516p8">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p7#a260516p7" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260516/p7#a260516p7" target="_blank" rel="noopener">On Pwn2Own Berlin 2026 day 2, competitors earned $385,750 after exploiting 15 unique zero-day vulnerabilities in Windows 11, Red Hat Enterprise Linux and more (Sergiu Gatlan/BleepingComputer)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.65</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p7#a260516p7">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p7#a260516p7">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p7#a260516p7">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p7#a260516p7">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260516/p5#a260516p5" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260516/p5#a260516p5" target="_blank" rel="noopener">Shenzhen-listed RoboTechnik, which claims to be the largest silicon photonics tool maker and whose stock is up 340% over the past year, files for a HK listing (Zinnia Lee/Forbes)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.58</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260516/p5#a260516p5">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260516/p5#a260516p5">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260516/p5#a260516p5">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260516/p5#a260516p5">
+  </div>
+  <div class="card" data-url="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model" data-stage="dropped_keyword">
+    <a class="title" href="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model" target="_blank" rel="noopener">Latest open artifacts (#21): Open model bonanza! Gemma 4, DeepSeek V4, Kimi K2.6, MiMo 2.5, GLM-5.1 &amp; others. On CAISI&#x27;s V4 assessment.</a>
+    <div class="meta"><span class="src">Interconnects (Lambert)</span><span class="sep">·</span><span>score 3.66</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/" target="_blank" rel="noopener">How to Negotiate Agent Access in Enterprise Software Contracts</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.46</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/">
+  </div>
+  <div class="card" data-url="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence" data-stage="dropped_keyword">
+    <a class="title" href="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence" target="_blank" rel="noopener">The mistake of conflating intelligence and power</a>
+    <div class="meta"><span class="src">Dwarkesh Podcast</span><span class="sep">·</span><span>score 3.69</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence">
+  </div>
+  <div class="card" data-url="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms" data-stage="dropped_keyword">
+    <a class="title" href="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms" target="_blank" rel="noopener">Notes on pretraining parallelisms and failed training runs.</a>
+    <div class="meta"><span class="src">Dwarkesh Podcast</span><span class="sep">·</span><span>score 3.69</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms">
+  </div>
+  <div class="card" data-url="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately" data-stage="dropped_keyword">
+    <a class="title" href="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately" target="_blank" rel="noopener">RLVR might be disproportionately bad at science</a>
+    <div class="meta"><span class="src">Dwarkesh Podcast</span><span class="sep">·</span><span>score 3.69</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.dwarkesh.com/p/rlvr-might-be-disproportionately">
+  </div>
+  <div class="card" data-url="https://twitter.com/mitchellh/status/2055380239711457578" data-stage="dropped_keyword">
+    <a class="title" href="https://twitter.com/mitchellh/status/2055380239711457578" target="_blank" rel="noopener">I believe there are entire companies right now under AI psychosis</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.51</span><span class="sep">·</span><span>1.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://twitter.com/mitchellh/status/2055380239711457578">keep ✓</button>
+      <button data-verdict="drop" data-url="https://twitter.com/mitchellh/status/2055380239711457578">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://twitter.com/mitchellh/status/2055380239711457578">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://twitter.com/mitchellh/status/2055380239711457578">
+  </div>
+  <div class="card" data-url="https://kevinpatel.xyz/posts/no-way-to-prevent-this/" data-stage="dropped_keyword">
+    <a class="title" href="https://kevinpatel.xyz/posts/no-way-to-prevent-this/" target="_blank" rel="noopener">&#x27;No way to prevent this,&#x27; says only package manager where this regularly happens</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.56</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://kevinpatel.xyz/posts/no-way-to-prevent-this/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://kevinpatel.xyz/posts/no-way-to-prevent-this/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://kevinpatel.xyz/posts/no-way-to-prevent-this/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://kevinpatel.xyz/posts/no-way-to-prevent-this/">
+  </div>
+  <div class="card" data-url="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/" data-stage="dropped_keyword">
+    <a class="title" href="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/" target="_blank" rel="noopener">Mozilla to UK regulators: VPNs are essential privacy and security tools</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.58</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/">
+  </div>
+  <div class="card" data-url="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2" data-stage="dropped_keyword">
+    <a class="title" href="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2" target="_blank" rel="noopener">PART Telescopes – Bringing radio astronomy within reach of rural schools</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.97</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2">keep ✓</button>
+      <button data-verdict="drop" data-url="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2">
+  </div>
+  <div class="card" data-url="https://labs.randomquark.com/alphabet_cards/" data-stage="dropped_keyword">
+    <a class="title" href="https://labs.randomquark.com/alphabet_cards/" target="_blank" rel="noopener">Greek Alphabet Cards</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 3.03</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://labs.randomquark.com/alphabet_cards/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://labs.randomquark.com/alphabet_cards/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://labs.randomquark.com/alphabet_cards/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://labs.randomquark.com/alphabet_cards/">
+  </div>
+  <div class="card" data-url="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/" data-stage="dropped_keyword">
+    <a class="title" href="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/" target="_blank" rel="noopener">A Meta employee gets real about the horror of working there</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.67</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/">
+  </div>
+  <div class="card" data-url="https://news.ycombinator.com/item?id=48164173" data-stage="dropped_keyword">
+    <a class="title" href="https://news.ycombinator.com/item?id=48164173" target="_blank" rel="noopener">Ask HN: When did computers stop being fun?</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.43</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://news.ycombinator.com/item?id=48164173">keep ✓</button>
+      <button data-verdict="drop" data-url="https://news.ycombinator.com/item?id=48164173">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://news.ycombinator.com/item?id=48164173">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://news.ycombinator.com/item?id=48164173">
+  </div>
+</section>
+<footer>
+  <span class="count" id="count">0 / 0 labelled</span>
+  <span class="hint">verdicts saved to localStorage automatically</span>
+  <button id="copy-jsonl" class="secondary">copy JSONL</button>
+  <button id="download-jsonl">download JSONL</button>
+</footer>
+
+<script>
+const REVIEW_DATE = "2026-05-17";
+const TOTAL_ITEMS = 66;
+const ITEM_INDEX = ["https://crates.io/crates/zerostack/1.0.0", "https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/", "https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/", "https://www.techmeme.com/260517/p3#a260517p3", "https://maurycyz.com/projects/mcusite/", "https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/", "https://www.seangoedecke.com/steering-vectors/", "https://www.techmeme.com/260516/p12#a260516p12", "https://www.techmeme.com/260516/p13#a260516p13", "https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/", "https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/", "https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/", "https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/", "https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page", "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/", "https://github.com/gdevic/FPGA-Calculator", "https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/", "https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/", "https://lock.cmpxchg8b.com/umatrix.html", "https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html", "https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/", "https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/", "https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/", "https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/", "https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/", "https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/", "https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/", "https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/", "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/", "https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/", "https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/", "https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/", "https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/", "https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/", "https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/", "https://github.com/chiennv2000/orthrus", "https://www.techmeme.com/260516/p9#a260516p9", "https://www.techmeme.com/260516/p6#a260516p6", "https://openai.com/index/malta-chatgpt-plus-partnership", "https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then", "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything", "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything", "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything", "https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the", "https://www.techmeme.com/260517/p6#a260517p6", "https://www.techmeme.com/260517/p5#a260517p5", "https://www.techmeme.com/260517/p4#a260517p4", "https://www.techmeme.com/260517/p2#a260517p2", "https://www.techmeme.com/260517/p1#a260517p1", "https://www.techmeme.com/260516/p11#a260516p11", "https://www.techmeme.com/260516/p10#a260516p10", "https://www.techmeme.com/260516/p8#a260516p8", "https://www.techmeme.com/260516/p7#a260516p7", "https://www.techmeme.com/260516/p5#a260516p5", "https://www.interconnects.ai/p/latest-open-artifacts-21-open-model", "https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/", "https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence", "https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms", "https://www.dwarkesh.com/p/rlvr-might-be-disproportionately", "https://twitter.com/mitchellh/status/2055380239711457578", "https://kevinpatel.xyz/posts/no-way-to-prevent-this/", "https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/", "https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2", "https://labs.randomquark.com/alphabet_cards/", "https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/", "https://news.ycombinator.com/item?id=48164173"];
+const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
+
+function key(url) { return STORAGE_PREFIX + url; }
+
+function loadVerdict(url) {
+  const raw = localStorage.getItem(key(url));
+  return raw ? JSON.parse(raw) : null;
+}
+
+function saveVerdict(url, patch) {
+  const cur = loadVerdict(url) || {};
+  const next = Object.assign({}, cur, patch, {
+    labelled_at: new Date().toISOString(),
+  });
+  localStorage.setItem(key(url), JSON.stringify(next));
+  updateCount();
+}
+
+function updateCard(card) {
+  const url = card.dataset.url;
+  const v = loadVerdict(url);
+  card.classList.remove("verdict-keep", "verdict-drop", "verdict-unsure", "has-verdict");
+  card.querySelectorAll(".verdicts button").forEach(b => b.classList.remove("active"));
+  if (v && v.verdict) {
+    card.classList.add("verdict-" + v.verdict, "has-verdict");
+    const btn = card.querySelector(`.verdicts button[data-verdict="${v.verdict}"]`);
+    if (btn) btn.classList.add("active");
+    const note = card.querySelector(".note-input");
+    if (note) note.value = v.note || "";
+  }
+}
+
+function updateCount() {
+  let n = 0;
+  for (const url of ITEM_INDEX) {
+    if (loadVerdict(url)) n++;
+  }
+  const el = document.getElementById("count");
+  if (el) el.textContent = n + " / " + TOTAL_ITEMS + " labelled";
+}
+
+function buildJSONL() {
+  const lines = [];
+  for (const url of ITEM_INDEX) {
+    const v = loadVerdict(url);
+    if (!v || !v.verdict) continue;
+    const meta = ITEM_META[url] || {};
+    lines.push(JSON.stringify({
+      date: REVIEW_DATE,
+      url: url,
+      title: meta.title || "",
+      source: meta.source || "",
+      stage: meta.stage || "",
+      score: meta.score,
+      age_days: meta.age_days,
+      verdict: v.verdict,
+      note: v.note || "",
+      labelled_at: v.labelled_at,
+    }));
+  }
+  return lines.join("\n") + (lines.length ? "\n" : "");
+}
+
+function downloadJSONL() {
+  const blob = new Blob([buildJSONL()], {type: "application/x-ndjson"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "feedback/" + REVIEW_DATE + ".jsonl";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+async function copyJSONL() {
+  await navigator.clipboard.writeText(buildJSONL());
+  const btn = document.getElementById("copy-jsonl");
+  const orig = btn.textContent;
+  btn.textContent = "copied!";
+  setTimeout(() => { btn.textContent = orig; }, 1200);
+}
+
+const ITEM_META = {"https://crates.io/crates/zerostack/1.0.0": {"title": "Zerostack \u2013 A Unix-inspired coding agent written in pure Rust", "source": "Hacker News", "stage": "final", "score": 8.82, "age_days": 0.6}, "https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/": {"title": "Gemini 3.2 Flash vs Claude Opus 4.7: What to Expect from Google I/O", "source": "MindStudio", "stage": "final", "score": 8.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/": {"title": "What Is Agentic RAG? How Multi-Layer Retrieval Beats Standard Vector Search", "source": "MindStudio", "stage": "final", "score": 7.46, "age_days": 1.9}, "https://www.techmeme.com/260517/p3#a260517p3": {"title": "King's Cross, where Google's new UK HQ is due to open later this year, has become London's new tech, VC, and AI hub, attracting OpenAI, Anthropic, and others (John Gapper/Financial Times)", "source": "Techmeme", "stage": "final", "score": 6.81, "age_days": 0.7}, "https://maurycyz.com/projects/mcusite/": {"title": "Hosting a website on an 8-bit microcontroller", "source": "Hacker News", "stage": "final", "score": 6.5, "age_days": 0.5}, "https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/": {"title": "Agentic SaaS Pricing: What Salesforce AgentForce and Microsoft Copilot Credits Mean for Builders", "source": "MindStudio", "stage": "final", "score": 6.46, "age_days": 1.9}, "https://www.seangoedecke.com/steering-vectors/": {"title": "DeepSeek-V4-Flash means LLM steering is interesting again", "source": "Hacker News", "stage": "final", "score": 6.18, "age_days": 0.9}, "https://www.techmeme.com/260516/p12#a260516p12": {"title": "Nectar Social, which offers an agentic OS for marketers, raised a $30M Series A led by Menlo Ventures, with GV and True Ventures among investors (Dominic-Madori Davis/TechCrunch)", "source": "Techmeme", "stage": "final", "score": 5.77, "age_days": 0.8}, "https://www.techmeme.com/260516/p13#a260516p13": {"title": "OpenAI partners with Malta's AI for All initiative to give citizens a free year of ChatGPT Plus if they complete a University of Malta AI literacy course (Cointelegraph)", "source": "Techmeme", "stage": "final", "score": 4.79, "age_days": 0.8}, "https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/": {"title": "Anthropic vs OpenAI Business Adoption: What the Data Says About Enterprise AI", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/": {"title": "How to Use the Claude Agent SDK to Deploy Agentic Workflows to Modal or Trigger.dev", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/": {"title": "What Is Progressive Disclosure in AI Agent Design? How Skills Load Context Efficiently", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/": {"title": "What Is Project Glasswing? Anthropic's Controlled Cybersecurity AI Rollout Explained", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.46, "age_days": 1.9}, "https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page": {"title": "MCP Hello Page", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.96, "age_days": 0.6}, "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/": {"title": "Playing Atari ST Music on the Amiga with Zero CPU", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.66, "age_days": 0.2}, "https://github.com/gdevic/FPGA-Calculator": {"title": "I designed a nibble-oriented CPU in Verilog to build a scientific calculator", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.65, "age_days": 1.8}, "https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/": {"title": "Claude Cloud Routines vs Scheduled Tasks: Which Should You Use?", "source": "MindStudio", "stage": "dropped_source_cap", "score": 5.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/": {"title": "Claude for Small Business: Pre-Built Agents for Finance, HR, Sales, and Ops", "source": "MindStudio", "stage": "dropped_source_cap", "score": 5.46, "age_days": 1.9}, "https://lock.cmpxchg8b.com/umatrix.html": {"title": "Building a UMatrix Replacement", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.18, "age_days": 1.8}, "https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html": {"title": "Apple Silicon costs more than OpenRouter", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.55, "age_days": 0.1}, "https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/": {"title": "How to Generate AI Videos with Claude Code, HyperFrames, and ElevenLabs", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/": {"title": "How to Use the Notion Developer Platform with AI Agents: CLI, Webhooks, and SDK", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/": {"title": "Time-Aware AI Agents: How Thinking Machines' Interaction Model Changes Automation", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/": {"title": "What Are Agentic Work Units? How Salesforce AgentForce Pricing Works", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/": {"title": "AI Cybersecurity in 2026: How Claude Mythos and GPT 5.5 Are Finding Zero-Day Exploits", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/": {"title": "How to Deploy Claude Agents That Run While You Sleep: 3 Methods Compared", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/": {"title": "Mega Skills vs Modular Skills in Claude Code: Why Architecture Matters", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/": {"title": "How to Build Modular Claude Skills That Chain Into Skill Systems", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/": {"title": "What Is Gemini Spark? Google's 24/7 Agent That Learns From Your Behavior", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/": {"title": "What Is an Orchestrator Skill? How to Wire Claude Skills Into End-to-End Systems", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/": {"title": "What Is Thinking Machines Labs? Mira Murati's New AI Company Explained", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/": {"title": "How to Build an AI Agent with Persistent Memory Using RAG and Vector Search", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/": {"title": "Claude for Legal Teams: How Anthropic's MCP Connectors Work for Law Firms", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.46, "age_days": 1.9}, "https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/": {"title": "Multi-Agent Orchestration vs Single Model: Why 100+ Agents Beat One Frontier Model", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.46, "age_days": 1.9}, "https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/": {"title": "Moving away from Tailwind, and learning to structure my CSS", "source": "Hacker News", "stage": "dropped_ttl", "score": 8.66, "age_days": 1.2}, "https://github.com/chiennv2000/orthrus": {"title": "Orthrus-Qwen3: up to 7.8\u00d7tokens/forward on Qwen3, identical output distribution", "source": "Hacker News", "stage": "dropped_ttl", "score": 6.87, "age_days": 1.6}, "https://www.techmeme.com/260516/p9#a260516p9": {"title": "SF vibes are frenetic over the huge divide in outcomes and career uncertainty for software engineers; over 5 years ~10K people in AI attained retirement wealth (Deedy/@deedydas)", "source": "Techmeme", "stage": "dropped_ttl", "score": 6.68, "age_days": 1.1}, "https://www.techmeme.com/260516/p6#a260516p6": {"title": "In an experiment that let Claude, ChatGPT, Gemini, and Grok run radio stations, Claude tried to incite a revolution and Gemini cheerfully detailed tragic events (Terrence O'Brien/The Verge)", "source": "Techmeme", "stage": "dropped_ttl", "score": 6.63, "age_days": 1.3}, "https://openai.com/index/malta-chatgpt-plus-partnership": {"title": "OpenAI and Malta partner to bring ChatGPT Plus to all citizens", "source": "OpenAI News", "stage": "dropped_ttl", "score": 6.46, "age_days": 1.9}, "https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then": {"title": "[AINews] Cerebras' $60B IPO: Slowly, then All at Once", "source": "Latent Space", "stage": "dropped_keyword", "score": 3.51, "age_days": 1.7}, "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything": {"title": "Warelay -> OpenClaw", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.7, "age_days": 1.0}, "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything": {"title": "Quoting Julia Evans", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.66, "age_days": 1.2}, "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything": {"title": "inaturalist-clumper 0.1", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.46, "age_days": 1.9}, "https://garymarcus.substack.com/p/the-illusion-of-generative-ai-the": {"title": "The illusion of Generative AI, the insanity of massive bets on hyperscaling, and the case for world models and neurosymbolic AI", "source": "Marcus on AI (Gary Marcus)", "stage": "dropped_keyword", "score": 3.84, "age_days": 0.6}, "https://www.techmeme.com/260517/p6#a260517p6": {"title": "Developers say Chinese AI labs lead US rivals in video generation, as ByteDance and Kuaishou train models on vast short-form video libraries from their own apps (Eleanor Olcott/Financial Times)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.89, "age_days": 0.4}, "https://www.techmeme.com/260517/p5#a260517p5": {"title": "A profile of SAS CEO Jim Goodnight, the 83-year-old who co-founded the 50-year-old analytics firm and holds a ~67% stake worth $13.3B, as AI tests SAS' strategy (Phoebe Liu/Forbes)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.85, "age_days": 0.5}, "https://www.techmeme.com/260517/p4#a260517p4": {"title": "Experts: Stuxnet-linked Fast16 malware, designed to subvert nuclear weapons testing simulations, was likely part of a campaign to slow Iran's nuclear ambitions (Kim Zetter/ZERO DAY)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.82, "age_days": 0.6}, "https://www.techmeme.com/260517/p2#a260517p2": {"title": "Milan-based Webidoo, which develops an operational layer designed to help SMBs access AI tools, raised $25M led by IXC3 for North American expansion (David Cendon Garcia/EU-Startups)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260517/p1#a260517p1": {"title": "Filings: in Q1, Trump traded $220M-$750M in NVDA, MSFT, AMZN, META, ORCL, and other stocks; millions of dollars of NVDA were bought shortly before major news (Kevin Breuninger/CNBC)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260516/p11#a260516p11": {"title": "Vietnam's government, which once saw video games as a social risk, named gaming as one of its key cultural industries in 2025 and now promotes them at expos (Bloomberg)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.71, "age_days": 1.0}, "https://www.techmeme.com/260516/p10#a260516p10": {"title": "Hill County, which faced eight new data centers, passed what may be Texas' first county-wide ban on them, for one year; the state trails only VA in data centers (Mike Lee/Politico)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.7, "age_days": 1.0}, "https://www.techmeme.com/260516/p8#a260516p8": {"title": "ASML will partner with Tata Electronics to help it bring an $11B 300mm chip factory online in Gujarat, expanding India's ability to produce chips domestically (Bloomberg)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.67, "age_days": 1.1}, "https://www.techmeme.com/260516/p7#a260516p7": {"title": "On Pwn2Own Berlin 2026 day 2, competitors earned $385,750 after exploiting 15 unique zero-day vulnerabilities in Windows 11, Red Hat Enterprise Linux and more (Sergiu Gatlan/BleepingComputer)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.65, "age_days": 1.2}, "https://www.techmeme.com/260516/p5#a260516p5": {"title": "Shenzhen-listed RoboTechnik, which claims to be the largest silicon photonics tool maker and whose stock is up 340% over the past year, files for a HK listing (Zinnia Lee/Forbes)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.58, "age_days": 1.5}, "https://www.interconnects.ai/p/latest-open-artifacts-21-open-model": {"title": "Latest open artifacts (#21): Open model bonanza! Gemma 4, DeepSeek V4, Kimi K2.6, MiMo 2.5, GLM-5.1 & others. On CAISI's V4 assessment.", "source": "Interconnects (Lambert)", "stage": "dropped_keyword", "score": 3.66, "age_days": 1.2}, "https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/": {"title": "How to Negotiate Agent Access in Enterprise Software Contracts", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.46, "age_days": 1.9}, "https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence": {"title": "The mistake of conflating intelligence and power", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.69, "age_days": 1.1}, "https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms": {"title": "Notes on pretraining parallelisms and failed training runs.", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.69, "age_days": 1.1}, "https://www.dwarkesh.com/p/rlvr-might-be-disproportionately": {"title": "RLVR might be disproportionately bad at science", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.69, "age_days": 1.1}, "https://twitter.com/mitchellh/status/2055380239711457578": {"title": "I believe there are entire companies right now under AI psychosis", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.51, "age_days": 1.7}, "https://kevinpatel.xyz/posts/no-way-to-prevent-this/": {"title": "'No way to prevent this,' says only package manager where this regularly happens", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.56, "age_days": 1.5}, "https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/": {"title": "Mozilla to UK regulators: VPNs are essential privacy and security tools", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.58, "age_days": 0.3}, "https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2": {"title": "PART Telescopes \u2013 Bringing radio astronomy within reach of rural schools", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.97, "age_days": 0.9}, "https://labs.randomquark.com/alphabet_cards/": {"title": "Greek Alphabet Cards", "source": "Hacker News", "stage": "dropped_keyword", "score": 3.03, "age_days": 1.1}, "https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/": {"title": "A Meta employee gets real about the horror of working there", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.67, "age_days": 1.0}, "https://news.ycombinator.com/item?id=48164173": {"title": "Ask HN: When did computers stop being fun?", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.43, "age_days": 0.6}};
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".card").forEach(card => {
+    updateCard(card);
+    card.querySelectorAll(".verdicts button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const url = btn.dataset.url;
+        const cur = loadVerdict(url);
+        if (cur && cur.verdict === btn.dataset.verdict) {
+          localStorage.removeItem(key(url));
+        } else {
+          saveVerdict(url, {verdict: btn.dataset.verdict});
+        }
+        updateCard(card);
+      });
+    });
+    const note = card.querySelector(".note-input");
+    if (note) {
+      note.addEventListener("input", () => {
+        if (loadVerdict(note.dataset.url)) {
+          saveVerdict(note.dataset.url, {note: note.value});
+        }
+      });
+    }
+  });
+  document.getElementById("download-jsonl").addEventListener("click", downloadJSONL);
+  document.getElementById("copy-jsonl").addEventListener("click", copyJSONL);
+  updateCount();
+});
+</script>
+
+</body>
+</html>
