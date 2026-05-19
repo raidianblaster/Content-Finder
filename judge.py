@@ -82,7 +82,11 @@ def parse_judge_response(text: str) -> dict:
     """
     empty = {"suspect_drops": [], "suspect_keeps": []}
     try:
-        data = json.loads(text)
+        # Haiku sometimes wraps the JSON in ```json … ``` fences. Strip them.
+        stripped = text.strip()
+        if stripped.startswith("```"):
+            stripped = stripped.split("\n", 1)[-1].rsplit("```", 1)[0]
+        data = json.loads(stripped)
         if "suspect_drops" not in data or "suspect_keeps" not in data:
             return empty
         return {
@@ -132,12 +136,17 @@ def run_judge(
 
     msg = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=1024,
+        max_tokens=4096,
         system=JUDGE_SYSTEM,
         messages=[{"role": "user", "content": user_content}],
     )
     raw = msg.content[0].text
     result = parse_judge_response(raw)
+    print(
+        f"[judge] {len(result['suspect_drops'])} suspect_drops, "
+        f"{len(result['suspect_keeps'])} suspect_keeps",
+        file=sys.stderr,
+    )
 
     out_dir = root / "docs" / "review"
     out_dir.mkdir(parents=True, exist_ok=True)

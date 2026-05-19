@@ -106,6 +106,21 @@ def test_parse_judge_response_malformed_returns_empty():
     }
 
 
+def test_parse_judge_response_strips_markdown_fences():
+    """Haiku regularly wraps JSON in ```json … ``` fences; strip before parsing."""
+    import judge
+    payload = {
+        "suspect_drops": [
+            {"url": "https://ex.com/x", "stage": "dropped_keyword", "reason": "ok"},
+        ],
+        "suspect_keeps": [],
+    }
+    fenced = f"```json\n{json.dumps(payload)}\n```"
+    result = judge.parse_judge_response(fenced)
+    assert len(result["suspect_drops"]) == 1
+    assert result["suspect_drops"][0]["url"] == "https://ex.com/x"
+
+
 # --------------------------------------------------------------------------- #
 # 3. run_judge — writes judge JSON with correct shape
 # --------------------------------------------------------------------------- #
