@@ -39,6 +39,7 @@ CSS = """
   --purple: hsl(292 60% 65%); --green: #6ee7b7; --amber: #fcd34d; --red: #fca5a5;
   --keep-bg: rgba(110, 231, 183, 0.15); --drop-bg: rgba(252, 165, 165, 0.18);
   --unsure-bg: rgba(252, 211, 77, 0.18);
+  --judge-drop-accent: hsl(45 90% 55%); --judge-keep-accent: hsl(0 80% 65%);
 }
 * { box-sizing: border-box; }
 body {
@@ -68,6 +69,14 @@ section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
 .card.verdict-keep { background: var(--keep-bg); border-color: var(--green); }
 .card.verdict-drop { background: var(--drop-bg); border-color: var(--red); }
 .card.verdict-unsure { background: var(--unsure-bg); border-color: var(--amber); }
+.card.judge-suspect-drop { border-left: 3px solid var(--judge-drop-accent); }
+.card.judge-suspect-keep { border-left: 3px solid var(--judge-keep-accent); }
+.judge-flag {
+  display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  margin-left: 6px; vertical-align: middle; font-family: 'DM Mono', ui-monospace, monospace;
+}
+.judge-flag-drop { background: hsla(45,90%,55%,0.2); color: var(--judge-drop-accent); }
+.judge-flag-keep { background: hsla(0,80%,65%,0.2); color: var(--judge-keep-accent); }
 .card .title {
   font-weight: 500; margin-bottom: 4px; display: block;
   color: var(--fg); text-decoration: none;
@@ -121,13 +130,27 @@ def _esc(s: str) -> str:
     return html_mod.escape(s or "", quote=True)
 
 
-def _render_card(item: dict, stage: str) -> str:
+def _render_card(item: dict, stage: str, suspect: str | None = None) -> str:
+    """Render one item card.
+
+    suspect: None | "drop" (judge thinks this was a wrong drop) |
+             "keep" (judge thinks this shouldn't have made the final cut).
+    """
     title = _esc(item.get("title", "(untitled)"))
     url = _esc(item.get("url", ""))
     source = _esc(item.get("source", ""))
     score = item.get("score", 0)
     age = item.get("age_days", 0)
     first_seen = item.get("first_seen", "")
+
+    extra_classes = ""
+    judge_badge = ""
+    if suspect == "drop":
+        extra_classes = " judge-suspect-drop"
+        judge_badge = '<span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span>'
+    elif suspect == "keep":
+        extra_classes = " judge-suspect-keep"
+        judge_badge = '<span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span>'
 
     meta_parts = [
         f'<span class="src">{source}</span>',
@@ -137,8 +160,8 @@ def _render_card(item: dict, stage: str) -> str:
     if first_seen:
         meta_parts.append(f'<span class="sep">·</span><span>first seen {first_seen}</span>')
 
-    return f'''  <div class="card" data-url="{url}" data-stage="{stage}">
-    <a class="title" href="{url}" target="_blank" rel="noopener">{title}</a>
+    return f'''  <div class="card{extra_classes}" data-url="{url}" data-stage="{stage}">
+    <a class="title" href="{url}" target="_blank" rel="noopener">{title}</a>{judge_badge}
     <div class="meta">{"".join(meta_parts)}</div>
     <div class="verdicts">
       <button data-verdict="keep" data-url="{url}">keep ✓</button>
@@ -149,14 +172,29 @@ def _render_card(item: dict, stage: str) -> str:
   </div>'''
 
 
-def _render_section(stage_key: str, heading: str, blurb: str, items: list[dict]) -> str:
+def _render_section(
+    stage_key: str,
+    heading: str,
+    blurb: str,
+    items: list[dict],
+    suspect_drops: set[str] | None = None,
+    suspect_keeps: set[str] | None = None,
+) -> str:
     if not items:
         return ""
-    cards = "\n".join(_render_card(it, stage_key) for it in items)
+    cards_html = []
+    for it in items:
+        url = it.get("url", "")
+        suspect = None
+        if suspect_drops and url in suspect_drops:
+            suspect = "drop"
+        elif suspect_keeps and url in suspect_keeps:
+            suspect = "keep"
+        cards_html.append(_render_card(it, stage_key, suspect=suspect))
     return f'''<section>
   <h2>{_esc(heading)} <span style="color:var(--fg-dim);font-weight:400">({len(items)})</span></h2>
   <div class="blurb">{_esc(blurb)}</div>
-{cards}
+{chr(10).join(cards_html)}
 </section>'''
 
 
@@ -166,6 +204,7 @@ const REVIEW_DATE = %(date_json)s;
 const TOTAL_ITEMS = %(total)d;
 const ITEM_INDEX = %(index_json)s;
 const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
+const JUDGE = %(judge_json)s;
 
 function key(url) { return STORAGE_PREFIX + url; }
 
@@ -280,19 +319,43 @@ document.addEventListener("DOMContentLoaded", () => {
 """
 
 
-def render(log: dict) -> str:
-    """Render a full HTML review page from a parsed log dict."""
+def render(log: dict, judge: dict | None = None) -> str:
+    """Render a full HTML review page from a parsed log dict.
+
+    judge: optional parsed .judge.json dict with suspect_drops / suspect_keeps
+    arrays.  When provided the URL sets are converted to dicts and inlined as
+    `const JUDGE` in the page script; suspect cards also receive CSS classes
+    emitted server-side at build time.
+    """
     date = log["date"]
     pipeline = log.get("pipeline", {})
     prompt_version = log.get("prompt_version", "?")
+
+    # Build URL-keyed sets for server-side suspect class emission.
+    suspect_drops: set[str] = set()
+    suspect_keeps: set[str] = set()
+    judge_js_value = "null"
+    if judge:
+        suspect_drops = {it["url"] for it in judge.get("suspect_drops", []) if it.get("url")}
+        suspect_keeps = {it["url"] for it in judge.get("suspect_keeps", []) if it.get("url")}
+        # Build URL-keyed dicts for optional JS hover reasons.
+        judge_js = {
+            "suspect_drops": {
+                it["url"]: {"stage": it.get("stage"), "reason": it.get("reason")}
+                for it in judge.get("suspect_drops", []) if it.get("url")
+            },
+            "suspect_keeps": {
+                it["url"]: {"reason": it.get("reason")}
+                for it in judge.get("suspect_keeps", []) if it.get("url")
+            },
+        }
+        judge_js_value = json.dumps(judge_js)
 
     sections_html = []
     item_index = []
     item_meta = {}
     for stage_key, heading, blurb in STAGES:
         items = log.get(stage_key, [])
-        if stage_key == "final":
-            items = log.get("final", [])
         for it in items:
             url = it.get("url", "")
             if url:
@@ -304,7 +367,11 @@ def render(log: dict) -> str:
                     "score": it.get("score"),
                     "age_days": it.get("age_days"),
                 }
-        sections_html.append(_render_section(stage_key, heading, blurb, items))
+        sections_html.append(_render_section(
+            stage_key, heading, blurb, items,
+            suspect_drops=suspect_drops or None,
+            suspect_keeps=suspect_keeps or None,
+        ))
 
     sections_html = [s for s in sections_html if s]
 
@@ -315,6 +382,7 @@ def render(log: dict) -> str:
         "total": len(item_index),
         "index_json": json.dumps(item_index),
         "meta_json": json.dumps(item_meta),
+        "judge_json": judge_js_value,
     }
 
     return f'''<!DOCTYPE html>
@@ -349,6 +417,9 @@ def render(log: dict) -> str:
 def build(date: str, root: Path | str = ".") -> Path:
     """Read `<root>/docs/logs/<date>.json` and write the review HTML.
 
+    Also reads `<root>/docs/review/<date>.judge.json` if it exists and inlines
+    the judge triage data so suspect cards are highlighted at page load.
+
     Returns the path of the written HTML file.
     """
     root = Path(root)
@@ -360,10 +431,16 @@ def build(date: str, root: Path | str = ".") -> Path:
         )
 
     log = json.loads(log_path.read_text())
+
+    judge: dict | None = None
+    judge_path = root / "docs" / "review" / f"{date}.judge.json"
+    if judge_path.exists():
+        judge = json.loads(judge_path.read_text())
+
     out_dir = root / "docs" / "review"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{date}.html"
-    out_path.write_text(render(log))
+    out_path.write_text(render(log, judge=judge))
     return out_path
 
 

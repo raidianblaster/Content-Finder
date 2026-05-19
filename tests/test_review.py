@@ -202,3 +202,71 @@ def test_missing_log_raises(tmp_path):
     with pytest.raises(FileNotFoundError) as exc:
         review.build("2099-01-01", root=tmp_path)
     assert "2099-01-01" in str(exc.value)
+
+
+# --------------------------------------------------------------------------- #
+# 8. Judge data inlined when .judge.json is present
+# --------------------------------------------------------------------------- #
+
+def test_build_inlines_judge_data_when_present(log_root):
+    import review
+    judge_data = {
+        "date": SAMPLE_LOG["date"],
+        "judge_prompt_version": "v1",
+        "suspect_drops": [
+            {"url": "https://ex.com/finance", "stage": "dropped_keyword",
+             "reason": "relevant despite keyword miss"},
+        ],
+        "suspect_keeps": [
+            {"url": "https://ex.com/agent-sdk", "reason": "vendor hype"},
+        ],
+    }
+    review_dir = log_root / "docs" / "review"
+    review_dir.mkdir(parents=True, exist_ok=True)
+    (review_dir / f"{SAMPLE_LOG['date']}.judge.json").write_text(json.dumps(judge_data))
+
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+
+    assert "const JUDGE" in html
+    assert '"suspect_drops"' in html
+
+
+# --------------------------------------------------------------------------- #
+# 9. Suspect cards get CSS class emitted server-side
+# --------------------------------------------------------------------------- #
+
+def test_judge_suspect_drop_card_gets_css_class(log_root):
+    import review
+    judge_data = {
+        "date": SAMPLE_LOG["date"],
+        "judge_prompt_version": "v1",
+        "suspect_drops": [
+            {"url": "https://ex.com/finance", "stage": "dropped_keyword",
+             "reason": "relevant"},
+        ],
+        "suspect_keeps": [],
+    }
+    review_dir = log_root / "docs" / "review"
+    review_dir.mkdir(parents=True, exist_ok=True)
+    (review_dir / f"{SAMPLE_LOG['date']}.judge.json").write_text(json.dumps(judge_data))
+
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+
+    # The finance card div should carry the suspect-drop class
+    finance_idx = html.find("ex.com/finance")
+    assert finance_idx > 0
+    window = html[max(0, finance_idx - 200):finance_idx + 200]
+    assert "judge-suspect" in window
+
+
+# --------------------------------------------------------------------------- #
+# 10. When no judge file, JUDGE constant is null
+# --------------------------------------------------------------------------- #
+
+def test_build_judge_null_when_no_judge_file(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert "const JUDGE = null" in html
