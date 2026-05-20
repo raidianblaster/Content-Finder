@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-21",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2605.18988",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv on novel multimodal attack defenses with strong score (12.77) from trusted source deserves coverage."
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.01499",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv on LLM ensemble aggregation (8.77 score) offers practical improvements over majority voting."
+    },
+    {
+      "url": "https://arxiv.org/abs/2512.18552",
+      "stage": "dropped_source_cap",
+      "reason": "Frontier agent research on self-play software development (8.77 score) from arXiv is directly relevant to agentic AI."
+    },
+    {
+      "url": "https://simonwillison.net/2026/May/19/5-minute-llms/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison summary of six months of LLM developments (7.45 score) is high-signal curation from trusted source."
+    },
+    {
+      "url": "https://simonwillison.net/2026/May/20/tokens-per-second/#atom-everything",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison practical LLM performance analysis (6.94 score) provides useful developer perspective on token throughput."
+    },
+    {
+      "url": "https://github.com/shenli/distributed-system-testing",
+      "stage": "dropped_source_cap",
+      "reason": "Practical GitHub project on testing distributed systems with AI agents (8.63 score) is substantive and relevant."
+    },
+    {
+      "url": "https://reubenbrooks.dev/blog/structural-backpressure-beats-smarter-agents/",
+      "stage": "dropped_source_cap",
+      "reason": "Technical blog on formal verification gates for AI coding loops (7.85 score) offers engineering insights on agent safety."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.19604",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv (14.77) on programmable runtime skills for LLM agents is core agentic AI research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.18856",
+      "stage": "dropped_source_cap",
+      "reason": "Entry-level guide to LLMs in medical research (11.77 score) from arXiv bridges academic and practical applications."
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.05746",
+      "stage": "dropped_source_cap",
+      "reason": "Research on agentic reasoning modules for multi-agent systems (11.77 score) directly addresses core agent generalization."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://qwen.ai/blog?id=qwen3.7",
+      "reason": "Vendor marketing announcement for Qwen3.7 lacks substantive technical content beyond promotional claims."
+    },
+    {
+      "url": "https://openai.com/index/ramp",
+      "reason": "Case study on code review acceleration is vendor marketing for OpenAI's Codex with limited novel insights."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/mcp-servers-vs-cli-tools-for-ai-agents/",
+      "reason": "MindStudio blog post is marketing-adjacent content promoting their platform with generic workflow advice."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/add-vision-to-local-ai-agent-small-model/",
+      "reason": "MindStudio tutorial is promotional content designed to drive platform adoption rather than advancing knowledge."
+    },
+    {
+      "url": "https://www.techmeme.com/260520/p47#a260520p47",
+      "reason": "Nvidia earnings report is financial news, not AI/ML research or technical development content."
+    },
+    {
+      "url": "https://www.techmeme.com/260520/p39#a260520p39",
+      "reason": "OpenAI IPO speculation is corporate finance news without technical AI substance."
+    },
+    {
+      "url": "https://www.techmeme.com/260520/p49#a260520p49",
+      "reason": "Anthropic-SpaceX compute deal announcement is corporate/financial news, not AI research or technical content."
+    },
+    {
+      "url": "https://mapofmetal.com/",
+      "reason": "Interactive periodic table project lacks AI/ML focus despite high score; appears tangential to core pipeline."
+    },
+    {
+      "url": "https://stratechery.com/2026/google-i-o-world-models-i-o-spaghetti/",
+      "reason": "Tech industry analysis blog post provides opinion and commentary rather than substantive technical reporting."
+    },
+    {
+      "url": "https://lastweekin.ai/p/lwiai-podcast-245-tml-interaction",
+      "reason": "Podcast digest is secondary aggregation of news rather than primary technical or research content."
+    }
+  ]
+}

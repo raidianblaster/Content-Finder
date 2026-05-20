@@ -1,0 +1,3849 @@
+{
+  "date": "2026-05-21",
+  "prompt_version": "v1",
+  "pipeline": {
+    "fetched": 568,
+    "after_keyword_filter": 348,
+    "after_dedupe": 333,
+    "after_ttl_filter": 327,
+    "after_source_cap": 21
+  },
+  "dropped_keyword": [
+    {
+      "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+      "url": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+      "source": "Hugging Face Blog",
+      "score": 2.66,
+      "age_days": 1.2
+    },
+    {
+      "title": "Introducing the Ettin Reranker Family",
+      "url": "https://huggingface.co/blog/ettin-reranker",
+      "source": "Hugging Face Blog",
+      "score": 2.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "SpaceX S-1: xAI had a $6.4B operating loss on $3.2B in revenue in 2025; Grok and X had 550M MAUs combined as of March 2026, and 117M used Grok's AI features (Rebecca Bellan/TechCrunch)",
+      "url": "https://www.techmeme.com/260520/p50#a260520p50",
+      "source": "Techmeme",
+      "score": 3.0,
+      "age_days": 0.0
+    },
+    {
+      "title": "Filing: SpaceX reports 2025 revenue of $18.7B, up 33% YoY, a $4.9B loss, vs. a $791M profit in 2024, and $20.7B in capital expenditures, up from $11.2B (New York Times)",
+      "url": "https://www.techmeme.com/260520/p48#a260520p48",
+      "source": "Techmeme",
+      "score": 2.98,
+      "age_days": 0.1
+    },
+    {
+      "title": "SpaceX files publicly for its IPO, choosing Nasdaq to make its debut under the symbol SPCX (Bloomberg)",
+      "url": "https://www.techmeme.com/260520/p45#a260520p45",
+      "source": "Techmeme",
+      "score": 2.97,
+      "age_days": 0.1
+    },
+    {
+      "title": "Nvidia reports Q1 revenue up 85% YoY to $81.6B, Data Center revenue up 92% to $75.2B, and announces an $80B additional share repurchase authorization (Nvidia Newsroom)",
+      "url": "https://www.techmeme.com/260520/p44#a260520p44",
+      "source": "Techmeme",
+      "score": 2.97,
+      "age_days": 0.1
+    },
+    {
+      "title": "Granta and the Commonwealth Foundation say they can't determine yet if AI was used to write a prize-winning short story after critics pointed to signs of AI use (The Guardian)",
+      "url": "https://www.techmeme.com/260520/p42#a260520p42",
+      "source": "Techmeme",
+      "score": 2.94,
+      "age_days": 0.2
+    },
+    {
+      "title": "Airbnb says it is adding luggage storage, airport pickups, car rentals, grocery delivery, and thousands of boutique and independent hotels to its platform (Jacob Passy/Wall Street Journal)",
+      "url": "https://www.techmeme.com/260520/p40#a260520p40",
+      "source": "Techmeme",
+      "score": 2.93,
+      "age_days": 0.2
+    },
+    {
+      "title": "Ubisoft reports a record operating loss of $1.40B for the year to March and says sales in 2026-27 will fall by about 8% to 9%; UBI falls 6%+ (Reuters)",
+      "url": "https://www.techmeme.com/260520/p38#a260520p38",
+      "source": "Techmeme",
+      "score": 2.92,
+      "age_days": 0.3
+    },
+    {
+      "title": "Internal memo: Xbox hires game industry analyst Matthew Ball as chief strategy officer, and names Scott Van Vliet, who led Azure AI infrastructure, as Xbox CTO (Tom Warren/The Verge)",
+      "url": "https://www.techmeme.com/260520/p37#a260520p37",
+      "source": "Techmeme",
+      "score": 2.92,
+      "age_days": 0.3
+    },
+    {
+      "title": "Internal memo: Mark Zuckerberg told employees that he does not expect more company-wide layoffs this year (Katie Paul/Reuters)",
+      "url": "https://www.techmeme.com/260520/p36#a260520p36",
+      "source": "Techmeme",
+      "score": 2.91,
+      "age_days": 0.3
+    },
+    {
+      "title": "Railway: The Agent-Native Cloud \u2014 Jake Cooper",
+      "url": "https://www.latent.space/p/railway",
+      "source": "Latent Space",
+      "score": 3.99,
+      "age_days": 0.0
+    },
+    {
+      "title": "[AINews] How to land a job at a frontier lab (on Pretraining)",
+      "url": "https://www.latent.space/p/ainews-how-to-land-a-job-at-a-frontier",
+      "source": "Latent Space",
+      "score": 3.53,
+      "age_days": 1.7
+    },
+    {
+      "title": "Personal Day",
+      "url": "https://stratechery.com/2026/personal-day-3/",
+      "source": "Stratechery",
+      "score": 3.56,
+      "age_days": 1.6
+    },
+    {
+      "title": "KAN-MLP-Mixer: A comprehensive investigation of the usage of Kolmogorov-Arnold Networks (KANs) for improving IMU-based Human Activity Recognition",
+      "url": "https://arxiv.org/abs/2605.19031",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Interference-Aware Multi-Task Unlearning",
+      "url": "https://arxiv.org/abs/2605.19042",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Not all uncertainty is alike: volatility, stochasticity, and exploration",
+      "url": "https://arxiv.org/abs/2605.19215",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SimGym: A Framework for A/B Test Simulation in E-Commerce with Traffic-Grounded VLM Agents",
+      "url": "https://arxiv.org/abs/2605.19219",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AQuaUI: Visual Token Reduction for GUI Agents with Adaptive Quadtrees",
+      "url": "https://arxiv.org/abs/2605.19260",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Generative Recursive Reasoning",
+      "url": "https://arxiv.org/abs/2605.19376",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Mode Collapse: Distribution Matching for Diverse Reasoning",
+      "url": "https://arxiv.org/abs/2605.19461",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Position: The Turing-Completeness of Real-World Autoregressive Transformers Relies Heavily on Context Management",
+      "url": "https://arxiv.org/abs/2605.19514",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Efficient Elicitation of Collective Disagreements",
+      "url": "https://arxiv.org/abs/2605.19521",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EMO-BOOST: Emotion-Augmented Audio-Visual Features for Improved Generalization in Deepfake Detection",
+      "url": "https://arxiv.org/abs/2605.19630",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Transforming Constraint Programs to Input for Local Search",
+      "url": "https://arxiv.org/abs/2605.19671",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Rational Illusion: Behaviorally Realistic Strategic Classification",
+      "url": "https://arxiv.org/abs/2605.19674",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Projecting Latent RL Actions: Towards Generalizable and Scalable Graph Combinatorial Optimization",
+      "url": "https://arxiv.org/abs/2605.19721",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "What Really Improves Mathematical Reasoning: Structured Reasoning Signals Beyond Pure Code",
+      "url": "https://arxiv.org/abs/2605.19762",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GroupAffect-4: A Multimodal Dataset of Four-Person Collaborative Interaction",
+      "url": "https://arxiv.org/abs/2605.19765",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Minimax Optimal Variance-Aware Regret Bounds for Multinomial Logistic MDPs",
+      "url": "https://arxiv.org/abs/2605.19768",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "OpenComputer: Verifiable Software Worlds for Computer-Use Agents",
+      "url": "https://arxiv.org/abs/2605.19769",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "From SGD to Muon: Adaptive Optimization via Schatten-p Norms",
+      "url": "https://arxiv.org/abs/2605.19781",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Streamlined Constraint Reasoning via CNN Pattern Recognition on Enumerated Solutions",
+      "url": "https://arxiv.org/abs/2605.19895",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GeoX: Mastering Geospatial Reasoning Through Self-Play and Verifiable Rewards",
+      "url": "https://arxiv.org/abs/2605.20006",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
+      "url": "https://arxiv.org/abs/2605.20025",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Neurosymbolic Learning for Inference-Time Argumentation",
+      "url": "https://arxiv.org/abs/2605.20098",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Using Aristotle API for AI-Assisted Theorem Proving in Lean 4: A Formalisation Case Study of the Grasshopper Problem",
+      "url": "https://arxiv.org/abs/2605.20120",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Not Every Rubric Teaches Equally: Policy-Aware Rubric Rewards for RLVR",
+      "url": "https://arxiv.org/abs/2605.20164",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HaorFloodAlert: Deseasonalized ML Ensemble for 72-Hour Flood Prediction in Bangladesh Haor Wetlands",
+      "url": "https://arxiv.org/abs/2605.20167",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "An Efficient Multilevel Preconditioned Nonlinear Conjugate Gradient Method for Incremental Potential Contact",
+      "url": "https://arxiv.org/abs/2604.19892",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Retrieve Only Relevant Tables Whether Few or Many: Adaptive Table Retrieval Method",
+      "url": "https://arxiv.org/abs/2605.18766",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DualView: Adaptive Local-Global Fusion for Multi-Hop Document Reranking",
+      "url": "https://arxiv.org/abs/2605.18767",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Mask-to-Correct$^+$: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction",
+      "url": "https://arxiv.org/abs/2605.18776",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Features have life history. And we should care",
+      "url": "https://arxiv.org/abs/2605.18789",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Dimensional Balance Improves Large Scale Spatiotemporal Prediction Performance",
+      "url": "https://arxiv.org/abs/2605.18793",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Robust Basis Spline Decoupling for the Compression of Transformer Models",
+      "url": "https://arxiv.org/abs/2605.18794",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Simply Stabilizing the Loop via Fully Looped Transformer",
+      "url": "https://arxiv.org/abs/2605.18797",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ReCrit: Transition-Aware Reinforcement Learning for Scientific Critic Reasoning",
+      "url": "https://arxiv.org/abs/2605.18799",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PROWL: Prioritized Regret-Driven Optimization for World Model Learning",
+      "url": "https://arxiv.org/abs/2605.18803",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Adaptive Multi-Scale Goodness Aggregation for Forward-Forward Learning",
+      "url": "https://arxiv.org/abs/2605.18804",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Block-Based Double Decoders",
+      "url": "https://arxiv.org/abs/2605.18807",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Composition of Memory Experts for Diffusion World Models",
+      "url": "https://arxiv.org/abs/2605.18813",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Symmetry in the Wild: The Role of Equivariance in Neural Fluid Surrogates",
+      "url": "https://arxiv.org/abs/2605.18816",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Emergence of Frontier Superposition: M\\\"obius attractor and Cascade Supervision",
+      "url": "https://arxiv.org/abs/2605.18820",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Routing and Filtering Structure of Attention",
+      "url": "https://arxiv.org/abs/2605.18826",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Precision Tracked Transformer via Kalman Filtering, Kriging and Process Noise",
+      "url": "https://arxiv.org/abs/2605.18832",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VCR: Learning Valid Contextual Representation for Incomplete Wearable Signals",
+      "url": "https://arxiv.org/abs/2605.18837",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "An Integrated Forecasting Prototype for Emergency Department Boarding Time to Support Proactive Operational Decision Making",
+      "url": "https://arxiv.org/abs/2605.18839",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Graph-Driven Cross-Industry Real-Time Monitoring Framework for Anti-Money Laundering Detection in Converged Mobility-Energy Supply Chain Networks",
+      "url": "https://arxiv.org/abs/2605.18844",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "First-Passage Prediction of Grokking Delay: ACalibrated Law under AdamW with Causal Validation",
+      "url": "https://arxiv.org/abs/2605.18845",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Lost and Found in Translation: Variational Diagnostics for Neural Codebook Channels",
+      "url": "https://arxiv.org/abs/2605.18846",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Transformers Linearly Represent Highly Structured World Models",
+      "url": "https://arxiv.org/abs/2605.18847",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Exact Linear Attention",
+      "url": "https://arxiv.org/abs/2605.18848",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "INSIGHTS: Demonstration-Based Summaries of Time Series Predictors",
+      "url": "https://arxiv.org/abs/2605.18849",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Towards Family-Grouped Hierarchical Federated Learning on Sub-5KB Models: A Feasibility Study of Privacy-Preserving ECG Monitoring for Ultra-Resource-Constrained Wearables",
+      "url": "https://arxiv.org/abs/2605.18862",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "From Sparsity to Simplicity: Enabling Simpler Sequential Replacements via Sparse Attention Distillation",
+      "url": "https://arxiv.org/abs/2605.18865",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FLUIDSPLAT: Reconstructing Physical Fields from Sparse Sensors via Gaussian Primitives",
+      "url": "https://arxiv.org/abs/2605.18866",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EVA-0: Test-Time Model Evolution with Only Two Forward Passes per Sample",
+      "url": "https://arxiv.org/abs/2605.18867",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EUPHORIA: Efficient Universal Planning via Hybrid Optimization for Robust Industrial Robotic Assembly",
+      "url": "https://arxiv.org/abs/2605.18872",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Prediction Is Not Physics: Learning and Evaluating Conserved Quantities in Neural Simulators",
+      "url": "https://arxiv.org/abs/2605.18883",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Extremum Stack is a Minimal Sufficient Statistic for Rate-Independent Functionals: A Kolmogorov Complexity Characterisation",
+      "url": "https://arxiv.org/abs/2605.18885",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Soft Learning",
+      "url": "https://arxiv.org/abs/2605.18889",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Data-Free Client Contribution Estimation via Logit Maximization for Federated Learning",
+      "url": "https://arxiv.org/abs/2605.18892",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Cross-Subject Intracranial EEG Reconstruction from Scalp Recordings Using Multi-Scale Cross-Attention Transformers",
+      "url": "https://arxiv.org/abs/2605.18897",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Dynamic Model Merging Made Slim",
+      "url": "https://arxiv.org/abs/2605.18904",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Stability and Discretization Error of State Space Model Neural Operators",
+      "url": "https://arxiv.org/abs/2605.18905",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Lightweight and Fast Backdoor Model Detection",
+      "url": "https://arxiv.org/abs/2605.18907",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Fast and Lightweight Backdoor Detection via Head Random Probing",
+      "url": "https://arxiv.org/abs/2605.18908",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SCAFDS: Edge-Feature Graph Attention for Interbank Fraud Detection with Attribution-Grounded SAR Generation",
+      "url": "https://arxiv.org/abs/2605.18913",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CounterFlow: A Two-Phase Inference-Time Sampling for Counterfactual Video Foley Generation",
+      "url": "https://arxiv.org/abs/2605.18916",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MoCo-EA: Exploiting Adversarial Mode Connectivity for Efficient Evolutionary Attacks",
+      "url": "https://arxiv.org/abs/2605.18919",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Agent Security is a Systems Problem",
+      "url": "https://arxiv.org/abs/2605.18991",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "KVBuffer: IO-aware Serving for Linear Attention",
+      "url": "https://arxiv.org/abs/2605.19049",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "LiFT: Lifted Inter-slice Feature Trajectories for 3D Image Generation from 2D Generators",
+      "url": "https://arxiv.org/abs/2605.19060",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Riemannian Networks over Full-Rank Correlation Matrices",
+      "url": "https://arxiv.org/abs/2605.19073",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CRAFT: Critic-Refined Adaptive Key-Frame Targeting for Multimodal Video Question Answering",
+      "url": "https://arxiv.org/abs/2605.19075",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MANGO: Meta-Adaptive Network Gradient Optimization for Online Continual Learning",
+      "url": "https://arxiv.org/abs/2605.19080",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Neural Operators for Design-Space Surrogate Modeling of Tendon-Actuated Continuum Robots",
+      "url": "https://arxiv.org/abs/2605.19104",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GOAL: Graph-based Objective-Aligned Diffusion Solvers for Dynamic Multi-Objective Optimization",
+      "url": "https://arxiv.org/abs/2605.19119",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Flash PD-SSM: Memory-Optimized Structured Sparse State-Space Models",
+      "url": "https://arxiv.org/abs/2605.19150",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Planner-Admissible Graph-PDE Value Extensions for Sparse Goal-Conditioned Planning",
+      "url": "https://arxiv.org/abs/2605.19185",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "On-Device Continual Learning with Dual-Stage Buffer and Dynamic Loss for Point-of-Care Pneumonia Diagnosis",
+      "url": "https://arxiv.org/abs/2605.19201",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Aerial Inspection Behaviors via RL-based Quadrotor Control for Under-canopy Forest Environments",
+      "url": "https://arxiv.org/abs/2605.19202",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Quantized Machine Learning Models for Medical Imaging in Low-Resource Healthcare Settings",
+      "url": "https://arxiv.org/abs/2605.19207",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Rotation-Aligned Key Channel Pruning for Efficient Vision-Language Model Inference",
+      "url": "https://arxiv.org/abs/2605.19218",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Token by Token, Compromised: Backdoor Vulnerabilities in Unified Autoregressive Models",
+      "url": "https://arxiv.org/abs/2605.19227",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PhyWorld: Physics-Faithful World Model for Video Generation",
+      "url": "https://arxiv.org/abs/2605.19242",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ExECG: An Explainable AI Framework for ECG models",
+      "url": "https://arxiv.org/abs/2605.19258",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When Web Apps Heal Themselves: A MAPE-K Based Approach to Fault Tolerance and Adaptive Recovery",
+      "url": "https://arxiv.org/abs/2605.19261",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EviTrack: Selection over Sampling for Delayed Disambiguation",
+      "url": "https://arxiv.org/abs/2605.19283",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Inference-Time Scaling in Diffusion Models through Iterative Partial Refinement",
+      "url": "https://arxiv.org/abs/2605.19317",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "RE-VLM: Event-Augmented Vision-Language Model for Scene Understanding",
+      "url": "https://arxiv.org/abs/2605.19329",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "IMLJD: A Computational Dataset for Indian Matrimonial Litigation Analysis",
+      "url": "https://arxiv.org/abs/2605.19346",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PAVE: A Cognitive Architecture for Legitimate Violation in Generative Agent Societies",
+      "url": "https://arxiv.org/abs/2605.19351",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Skinned Motion Retargeting with Spatially Adaptive Interaction Guidance",
+      "url": "https://arxiv.org/abs/2605.19355",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Multi-Scale Generative Modeling with Heat Dissipation Flow Matching",
+      "url": "https://arxiv.org/abs/2605.19371",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Conflict-Free Replicated Data Types for Neural Network Model Merging: A Two-Layer Architecture Enabling CRDT-Compliant Model Merging Across 26 Strategies",
+      "url": "https://arxiv.org/abs/2605.19373",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Rebalancing Reference Frame Dominance to Improve Motion in Image-to-Video Models",
+      "url": "https://arxiv.org/abs/2605.19398",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Bitter Lesson for Data Filtering",
+      "url": "https://arxiv.org/abs/2605.19407",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Targeted Downstream-Agnostic Attack",
+      "url": "https://arxiv.org/abs/2605.19446",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Resilient Byzantine Agreement with Predictions",
+      "url": "https://arxiv.org/abs/2605.19452",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CANINE: Coaching Visually Impaired Users for Interactive Navigation with a Robot Guide Dog",
+      "url": "https://arxiv.org/abs/2605.19501",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Base Models Look Human To AI Detectors",
+      "url": "https://arxiv.org/abs/2605.19516",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CaptchaMind: Training CAPTCHA Solvers via Reinforcement Learning with Explicit Reasoning Supervision",
+      "url": "https://arxiv.org/abs/2605.19538",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Spectral Integrated Gradients for Coarse-to-Fine Feature Attribution",
+      "url": "https://arxiv.org/abs/2605.19607",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Component-Aware Structure-Preserving Style Transfer for Satellite Sim2Real 6D Pose Estimation",
+      "url": "https://arxiv.org/abs/2605.19624",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "P2DNav: Panorama-to-Downview Reasoning for Zero-shot Vision-and-Language Navigation",
+      "url": "https://arxiv.org/abs/2605.19634",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "LIFT and PLACE: A Simple, Stable, and Effective Knowledge Distillation Framework for Lightweight Diffusion Models",
+      "url": "https://arxiv.org/abs/2605.19729",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "TERGAD: Structure-Aware Text-Enhanced Representations for Graph Anomaly Detection",
+      "url": "https://arxiv.org/abs/2605.19738",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Operationalising Artificial Intelligence Bills of Materials (AIBOMs) for Verifiable AI Provenance and Lifecycle Assurance",
+      "url": "https://arxiv.org/abs/2605.19755",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AffectAI-Capture: A Reproducible Multimodal Protocol for Small-Group Meeting Research",
+      "url": "https://arxiv.org/abs/2605.19794",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Latent Laplace Diffusion for Irregular Multivariate Time Series",
+      "url": "https://arxiv.org/abs/2605.19805",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ST-TGExplainer: Disentangling Stability and Transition Patterns for Temporal GNN Interpretability",
+      "url": "https://arxiv.org/abs/2605.19822",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Smooth Piecewise Cutting for Neural Operator to Handle Discontinuities and Sharp Transitions",
+      "url": "https://arxiv.org/abs/2605.19823",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Framework for Evaluating Zero-Shot Image Generation in Concept-based Explainability",
+      "url": "https://arxiv.org/abs/2605.19855",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "StableGrad: Backward Scale Control without Batch Normalization",
+      "url": "https://arxiv.org/abs/2605.19856",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Deep Tech to Space: Space Data Centers and AI Revolution at the Edge",
+      "url": "https://arxiv.org/abs/2605.19892",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Fast and Featureless Node Representation Learning with Partial Pairwise Supervision",
+      "url": "https://arxiv.org/abs/2605.19916",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Real-Time Parallel Counterfactual Regret Minimization",
+      "url": "https://arxiv.org/abs/2605.19928",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Breaking Modality Heterogeneity in Low-Bit Quantization for Large Vision-Language Models",
+      "url": "https://arxiv.org/abs/2605.19929",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "StruMPL: Multi-task Dense Regression under Disjoint Partial Supervision and MNAR Labels",
+      "url": "https://arxiv.org/abs/2605.19931",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GEM: GPU-Variability-Aware Expert to GPU Mapping for MoE Systems",
+      "url": "https://arxiv.org/abs/2605.19945",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "World-Ego Modeling for Long-Horizon Evolution in Hybrid Embodied Tasks",
+      "url": "https://arxiv.org/abs/2605.19957",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning with Foresight: Enhancing Neural Routing Policy via Multi-Node Lookahead Prediction",
+      "url": "https://arxiv.org/abs/2605.19975",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Training Neural Networks with Optimal Double-Bayesian Learning",
+      "url": "https://arxiv.org/abs/2605.20009",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When Critics Disagree: Adaptive Reward Poisoning Attacks in RIS-Aided Wireless Control System",
+      "url": "https://arxiv.org/abs/2605.20037",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Probability-Conserving Flow Guidance",
+      "url": "https://arxiv.org/abs/2605.20079",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VL-DPO: Vision-Language-Guided Finetuning for Preference-Aligned Autonomous Driving",
+      "url": "https://arxiv.org/abs/2605.20082",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "INSHAPE: Instance-Level Shapelets for Interpretable Time-Series Classification",
+      "url": "https://arxiv.org/abs/2605.20088",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Draft Less, Retrieve More: Hybrid Tree Construction for Speculative Decoding",
+      "url": "https://arxiv.org/abs/2605.20104",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Rethinking Visual Attribution for Chest X-ray Reasoning in Large Vision Language Models",
+      "url": "https://arxiv.org/abs/2605.20158",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Long-term Power Grid Planning via Answer Set Programming",
+      "url": "https://arxiv.org/abs/2605.20172",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Atoms of Thought: Universal EEG Representation Learning with Microstates",
+      "url": "https://arxiv.org/abs/2605.20182",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Artificial Intelligence, conceptual metaphors and conceptual engineering: Are AI-based framings of human behaviour and cognition successful?",
+      "url": "https://arxiv.org/abs/2504.07756",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Sonar-TS: Search-Then-Verify Natural Language Querying for Time Series Databases",
+      "url": "https://arxiv.org/abs/2602.17001",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Hybrid Modeling Framework for Crop Prediction Tasks via Dynamic Parameter Calibration and Multi-Task Learning",
+      "url": "https://arxiv.org/abs/2603.15411",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When to Re-Commit: Temporal Abstraction Discovery for Long-Horizon Vision-Language Reasoning",
+      "url": "https://arxiv.org/abs/2605.09860",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Network-Aware Bilinear Tokenization for Brain Functional Connectivity Representation Learning",
+      "url": "https://arxiv.org/abs/2605.14048",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Skim: Speculative Execution for Fast and Efficient Web Agents",
+      "url": "https://arxiv.org/abs/2605.16565",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Recall Isn't Enough: Bounding Commitments in Personalized Language Systems",
+      "url": "https://arxiv.org/abs/2605.16712",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CBT-Audio: Evaluating Audio Language Models for Patient-Side Distress Intensity Estimation in CBT Session Recordings",
+      "url": "https://arxiv.org/abs/2605.17370",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Deep Neural Network for Musical Instrument Recognition using MFCCs",
+      "url": "https://arxiv.org/abs/2105.00933",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Adaptive Camera Sensor for Vision Models",
+      "url": "https://arxiv.org/abs/2503.02170",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GraphPINE: Graph Importance Propagation for Interpretable Drug Response Prediction",
+      "url": "https://arxiv.org/abs/2504.05454",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Recursive Entropic Risk Optimization in Discounted MDPs: Sample Complexity Bounds with a Generative Model",
+      "url": "https://arxiv.org/abs/2506.00286",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Mechanistic Interpretability Needs Philosophy",
+      "url": "https://arxiv.org/abs/2506.18852",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PiKV: KV Cache Management System for Mixture of Experts",
+      "url": "https://arxiv.org/abs/2508.06526",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Digital Voices of Survival: From Social Media Disclosures to Support Provisions for Domestic Violence Victims",
+      "url": "https://arxiv.org/abs/2509.12288",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Hybrid Training for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2510.00600",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Proximal Diffusion Neural Sampler",
+      "url": "https://arxiv.org/abs/2510.03824",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Needles in the Landscape: Semi-Supervised Pseudolabeling for Archaeological Site Discovery under Label Scarcity",
+      "url": "https://arxiv.org/abs/2510.16814",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PlantTraitNet: An Uncertainty-Aware Multimodal Framework for Global-Scale Plant Trait Inference from Citizen Science Data",
+      "url": "https://arxiv.org/abs/2511.06943",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Data-driven Acceleration of MPC with Guarantees",
+      "url": "https://arxiv.org/abs/2511.13588",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HarmonicAttack: An Adaptive Cross-Domain Audio Watermark Removal",
+      "url": "https://arxiv.org/abs/2511.21577",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Open-Set Domain Adaptation Under Background Distribution Shift: Challenges and A Provably Efficient Solution",
+      "url": "https://arxiv.org/abs/2512.01152",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "NORi: An ML-Augmented Ocean Boundary Layer Parameterization",
+      "url": "https://arxiv.org/abs/2512.04452",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Q-learning with Adjoint Matching",
+      "url": "https://arxiv.org/abs/2601.14234",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Multimodal system for skin cancer detection",
+      "url": "https://arxiv.org/abs/2601.14822",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FreeOrbit4D: Training-Free Arbitrary Camera Redirection for Monocular Videos via Foreground-Complete 4D Reconstruction",
+      "url": "https://arxiv.org/abs/2601.18993",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Enabling Real-Time Colonoscopic Polyp Segmentation on Commodity CPUs via Ultra-Lightweight Architecture",
+      "url": "https://arxiv.org/abs/2602.04381",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Protein Autoregressive Modeling via Multiscale Structure Generation",
+      "url": "https://arxiv.org/abs/2602.04883",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "3D aperture-engineered diffractive neural networks for super-resolution electromagnetic wave computing",
+      "url": "https://arxiv.org/abs/2603.00995",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Does AI See like Art Historians? Interpreting How Vision Language Models Recognize Artistic Style",
+      "url": "https://arxiv.org/abs/2603.11024",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "IMPACT: Influence Modeling for Open-Set Time Series Anomaly Detection",
+      "url": "https://arxiv.org/abs/2603.29183",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Target-Aligned Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2603.29501",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning Stable Predictors from Weak Supervision under Distribution Shift",
+      "url": "https://arxiv.org/abs/2604.05002",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DSPR: Dual-Stream Physics-Residual Networks for Trustworthy Industrial Time Series Forecasting",
+      "url": "https://arxiv.org/abs/2604.07393",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Class Unlearning via Depth-Aware Removal of Forget-Specific Directions",
+      "url": "https://arxiv.org/abs/2604.15166",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Lightweight Transformer for Pain Recognition from Brain Activity",
+      "url": "https://arxiv.org/abs/2604.16491",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "One-Block Transformer (1BT) for EEG-Based Cognitive Workload Assessment",
+      "url": "https://arxiv.org/abs/2605.00856",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GRALIS: A Unified Canonical Framework for Linear Attribution Methods via Riesz Representation",
+      "url": "https://arxiv.org/abs/2605.05480",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HoReN: Normalized Hopfield Retrieval for Large-Scale Sequential Model Editing",
+      "url": "https://arxiv.org/abs/2605.08143",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Causality-Aware End-to-End Autonomous Driving via Ego-Centric Joint Scene Modeling",
+      "url": "https://arxiv.org/abs/2605.13646",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Perplexity: A Geometric and Spectral Study of Low-Rank Pre-Training",
+      "url": "https://arxiv.org/abs/2605.13652",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Dywave: Event-Aligned Dynamic Tokenization for Heterogeneous IoT Sensing Signals",
+      "url": "https://arxiv.org/abs/2605.14014",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VGGT-Edit: Feed-forward Native 3D Scene Editing with Residual Field Prediction",
+      "url": "https://arxiv.org/abs/2605.15186",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DeltaPrompts: Escaping the Zero-Delta Trap in Multimodal Distillation",
+      "url": "https://arxiv.org/abs/2605.15532",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Pretraining Objective Matters in Extreme Low-Data FGVC: A Backbone-Controlled Study",
+      "url": "https://arxiv.org/abs/2605.15599",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Argus: Evidence Assembly for Scalable Deep Research Agents",
+      "url": "https://arxiv.org/abs/2605.16217",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Nested Spatio-Temporal Time Series Forecasting",
+      "url": "https://arxiv.org/abs/2605.16447",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EfficientTDMPC: Improved MPC Objectives for Sample-Efficient Continuous Control",
+      "url": "https://arxiv.org/abs/2605.16692",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Balancing Knowledge Distillation for Imbalance Learning with Bilevel Optimization",
+      "url": "https://arxiv.org/abs/2605.17839",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "What's Holding Back Latent Visual Reasoning?",
+      "url": "https://arxiv.org/abs/2605.18445",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Stochastic Penalty-Barrier Methods for Constrained Machine Learning",
+      "url": "https://arxiv.org/abs/2605.18618",
+      "source": "arXiv cs.AI",
+      "score": 3.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Why Rust is different, with Alice Ryhl",
+      "url": "https://newsletter.pragmaticengineer.com/p/why-rust-is-different-with-alice",
+      "source": "The Pragmatic Engineer",
+      "score": 2.92,
+      "age_days": 0.3
+    },
+    {
+      "title": "AI\u2019s impact on software engineers in 2026: key trends, Part 2",
+      "url": "https://newsletter.pragmaticengineer.com/p/ai-impact-on-software-engineers-part-2",
+      "source": "The Pragmatic Engineer",
+      "score": 2.63,
+      "age_days": 1.3
+    },
+    {
+      "title": "Draft Commission guidelines on the classification of high-risk AI systems",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems",
+      "source": "EU AI Office",
+      "score": 3.54,
+      "age_days": 1.6
+    },
+    {
+      "title": "Targeted consultation on the draft guidelines for the classification of high-risk artificial intelligence systems",
+      "url": "https://digital-strategy.ec.europa.eu/en/consultations/targeted-consultation-draft-guidelines-classification-high-risk-artificial-intelligence-systems",
+      "source": "EU AI Office",
+      "score": 3.53,
+      "age_days": 1.6
+    },
+    {
+      "title": "Survey on the EU legal framework for health data and data driven health technologies",
+      "url": "https://digital-strategy.ec.europa.eu/en/consultations/survey-eu-legal-framework-health-data-and-data-driven-health-technologies",
+      "source": "EU AI Office",
+      "score": 3.52,
+      "age_days": 1.7
+    },
+    {
+      "title": "Meta blocks human rights accounts from reaching audiences in Saudi Arabia, UAE",
+      "url": "https://www.alqst.org/ar/posts/1190",
+      "source": "Hacker News",
+      "score": 5.87,
+      "age_days": 0.4
+    },
+    {
+      "title": "Railway Is Having a Major Outage",
+      "url": "https://status.railway.com/#/",
+      "source": "Hacker News",
+      "score": 2.63,
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: Hsrs \u2013 Type-Safe Haskell Bindings Generator for Rust",
+      "url": "https://github.com/harmont-dev/hsrs",
+      "source": "Hacker News",
+      "score": 2.01,
+      "age_days": 1.8
+    },
+    {
+      "title": "War game exposed U.S. vulnerability to low-tech warfare",
+      "url": "https://nsarchive.gwu.edu/news/2024-11-01/rigged-war-game-exposed-us-vulnerability-low-tech-warfare",
+      "source": "Hacker News",
+      "score": 2.35,
+      "age_days": 1.9
+    },
+    {
+      "title": "Japan is gripped by mass allergies. A 1950s project is to blame",
+      "url": "https://www.bbc.com/future/article/20260515-the-1950s-blunder-which-causes-mass-hay-fever-in-japan",
+      "source": "Hacker News",
+      "score": 5.14,
+      "age_days": 0.9
+    },
+    {
+      "title": "Mini Shai-Hulud Strikes Again: 314 npm Packages Compromised",
+      "url": "https://safedep.io/mini-shai-hulud-strikes-again-314-npm-packages-compromised/",
+      "source": "Hacker News",
+      "score": 5.32,
+      "age_days": 1.8
+    },
+    {
+      "title": "Copy Fail, Dirty Frag, and Fragnesia kernel vulnerabilities",
+      "url": "https://www.gentoo.org/news/2026/05/19/copy-fail-fragnesia-vulnerabilities.html",
+      "source": "Hacker News",
+      "score": 2.93,
+      "age_days": 1.3
+    },
+    {
+      "title": "The American Rebellion Against AI Is Gaining Steam",
+      "url": "https://www.wsj.com/tech/ai/the-american-rebellion-against-ai-is-gaining-steam-94b72529",
+      "source": "Hacker News",
+      "score": 2.72,
+      "age_days": 1.9
+    },
+    {
+      "title": "Hormuz closure could trigger 'agrifood shock', price crisis within a year",
+      "url": "https://www.reuters.com/world/middle-east/hormuz-closure-could-trigger-agrifood-shock-price-crisis-within-year-fao-warns-2026-05-20/",
+      "source": "Hacker News",
+      "score": 2.73,
+      "age_days": 0.3
+    },
+    {
+      "title": "My domain got abused on GitHub Pages",
+      "url": "https://meertens.dev/blog/github-enables-domain-abuse/",
+      "source": "Hacker News",
+      "score": 2.14,
+      "age_days": 1.7
+    },
+    {
+      "title": "How to Use Google Pomelo to Create On-Brand Marketing Assets for Free",
+      "url": "https://www.mindstudio.ai/blog/google-pomelo-free-ai-marketing-tool/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Use Storyboards and Character Sheets to Get Better AI Video Results",
+      "url": "https://www.mindstudio.ai/blog/storyboards-character-sheets-ai-video-generation/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Seedance 2.0? The AI Video Model Beating Sora on Consistency",
+      "url": "https://www.mindstudio.ai/blog/what-is-seedance-2-video-model/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "age_days": 2.0
+    }
+  ],
+  "dropped_dedupe": [
+    {
+      "title": "The last six months in LLMs in five minutes",
+      "url": "https://simonwillison.net/2026/May/19/5-minute-llms/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.45,
+      "age_days": 1.9
+    }
+  ],
+  "dropped_ttl": [
+    {
+      "title": "Show HN: Forge \u2013 Guardrails take an 8B model from 53% to 99% on agentic tasks",
+      "url": "https://github.com/antoinezambelli/forge",
+      "source": "Hacker News",
+      "score": 12.58,
+      "age_days": 1.5,
+      "first_seen": "2026-05-20"
+    },
+    {
+      "title": "Show HN: Gaussian Splat of a Strawberry",
+      "url": "https://superspl.at/scene/84df8849",
+      "source": "Hacker News",
+      "score": 8.56,
+      "age_days": 1.5,
+      "first_seen": "2026-05-20"
+    },
+    {
+      "title": "What Is MiniCPM-V 4.6? A 1.3B Vision Model Built for Local AI Agents",
+      "url": "https://www.mindstudio.ai/blog/what-is-minicpm-v-4-6-vision-model/",
+      "source": "MindStudio",
+      "score": 8.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-20"
+    },
+    {
+      "title": "Claude Code vs OpenAI Codex: How to Run Both on the Same Project",
+      "url": "https://www.mindstudio.ai/blog/claude-code-vs-codex-same-project-setup/",
+      "source": "MindStudio",
+      "score": 7.44,
+      "age_days": 2.0,
+      "first_seen": "2026-05-20"
+    },
+    {
+      "title": "Gemini 3.5 Flash: more expensive, but Google plan to use it for everything",
+      "url": "https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.71,
+      "age_days": 1.0,
+      "first_seen": "2026-05-20"
+    },
+    {
+      "title": "Advancing content provenance for a safer, more transparent AI ecosystem",
+      "url": "https://openai.com/index/advancing-content-provenance",
+      "source": "OpenAI News",
+      "score": 6.56,
+      "age_days": 1.5,
+      "first_seen": "2026-05-20"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Surviving the Unseen: Predictive Defense for Novel Multi-Turn Multimodal Attacks",
+      "url": "https://arxiv.org/abs/2605.18988",
+      "source": "arXiv cs.AI",
+      "score": 12.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Entry-level guide to the use of large language models for medical research",
+      "url": "https://arxiv.org/abs/2410.18856",
+      "source": "arXiv cs.AI",
+      "score": 11.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ARM: Discovering Agentic Reasoning Modules for Generalizable Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2510.05746",
+      "source": "arXiv cs.AI",
+      "score": 11.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Distribution-Free Uncertainty Quantification for Continuous AI Agent Evaluation",
+      "url": "https://arxiv.org/abs/2605.19779",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "RecoAtlas: From Semantic Plausibility to Set-Level Utility in LLM Recommendation Agents",
+      "url": "https://arxiv.org/abs/2605.18805",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Fine-Grained Benchmark Generation for Comprehensive Evaluation of Foundation Models",
+      "url": "https://arxiv.org/abs/2605.18824",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Robust Checkpoint Selection for Multimodal LLMs via Agentic Evaluation and Stability-Aware Ranking",
+      "url": "https://arxiv.org/abs/2605.18852",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "TwinRouterBench: Fast Static and Live Dynamic Evaluation for Realistic Agentic LLM Routing",
+      "url": "https://arxiv.org/abs/2605.18859",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HalluWorld: A Controlled Benchmark for Hallucination via Reference World Models",
+      "url": "https://arxiv.org/abs/2605.19341",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Evaluation Game: Beyond Static LLM Benchmarking",
+      "url": "https://arxiv.org/abs/2605.19377",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and the Stability and Safety Governed Memory (SSGM) Framework",
+      "url": "https://arxiv.org/abs/2603.11768",
+      "source": "arXiv cs.AI",
+      "score": 10.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Progressive Autonomy as Preference Learning: A Formalization of Trust Calibration for Agentic Tool Use",
+      "url": "https://arxiv.org/abs/2605.19151",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "How Far Are We From True Auto-Research?",
+      "url": "https://arxiv.org/abs/2605.19156",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "From Prompts to Pavement Through Time: Temporal Grounding in Agentic Scene-to-Plan Reasoning",
+      "url": "https://arxiv.org/abs/2605.19824",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Agentic GraphRAG: Navigating Unstructured Financial Data with Collaborative AI",
+      "url": "https://arxiv.org/abs/2605.18770",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "OEP: Poisoning Self-Evolving LLM Agents via Locally Correct but Non-Transferable Experiences",
+      "url": "https://arxiv.org/abs/2605.18930",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ReacTOD: Bounded Neuro-Symbolic Agentic NLU for Zero-Shot Dialogue State Tracking",
+      "url": "https://arxiv.org/abs/2605.19077",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ContextRAG: Extraction-Free Hierarchical Graph Construction for Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2605.19735",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "BalanceRAG: Joint Risk Calibration for Cascaded Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2605.20084",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Geometric Analysis of Small-sized Language Model Hallucinations",
+      "url": "https://arxiv.org/abs/2602.14778",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Addressing the Reality Gap: A Three-Tension Framework for Agentic AI Adoption",
+      "url": "https://arxiv.org/abs/2604.27245",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "1GC-7RC: One Graphic Card -- Seven Research Challenges! How Good Are AI Agents at Doing Your Job?",
+      "url": "https://arxiv.org/abs/2605.17046",
+      "source": "arXiv cs.AI",
+      "score": 9.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AgentNLQ: A General-Purpose Agent for Natural Language to SQL",
+      "url": "https://arxiv.org/abs/2605.19010",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning to Hand Off: Provably Convergent Workflow Learning under Interface Constraints",
+      "url": "https://arxiv.org/abs/2605.19140",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Agentic Trading: When LLM Agents Meet Financial Markets",
+      "url": "https://arxiv.org/abs/2605.19337",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Conflict-Resilient Multi-Agent Reasoning via Signed Graph Modeling",
+      "url": "https://arxiv.org/abs/2605.19418",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Robotics-Inspired Guardrails for Foundation Models in Socially Sensitive Domains",
+      "url": "https://arxiv.org/abs/2605.19940",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ALDEN: Boosting Private Data Extraction from Retrieval-Augmented Generation Systems via Active Learning and Distribution Estimation",
+      "url": "https://arxiv.org/abs/2605.18762",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Hybrid-LoRA: Bridging Full Fine-Tuning and Low-Rank Adaptation for Post-Training",
+      "url": "https://arxiv.org/abs/2605.18822",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "RLFTSim: Realistic and Controllable Multi-Agent Traffic Simulation via Reinforcement Learning Fine-Tuning",
+      "url": "https://arxiv.org/abs/2605.19033",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CopT: Contrastive On-Policy Thinking with Continuous Spaces for General and Agentic Reasoning",
+      "url": "https://arxiv.org/abs/2605.20075",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Phase-Aware Mixture of Experts for Agentic Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2602.17038",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Autogenesis: A Self-Evolving Agent Protocol",
+      "url": "https://arxiv.org/abs/2604.15034",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Capability Paradox: How Smarter Auditors Make Multi-Agent Systems Less Secure",
+      "url": "https://arxiv.org/abs/2605.17480",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Majority Voting: LLM Aggregation by Leveraging Higher-Order Information",
+      "url": "https://arxiv.org/abs/2510.01499",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Toward Training Superintelligent Software Agents through Self-Play SWE-RL",
+      "url": "https://arxiv.org/abs/2512.18552",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "RoadmapBench: Evaluating Long-Horizon Agentic Software Development Across Version Upgrades",
+      "url": "https://arxiv.org/abs/2605.15846",
+      "source": "arXiv cs.AI",
+      "score": 8.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Testing distributed systems with AI agents",
+      "url": "https://github.com/shenli/distributed-system-testing",
+      "source": "Hacker News",
+      "score": 8.63,
+      "age_days": 0.4
+    },
+    {
+      "title": "Incident Report: May 19, 2026 \u2013 GCP Account Suspension",
+      "url": "https://blog.railway.com/p/incident-report-may-19-2026-gcp-account-outage",
+      "source": "Hacker News",
+      "score": 8.4,
+      "age_days": 0.6
+    },
+    {
+      "title": "Formal Verification Gates for AI Coding Loops",
+      "url": "https://reubenbrooks.dev/blog/structural-backpressure-beats-smarter-agents/",
+      "source": "Hacker News",
+      "score": 7.85,
+      "age_days": 0.3
+    },
+    {
+      "title": "Evaluating the Utility of Personal Health Records in Personalized Health AI",
+      "url": "https://arxiv.org/abs/2605.18937",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DecisionBench: A Benchmark for Emergent Delegation in Long-Horizon Agentic Workflows",
+      "url": "https://arxiv.org/abs/2605.19099",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Causal Evidence for Attention Head Imbalance in Modality Conflict Hallucination",
+      "url": "https://arxiv.org/abs/2605.19250",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Interoceptive Divergence in Aesthetic Evaluation and Implications for Human-AI Alignment",
+      "url": "https://arxiv.org/abs/2605.18759",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DOTRAG: Retrieval-Time Reasoning Along Paths",
+      "url": "https://arxiv.org/abs/2605.18760",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ClusterRAG: Cluster-Based Collaborative Filtering for Personalized Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2605.18769",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Query-Aware Flow Diffusion for Graph-Based RAG with Retrieval Guarantees",
+      "url": "https://arxiv.org/abs/2605.18775",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DarkLLM: Learning Language-Driven Adversarial Attacks with Large Language Models",
+      "url": "https://arxiv.org/abs/2605.18868",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DMN: A Compositional Framework for Jailbreaking Multimodal LLMs with Multi-Image Inputs",
+      "url": "https://arxiv.org/abs/2605.18915",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HypergraphFormer: Learning Hypergraphs from LLMs for Editable Floor Plan Generation",
+      "url": "https://arxiv.org/abs/2605.18932",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Exploring and Developing a Pre-Model Safeguard with Draft Models",
+      "url": "https://arxiv.org/abs/2605.19321",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "STAR-P\\'olyaMath: Multi-Agent Reasoning under Persistent Meta-Strategic Supervision",
+      "url": "https://arxiv.org/abs/2605.19338",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EmbGen: Teaching with Reassembled Corpora",
+      "url": "https://arxiv.org/abs/2605.19394",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CriterAlign: Criterion-Centric Rationale Alignment for Code Preference Judging",
+      "url": "https://arxiv.org/abs/2605.19665",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Mathematical Reasoning in Large Language Models: Benchmarks, Architectures, Evaluation, and Open Challenges",
+      "url": "https://arxiv.org/abs/2605.19723",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "LLM Benchmark Datasets Should Be Contamination-Resistant",
+      "url": "https://arxiv.org/abs/2605.19999",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning Efficient Guardrails for Compliance",
+      "url": "https://arxiv.org/abs/2510.03485",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ReSS: Learning Reasoning Models for Tabular Data Prediction via Symbolic Scaffold",
+      "url": "https://arxiv.org/abs/2604.13392",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ChromaFlow: A Negative Ablation Study of Orchestration Overhead in Tool-Augmented Agent Evaluation",
+      "url": "https://arxiv.org/abs/2605.14102",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Faster-GCG: Efficient Discrete Optimization Jailbreak Attacks against Aligned Large Language Models",
+      "url": "https://arxiv.org/abs/2410.15362",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Fine-tuning Large Language Model for Automated Algorithm Design",
+      "url": "https://arxiv.org/abs/2507.10614",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ORCA: An Agentic Reasoning Framework for Hallucination and Adversarial Robustness in Vision-Language Models",
+      "url": "https://arxiv.org/abs/2509.15435",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "WARC-Bench: Web Archive Based Benchmark for GUI Subtask Executions",
+      "url": "https://arxiv.org/abs/2510.09872",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning",
+      "url": "https://arxiv.org/abs/2602.04998",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Skill Neologisms: Towards Skill-based Continual Learning",
+      "url": "https://arxiv.org/abs/2605.04970",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CHI-Bench: Can AI Agents Automate End-to-End, Long-Horizon, Policy-Rich Healthcare Workflows?",
+      "url": "https://arxiv.org/abs/2605.16679",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Prompt2Fingerprint: Plug-and-Play LLM Fingerprinting via Text-to-Weight Generation",
+      "url": "https://arxiv.org/abs/2605.18474",
+      "source": "arXiv cs.AI",
+      "score": 7.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "I\u2019ve joined Anthropic",
+      "url": "https://twitter.com/karpathy/status/2056753169888334312",
+      "source": "Hacker News",
+      "score": 7.62,
+      "age_days": 1.3
+    },
+    {
+      "title": "The last six months in LLMs in five minutes",
+      "url": "https://simonwillison.net/2026/May/19/5-minute-llms/",
+      "source": "Hacker News",
+      "score": 7.45,
+      "age_days": 1.9
+    },
+    {
+      "title": "How fast is 10 tokens per second really?",
+      "url": "https://simonwillison.net/2026/May/20/tokens-per-second/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.94,
+      "age_days": 0.2
+    },
+    {
+      "title": "Google I/O, Gemini Spark, Antigravity",
+      "url": "https://simonwillison.net/2026/May/20/google-io/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.91,
+      "age_days": 0.3
+    },
+    {
+      "title": "Position: Let's Develop Data Probes to Fundamentally Understand How Data Affects LLM Performance",
+      "url": "https://arxiv.org/abs/2605.18801",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "POLAR-Bench: A Diagnostic Benchmark for Privacy-Utility Trade-offs in LLM Agents",
+      "url": "https://arxiv.org/abs/2605.19127",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Discoverable Agent Knowledge -- A Formal Framework for Agentic KG Affordances (Extended Version)",
+      "url": "https://arxiv.org/abs/2605.19186",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Can Large Language Models Revolutionize Survey Research? Experiments with Disaster Preparedness Responses",
+      "url": "https://arxiv.org/abs/2605.19229",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Attention-Guided Reward for Reinforcement Learning-based Jailbreak against Large Reasoning Models",
+      "url": "https://arxiv.org/abs/2605.19485",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "BLINKG: A Benchmark for LLM-Integrated Knowledge Graph Generation",
+      "url": "https://arxiv.org/abs/2605.19518",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Library Drift: Diagnosing and Fixing a Silent Failure Mode in Self-Evolving LLM Skill Libraries",
+      "url": "https://arxiv.org/abs/2605.19576",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When Tabular Foundation Models Meet Strategic Tabular Data: A Prior Alignment Approach",
+      "url": "https://arxiv.org/abs/2605.19662",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When Skills Don't Help: A Negative Result on Procedural Knowledge for Tool-Grounded Agents in Offensive Cybersecurity",
+      "url": "https://arxiv.org/abs/2605.20023",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "From Intent to AI Pipelines: A Controlled Agentic Framework for Non-AI Expert Scientists",
+      "url": "https://arxiv.org/abs/2605.18764",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Reproducibility Analysis of PO4ISR: Diagnosing and Mitigating Semantic Drift in LLM-Based Session Recommendation",
+      "url": "https://arxiv.org/abs/2605.18780",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Insurability Frontier of AI Risk: Mapping Threats to Affirmative Coverage, Silent Exposures, and Exclusions",
+      "url": "https://arxiv.org/abs/2605.18784",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Metric-Gradient Projection for Stable Multi-Agent Policy Learning",
+      "url": "https://arxiv.org/abs/2605.18809",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "KadiAssistant: A conversational AI Agent for information retrieval in Kadi4Mat",
+      "url": "https://arxiv.org/abs/2605.18850",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When Individually Calibrated Models Become Collectively Miscalibrated",
+      "url": "https://arxiv.org/abs/2605.18858",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ZeroUnlearn: Few-Shot Knowledge Unlearning in Large Language Models",
+      "url": "https://arxiv.org/abs/2605.18879",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "To Call or Not to Call: Diagnosing Intrinsic Over-Calling Bias in LLM Agents",
+      "url": "https://arxiv.org/abs/2605.18882",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ESLD (External Surrogate Latent Defense): A Latent-Space Architecture for Faster, Stronger Prompt-Injection Defense",
+      "url": "https://arxiv.org/abs/2605.18918",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Distilling Linearized Behavior for Effective Task Arithmetic",
+      "url": "https://arxiv.org/abs/2605.18993",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Automated Grading of Handwritten Mathematics Using Vision-Capable LLMs",
+      "url": "https://arxiv.org/abs/2605.19043",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ScheduleFree+: Scaling Learning-Rate-Free & Schedule-Free Learning to Large Language Models",
+      "url": "https://arxiv.org/abs/2605.19095",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Bridge: Retrieval-Augmented Spatiotemporal Modeling for Urban Delivery Demand",
+      "url": "https://arxiv.org/abs/2605.19172",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EgoCoT-Bench: Benchmarking Grounded and Verifiable Operation-Centric Chain of Thought Reasoning for MLLMs",
+      "url": "https://arxiv.org/abs/2605.19559",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Measuring Safety Alignment Effects in Autonomous Security Agents",
+      "url": "https://arxiv.org/abs/2605.19722",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Chunking German Legal Code",
+      "url": "https://arxiv.org/abs/2605.19806",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "LP-Eval: Rubric and Dataset for Measuring the Quality of Legal Proposition Generation",
+      "url": "https://arxiv.org/abs/2605.19815",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Closed-loop, State-centric, Multi-agent Framework for Passenger Load Estimation from Heterogeneous Data Streams",
+      "url": "https://arxiv.org/abs/2605.19834",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Case for Agentic Tuning: From Documentation to Action in PostgreSQL",
+      "url": "https://arxiv.org/abs/2605.19988",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Toto 2.0: Time Series Forecasting Enters the Scaling Era",
+      "url": "https://arxiv.org/abs/2605.20119",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "BuildArena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction",
+      "url": "https://arxiv.org/abs/2510.16559",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks",
+      "url": "https://arxiv.org/abs/2603.05910",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Active Testing of Large Language Models via Approximate Neyman Allocation",
+      "url": "https://arxiv.org/abs/2605.10075",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "TMAS: Scaling Test-Time Compute via Multi-Agent Synergy",
+      "url": "https://arxiv.org/abs/2605.10344",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning Bilevel Policies over Symbolic World Models for Long-Horizon Planning",
+      "url": "https://arxiv.org/abs/2605.15975",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "YAC: Bridging Natural Language and Interactive Visual Exploration with Generative AI for Biomedical Data Discovery",
+      "url": "https://arxiv.org/abs/2509.19182",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Jailbreaking on Text-to-Video Models via Scene Splitting Strategy",
+      "url": "https://arxiv.org/abs/2509.22292",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Disentangling generalization and memorization in large language models using chess",
+      "url": "https://arxiv.org/abs/2601.16823",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Whispers of Wealth: Red-Teaming Google's Agent Payments Protocol via Prompt Injection",
+      "url": "https://arxiv.org/abs/2601.22569",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "How to Model AI Agents as Personas?: Applying the Persona Ecosystem Playground to 41,300 Posts on Moltbook for Behavioral Insights",
+      "url": "https://arxiv.org/abs/2603.03140",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "C-ReD: A Comprehensive Chinese Benchmark for AI-Generated Text Detection Derived from Real-World Prompts",
+      "url": "https://arxiv.org/abs/2604.11796",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When the Loop Closes: Architectural Limits of In-Context Isolation, Metacognitive Co-option, and the Two-Target Design Problem in Human-LLM Systems",
+      "url": "https://arxiv.org/abs/2604.15343",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models",
+      "url": "https://arxiv.org/abs/2605.07721",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SLEIGHT-Bench: A Benchmark of Evasion Attacks Against Agent Monitors",
+      "url": "https://arxiv.org/abs/2605.16626",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PrivScope: Task-scoped Disclosure Control for Hybrid Agentic Systems",
+      "url": "https://arxiv.org/abs/2605.16630",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DiagEval: Trajectory-Conditioned Diagnosis for Reliable Software Evaluation with GUI Agents",
+      "url": "https://arxiv.org/abs/2605.17439",
+      "source": "arXiv cs.AI",
+      "score": 6.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "datasette-llm-accountant 0.1a4",
+      "url": "https://simonwillison.net/2026/May/19/datasette-llm-accountant/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.68,
+      "age_days": 1.1
+    },
+    {
+      "title": "Introducing OpenAI for Singapore",
+      "url": "https://openai.com/index/introducing-openai-for-singapore",
+      "source": "OpenAI News",
+      "score": 6.68,
+      "age_days": 1.1
+    },
+    {
+      "title": "datasette-llm 0.1a8",
+      "url": "https://simonwillison.net/2026/May/19/datasette-llm/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.68,
+      "age_days": 1.1
+    },
+    {
+      "title": "Ask HN: Shouldn't Google need to give a public statement about Railway incident?",
+      "url": "https://news.ycombinator.com/item?id=48210590",
+      "source": "Hacker News",
+      "score": 6.42,
+      "age_days": 0.3
+    },
+    {
+      "title": "Open-Source Agentic QA Harness with Memory",
+      "url": "https://github.com/vostride/agent-qa",
+      "source": "Hacker News",
+      "score": 6.05,
+      "age_days": 1.6
+    },
+    {
+      "title": "Operationalizing Document AI: A Microservice Architecture for OCR and LLM Pipelines in Production",
+      "url": "https://arxiv.org/abs/2605.18818",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Trustworthy Agent Network: Trust in Agent Networks Must Be Baked In, Not Bolted On",
+      "url": "https://arxiv.org/abs/2605.19035",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MOCHA: Multi-Objective Chebyshev Annealing for Agent Skill Optimization",
+      "url": "https://arxiv.org/abs/2605.19330",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "What and When to Distill: Selective Hindsight Distillation for Multi-Turn Agents",
+      "url": "https://arxiv.org/abs/2605.19447",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Generative-Evaluative Agreement: A Necessary Validity Criterion for LLM-Enabled Adaptive Assessment",
+      "url": "https://arxiv.org/abs/2605.19529",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Towards Multi-Model LLM Schedulers: Empirical Insights into Offloading and Preemption",
+      "url": "https://arxiv.org/abs/2605.19593",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Pseudocode-Guided Structured Reasoning for Automating Reliable Inference in Vision-Language Models",
+      "url": "https://arxiv.org/abs/2605.19663",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Memory-Augmented Reinforcement Learning Agent for CAD Generation",
+      "url": "https://arxiv.org/abs/2605.19748",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Prior Knowledge or Search? A Study of LLM Agents in Hardware-Aware Code Optimization",
+      "url": "https://arxiv.org/abs/2605.19782",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PEEK: Context Map as an Orientation Cache for Long-Context LLM Agents",
+      "url": "https://arxiv.org/abs/2605.19932",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Probabilistic Tiny Recursive Model",
+      "url": "https://arxiv.org/abs/2605.19943",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Probing Embodied LLMs: When Higher Observation Fidelity Hurts Problem Solving",
+      "url": "https://arxiv.org/abs/2605.20072",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents",
+      "url": "https://arxiv.org/abs/2605.20173",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Query-Conditioned Graph Retrieval for Contextualized LLM Reasoning in Personalized Wearable Data",
+      "url": "https://arxiv.org/abs/2605.18763",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "STAR: Semantic-Tuned and Tail-Adaptive Retriever for Graph-Augmented Generation",
+      "url": "https://arxiv.org/abs/2605.18765",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Decentralized autonomous organization and blockchain-based incentivization framework for community-based facilities management",
+      "url": "https://arxiv.org/abs/2605.18773",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "M3DocDep: Multi-modal, Multi-page, Multi-document Dependency Chunking with Large Vision-Language Models",
+      "url": "https://arxiv.org/abs/2605.18774",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Can LLMs Emulate Human Belief Dynamics?",
+      "url": "https://arxiv.org/abs/2605.18781",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HELLoRA: Hot Experts Layer-Level Low-Rank Adaptation for Mixture-of-Experts Models",
+      "url": "https://arxiv.org/abs/2605.18795",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Theory-optimal Quantization Based on Flatness",
+      "url": "https://arxiv.org/abs/2605.18800",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Compositional Literary Primitives in Instruction-Tuned LLMs: Cross-Architectural SAE Features for Self, Style, and Affect",
+      "url": "https://arxiv.org/abs/2605.18808",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "D-PACE: Dynamic Position-Aware Cross-Entropy for Parallel Speculative Drafting",
+      "url": "https://arxiv.org/abs/2605.18810",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Growing Pains of Frontier Models: When Leaderboards Stop Separating and What to Measure Next",
+      "url": "https://arxiv.org/abs/2605.18840",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The 99% Success Paradox: When Near-Perfect Retrieval Equals Random Selection",
+      "url": "https://arxiv.org/abs/2605.18857",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SAGE: Shaping Anchors for Guided Exploration in RLVR of LLMs",
+      "url": "https://arxiv.org/abs/2605.18864",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MO-CAPO: Multi-Objective Cost-Aware Prompt Optimization",
+      "url": "https://arxiv.org/abs/2605.18869",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Distributional Energy-Based Models for Uncertainty-Aware Structured LLM Reasoning",
+      "url": "https://arxiv.org/abs/2605.18871",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
+      "url": "https://arxiv.org/abs/2605.18890",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Don't Let Bandit Feedback Pull Continual LLM-Recommender Updates Off Target",
+      "url": "https://arxiv.org/abs/2605.18899",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Does Your Wildfire Prediction Model Actually Work, or Just Score Well?",
+      "url": "https://arxiv.org/abs/2605.18911",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Shaping the Prior: How Synthetic Task Distributions Determine Tabular Foundation Model Quality",
+      "url": "https://arxiv.org/abs/2605.18971",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Toward an AI-Powered Computational Testbed for Workforce Policy",
+      "url": "https://arxiv.org/abs/2605.19064",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EgoBabyVLM: Benchmarking Cross-Modal Learning from Naturalistic Egocentric Video Data",
+      "url": "https://arxiv.org/abs/2605.19130",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GRASP: Deterministic argument ranking in interaction graphs",
+      "url": "https://arxiv.org/abs/2605.19141",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Be Kind, Rewrite: Benign Projections via Rewriting Defend Against LLM Data Poisoning Attacks",
+      "url": "https://arxiv.org/abs/2605.19147",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Position: Uncertainty Quantification in LLMs is Just Unsupervised Clustering",
+      "url": "https://arxiv.org/abs/2605.19220",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Diagnosing Multi-step Reasoning Failures in Black-box LLMs via Stepwise Confidence Attribution",
+      "url": "https://arxiv.org/abs/2605.19228",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Euclidean Embedding of Data Using Local Distances",
+      "url": "https://arxiv.org/abs/2605.19243",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FormalASR: End-to-End Spoken Chinese to Formal Text",
+      "url": "https://arxiv.org/abs/2605.19266",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Are Rationales Necessary and Sufficient? Tuning LLMs for Explainable Misinformation Detection",
+      "url": "https://arxiv.org/abs/2605.19285",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Toward User Comprehension Supports for LLM Agent Skill Specifications",
+      "url": "https://arxiv.org/abs/2605.19362",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Unlocking the Potential of Continual Model Merging: An ODE Perspective",
+      "url": "https://arxiv.org/abs/2605.19409",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When to Stop Reusing: Dynamic Gradient Gating for Sample-Efficient RLVR",
+      "url": "https://arxiv.org/abs/2605.19425",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Backtracking When It Strays: Mitigating Dual Exposure Biases in LLM Reasoning Distillation",
+      "url": "https://arxiv.org/abs/2605.19433",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Quantifying the Pre-training Dividend: Generative versus Latent Self-Supervised Learning for Time Series Foundation Models",
+      "url": "https://arxiv.org/abs/2605.19462",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Investigating Cross-Modal Skill Injection: Scenarios, Methods, and Hyperparameters",
+      "url": "https://arxiv.org/abs/2605.19523",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "TORQ: Two-Level Orthogonal Rotation for MXFP4 Quantization",
+      "url": "https://arxiv.org/abs/2605.19561",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Lens Privacy Sealing: A New Benchmark and Method for Physical Privacy-Preserving Action Recognition",
+      "url": "https://arxiv.org/abs/2605.19578",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A novel YOLO26-MoE optimized by an LLM agent for insulator fault detection considering UAV images",
+      "url": "https://arxiv.org/abs/2605.19595",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "optimize_anything: A Universal API for Optimizing any Text Parameter",
+      "url": "https://arxiv.org/abs/2605.19633",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "The Accessibility Capability Boundary: Operational Limits and Expansion Potential of AI-Generated Browser-Native Accessibility Systems",
+      "url": "https://arxiv.org/abs/2605.19638",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Synthesis and Evaluation of Long-term History-aware Medical Dialogue",
+      "url": "https://arxiv.org/abs/2605.19766",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AR1-ZO: Topology-Aware Rank-1 Zeroth-Order Queries for High-Rank LoRA Fine-Tuning",
+      "url": "https://arxiv.org/abs/2605.19767",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Synergistic Foundation Models for Semi-Supervised Fetal Cardiac Ultrasound Analysis: SAM-Med2D Boundary Refinement and DINOv3 Semantic Enhancement",
+      "url": "https://arxiv.org/abs/2605.19799",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CADENet: Condition-Adaptive Asynchronous Dual-Stream Enhancement Network for Adverse Weather Perception in Autonomous Driving",
+      "url": "https://arxiv.org/abs/2605.19837",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Measure-Theoretic Analysis of Reasoning: Structural Generalization and Approximation Limits",
+      "url": "https://arxiv.org/abs/2605.19944",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Detecting Fluent Optimization-Based Adversarial Prompts via Sequential Entropy Changes",
+      "url": "https://arxiv.org/abs/2605.19966",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PromptRad: Knowledge-Enhanced Multi-Label Prompt-Tuning for Low-Resource Radiology Report Labeling",
+      "url": "https://arxiv.org/abs/2605.20052",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Towards LLM-Assisted Architecture Recovery for Real-World ROS~2 Systems: An Agent-Based Multi-Level Approach to Hierarchical Structural Architecture Reconstruction",
+      "url": "https://arxiv.org/abs/2605.20055",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "What Do Evolutionary Coding Agents Evolve?",
+      "url": "https://arxiv.org/abs/2605.20086",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ThoughtTrace: Understanding User Thoughts in Real-World LLM Interactions",
+      "url": "https://arxiv.org/abs/2605.20087",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Less Back-and-Forth: A Comparative Study of Structured Prompting",
+      "url": "https://arxiv.org/abs/2605.20149",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "IR-Agent: Expert-Inspired LLM Agents for Structure Elucidation from Infrared Spectra",
+      "url": "https://arxiv.org/abs/2508.16112",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Artificial Phantasia: Emergent Mental Imagery in Large Language Models",
+      "url": "https://arxiv.org/abs/2509.23108",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Extreme Self-Preference in Language Models",
+      "url": "https://arxiv.org/abs/2509.26464",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "From Refusal to Recovery: A Control-Theoretic Approach to Generative AI Guardrails",
+      "url": "https://arxiv.org/abs/2510.13727",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Distributional AGI Safety",
+      "url": "https://arxiv.org/abs/2512.16856",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "High-quality generation of dynamic game content via small language models: A proof of concept",
+      "url": "https://arxiv.org/abs/2601.23206",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "TSR: Trajectory-Search Rollouts for Multi-Turn RL of LLM Agents",
+      "url": "https://arxiv.org/abs/2602.11767",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Contrastive Reasoning Alignment: Reinforcement Learning from Hidden Representations",
+      "url": "https://arxiv.org/abs/2603.17305",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "2.5-D Decomposition for LLM-Based Spatial Construction",
+      "url": "https://arxiv.org/abs/2605.07066",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VERA-MH: Validation of Ethical and Responsible AI in Mental Health",
+      "url": "https://arxiv.org/abs/2605.13318",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ALSO: Adversarial Online Strategy Optimization for Social Agents",
+      "url": "https://arxiv.org/abs/2605.15768",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Memory-Guided Tree Search with Cross-Branch Knowledge Transfer for LLM Solver Synthesis",
+      "url": "https://arxiv.org/abs/2605.17539",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Latent Action Reparameterization for Efficient Agent Inference",
+      "url": "https://arxiv.org/abs/2605.18597",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Monitoring AI-Modified Content at Scale: A Case Study on the Impact of ChatGPT on AI Conference Peer Reviews",
+      "url": "https://arxiv.org/abs/2403.07183",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Slot-MLLM: Object-Centric Visual Tokenization for Multimodal LLM",
+      "url": "https://arxiv.org/abs/2505.17726",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Quantifying the Generalization Gap in Seizure Detection: A Large-Scale Empirical Benchmark via the SzCORE Challenge",
+      "url": "https://arxiv.org/abs/2505.18191",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Spatial-MLLM: Boosting MLLM Capabilities in Visual-based Spatial Intelligence",
+      "url": "https://arxiv.org/abs/2505.23747",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CoLD: Counterfactually-Guided Length Debiasing for Process Reward Models in Mathematical Reasoning",
+      "url": "https://arxiv.org/abs/2507.15698",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HiDe: Rethinking The Zoom-IN method in High Resolution MLLMs via Hierarchical Decoupling",
+      "url": "https://arxiv.org/abs/2510.00054",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Dr.LLM: Dynamic Layer Routing in LLMs",
+      "url": "https://arxiv.org/abs/2510.12773",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Noise-corrected GRPO: From Noisy Rewards to Unbiased Gradients",
+      "url": "https://arxiv.org/abs/2510.18924",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MaxShapley: Towards Incentive-compatible Generative Search with Fair Context Attribution",
+      "url": "https://arxiv.org/abs/2512.05958",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Eliminating Inductive Bias in Reward Models with Information-Theoretic Guidance",
+      "url": "https://arxiv.org/abs/2512.23461",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Tracing Moral Foundations in Large Language Models",
+      "url": "https://arxiv.org/abs/2601.05437",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips",
+      "url": "https://arxiv.org/abs/2601.20309",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "WIND: Weather Inverse Diffusion for Zero-Shot Atmospheric Modeling",
+      "url": "https://arxiv.org/abs/2602.03924",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Rethinking the Design Space of Reinforcement Learning for Diffusion Models: On the Importance of Likelihood Estimation Beyond Loss Design",
+      "url": "https://arxiv.org/abs/2602.04663",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Language Model Memory and Memory Models for Language",
+      "url": "https://arxiv.org/abs/2602.13466",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "How do LLMs Compute Verbal Confidence",
+      "url": "https://arxiv.org/abs/2603.17839",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Efficient Emotion-Aware Iconic Gesture Prediction for Robot Co-Speech",
+      "url": "https://arxiv.org/abs/2604.11417",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HeadRank: Decoding-Free Passage Reranking via Preference-Aligned Attention Heads",
+      "url": "https://arxiv.org/abs/2604.17237",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MoBayes: A Modular Bayesian Framework for Separating Reasoning from Language in Conversational Clinical Decision Support",
+      "url": "https://arxiv.org/abs/2604.20022",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GEASS: Gated Evidence-Adaptive Selective Caption Trust for Vision-Language Models",
+      "url": "https://arxiv.org/abs/2605.01733",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PragLocker: Protecting Agent Intellectual Property in Untrusted Deployments via Non-Portable Prompts",
+      "url": "https://arxiv.org/abs/2605.05974",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "R$^3$L: Reasoning 3D Layouts from Relative Spatial Relations",
+      "url": "https://arxiv.org/abs/2605.06758",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "HoloMotion-1 Technical Report",
+      "url": "https://arxiv.org/abs/2605.15336",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "StrLoRA: Towards Streaming Continual Visual Instruction Tuning for MLLMs",
+      "url": "https://arxiv.org/abs/2605.16353",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning-Zone Energy: Online Data Selection for Efficient RL Post-Training",
+      "url": "https://arxiv.org/abs/2605.17003",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Vision-OPD: Learning to See Fine Details for Multimodal LLMs via On-Policy Self-Distillation",
+      "url": "https://arxiv.org/abs/2605.18740",
+      "source": "arXiv cs.AI",
+      "score": 5.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "U.S. Cybersecurity Agency Leaves Its Digital Keys Out in Public on GitHub",
+      "url": "https://gizmodo.com/the-worst-leak-that-ive-witnessed-u-s-cybersecurity-agency-leaves-its-digital-keys-out-in-public-on-github-2000760330",
+      "source": "Hacker News",
+      "score": 5.72,
+      "age_days": 1.5
+    },
+    {
+      "title": "How to Build an AI Agent That Never Forgets: A Hybrid Memory Architecture",
+      "url": "https://www.mindstudio.ai/blog/ai-agent-hybrid-memory-architecture/",
+      "source": "MindStudio",
+      "score": 5.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Claude Small Business Plugin Packs: What They Are and How to Use Them",
+      "url": "https://www.mindstudio.ai/blog/claude-small-business-plugin-packs-guide/",
+      "source": "MindStudio",
+      "score": 5.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Show HN: Superlog (YC P26) \u2013 Observability that installs itself and fixes bugs",
+      "url": "https://superlog.sh/",
+      "source": "Hacker News",
+      "score": 5.33,
+      "age_days": 1.3
+    },
+    {
+      "title": "Why is almost everyone right-handed? A new study connects it to bipedalism",
+      "url": "https://www.ox.ac.uk/news/2026-05-15-why-is-almost-everyone-right-handed-the-answer-may-lie-in-how-we-learned-to-walk",
+      "source": "Hacker News",
+      "score": 5.13,
+      "age_days": 1.4
+    },
+    {
+      "title": "Learnings from 100K lines of Rust with AI (2025)",
+      "url": "https://zfhuang99.github.io/rust/claude%20code/codex/contracts/spec-driven%20development/2025/12/01/rust-with-ai.html",
+      "source": "Hacker News",
+      "score": 5.09,
+      "age_days": 0.6
+    },
+    {
+      "title": "In disclosures to investors, Anthropic says it expects to generate $10.9B in revenue in Q2, vs. $4.8B in Q1, and turn a $559M operating profit, its first ever (Berber Jin/Wall Street Journal)",
+      "url": "https://www.techmeme.com/260520/p46#a260520p46",
+      "source": "Techmeme",
+      "score": 4.97,
+      "age_days": 0.1
+    },
+    {
+      "title": "OpenAI says an internal general-purpose reasoning model has disproved the Erd\u0151s unit distance conjecture, a central problem in discrete geometry posed in 1946 (OpenAI)",
+      "url": "https://www.techmeme.com/260520/p43#a260520p43",
+      "source": "Techmeme",
+      "score": 4.96,
+      "age_days": 0.1
+    },
+    {
+      "title": "Google says it is testing new ad formats in search results and AI Mode, including Conversational Discovery ads, Highlighted Answers, and AI-powered Shopping ads (Anu Adegbola/Search Engine Land)",
+      "url": "https://www.techmeme.com/260520/p41#a260520p41",
+      "source": "Techmeme",
+      "score": 4.93,
+      "age_days": 0.2
+    },
+    {
+      "title": "Learn-by-Wire Training Control Governance: Bounded Autonomous Training Under Stress for Stability and Efficiency",
+      "url": "https://arxiv.org/abs/2605.19008",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Embedding by Elicitation: Dynamic Representations for Bayesian Optimization of System Prompts",
+      "url": "https://arxiv.org/abs/2605.19093",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Hallucination as Exploit: Evidence-Carrying Multimodal Agents",
+      "url": "https://arxiv.org/abs/2605.19192",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Swimming with Whales: Analysis of Power Imbalances in Stake-Weighted Governance",
+      "url": "https://arxiv.org/abs/2605.19264",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "PRISM: A Benchmark for Programmatic Spatial-Temporal Reasoning",
+      "url": "https://arxiv.org/abs/2605.19382",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Generative Auto-Bidding with Unified Modeling and Exploration",
+      "url": "https://arxiv.org/abs/2605.19457",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SceneCode: Executable World Programs for Editable Indoor Scenes with Articulated Objects",
+      "url": "https://arxiv.org/abs/2605.19587",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CogScale: Scalable Benchmark for Sequence Processing",
+      "url": "https://arxiv.org/abs/2605.19758",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Explainable Wastewater Digital Twins: Adaptive Context-Conditioned Structured Simulators with Self-Falsifying Decision Support",
+      "url": "https://arxiv.org/abs/2605.19826",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "OmniGUI: Benchmarking GUI Agents in Omni-Modal Smartphone Environments",
+      "url": "https://arxiv.org/abs/2605.18758",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Nonlinear Complexity Index for Wearable PPG Cardiovascular Stability: Multiscale Validation, Systematic Evaluation Correction, and Bayesian Parameter Optimization",
+      "url": "https://arxiv.org/abs/2605.18802",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Automated Big Data Quality Assessment using Knowledge Graph Embeddings",
+      "url": "https://arxiv.org/abs/2605.18833",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Lying Is Just a Phase: The Hidden Alignment Transition in Language Model Scaling",
+      "url": "https://arxiv.org/abs/2605.18838",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "GenAI-FDIA: Physics-Informed Generative Models for False Data Injection Attacks",
+      "url": "https://arxiv.org/abs/2605.18873",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Auditing Reasoning-Trace Memorization Claims after Unlearning with Head-Conditioned Canaries",
+      "url": "https://arxiv.org/abs/2605.18891",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "KG-ASG: Collision-Knowledge-Guided Closed-Loop Adversarial Scenario Generation With Primary-Support Attribution",
+      "url": "https://arxiv.org/abs/2605.18895",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "SynGR: Unleashing the Potential of Cross-Modal Synergy for Generative Recommendation",
+      "url": "https://arxiv.org/abs/2605.18920",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Markov Chain Decoders Overcome the Heavy-Tail Limitations of Lipschitz Generative Models",
+      "url": "https://arxiv.org/abs/2605.18931",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Harnessing Self-Supervised Features for Art Classification",
+      "url": "https://arxiv.org/abs/2605.18974",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Benchmarking Commercial ASR Systems on Code-Switching Speech: Arabic, Persian, and German",
+      "url": "https://arxiv.org/abs/2605.19069",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Learning Long-Term Temporal Dependencies in Photovoltaic Power Output Prediction Through Multi-Horizon Forecasting",
+      "url": "https://arxiv.org/abs/2605.19074",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Counterfactual Likelihood Tests for Indirect Influence in Private Reasoning Channels",
+      "url": "https://arxiv.org/abs/2605.19092",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FAGER: Factually Grounded Evaluation and Refinement of Text-to-Image Models",
+      "url": "https://arxiv.org/abs/2605.19111",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Knowing When Not to Predict: Self Supervised Learning and Abstention for Safer DR Screening",
+      "url": "https://arxiv.org/abs/2605.19133",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "COBALT: Crowdsourcing Robot Learning via Cloud-Based Teleoperation with Smartphones",
+      "url": "https://arxiv.org/abs/2605.19138",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Going PLACES: Participatory Localized Red Teaming for Text-to-Image Safety in the Global South",
+      "url": "https://arxiv.org/abs/2605.19190",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "AI Technologies in Language Access: Attitudes Towards AI and the Human Value of Language Access Managers",
+      "url": "https://arxiv.org/abs/2605.19234",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DEFLECT: Delay-Robust Execution via Flow-matching Likelihood-Estimated Counterfactual Tuning for VLA Policies",
+      "url": "https://arxiv.org/abs/2605.19294",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ContextFlow: Hierarchical Task-State Alignment for Long-Horizon Embodied Agents",
+      "url": "https://arxiv.org/abs/2605.19314",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Brain alignment of reasoning and action representations from vision-language and action models during naturalistic gameplay",
+      "url": "https://arxiv.org/abs/2605.19352",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Concept-Guided Noisy Negative Suppression for Zero-Shot Classification and Grounding of Chest X-Ray Findings",
+      "url": "https://arxiv.org/abs/2605.19374",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "KappaPlace: Learning Hyperspherical Uncertainty for Visual Place Recognition via Prototype-Anchored Supervision",
+      "url": "https://arxiv.org/abs/2605.19435",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "When the Majority Votes Wrong, the Intervention Timing for Test-Time Reinforcement Learning Hides in the Extinction Window",
+      "url": "https://arxiv.org/abs/2605.19444",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Sampling-Based Safe Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2605.19469",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "CutVerse: A Compositional GUI Agents Benchmark for Media Post-Production Editing",
+      "url": "https://arxiv.org/abs/2605.19484",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ARC-RL: A Reinforcement Learning Playground Inspired by ARC Raiders",
+      "url": "https://arxiv.org/abs/2605.19503",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Implicit Action Chunking for Smooth Continuous Control",
+      "url": "https://arxiv.org/abs/2605.19592",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MiMuon: Mixed Muon Optimizer with Improved Generalization for Large Models",
+      "url": "https://arxiv.org/abs/2605.19619",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Stitched Value Model for Diffusion Alignment",
+      "url": "https://arxiv.org/abs/2605.19804",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FLUXtrapolation: A benchmark on extrapolating ecosystem fluxes",
+      "url": "https://arxiv.org/abs/2605.19812",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Mega-ASR: Towards In-the-wild^2 Speech Recognition via Scaling up Real-world Acoustic Simulation",
+      "url": "https://arxiv.org/abs/2605.19833",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "FineBench: Benchmarking and Enhancing Vision-Language Models for Fine-grained Human Activity Understanding",
+      "url": "https://arxiv.org/abs/2605.19846",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Passive Construction Site Safety Monitoring via Persona-Scaffolded Adversarial Chain-of-Thought VLM Verification",
+      "url": "https://arxiv.org/abs/2605.19869",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Block-Sphere Vector Quantization",
+      "url": "https://arxiv.org/abs/2605.19972",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Does Code Cleanliness Affect Coding Agents? A Controlled Minimal-Pair Study",
+      "url": "https://arxiv.org/abs/2605.20049",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Isotropy in JEPAs: Hamiltonian Geometry and Symplectic Prediction",
+      "url": "https://arxiv.org/abs/2605.20107",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "k-Inductive Neural Barrier Certificates for Unknown Nonlinear Dynamics",
+      "url": "https://arxiv.org/abs/2605.20108",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Beyond Prediction Accuracy: Target-Space Recovery Profiles for Evaluating Model-Brain Alignment",
+      "url": "https://arxiv.org/abs/2605.20127",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Nonlinearity as Rank: Generative Low-Rank Adapter with Radial Basis Functions",
+      "url": "https://arxiv.org/abs/2602.05709",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "$\\pi$-Bench: Evaluating Proactive Personal Assistant Agents in Long-Horizon Workflows",
+      "url": "https://arxiv.org/abs/2605.14678",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Adaptive Residual-Update Steering for Low-Overhead Hallucination Mitigation in Large Vision Language Models",
+      "url": "https://arxiv.org/abs/2511.10292",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "STAGE: A Full-Screenplay Benchmark for Reasoning over Evolving Storie",
+      "url": "https://arxiv.org/abs/2601.08510",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "How does longer temporal context enhance multimodal narrative video processing in the brain?",
+      "url": "https://arxiv.org/abs/2602.07570",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "DLEBench: Evaluating Small-scale Object Editing Ability for Instruction-based Image Editing Model",
+      "url": "https://arxiv.org/abs/2602.23622",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "ViroGym: Realistic Large-Scale Benchmarks for Evaluating Viral Proteins",
+      "url": "https://arxiv.org/abs/2603.06740",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Synthetic Data Generation for Brain-Computer Interfaces: Overview, Benchmarking, and Future Directions",
+      "url": "https://arxiv.org/abs/2603.12296",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Motif-Video 2B: Technical Report",
+      "url": "https://arxiv.org/abs/2604.16503",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Is SAM3 ready for pathology segmentation?",
+      "url": "https://arxiv.org/abs/2604.18225",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Designing escalation criteria for international AI incident response: criteria, triggers, and thresholds",
+      "url": "https://arxiv.org/abs/2604.23183",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "RELO: Reinforcement Learning to Localize for Visual Object Tracking",
+      "url": "https://arxiv.org/abs/2605.07379",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Flow-OPD: On-Policy Distillation for Flow Matching Models",
+      "url": "https://arxiv.org/abs/2605.08063",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VT-Bench: A Unified Benchmark for Visual-Tabular Multi-Modal Learning",
+      "url": "https://arxiv.org/abs/2605.08146",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "VECTOR-Drive: Tightly Coupled Vision-Language and Trajectory Expert Routing for End-to-End Autonomous Driving",
+      "url": "https://arxiv.org/abs/2605.08830",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Protocol-Driven Development: Governing Generated Software Through Invariants and Continuous Evidence",
+      "url": "https://arxiv.org/abs/2605.12981",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Membership Inference Attacks on Discrete Diffusion Language Models",
+      "url": "https://arxiv.org/abs/2605.16445",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "A Simplex Witness Certificate for Constant Collapse in Variational Autoencoders",
+      "url": "https://arxiv.org/abs/2605.18224",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "MINTEval: Evaluating Memory under Multi-Target Interference in Long-Horizon Agent Systems",
+      "url": "https://arxiv.org/abs/2605.18565",
+      "source": "arXiv cs.AI",
+      "score": 4.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Anthropic Is Preparing for IPO and We Should Be Worried",
+      "url": "https://www.vincentschmalbach.com/anthropic-ipo-developers-should-be-worried-v2/",
+      "source": "Hacker News",
+      "score": 4.46,
+      "age_days": 1.4
+    },
+    {
+      "title": "How to Build a Persistent Memory System for AI Agents: Memarch vs Hermes Compared",
+      "url": "https://www.mindstudio.ai/blog/ai-agent-memory-systems-memarch-vs-hermes/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Position Your Brand for AI Search: The Truth Layer Strategy",
+      "url": "https://www.mindstudio.ai/blog/brand-positioning-for-ai-search-truth-layer/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is the Interpretation Economy? How AI Agents Are Replacing Search",
+      "url": "https://www.mindstudio.ai/blog/what-is-the-interpretation-economy/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Zapier for AI Agents: How to Use Zaps to Automate Business Workflows Without Code",
+      "url": "https://www.mindstudio.ai/blog/zapier-ai-agents-business-workflow-automation/",
+      "source": "MindStudio",
+      "score": 4.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What political censorship looks like inside an LLM's weights (Qwen 3.5)",
+      "url": "https://vas-blog.pages.dev/qwen-censorship/",
+      "source": "Hacker News",
+      "score": 4.25,
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Build an AI Video Generation Workflow with Claude Code and HyperFrames",
+      "url": "https://www.mindstudio.ai/blog/ai-video-generation-claude-code-hyperframes/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Anthropic's 2028 AI Leadership Essay? The Two Scenarios Explained",
+      "url": "https://www.mindstudio.ai/blog/anthropic-2028-ai-leadership-essay-explained/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "age_days": 2.0
+    }
+  ],
+  "final": [
+    {
+      "title": "Formal Skill: Programmable Runtime Skills for Efficient and Accurate LLM Agents",
+      "url": "https://arxiv.org/abs/2605.19604",
+      "source": "arXiv cs.AI",
+      "score": 14.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "EngiAI: A Multi-Agent Framework and Benchmark Suite for LLM-Driven Engineering Design",
+      "url": "https://arxiv.org/abs/2605.19743",
+      "source": "arXiv cs.AI",
+      "score": 13.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Improving Retrieval-Augmented Generation without Taxonomy-based Error Categorization",
+      "url": "https://arxiv.org/abs/2605.18772",
+      "source": "arXiv cs.AI",
+      "score": 12.77,
+      "age_days": 0.8
+    },
+    {
+      "title": "Qwen3.7-Max: The Agent Frontier",
+      "url": "https://qwen.ai/blog?id=qwen3.7",
+      "source": "Hacker News",
+      "score": 8.85,
+      "age_days": 0.5
+    },
+    {
+      "title": "Incident Report: Railway Blocked by Google Cloud [resolved]",
+      "url": "https://status.railway.com/incident/I23M92U0",
+      "source": "Hacker News",
+      "score": 8.73,
+      "age_days": 1.0
+    },
+    {
+      "title": "How Ramp engineers accelerate code review with Codex",
+      "url": "https://openai.com/index/ramp",
+      "source": "OpenAI News",
+      "score": 8.72,
+      "age_days": 1.0
+    },
+    {
+      "title": "llm-gemini 0.32",
+      "url": "https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything",
+      "source": "Simon Willison",
+      "score": 8.72,
+      "age_days": 1.0
+    },
+    {
+      "title": "llm-gemini 0.32a0",
+      "url": "https://simonwillison.net/2026/May/19/llm-gemini/#atom-everything",
+      "source": "Simon Willison",
+      "score": 8.68,
+      "age_days": 1.1
+    },
+    {
+      "title": "Map of Metal",
+      "url": "https://mapofmetal.com/",
+      "source": "Hacker News",
+      "score": 8.68,
+      "age_days": 0.5
+    },
+    {
+      "title": "MCP Servers vs CLI Tools for AI Agents: When to Use Each",
+      "url": "https://www.mindstudio.ai/blog/mcp-servers-vs-cli-tools-for-ai-agents/",
+      "source": "MindStudio",
+      "score": 7.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Quoting SpaceX S-1",
+      "url": "https://simonwillison.net/2026/May/20/spacex-s1/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.99,
+      "age_days": 0.0
+    },
+    {
+      "title": "Sources: OpenAI is preparing to file confidentially for an IPO as early as Friday; the company plans to be ready to go public as early as September (Wall Street Journal)",
+      "url": "https://www.techmeme.com/260520/p39#a260520p39",
+      "source": "Techmeme",
+      "score": 6.92,
+      "age_days": 0.3
+    },
+    {
+      "title": "LWiAI Podcast #245 - TML-Interaction, Claude For Legal, Sam Altman on Stand",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-245-tml-interaction",
+      "source": "Last Week in AI",
+      "score": 6.81,
+      "age_days": 0.7
+    },
+    {
+      "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+      "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture",
+      "source": "OpenAI News",
+      "score": 6.72,
+      "age_days": 1.0
+    },
+    {
+      "title": "The next phase of OpenAI\u2019s Education for Countries",
+      "url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+      "source": "OpenAI News",
+      "score": 6.72,
+      "age_days": 1.0
+    },
+    {
+      "title": "How to Add Vision Capabilities to a Local AI Agent Without Blowing Your VRAM",
+      "url": "https://www.mindstudio.ai/blog/add-vision-to-local-ai-agent-small-model/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Claude Code Agent View: How to Manage Multiple AI Agents in One Terminal",
+      "url": "https://www.mindstudio.ai/blog/claude-code-agent-view-multiple-agents/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "age_days": 2.0
+    },
+    {
+      "title": "Nvidia reports Q1 net income up 211% YoY to $58.3B, beating analyst estimates of $42.9B, and raises Q2 revenue forecast to $91B (Robbie Whelan/Wall Street Journal)",
+      "url": "https://www.techmeme.com/260520/p47#a260520p47",
+      "source": "Techmeme",
+      "score": 5.97,
+      "age_days": 0.1
+    },
+    {
+      "title": "Google I/O, World Models, I/O Spaghetti",
+      "url": "https://stratechery.com/2026/google-i-o-world-models-i-o-spaghetti/",
+      "source": "Stratechery",
+      "score": 5.84,
+      "age_days": 0.6
+    },
+    {
+      "title": "[AINews] Google I/O 2026: Gemini 3.5 Flash, Omni (NanoBanana for Video), Spark (background agents), and Antigravity 2.0",
+      "url": "https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash",
+      "source": "Latent Space",
+      "score": 5.76,
+      "age_days": 0.8
+    },
+    {
+      "title": "SpaceX S-1: Anthropic is paying SpaceX $1.25B/mo. until May 2029 under their compute deal; Anthropic says it's expanding the deal to include Colossus 2 capacity (Ina Fried/Axios)",
+      "url": "https://www.techmeme.com/260520/p49#a260520p49",
+      "source": "Techmeme",
+      "score": 4.98,
+      "age_days": 0.1
+    }
+  ]
+}
