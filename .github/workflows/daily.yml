@@ -61,6 +61,22 @@ jobs:
       - name: Rebuild archive index
         run: python render_index.py
 
+      - name: Build review page for today
+        run: python review.py build "${{ steps.date.outputs.today }}"
+
+      - name: Run judge triage (best-effort)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        continue-on-error: true
+        run: |
+          # Haiku triage of today's filter log. Best-effort: if the API
+          # call fails (auth, quota, rate limit, transient 5xx) the workflow
+          # still publishes the digest. Worst case: the review page renders
+          # without suspect highlights for that day.
+          python judge.py run "${{ steps.date.outputs.today }}"
+          # Rebuild so the just-written .judge.json is inlined into the HTML.
+          python review.py build "${{ steps.date.outputs.today }}"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"

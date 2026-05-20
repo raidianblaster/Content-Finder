@@ -63,3 +63,39 @@ def test_dedup_state_not_in_gitignore():
     assert "dedup-state.json" not in lines, (
         ".gitignore must not exclude dedup-state.json — it has to be committed."
     )
+
+
+def test_workflow_builds_review_page():
+    """Daily cron must build the review page so mobile labelling works without
+    a laptop. See issue #11."""
+    text = WORKFLOW.read_text()
+    assert "review.py build" in text, (
+        "daily.yml must invoke `review.py build` so docs/review/<date>.html is "
+        "generated and published via Pages each day"
+    )
+
+
+def test_workflow_runs_judge_triage():
+    """Daily cron should run Haiku judge so mobile review pages have suspect
+    highlights without manual laptop work. See issue #12."""
+    text = WORKFLOW.read_text()
+    assert "judge.py run" in text, (
+        "daily.yml must invoke `judge.py run` so docs/review/<date>.judge.json "
+        "is generated and inlined into the review page"
+    )
+
+
+def test_workflow_judge_step_tolerates_failure():
+    """Judge step is best-effort — API errors must NOT break the digest
+    workflow. `continue-on-error: true` is the required guardrail."""
+    text = WORKFLOW.read_text()
+    # Find the judge step block and assert continue-on-error is set within it.
+    judge_block = re.search(
+        r"name:\s*[\"']?[^\n]*[Jj]udge[^\n]*[\"']?\n.*?(?=\n\s*-\s+name:|\Z)",
+        text, re.DOTALL,
+    )
+    assert judge_block, "could not locate a judge step in daily.yml"
+    assert "continue-on-error: true" in judge_block.group(0), (
+        "judge step must set `continue-on-error: true` so an Anthropic API "
+        "failure does not break the daily digest"
+    )
