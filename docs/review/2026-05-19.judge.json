@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-19",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2605.15565",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent/RL research with strong relevance signal (11.77 score) dropped purely due to source cap limits."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.27859",
+      "stage": "dropped_source_cap",
+      "reason": "Core agentic RL research directly addressing LLM agent alignment, high score (11.77), unnecessarily culled by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15377",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive AI safety work on ensemble monitoring for control; strong relevance (10.77) lost to source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15871",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic AI discovery of neural architectures; clear relevance to agent automation (10.77) dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.16011",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-based code optimization research (FormulaCode) with high signal (10.77) lost to source filtering."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15226",
+      "stage": "dropped_source_cap",
+      "reason": "Hardware engineering agents benchmark (Phoenix-bench) with strong relevance score (9.77) culled by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.14572",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-skill navigation for enterprise RAG/QA; substantive work (9.77) lost to source limits."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15394",
+      "stage": "dropped_source_cap",
+      "reason": "LLM fine-tuning audit work on JEPA representation; relevant methodology (8.77) unnecessarily dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15425",
+      "stage": "dropped_source_cap",
+      "reason": "Runtime-structured task decomposition for agentic coding systems; directly relevant (8.77) but source-capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15846",
+      "stage": "dropped_source_cap",
+      "reason": "Long-horizon agentic software development benchmark (RoadmapBench); strong relevance (8.77) lost to cap."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260518/p37#a260518p37",
+      "reason": "Techmeme wrapper around Anthropic/Stainless acquisition already heavily covered; low independent value."
+    },
+    {
+      "url": "https://www.techmeme.com/260518/p32#a260518p32",
+      "reason": "Musk v. Altman litigation outcome; legal news without direct AI/ML substance or product relevance."
+    },
+    {
+      "url": "https://www.techmeme.com/260518/p31#a260518p31",
+      "reason": "Cursor Composer update; marginal product release news without substantial technical depth or unique insight."
+    },
+    {
+      "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "reason": "Litigation verdict; legal/business news without direct relevance to AI/ML development or agents."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agents-legal-work-claude-mcp-connectors-contract-review/",
+      "reason": "Vendor how-to blog post (MindStudio); primarily marketing content with low substantive technical depth."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agents-for-finance-anthropic-openai-enterprise/",
+      "reason": "MindStudio vendor blog with commercial framing; low independent technical contribution or analysis."
+    },
+    {
+      "url": "https://www.visualcapitalist.com/mapped-americas-most-spoken-languages-after-english-and-spanish/",
+      "reason": "Unrelated linguistics/demographics content; no AI/ML/agent relevance despite appearing in AI feed."
+    },
+    {
+      "url": "https://spacedaily.com/nasa-still-maintains-some-of-the-voyager-spacecraft-code-in-a-1970s-era-programming-language-that-almost-nobody-on-earth-fully-understands-anymore-and-the-handful-of-engineers-who-do-are-now-in-their/",
+      "reason": "Voyager spacecraft legacy code anecdote; tangential to AI/ML without substantive relevance."
+    },
+    {
+      "url": "https://www.reddit.com/r/pasadena/s/94BHlkE84r",
+      "reason": "Google Maps satellite imagery issue in Altadena; completely off-topic for AI/agent content pipeline."
+    },
+    {
+      "url": "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/",
+      "reason": "Retro Amiga/Atari emulation technical post; unrelated to AI/ML/agents despite low score."
+    }
+  ]
+}
