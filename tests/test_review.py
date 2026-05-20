@@ -270,3 +270,152 @@ def test_build_judge_null_when_no_judge_file(log_root):
     review.build(SAMPLE_LOG["date"], root=log_root)
     html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
     assert "const JUDGE = null" in html
+
+
+# --------------------------------------------------------------------------- #
+# 11. Suspect-first layout — top section appears before "Final"
+# --------------------------------------------------------------------------- #
+
+def _write_judge(log_root, judge_dict):
+    review_dir = log_root / "docs" / "review"
+    review_dir.mkdir(parents=True, exist_ok=True)
+    (review_dir / f"{SAMPLE_LOG['date']}.judge.json").write_text(json.dumps(judge_dict))
+
+
+def test_needs_review_section_appears_before_final(log_root):
+    import review
+    _write_judge(log_root, {
+        "date": SAMPLE_LOG["date"], "judge_prompt_version": "v1",
+        "suspect_drops": [{"url": "https://ex.com/finance", "stage": "dropped_keyword", "reason": "relevant"}],
+        "suspect_keeps": [{"url": "https://ex.com/agent-sdk", "reason": "hype"}],
+    })
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+
+    needs_idx = html.find('id="needs-review"')
+    final_idx = html.find("Final — kept")
+    assert needs_idx > 0, "expected a section with id='needs-review'"
+    assert final_idx > 0
+    assert needs_idx < final_idx, (
+        "needs-review section must come before the Final section heading"
+    )
+
+
+def test_suspect_cards_carry_from_stage_chip(log_root):
+    import review
+    _write_judge(log_root, {
+        "date": SAMPLE_LOG["date"], "judge_prompt_version": "v1",
+        "suspect_drops": [{"url": "https://ex.com/finance", "stage": "dropped_keyword", "reason": "relevant"}],
+        "suspect_keeps": [],
+    })
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+
+    # Inside the needs-review section, the finance card should declare its origin.
+    needs_idx = html.find('id="needs-review"')
+    next_section_idx = html.find("<section", needs_idx + 1)
+    block = html[needs_idx:next_section_idx]
+    assert "was:" in block, "suspect cards should show a 'was: <stage>' chip"
+    assert "ex.com/finance" in block
+
+
+def test_suspect_cards_show_judge_reason(log_root):
+    """Reason must appear in the visible card UI, not only inside the
+    embedded JUDGE JS constant."""
+    import review
+    _write_judge(log_root, {
+        "date": SAMPLE_LOG["date"], "judge_prompt_version": "v1",
+        "suspect_drops": [{
+            "url": "https://ex.com/finance", "stage": "dropped_keyword",
+            "reason": "this is a UNIQUE_REASON_STRING_42",
+        }],
+        "suspect_keeps": [],
+    })
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    # Reason must appear in the needs-review section block (i.e. before the
+    # <script> tag where const JUDGE is defined).
+    script_idx = html.find("<script")
+    body_section = html[:script_idx]
+    assert "UNIQUE_REASON_STRING_42" in body_section, (
+        "judge reason should be rendered in the card UI, not only embedded "
+        "in the const JUDGE script"
+    )
+
+
+def test_suspect_items_removed_from_original_stage_section(log_root):
+    """When a card is in needs-review, it should NOT also appear in its stage section."""
+    import review
+    _write_judge(log_root, {
+        "date": SAMPLE_LOG["date"], "judge_prompt_version": "v1",
+        "suspect_drops": [{"url": "https://ex.com/finance", "stage": "dropped_keyword", "reason": "x"}],
+        "suspect_keeps": [],
+    })
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    # The finance URL should appear exactly once as a card data-url attribute.
+    card_occurrences = html.count('data-url="https://ex.com/finance"')
+    # 3 buttons + 1 card div + 1 note input = 5 per card. If it's duplicated we'd see 10.
+    assert card_occurrences <= 5, (
+        f"finance URL appears {card_occurrences} times; suspect items should be "
+        "moved to needs-review, not duplicated into stage sections."
+    )
+
+
+def test_no_needs_review_section_when_judge_null(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert 'id="needs-review"' not in html
+
+
+# --------------------------------------------------------------------------- #
+# 12. build_index — listing all review pages
+# --------------------------------------------------------------------------- #
+
+def test_build_index_lists_review_pages(tmp_path):
+    import review
+    logs_dir = tmp_path / "docs" / "logs"
+    logs_dir.mkdir(parents=True)
+    for d in ("2026-05-17", "2026-05-18", "2026-05-19"):
+        log = {**SAMPLE_LOG, "date": d}
+        (logs_dir / f"{d}.json").write_text(json.dumps(log))
+    review.build_all(root=tmp_path)
+
+    out = review.build_index(root=tmp_path)
+    assert out == tmp_path / "docs" / "review" / "index.html"
+    html = out.read_text()
+    for d in ("2026-05-17", "2026-05-18", "2026-05-19"):
+        assert d in html, f"index should reference review page for {d}"
+
+
+def test_build_index_excludes_aliases(tmp_path):
+    """index.html must not list itself or latest.html as review entries."""
+    import review
+    logs_dir = tmp_path / "docs" / "logs"
+    logs_dir.mkdir(parents=True)
+    (logs_dir / "2026-05-19.json").write_text(json.dumps({**SAMPLE_LOG, "date": "2026-05-19"}))
+    review.build_all(root=tmp_path)
+    # Pretend a previous run dropped these aliases in:
+    review_dir = tmp_path / "docs" / "review"
+    (review_dir / "latest.html").write_text("dummy")
+    out = review.build_index(root=tmp_path)
+    html = out.read_text()
+    # No <a href="latest.html"> or <a href="index.html"> in the listing.
+    assert 'href="latest.html"' not in html
+    assert 'href="index.html"' not in html
+
+
+def test_build_index_orders_newest_first(tmp_path):
+    import review
+    logs_dir = tmp_path / "docs" / "logs"
+    logs_dir.mkdir(parents=True)
+    for d in ("2026-05-17", "2026-05-18", "2026-05-19"):
+        (logs_dir / f"{d}.json").write_text(json.dumps({**SAMPLE_LOG, "date": d}))
+    review.build_all(root=tmp_path)
+    out = review.build_index(root=tmp_path)
+    html = out.read_text()
+    i19 = html.find("2026-05-19")
+    i18 = html.find("2026-05-18")
+    i17 = html.find("2026-05-17")
+    assert 0 < i19 < i18 < i17, "index should list newest date first"
