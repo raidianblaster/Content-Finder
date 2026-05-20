@@ -85,6 +85,17 @@ def test_workflow_runs_judge_triage():
     )
 
 
+def test_workflow_writes_latest_review_alias():
+    """`docs/review/latest.html` is the stable bookmark URL — must be
+    overwritten by the cron each day so mobile users don't have to type
+    today's date into the URL."""
+    text = WORKFLOW.read_text()
+    assert "review/latest.html" in text, (
+        "daily.yml must copy today's review page to `docs/review/latest.html` "
+        "so a bookmark of /review/latest.html always shows the newest digest"
+    )
+
+
 def test_workflow_judge_step_tolerates_failure():
     """Judge step is best-effort — API errors must NOT break the digest
     workflow. `continue-on-error: true` is the required guardrail."""

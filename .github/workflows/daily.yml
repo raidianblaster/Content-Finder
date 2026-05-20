@@ -77,6 +77,15 @@ jobs:
           # Rebuild so the just-written .judge.json is inlined into the HTML.
           python review.py build "${{ steps.date.outputs.today }}"
 
+      - name: Refresh latest review alias
+        run: |
+          # docs/review/latest.html is the stable bookmark URL — a copy of
+          # whichever date is freshest. The localStorage key inside the HTML
+          # embeds the real date, so labels persist correctly even though the
+          # URL is date-free. Runs after the judge step so latest.html
+          # captures the highlighted version when judging succeeded.
+          cp "docs/review/${{ steps.date.outputs.today }}.html" docs/review/latest.html
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
