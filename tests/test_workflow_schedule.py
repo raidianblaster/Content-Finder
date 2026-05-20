@@ -85,6 +85,16 @@ def test_workflow_runs_judge_triage():
     )
 
 
+def test_workflow_builds_review_index():
+    """A review/index.html browsable list of past review pages must be
+    regenerated daily so historical pages stay discoverable."""
+    text = WORKFLOW.read_text()
+    assert "review.py build-index" in text or "build_index" in text, (
+        "daily.yml must invoke `review.py build-index` so the listing of "
+        "past review pages is kept current"
+    )
+
+
 def test_workflow_writes_latest_review_alias():
     """`docs/review/latest.html` is the stable bookmark URL — must be
     overwritten by the cron each day so mobile users don't have to type

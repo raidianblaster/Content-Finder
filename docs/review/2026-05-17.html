@@ -52,6 +52,18 @@ section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
 }
 .judge-flag-drop { background: hsla(45,90%,55%,0.2); color: var(--judge-drop-accent); }
 .judge-flag-keep { background: hsla(0,80%,65%,0.2); color: var(--judge-keep-accent); }
+.from-stage {
+  display: inline-block; font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 10px; color: var(--fg-dim); margin-left: 8px;
+  padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px;
+  vertical-align: middle;
+}
+.judge-reason {
+  font-size: 12px; color: var(--fg-mid); font-style: italic;
+  margin: 4px 0 8px; padding-left: 8px; border-left: 2px solid var(--border);
+}
+.judge-reason::before { content: "Haiku: "; color: var(--fg-dim); font-style: normal; }
+#needs-review h2 { color: var(--judge-drop-accent); }
 .card .title {
   font-weight: 500; margin-bottom: 4px; display: block;
   color: var(--fg); text-decoration: none;

@@ -86,6 +86,12 @@ jobs:
           # captures the highlighted version when judging succeeded.
           cp "docs/review/${{ steps.date.outputs.today }}.html" docs/review/latest.html
 
+      - name: Rebuild review index
+        run: |
+          # docs/review/index.html — browsable list of past review pages.
+          # Runs after latest.html so the index step can ignore aliases.
+          python review.py build-index
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"

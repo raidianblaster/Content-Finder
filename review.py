@@ -31,6 +31,16 @@ STAGES = [
      "Voluminous — skim, don't read every one."),
 ]
 
+# Short labels used in the "was: <stage>" chip on cards lifted into the
+# Needs-review section.
+STAGE_SHORT_LABELS = {
+    "final": "final",
+    "dropped_source_cap": "source cap",
+    "dropped_ttl": "TTL",
+    "dropped_dedupe": "dedupe",
+    "dropped_keyword": "keyword filter",
+}
+
 
 CSS = """
 :root {
@@ -77,6 +87,18 @@ section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
 }
 .judge-flag-drop { background: hsla(45,90%,55%,0.2); color: var(--judge-drop-accent); }
 .judge-flag-keep { background: hsla(0,80%,65%,0.2); color: var(--judge-keep-accent); }
+.from-stage {
+  display: inline-block; font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 10px; color: var(--fg-dim); margin-left: 8px;
+  padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px;
+  vertical-align: middle;
+}
+.judge-reason {
+  font-size: 12px; color: var(--fg-mid); font-style: italic;
+  margin: 4px 0 8px; padding-left: 8px; border-left: 2px solid var(--border);
+}
+.judge-reason::before { content: "Haiku: "; color: var(--fg-dim); font-style: normal; }
+#needs-review h2 { color: var(--judge-drop-accent); }
 .card .title {
   font-weight: 500; margin-bottom: 4px; display: block;
   color: var(--fg); text-decoration: none;
@@ -130,11 +152,20 @@ def _esc(s: str) -> str:
     return html_mod.escape(s or "", quote=True)
 
 
-def _render_card(item: dict, stage: str, suspect: str | None = None) -> str:
+def _render_card(
+    item: dict,
+    stage: str,
+    suspect: str | None = None,
+    from_stage_label: str | None = None,
+    judge_reason: str | None = None,
+) -> str:
     """Render one item card.
 
     suspect: None | "drop" (judge thinks this was a wrong drop) |
              "keep" (judge thinks this shouldn't have made the final cut).
+    from_stage_label: short label shown as a `was: <label>` chip when this card
+        is rendered in the Needs-review section instead of its original stage.
+    judge_reason: Haiku's one-line rationale, shown inline below the meta line.
     """
     title = _esc(item.get("title", "(untitled)"))
     url = _esc(item.get("url", ""))
@@ -152,6 +183,14 @@ def _render_card(item: dict, stage: str, suspect: str | None = None) -> str:
         extra_classes = " judge-suspect-keep"
         judge_badge = '<span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span>'
 
+    from_chip = ""
+    if from_stage_label:
+        from_chip = f'<span class="from-stage">was: {_esc(from_stage_label)}</span>'
+
+    reason_html = ""
+    if judge_reason:
+        reason_html = f'\n    <div class="judge-reason">{_esc(judge_reason)}</div>'
+
     meta_parts = [
         f'<span class="src">{source}</span>',
         f'<span class="sep">·</span><span>score {score}</span>',
@@ -161,8 +200,8 @@ def _render_card(item: dict, stage: str, suspect: str | None = None) -> str:
         meta_parts.append(f'<span class="sep">·</span><span>first seen {first_seen}</span>')
 
     return f'''  <div class="card{extra_classes}" data-url="{url}" data-stage="{stage}">
-    <a class="title" href="{url}" target="_blank" rel="noopener">{title}</a>{judge_badge}
-    <div class="meta">{"".join(meta_parts)}</div>
+    <a class="title" href="{url}" target="_blank" rel="noopener">{title}</a>{judge_badge}{from_chip}
+    <div class="meta">{"".join(meta_parts)}</div>{reason_html}
     <div class="verdicts">
       <button data-verdict="keep" data-url="{url}">keep ✓</button>
       <button data-verdict="drop" data-url="{url}">drop ✗</button>
@@ -331,35 +370,58 @@ def render(log: dict, judge: dict | None = None) -> str:
     pipeline = log.get("pipeline", {})
     prompt_version = log.get("prompt_version", "?")
 
-    # Build URL-keyed sets for server-side suspect class emission.
+    # Build URL-keyed sets and reason dicts for server-side suspect class
+    # emission and inline reason display.
     suspect_drops: set[str] = set()
     suspect_keeps: set[str] = set()
+    drop_reasons: dict[str, str] = {}
+    keep_reasons: dict[str, str] = {}
     judge_js_value = "null"
     if judge:
-        suspect_drops = {it["url"] for it in judge.get("suspect_drops", []) if it.get("url")}
-        suspect_keeps = {it["url"] for it in judge.get("suspect_keeps", []) if it.get("url")}
-        # Build URL-keyed dicts for optional JS hover reasons.
+        for it in judge.get("suspect_drops", []):
+            url = it.get("url")
+            if url:
+                suspect_drops.add(url)
+                drop_reasons[url] = it.get("reason", "") or ""
+        for it in judge.get("suspect_keeps", []):
+            url = it.get("url")
+            if url:
+                suspect_keeps.add(url)
+                keep_reasons[url] = it.get("reason", "") or ""
         judge_js = {
             "suspect_drops": {
-                it["url"]: {"stage": it.get("stage"), "reason": it.get("reason")}
-                for it in judge.get("suspect_drops", []) if it.get("url")
+                url: {"stage": it.get("stage"), "reason": drop_reasons.get(url, "")}
+                for url, it in zip(
+                    [x.get("url") for x in judge.get("suspect_drops", []) if x.get("url")],
+                    [x for x in judge.get("suspect_drops", []) if x.get("url")],
+                )
             },
             "suspect_keeps": {
-                it["url"]: {"reason": it.get("reason")}
-                for it in judge.get("suspect_keeps", []) if it.get("url")
+                url: {"reason": keep_reasons.get(url, "")}
+                for url in suspect_keeps
             },
         }
         judge_js_value = json.dumps(judge_js)
 
-    sections_html = []
-    item_index = []
-    item_meta = {}
-    for stage_key, heading, blurb in STAGES:
-        items = log.get(stage_key, [])
-        for it in items:
+    all_suspects = suspect_drops | suspect_keeps
+
+    # First pass: build item_index / item_meta in display order (suspects first,
+    # then remaining items grouped by stage). Also collect suspect items for
+    # the Needs-review section, in (drops then keeps) order matching the judge
+    # output ordering.
+    sections_html: list[str] = []
+    item_index: list[str] = []
+    item_meta: dict[str, dict] = {}
+    items_by_stage: dict[str, list[dict]] = {}
+    url_to_stage: dict[str, str] = {}
+
+    for stage_key, _, _ in STAGES:
+        stage_items = log.get(stage_key, [])
+        items_by_stage[stage_key] = stage_items
+        for it in stage_items:
             url = it.get("url", "")
-            if url:
-                item_index.append(url)
+            if url and url not in url_to_stage:
+                url_to_stage[url] = stage_key
                 item_meta[url] = {
                     "title": it.get("title", ""),
                     "source": it.get("source", ""),
@@ -367,11 +429,54 @@ def render(log: dict, judge: dict | None = None) -> str:
                     "score": it.get("score"),
                     "age_days": it.get("age_days"),
                 }
-        sections_html.append(_render_section(
-            stage_key, heading, blurb, items,
-            suspect_drops=suspect_drops or None,
-            suspect_keeps=suspect_keeps or None,
-        ))
+
+    # Needs-review section (only when judge supplied any suspects).
+    if all_suspects:
+        suspect_cards: list[str] = []
+        # Preserve the judge's drop/keep ordering, fall back to set order.
+        drop_urls = [it["url"] for it in (judge.get("suspect_drops", []) if judge else [])
+                     if it.get("url") and it["url"] in url_to_stage]
+        keep_urls = [it["url"] for it in (judge.get("suspect_keeps", []) if judge else [])
+                     if it.get("url") and it["url"] in url_to_stage]
+        ordered_suspects = drop_urls + keep_urls
+
+        for url in ordered_suspects:
+            origin_stage = url_to_stage[url]
+            # Find the item dict in its original stage.
+            it = next((x for x in items_by_stage[origin_stage] if x.get("url") == url), None)
+            if it is None:
+                continue
+            item_index.append(url)
+            if url in suspect_drops:
+                kind, reason = "drop", drop_reasons.get(url, "")
+            else:
+                kind, reason = "keep", keep_reasons.get(url, "")
+            suspect_cards.append(_render_card(
+                it, origin_stage, suspect=kind,
+                from_stage_label=STAGE_SHORT_LABELS.get(origin_stage, origin_stage),
+                judge_reason=reason,
+            ))
+
+        if suspect_cards:
+            blurb = ("Items the judge flagged for your attention. "
+                     "Label these first — the rest of the page is for context.")
+            sections_html.append(
+                f'<section id="needs-review">\n'
+                f'  <h2>Needs review <span style="color:var(--fg-dim);font-weight:400">'
+                f'({len(suspect_cards)})</span></h2>\n'
+                f'  <div class="blurb">{_esc(blurb)}</div>\n'
+                + "\n".join(suspect_cards) + "\n</section>"
+            )
+
+    # Original stage sections, with suspects removed (they live in needs-review now).
+    for stage_key, heading, blurb in STAGES:
+        items = [it for it in items_by_stage[stage_key]
+                 if it.get("url", "") not in all_suspects]
+        for it in items:
+            url = it.get("url", "")
+            if url:
+                item_index.append(url)
+        sections_html.append(_render_section(stage_key, heading, blurb, items))
 
     sections_html = [s for s in sections_html if s]
 
@@ -455,6 +560,111 @@ def build_all(root: Path | str = ".") -> list[Path]:
     return written
 
 
+_INDEX_CSS = """
+body {
+  margin: 0; padding: 24px 16px 48px; background: #0a0a0d; color: #e8e8f0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px; line-height: 1.5;
+}
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: #a0a0b0; font-size: 13px; margin-bottom: 24px; }
+ul.entries { list-style: none; padding: 0; margin: 0; }
+ul.entries li {
+  background: #111116; border: 1px solid #2a2a35; border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+ul.entries a {
+  color: hsl(292 60% 65%); text-decoration: none; font-weight: 500; font-size: 16px;
+}
+ul.entries a:hover { text-decoration: underline; }
+.meta {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: #6a6a80; margin-top: 4px;
+}
+.meta .suspects { color: hsl(45 90% 55%); margin-left: 8px; }
+"""
+
+
+def _index_entry(date: str, root: Path) -> str:
+    """Build one <li> for the review index for a given date."""
+    log_path = root / "docs" / "logs" / f"{date}.json"
+    pipeline_summary = ""
+    if log_path.exists():
+        try:
+            log = json.loads(log_path.read_text())
+            p = log.get("pipeline", {})
+            fetched = p.get("fetched", "?")
+            final = p.get("after_source_cap", "?")
+            pipeline_summary = f"{fetched} fetched → {final} final"
+        except Exception:
+            pass
+
+    suspects_html = ""
+    judge_path = root / "docs" / "review" / f"{date}.judge.json"
+    if judge_path.exists():
+        try:
+            jd = json.loads(judge_path.read_text())
+            n = len(jd.get("suspect_drops", [])) + len(jd.get("suspect_keeps", []))
+            if n:
+                suspects_html = f'<span class="suspects">⚑ {n} suspects flagged</span>'
+        except Exception:
+            pass
+
+    return (
+        f'  <li>\n'
+        f'    <a href="{_esc(date)}.html">{_esc(date)}</a>\n'
+        f'    <div class="meta">{_esc(pipeline_summary)}{suspects_html}</div>\n'
+        f'  </li>'
+    )
+
+
+def build_index(root: Path | str = ".") -> Path:
+    """Write `<root>/docs/review/index.html` — a listing of past review pages.
+
+    Globs `<root>/docs/review/*.html`, excludes `latest.html` and `index.html`,
+    and emits a newest-first list. Each entry shows date (linked), pipeline
+    summary from the log, and judge suspect count if a `.judge.json` exists.
+    """
+    root = Path(root)
+    review_dir = root / "docs" / "review"
+    review_dir.mkdir(parents=True, exist_ok=True)
+
+    dates: list[str] = []
+    for html_path in review_dir.glob("*.html"):
+        stem = html_path.stem
+        if stem in ("latest", "index"):
+            continue
+        dates.append(stem)
+    dates.sort(reverse=True)
+
+    entries = "\n".join(_index_entry(d, root) for d in dates) if dates else \
+              '  <li class="meta">no review pages yet</li>'
+
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Review index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>{_INDEX_CSS}</style>
+</head>
+<body>
+<h1>Filter-log review</h1>
+<div class="sub">Daily review pages. Newest first. Bookmark <code>latest.html</code> for the freshest one.</div>
+<ul class="entries">
+{entries}
+</ul>
+</body>
+</html>'''
+
+    out_path = review_dir / "index.html"
+    out_path.write_text(html)
+    return out_path
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Generate review HTML from a filter log."
@@ -465,6 +675,10 @@ def main(argv: list[str] | None = None) -> int:
     p_build.add_argument("--all", action="store_true",
                          help="Rebuild every log under docs/logs/.")
     p_build.add_argument("--root", default=".", help="Repo root (default: cwd).")
+
+    p_index = sub.add_parser(
+        "build-index", help="Build the review/index.html listing.")
+    p_index.add_argument("--root", default=".", help="Repo root (default: cwd).")
 
     args = parser.parse_args(argv)
     if args.cmd == "build":
@@ -477,6 +691,10 @@ def main(argv: list[str] | None = None) -> int:
         if not args.date:
             parser.error("provide a date or pass --all")
         out = build(args.date, root=args.root)
+        print(out)
+        return 0
+    if args.cmd == "build-index":
+        out = build_index(root=args.root)
         print(out)
         return 0
     return 1
