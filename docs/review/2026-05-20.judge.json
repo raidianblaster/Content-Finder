@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-20",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2605.15377",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agentic AI research on ensemble monitoring and control deserves coverage despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15871",
+      "stage": "dropped_source_cap",
+      "reason": "Novel agentic discovery of neural architectures is substantive ML research that should survive source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15226",
+      "stage": "dropped_source_cap",
+      "reason": "Direct evaluation of agentic AI readiness for real-world hardware engineering is timely and relevant."
+    },
+    {
+      "url": "https://simonwillison.net/2026/May/19/5-minute-llms/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison trusted source providing six-month LLM summary is high-signal despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.14892",
+      "stage": "dropped_ttl",
+      "reason": "Comprehensive survey of multi-agent LLM collaboration and failure modes is substantive despite TTL drop."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15228",
+      "stage": "dropped_ttl",
+      "reason": "Verifiable infrastructure for agentic AI systems addresses governance, high-signal for regulated environment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15301",
+      "stage": "dropped_ttl",
+      "reason": "Agentic evolution for competitive programming demonstrates practical LLM agent capability gains."
+    },
+    {
+      "url": "https://odyssey.ml/introducing-agora-1",
+      "stage": "dropped_ttl",
+      "reason": "Multi-agent world model represents significant advancement in agentic AI architecture."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agents-legal-work-claude-mcp-connectors-contract-review/",
+      "stage": "dropped_ttl",
+      "reason": "Enterprise AI agents for regulated legal domain is directly relevant to corporate AI governance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15206",
+      "stage": "dropped_ttl",
+      "reason": "Energy-aware agentic AI optimization addresses practical deployment constraints for on-device models."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260519/p61#a260519p61",
+      "reason": "SpaceX/Cursor acquisition rumor is vendor deal gossip lacking substantive AI/ML content."
+    },
+    {
+      "url": "https://www.techmeme.com/260519/p64#a260519p64",
+      "reason": "SoftBank investment concern is financial/business speculation without technical AI substance."
+    },
+    {
+      "url": "https://www.visualcapitalist.com/mapped-americas-most-spoken-languages-after-english-and-spanish/",
+      "reason": "Language demographics data is unrelated to AI/ML and appears due to keyword matching noise."
+    },
+    {
+      "url": "https://www.reddit.com/r/pasadena/s/94BHlkE84r",
+      "reason": "Google Maps satellite imagery question is unrelated to AI/ML content."
+    },
+    {
+      "url": "https://www.ox.ac.uk/news/2026-05-15-why-is-almost-everyone-right-handed-the-answer-may-lie-in-how-we-learned-to-walk",
+      "reason": "Handedness/bipedalism biology article has no connection to AI/ML topics."
+    },
+    {
+      "url": "https://spacedaily.com/nasa-still-maintains-some-of-the-voyager-spacecraft-code-in-a-1970s-era-programming-language-that-almost-nobody-on-earth-fully-understands-anymore-and-the-handful-of-engineers-who-do-are-now-in-their/",
+      "reason": "Legacy code maintenance story is interesting but unrelated to AI/ML."
+    },
+    {
+      "url": "https://www.engadget.com/2175771/x-free-accounts-limited-to-50-posts-and-200-replies-a-day/",
+      "reason": "X platform policy change has no AI/ML relevance despite being tech news."
+    },
+    {
+      "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "reason": "Legal dispute outcome is corporate gossip, not substantive AI/ML technical content."
+    },
+    {
+      "url": "https://gizmodo.com/the-worst-leak-that-ive-witnessed-u-s-cybersecurity-agency-leaves-its-digital-keys-out-in-public-on-github-2000760330",
+      "reason": "Cybersecurity incident is generic tech security, not AI/ML-specific content."
+    },
+    {
+      "url": "https://zanestjohn.com/blog/reing-with-claude-code",
+      "reason": "Android malware reverse-engineering using Claude Code is security incident analysis, not AI research."
+    }
+  ]
+}
