@@ -37,6 +37,40 @@ New file `compare_prompts.py`. CLI: `python compare_prompts.py <date> <promptA.m
 
 Defer (Stage 3.5, optional): aggregating `feedback/prompts.jsonl` into a "which prompt wins" report; auto-promoting a new prompt to `synthesis_system.md` after N wins.
 
+#### How to use Stage 3 (once built)
+
+This is the prompt-iteration loop you'll come back to whenever you want to improve `prompts/synthesis_system.md`. Built around the same labelling muscle as the review harness — you read two outputs side by side and click which is better.
+
+**When to reach for it:** you've read a week of digests and noticed the per-item bullets miss something specific (e.g. governance signals are too vague, or claims aren't being challenged). Open `synthesis_system.md`, draft a candidate edit, save it next to the original.
+
+**Prerequisites:**
+- Anthropic API key in env (`ANTHROPIC_API_KEY`) — this runs Claude twice per day's items, so it costs ~$0.10–0.30 per comparison day. Not free, not expensive.
+- Run from the laptop, not phone — API key isn't on mobile.
+- At least one day's worth of `final` items (i.e. a normal `docs/logs/<date>.json` exists).
+- Two prompt files to compare. Convention: keep candidates as `prompts/synthesis_system_<short-name>.md` (e.g. `synthesis_system_v2-claims-led.md`).
+
+**Run:**
+
+```bash
+.venv/bin/python compare_prompts.py 2026-05-21 \
+  prompts/synthesis_system.md \
+  prompts/synthesis_system_v2-claims-led.md
+```
+
+Writes `experiments/2026-05-21/synthesis_system_vs_v2-claims-led.html`.
+
+**Label:** open the HTML in a browser. For each item, two bullets are shown side by side, A on the left and B on the right. Three buttons per row: 👍 A · 👍 B · skip. Click whichever is better, or skip if they're equivalent / both bad. Verdicts auto-save to `feedback/prompts.jsonl` via the same PAT mechanism as the review page (one-time settings setup if you haven't done it on this device).
+
+**Decide:**
+- Run the comparison on 3–5 different days, not just one — picks vary with item mix.
+- Tally the result. If B wins ≥60% of non-skipped rows across the days, promote it: `cp prompts/synthesis_system_v2-claims-led.md prompts/synthesis_system.md`, bump `PROMPT_VERSION` in `content_finder.py`, commit.
+- If it's close (50/50), the diff isn't doing what you thought. Re-read the bullets where A won and ask why — usually the prompt change had a side-effect.
+- If B loses, archive the candidate file (don't delete — `git log` is your prompt-experiment history).
+
+**Output shape locked.** Both prompts must read/write the per-item summary schema in CLAUDE.md (`{tldr, what_changed, why_it_matters, claims[], code_or_api_changes[], numbers[], governance_signals[], open_questions[]}`). The side-by-side renders the same field for both, so a meaningful comparison requires both prompts populate the same fields.
+
+**Stage 3.5 makes this faster** — once `feedback/prompts.jsonl` has ~50+ rows, a small aggregator will rank candidates without your having to count by hand.
+
 ## 2. Tags & topic sorting
 
 Three tiers:
