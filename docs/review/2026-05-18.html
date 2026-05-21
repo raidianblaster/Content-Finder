@@ -110,6 +110,55 @@ footer button {
 }
 footer button.secondary { background: var(--bg-2); color: var(--fg); }
 footer .hint { color: var(--fg-dim); font-size: 11px; }
+footer .save-status {
+  font-size: 11px; padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2); color: var(--fg-dim);
+  border: 1px solid var(--border);
+}
+footer .save-status.dirty { color: var(--amber); border-color: var(--amber); }
+footer .save-status.saving { color: var(--purple); border-color: var(--purple); }
+footer .save-status.saved { color: var(--green); border-color: var(--green); }
+footer .save-status.error { color: var(--red); border-color: var(--red); }
+footer button.icon {
+  background: var(--bg-2); color: var(--fg-mid); font-size: 14px;
+  padding: 4px 8px; border: 1px solid var(--border);
+}
+#settings-panel {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: none; align-items: center; justify-content: center;
+  z-index: 50;
+}
+#settings-panel.open { display: flex; }
+#settings-panel .card-inner {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; width: min(420px, calc(100% - 32px));
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+#settings-panel h3 { margin: 0 0 8px; font-size: 16px; color: var(--fg); }
+#settings-panel p { margin: 0 0 14px; font-size: 13px; color: var(--fg-mid); }
+#settings-panel a { color: var(--purple); }
+#settings-panel input {
+  width: 100%; background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--fg); padding: 8px 10px; border-radius: 4px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  margin-bottom: 12px;
+}
+#settings-panel .row { display: flex; gap: 8px; justify-content: flex-end; }
+#settings-panel button {
+  background: var(--bg-2); color: var(--fg); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 4px; cursor: pointer;
+  font-family: inherit; font-size: 13px;
+}
+#settings-panel button.primary {
+  background: var(--purple); color: var(--bg-0); border-color: var(--purple);
+  font-weight: 500;
+}
+#settings-panel .test-result {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); min-height: 16px; margin-bottom: 8px;
+}
+#settings-panel .test-result.ok { color: var(--green); }
+#settings-panel .test-result.fail { color: var(--red); }
 </style>
 </head>
 <body>
@@ -786,10 +835,24 @@ footer .hint { color: var(--fg-dim); font-size: 11px; }
 </section>
 <footer>
   <span class="count" id="count">0 / 0 labelled</span>
-  <span class="hint">verdicts saved to localStorage automatically</span>
-  <button id="copy-jsonl" class="secondary">copy JSONL</button>
-  <button id="download-jsonl">download JSONL</button>
+  <span id="save-status" class="save-status" title="auto-save status (click on error to retry)">not connected</span>
+  <button id="settings-toggle" class="icon" title="connect to GitHub">⚙</button>
+  <button id="copy-jsonl" class="secondary">copy</button>
+  <button id="download-jsonl" class="secondary">download</button>
 </footer>
+<div id="settings-panel">
+  <div class="card-inner">
+    <h3>Connect to GitHub</h3>
+    <p>Paste a fine-grained Personal Access Token scoped to <code>raidianblaster/Content-Finder</code> with <code>Contents: Read and write</code>. After this, your labels auto-save to <code>feedback/2026-05-18.jsonl</code>.</p>
+    <input id="pat-input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <div id="pat-test-result" class="test-result"></div>
+    <div class="row">
+      <button id="settings-close">cancel</button>
+      <button id="pat-test">test connection</button>
+      <button id="pat-save" class="primary">save</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const REVIEW_DATE = "2026-05-18";
@@ -797,6 +860,12 @@ const TOTAL_ITEMS = 65;
 const ITEM_INDEX = ["https://crates.io/crates/zerostack/1.0.0", "https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/", "https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/", "https://maurycyz.com/projects/mcusite/", "https://www.techmeme.com/260517/p12#a260517p12", "https://www.techmeme.com/260517/p3#a260517p3", "https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html", "https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/", "https://www.techmeme.com/260517/p9#a260517p9", "https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything", "https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/", "https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/", "https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/", "https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/", "https://www.seangoedecke.com/steering-vectors/", "https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page", "https://github.com/MinishLab/semble", "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/", "https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/", "https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/", "https://www.techmeme.com/260516/p13#a260516p13", "https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/", "https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/", "https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/", "https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/", "https://diamond.jaydip.me/", "https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/", "https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/", "https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/", "https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/", "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/", "https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/", "https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/", "https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/", "https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/", "https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/", "https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/", "https://openai.com/index/malta-chatgpt-plus-partnership", "https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then", "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything", "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything", "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything", "https://www.techmeme.com/260517/p14#a260517p14", "https://www.techmeme.com/260517/p13#a260517p13", "https://www.techmeme.com/260517/p11#a260517p11", "https://www.techmeme.com/260517/p10#a260517p10", "https://www.techmeme.com/260517/p8#a260517p8", "https://www.techmeme.com/260517/p7#a260517p7", "https://www.techmeme.com/260517/p6#a260517p6", "https://www.techmeme.com/260517/p5#a260517p5", "https://www.techmeme.com/260517/p4#a260517p4", "https://www.techmeme.com/260517/p2#a260517p2", "https://www.techmeme.com/260517/p1#a260517p1", "https://www.interconnects.ai/p/latest-open-artifacts-21-open-model", "https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/", "https://kevinpatel.xyz/posts/no-way-to-prevent-this/", "https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2", "https://labs.randomquark.com/alphabet_cards/", "https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/", "https://www.rogerebert.com/streaming/magical-realism-nothern-exposure-25-years-later", "https://news.ycombinator.com/item?id=48164173", "https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence", "https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms", "https://www.dwarkesh.com/p/rlvr-might-be-disproportionately", "https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/"];
 const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
 const JUDGE = null;
+
+const REPO_OWNER = "raidianblaster";
+const REPO_NAME = "Content-Finder";
+const BRANCH = "main";
+const PAT_KEY = "cf-review::__pat__";
+const SAVE_DEBOUNCE_MS = 10000;
 
 function key(url) { return STORAGE_PREFIX + url; }
 
@@ -877,6 +946,138 @@ async function copyJSONL() {
   setTimeout(() => { btn.textContent = orig; }, 1200);
 }
 
+// -- Auto-save to GitHub ---------------------------------------------------
+
+function loadPat() { return localStorage.getItem(PAT_KEY) || ""; }
+function savePat(t) {
+  if (t) localStorage.setItem(PAT_KEY, t);
+  else localStorage.removeItem(PAT_KEY);
+}
+
+function setStatus(state, text) {
+  const el = document.getElementById("save-status");
+  if (!el) return;
+  el.className = "save-status " + state;
+  el.textContent = text;
+}
+
+function refreshStatusIdle() {
+  if (!loadPat()) {
+    // If there are unsaved labels in localStorage already, surface that so the
+    // user knows connecting will rescue them.
+    const pending = buildJSONL();
+    if (pending) setStatus("dirty", "unsaved · connect to save");
+    else setStatus("idle", "not connected");
+    return;
+  }
+  setStatus("idle", "ready");
+}
+
+function utf8ToBase64(s) {
+  const bytes = new TextEncoder().encode(s);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function ghHeaders(pat) {
+  return {
+    "Authorization": "Bearer " + pat,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+
+function feedbackPath() { return "feedback/" + REVIEW_DATE + ".jsonl"; }
+
+function contentsUrl() {
+  return "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME
+       + "/contents/" + feedbackPath();
+}
+
+async function fetchSha(pat) {
+  const r = await fetch(contentsUrl() + "?ref=" + BRANCH,
+    { headers: ghHeaders(pat) });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error("get sha: " + r.status);
+  const j = await r.json();
+  return j.sha || null;
+}
+
+async function putContents(pat, body) {
+  const r = await fetch(contentsUrl(), {
+    method: "PUT",
+    headers: Object.assign({"Content-Type": "application/json"}, ghHeaders(pat)),
+    body: JSON.stringify(body),
+  });
+  return r;
+}
+
+async function commitJsonl() {
+  const pat = loadPat();
+  if (!pat) { setStatus("idle", "not connected"); return; }
+  const jsonl = buildJSONL();
+  if (!jsonl) { setStatus("idle", "nothing to save"); return; }
+
+  setStatus("saving", "saving…");
+  try {
+    let sha = await fetchSha(pat);
+    const body = {
+      message: "review: update " + feedbackPath(),
+      content: utf8ToBase64(jsonl),
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+    let r = await putContents(pat, body);
+    if (r.status === 409) {
+      sha = await fetchSha(pat);
+      if (sha) body.sha = sha; else delete body.sha;
+      r = await putContents(pat, body);
+    }
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(r.status + " " + (j.message || ""));
+    }
+    const now = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+    setStatus("saved", "saved " + now);
+  } catch (e) {
+    setStatus("error", "error: " + e.message + " · click to retry");
+  }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  if (!loadPat()) { setStatus("dirty", "unsaved (connect repo)"); return; }
+  setStatus("dirty", "unsaved · saving in " + (SAVE_DEBOUNCE_MS / 1000) + "s");
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { saveTimer = null; commitJsonl(); }, SAVE_DEBOUNCE_MS);
+}
+
+async function testPat() {
+  const input = document.getElementById("pat-input");
+  const out = document.getElementById("pat-test-result");
+  const pat = input.value.trim();
+  if (!pat) { out.className = "test-result fail"; out.textContent = "paste a token first"; return; }
+  out.className = "test-result"; out.textContent = "testing…";
+  try {
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME,
+      { headers: ghHeaders(pat) });
+    if (!r.ok) throw new Error(r.status + "");
+    out.className = "test-result ok"; out.textContent = "connection ok";
+  } catch (e) {
+    out.className = "test-result fail"; out.textContent = "failed: " + e.message;
+  }
+}
+
+function openSettings() {
+  document.getElementById("pat-input").value = loadPat();
+  document.getElementById("pat-test-result").textContent = "";
+  document.getElementById("settings-panel").classList.add("open");
+}
+function closeSettings() {
+  document.getElementById("settings-panel").classList.remove("open");
+}
+
 const ITEM_META = {"https://crates.io/crates/zerostack/1.0.0": {"title": "Zerostack \u2013 A Unix-inspired coding agent written in pure Rust", "source": "Hacker News", "stage": "final", "score": 8.71, "age_days": 1.0}, "https://www.mindstudio.ai/blog/gemini-3-2-flash-vs-claude-opus-4-7/": {"title": "Gemini 3.2 Flash vs Claude Opus 4.7: What to Expect from Google I/O", "source": "MindStudio", "stage": "final", "score": 8.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-agentic-rag-multi-layer-retrieval/": {"title": "What Is Agentic RAG? How Multi-Layer Retrieval Beats Standard Vector Search", "source": "MindStudio", "stage": "final", "score": 7.44, "age_days": 2.0}, "https://maurycyz.com/projects/mcusite/": {"title": "Hosting a website on an 8-bit microcontroller", "source": "Hacker News", "stage": "final", "score": 7.03, "age_days": 0.9}, "https://www.techmeme.com/260517/p12#a260517p12": {"title": "Analysis: 34 leading AI startups are generating ~$80B in annualized revenue, up 112% from six months ago, with Anthropic and OpenAI capturing 89% of the revenue (The Information)", "source": "Techmeme", "stage": "final", "score": 6.97, "age_days": 0.1}, "https://www.techmeme.com/260517/p3#a260517p3": {"title": "King's Cross, where Google's new UK HQ is due to open later this year, has become London's new tech, VC, and AI hub, attracting OpenAI, Anthropic, and others (John Gapper/Financial Times)", "source": "Techmeme", "stage": "final", "score": 6.79, "age_days": 0.7}, "https://www.williamangel.net/blog/2026/05/17/offline-llm-energy-use.html": {"title": "Apple Silicon costs more than OpenRouter", "source": "Hacker News", "stage": "final", "score": 6.73, "age_days": 0.5}, "https://www.mindstudio.ai/blog/agentic-saas-pricing-agent-work-units-copilot-credits/": {"title": "Agentic SaaS Pricing: What Salesforce AgentForce and Microsoft Copilot Credits Mean for Builders", "source": "MindStudio", "stage": "final", "score": 6.44, "age_days": 2.0}, "https://www.techmeme.com/260517/p9#a260517p9": {"title": "Publicis agrees to acquire LiveRamp, which allows companies to share and build new data sets and models that can power agentic frameworks, for $2.2B in cash (Alison Weissbrot/Adweek)", "source": "Techmeme", "stage": "final", "score": 5.93, "age_days": 0.3}, "https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything": {"title": "GDS weighs in on the NHS's decision to retreat from Open Source", "source": "Simon Willison", "stage": "final", "score": 5.92, "age_days": 0.3}, "https://www.mindstudio.ai/blog/anthropic-vs-openai-business-adoption-2026/": {"title": "Anthropic vs OpenAI Business Adoption: What the Data Says About Enterprise AI", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/claude-agent-sdk-modal-trigger-dev-deployment/": {"title": "How to Use the Claude Agent SDK to Deploy Agentic Workflows to Modal or Trigger.dev", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/progressive-disclosure-ai-agent-skill-design/": {"title": "What Is Progressive Disclosure in AI Agent Design? How Skills Load Context Efficiently", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-project-glasswing-anthropic-cybersecurity/": {"title": "What Is Project Glasswing? Anthropic's Controlled Cybersecurity AI Rollout Explained", "source": "MindStudio", "stage": "dropped_source_cap", "score": 6.44, "age_days": 2.0}, "https://www.seangoedecke.com/steering-vectors/": {"title": "DeepSeek-V4-Flash means LLM steering is interesting again", "source": "Hacker News", "stage": "dropped_source_cap", "score": 6.21, "age_days": 1.3}, "https://www.hybridlogic.co.uk/blog/2026/05/mcp-hello-page": {"title": "MCP Hello Page", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.97, "age_days": 1.0}, "https://github.com/MinishLab/semble": {"title": "Show HN: Semble \u2013 Code search for agents that uses 98% fewer tokens than grep", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.88, "age_days": 0.3}, "https://arnaud-carre.github.io/2026-05-15-ym-fast-emu/": {"title": "Playing Atari ST Music on the Amiga with Zero CPU", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.82, "age_days": 0.6}, "https://www.mindstudio.ai/blog/claude-cloud-routines-vs-scheduled-tasks/": {"title": "Claude Cloud Routines vs Scheduled Tasks: Which Should You Use?", "source": "MindStudio", "stage": "dropped_source_cap", "score": 5.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/claude-for-small-business-pre-built-agents/": {"title": "Claude for Small Business: Pre-Built Agents for Finance, HR, Sales, and Ops", "source": "MindStudio", "stage": "dropped_source_cap", "score": 5.44, "age_days": 2.0}, "https://www.techmeme.com/260516/p13#a260516p13": {"title": "OpenAI partners with Malta's AI for All initiative to give citizens a free year of ChatGPT Plus if they complete a University of Malta AI literacy course (Cointelegraph)", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.77, "age_days": 0.8}, "https://www.mindstudio.ai/blog/generate-ai-videos-claude-code-hyperframes-elevenlabs/": {"title": "How to Generate AI Videos with Claude Code, HyperFrames, and ElevenLabs", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/notion-developer-platform-ai-agents/": {"title": "How to Use the Notion Developer Platform with AI Agents: CLI, Webhooks, and SDK", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/time-aware-ai-agents-thinking-machines-interaction-model/": {"title": "Time-Aware AI Agents: How Thinking Machines' Interaction Model Changes Automation", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-are-agentic-work-units-salesforce-agentforce/": {"title": "What Are Agentic Work Units? How Salesforce AgentForce Pricing Works", "source": "MindStudio", "stage": "dropped_source_cap", "score": 4.44, "age_days": 2.0}, "https://diamond.jaydip.me/": {"title": "How diamonds are made", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.22, "age_days": 2.0}, "https://www.mindstudio.ai/blog/ai-cybersecurity-2026-claude-mythos-zero-day-exploits/": {"title": "AI Cybersecurity in 2026: How Claude Mythos and GPT 5.5 Are Finding Zero-Day Exploits", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/deploy-claude-agents-24-7-three-methods/": {"title": "How to Deploy Claude Agents That Run While You Sleep: 3 Methods Compared", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/mega-skills-vs-modular-skills-claude-code/": {"title": "Mega Skills vs Modular Skills in Claude Code: Why Architecture Matters", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/modular-claude-skills-skill-systems/": {"title": "How to Build Modular Claude Skills That Chain Into Skill Systems", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-24-7-agent/": {"title": "What Is Gemini Spark? Google's 24/7 Agent That Learns From Your Behavior", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-orchestrator-skill-claude-code/": {"title": "What Is an Orchestrator Skill? How to Wire Claude Skills Into End-to-End Systems", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-thinking-machines-labs-mira-murati/": {"title": "What Is Thinking Machines Labs? Mira Murati's New AI Company Explained", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/ai-agent-persistent-memory-rag-vector-search/": {"title": "How to Build an AI Agent with Persistent Memory Using RAG and Vector Search", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/claude-for-legal-teams-mcp-connectors/": {"title": "Claude for Legal Teams: How Anthropic's MCP Connectors Work for Law Firms", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/multi-agent-orchestration-vs-single-model-cybersecurity/": {"title": "Multi-Agent Orchestration vs Single Model: Why 100+ Agents Beat One Frontier Model", "source": "MindStudio", "stage": "dropped_ttl", "score": 9.44, "age_days": 2.0}, "https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/": {"title": "Moving away from Tailwind, and learning to structure my CSS", "source": "Hacker News", "stage": "dropped_ttl", "score": 8.55, "age_days": 1.6}, "https://openai.com/index/malta-chatgpt-plus-partnership": {"title": "OpenAI and Malta partner to bring ChatGPT Plus to all citizens", "source": "OpenAI News", "stage": "dropped_ttl", "score": 6.44, "age_days": 2.0}, "https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then": {"title": "[AINews] Cerebras' $60B IPO: Slowly, then All at Once", "source": "Latent Space", "stage": "dropped_keyword", "score": 3.49, "age_days": 1.8}, "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything": {"title": "Warelay -> OpenClaw", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.68, "age_days": 1.1}, "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything": {"title": "Quoting Julia Evans", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.64, "age_days": 1.3}, "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything": {"title": "inaturalist-clumper 0.1", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.44, "age_days": 2.0}, "https://www.techmeme.com/260517/p14#a260517p14": {"title": "Ciridae, which is developing AI to streamline back-office operations for real-economy businesses, raised a $20M seed led by Accel, with a16z participating (Jack Kubinec/Fortune)", "source": "Techmeme", "stage": "dropped_keyword", "score": 3.0, "age_days": 0.0}, "https://www.techmeme.com/260517/p13#a260517p13": {"title": "Source: Shein is acquiring DTC clothing retailer Everlane, which focuses on sustainability and \"radical transparency\", in a $100M deal (Lauren Sherman/Puck)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.98, "age_days": 0.1}, "https://www.techmeme.com/260517/p11#a260517p11": {"title": "Grafana says hackers have accessed its GitHub environment and demanded a ransom to prevent the release of its codebase; Grafana refused to pay (The Hacker News)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.95, "age_days": 0.2}, "https://www.techmeme.com/260517/p10#a260517p10": {"title": "Analysis: mass adoption of smartphones and social media may be a primary driver of declining birthrates globally, in part by reducing in-person socializing (John Burn-Murdoch/Financial Times)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.94, "age_days": 0.2}, "https://www.techmeme.com/260517/p8#a260517p8": {"title": "Sources: DayOne, the spinoff of China's largest data center operator GDS Holdings, plans dual IPO in Singapore and NY, seeking to raise $5B at a ~$20B valuation (Owen Walker/Financial Times)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.92, "age_days": 0.3}, "https://www.techmeme.com/260517/p7#a260517p7": {"title": "Sources: Apple's revamped Siri may launch in beta, and will have an option to auto-delete chats; Apple plans to add Suggested Genmoji to iOS 27 and iPadOS 27 (Mark Gurman/Bloomberg)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.9, "age_days": 0.3}, "https://www.techmeme.com/260517/p6#a260517p6": {"title": "Developers say Chinese AI labs lead US rivals in video generation, as ByteDance and Kuaishou train models on vast short-form video libraries from their own apps (Eleanor Olcott/Financial Times)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.87, "age_days": 0.5}, "https://www.techmeme.com/260517/p5#a260517p5": {"title": "A profile of SAS CEO Jim Goodnight, the 83-year-old who co-founded the 50-year-old analytics firm and holds a ~67% stake worth $13.3B, as AI tests SAS' strategy (Phoebe Liu/Forbes)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.83, "age_days": 0.6}, "https://www.techmeme.com/260517/p4#a260517p4": {"title": "Experts: Stuxnet-linked Fast16 malware, designed to subvert nuclear weapons testing simulations, was likely part of a campaign to slow Iran's nuclear ambitions (Kim Zetter/ZERO DAY)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260517/p2#a260517p2": {"title": "Milan-based Webidoo, which develops an operational layer designed to help SMBs access AI tools, raised $25M led by IXC3 for North American expansion (David Cendon Garcia/EU-Startups)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.78, "age_days": 0.8}, "https://www.techmeme.com/260517/p1#a260517p1": {"title": "Filings: in Q1, Trump traded $220M-$750M in NVDA, MSFT, AMZN, META, ORCL, and other stocks; millions of dollars of NVDA were bought shortly before major news (Kevin Breuninger/CNBC)", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.78, "age_days": 0.8}, "https://www.interconnects.ai/p/latest-open-artifacts-21-open-model": {"title": "Latest open artifacts (#21): Open model bonanza! Gemma 4, DeepSeek V4, Kimi K2.6, MiMo 2.5, GLM-5.1 & others. On CAISI's V4 assessment.", "source": "Interconnects (Lambert)", "stage": "dropped_keyword", "score": 3.64, "age_days": 1.3}, "https://blog.mozilla.org/netpolicy/2026/05/15/mozilla-to-uk-regulators-vpns-are-essential-privacy-and-security-tools-and-should-not-be-undermined/": {"title": "Mozilla to UK regulators: VPNs are essential privacy and security tools", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.8, "age_days": 0.7}, "https://kevinpatel.xyz/posts/no-way-to-prevent-this/": {"title": "'No way to prevent this,' says only package manager where this regularly happens", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.45, "age_days": 1.9}, "https://mag.openrockets.com/p/how-an-australian-teen-team-is-making-radio-astronomy-affordable-for-rural-schools-4894opuisyhfdisubgi/?b=2": {"title": "PART Telescopes \u2013 Bringing radio astronomy within reach of rural schools", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.88, "age_days": 1.3}, "https://labs.randomquark.com/alphabet_cards/": {"title": "Greek Alphabet Cards", "source": "Hacker News", "stage": "dropped_keyword", "score": 3.01, "age_days": 1.5}, "https://sfstandard.com/pacific-standard-time/2026/05/15/meta-employee-gets-real-horror-working-right-now/": {"title": "A Meta employee gets real about the horror of working there", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.6, "age_days": 1.4}, "https://www.rogerebert.com/streaming/magical-realism-nothern-exposure-25-years-later": {"title": "Magical Realism: \u201cNorthern Exposure\u201d 25 Years Later (2015)", "source": "Hacker News", "stage": "dropped_keyword", "score": 1.96, "age_days": 1.9}, "https://news.ycombinator.com/item?id=48164173": {"title": "Ask HN: When did computers stop being fun?", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.32, "age_days": 1.0}, "https://www.dwarkesh.com/p/the-mistake-of-conflating-intelligence": {"title": "The mistake of conflating intelligence and power", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.67, "age_days": 1.2}, "https://www.dwarkesh.com/p/notes-on-pretraining-parallelisms": {"title": "Notes on pretraining parallelisms and failed training runs.", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.67, "age_days": 1.2}, "https://www.dwarkesh.com/p/rlvr-might-be-disproportionately": {"title": "RLVR might be disproportionately bad at science", "source": "Dwarkesh Podcast", "stage": "dropped_keyword", "score": 3.67, "age_days": 1.2}, "https://www.mindstudio.ai/blog/negotiate-agent-access-enterprise-software-contracts/": {"title": "How to Negotiate Agent Access in Enterprise Software Contracts", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}};
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -892,6 +1093,7 @@ document.addEventListener("DOMContentLoaded", () => {
           saveVerdict(url, {verdict: btn.dataset.verdict});
         }
         updateCard(card);
+        scheduleSave();
       });
     });
     const note = card.querySelector(".note-input");
@@ -899,13 +1101,29 @@ document.addEventListener("DOMContentLoaded", () => {
       note.addEventListener("input", () => {
         if (loadVerdict(note.dataset.url)) {
           saveVerdict(note.dataset.url, {note: note.value});
+          scheduleSave();
         }
       });
     }
   });
   document.getElementById("download-jsonl").addEventListener("click", downloadJSONL);
   document.getElementById("copy-jsonl").addEventListener("click", copyJSONL);
+  document.getElementById("settings-toggle").addEventListener("click", openSettings);
+  document.getElementById("settings-close").addEventListener("click", closeSettings);
+  document.getElementById("pat-test").addEventListener("click", testPat);
+  document.getElementById("pat-save").addEventListener("click", () => {
+    const v = document.getElementById("pat-input").value.trim();
+    savePat(v);
+    closeSettings();
+    // Flush any labels already in localStorage (e.g. labelled before the PAT
+    // was connected) the moment a token lands.
+    if (v && buildJSONL()) commitJsonl(); else refreshStatusIdle();
+  });
+  document.getElementById("save-status").addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains("error")) commitJsonl();
+  });
   updateCount();
+  refreshStatusIdle();
 });
 </script>
 

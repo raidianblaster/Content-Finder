@@ -28,6 +28,7 @@ Live page: https://raidianblaster.github.io/Content-Finder/
 - Per-source cap defaults to 3 (`apply_source_cap`) to stop a hot day on one outlet from crowding out diversity.
 - No emojis in generated digests except the existing chip/section UI.
 - **Per-item LLM summary schema is fixed:** `{tldr, what_changed, why_it_matters, claims[], code_or_api_changes[], numbers[], governance_signals[], open_questions[]}`. Any LLM-driven feature (per-item annotation, weekly rollup, citations) reads/writes this shape. Don't drift the field set without updating every consumer.
+- **Review-page auto-save uses a browser-side PAT.** Labels persist back to `feedback/<date>.jsonl` via the GitHub Contents API directly from the review page (no backend). Each device stores its own fine-grained PAT in localStorage under `cf-review::__pat__`; iCloud Keychain handles autofill across Apple Safaris. Cross-device merge is *not* implemented — last-write-wins between devices.
 
 ## Development workflow (TDD — required)
 
@@ -85,6 +86,18 @@ open docs/index.html
 ```
 
 The shell alias `aidigest` runs the venv Python against `content_finder.py`.
+
+### Review-page first-run setup (per device)
+
+Once per device/browser, to enable auto-save of keep/drop/unsure verdicts:
+
+1. github.com → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
+2. Repository access → **Only select repositories: Content-Finder**.
+3. Repository permissions → **Contents: Read and write** (everything else stays "No access").
+4. Generate, copy the `github_pat_…` string.
+5. Open any review page (e.g. https://raidianblaster.github.io/Content-Finder/review/latest.html), tap the ⚙ in the footer, paste the token, **Test connection** → **Save**.
+
+After that, every click on a keep/drop/unsure button schedules a debounced commit to `feedback/<date>.jsonl` ~10s later. The status pill in the footer reflects state (`ready` / `unsaved · saving in 10s` / `saving…` / `saved HH:MM` / `error: … · click to retry`). Token is stored in `localStorage` under the key `cf-review::__pat__`; on iOS Safari, iCloud Keychain prompts to save it and the other Apple Safaris will autofill on first paste.
 
 ## Roadmap
 

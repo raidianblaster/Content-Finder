@@ -42,6 +42,15 @@ STAGE_SHORT_LABELS = {
 }
 
 
+# GitHub target for the browser-side auto-save path. A fine-grained PAT
+# scoped to this single public repo with Contents: write is the lowest
+# blast-radius option for the single-user labelling workflow — see
+# CLAUDE.md "First-run setup".
+REPO_OWNER = "raidianblaster"
+REPO_NAME = "Content-Finder"
+BRANCH = "main"
+
+
 CSS = """
 :root {
   --bg-0: #0a0a0d; --bg-1: #111116; --bg-2: #1a1a22;
@@ -145,6 +154,55 @@ footer button {
 }
 footer button.secondary { background: var(--bg-2); color: var(--fg); }
 footer .hint { color: var(--fg-dim); font-size: 11px; }
+footer .save-status {
+  font-size: 11px; padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2); color: var(--fg-dim);
+  border: 1px solid var(--border);
+}
+footer .save-status.dirty { color: var(--amber); border-color: var(--amber); }
+footer .save-status.saving { color: var(--purple); border-color: var(--purple); }
+footer .save-status.saved { color: var(--green); border-color: var(--green); }
+footer .save-status.error { color: var(--red); border-color: var(--red); }
+footer button.icon {
+  background: var(--bg-2); color: var(--fg-mid); font-size: 14px;
+  padding: 4px 8px; border: 1px solid var(--border);
+}
+#settings-panel {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: none; align-items: center; justify-content: center;
+  z-index: 50;
+}
+#settings-panel.open { display: flex; }
+#settings-panel .card-inner {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; width: min(420px, calc(100% - 32px));
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+#settings-panel h3 { margin: 0 0 8px; font-size: 16px; color: var(--fg); }
+#settings-panel p { margin: 0 0 14px; font-size: 13px; color: var(--fg-mid); }
+#settings-panel a { color: var(--purple); }
+#settings-panel input {
+  width: 100%; background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--fg); padding: 8px 10px; border-radius: 4px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  margin-bottom: 12px;
+}
+#settings-panel .row { display: flex; gap: 8px; justify-content: flex-end; }
+#settings-panel button {
+  background: var(--bg-2); color: var(--fg); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 4px; cursor: pointer;
+  font-family: inherit; font-size: 13px;
+}
+#settings-panel button.primary {
+  background: var(--purple); color: var(--bg-0); border-color: var(--purple);
+  font-weight: 500;
+}
+#settings-panel .test-result {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); min-height: 16px; margin-bottom: 8px;
+}
+#settings-panel .test-result.ok { color: var(--green); }
+#settings-panel .test-result.fail { color: var(--red); }
 """
 
 
@@ -245,6 +303,12 @@ const ITEM_INDEX = %(index_json)s;
 const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
 const JUDGE = %(judge_json)s;
 
+const REPO_OWNER = "raidianblaster";
+const REPO_NAME = "Content-Finder";
+const BRANCH = "main";
+const PAT_KEY = "cf-review::__pat__";
+const SAVE_DEBOUNCE_MS = 10000;
+
 function key(url) { return STORAGE_PREFIX + url; }
 
 function loadVerdict(url) {
@@ -324,6 +388,138 @@ async function copyJSONL() {
   setTimeout(() => { btn.textContent = orig; }, 1200);
 }
 
+// -- Auto-save to GitHub ---------------------------------------------------
+
+function loadPat() { return localStorage.getItem(PAT_KEY) || ""; }
+function savePat(t) {
+  if (t) localStorage.setItem(PAT_KEY, t);
+  else localStorage.removeItem(PAT_KEY);
+}
+
+function setStatus(state, text) {
+  const el = document.getElementById("save-status");
+  if (!el) return;
+  el.className = "save-status " + state;
+  el.textContent = text;
+}
+
+function refreshStatusIdle() {
+  if (!loadPat()) {
+    // If there are unsaved labels in localStorage already, surface that so the
+    // user knows connecting will rescue them.
+    const pending = buildJSONL();
+    if (pending) setStatus("dirty", "unsaved · connect to save");
+    else setStatus("idle", "not connected");
+    return;
+  }
+  setStatus("idle", "ready");
+}
+
+function utf8ToBase64(s) {
+  const bytes = new TextEncoder().encode(s);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function ghHeaders(pat) {
+  return {
+    "Authorization": "Bearer " + pat,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+
+function feedbackPath() { return "feedback/" + REVIEW_DATE + ".jsonl"; }
+
+function contentsUrl() {
+  return "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME
+       + "/contents/" + feedbackPath();
+}
+
+async function fetchSha(pat) {
+  const r = await fetch(contentsUrl() + "?ref=" + BRANCH,
+    { headers: ghHeaders(pat) });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error("get sha: " + r.status);
+  const j = await r.json();
+  return j.sha || null;
+}
+
+async function putContents(pat, body) {
+  const r = await fetch(contentsUrl(), {
+    method: "PUT",
+    headers: Object.assign({"Content-Type": "application/json"}, ghHeaders(pat)),
+    body: JSON.stringify(body),
+  });
+  return r;
+}
+
+async function commitJsonl() {
+  const pat = loadPat();
+  if (!pat) { setStatus("idle", "not connected"); return; }
+  const jsonl = buildJSONL();
+  if (!jsonl) { setStatus("idle", "nothing to save"); return; }
+
+  setStatus("saving", "saving…");
+  try {
+    let sha = await fetchSha(pat);
+    const body = {
+      message: "review: update " + feedbackPath(),
+      content: utf8ToBase64(jsonl),
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+    let r = await putContents(pat, body);
+    if (r.status === 409) {
+      sha = await fetchSha(pat);
+      if (sha) body.sha = sha; else delete body.sha;
+      r = await putContents(pat, body);
+    }
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(r.status + " " + (j.message || ""));
+    }
+    const now = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+    setStatus("saved", "saved " + now);
+  } catch (e) {
+    setStatus("error", "error: " + e.message + " · click to retry");
+  }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  if (!loadPat()) { setStatus("dirty", "unsaved (connect repo)"); return; }
+  setStatus("dirty", "unsaved · saving in " + (SAVE_DEBOUNCE_MS / 1000) + "s");
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { saveTimer = null; commitJsonl(); }, SAVE_DEBOUNCE_MS);
+}
+
+async function testPat() {
+  const input = document.getElementById("pat-input");
+  const out = document.getElementById("pat-test-result");
+  const pat = input.value.trim();
+  if (!pat) { out.className = "test-result fail"; out.textContent = "paste a token first"; return; }
+  out.className = "test-result"; out.textContent = "testing…";
+  try {
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME,
+      { headers: ghHeaders(pat) });
+    if (!r.ok) throw new Error(r.status + "");
+    out.className = "test-result ok"; out.textContent = "connection ok";
+  } catch (e) {
+    out.className = "test-result fail"; out.textContent = "failed: " + e.message;
+  }
+}
+
+function openSettings() {
+  document.getElementById("pat-input").value = loadPat();
+  document.getElementById("pat-test-result").textContent = "";
+  document.getElementById("settings-panel").classList.add("open");
+}
+function closeSettings() {
+  document.getElementById("settings-panel").classList.remove("open");
+}
+
 const ITEM_META = %(meta_json)s;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -339,6 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
           saveVerdict(url, {verdict: btn.dataset.verdict});
         }
         updateCard(card);
+        scheduleSave();
       });
     });
     const note = card.querySelector(".note-input");
@@ -346,13 +543,29 @@ document.addEventListener("DOMContentLoaded", () => {
       note.addEventListener("input", () => {
         if (loadVerdict(note.dataset.url)) {
           saveVerdict(note.dataset.url, {note: note.value});
+          scheduleSave();
         }
       });
     }
   });
   document.getElementById("download-jsonl").addEventListener("click", downloadJSONL);
   document.getElementById("copy-jsonl").addEventListener("click", copyJSONL);
+  document.getElementById("settings-toggle").addEventListener("click", openSettings);
+  document.getElementById("settings-close").addEventListener("click", closeSettings);
+  document.getElementById("pat-test").addEventListener("click", testPat);
+  document.getElementById("pat-save").addEventListener("click", () => {
+    const v = document.getElementById("pat-input").value.trim();
+    savePat(v);
+    closeSettings();
+    // Flush any labels already in localStorage (e.g. labelled before the PAT
+    // was connected) the moment a token lands.
+    if (v && buildJSONL()) commitJsonl(); else refreshStatusIdle();
+  });
+  document.getElementById("save-status").addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains("error")) commitJsonl();
+  });
   updateCount();
+  refreshStatusIdle();
 });
 </script>
 """
@@ -510,10 +723,24 @@ def render(log: dict, judge: dict | None = None) -> str:
 {chr(10).join(sections_html)}
 <footer>
   <span class="count" id="count">0 / 0 labelled</span>
-  <span class="hint">verdicts saved to localStorage automatically</span>
-  <button id="copy-jsonl" class="secondary">copy JSONL</button>
-  <button id="download-jsonl">download JSONL</button>
+  <span id="save-status" class="save-status" title="auto-save status (click on error to retry)">not connected</span>
+  <button id="settings-toggle" class="icon" title="connect to GitHub">⚙</button>
+  <button id="copy-jsonl" class="secondary">copy</button>
+  <button id="download-jsonl" class="secondary">download</button>
 </footer>
+<div id="settings-panel">
+  <div class="card-inner">
+    <h3>Connect to GitHub</h3>
+    <p>Paste a fine-grained Personal Access Token scoped to <code>{_esc(REPO_OWNER)}/{_esc(REPO_NAME)}</code> with <code>Contents: Read and write</code>. After this, your labels auto-save to <code>feedback/{_esc(date)}.jsonl</code>.</p>
+    <input id="pat-input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <div id="pat-test-result" class="test-result"></div>
+    <div class="row">
+      <button id="settings-close">cancel</button>
+      <button id="pat-test">test connection</button>
+      <button id="pat-save" class="primary">save</button>
+    </div>
+  </div>
+</div>
 {js}
 </body>
 </html>'''

@@ -419,3 +419,103 @@ def test_build_index_orders_newest_first(tmp_path):
     i18 = html.find("2026-05-18")
     i17 = html.find("2026-05-17")
     assert 0 < i19 < i18 < i17, "index should list newest date first"
+
+
+# --------------------------------------------------------------------------- #
+# 13. Auto-save: settings panel + status pill + GitHub Contents API wiring
+# --------------------------------------------------------------------------- #
+#
+# Labels live only in localStorage today; the user has to manually export and
+# commit a feedback JSONL per labelling session. These tests pin down the
+# auto-save surface: a settings gear opens a panel for the PAT, a status pill
+# in the footer reflects save state, and the embedded JS targets the
+# `Content-Finder` repo's Contents API for `feedback/<date>.jsonl`.
+
+def test_settings_gear_button_rendered(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert re.search(r'id="settings-toggle"', html), (
+        "expected a settings gear button with id='settings-toggle' in the footer"
+    )
+
+
+def test_save_status_pill_rendered(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert re.search(r'id="save-status"', html), (
+        "expected a status pill <span id='save-status'> in the footer"
+    )
+
+
+def test_settings_panel_has_pat_input(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert re.search(r'id="settings-panel"', html), (
+        "expected a hidden settings panel with id='settings-panel'"
+    )
+    assert re.search(r'id="pat-input"', html), (
+        "settings panel must contain a PAT input field with id='pat-input'"
+    )
+    assert re.search(r'id="pat-test"', html), (
+        "settings panel must contain a 'Test connection' button with id='pat-test'"
+    )
+    assert re.search(r'id="pat-save"', html), (
+        "settings panel must contain a 'Save' button with id='pat-save'"
+    )
+
+
+def test_repo_constants_embedded_in_js(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert 'const REPO_OWNER = "raidianblaster"' in html, (
+        "expected REPO_OWNER constant in embedded JS"
+    )
+    assert 'const REPO_NAME = "Content-Finder"' in html, (
+        "expected REPO_NAME constant in embedded JS"
+    )
+    assert 'const BRANCH = "main"' in html, (
+        "expected BRANCH constant in embedded JS"
+    )
+
+
+def test_github_contents_api_url_in_js(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    # The Contents API URL is built per-request from REPO_OWNER/REPO_NAME/date;
+    # assert the host + path prefix appear in JS. Exact composition is tested
+    # by the manual end-to-end run, not here.
+    assert "api.github.com/repos/" in html, (
+        "expected GitHub Contents API host in embedded JS"
+    )
+    # Path is composed at runtime from pieces; assert both fragments are present
+    # in the JS source, even if not adjacent.
+    assert "/contents/" in html, "expected /contents/ API path fragment in JS"
+    assert "feedback/" in html, "expected feedback/ path fragment in JS"
+
+
+def test_auto_save_debounce_wired(log_root):
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    # Function name we'll use for the debounced commit trigger.
+    assert "scheduleSave" in html, (
+        "expected scheduleSave() debounce function in embedded JS"
+    )
+    # The commit function itself.
+    assert "commitJsonl" in html, (
+        "expected commitJsonl() function in embedded JS"
+    )
+
+
+def test_existing_download_and_copy_buttons_preserved(log_root):
+    """Regression guard: Download/Copy JSONL fallback path must survive."""
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert re.search(r'id="download-jsonl"', html)
+    assert re.search(r'id="copy-jsonl"', html)
