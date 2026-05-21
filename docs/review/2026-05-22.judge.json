@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-22",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2605.19779",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent evaluation paper on uncertainty quantification dropped purely due to source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.18805",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent benchmark on LLM recommendation systems dropped due to source cap despite strong signal."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.18824",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv paper on foundation model evaluation benchmarking dropped solely by source cap quota."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.18852",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent paper on multimodal LLM checkpoint selection dropped due to source cap despite relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.18859",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent routing benchmark dropped purely due to source cap despite substantive content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.19341",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent hallucination benchmark dropped due to source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.19377",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv paper on LLM benchmark evaluation methodology dropped solely by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.11768",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent memory governance paper dropped due to source cap despite safety relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.19604",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring arXiv agent skills paper dropped by TTL despite strong signal and fresh relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.19743",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring arXiv engineering design agent framework dropped by TTL despite substantive contribution."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/google-anti-gravity-vs-claude-code-comparison/",
+      "reason": "Vendor comparison piece from MindStudio; appears marketing-focused rather than substantive technical analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-google-gemini-spark/",
+      "reason": "Explainer blog from MindStudio; promotional product overview rather than independent technical insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-3-5-flash-vs-claude-opus-4-7-agentic-workflows/",
+      "reason": "MindStudio vendor comparison; marketing-driven product positioning rather than rigorous analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-to-use-mcp-connect-ai-agents-gmail-google-docs/",
+      "reason": "MindStudio how-to guide; marketing tutorial with commercial intent rather than research contribution."
+    },
+    {
+      "url": "https://twitter.com/nottombrown/status/2057194829986300375",
+      "reason": "Twitter rumor about Anthropic infrastructure; low-substance third-hand gossip not validated."
+    },
+    {
+      "url": "https://legiscan.com/CO/bill/SB051/2026",
+      "reason": "Colorado legislative bill tangentially related to open source; unrelated to AI agents or ML advances."
+    },
+    {
+      "url": "https://www.barebones.com/products/bbedit/bbedit16.html",
+      "reason": "BBEdit text editor release; unrelated to AI/ML and appears in pipeline by accident."
+    },
+    {
+      "url": "https://www.niemanlab.org/2026/05/more-than-340-local-news-outlets-are-limiting-the-internet-archives-access-to-their-journalism/",
+      "reason": "News about Internet Archive access; unrelated to AI/ML topic despite being kept."
+    },
+    {
+      "url": "https://github.com/kouhxp/yapsnap",
+      "reason": "CPU transcription tool with minimal AI innovation; tangential to core agent/ML pipeline focus."
+    },
+    {
+      "url": "https://zfhuang99.github.io/rust/claude%20code/codex/contracts/spec-driven%20development/2025/12/01/rust-with-ai.html",
+      "reason": "Personal blog post on Rust + Claude; low-authority developer experience post without rigorous analysis."
+    }
+  ]
+}
