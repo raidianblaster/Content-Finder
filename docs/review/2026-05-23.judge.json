@@ -1,0 +1,78 @@
+{
+  "date": "2026-05-23",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2605.20630",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent planning paper on temporal semantic caching and workflow optimization—core agentic systems research that merits inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2509.09215",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv work on multi-agent regulatory collaboration architecture—directly relevant to regulated agentic AI deployment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.20815",
+      "stage": "dropped_source_cap",
+      "reason": "GraphRAG on consumer hardware with healthcare EHR application—practical agentic RAG systems with clear regulatory/enterprise relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.21071",
+      "stage": "dropped_source_cap",
+      "reason": "Fine-grained claim-level RAG benchmark for law—domain-specific agentic reasoning evaluation critical for regulated deployment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2602.11574",
+      "stage": "dropped_source_cap",
+      "reason": "Learning to Configure Agentic AI Systems—foundational work on agentic system design and governance directly relevant to corporate pipelines."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.20190",
+      "stage": "dropped_source_cap",
+      "reason": "Tool-augmented agents for closed-loop optimization and orchestration—core agentic orchestration patterns merit retention."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.21082",
+      "stage": "dropped_source_cap",
+      "reason": "AutoRPA via LLM-driven code synthesis—practical agentic automation with clear enterprise applicability."
+    },
+    {
+      "url": "https://www.anthropic.com/research/glasswing-initial-update",
+      "stage": "dropped_source_cap",
+      "reason": "Official Anthropic Project Glasswing update—trusted source, substantive research initiative on agentic capabilities."
+    },
+    {
+      "url": "https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison on Datasette Agent—trusted source covering practical agentic data tools with high signal for developers."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-openai-gpt-next-disproves",
+      "stage": "dropped_ttl",
+      "reason": "Latent Space coverage of AI solving Erdős problem—high-signal agentic reasoning breakthrough from trusted source."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260522/p26#a260522p26",
+      "reason": "Government/NSA contract gossip lacks substantive technical content and reads as vendor/policy news rather than product innovation signal."
+    },
+    {
+      "url": "https://www.techmeme.com/260522/p18#a260522p18",
+      "reason": "Executive departure memo is corporate personnel news unrelated to AI/agents technical progress or product capability."
+    },
+    {
+      "url": "https://openai.com/index/virgin-atlantic",
+      "reason": "Customer case study is vendor marketing content highlighting OpenAI adoption rather than novel agentic methodology or capability."
+    },
+    {
+      "url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+      "reason": "Gartner analyst ranking announcement is marketing noise; lacks substantive technical or capability differentiation detail."
+    },
+    {
+      "url": "https://modelrift.com/blog/openscad-llm-benchmark/",
+      "reason": "Benchmark ranking on niche 3D CAD task lacks depth and appears to be promotional coverage of single-task performance."
+    }
+  ]
+}
