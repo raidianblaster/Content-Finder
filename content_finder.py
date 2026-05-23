@@ -236,11 +236,18 @@ def _item_log_dict(it: "Item") -> dict:
 
 
 def write_filter_log(log: FilterLog, out_dir: Path) -> None:
-    """Write log as JSON to <out_dir>/logs/YYYY-MM-DD.json."""
+    """Write log as JSON to <out_dir>/logs/YYYY-MM-DD.json.
+
+    Also writes <out_dir>/logs/latest.json as a stable handoff for
+    downstream consumers (e.g. the Hermes Discovery Queue skill) that
+    fetch via raw.githubusercontent.com and don't want to guess today's
+    filename.
+    """
     log_dir = out_dir / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
-    path = log_dir / f"{log.date}.json"
-    path.write_text(json.dumps(log.to_dict(), indent=2))
+    payload = json.dumps(log.to_dict(), indent=2)
+    (log_dir / f"{log.date}.json").write_text(payload)
+    (log_dir / "latest.json").write_text(payload)
 
 
 # --------------------------------------------------------------------------- #

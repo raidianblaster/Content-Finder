@@ -150,8 +150,7 @@ def run_judge(
 
     out_dir = root / "docs" / "review"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{date}.judge.json"
-    out_path.write_text(json.dumps(
+    payload = json.dumps(
         {
             "date": date,
             "judge_prompt_version": JUDGE_PROMPT_VERSION,
@@ -159,7 +158,12 @@ def run_judge(
             "suspect_keeps": result["suspect_keeps"],
         },
         ensure_ascii=False, indent=2,
-    ))
+    )
+    out_path = out_dir / f"{date}.judge.json"
+    out_path.write_text(payload)
+    # Stable handoff for the Hermes Discovery Queue skill; pairs with
+    # docs/logs/latest.json.
+    (out_dir / "latest.judge.json").write_text(payload)
     return out_path
 
 
