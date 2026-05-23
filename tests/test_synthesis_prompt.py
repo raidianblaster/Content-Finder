@@ -33,6 +33,20 @@ def test_prompt_forbids_preamble_and_closing():
     assert "No preamble" in p
 
 
+def test_prompt_requires_link_per_story_bullet():
+    """2026-05-23 prod regression: last bullet in 'Worth a deeper read' had no
+    link because the prompt didn't explicitly mandate one.  The prompt must now
+    contain language that (a) mandates a link for every story bullet and (b)
+    calls out that omitting the link is forbidden."""
+    p = cf.SYSTEM_PROMPT
+    lower = p.lower()
+    # Must explicitly state that the link must never be omitted.
+    assert "never omit the link" in lower, (
+        "prompt must explicitly say 'never omit the link' so the LLM can't "
+        "silently drop the source URL for the last bullet"
+    )
+
+
 def test_prompt_forbids_literal_source_as_link_label():
     """2026-05-06 prod regression: the prompt's `[Source](url)` placeholder
     was copied verbatim into every card. The prompt must explicitly forbid

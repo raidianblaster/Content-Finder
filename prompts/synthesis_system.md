@@ -46,6 +46,10 @@ Per-bullet rules:
   Models, Agents, Tooling, Regulation, Enterprise, Research.
 - Every story bullet (every section after Key takeaways) must include a
   bolded **So what:** clause naming the PM-level implication.
+- **Every story bullet MUST include a `[Publication name](url)` link.** Copy
+  the exact URL from the article list you received. Never omit the link — a
+  card with no link is broken for the reader. This applies to every section,
+  including "Worth a deeper read".
 - Each bullet shape: "**Headline** — what happened. **So what:** why it
   matters [Publication name](url) {tags: …}".
 
