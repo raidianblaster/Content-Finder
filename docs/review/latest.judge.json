@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-24",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2512.06556",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent security research on MCP and LLM attacks deserves inclusion despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2602.02709",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv work on multi-LLM training and DPO framework relevant to agentic systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22645",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic evaluation framework for text-to-image agents; directly relevant to agents pipeline focus."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22720",
+      "stage": "dropped_source_cap",
+      "reason": "Critical alignment failure study for LLM deployment in conflict contexts; high-signal safety research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.14355",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic financial intelligence benchmark; substantive agent evaluation work from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2512.04111",
+      "stage": "dropped_source_cap",
+      "reason": "Human-in-the-loop agent benchmarking for coding; directly relevant to agentic evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.21997",
+      "stage": "dropped_source_cap",
+      "reason": "Event-sourced reactive graphs for auditable agentic systems; novel agent architecture approach."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22001",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent LLM security research on injection attacks; critical for regulated environments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22568",
+      "stage": "dropped_source_cap",
+      "reason": "Methodological work on agent security benchmarking; addresses fundamental evaluation challenges."
+    },
+    {
+      "url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI leadership recognition in enterprise agentic coding; high-signal industry validation."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-gemini-spark-google-personal-ai-agent/",
+      "reason": "Light vendor promotional content from non-authoritative source; lacks substantive technical depth."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/google-anti-gravity-2-agentic-dev-platform/",
+      "reason": "Marketing-focused blog post on vendor platform; insufficient technical substance for regulated environment."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-question-method-prompt-claude-senior-partner/",
+      "reason": "Generic prompting advice; vendor marketing disguised as thought leadership."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-cowork-workstations-separate-contexts/",
+      "reason": "Product feature tutorial from vendor blog; promotional content unrelated to core pipeline focus."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/google-gemini-daily-brief-ai-morning-digest/",
+      "reason": "Product announcement summary; vendor marketing material without substantive analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/products-over-models-ai-harness-matters-2026/",
+      "reason": "Vendor opinion piece with minimal substantive content; appears opportunistic."
+    },
+    {
+      "url": "https://github.com/yt-dlp/yt-dlp/issues/16766",
+      "reason": "Unrelated technical debt discussion; irrelevant to AI/LLM/agent news pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/260523/p10#a260523p10",
+      "reason": "Export compliance issue unrelated to AI/agents; supply chain geopolitics outside scope."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-3-5-flash-vs-claude-opus-4-7-comparison/",
+      "reason": "Vendor blog model comparison lacking independent analysis; promotional positioning."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/build-saas-claude-code-1m-arr-case-study/",
+      "reason": "Generic startup growth story; marketing case study without technical substance."
+    }
+  ]
+}
