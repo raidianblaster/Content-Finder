@@ -305,6 +305,22 @@ def test_real_source_names_are_preserved_unchanged():
 
 # --- Bug 7: fallback path is sane when bullet shape is unrecognised ------- #
 
+def test_synthesis_card_without_url_omits_read_article_link():
+    """When the LLM omits the source link for a bullet, the card renders without
+    a 'Read article →' link — deliberately, not accidentally.  This pins the
+    intentional behaviour so the prompt fix (not a code fix) is the right lever."""
+    md = """## Worth a deeper read
+
+- **Anna's Archive on llms.txt** — Detailed post on structuring web content for AI retrieval. **So what:** PMs should note emerging norms around llms.txt as a potential standards vector. {tags: Research}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 23))
+    articles = re.findall(r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL)
+    assert len(articles) == 1, f"expected 1 card, got {len(articles)}"
+    assert 'class="read-article"' not in articles[0], (
+        "card without a URL should not emit a read-article link"
+    )
+
+
 def test_fallback_card_does_not_dump_raw_markdown():
     """If a bullet doesn't match the structured shape, fallback must still be clean."""
     md = """## Top story

@@ -1622,6 +1622,7 @@ def _page_shell(
     takeaways_html: str = "",
     body_html: str = "",
     sub_label: str | None = None,
+    archive_href: str = "archive.html",
 ) -> str:
     title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
     short_date = page_date.strftime("%a %d %b %Y")
@@ -1647,7 +1648,7 @@ def _page_shell(
         f'<span class="topbar-date">{html.escape(short_date)}</span>',
         '</div>',
         f'<div class="topbar-right">{item_count} items '
-        '· <a href="archive.html">archive</a></div>',
+        f'· <a href="{html.escape(archive_href)}">archive</a></div>',
         "</header>",
         takeaways_html or "",
         render_chip_bar(counts=_chip_counts_for_body(body_html)),

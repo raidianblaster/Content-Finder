@@ -57,6 +57,8 @@ jobs:
             --format html \
             --out docs/index.html
           cp docs/index.html "docs/archive/${{ steps.date.outputs.today }}.html"
+          sed -i 's|href="archive\.html"|href="../archive.html"|g' \
+            "docs/archive/${{ steps.date.outputs.today }}.html"
 
       - name: Rebuild archive index
         run: python render_index.py

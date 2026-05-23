@@ -264,3 +264,20 @@ def test_takeaway_count_badge_in_toggle():
     assert toggle is not None
     # FIXTURE_MD has 3 takeaway bullets
     assert "3" in toggle.group(0)
+
+
+# ---------------------------------------------------------------------------
+# _page_shell archive_href parameter (2026-05-23 bugfix)
+# ---------------------------------------------------------------------------
+
+def test_page_shell_default_archive_href():
+    """Homepage uses href="archive.html" (relative, same directory)."""
+    html = cf._page_shell(date(2026, 1, 1), 5)
+    assert 'href="archive.html"' in html
+
+
+def test_page_shell_custom_archive_href():
+    """Archived copies need href="../archive.html" to resolve one level up."""
+    html = cf._page_shell(date(2026, 1, 1), 5, archive_href="../archive.html")
+    assert 'href="../archive.html"' in html
+    assert 'href="archive.html"' not in html
