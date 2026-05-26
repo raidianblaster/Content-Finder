@@ -3,72 +3,68 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.24764",
+      "url": "https://arxiv.org/abs/2508.12538",
       "stage": "dropped_source_cap",
-      "reason": "Substantive agents/multi-agent research from arXiv with high relevance score (10.92) on localized retrieval in LLM systems."
+      "reason": "MCPXKIT is substantive security research on Model Context Protocol from arXiv, directly relevant to agentic AI infrastructure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2602.22769",
+      "stage": "dropped_source_cap",
+      "reason": "AMA-Bench evaluates long-horizon memory for agentic applications—core agent capability research from trusted arXiv source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2508.15760",
+      "stage": "dropped_source_cap",
+      "reason": "LiveMCP-101 stress-tests MCP-enabled agents on challenging queries—practical safety and robustness research for agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.23989",
+      "stage": "dropped_source_cap",
+      "reason": "Comprehensive survey on trustworthy agentic AI covering safety, robustness, privacy, and security—high-value systematic review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.24069",
+      "stage": "dropped_source_cap",
+      "reason": "Benchmarks MCP poisoning attacks against LLM agents—critical security research for agent threat models."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.24248",
+      "stage": "dropped_source_cap",
+      "reason": "Attested Tool-Server Admission is a security extension to MCP—directly addresses agent infrastructure security."
     },
     {
       "url": "https://arxiv.org/abs/2604.11557",
       "stage": "dropped_source_cap",
-      "reason": "High-signal work on unified tool-use representation and evaluation for LLM agents (score 10.92) cut by source cap."
+      "reason": "UniToolCall unifies tool-use representation and evaluation for LLM agents—foundational agent capability research."
     },
     {
       "url": "https://arxiv.org/abs/2605.13850",
       "stage": "dropped_source_cap",
-      "reason": "Foundational framework paper on AI agent design patterns addressing cognitive function and execution topology (10.92)."
+      "reason": "Two-dimensional framework for AI agent design patterns—systematic architecture guidance for agentic systems."
     },
     {
       "url": "https://arxiv.org/abs/2605.22714",
       "stage": "dropped_source_cap",
-      "reason": "Substantive research on accumulated message effects and LLM judgment reliability (score 10.92)."
+      "reason": "AMEL studies message accumulation effects on LLM judgments—relevant to agent prompt engineering and reliability."
     },
     {
       "url": "https://arxiv.org/abs/2605.24154",
       "stage": "dropped_source_cap",
-      "reason": "Novel framework for safety alignment relaxation in LLMs with clear relevance to regulated environments (9.92)."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24229",
-      "stage": "dropped_source_cap",
-      "reason": "Direct evaluation of LLM adherence to constitutional principles—critical governance concern (score 9.92)."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24550",
-      "stage": "dropped_source_cap",
-      "reason": "Safety-focused research on jailbreak-aware fine-tuning for large language models (score 9.92)."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.25233",
-      "stage": "dropped_source_cap",
-      "reason": "Task-to-verified-agent systems work addressing end-to-end multi-agent workflows (score 9.92)."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24699",
-      "stage": "dropped_ttl",
-      "reason": "Multi-agent diagnostic pipeline on HealthBench with very high relevance score (16.92) addressing professional healthcare workflows."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24219",
-      "stage": "dropped_ttl",
-      "reason": "Trajectory-level hallucination auditing for industrial multi-agent workflows with critical signal for regulated environments (14.92)."
+      "reason": "Palette framework for safety alignment relaxation in LLMs—directly applicable to agentic system safety tuning."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.hollandtech.net/claude-is-not-your-architect/",
-      "reason": "Opinion/critique piece lacking substantive technical depth or novel evidence for pipeline inclusion."
+      "url": "https://support.apple.com/en-us/127115",
+      "reason": "Fake CVE dated 2026 with fabricated Anthropic attribution—unverified security claim with dubious provenance."
     },
     {
-      "url": "https://lemon.rip/w/6-c-extensions-compilers/",
-      "reason": "Off-topic technical commentary on C extensions unrelated to AI/ML/agents."
+      "url": "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical",
+      "reason": "Spurious attribution of Pope Leo XIV encyclical to Anthropic cofounder—anachronistic and clearly fabricated."
     },
     {
-      "url": "https://kingbird.myphotos.cc/packing/squares_in_squares.html",
-      "reason": "Recreational mathematics content unrelated to AI/LLM agents."
-    },
-    {
-      "url": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
-      "reason": "General software engineering post without clear AI/agent relevance."
+      "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
+      "reason": "News partnership announcement with media companies—vendor marketing content without AI/ML substance."
     }
   ]
 }
