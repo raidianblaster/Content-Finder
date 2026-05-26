@@ -62,44 +62,53 @@ def test_filter_keeps_untagged_items_visible():
     assert "tags.length === 0" in out
 
 
-# --- per-tag counts on chip bar (QoL feature 1) --------------------------- #
+# --- per-tag counts on chip bar (V2 .n badge format) ---------------------- #
 
 def test_render_chip_bar_with_counts_shows_count_per_tag():
+    """V2 counts live in <span class="n">N</span> badges, not in chip text."""
     counts = {
         "Models": 3, "Agents": 5, "Tooling": 2,
         "Regulation": 0, "Enterprise": 1, "Research": 0,
     }
     bar = cf.render_chip_bar(counts=counts)
-    assert ">Models (3)<" in bar
-    assert ">Agents (5)<" in bar
-    assert ">Tooling (2)<" in bar
-    assert ">Regulation (0)<" in bar
-    assert ">Enterprise (1)<" in bar
-    assert ">Research (0)<" in bar
+    for tag, n in counts.items():
+        assert re.search(
+            rf'<button[^>]*data-tag="{tag}"[^>]*>.*?<span class="n">{n}</span>',
+            bar, re.DOTALL,
+        ), f"missing .n badge for {tag}={n}"
 
 
-def test_render_chip_bar_with_counts_keeps_all_chip_plain():
-    """Total is in the topbar already; 'All (N)' would be redundant + multi-tag items make sum-of-counts misleading."""
+def test_render_chip_bar_total_passed_to_all_chip():
+    """When the caller passes `total`, the All chip's .n badge shows it.
+    Sum-of-counts is misleading when items can carry multiple tags, so the
+    caller computes total from item count and passes it explicitly."""
     counts = {"Models": 3, "Agents": 5}
-    bar = cf.render_chip_bar(counts=counts)
-    assert ">All<" in bar
-    assert ">All (" not in bar
+    bar = cf.render_chip_bar(counts=counts, total=7)
+    assert re.search(
+        r'<button[^>]*data-tag="all"[^>]*>.*?<span class="n">7</span>',
+        bar, re.DOTALL,
+    )
 
 
 def test_render_chip_bar_without_counts_unchanged():
-    """Backward compat: existing callers that don't pass counts get plain chips."""
+    """No-summarize path: no counts → no .n badges (a row of zeros would be
+    worse than no badges at all)."""
     bar = cf.render_chip_bar()
-    assert ">Models<" in bar
-    assert "(0)" not in bar
-    assert "(3)" not in bar
+    assert 'data-tag="Models"' in bar
+    assert 'class="n"' not in bar
 
 
 def test_render_chip_bar_missing_tag_in_counts_renders_zero():
-    """If a tag is omitted from the counts dict, treat it as 0."""
+    """If a tag is omitted from the counts dict, its .n badge shows 0."""
     bar = cf.render_chip_bar(counts={"Models": 2})
-    assert ">Models (2)<" in bar
-    assert ">Agents (0)<" in bar
-    assert ">Research (0)<" in bar
+    assert re.search(
+        r'<button[^>]*data-tag="Models"[^>]*>.*?<span class="n">2</span>',
+        bar, re.DOTALL,
+    )
+    assert re.search(
+        r'<button[^>]*data-tag="Agents"[^>]*>.*?<span class="n">0</span>',
+        bar, re.DOTALL,
+    )
 
 
 # --- end-to-end pipeline --------------------------------------------------- #
@@ -126,26 +135,26 @@ FIXTURE_MD = """## Key takeaways
 def test_full_synthesis_pipeline_with_fixture():
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=None)
 
-    # (a) chip bar present
-    assert 'class="chips"' in out
+    # (a) V2 filter rail present
+    assert '<div class="rail">' in out
     assert out.count("data-tag=") >= 7
 
     # (b) at least one rendered element with data-tags (post-redesign this is
     # the <article> card; pre-redesign it was the <li>).
     assert re.search(r'data-tags="[A-Z][^"]*"', out)
 
-    # (c) Key Takeaways block comes before the Top Story section in the page
-    # (design relabels sections to title-case display labels).
-    assert out.index("Key Takeaways") < out.index("Top Story")
+    # (c) V2 takeaways block comes before the Top Story section in the page.
+    # V2 spec uses sentence case for the section title.
+    assert out.index("Key takeaways") < out.index("Top Story")
 
     # (d) no leftover {tags: literal anywhere in the output
     assert "{tags:" not in out
 
 
-def test_no_summarize_path_renders_chips_without_zero_counts():
+def test_no_summarize_path_renders_chips_without_zero_count_badges():
     """The no-summarize ``render_html`` path doesn't tag items, so per-tag
-    counts would all be ``(0)``. Suppress counts in that case — a chip bar
-    full of ``(0)`` is worse than no counts at all.
+    counts would all be 0. Suppress the .n badges in that case — a rail of
+    zero badges is worse than no badges at all.
     """
     from datetime import datetime, timezone
 
@@ -160,22 +169,22 @@ def test_no_summarize_path_renders_chips_without_zero_counts():
         ),
     ]
     out = cf.render_html(items, top_n=5)
-    assert ">Models<" in out
-    assert ">Models (0)<" not in out
-    assert "(0)" not in out
+    # Rail chips still present
+    assert 'data-tag="Models"' in out
+    # No empty .n badges
+    assert 'class="n"' not in out
 
 
 def test_full_pipeline_renders_real_per_tag_counts_on_chips():
-    """Counts on chips must reflect what actually rendered.
+    """V2 .n badges reflect real per-tag counts.
 
     Fixture has: Top story (Regulation, Agents) · Models · Agents+Tooling · Enterprise.
     """
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=None)
-    # Models: 1 (Mistral). Agents: 2 (Five Eyes + Codex). Tooling: 1 (Codex).
-    # Regulation: 1 (Five Eyes). Enterprise: 1 (GitHub). Research: 0.
-    assert ">Models (1)<" in out
-    assert ">Agents (2)<" in out
-    assert ">Tooling (1)<" in out
-    assert ">Regulation (1)<" in out
-    assert ">Enterprise (1)<" in out
-    assert ">Research (0)<" in out
+    # Models: 1, Agents: 2, Tooling: 1, Regulation: 1, Enterprise: 1, Research: 0
+    for tag, n in [("Models", 1), ("Agents", 2), ("Tooling", 1),
+                    ("Regulation", 1), ("Enterprise", 1), ("Research", 0)]:
+        assert re.search(
+            rf'<button[^>]*data-tag="{tag}"[^>]*>.*?<span class="n">{n}</span>',
+            out, re.DOTALL,
+        ), f"wrong/missing count badge for {tag}={n}"

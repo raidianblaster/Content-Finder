@@ -66,11 +66,12 @@ def test_chip_bar_emits_pill_chips_with_data_tag():
                               "Enterprise", "Research"}
 
 
-def test_active_chip_styling_per_tag_in_css():
+def test_active_chip_styling_uses_aria_pressed():
+    """V2 active state is uniform across tags — selector keys on aria-pressed.
+    Per-tag colour tints live on .tag[data-cat="X"] inside story cards, not
+    on the rail chips themselves."""
     css = cf.HTML_CSS
-    # Active state must exist and be tag-aware (selector that combines chip with the tag)
-    assert ".chip.is-active" in css
-    assert 'data-tag="Models"' in css or '[data-tag="Models"]' in css
+    assert '.chip[aria-pressed="true"]' in css
 
 
 # ---------------------------------------------------------------------------
@@ -110,28 +111,20 @@ FIXTURE_MD = """## Key takeaways
 """
 
 
-def test_takeaways_extracted_into_dedicated_collapsible_section():
+def test_takeaways_extracted_into_dedicated_v2_section():
+    """V2 replaces the collapsible <section class="takeaways"> with a static
+    <section class="block" id="takeaways"> grid. The data still flows from
+    the LLM's `## Key takeaways` markdown bullets."""
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Dedicated takeaways section exists
-    assert 'class="takeaways"' in out
-    assert "takeaways-toggle" in out
-    assert "takeaways-body" in out
-    # The takeaways list does NOT bleed into the main article list
+    assert '<section class="block" id="takeaways">' in out
+    # Three takeaway bullets → three .take cards
     takeaway_section = re.search(
-        r'<section[^>]*class="takeaways"[^>]*>.*?</section>',
+        r'<section class="block" id="takeaways">.*?</section>',
         out, re.DOTALL,
     )
     assert takeaway_section is not None
-    # The h2 "Key takeaways" should not also appear inside the main list area
-    assert out.count("Key takeaways") <= 2  # one in label, maybe one in aria/visible label
-
-
-def test_takeaways_toggle_js_present():
-    out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Toggle handler present
-    assert "takeaways-toggle" in out
-    # JS toggles a class on the body element
-    assert "is-collapsed" in out or "is-hidden" in out
+    cards = re.findall(r'<article class="take">', takeaway_section.group(0))
+    assert len(cards) == 3
 
 
 # ---------------------------------------------------------------------------
@@ -234,43 +227,45 @@ def test_system_prompt_instructs_source_links_in_takeaways():
 
 
 def test_takeaway_links_render_multiple_per_takeaway():
-    """All [label](url) links in a takeaway bullet must surface in the output."""
+    """All [label](url) links in a takeaway bullet must surface as .take-link anchors."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
     # Both links from takeaway 1
     assert "Claude 4 native MCP" in out
     assert "MCP hits 50k" in out
     # Single link from takeaway 2
     assert "EU AI Act update" in out
-    # Spec arrow indicator (link rows end with "↓")
-    assert "↓" in out
+    # V2 spec: each link ends with an arrow → for affordance
+    assert "→" in out
     # No leftover {tags: literal anywhere
     assert "{tags:" not in out
 
 
 def test_takeaway_links_have_navigation_hooks():
-    """Each takeaway link must carry a hook (data-item-url) so JS can scroll/expand."""
+    """Each .take-link carries data-item-url so navigateToItem can intercept
+    and expand the matching story in-page (progressive enhancement)."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
-    # Link rows expose the source URL so navigateToItem() can find the matching card.
     assert "data-item-url" in out
-    # The matching ranked/synthesis card carries the same URL on its read-article link.
+    # The matching synthesis card carries the same URL on its .read link.
     assert "https://simonwillison.net/" in out
 
 
 def test_navigate_to_item_js_present():
-    """navigateToItem must be in the page script — collapses takeaways, scrolls, expands."""
+    """navigateToItem must be in the page script — finds the matching .story
+    via .read href and animates it open."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
     assert "navigateToItem" in out
 
 
-def test_takeaway_count_badge_in_toggle():
-    """Toggle button must show the count of takeaways (Route A spec section 3)."""
+def test_takeaway_count_badge_in_sec_meta():
+    """The V2 section header's .sec-meta mono badge shows the count of takeaways."""
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    toggle = re.search(
-        r'<button[^>]*class="takeaways-toggle"[^>]*>.*?</button>', out, re.DOTALL,
+    sec_head = re.search(
+        r'<section class="block" id="takeaways">\s*<div class="sec-head">(.*?)</div>',
+        out, re.DOTALL,
     )
-    assert toggle is not None
-    # FIXTURE_MD has 3 takeaway bullets
-    assert "3" in toggle.group(0)
+    assert sec_head is not None
+    # FIXTURE_MD has 3 takeaways → "03" in the mono sec-meta
+    assert "03" in sec_head.group(1)
 
 
 # ---------------------------------------------------------------------------

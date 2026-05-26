@@ -930,99 +930,120 @@ footer.site-footer a:hover { color: var(--accent); }
   .story-summary { font-size: 16px; }
 }
 
-/* Takeaways block */
-.takeaways {
-  background: var(--bg-1);
-  border-bottom: 1px solid var(--border);
+/* ===== V2 filter rail (sticky chip bar) ===== */
+.rail {
+  position: sticky; top: 60px; z-index: 40;
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
 }
-.takeaways-toggle {
-  width: 100%; min-height: 44px;
-  padding: 12px 20px;
-  background: none; border: none; cursor: pointer;
-  display: flex; align-items: center; gap: 10px;
-  font-family: inherit; text-align: left;
+.rail-inner {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0;
+  overflow-x: auto; scrollbar-width: none;
 }
-.takeaways-label {
-  font-size: 11px; font-weight: 600;
-  color: var(--purple);
-  letter-spacing: 0.07em; text-transform: uppercase;
-}
-.takeaways-count {
-  margin-left: 4px; font-size: 11px; color: var(--purple); opacity: 0.6;
-}
-.takeaways-chevron {
-  margin-left: auto; font-size: 13px; color: var(--fg-dim);
-  display: inline-block; transition: transform 0.15s;
-}
-.takeaways-toggle[aria-expanded="false"] .takeaways-chevron {
-  transform: rotate(180deg);
-}
-.takeaways-body {
-  padding: 4px 20px 18px;
-  display: flex; flex-direction: column; gap: 16px;
-}
-.takeaways-body.is-collapsed { display: none; }
-.takeaway {
-  display: flex; gap: 10px; align-items: flex-start;
-}
-.takeaway-num {
-  font-family: "DM Mono", monospace;
-  font-size: 12px; font-weight: 700; color: var(--purple);
-  min-width: 20px; padding-top: 3px; flex-shrink: 0;
-}
-.takeaway-content { flex: 1; min-width: 0; }
-.takeaway-content p {
-  font-size: 14px; color: var(--fg-mid); line-height: 1.65;
-}
-.takeaway-links {
-  margin-top: 8px; display: flex; flex-direction: column; gap: 4px;
-}
-.takeaway-link-row {
-  display: flex; align-items: center; gap: 6px;
-  min-height: 28px;
-  background: none; border: none; padding: 2px 6px;
-  margin-left: -6px; margin-right: -6px;
-  border-radius: 4px;
+.rail-inner::-webkit-scrollbar { display: none; }
+.chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg-2);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 999px;
   cursor: pointer;
-  font-family: inherit; text-align: left;
-  text-decoration: none;
-  transition: background .12s, color .12s;
-  width: 100%;
+  white-space: nowrap;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
-.takeaway-link-row:hover {
-  background: var(--purple-dim);
+.chip:hover { color: var(--fg); border-color: var(--line-strong); }
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
-.takeaway-link-tick {
-  display: inline-block; width: 2px; height: 12px;
-  background: var(--purple); border-radius: 1px; flex-shrink: 0;
-  transition: background .12s;
+.chip[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
 }
-.takeaway-link-row:hover .takeaway-link-tick {
-  background: var(--purple-bright);
+.chip .n {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--fg-3);
+  padding: 1px 7px; border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  min-width: 20px; text-align: center;
 }
-.takeaway-link-label {
-  font-size: 12px; color: var(--purple);
-  text-decoration: underline;
-  text-decoration-color: var(--purple-border);
-  text-underline-offset: 2px;
-}
-.takeaway-link-row:hover .takeaway-link-label {
-  color: var(--purple-bright);
-  text-decoration-color: var(--purple);
-}
-.takeaway-link-source {
-  font-size: 11px; color: var(--fg-dim);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.takeaway-link-arrow {
-  font-size: 11px; color: var(--fg-dim); margin-left: auto;
-  transition: color .12s;
-}
-.takeaway-link-row:hover .takeaway-link-arrow {
-  color: var(--purple-bright);
+.chip[aria-pressed="true"] .n {
+  color: var(--bg); background: rgba(0,0,0,0.1);
 }
 
-/* Filter chips */
+/* ===== V2 sections (used by takeaways + future named sections) ===== */
+section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }
+section.block:last-of-type { border-bottom: 0; }
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 32px; gap: 16px;
+}
+.sec-title {
+  font-weight: 700; font-size: 30px; letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0;
+}
+.sec-meta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ===== V2 takeaways grid (3-col card row) ===== */
+.takes { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 760px) { .takes { grid-template-columns: 1fr 1fr 1fr; } }
+.take {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px 22px;
+  display: flex; flex-direction: column;
+  min-height: 220px;
+  transition: border-color 160ms ease;
+}
+.take:hover { border-color: var(--accent-line); }
+.take-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.take-body {
+  font-size: 19.5px;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  flex: 1;
+  text-wrap: pretty;
+}
+.take-foot {
+  margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+}
+.take-link {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--fg-3); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.take-link:hover { color: var(--accent); border-color: var(--accent-line); }
+@media (max-width: 640px) {
+  .take { padding: 22px 20px 20px; min-height: 0; }
+  .take-body { font-size: 18px; }
+  .sec-title { font-size: 25px; }
+  section.block { padding: 40px 0; }
+}
+
+/* Legacy chips (pre-rail) — preserved for the no-summarize fallback path */
 .chips {
   display: flex; flex-wrap: wrap; gap: 6px;
   padding: 10px 20px;
@@ -1263,21 +1284,55 @@ def _process_tags_in_body(body_html: str) -> tuple[str, set[str]]:
     return _BODY_LI_RE.sub(repl, body_html), seen
 
 
-def render_chip_bar(counts: dict[str, int] | None = None) -> str:
-    parts = ['<div class="chips" role="tablist">']
-    parts.append(
-        '<button type="button" class="chip is-active" data-tag="all">All</button>'
-    )
-    for tag in TAG_TAXONOMY:
-        if counts is None:
-            label = tag
-        else:
-            label = f"{tag} ({counts.get(tag, 0)})"
+def render_chip_bar(
+    counts: dict[str, int] | None = None,
+    *,
+    total: int | None = None,
+) -> str:
+    """V2 filter rail: sticky `.rail` row of `.chip` buttons with mono `.n` count badges.
+
+    - When `counts` is None (no-summarize path), the .n badges are omitted entirely.
+    - When `counts` is provided, each chip gets a `<span class="n">N</span>` badge.
+    - The All chip's badge uses `total` if given (caller-computed item count),
+      otherwise falls back to the sum of `counts` values (correct only when items
+      carry exactly one tag).
+    """
+    has_counts = counts is not None
+    parts = ['<div class="rail">', '<div class="wrap rail-inner" role="tablist">']
+
+    def _badge(n: int) -> str:
+        return f'<span class="n">{n}</span>'
+
+    if has_counts:
+        total_n = total if total is not None else sum(counts.values())
         parts.append(
-            f'<button type="button" class="chip" data-tag="{tag}">{label}</button>'
+            '<button type="button" class="chip" role="tab" '
+            'data-tag="all" aria-pressed="true">'
+            f'<span>All</span>{_badge(total_n)}</button>'
         )
-    parts.append("</div>")
-    return "\n".join(parts)
+    else:
+        parts.append(
+            '<button type="button" class="chip" role="tab" '
+            'data-tag="all" aria-pressed="true"><span>All</span></button>'
+        )
+
+    for tag in TAG_TAXONOMY:
+        if has_counts:
+            badge = _badge(counts.get(tag, 0))
+            parts.append(
+                f'<button type="button" class="chip" role="tab" '
+                f'data-tag="{tag}" aria-pressed="false">'
+                f'<span>{tag}</span>{badge}</button>'
+            )
+        else:
+            parts.append(
+                f'<button type="button" class="chip" role="tab" '
+                f'data-tag="{tag}" aria-pressed="false">'
+                f'<span>{tag}</span></button>'
+            )
+
+    parts.append('</div></div>')
+    return "".join(parts)
 
 
 _ARTICLE_DATA_TAGS_RE = re.compile(
@@ -1313,11 +1368,11 @@ def _chip_counts_for_body(body_html: str) -> dict[str, int] | None:
 INTERACTIONS_JS = """
 <script>
 (function () {
-  // Topic filter chips
+  // Topic filter chips — V2 uses aria-pressed for active state.
   var chips = document.querySelectorAll('.chip');
   function applyFilter(tag) {
     chips.forEach(function (c) {
-      c.classList.toggle('is-active', c.dataset.tag === tag);
+      c.setAttribute('aria-pressed', c.dataset.tag === tag ? 'true' : 'false');
     });
     document.querySelectorAll('[data-tags]').forEach(function (el) {
       var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
@@ -1353,25 +1408,11 @@ INTERACTIONS_JS = """
   });
 
   // Takeaways collapsible
-  var takeawaysToggle = document.querySelector('.takeaways-toggle');
-  var takeawaysBody = document.querySelector('.takeaways-body');
-  function setTakeawaysCollapsed(collapsed) {
-    if (!takeawaysBody || !takeawaysToggle) return;
-    takeawaysBody.classList.toggle('is-collapsed', collapsed);
-    takeawaysToggle.setAttribute('aria-expanded', String(!collapsed));
-    var chev = takeawaysToggle.querySelector('.takeaways-chevron');
-    if (chev) chev.textContent = collapsed ? '▼' : '▲';
-  }
-  if (takeawaysToggle) {
-    takeawaysToggle.addEventListener('click', function () {
-      setTakeawaysCollapsed(!takeawaysBody.classList.contains('is-collapsed'));
-    });
-  }
-
-  // Takeaway → article link navigation (Route A spec §4 + §10).
-  // Each link row carries data-item-url; we look up the matching .item by its
-  // .read-article href, expand it, clear the filter, collapse takeaways and
-  // scroll into view.
+  // Takeaway → story navigation (V2). Each .take-link is a normal <a>
+  // with both href="<article-url>" and data-item-url. Default click would
+  // open the article in a new tab; we intercept when there's a matching
+  // in-page .story card and expand it instead. JS-off / unmatched falls
+  // back to following the href.
   function navigateToItem(itemUrl) {
     if (!itemUrl) return;
     var safe = itemUrl.replace(/"/g, '\\\\"');
@@ -1392,17 +1433,21 @@ INTERACTIONS_JS = """
     story.classList.add('open');
     var head = story.querySelector('.story-head');
     if (head) head.setAttribute('aria-expanded', 'true');
-    setTakeawaysCollapsed(true);
     setTimeout(function () {
       story.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 60);
   }
-  // Expose for inline onclicks if ever needed; primary path is event listener.
   window.navigateToItem = navigateToItem;
-  document.querySelectorAll('.takeaway-link-row').forEach(function (btn) {
-    btn.addEventListener('click', function (ev) {
-      ev.preventDefault();
-      navigateToItem(btn.dataset.itemUrl);
+  document.querySelectorAll('.take-link').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      // If the matching story exists on this page, intercept. Otherwise
+      // let the browser follow the href (article URL in new tab via the
+      // anchor's default behaviour — handled by markup attrs in HTML).
+      var safe = (a.dataset.itemUrl || '').replace(/"/g, '\\\\"');
+      if (safe && document.querySelector('.story .read[href="' + safe + '"]')) {
+        ev.preventDefault();
+        navigateToItem(a.dataset.itemUrl);
+      }
     });
   });
 })();
@@ -1836,58 +1881,58 @@ def render_takeaways_section(
     takeaways: list[dict],
     url_to_source: dict[str, str] | None = None,
 ) -> str:
-    """Render the collapsible Key Takeaways panel.
+    """V2 Key Takeaways grid.
 
-    Each takeaway carries a ``links`` list (per ``_extract_takeaways``); for
-    backwards compatibility a single ``href``/``label`` pair is also accepted.
-    Link rows render as ``<button class="takeaway-link-row" data-item-url>``
-    so the page JS can navigate to the matching feed item (Route A spec §4).
+    Renders as <section class="block" id="takeaways"> with:
+    - .sec-head containing the title + mono count badge ("03 · The shortlist")
+    - .takes 3-column grid of .take cards
+    - Each .take: .take-num (mono "01"), .take-body (text), .take-foot with
+      .take-link anchors (real <a href="..."> + data-item-url so navigateToItem
+      can intercept and expand the matching story in-page)
     """
     if not takeaways:
         return ""
     url_to_source = url_to_source or {}
-    parts = [
-        '<section class="takeaways">',
-        '<button type="button" class="takeaways-toggle" '
-        'aria-expanded="true" aria-controls="takeaways-body">',
-        '<span class="takeaways-label">Key Takeaways</span>',
-        f'<span class="takeaways-count">{len(takeaways)}</span>',
-        '<span class="takeaways-chevron">▲</span>',
-        '</button>',
-        '<div class="takeaways-body" id="takeaways-body">',
-    ]
-    for i, t in enumerate(takeaways, 1):
-        parts.append('<div class="takeaway">')
-        parts.append(f'<span class="takeaway-num">{i}.</span>')
-        parts.append('<div class="takeaway-content">')
-        parts.append(f'<p>{html.escape(t["text"])}</p>')
+    count = len(takeaways)
 
-        # Normalise: support both new (`links: [...]`) and legacy
-        # (`href`/`label`) shapes so callers stay backward-compatible.
+    parts = [
+        '<section class="block" id="takeaways">',
+        '<div class="sec-head">',
+        '<h2 class="sec-title">Key takeaways</h2>',
+        f'<span class="sec-meta">{count:02d} · The shortlist</span>',
+        '</div>',
+        '<div class="takes">',
+    ]
+
+    for i, t in enumerate(takeaways, 1):
+        # Link normalisation: accept new `links: [...]` or legacy single-link shape
         link_items = list(t.get("links") or [])
         if not link_items and t.get("href"):
             link_items = [{"href": t["href"], "label": t.get("label") or "Source"}]
 
+        parts.append('<article class="take">')
+        parts.append(f'<div class="take-num">{i:02d}</div>')
+        parts.append(f'<div class="take-body">{html.escape(t["text"])}</div>')
+
         if link_items:
-            parts.append('<div class="takeaway-links">')
+            parts.append('<div class="take-foot">')
             for lnk in link_items:
                 href = lnk.get("href") or ""
                 label = lnk.get("label") or "Source"
-                source = url_to_source.get(href) or _domain_label(href)
+                safe_href = html.escape(href, quote=True)
+                # data-item-url preserved so navigateToItem can expand the
+                # matching story in-page. href falls back to the article URL
+                # so JS-off / unmatched cases still work.
                 parts.append(
-                    '<button type="button" class="takeaway-link-row" '
-                    f'data-item-url="{html.escape(href)}">'
-                    '<span class="takeaway-link-tick" aria-hidden="true"></span>'
-                    f'<span class="takeaway-link-label">{html.escape(label)}</span>'
-                    f'<span class="takeaway-link-source">{html.escape(source)}</span>'
-                    '<span class="takeaway-link-arrow" aria-hidden="true">↓</span>'
-                    '</button>'
+                    f'<a class="take-link" href="{safe_href}" '
+                    f'data-item-url="{safe_href}">'
+                    f'{html.escape(label)} →</a>'
                 )
             parts.append('</div>')
-        parts.append('</div>')
-        parts.append('</div>')
-    parts.append('</div>')
-    parts.append('</section>')
+
+        parts.append('</article>')
+
+    parts.append('</div></section>')
     return "".join(parts)
 
 
@@ -2051,8 +2096,13 @@ def _page_shell(
         '</header>',
         '<main class="wrap">',
         masthead_html,
+        # V2 rail goes BETWEEN the masthead and the takeaways section so it
+        # stays sticky right under the topbar as the user scrolls.
+        render_chip_bar(
+            counts=_chip_counts_for_body(body_html),
+            total=item_count,
+        ),
         takeaways_html or "",
-        render_chip_bar(counts=_chip_counts_for_body(body_html)),
         body_html,
         '<footer class="site-footer">',
         '<span>Generated by '
