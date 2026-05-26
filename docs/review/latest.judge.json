@@ -3,76 +3,96 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.23218",
+      "url": "https://arxiv.org/abs/2508.12538",
       "stage": "dropped_source_cap",
-      "reason": "Foundation Protocol for agentic systems is core agent coordination research, high relevance to regulated AI Product Manager."
+      "reason": "MCPXKIT on Model Context Protocol security is core agent/tool infrastructure research from arXiv with score 14.94, directly relevant to regulated AI deployments."
     },
     {
-      "url": "https://arxiv.org/abs/2605.05704",
+      "url": "https://arxiv.org/abs/2602.22769",
       "stage": "dropped_source_cap",
-      "reason": "SafeHarbor safety guardrails for LLM agents directly addresses compliance risk, highly relevant for regulated environment."
+      "reason": "AMA-Bench evaluating long-horizon memory for agentic applications is substantive agent capability research with score 13.94."
     },
     {
-      "url": "https://arxiv.org/abs/2605.22842",
+      "url": "https://arxiv.org/abs/2508.15760",
       "stage": "dropped_source_cap",
-      "reason": "Memory poisoning attacks on agentic systems are critical security/safety concern for regulated deployment."
+      "reason": "LiveMCP-101 stress-testing MCP-enabled agents addresses practical agent robustness, score 13.94, relevant to production safety."
     },
     {
-      "url": "https://arxiv.org/abs/2605.18859",
+      "url": "https://arxiv.org/abs/2605.23989",
       "stage": "dropped_source_cap",
-      "reason": "TwinRouterBench for agentic LLM routing evaluation is substantive infrastructure work for agent systems."
+      "reason": "Comprehensive survey on trustworthy agentic AI covering safety, robustness, privacy, and security is high-signal synthesis work, score 12.94."
     },
     {
-      "url": "https://arxiv.org/abs/2605.23414",
+      "url": "https://arxiv.org/abs/2605.24069",
       "stage": "dropped_source_cap",
-      "reason": "Epistemic calibration for LLM multi-agent systems addresses core reliability concern in regulated contexts."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.22984",
-      "stage": "dropped_source_cap",
-      "reason": "Test-time training undermining safety guardrails is critical safety finding for deployment validation."
-    },
-    {
-      "url": "https://arxiv.org/abs/2604.24594",
-      "stage": "dropped_source_cap",
-      "reason": "Skill retrieval augmentation for agentic AI addresses core capability architecture for agent systems."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.17076",
-      "stage": "dropped_source_cap",
-      "reason": "S-Bus for multi-agent state coordination is infrastructure-level research for agent deployments."
+      "reason": "MCP poisoning attacks benchmark for LLM agents addresses critical security threat vector, score 12.94, regulatory-relevant."
     },
     {
       "url": "https://arxiv.org/abs/2605.06445",
       "stage": "dropped_ttl",
-      "reason": "Constraint decay in LLM agent code generation exposes practical safety gap in agent backends."
+      "reason": "Constraint Decay paper on LLM agent fragility in code generation directly addresses production reliability concerns, score 9.28."
     },
     {
-      "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+      "url": "https://huggingface.co/blog/agent-glossary",
       "stage": "dropped_ttl",
-      "reason": "DeepSeek native coding agent is substantive agent tool release with practical deployment relevance."
+      "reason": "Hugging Face terminology guide on harness, scaffold, and agent concepts is authoritative reference material from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2602.03955",
+      "stage": "dropped_source_cap",
+      "reason": "AgentArk on distilling multi-agent intelligence into single agent is meaningful architecture innovation, score 8.94."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.10913",
+      "stage": "dropped_source_cap",
+      "reason": "Shepherd runtime substrate for meta-agents with formalized execution traces addresses production infrastructure needs, score 8.94."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.11557",
+      "stage": "dropped_source_cap",
+      "reason": "UniToolCall unifying tool-use representation, data, and evaluation is foundational standardization work for agent ecosystems, score 10.94."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
-      "reason": "Content partnership announcement is corporate business news without direct AI/agent/ML substance."
+      "url": "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical",
+      "reason": "Anthropic cofounder commentary on Pope Leo's encyclical is off-topic philosophy content unrelated to AI/ML substance."
     },
     {
-      "url": "https://www.techmeme.com/260525/p14#a260525p14",
-      "reason": "SoftBank stock price movement on investment speculation is financial market news, not AI substance."
+      "url": "https://www.trychercert.com",
+      "reason": "Chert/Twilio for iMessage is consumer messaging product marketing, not AI/ML content despite Hacker News source."
     },
     {
-      "url": "https://www.techmeme.com/260525/p10#a260525p10",
-      "reason": "Pope encyclical AI references are geopolitical commentary, not technical AI content."
+      "url": "https://support.apple.com/en-us/127115",
+      "reason": "Apple macOS kernel vulnerability attribution to Claude is primarily security advisory, not substantive AI research or evaluation."
+    },
+    {
+      "url": "https://www.blocksandfiles.com/flash/2026/05/22/norways-2-petabytes-of-huawei-flash-storage-and-llm-training/5244910",
+      "reason": "Hardware procurement news about Huawei storage is infrastructure journalism, not core AI/agent capability content."
+    },
+    {
+      "url": "https://kingbird.myphotos.cc/packing/squares_in_squares.html",
+      "reason": "Squares in Squares packing problem is pure mathematics recreation, not AI or ML related despite Hacker News link."
+    },
+    {
+      "url": "https://lastweekin.ai/p/lwiai-podcast-246-gemini-35-omni",
+      "reason": "Podcast episode with mixed gossip and product announcements lacks depth for regulated AI product decision-making."
+    },
+    {
+      "url": "https://simonwillison.net/2026/May/24/usborne-mad-house/#atom-everything",
+      "reason": "Usborne computer games nostalgia post is off-topic despite Simon Willison's usual relevance."
+    },
+    {
+      "url": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
+      "reason": "Building Pi with Pi is systems programming philosophy, not AI/ML or agent-relevant content."
     },
     {
       "url": "https://www.techmeme.com/260525/p17#a260525p17",
-      "reason": "UK AI Safety Institute policy review is governance news rather than AI/ML/agents technical content."
+      "reason": "UK AI Safety Institute news brief is governance summary, not actionable technical or research content."
     },
     {
-      "url": "https://lemon.rip/w/6-c-extensions-compilers/",
-      "reason": "C extensions and compiler portability is language engineering, unrelated to AI/ML/agents."
+      "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
+      "reason": "Content licensing partnership announcement is business/vendor news, not product engineering or research substance."
     }
   ]
 }
