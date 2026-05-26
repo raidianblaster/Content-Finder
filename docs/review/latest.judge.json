@@ -3,76 +3,60 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.23989",
-      "stage": "dropped_source_cap",
-      "reason": "Comprehensive safety survey on trustworthy agentic AI from arXiv with high score (12.93) deserves inclusion as substantive agent/safety research."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24069",
-      "stage": "dropped_source_cap",
-      "reason": "MCP poisoning attacks on LLM agents—directly relevant to agent security and highly scored (12.93) arXiv research."
-    },
-    {
       "url": "https://arxiv.org/abs/2605.24248",
       "stage": "dropped_source_cap",
-      "reason": "Model Context Protocol security extension research (11.93 score) addresses critical agent infrastructure concerns."
+      "reason": "High-signal agent security work on MCP admission control from arXiv with strong score (11.93) should survive source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2605.24202",
+      "url": "https://arxiv.org/abs/2602.10090",
       "stage": "dropped_source_cap",
-      "reason": "Empirical study on when multi-agent RL improves LLM workflows (8.93 score)—substantive agent design research from trusted source."
+      "reason": "Agent world models for synthetic RL environments is substantive research with 11.93 score deserving inclusion."
     },
     {
-      "url": "https://arxiv.org/abs/2605.17986",
+      "url": "https://arxiv.org/abs/2605.24197",
       "stage": "dropped_source_cap",
-      "reason": "LivePI benchmark for realistic prompt injection testing on agents (8.93 score)—directly addresses practical agent safety."
+      "reason": "Agentic misalignment in automated workflows addresses critical safety concern with 10.93 score."
     },
     {
-      "url": "https://arxiv.org/abs/2605.15777",
+      "url": "https://arxiv.org/abs/2605.24764",
       "stage": "dropped_source_cap",
-      "reason": "SaaS-Bench evaluates computer-use agents on real professional workflows (6.93 score)—directly relevant to agent capability assessment."
+      "reason": "Multi-agent LLM retrieval systems research (spectral retrieval) with 10.93 score is core to agent infrastructure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.11557",
+      "stage": "dropped_source_cap",
+      "reason": "UniToolCall standardizes tool-use evaluation for agents—foundational work scoring 10.93."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.13850",
+      "stage": "dropped_source_cap",
+      "reason": "Agent design patterns framework (cognitive function + topology) with 10.93 score is architecturally important."
     },
     {
       "url": "https://arxiv.org/abs/2605.24699",
       "stage": "dropped_ttl",
-      "reason": "Multi-agent diagnostic pipeline on HealthBench (16.93 score)—high-relevance agent application research improperly TTL-dropped."
+      "reason": "Multi-agent diagnostic pipeline for healthcare (MDIA) scores 16.93 and deserves retention despite TTL trigger."
     },
     {
       "url": "https://arxiv.org/abs/2605.24219",
       "stage": "dropped_ttl",
-      "reason": "Auditing trajectory hallucinations in multi-agent industrial workflows (14.93 score)—substantive agent evaluation work."
+      "reason": "Trajectory-level hallucination auditing in multi-agent workflows (14.93 score) is safety-critical for regulated deployment."
     },
     {
-      "url": "https://arxiv.org/abs/2507.10644",
+      "url": "https://arxiv.org/abs/2602.22769",
       "stage": "dropped_ttl",
-      "reason": "Unified narrative connecting multi-agent systems to agentic AI (14.93 score)—foundational agent architecture discussion from arXiv."
+      "reason": "Long-horizon agentic memory benchmarking (13.93 score) is core to evaluating agent reliability in production."
     },
     {
-      "url": "https://huggingface.co/blog/agent-glossary",
-      "stage": "dropped_ttl",
-      "reason": "Hugging Face blog defining critical agent terminology (harness, scaffold)—trusted source on agent conceptual clarity."
+      "url": "https://arxiv.org/abs/2605.23989",
+      "stage": "final",
+      "reason": "Comprehensive agent safety/security survey (12.93 score) is canonical reference deserving explicit confirmation as kept."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical",
-      "reason": "Opinion/commentary on papal encyclical unrelated to AI/ML substance; appears to be metadata error or off-topic."
-    },
-    {
-      "url": "https://kingbird.myphotos.cc/packing/squares_in_squares.html",
-      "reason": "Recreational geometry puzzle—unrelated to AI/agents and does not belong in technical AI pipeline."
-    },
-    {
-      "url": "https://www.trychercert.com",
-      "reason": "Product launch for iMessage API service (Chert/YC)—vendor marketing without AI/agent substance."
-    },
-    {
-      "url": "https://lemon.rip/w/6-c-extensions-compilers/",
-      "reason": "C language extension discussion—general programming topic unrelated to AI agents."
-    },
-    {
-      "url": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
-      "reason": "Open-source philosophy blog post—tangential to AI/agent content; lacks technical depth in target domain."
+      "url": "https://www.tinyvolt.com/geomatic",
+      "reason": "Geometry studio tool with autodiff is low-signal dev tool; lacks AI/agent relevance despite making final."
     }
   ]
 }
