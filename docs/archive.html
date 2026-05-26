@@ -2,12 +2,12 @@
 <html lang="en" data-theme="dark"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="theme-color" content="#0a0a0e">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>AI Digest — Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Archive · Content Finder</title>
 <style>
 :root {
   /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
@@ -615,73 +615,162 @@ footer a { color: var(--fg-dim); }
   .meta, .item .meta .date, .score-pill, .tag-pill { font-size: 12px; }
 }
 
-.archive-intro {
-  padding: 16px 20px 4px;
-  font-size: 13px; color: var(--fg-mid);
+body.archive { --col: 760px; }
+.arch-list { padding: 8px 0 24px; }
+.arch-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 140ms ease;
 }
-ul.digests {
-  list-style: none; padding: 0; margin: 0;
+.arch-row::after {
+  content: '';
+  position: absolute; left: -12px; right: -12px; top: 0; bottom: 0;
+  border-radius: 10px; pointer-events: none;
+  background: transparent; transition: background 140ms ease;
+  z-index: -1;
 }
-ul.digests li {
-  border-bottom: 1px solid var(--border);
+.arch-row:hover::after { background: rgba(255,255,255,0.025); }
+.arch-row:hover .arch-date { color: var(--accent); }
+.arch-row:hover .arch-arrow { color: var(--accent); transform: translateX(4px); }
+.arch-row:last-child { border-bottom: 0; }
+.arch-date {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.012em;
+  transition: color 140ms ease;
 }
-ul.digests a {
-  display: flex; justify-content: space-between; align-items: baseline;
-  gap: 1rem;
-  padding: 14px 20px;
-  color: var(--fg); text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+.arch-day {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  min-width: 90px;
 }
-ul.digests a:hover { background: var(--purple-dim); color: var(--purple); }
-ul.digests .date { font-size: 15px; font-weight: 500; }
-ul.digests .day  { font-size: 12px; color: var(--fg-dim); }
-ul.digests .empty {
-  padding: 14px 20px; color: var(--fg-dim); font-size: 14px;
+.arch-arrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: var(--fg-4);
+  transition: transform 160ms ease, color 140ms ease;
+  min-width: 16px; text-align: right;
 }
-footer {
-  padding: 24px 20px; font-size: 12px; color: var(--fg-dim);
-  border-top: 1px solid var(--border);
+.arch-row.is-today { border-bottom-color: var(--accent-line); }
+.arch-row.is-today::after { background: var(--accent-soft); }
+.arch-row.is-today .arch-arrow { color: var(--accent); }
+.today-pill {
+  display: inline-flex;
+  margin-left: 12px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 3px 8px; border-radius: 4px;
+  vertical-align: middle;
 }
-footer a { color: var(--fg-mid); }
+
+/* Topline row: latest link + count */
+.topline {
+  margin-top: 30px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.latest-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--fg-2);
+  font-size: 14.5px; font-weight: 500;
+  padding: 6px 0;
+  transition: color 140ms ease;
+}
+.latest-link:hover { color: var(--accent); }
+.latest-link .back { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
+.latest-link:hover .back { transform: translateX(-3px); }
+.count {
+  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.count b { color: var(--fg); font-weight: 500; }
+
+.arch-empty {
+  padding: 36px 4px; color: var(--fg-3); font-size: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .arch-row {
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    padding: 16px 4px;
+  }
+  .arch-arrow { display: none; }
+  .arch-date { font-size: 17.5px; }
+  .arch-day { font-size: 11.5px; min-width: 72px; }
+  .arch-row.is-today .today-pill { font-size: 10px; padding: 2px 6px; }
+}
 </style>
-</head><body>
-<div class="page">
+</head><body class="archive">
 <header class="topbar">
-<div class="topbar-left">
-<span class="topbar-title">AI Digest</span>
-<span class="topbar-date">Archive</span>
+<div class="wrap topbar-inner">
+<a class="brand" href="index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
+<nav class="topnav">
+<a href="index.html">Today</a>
+<a href="archive.html" class="active">Archive</a>
+</nav>
 </div>
-<div class="topbar-right"><a href="index.html">← latest</a></div>
 </header>
-<div class="archive-intro">26 archived digests.</div>
-<ul class="digests">
-<li><a href="archive/2026-05-26.html"><span class="date">26 May 2026</span><span class="day">Tuesday</span></a></li>
-<li><a href="archive/2026-05-25.html"><span class="date">25 May 2026</span><span class="day">Monday</span></a></li>
-<li><a href="archive/2026-05-24.html"><span class="date">24 May 2026</span><span class="day">Sunday</span></a></li>
-<li><a href="archive/2026-05-23.html"><span class="date">23 May 2026</span><span class="day">Saturday</span></a></li>
-<li><a href="archive/2026-05-22.html"><span class="date">22 May 2026</span><span class="day">Friday</span></a></li>
-<li><a href="archive/2026-05-21.html"><span class="date">21 May 2026</span><span class="day">Thursday</span></a></li>
-<li><a href="archive/2026-05-20.html"><span class="date">20 May 2026</span><span class="day">Wednesday</span></a></li>
-<li><a href="archive/2026-05-19.html"><span class="date">19 May 2026</span><span class="day">Tuesday</span></a></li>
-<li><a href="archive/2026-05-18.html"><span class="date">18 May 2026</span><span class="day">Monday</span></a></li>
-<li><a href="archive/2026-05-17.html"><span class="date">17 May 2026</span><span class="day">Sunday</span></a></li>
-<li><a href="archive/2026-05-16.html"><span class="date">16 May 2026</span><span class="day">Saturday</span></a></li>
-<li><a href="archive/2026-05-15.html"><span class="date">15 May 2026</span><span class="day">Friday</span></a></li>
-<li><a href="archive/2026-05-14.html"><span class="date">14 May 2026</span><span class="day">Thursday</span></a></li>
-<li><a href="archive/2026-05-13.html"><span class="date">13 May 2026</span><span class="day">Wednesday</span></a></li>
-<li><a href="archive/2026-05-12.html"><span class="date">12 May 2026</span><span class="day">Tuesday</span></a></li>
-<li><a href="archive/2026-05-11.html"><span class="date">11 May 2026</span><span class="day">Monday</span></a></li>
-<li><a href="archive/2026-05-10.html"><span class="date">10 May 2026</span><span class="day">Sunday</span></a></li>
-<li><a href="archive/2026-05-09.html"><span class="date">09 May 2026</span><span class="day">Saturday</span></a></li>
-<li><a href="archive/2026-05-08.html"><span class="date">08 May 2026</span><span class="day">Friday</span></a></li>
-<li><a href="archive/2026-05-07.html"><span class="date">07 May 2026</span><span class="day">Thursday</span></a></li>
-<li><a href="archive/2026-05-06.html"><span class="date">06 May 2026</span><span class="day">Wednesday</span></a></li>
-<li><a href="archive/2026-05-05.html"><span class="date">05 May 2026</span><span class="day">Tuesday</span></a></li>
-<li><a href="archive/2026-05-04.html"><span class="date">04 May 2026</span><span class="day">Monday</span></a></li>
-<li><a href="archive/2026-05-03.html"><span class="date">03 May 2026</span><span class="day">Sunday</span></a></li>
-<li><a href="archive/2026-05-02.html"><span class="date">02 May 2026</span><span class="day">Saturday</span></a></li>
-<li><a href="archive/2026-05-01.html"><span class="date">01 May 2026</span><span class="day">Friday</span></a></li>
-</ul>
-<footer>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></footer>
+<main class="wrap">
+<section class="masthead">
+<div class="kicker"><span class="dot"></span>AI Digest Archive</div>
+<h1 class="mast-title">All past <span class="accent">digests.</span></h1>
+<p class="mast-sub">Every issue, newest first. Click any date to read its digest.</p>
+<div class="topline">
+<a class="latest-link" href="index.html"><span class="back">←</span><span>Latest digest</span></a>
+<span class="count"><b>26</b> archived digests</span>
 </div>
+</section>
+<div class="arch-list">
+<a class="arch-row is-today" href="archive/2026-05-26.html"><span class="arch-date">26 May 2026 <span class="today-pill">Today</span></span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-25.html"><span class="arch-date">25 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-24.html"><span class="arch-date">24 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-23.html"><span class="arch-date">23 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-22.html"><span class="arch-date">22 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-21.html"><span class="arch-date">21 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-20.html"><span class="arch-date">20 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-19.html"><span class="arch-date">19 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-18.html"><span class="arch-date">18 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-17.html"><span class="arch-date">17 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-16.html"><span class="arch-date">16 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-15.html"><span class="arch-date">15 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-14.html"><span class="arch-date">14 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-13.html"><span class="arch-date">13 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-12.html"><span class="arch-date">12 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-11.html"><span class="arch-date">11 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-10.html"><span class="arch-date">10 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-09.html"><span class="arch-date">09 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-08.html"><span class="arch-date">08 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-07.html"><span class="arch-date">07 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-06.html"><span class="arch-date">06 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-05.html"><span class="arch-date">05 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-04.html"><span class="arch-date">04 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-03.html"><span class="arch-date">03 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-02.html"><span class="arch-date">02 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
+<a class="arch-row" href="archive/2026-05-01.html"><span class="arch-date">01 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
+</div>
+<footer class="site-footer">
+<span>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></span>
+<span>26 issues</span>
+</footer>
+</main>
 </body></html>

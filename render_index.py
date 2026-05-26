@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Rebuild docs/archive.html from the dated digests in docs/archive/.
 
-The archive page reuses HTML_CSS from content_finder so the dark theme,
-fonts, and design tokens stay in sync with the homepage. Only the
-archive-list-specific styles live here.
+V2 layout: focused 760px-wide column. Masthead (kicker + accented title
++ subtitle + topline row) above a flat list of dated rows. Today's row
+(the newest, when present) gets an amber tint + Today pill.
+
+The archive embeds the homepage's HTML_CSS so design tokens stay in sync.
+Archive-specific styles (the narrower column, list rows, today highlight)
+live in ARCHIVE_LIST_CSS below.
 """
 
 from __future__ import annotations
@@ -11,99 +15,216 @@ from __future__ import annotations
 import html
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 
-from content_finder import HTML_CSS
+from content_finder import HTML_CSS, today_hkt
 
 
 DOCS = Path(__file__).parent / "docs"
 ARCHIVE_DIR = DOCS / "archive"
 
 
+# V2 archive-specific CSS. Overrides --col to 760px (vs the homepage's 920px)
+# so the dated list reads as a focused single column.
 ARCHIVE_LIST_CSS = """
-.archive-intro {
-  padding: 16px 20px 4px;
-  font-size: 13px; color: var(--fg-mid);
+body.archive { --col: 760px; }
+.arch-list { padding: 8px 0 24px; }
+.arch-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 140ms ease;
 }
-ul.digests {
-  list-style: none; padding: 0; margin: 0;
+.arch-row::after {
+  content: '';
+  position: absolute; left: -12px; right: -12px; top: 0; bottom: 0;
+  border-radius: 10px; pointer-events: none;
+  background: transparent; transition: background 140ms ease;
+  z-index: -1;
 }
-ul.digests li {
-  border-bottom: 1px solid var(--border);
+.arch-row:hover::after { background: rgba(255,255,255,0.025); }
+.arch-row:hover .arch-date { color: var(--accent); }
+.arch-row:hover .arch-arrow { color: var(--accent); transform: translateX(4px); }
+.arch-row:last-child { border-bottom: 0; }
+.arch-date {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.012em;
+  transition: color 140ms ease;
 }
-ul.digests a {
-  display: flex; justify-content: space-between; align-items: baseline;
-  gap: 1rem;
-  padding: 14px 20px;
-  color: var(--fg); text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+.arch-day {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  min-width: 90px;
 }
-ul.digests a:hover { background: var(--purple-dim); color: var(--purple); }
-ul.digests .date { font-size: 15px; font-weight: 500; }
-ul.digests .day  { font-size: 12px; color: var(--fg-dim); }
-ul.digests .empty {
-  padding: 14px 20px; color: var(--fg-dim); font-size: 14px;
+.arch-arrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: var(--fg-4);
+  transition: transform 160ms ease, color 140ms ease;
+  min-width: 16px; text-align: right;
 }
-footer {
-  padding: 24px 20px; font-size: 12px; color: var(--fg-dim);
-  border-top: 1px solid var(--border);
+.arch-row.is-today { border-bottom-color: var(--accent-line); }
+.arch-row.is-today::after { background: var(--accent-soft); }
+.arch-row.is-today .arch-arrow { color: var(--accent); }
+.today-pill {
+  display: inline-flex;
+  margin-left: 12px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 3px 8px; border-radius: 4px;
+  vertical-align: middle;
 }
-footer a { color: var(--fg-mid); }
+
+/* Topline row: latest link + count */
+.topline {
+  margin-top: 30px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.latest-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--fg-2);
+  font-size: 14.5px; font-weight: 500;
+  padding: 6px 0;
+  transition: color 140ms ease;
+}
+.latest-link:hover { color: var(--accent); }
+.latest-link .back { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
+.latest-link:hover .back { transform: translateX(-3px); }
+.count {
+  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.count b { color: var(--fg); font-weight: 500; }
+
+.arch-empty {
+  padding: 36px 4px; color: var(--fg-3); font-size: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .arch-row {
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    padding: 16px 4px;
+  }
+  .arch-arrow { display: none; }
+  .arch-date { font-size: 17.5px; }
+  .arch-day { font-size: 11.5px; min-width: 72px; }
+  .arch-row.is-today .today-pill { font-size: 10px; padding: 2px 6px; }
+}
 """
 
 
-def render_archive_html(entries: list[tuple[datetime, str]]) -> str:
-    """Render the archive index page as a single HTML string.
+def _render_arch_row(d: datetime, name: str, *, is_today: bool) -> str:
+    """Build a single <a class="arch-row"> for the archive list."""
+    cls = "arch-row is-today" if is_today else "arch-row"
+    pill = '<span class="today-pill">Today</span>' if is_today else ""
+    return (
+        f'<a class="{cls}" href="archive/{html.escape(name, quote=True)}">'
+        f'<span class="arch-date">{d.strftime("%d %b %Y")}{(" " + pill) if pill else ""}</span>'
+        f'<span class="arch-day">{d.strftime("%A")}</span>'
+        f'<span class="arch-arrow">→</span>'
+        f'</a>'
+    )
+
+
+def render_archive_html(
+    entries: list[tuple[datetime, str]],
+    *,
+    today: date | None = None,
+) -> str:
+    """Render the V2 archive index as a single HTML string.
 
     Pure function: takes the list of (date, filename) entries already sorted
-    in display order and returns the full document. Filesystem I/O lives in
-    main().
+    in display order (newest first) and returns the full document.
     """
+    today_value = today or today_hkt()
+    count = len(entries)
+
     parts: list[str] = [
         "<!doctype html>",
         '<html lang="en" data-theme="dark"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        '<meta name="theme-color" content="#0a0a0d">',
+        '<meta name="theme-color" content="#0a0a0e">',
         '<link rel="icon" href="data:image/svg+xml,'
         "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>"
         "<text y='.9em' font-size='90'>📡</text></svg>\">",
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link href="https://fonts.googleapis.com/css2?'
-        'family=DM+Sans:wght@300;400;500;600&'
-        'family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">',
-        "<title>AI Digest — Archive</title>",
+        'family=Hanken+Grotesk:wght@400;500;600;700&'
+        'family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">',
+        "<title>Archive · Content Finder</title>",
         f"<style>{HTML_CSS}{ARCHIVE_LIST_CSS}</style>",
-        "</head><body>",
-        '<div class="page">',
+        "</head><body class=\"archive\">",
         '<header class="topbar">',
-        '<div class="topbar-left">',
-        '<span class="topbar-title">AI Digest</span>',
-        '<span class="topbar-date">Archive</span>',
+        '<div class="wrap topbar-inner">',
+        '<a class="brand" href="index.html">'
+        '<div class="brand-mark">CF</div>'
+        '<span>Content Finder</span>'
+        '</a>',
+        '<nav class="topnav">',
+        '<a href="index.html">Today</a>',
+        '<a href="archive.html" class="active">Archive</a>',
+        '</nav>',
         '</div>',
-        '<div class="topbar-right"><a href="index.html">← latest</a></div>',
-        "</header>",
-        f'<div class="archive-intro">{len(entries)} archived '
-        f'digest{"s" if len(entries) != 1 else ""}.</div>',
-        '<ul class="digests">',
+        '</header>',
+        '<main class="wrap">',
+        '<section class="masthead">',
+        '<div class="kicker"><span class="dot"></span>AI Digest Archive</div>',
+        '<h1 class="mast-title">All past <span class="accent">digests.</span></h1>',
+        '<p class="mast-sub">Every issue, newest first. Click any date to read its digest.</p>',
+        '<div class="topline">',
+        '<a class="latest-link" href="index.html">'
+        '<span class="back">←</span>'
+        '<span>Latest digest</span>'
+        '</a>',
+        f'<span class="count"><b>{count}</b> archived '
+        f'digest{"s" if count != 1 else ""}</span>',
+        '</div>',
+        '</section>',
+        '<div class="arch-list">',
     ]
+
     if not entries:
-        parts.append('<li><span class="empty">No archived digests yet.</span></li>')
-    for d, name in entries:
         parts.append(
-            f'<li><a href="archive/{html.escape(name, quote=True)}">'
-            f'<span class="date">{d.strftime("%d %b %Y")}</span>'
-            f'<span class="day">{d.strftime("%A")}</span>'
-            f"</a></li>"
+            '<div class="arch-empty">No archived digests yet.</div>'
         )
+    else:
+        for d, name in entries:
+            is_today = d.date() == today_value
+            parts.append(_render_arch_row(d, name, is_today=is_today))
+
     parts.extend([
-        "</ul>",
-        '<footer>Generated by '
+        '</div>',  # /.arch-list
+        '<footer class="site-footer">',
+        '<span>Generated by '
         '<a href="https://github.com/raidianblaster/Content-Finder">'
-        "Content Finder</a></footer>",
-        "</div>",
+        "Content Finder</a></span>",
+        f'<span>{count} issue{"s" if count != 1 else ""}</span>',
+        '</footer>',
+        '</main>',
         "</body></html>",
     ])
     return "\n".join(parts)

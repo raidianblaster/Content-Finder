@@ -43,39 +43,39 @@ def test_archive_does_not_use_prefers_color_scheme():
     assert "prefers-color-scheme" not in out
 
 
-def test_archive_loads_dm_sans_and_dm_mono():
+def test_archive_loads_v2_fonts():
     out = ri.render_archive_html(_sample_entries())
     assert "fonts.googleapis.com" in out
-    assert "DM+Sans" in out
-    assert "DM+Mono" in out
+    assert "Hanken+Grotesk" in out
+    assert "JetBrains+Mono" in out
 
 
-def test_archive_has_dark_theme_color_meta():
+def test_archive_has_v2_theme_color_meta():
     out = ri.render_archive_html(_sample_entries())
-    assert '<meta name="theme-color" content="#0a0a0d">' in out
+    assert '<meta name="theme-color" content="#0a0a0e">' in out
 
 
 # ---------------------------------------------------------------------------
-# Page shell parity
+# Page shell parity — V2 topbar + masthead
 # ---------------------------------------------------------------------------
 
-def test_archive_uses_page_shell_and_topbar():
+def test_archive_uses_v2_topbar():
     out = ri.render_archive_html(_sample_entries())
-    assert '<div class="page">' in out
     assert 'class="topbar"' in out
-    assert 'class="topbar-title"' in out
-    assert "AI Digest" in out
+    # V2 brand mark replaces the old topbar-title span
+    assert '<div class="brand-mark">CF</div>' in out
+    assert "Content Finder" in out
 
 
 def test_archive_topbar_links_back_to_latest():
     out = ri.render_archive_html(_sample_entries())
-    # Some clickable nav back to the latest digest.
     assert 'href="index.html"' in out
 
 
 def test_archive_title_is_archive_specific():
     out = ri.render_archive_html(_sample_entries())
-    assert "<title>AI Digest — Archive</title>" in out
+    # V2 spec: "Archive · Content Finder"
+    assert "<title>Archive · Content Finder</title>" in out
 
 
 # ---------------------------------------------------------------------------
@@ -96,9 +96,9 @@ def test_archive_lists_entries_with_date_and_day():
 
 def test_archive_handles_empty_archive():
     out = ri.render_archive_html([])
-    assert "No archived digests yet." in out
-    # Shell must still be present even with no entries.
-    assert '<div class="page">' in out
+    assert "No archived digests yet." in out or "0 archived" in out
+    # V2 shell still wraps the masthead even with no entries.
+    assert '<section class="masthead">' in out
     assert cf.HTML_CSS in out
 
 
