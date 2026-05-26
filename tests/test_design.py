@@ -47,9 +47,10 @@ def test_hanken_grotesk_and_jetbrains_mono_loaded_via_google_fonts():
 
 
 def test_html_css_defines_per_tag_color_rules():
+    """V2 per-tag tints are keyed by data-cat (not tag-X class names)."""
     css = cf.HTML_CSS
     for tag in ["Models", "Agents", "Tooling", "Regulation", "Enterprise", "Research"]:
-        assert f'tag-{tag}' in css, f"missing per-tag class: tag-{tag}"
+        assert f'data-cat="{tag}"' in css, f"missing per-cat rule: {tag}"
 
 
 # ---------------------------------------------------------------------------
@@ -139,14 +140,14 @@ def test_takeaways_toggle_js_present():
 
 def test_synthesis_li_renders_as_card_article():
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Each story bullet becomes an <article class="item ..." data-tags="...">
-    assert re.search(r'<article[^>]*class="[^"]*\bitem\b[^"]*"[^>]*data-tags="[A-Z][^"]*"', out)
-    # The card has an explicit title button (tap target)
-    assert re.search(r'<button[^>]*class="[^"]*\bitem-title\b', out)
-    # The card has a So What callout
-    assert 'class="so-what"' in out
-    # The card has a "Read article" button
-    assert "Read article" in out
+    # Each story bullet becomes an <article class="story" data-tags="...">
+    assert re.search(r'<article class="story"[^>]*data-tags="[A-Z][^"]*"', out)
+    # The card's head is the click/keyboard target (role=button on div)
+    assert re.search(r'<div class="story-head"\s+role="button"', out)
+    # The card has a "So what" callout
+    assert 'class="sowhat"' in out
+    # The card has a "Read the article" CTA pill
+    assert "Read the article" in out
 
 
 def test_item_card_carries_data_tags_for_filter():
@@ -186,8 +187,8 @@ def test_render_html_uses_card_layout_with_score_pill():
         _stub_item("arXiv cs.AI", 6.1, "Mid score paper"),
     ]
     out = cf.render_html(items, top_n=2, page_date=date(2026, 5, 2))
-    # Card structure
-    assert re.search(r'<article[^>]*class="[^"]*\bitem\b', out)
+    # V2 card structure (no-summarize path renders through the same builder)
+    assert re.search(r'<article class="story"', out)
     # Score pill (with optional threshold class)
     assert re.search(r'class="score-pill[^"]*"', out)
     # Score value rendered
@@ -197,14 +198,14 @@ def test_render_html_uses_card_layout_with_score_pill():
 
 
 # ---------------------------------------------------------------------------
-# Interaction JS (expand/collapse on item title click)
+# Interaction JS (expand/collapse on story-head click)
 # ---------------------------------------------------------------------------
 
 def test_expand_collapse_js_present():
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    assert "item-title" in out
-    # is-expanded class is the trigger for showing the expanded body
-    assert "is-expanded" in out
+    # V2 toggles a .open class on the .story article
+    assert "story-head" in out
+    assert "'open'" in out or '"open"' in out
 
 
 # ---------------------------------------------------------------------------

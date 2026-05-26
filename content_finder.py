@@ -786,6 +786,150 @@ footer.site-footer {
 footer.site-footer a { color: var(--fg-2); text-decoration: none; }
 footer.site-footer a:hover { color: var(--accent); }
 
+/* ===== V2 story card ===== */
+.article-list, .stories { display: flex; flex-direction: column; gap: 12px; }
+.story {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.story:hover { border-color: var(--line-strong); }
+.story.open { border-color: var(--accent-line); background: var(--surface-2); }
+.story-head {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; padding: 24px 26px;
+  cursor: pointer; align-items: start;
+}
+.story-head:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.story-meta-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px; margin-bottom: 12px;
+}
+.tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 5px;
+  color: var(--fg-2);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+.tag[data-cat="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.tag[data-cat="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.tag[data-cat="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.tag[data-cat="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.tag[data-cat="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.tag[data-cat="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.src {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-left: auto;
+}
+.src::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--fg-4);
+}
+.story-title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.28;
+  color: var(--fg);
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+  margin: 0;
+}
+.story-summary {
+  color: var(--fg-2);
+  font-size: 17px;
+  line-height: 1.55;
+  margin-top: 10px;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.chev {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--fg-3);
+  display: grid; place-items: center;
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1),
+              color 160ms ease, background 160ms ease, border-color 160ms ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+.story.open .chev {
+  transform: rotate(180deg);
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.story-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms cubic-bezier(.2,.7,.2,1);
+}
+.story.open .story-body { grid-template-rows: 1fr; }
+.story-body > .inner { overflow: hidden; min-height: 0; }
+.story-inner-pad {
+  padding: 0 26px 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.sowhat {
+  padding: 16px 20px;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.sowhat-label {
+  display: inline-block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.story-actions {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.read {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14.5px; font-weight: 600;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  padding: 9px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.read:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.read .arrow { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
+.read:hover .arrow { transform: translateX(3px); }
+.src-full {
+  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.meta-age {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+@media (max-width: 640px) {
+  .story-head { padding: 20px; gap: 14px; }
+  .story-inner-pad { padding: 0 20px 20px; }
+  .story-title { font-size: 19.5px; }
+  .story-summary { font-size: 16px; }
+}
+
 /* Takeaways block */
 .takeaways {
   background: var(--bg-1);
@@ -1189,19 +1333,22 @@ INTERACTIONS_JS = """
     });
   });
 
-  // Item expand/collapse on title click
-  document.querySelectorAll('.item-title').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var item = btn.closest('.item');
-      if (item) item.classList.toggle('is-expanded');
-    });
-  });
-
-  // Item explicit collapse button
-  document.querySelectorAll('.collapse-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var item = btn.closest('.item');
-      if (item) item.classList.remove('is-expanded');
+  // V2 story expand/collapse: clicking the head (or pressing Enter/Space
+  // when focused) toggles a `.open` class on the .story article, which the
+  // CSS animates via grid-template-rows 0fr → 1fr.
+  function toggleStory(head) {
+    var story = head.closest('.story');
+    if (!story) return;
+    var open = story.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.story-head').forEach(function (head) {
+    head.addEventListener('click', function () { toggleStory(head); });
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleStory(head);
+      }
     });
   });
 
@@ -1227,23 +1374,27 @@ INTERACTIONS_JS = """
   // scroll into view.
   function navigateToItem(itemUrl) {
     if (!itemUrl) return;
-    var matchLink = document.querySelector(
-      '.item .read-article[href="' + itemUrl.replace(/"/g, '\\\\"') + '"]'
-    );
-    var item = matchLink ? matchLink.closest('.item') : null;
-    if (!item) {
-      // Fallback: open the source URL in a new tab if no in-page card matches.
+    var safe = itemUrl.replace(/"/g, '\\\\"');
+    var matchLink = document.querySelector('.story .read[href="' + safe + '"]');
+    var story = matchLink ? matchLink.closest('.story') : null;
+    if (!story) {
       window.open(itemUrl, '_blank', 'noopener');
       return;
     }
     applyFilter('all');
-    document.querySelectorAll('.item.is-expanded').forEach(function (el) {
-      if (el !== item) el.classList.remove('is-expanded');
+    document.querySelectorAll('.story.open').forEach(function (el) {
+      if (el !== story) {
+        el.classList.remove('open');
+        var h = el.querySelector('.story-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      }
     });
-    item.classList.add('is-expanded');
+    story.classList.add('open');
+    var head = story.querySelector('.story-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
     setTakeawaysCollapsed(true);
     setTimeout(function () {
-      item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      story.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 60);
   }
   // Expose for inline onclicks if ever needed; primary path is event listener.
@@ -1301,13 +1452,25 @@ def _format_age(age_hours: float) -> str:
 
 
 def _render_tag_chips(data_tags: str) -> str:
+    """V2 tag chips: <span class="tag" data-cat="Models">Models</span>.
+
+    Returns inline spans for use inside .story-meta-row. The legacy
+    .tags wrapper div is no longer emitted; the wrapper is now
+    .story-meta-row which also contains the source label.
+    """
     if not data_tags:
         return ""
-    chips = "".join(
-        f'<span class="tag tag-{html.escape(t)}">{html.escape(t)}</span>'
+    return "".join(
+        f'<span class="tag" data-cat="{html.escape(t)}">{html.escape(t)}</span>'
         for t in data_tags.split() if t
     )
-    return f'<div class="tags">{chips}</div>' if chips else ""
+
+
+CHEVRON_SVG = (
+    '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">'
+    '<path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" '
+    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+)
 
 
 _LI_OUTER_RE = re.compile(r'<li([^>]*)>(.*)</li>', re.DOTALL)
@@ -1479,43 +1642,66 @@ def _build_card_html(
     snippet = _html_text(snippet)
     so_what = _html_text(so_what)
     safe_url = _safe_http_url(url)
-    parts = [
-        f'<article class="item" data-tags="{html.escape(data_tags)}" '
-        f'id="item-{item_id}">',
-        _render_tag_chips(data_tags),
-        '<button type="button" class="item-title">'
-        f'<span class="item-title-text">{title}</span>'
-        '<span class="item-title-chev" aria-hidden="true">▾</span>'
-        '</button>',
-        '<div class="item-body">',
-    ]
+    escaped_source = html.escape(source_name) if source_name else ""
+
+    # --- Head (always visible) -------------------------------------------- #
+    meta_row_parts = []
+    tag_chips = _render_tag_chips(data_tags)
+    if tag_chips:
+        meta_row_parts.append(tag_chips)
+    if escaped_source:
+        meta_row_parts.append(f'<span class="src">{escaped_source}</span>')
+    head_inner = ['<div>']
+    if meta_row_parts:
+        head_inner.append(
+            f'<div class="story-meta-row">{"".join(meta_row_parts)}</div>'
+        )
+    head_inner.append(f'<h3 class="story-title">{title}</h3>')
     if snippet:
-        parts.append(f'<p class="item-snippet">{snippet}</p>')
+        head_inner.append(f'<p class="story-summary">{snippet}</p>')
+    head_inner.append('</div>')
+    head_inner.append(f'<span class="chev">{CHEVRON_SVG}</span>')
+
+    # --- Body (collapsible) ----------------------------------------------- #
+    body_blocks = []
     if so_what:
-        parts.append(
-            '<div class="so-what">'
-            '<span class="so-what-label">So what:</span> '
-            f'<span class="so-what-body">{so_what}</span>'
+        body_blocks.append(
+            '<div class="sowhat">'
+            '<div class="sowhat-label">So what</div>'
+            f'{so_what}'
             '</div>'
         )
-    parts.append('<div class="item-actions">')
+    action_parts = []
     if safe_url:
-        parts.append(
-            f'<a class="read-article" href="{html.escape(safe_url, quote=True)}" '
-            f'target="_blank" rel="noopener">Read article →</a>'
+        action_parts.append(
+            f'<a class="read" href="{html.escape(safe_url, quote=True)}" '
+            f'target="_blank" rel="noopener noreferrer">'
+            'Read the article&nbsp;&nbsp;<span class="arrow">→</span></a>'
         )
-    parts.append(
-        '<button type="button" class="collapse-btn">Collapse</button>'
-    )
-    parts.append('</div>')
-    parts.append('</div>')
-    if source_name:
-        parts.append(
-            '<div class="meta">'
-            f'<span class="source">{html.escape(source_name)}</span>'
-            '</div>'
+    if escaped_source:
+        action_parts.append(f'<span class="src-full">{escaped_source}</span>')
+    if action_parts:
+        body_blocks.append(
+            f'<div class="story-actions">{"".join(action_parts)}</div>'
         )
-    parts.append('</article>')
+
+    body_html_inner = ""
+    if body_blocks:
+        body_html_inner = (
+            '<div class="inner"><div class="story-inner-pad">'
+            f'{"".join(body_blocks)}'
+            '</div></div>'
+        )
+
+    parts = [
+        f'<article class="story" data-tags="{html.escape(data_tags)}" '
+        f'id="story-{item_id}">',
+        '<div class="story-head" role="button" tabindex="0" aria-expanded="false">',
+        "".join(head_inner),
+        '</div>',
+        f'<div class="story-body">{body_html_inner}</div>',
+        '</article>',
+    ]
     return "".join(parts)
 
 
@@ -1719,42 +1905,59 @@ def _render_synthesis_sections(rest_sections: list[tuple[str, str]]) -> tuple[st
 
 
 def _render_ranked_card(item: Item, item_id: int) -> str:
+    """V2 card for the no-summarize ranked path.
+
+    The no-API path has no LLM-derived tags or so-what, so this card is
+    leaner: title + summary + source in head, score pill + recurrence badge
+    in the meta row, "Read the article" pill in the body, no So-what callout.
+    """
     age = _format_age(item.age_hours)
     tier = _score_tier(item.score)
-    parts = [
-        f'<article class="item" id="item-{item_id}">',
-        '<button type="button" class="item-title">'
-        f'<span class="item-title-text">{html.escape(item.title)}</span>'
-        '<span class="item-title-chev" aria-hidden="true">▾</span>'
-        '</button>',
-        '<div class="item-body">',
-    ]
-    if item.summary:
-        parts.append(f'<p class="item-snippet">{html.escape(item.summary)}</p>')
-    parts.append('<div class="item-actions">')
-    parts.append(
-        f'<a class="read-article" href="{html.escape(item.url)}" '
-        f'target="_blank" rel="noopener">Read article →</a>'
-    )
-    parts.append(
-        '<button type="button" class="collapse-btn">Collapse</button>'
-    )
-    parts.append('</div>')
-    parts.append('</div>')
-    parts.append('<div class="meta">')
-    parts.append(f'<span class="source">{html.escape(item.source)}</span>')
-    parts.append(f'<span class="date">{age}</span>')
-    parts.append(
+    title = html.escape(item.title)
+    snippet = html.escape(item.summary) if item.summary else ""
+    source = html.escape(item.source) if item.source else ""
+
+    meta_row_parts = []
+    if source:
+        meta_row_parts.append(f'<span class="src">{source}</span>')
+    meta_row_parts.append(f'<span class="meta-age">{age}</span>')
+    meta_row_parts.append(
         f'<span class="score-pill score-{tier}">{item.score:.1f}</span>'
     )
     if item.first_seen is not None:
-        parts.append(
-            f'<span class="resurfacing" '
+        meta_row_parts.append(
+            '<span class="resurfacing" '
             f'title="First seen {item.first_seen.isoformat()}">↻</span>'
         )
-    parts.append('</div>')
-    parts.append('</article>')
-    return "".join(parts)
+
+    head_inner = [
+        '<div>',
+        f'<div class="story-meta-row">{"".join(meta_row_parts)}</div>',
+        f'<h3 class="story-title">{title}</h3>',
+    ]
+    if snippet:
+        head_inner.append(f'<p class="story-summary">{snippet}</p>')
+    head_inner.append('</div>')
+    head_inner.append(f'<span class="chev">{CHEVRON_SVG}</span>')
+
+    body_inner = (
+        '<div class="inner"><div class="story-inner-pad">'
+        '<div class="story-actions">'
+        f'<a class="read" href="{html.escape(item.url, quote=True)}" '
+        'target="_blank" rel="noopener noreferrer">'
+        'Read the article&nbsp;&nbsp;<span class="arrow">→</span></a>'
+        f'{f"<span class=\"src-full\">{source}</span>" if source else ""}'
+        '</div></div></div>'
+    )
+
+    return (
+        f'<article class="story" id="story-{item_id}">'
+        '<div class="story-head" role="button" tabindex="0" aria-expanded="false">'
+        f'{"".join(head_inner)}'
+        '</div>'
+        f'<div class="story-body">{body_inner}</div>'
+        '</article>'
+    )
 
 
 DEFAULT_MAST_SUBTITLE = (
