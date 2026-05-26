@@ -26,6 +26,21 @@ def test_html_css_includes_v2_design_tokens():
     assert "#14141c" in css
 
 
+def test_section_label_uses_v2_neutral_not_legacy_purple():
+    """The section labels emitted by _render_synthesis_sections (Top Story,
+    Models & Capabilities, etc.) must paint in a V2 neutral (--fg-3) — not
+    the legacy --purple. The .section-label CSS rule is the load-bearing one
+    because it's actually emitted into the rendered output for every digest.
+    """
+    css = cf.HTML_CSS
+    # Pull out the .section-label block specifically and assert no var(--purple)
+    m = re.search(r'\.section-label\s*\{[^}]*\}', css)
+    assert m, ".section-label CSS rule missing"
+    block = m.group(0)
+    assert "var(--purple)" not in block, \
+        ".section-label still references --purple — should use V2 fg/accent token"
+
+
 def test_css_uses_warm_amber_accent():
     """V2 spec replaces the purple accent with warm amber #e8b765.
 
