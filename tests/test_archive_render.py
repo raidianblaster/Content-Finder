@@ -25,13 +25,13 @@ def _sample_entries():
 
 def test_archive_reuses_homepage_css_tokens():
     """The archive must embed the same HTML_CSS as the homepage so tokens
-    (--bg-0, --purple, --fg, etc.) cannot drift between the two pages."""
+    cannot drift between the two pages (V2: --bg, --surface, --accent, etc.)."""
     out = ri.render_archive_html(_sample_entries())
-    # Sentinel substrings unique to the homepage CSS spec.
-    assert "#0a0a0d" in out
-    assert "#111116" in out
-    assert "--purple" in out
-    assert "--fg-dim" in out
+    # Sentinel substrings unique to the V2 homepage CSS spec.
+    assert "#0a0a0e" in out
+    assert "#14141c" in out
+    assert "--accent" in out
+    assert "--fg-3" in out
     # The cheapest guarantee: the homepage CSS string itself is present.
     assert cf.HTML_CSS in out
 

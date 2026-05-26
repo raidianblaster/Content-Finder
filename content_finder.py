@@ -187,6 +187,30 @@ class Item:
         return (datetime.now(timezone.utc) - self.published).total_seconds() / 3600
 
 
+# --------------------------------------------------------------------------- #
+# Derived fields for the V2 masthead
+# --------------------------------------------------------------------------- #
+
+_ARCHIVE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.html$")
+
+
+def count_archived_issues(archive_dir: "Path | str") -> int:
+    p = Path(archive_dir)
+    if not p.is_dir():
+        return 0
+    return sum(1 for entry in p.iterdir() if entry.is_file() and _ARCHIVE_FILE_RE.match(entry.name))
+
+
+def distinct_sources(items: "list[Item]") -> int:
+    return len({it.source for it in items if it.source})
+
+
+def estimated_read_minutes(items: "list[Item]") -> int:
+    words = sum(len((it.title + " " + it.summary).split()) for it in items)
+    # 250 wpm reading speed; never report below "1 min read"
+    return max(1, round(words / 250))
+
+
 @dataclass
 class FilterLog:
     """Structured record of every filtering decision made during a single gather() run."""
@@ -591,28 +615,55 @@ def render_plain(items: list[Item], top_n: int) -> str:
 
 HTML_CSS = """
 :root {
-  /* Backgrounds — Route A spec */
-  --bg-0: #0a0a0d;
-  --bg-1: #111116;
-  --bg-2: #18181f;
-  --bg-3: #202028;
+  /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
+  --bg:          #0a0a0e;
+  --bg-soft:     #0f0f15;
+  --surface:     #14141c;
+  --surface-2:   #1a1a24;
+  --line:        rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --fg:    #f3f1ec;
+  --fg-2:  #b3aea1;
+  --fg-3:  #7a766c;
+  --fg-4:  #54514a;
+
+  --accent:      #e8b765;
+  --accent-soft: rgba(232, 183, 101, 0.12);
+  --accent-line: rgba(232, 183, 101, 0.32);
+  --accent-ink:  #0a0a0e;
+  --accent-bg:   var(--accent-soft);
+  --accent-border: var(--accent-line);
+
+  /* Category-chip tints — pastel on dark, used as tag text + border */
+  --cat-models:     #c7d2fe;
+  --cat-agents:     #fcd5b5;
+  --cat-tooling:    #b9e4c9;
+  --cat-regulation: #f7c0c8;
+  --cat-enterprise: #d6c7f0;
+  --cat-research:   #b9d7e8;
+
+  --col:       920px;
+  --pad:       28px;
+  --radius:    14px;
+  --radius-sm: 10px;
+
+  /* Backwards-compat aliases — preserved so per-tag chip rules + tag pills
+     keep rendering during the staged V2 migration (PRs 2 & 3 swap them out). */
+  --bg-0: var(--bg);
+  --bg-1: var(--bg-soft);
+  --bg-2: var(--surface);
+  --bg-3: var(--surface-2);
   --bg-4: #28282f;
-  --border: #22222c;
+  --border:   #22222c;
   --border-2: #2e2e3a;
-  --fg: #e2e2ea;
-  --fg-mid: #9a9ab0;
-  --fg-dim: #606072;
-  /* Purple — primary accent (hue 292) */
+  --fg-mid: var(--fg-2);
+  --fg-dim: var(--fg-3);
   --purple: oklch(65% 0.22 292);
   --purple-bright: oklch(72% 0.24 292);
   --purple-soft: oklch(65% 0.22 292 / 0.15);
   --purple-border: oklch(65% 0.22 292 / 0.35);
   --purple-dim: oklch(65% 0.22 292 / 0.08);
-  /* Backwards-compat aliases — earlier code referred to --accent. */
-  --accent: var(--purple);
-  --accent-bg: var(--purple-soft);
-  --accent-border: var(--purple-border);
-  /* Secondary accents */
   --green: oklch(68% 0.13 145);
   --green-bg: oklch(68% 0.13 145 / 0.1);
   --amber: oklch(72% 0.13 75);
@@ -621,35 +672,119 @@ HTML_CSS = """
   --teal-bg: oklch(68% 0.13 210 / 0.1);
   --slate: oklch(68% 0.12 260);
   --slate-bg: oklch(68% 0.12 260 / 0.1);
+
+  color-scheme: dark;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg-0); color: var(--fg); }
+html, body { background: var(--bg); color: var(--fg); }
 body {
-  font: 14px/1.55 "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(232,183,101,0.04), transparent 60%),
+    var(--bg);
 }
 .page {
-  max-width: 680px;
+  max-width: var(--col);
   margin: 0 auto;
-  background: var(--bg-0);
   min-height: 100vh;
 }
+.wrap {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
 
-/* Top bar */
+/* Top bar — sticky, blurred, brand + nav */
 .topbar {
-  background: var(--bg-0);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 20px;
-  display: flex; align-items: baseline; gap: 12px;
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--line);
 }
-.topbar-left { display: flex; align-items: baseline; gap: 12px; }
-.topbar-title { font-size: 16px; font-weight: 600; color: var(--fg); }
-.topbar-date  { font-size: 13px; color: var(--fg-dim); }
-.topbar-right {
-  margin-left: auto; font-size: 12px; color: var(--fg-dim);
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; gap: 16px;
 }
-.topbar-right a { color: var(--fg-dim); text-decoration: none; }
-.topbar-right a:hover { color: var(--fg-mid); }
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
+  color: var(--fg); text-decoration: none;
+}
+.brand-mark {
+  width: 24px; height: 24px; border-radius: 7px;
+  background: var(--accent);
+  display: grid; place-items: center;
+  color: var(--accent-ink);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 600; font-size: 12px;
+}
+.topnav { display: flex; gap: 6px; align-items: center; }
+.topnav a {
+  color: var(--fg-2); text-decoration: none;
+  font-size: 14.5px; font-weight: 500;
+  padding: 8px 12px; border-radius: 8px;
+  transition: background 120ms ease, color 120ms ease;
+}
+.topnav a:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
+.topnav a.active { color: var(--fg); background: rgba(255,255,255,0.06); }
+
+/* Masthead */
+.masthead { padding: 72px 0 40px; }
+.kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.mast-title {
+  font-weight: 700;
+  font-size: clamp(40px, 5.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 16px 0 18px;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.mast-title .accent { color: var(--accent); }
+.mast-sub {
+  color: var(--fg-2);
+  font-size: 19px;
+  max-width: 58ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.mast-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center;
+  margin-top: 32px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.mast-meta b { color: var(--fg-2); font-weight: 500; }
+.mast-meta .pill {
+  border: 1px solid var(--line);
+  padding: 5px 11px; border-radius: 999px;
+  color: var(--fg-2);
+}
+
+/* Footer */
+footer.site-footer {
+  padding: 48px 0 56px;
+  border-top: 1px solid var(--line);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+}
+footer.site-footer a { color: var(--fg-2); text-decoration: none; }
+footer.site-footer a:hover { color: var(--accent); }
 
 /* Takeaways block */
 .takeaways {
@@ -1622,6 +1757,43 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
     return "".join(parts)
 
 
+DEFAULT_MAST_SUBTITLE = (
+    "Stories worth your attention — distilled with the “so what” "
+    "for product managers building in regulated and enterprise contexts."
+)
+
+
+def _render_masthead(
+    page_date: date,
+    *,
+    item_count: int,
+    source_count: int | None,
+    read_minutes: int | None,
+    issue_number: int | None,
+    subtitle: str = DEFAULT_MAST_SUBTITLE,
+) -> str:
+    full_date = page_date.strftime("%a %d %b %Y")
+    kicker_label = "AI Digest"
+    if issue_number is not None:
+        kicker_label = f"AI Digest · Issue {issue_number}"
+    meta_parts = [f"<span><b>{html.escape(full_date)}</b></span>"]
+    counts_bits = [f"{item_count} items"]
+    if source_count is not None:
+        counts_bits.append(f"{source_count} sources")
+    meta_parts.append(f"<span>{html.escape(' · '.join(counts_bits))}</span>")
+    if read_minutes is not None:
+        meta_parts.append(f'<span class="pill">~{read_minutes} min read</span>')
+    return (
+        '<section class="masthead">'
+        f'<div class="kicker"><span class="dot"></span>{html.escape(kicker_label)}</div>'
+        '<h1 class="mast-title">What moved in AI '
+        '<span class="accent">today.</span></h1>'
+        f'<p class="mast-sub">{html.escape(subtitle)}</p>'
+        f'<div class="mast-meta">{"".join(meta_parts)}</div>'
+        '</section>'
+    )
+
+
 def _page_shell(
     page_date: date,
     item_count: int,
@@ -1630,47 +1802,75 @@ def _page_shell(
     body_html: str = "",
     sub_label: str | None = None,
     archive_href: str = "archive.html",
+    source_count: int | None = None,
+    read_minutes: int | None = None,
+    issue_number: int | None = None,
+    nav_active: str = "today",
 ) -> str:
     title = f"AI Digest — {page_date.strftime('%a %d %b %Y')}"
     short_date = page_date.strftime("%a %d %b %Y")
+    nav_today_cls = ' class="active"' if nav_active == "today" else ""
+    nav_archive_cls = ' class="active"' if nav_active == "archive" else ""
+    masthead_html = _render_masthead(
+        page_date,
+        item_count=item_count,
+        source_count=source_count,
+        read_minutes=read_minutes,
+        issue_number=issue_number,
+    )
     return "\n".join([
         "<!doctype html>",
         '<html lang="en" data-theme="dark"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        '<meta name="theme-color" content="#0a0a0d">',
+        '<meta name="theme-color" content="#0a0a0e">',
         '<link rel="icon" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'90\'>📡</text></svg>">',
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link href="https://fonts.googleapis.com/css2?'
-        'family=DM+Sans:wght@300;400;500;600&'
-        'family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">',
+        'family=Hanken+Grotesk:wght@400;500;600;700&'
+        'family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">',
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}</style>",
         "</head><body>",
-        '<div class="page">',
         '<header class="topbar">',
-        '<div class="topbar-left">',
-        '<span class="topbar-title">AI Digest</span>',
-        f'<span class="topbar-date">{html.escape(short_date)}</span>',
+        '<div class="wrap topbar-inner">',
+        '<a class="brand" href="index.html">'
+        '<div class="brand-mark">CF</div>'
+        '<span>Content Finder</span>'
+        '</a>',
+        '<nav class="topnav">',
+        f'<a href="index.html"{nav_today_cls}>Today</a>',
+        f'<a href="{html.escape(archive_href)}"{nav_archive_cls}>Archive</a>',
+        '<a href="#takeaways">Takeaways</a>',
+        '</nav>',
         '</div>',
-        f'<div class="topbar-right">{item_count} items '
-        f'· <a href="{html.escape(archive_href)}">archive</a></div>',
-        "</header>",
+        '</header>',
+        '<main class="wrap">',
+        masthead_html,
         takeaways_html or "",
         render_chip_bar(counts=_chip_counts_for_body(body_html)),
         body_html,
-        '<footer>Generated by '
+        '<footer class="site-footer">',
+        '<span>Generated by '
         '<a href="https://github.com/raidianblaster/Content-Finder">'
-        "Content Finder</a></footer>",
-        "</div>",
+        'Content Finder</a></span>',
+        f'<span>{html.escape(short_date)}</span>',
+        '</footer>',
+        '</main>',
         INTERACTIONS_JS,
         "</body></html>",
     ])
 
 
-def render_html(items: list[Item], top_n: int, *, page_date: date | None = None) -> str:
-    """No-summarize ranked list, rendered with the Variant A card layout."""
+def render_html(
+    items: list[Item],
+    top_n: int,
+    *,
+    page_date: date | None = None,
+    issue_number: int | None = None,
+) -> str:
+    """No-summarize ranked list, rendered with the V2 layout."""
     page_date = page_date or today_hkt()
     shown = items[:top_n]
     body_parts = ['<div class="article-list">']
@@ -1682,6 +1882,9 @@ def render_html(items: list[Item], top_n: int, *, page_date: date | None = None)
         item_count=len(shown),
         takeaways_html="",
         body_html="".join(body_parts),
+        source_count=distinct_sources(shown),
+        read_minutes=estimated_read_minutes(shown),
+        issue_number=issue_number,
     )
 
 
@@ -1891,9 +2094,18 @@ def main() -> int:
         print("No relevant items found in window. Try --days 7.", file=sys.stderr)
         return 1
 
+    # Issue number = (count of archived dated files) + 1 for today's new issue.
+    # Tomorrow's archived copy is written by the same workflow that moves
+    # today's index.html into docs/archive/, so today's run hasn't been
+    # archived yet at render time.
+    archive_dir = Path(args.out).parent / "archive" if args.out != "-" else None
+    issue_no = (count_archived_issues(archive_dir) + 1) if archive_dir else None
+
     if args.no_summarize:
         if args.format == "html":
-            output = render_html(items, top_n=args.top, page_date=page_date)
+            output = render_html(
+                items, top_n=args.top, page_date=page_date, issue_number=issue_no,
+            )
         else:
             output = render_plain(items, top_n=args.top)
     else:

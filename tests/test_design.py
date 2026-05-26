@@ -1,8 +1,8 @@
-"""Design-handoff tests for Variant A (dark, mobile-first card layout).
+"""Design-handoff tests for the V2 layout (warm amber accent, Hanken Grotesk body).
 
 Targets `HTML_CSS`, `render_chip_bar`, `wrap_synthesis_html`, `render_html`.
 The class names `.chip`, `.is-active`, `.is-hidden` are preserved per the
-design handoff README.
+original design handoff README. V2 introduces amber accent + masthead.
 """
 from __future__ import annotations
 
@@ -13,31 +13,37 @@ import content_finder as cf
 
 
 # ---------------------------------------------------------------------------
-# Design tokens / fonts / colours
+# Design tokens / fonts / colours — V2
 # ---------------------------------------------------------------------------
 
-def test_html_css_includes_dark_design_tokens():
+def test_html_css_includes_v2_design_tokens():
     css = cf.HTML_CSS
-    for token in ["--bg-0", "--bg-1", "--bg-2", "--border", "--fg", "--fg-mid",
-                  "--fg-dim", "--purple", "--green", "--amber"]:
-        assert token in css, f"missing token: {token}"
-    # Route A spec values (hue-292 purple, deeper backgrounds)
-    assert "#0a0a0d" in css
-    assert "#111116" in css
+    for token in ["--bg", "--surface", "--surface-2", "--line", "--line-strong",
+                  "--fg", "--fg-2", "--fg-3", "--accent", "--accent-soft"]:
+        assert token in css, f"missing V2 token: {token}"
+    # V2 spec colour values
+    assert "#0a0a0e" in css
+    assert "#14141c" in css
 
 
-def test_css_purple_accent_hue_292():
-    """Route A spec replaces hue-258 blue accent with hue-292 purple."""
+def test_css_uses_warm_amber_accent():
+    """V2 spec replaces the purple accent with warm amber #e8b765.
+
+    Per-tag chip rules + .tag-* pills still reference the old --purple/--green
+    backward-compat aliases (cleaned up in PR2/PR3); the load-bearing assertion
+    is that the primary --accent token resolves to amber, not purple.
+    """
     css = cf.HTML_CSS
-    assert "--purple:" in css or "--purple " in css
-    assert "292" in css  # primary purple hue from the spec
+    assert "#e8b765" in css, "amber accent hex missing from CSS"
+    assert re.search(r"--accent:\s*#e8b765", css), \
+        "--accent should be bound to the amber hex"
 
 
-def test_dm_sans_dm_mono_loaded_via_google_fonts():
+def test_hanken_grotesk_and_jetbrains_mono_loaded_via_google_fonts():
     out = cf.wrap_synthesis_html("## Key takeaways\n- a\n- b\n- c\n", page_date=date(2026, 5, 2))
     assert "fonts.googleapis.com" in out
-    assert "DM+Sans" in out
-    assert "DM+Mono" in out
+    assert "Hanken+Grotesk" in out
+    assert "JetBrains+Mono" in out
 
 
 def test_html_css_defines_per_tag_color_rules():
