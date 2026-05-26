@@ -413,24 +413,8 @@ section.block:last-of-type { border-bottom: 0; }
   section.block { padding: 40px 0; }
 }
 
-/* Article list + section labels — V2 mono uppercase divider rule */
+/* Article list — wraps the per-section <section class="block"> groups */
 .article-list { padding-bottom: 24px; }
-.section-label {
-  padding: 32px 0 12px;
-  display: flex; align-items: center; gap: 12px;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 12px; font-weight: 500;
-  color: var(--fg-3);
-  letter-spacing: 0.1em; text-transform: uppercase;
-  background: transparent;
-}
-.section-label::before {
-  content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
-}
-.section-label::after {
-  content: ""; flex: 1; height: 1px; background: var(--line);
-}
 
 /* Score pill + resurfacing badge — used by the no-summarize --no-summarize path */
 .score-pill {

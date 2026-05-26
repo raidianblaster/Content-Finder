@@ -5,7 +5,7 @@
     "fetched": 824,
     "after_keyword_filter": 478,
     "after_dedupe": 474,
-    "after_ttl_filter": 447,
+    "after_ttl_filter": 444,
     "after_source_cap": 3
   },
   "dropped_keyword": [
@@ -111,7 +111,7 @@
       "title": "The US FTC settles with Cox, MindSift, and 1010 Digital Works for $930K over claims they falsely said they could use phone mics to spy on users for ad targeting (Adi Robertson/The Verge)",
       "url": "https://www.techmeme.com/260525/p21#a260525p21",
       "source": "Techmeme",
-      "score": 2.86,
+      "score": 2.85,
       "age_days": 0.5
     },
     {
@@ -148,13 +148,6 @@
       "source": "Stratechery",
       "score": 3.99,
       "age_days": 0.0
-    },
-    {
-      "title": "The bootstrapper's EU stack for under \u20ac10 per month",
-      "url": "https://eualternative.eu/guides/bootstrapper-free-tier-eu-stack/",
-      "source": "Hacker News",
-      "score": 3.96,
-      "age_days": 0.7
     },
     {
       "title": "In Search of the Ingredients of Open-Endedness: Replicating Picbreeder with Large Vision-Language Models",
@@ -2334,10 +2327,17 @@
       "age_days": 0.3
     },
     {
+      "title": "The bootstrapper's EU stack for under \u20ac10 per month",
+      "url": "https://eualternative.eu/guides/bootstrapper-free-tier-eu-stack/",
+      "source": "Hacker News",
+      "score": 3.96,
+      "age_days": 0.7
+    },
+    {
       "title": "Defeating Git Rigour Fatigue with Jujutsu",
       "url": "https://ikesau.co/blog/defeating-git-rigour-fatigue-with-jujutsu/",
       "source": "Hacker News",
-      "score": 3.3,
+      "score": 3.29,
       "age_days": 1.7
     },
     {
@@ -2366,20 +2366,20 @@
       "url": "https://scienceaim.com/australia-just-proved-the-four-day-work-week-works-here-is-what-the-data-actually-says/",
       "source": "Hacker News",
       "score": 4.09,
-      "age_days": 1.6
+      "age_days": 1.7
     },
     {
       "title": "The seed oil panic is hurting my cardiac patients",
       "url": "https://www.statnews.com/2026/05/22/seed-oils-healthy-fats-tallow-fact-check-cardiac-health/",
       "source": "Hacker News",
-      "score": 3.08,
+      "score": 3.07,
       "age_days": 1.8
     },
     {
       "title": "Toshifumi Suzuki, founder of Seven-Eleven Japan, has died",
       "url": "https://www.referenceforbusiness.com/biography/S-Z/Suzuki-Toshifumi-1932.html",
       "source": "Hacker News",
-      "score": 3.81,
+      "score": 3.82,
       "age_days": 0.8
     },
     {
@@ -2486,6 +2486,30 @@
       "first_seen": "2026-05-26"
     },
     {
+      "title": "Attested Tool-Server Admission: A Security Extension to the Model Context Protocol",
+      "url": "https://arxiv.org/abs/2605.24248",
+      "source": "arXiv cs.AI",
+      "score": 11.92,
+      "age_days": 0.3,
+      "first_seen": "2026-05-26"
+    },
+    {
+      "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2602.10090",
+      "source": "arXiv cs.AI",
+      "score": 11.92,
+      "age_days": 0.3,
+      "first_seen": "2026-05-26"
+    },
+    {
+      "title": "A Sober Look at Agentic Misalignment in Automated Workflows",
+      "url": "https://arxiv.org/abs/2605.24197",
+      "source": "arXiv cs.AI",
+      "score": 10.92,
+      "age_days": 0.3,
+      "first_seen": "2026-05-26"
+    },
+    {
       "title": "LWiAI Podcast #246 - Gemini 3.5 + Omni, Musk Loses, OpenAI vs Erd\u0151s",
       "url": "https://lastweekin.ai/p/lwiai-podcast-246-gemini-35-omni",
       "source": "Last Week in AI",
@@ -2529,7 +2553,7 @@
       "title": "Norway's 2 petabytes of Huawei flash storage and LLM training",
       "url": "https://www.blocksandfiles.com/flash/2026/05/22/norways-2-petabytes-of-huawei-flash-storage-and-llm-training/5244910",
       "source": "Hacker News",
-      "score": 6.55,
+      "score": 6.56,
       "age_days": 0.6,
       "first_seen": "2026-05-26"
     },
@@ -2631,27 +2655,6 @@
     }
   ],
   "dropped_source_cap": [
-    {
-      "title": "GRAIL: AI translation for scientists application workflow on satellite data",
-      "url": "https://arxiv.org/abs/2605.24784",
-      "source": "arXiv cs.AI",
-      "score": 10.92,
-      "age_days": 0.3
-    },
-    {
-      "title": "Retrying vs Resampling in AI Control",
-      "url": "https://arxiv.org/abs/2605.26047",
-      "source": "arXiv cs.AI",
-      "score": 10.92,
-      "age_days": 0.3
-    },
-    {
-      "title": "Benchmarking Patent Embeddings: A Multi-Task Evaluation of 22 Models Across Retrieval, Classification, and Clustering",
-      "url": "https://arxiv.org/abs/2605.24297",
-      "source": "arXiv cs.AI",
-      "score": 10.92,
-      "age_days": 0.3
-    },
     {
       "title": "Spectral Retrieval: Multi-Scale Sinc Convolution over Token Embeddings for Localized Retrieval in LLM Multi-Agent Systems",
       "url": "https://arxiv.org/abs/2605.24764",
@@ -5742,22 +5745,22 @@
   ],
   "final": [
     {
-      "title": "Attested Tool-Server Admission: A Security Extension to the Model Context Protocol",
-      "url": "https://arxiv.org/abs/2605.24248",
+      "title": "GRAIL: AI translation for scientists application workflow on satellite data",
+      "url": "https://arxiv.org/abs/2605.24784",
       "source": "arXiv cs.AI",
-      "score": 11.92,
+      "score": 10.92,
       "age_days": 0.3
     },
     {
-      "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning",
-      "url": "https://arxiv.org/abs/2602.10090",
+      "title": "Retrying vs Resampling in AI Control",
+      "url": "https://arxiv.org/abs/2605.26047",
       "source": "arXiv cs.AI",
-      "score": 11.92,
+      "score": 10.92,
       "age_days": 0.3
     },
     {
-      "title": "A Sober Look at Agentic Misalignment in Automated Workflows",
-      "url": "https://arxiv.org/abs/2605.24197",
+      "title": "Benchmarking Patent Embeddings: A Multi-Task Evaluation of 22 Models Across Retrieval, Classification, and Clustering",
+      "url": "https://arxiv.org/abs/2605.24297",
       "source": "arXiv cs.AI",
       "score": 10.92,
       "age_days": 0.3

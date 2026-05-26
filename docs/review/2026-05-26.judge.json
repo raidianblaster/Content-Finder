@@ -3,55 +3,72 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.24784",
-      "stage": "dropped_source_cap",
-      "reason": "High-scoring arXiv AI/agents paper on practical satellite data translation workflow deserves inclusion over lower-quality content."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.26047",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive research on AI control via retry/resample trade-offs is core agent reasoning content that should pass source cap."
-    },
-    {
       "url": "https://arxiv.org/abs/2605.24764",
       "stage": "dropped_source_cap",
-      "reason": "Novel retrieval mechanism for multi-agent LLM systems addresses key infrastructure challenge in agent deployments."
+      "reason": "Substantive agents/multi-agent research from arXiv with high relevance score (10.92) on localized retrieval in LLM systems."
     },
     {
       "url": "https://arxiv.org/abs/2604.11557",
       "stage": "dropped_source_cap",
-      "reason": "UniToolCall standardizes tool-use for LLM agents—foundational infrastructure work from trusted research venue."
+      "reason": "High-signal work on unified tool-use representation and evaluation for LLM agents (score 10.92) cut by source cap."
     },
     {
       "url": "https://arxiv.org/abs/2605.13850",
       "stage": "dropped_source_cap",
-      "reason": "Design patterns framework for agent architecture is high-signal methodological contribution relevant to practitioners."
+      "reason": "Foundational framework paper on AI agent design patterns addressing cognitive function and execution topology (10.92)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.22714",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive research on accumulated message effects and LLM judgment reliability (score 10.92)."
     },
     {
       "url": "https://arxiv.org/abs/2605.24154",
       "stage": "dropped_source_cap",
-      "reason": "Safety alignment relaxation framework addresses real operational constraint in regulated LLM agent deployments."
+      "reason": "Novel framework for safety alignment relaxation in LLMs with clear relevance to regulated environments (9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.25338",
+      "url": "https://arxiv.org/abs/2605.24229",
       "stage": "dropped_source_cap",
-      "reason": "Causal attribution for agent failures enables systematic debugging of multi-step reasoning—critical operational need."
+      "reason": "Direct evaluation of LLM adherence to constitutional principles—critical governance concern (score 9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.25632",
+      "url": "https://arxiv.org/abs/2605.24550",
       "stage": "dropped_source_cap",
-      "reason": "Runtime actuarial control framework applies insurance principles to autonomous agent governance—novel regulatory approach."
+      "reason": "Safety-focused research on jailbreak-aware fine-tuning for large language models (score 9.92)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.25233",
+      "stage": "dropped_source_cap",
+      "reason": "Task-to-verified-agent systems work addressing end-to-end multi-agent workflows (score 9.92)."
     },
     {
       "url": "https://arxiv.org/abs/2605.24699",
       "stage": "dropped_ttl",
-      "reason": "Multi-agent diagnostic pipeline on professional health benchmarks demonstrates substantive cross-domain agent coordination."
+      "reason": "Multi-agent diagnostic pipeline on HealthBench with very high relevance score (16.92) addressing professional healthcare workflows."
     },
     {
-      "url": "https://arxiv.org/abs/2605.23989",
+      "url": "https://arxiv.org/abs/2605.24219",
       "stage": "dropped_ttl",
-      "reason": "Comprehensive survey of agentic AI safety covering core concerns (safety, robustness, privacy, security) for regulated deployments."
+      "reason": "Trajectory-level hallucination auditing for industrial multi-agent workflows with critical signal for regulated environments (14.92)."
     }
   ],
-  "suspect_keeps": []
+  "suspect_keeps": [
+    {
+      "url": "https://www.hollandtech.net/claude-is-not-your-architect/",
+      "reason": "Opinion/critique piece lacking substantive technical depth or novel evidence for pipeline inclusion."
+    },
+    {
+      "url": "https://lemon.rip/w/6-c-extensions-compilers/",
+      "reason": "Off-topic technical commentary on C extensions unrelated to AI/ML/agents."
+    },
+    {
+      "url": "https://kingbird.myphotos.cc/packing/squares_in_squares.html",
+      "reason": "Recreational mathematics content unrelated to AI/LLM agents."
+    },
+    {
+      "url": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
+      "reason": "General software engineering post without clear AI/agent relevance."
+    }
+  ]
 }
