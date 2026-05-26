@@ -3,60 +3,55 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.24248",
+      "url": "https://arxiv.org/abs/2605.24784",
       "stage": "dropped_source_cap",
-      "reason": "High-signal agent security work on MCP admission control from arXiv with strong score (11.93) should survive source cap."
+      "reason": "High-scoring arXiv AI/agents paper on practical satellite data translation workflow deserves inclusion over lower-quality content."
     },
     {
-      "url": "https://arxiv.org/abs/2602.10090",
+      "url": "https://arxiv.org/abs/2605.26047",
       "stage": "dropped_source_cap",
-      "reason": "Agent world models for synthetic RL environments is substantive research with 11.93 score deserving inclusion."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24197",
-      "stage": "dropped_source_cap",
-      "reason": "Agentic misalignment in automated workflows addresses critical safety concern with 10.93 score."
+      "reason": "Substantive research on AI control via retry/resample trade-offs is core agent reasoning content that should pass source cap."
     },
     {
       "url": "https://arxiv.org/abs/2605.24764",
       "stage": "dropped_source_cap",
-      "reason": "Multi-agent LLM retrieval systems research (spectral retrieval) with 10.93 score is core to agent infrastructure."
+      "reason": "Novel retrieval mechanism for multi-agent LLM systems addresses key infrastructure challenge in agent deployments."
     },
     {
       "url": "https://arxiv.org/abs/2604.11557",
       "stage": "dropped_source_cap",
-      "reason": "UniToolCall standardizes tool-use evaluation for agents—foundational work scoring 10.93."
+      "reason": "UniToolCall standardizes tool-use for LLM agents—foundational infrastructure work from trusted research venue."
     },
     {
       "url": "https://arxiv.org/abs/2605.13850",
       "stage": "dropped_source_cap",
-      "reason": "Agent design patterns framework (cognitive function + topology) with 10.93 score is architecturally important."
+      "reason": "Design patterns framework for agent architecture is high-signal methodological contribution relevant to practitioners."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.24154",
+      "stage": "dropped_source_cap",
+      "reason": "Safety alignment relaxation framework addresses real operational constraint in regulated LLM agent deployments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.25338",
+      "stage": "dropped_source_cap",
+      "reason": "Causal attribution for agent failures enables systematic debugging of multi-step reasoning—critical operational need."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.25632",
+      "stage": "dropped_source_cap",
+      "reason": "Runtime actuarial control framework applies insurance principles to autonomous agent governance—novel regulatory approach."
     },
     {
       "url": "https://arxiv.org/abs/2605.24699",
       "stage": "dropped_ttl",
-      "reason": "Multi-agent diagnostic pipeline for healthcare (MDIA) scores 16.93 and deserves retention despite TTL trigger."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.24219",
-      "stage": "dropped_ttl",
-      "reason": "Trajectory-level hallucination auditing in multi-agent workflows (14.93 score) is safety-critical for regulated deployment."
-    },
-    {
-      "url": "https://arxiv.org/abs/2602.22769",
-      "stage": "dropped_ttl",
-      "reason": "Long-horizon agentic memory benchmarking (13.93 score) is core to evaluating agent reliability in production."
+      "reason": "Multi-agent diagnostic pipeline on professional health benchmarks demonstrates substantive cross-domain agent coordination."
     },
     {
       "url": "https://arxiv.org/abs/2605.23989",
-      "stage": "final",
-      "reason": "Comprehensive agent safety/security survey (12.93 score) is canonical reference deserving explicit confirmation as kept."
+      "stage": "dropped_ttl",
+      "reason": "Comprehensive survey of agentic AI safety covering core concerns (safety, robustness, privacy, security) for regulated deployments."
     }
   ],
-  "suspect_keeps": [
-    {
-      "url": "https://www.tinyvolt.com/geomatic",
-      "reason": "Geometry studio tool with autodiff is low-signal dev tool; lacks AI/agent relevance despite making final."
-    }
-  ]
+  "suspect_keeps": []
 }
