@@ -3,76 +3,72 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.23218",
+      "url": "https://arxiv.org/abs/2605.24764",
       "stage": "dropped_source_cap",
-      "reason": "Foundation Protocol for agentic systems is core agent coordination research, high relevance to regulated AI Product Manager."
+      "reason": "Substantive agents/multi-agent research from arXiv with high relevance score (10.92) on localized retrieval in LLM systems."
     },
     {
-      "url": "https://arxiv.org/abs/2605.05704",
+      "url": "https://arxiv.org/abs/2604.11557",
       "stage": "dropped_source_cap",
-      "reason": "SafeHarbor safety guardrails for LLM agents directly addresses compliance risk, highly relevant for regulated environment."
+      "reason": "High-signal work on unified tool-use representation and evaluation for LLM agents (score 10.92) cut by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2605.22842",
+      "url": "https://arxiv.org/abs/2605.13850",
       "stage": "dropped_source_cap",
-      "reason": "Memory poisoning attacks on agentic systems are critical security/safety concern for regulated deployment."
+      "reason": "Foundational framework paper on AI agent design patterns addressing cognitive function and execution topology (10.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.18859",
+      "url": "https://arxiv.org/abs/2605.22714",
       "stage": "dropped_source_cap",
-      "reason": "TwinRouterBench for agentic LLM routing evaluation is substantive infrastructure work for agent systems."
+      "reason": "Substantive research on accumulated message effects and LLM judgment reliability (score 10.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.23414",
+      "url": "https://arxiv.org/abs/2605.24154",
       "stage": "dropped_source_cap",
-      "reason": "Epistemic calibration for LLM multi-agent systems addresses core reliability concern in regulated contexts."
+      "reason": "Novel framework for safety alignment relaxation in LLMs with clear relevance to regulated environments (9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.22984",
+      "url": "https://arxiv.org/abs/2605.24229",
       "stage": "dropped_source_cap",
-      "reason": "Test-time training undermining safety guardrails is critical safety finding for deployment validation."
+      "reason": "Direct evaluation of LLM adherence to constitutional principles—critical governance concern (score 9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2604.24594",
+      "url": "https://arxiv.org/abs/2605.24550",
       "stage": "dropped_source_cap",
-      "reason": "Skill retrieval augmentation for agentic AI addresses core capability architecture for agent systems."
+      "reason": "Safety-focused research on jailbreak-aware fine-tuning for large language models (score 9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.17076",
+      "url": "https://arxiv.org/abs/2605.25233",
       "stage": "dropped_source_cap",
-      "reason": "S-Bus for multi-agent state coordination is infrastructure-level research for agent deployments."
+      "reason": "Task-to-verified-agent systems work addressing end-to-end multi-agent workflows (score 9.92)."
     },
     {
-      "url": "https://arxiv.org/abs/2605.06445",
+      "url": "https://arxiv.org/abs/2605.24699",
       "stage": "dropped_ttl",
-      "reason": "Constraint decay in LLM agent code generation exposes practical safety gap in agent backends."
+      "reason": "Multi-agent diagnostic pipeline on HealthBench with very high relevance score (16.92) addressing professional healthcare workflows."
     },
     {
-      "url": "https://esengine.github.io/DeepSeek-Reasonix/",
+      "url": "https://arxiv.org/abs/2605.24219",
       "stage": "dropped_ttl",
-      "reason": "DeepSeek native coding agent is substantive agent tool release with practical deployment relevance."
+      "reason": "Trajectory-level hallucination auditing for industrial multi-agent workflows with critical signal for regulated environments (14.92)."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
-      "reason": "Content partnership announcement is corporate business news without direct AI/agent/ML substance."
-    },
-    {
-      "url": "https://www.techmeme.com/260525/p14#a260525p14",
-      "reason": "SoftBank stock price movement on investment speculation is financial market news, not AI substance."
-    },
-    {
-      "url": "https://www.techmeme.com/260525/p10#a260525p10",
-      "reason": "Pope encyclical AI references are geopolitical commentary, not technical AI content."
-    },
-    {
-      "url": "https://www.techmeme.com/260525/p17#a260525p17",
-      "reason": "UK AI Safety Institute policy review is governance news rather than AI/ML/agents technical content."
+      "url": "https://www.hollandtech.net/claude-is-not-your-architect/",
+      "reason": "Opinion/critique piece lacking substantive technical depth or novel evidence for pipeline inclusion."
     },
     {
       "url": "https://lemon.rip/w/6-c-extensions-compilers/",
-      "reason": "C extensions and compiler portability is language engineering, unrelated to AI/ML/agents."
+      "reason": "Off-topic technical commentary on C extensions unrelated to AI/ML/agents."
+    },
+    {
+      "url": "https://kingbird.myphotos.cc/packing/squares_in_squares.html",
+      "reason": "Recreational mathematics content unrelated to AI/LLM agents."
+    },
+    {
+      "url": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
+      "reason": "General software engineering post without clear AI/agent relevance."
     }
   ]
 }

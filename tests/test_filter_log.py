@@ -123,8 +123,12 @@ def test_write_filter_log_creates_file(monkeypatch, tmp_path):
 
     log_dir = tmp_path / "logs"
     assert log_dir.exists(), "logs/ subdirectory should be created"
-    files = list(log_dir.glob("*.json"))
-    assert len(files) == 1, f"expected 1 log file, got {files}"
-    data = json.loads(files[0].read_text())
+    # write_filter_log writes both a dated file and a `latest.json` pointer.
+    files = sorted(log_dir.glob("*.json"))
+    names = {f.name for f in files}
+    assert "latest.json" in names, f"expected latest.json, got {names}"
+    dated = [f for f in files if f.name != "latest.json"]
+    assert len(dated) == 1, f"expected exactly one dated log file, got {dated}"
+    data = json.loads(dated[0].read_text())
     assert "date" in data
     assert "pipeline" in data

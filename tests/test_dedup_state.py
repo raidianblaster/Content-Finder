@@ -6,6 +6,7 @@ Group A here covers the canonical_url() refactor extracted from dedupe().
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -419,16 +420,26 @@ def test_L1_card_with_first_seen_renders_badge():
 
 
 def test_L6_badge_lives_in_meta_row_not_body():
+    """V2: resurfacing badge belongs in the always-visible .story-head meta row,
+    never inside the collapsible .story-body. Keeps the recurrence signal
+    legible without forcing an expand."""
     it = _item("https://example.com/a", "Alpha")
     it.score = 5.0
     it.first_seen = date(2026, 5, 1)
     html_str = cf._render_ranked_card(it, item_id=1)
-    body_start = html_str.index('<div class="item-body">')
-    body_end = html_str.index('</div><div class="meta">')
-    body_segment = html_str[body_start:body_end]
-    assert "resurfacing" not in body_segment
-    meta_segment = html_str[body_end:]
-    assert "resurfacing" in meta_segment
+    head_match = re.search(
+        r'<div class="story-head"[^>]*>(.*?)</div>\s*<div class="story-body"',
+        html_str, re.DOTALL,
+    )
+    assert head_match, "no story-head in card"
+    head_segment = head_match.group(1)
+    body_match = re.search(
+        r'<div class="story-body"[^>]*>(.*?)</article>', html_str, re.DOTALL,
+    )
+    assert body_match, "no story-body in card"
+    body_segment = body_match.group(1)
+    assert "resurfacing" in head_segment, "badge missing from story-head"
+    assert "resurfacing" not in body_segment, "badge leaked into expandable body"
 
 
 def test_L5_badge_includes_correct_iso_date_in_title_attr():

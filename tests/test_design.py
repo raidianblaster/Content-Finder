@@ -1,8 +1,8 @@
-"""Design-handoff tests for Variant A (dark, mobile-first card layout).
+"""Design-handoff tests for the V2 layout (warm amber accent, Hanken Grotesk body).
 
 Targets `HTML_CSS`, `render_chip_bar`, `wrap_synthesis_html`, `render_html`.
 The class names `.chip`, `.is-active`, `.is-hidden` are preserved per the
-design handoff README.
+original design handoff README. V2 introduces amber accent + masthead.
 """
 from __future__ import annotations
 
@@ -13,37 +13,91 @@ import content_finder as cf
 
 
 # ---------------------------------------------------------------------------
-# Design tokens / fonts / colours
+# Design tokens / fonts / colours — V2
 # ---------------------------------------------------------------------------
 
-def test_html_css_includes_dark_design_tokens():
+def test_html_css_includes_v2_design_tokens():
     css = cf.HTML_CSS
-    for token in ["--bg-0", "--bg-1", "--bg-2", "--border", "--fg", "--fg-mid",
-                  "--fg-dim", "--purple", "--green", "--amber"]:
-        assert token in css, f"missing token: {token}"
-    # Route A spec values (hue-292 purple, deeper backgrounds)
-    assert "#0a0a0d" in css
-    assert "#111116" in css
+    for token in ["--bg", "--surface", "--surface-2", "--line", "--line-strong",
+                  "--fg", "--fg-2", "--fg-3", "--accent", "--accent-soft"]:
+        assert token in css, f"missing V2 token: {token}"
+    # V2 spec colour values
+    assert "#0a0a0e" in css
+    assert "#14141c" in css
 
 
-def test_css_purple_accent_hue_292():
-    """Route A spec replaces hue-258 blue accent with hue-292 purple."""
+def test_synthesis_sections_use_v2_sec_head_markup():
+    """Story-section headers (Top Story / Models & Capabilities / etc.) must
+    use the same V2 .sec-head + .sec-title + .sec-meta markup as Key takeaways.
+    A tiny mono "section-label" divider is visually inconsistent with the
+    section pattern set by the takeaways block."""
+    md = """## Key takeaways
+- one
+- two
+- three
+
+## Top story
+- **Five Eyes** — body. **So what:** implication. [Five Eyes](https://example.com/five-eyes) {tags: Regulation}
+
+## Models & capability releases
+- **Mistral 3.5** — body. **So what:** implication. [Mistral](https://mistral.ai) {tags: Models}
+- **Llama 4** — body. **So what:** implication. [Meta](https://meta.ai) {tags: Models}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 26))
+    # Each story section is wrapped in <section class="block"> with the same
+    # .sec-head pattern Key takeaways uses.
+    assert out.count('<section class="block"') >= 3, \
+        "expected one section.block per category (takeaways + top story + models)"
+    assert '<h2 class="sec-title">Top Story</h2>' in out
+    assert '<h2 class="sec-title">Models &amp; Capabilities</h2>' in out
+    # Section meta shows the count of stories in that section
+    assert re.search(
+        r'<h2 class="sec-title">Models &amp; Capabilities</h2>\s*<span class="sec-meta">[^<]*2 stories',
+        out,
+    ), "Models section should show '2 stories' in its sec-meta"
+    assert re.search(
+        r'<h2 class="sec-title">Top Story</h2>\s*<span class="sec-meta">[^<]*1 story[^s]',
+        out,
+    ), "Top Story section should show '1 story' (singular) in its sec-meta"
+
+
+def test_section_headers_use_v2_neutral_not_legacy_purple():
+    """The story-section headers (Top Story, Models & Capabilities, etc.)
+    now render via .sec-title + .sec-meta — neither rule should reference
+    --purple."""
     css = cf.HTML_CSS
-    assert "--purple:" in css or "--purple " in css
-    assert "292" in css  # primary purple hue from the spec
+    for selector in [".sec-title", ".sec-meta"]:
+        m = re.search(rf'{re.escape(selector)}\s*\{{[^}}]*\}}', css)
+        assert m, f"{selector} CSS rule missing"
+        assert "var(--purple)" not in m.group(0), \
+            f"{selector} references --purple — should use V2 token"
 
 
-def test_dm_sans_dm_mono_loaded_via_google_fonts():
+def test_css_uses_warm_amber_accent():
+    """V2 spec replaces the purple accent with warm amber #e8b765.
+
+    Per-tag chip rules + .tag-* pills still reference the old --purple/--green
+    backward-compat aliases (cleaned up in PR2/PR3); the load-bearing assertion
+    is that the primary --accent token resolves to amber, not purple.
+    """
+    css = cf.HTML_CSS
+    assert "#e8b765" in css, "amber accent hex missing from CSS"
+    assert re.search(r"--accent:\s*#e8b765", css), \
+        "--accent should be bound to the amber hex"
+
+
+def test_hanken_grotesk_and_jetbrains_mono_loaded_via_google_fonts():
     out = cf.wrap_synthesis_html("## Key takeaways\n- a\n- b\n- c\n", page_date=date(2026, 5, 2))
     assert "fonts.googleapis.com" in out
-    assert "DM+Sans" in out
-    assert "DM+Mono" in out
+    assert "Hanken+Grotesk" in out
+    assert "JetBrains+Mono" in out
 
 
 def test_html_css_defines_per_tag_color_rules():
+    """V2 per-tag tints are keyed by data-cat (not tag-X class names)."""
     css = cf.HTML_CSS
     for tag in ["Models", "Agents", "Tooling", "Regulation", "Enterprise", "Research"]:
-        assert f'tag-{tag}' in css, f"missing per-tag class: tag-{tag}"
+        assert f'data-cat="{tag}"' in css, f"missing per-cat rule: {tag}"
 
 
 # ---------------------------------------------------------------------------
@@ -59,11 +113,12 @@ def test_chip_bar_emits_pill_chips_with_data_tag():
                               "Enterprise", "Research"}
 
 
-def test_active_chip_styling_per_tag_in_css():
+def test_active_chip_styling_uses_aria_pressed():
+    """V2 active state is uniform across tags — selector keys on aria-pressed.
+    Per-tag colour tints live on .tag[data-cat="X"] inside story cards, not
+    on the rail chips themselves."""
     css = cf.HTML_CSS
-    # Active state must exist and be tag-aware (selector that combines chip with the tag)
-    assert ".chip.is-active" in css
-    assert 'data-tag="Models"' in css or '[data-tag="Models"]' in css
+    assert '.chip[aria-pressed="true"]' in css
 
 
 # ---------------------------------------------------------------------------
@@ -103,28 +158,20 @@ FIXTURE_MD = """## Key takeaways
 """
 
 
-def test_takeaways_extracted_into_dedicated_collapsible_section():
+def test_takeaways_extracted_into_dedicated_v2_section():
+    """V2 replaces the collapsible <section class="takeaways"> with a static
+    <section class="block" id="takeaways"> grid. The data still flows from
+    the LLM's `## Key takeaways` markdown bullets."""
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Dedicated takeaways section exists
-    assert 'class="takeaways"' in out
-    assert "takeaways-toggle" in out
-    assert "takeaways-body" in out
-    # The takeaways list does NOT bleed into the main article list
+    assert '<section class="block" id="takeaways">' in out
+    # Three takeaway bullets → three .take cards
     takeaway_section = re.search(
-        r'<section[^>]*class="takeaways"[^>]*>.*?</section>',
+        r'<section class="block" id="takeaways">.*?</section>',
         out, re.DOTALL,
     )
     assert takeaway_section is not None
-    # The h2 "Key takeaways" should not also appear inside the main list area
-    assert out.count("Key takeaways") <= 2  # one in label, maybe one in aria/visible label
-
-
-def test_takeaways_toggle_js_present():
-    out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Toggle handler present
-    assert "takeaways-toggle" in out
-    # JS toggles a class on the body element
-    assert "is-collapsed" in out or "is-hidden" in out
+    cards = re.findall(r'<article class="take">', takeaway_section.group(0))
+    assert len(cards) == 3
 
 
 # ---------------------------------------------------------------------------
@@ -133,14 +180,14 @@ def test_takeaways_toggle_js_present():
 
 def test_synthesis_li_renders_as_card_article():
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    # Each story bullet becomes an <article class="item ..." data-tags="...">
-    assert re.search(r'<article[^>]*class="[^"]*\bitem\b[^"]*"[^>]*data-tags="[A-Z][^"]*"', out)
-    # The card has an explicit title button (tap target)
-    assert re.search(r'<button[^>]*class="[^"]*\bitem-title\b', out)
-    # The card has a So What callout
-    assert 'class="so-what"' in out
-    # The card has a "Read article" button
-    assert "Read article" in out
+    # Each story bullet becomes an <article class="story" data-tags="...">
+    assert re.search(r'<article class="story"[^>]*data-tags="[A-Z][^"]*"', out)
+    # The card's head is the click/keyboard target (role=button on div)
+    assert re.search(r'<div class="story-head"\s+role="button"', out)
+    # The card has a "So what" callout
+    assert 'class="sowhat"' in out
+    # The card has a "Read the article" CTA pill
+    assert "Read the article" in out
 
 
 def test_item_card_carries_data_tags_for_filter():
@@ -180,8 +227,8 @@ def test_render_html_uses_card_layout_with_score_pill():
         _stub_item("arXiv cs.AI", 6.1, "Mid score paper"),
     ]
     out = cf.render_html(items, top_n=2, page_date=date(2026, 5, 2))
-    # Card structure
-    assert re.search(r'<article[^>]*class="[^"]*\bitem\b', out)
+    # V2 card structure (no-summarize path renders through the same builder)
+    assert re.search(r'<article class="story"', out)
     # Score pill (with optional threshold class)
     assert re.search(r'class="score-pill[^"]*"', out)
     # Score value rendered
@@ -191,14 +238,14 @@ def test_render_html_uses_card_layout_with_score_pill():
 
 
 # ---------------------------------------------------------------------------
-# Interaction JS (expand/collapse on item title click)
+# Interaction JS (expand/collapse on story-head click)
 # ---------------------------------------------------------------------------
 
 def test_expand_collapse_js_present():
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    assert "item-title" in out
-    # is-expanded class is the trigger for showing the expanded body
-    assert "is-expanded" in out
+    # V2 toggles a .open class on the .story article
+    assert "story-head" in out
+    assert "'open'" in out or '"open"' in out
 
 
 # ---------------------------------------------------------------------------
@@ -227,43 +274,45 @@ def test_system_prompt_instructs_source_links_in_takeaways():
 
 
 def test_takeaway_links_render_multiple_per_takeaway():
-    """All [label](url) links in a takeaway bullet must surface in the output."""
+    """All [label](url) links in a takeaway bullet must surface as .take-link anchors."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
     # Both links from takeaway 1
     assert "Claude 4 native MCP" in out
     assert "MCP hits 50k" in out
     # Single link from takeaway 2
     assert "EU AI Act update" in out
-    # Spec arrow indicator (link rows end with "↓")
-    assert "↓" in out
+    # V2 spec: each link ends with an arrow → for affordance
+    assert "→" in out
     # No leftover {tags: literal anywhere
     assert "{tags:" not in out
 
 
 def test_takeaway_links_have_navigation_hooks():
-    """Each takeaway link must carry a hook (data-item-url) so JS can scroll/expand."""
+    """Each .take-link carries data-item-url so navigateToItem can intercept
+    and expand the matching story in-page (progressive enhancement)."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
-    # Link rows expose the source URL so navigateToItem() can find the matching card.
     assert "data-item-url" in out
-    # The matching ranked/synthesis card carries the same URL on its read-article link.
+    # The matching synthesis card carries the same URL on its .read link.
     assert "https://simonwillison.net/" in out
 
 
 def test_navigate_to_item_js_present():
-    """navigateToItem must be in the page script — collapses takeaways, scrolls, expands."""
+    """navigateToItem must be in the page script — finds the matching .story
+    via .read href and animates it open."""
     out = cf.wrap_synthesis_html(FIXTURE_LINKS, page_date=date(2026, 5, 2))
     assert "navigateToItem" in out
 
 
-def test_takeaway_count_badge_in_toggle():
-    """Toggle button must show the count of takeaways (Route A spec section 3)."""
+def test_takeaway_count_badge_in_sec_meta():
+    """The V2 section header's .sec-meta mono badge shows the count of takeaways."""
     out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 2))
-    toggle = re.search(
-        r'<button[^>]*class="takeaways-toggle"[^>]*>.*?</button>', out, re.DOTALL,
+    sec_head = re.search(
+        r'<section class="block" id="takeaways">\s*<div class="sec-head">(.*?)</div>',
+        out, re.DOTALL,
     )
-    assert toggle is not None
-    # FIXTURE_MD has 3 takeaway bullets
-    assert "3" in toggle.group(0)
+    assert sec_head is not None
+    # FIXTURE_MD has 3 takeaways → "03" in the mono sec-meta
+    assert "03" in sec_head.group(1)
 
 
 # ---------------------------------------------------------------------------

@@ -47,13 +47,13 @@ def test_synthesis_card_handles_loose_list_with_p_wrapper():
 # --- Bug 2: title button holds ONLY the headline --------------------------- #
 
 def test_synthesis_card_title_button_contains_only_headline():
-    """The .item-title must hold the headline — never the full bullet dump."""
+    """The .story-title must hold the headline — never the full bullet dump."""
     out = cf.wrap_synthesis_html(LOOSE_FIXTURE, page_date=date(2026, 5, 2))
     titles = re.findall(
-        r'<button[^>]*class="item-title"[^>]*>(.*?)</button>',
+        r'<h3 class="story-title">(.*?)</h3>',
         out, re.DOTALL,
     )
-    assert len(titles) == 3, f"expected 3 title buttons, got {len(titles)}"
+    assert len(titles) == 3, f"expected 3 story-title h3s, got {len(titles)}"
     expected_headlines = [
         "xAI launches Grok 4.3",
         "OpenAI restricts GPT-5.5 Cyber",
@@ -75,26 +75,29 @@ def test_synthesis_card_title_button_contains_only_headline():
 # --- Bug 3: source visible in collapsed (default) state -------------------- #
 
 def test_synthesis_card_source_visible_without_expanding():
-    """Source must appear in .meta OUTSIDE .item-body (visible when collapsed)."""
+    """Source must appear in .story-head's .src (visible while collapsed)."""
     out = cf.wrap_synthesis_html(LOOSE_FIXTURE, page_date=date(2026, 5, 2))
     articles = re.findall(
-        r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL,
+        r'<article class="story"[^>]*>(.*?)</article>', out, re.DOTALL,
     )
     assert len(articles) == 3
     expected_sources = ["VentureBeat", "TechCrunch", "Simon Willison"]
     for art, expected in zip(articles, expected_sources):
-        # The .item-body must close before the .meta div.
-        body_m = re.search(r'<div class="item-body">.*?</div>', art, re.DOTALL)
-        assert body_m, "no .item-body in card"
-        after_body = art[body_m.end():]
-        assert 'class="meta"' in after_body, "meta row missing or inside body"
-        assert expected in after_body, f"source {expected} missing from meta"
+        # The story-head precedes story-body and carries the .src label
+        head_m = re.search(
+            r'<div class="story-head"[^>]*>(.*?)</div>\s*<div class="story-body"',
+            art, re.DOTALL,
+        )
+        assert head_m, "no .story-head before .story-body"
+        head = head_m.group(1)
+        assert 'class="src"' in head, "src missing from story-head"
+        assert expected in head, f"source {expected} missing from story-head"
 
 
 # --- Bug 4: read-article is a real <a>, not literal markdown -------------- #
 
 def test_synthesis_card_read_article_is_real_anchor():
-    """Source URL must render as <a class='read-article' href='...'>."""
+    """Source URL must render as <a class='read' href='...'>."""
     out = cf.wrap_synthesis_html(LOOSE_FIXTURE, page_date=date(2026, 5, 2))
     for url in [
         "https://venturebeat.example/grok-43",
@@ -102,25 +105,25 @@ def test_synthesis_card_read_article_is_real_anchor():
         "https://simonwillison.example/codex",
     ]:
         assert re.search(
-            r'<a[^>]*class="read-article"[^>]*href="' + re.escape(url) + r'"',
+            r'<a class="read"\s+href="' + re.escape(url) + r'"',
             out,
-        ), f"no read-article anchor for {url}"
+        ), f"no .read anchor for {url}"
 
 
 # --- Bug 5: every bullet gets a full structured card ----------------------- #
 
 def test_multiple_synthesis_items_all_get_structured_cards():
-    """Every bullet must produce .item-body + .so-what + .read-article + .source."""
+    """Every bullet must produce .story-body + .sowhat + .read + .src."""
     out = cf.wrap_synthesis_html(LOOSE_FIXTURE, page_date=date(2026, 5, 2))
     articles = re.findall(
-        r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL,
+        r'<article class="story"[^>]*>(.*?)</article>', out, re.DOTALL,
     )
     assert len(articles) == 3
     for i, art in enumerate(articles, 1):
-        assert 'class="item-body"' in art, f"card {i} missing item-body"
-        assert 'class="so-what"' in art, f"card {i} missing so-what callout"
-        assert 'class="read-article"' in art, f"card {i} missing read-article CTA"
-        assert 'class="source"' in art, f"card {i} missing source meta"
+        assert 'class="story-body"' in art, f"card {i} missing story-body"
+        assert 'class="sowhat"' in art, f"card {i} missing sowhat callout"
+        assert 'class="read"' in art, f"card {i} missing read CTA"
+        assert 'class="src"' in art, f"card {i} missing src label"
 
 
 # --- Bug 6: nothing — and I mean nothing — leaks raw markdown -------------- #
@@ -151,7 +154,7 @@ def test_synthesis_card_strips_unmatched_bold_marker_from_title():
 """
     out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
     titles = re.findall(
-        r'<span class="item-title-text">(.*?)</span>',
+        r'<h3 class="story-title">(.*?)</h3>',
         out, re.DOTALL,
     )
     assert titles, "no titles rendered at all"
@@ -172,6 +175,7 @@ def test_build_card_html_strips_asterisks_from_title_directly():
     )
     assert "**" not in out, "raw `**` leaked from _build_card_html title"
     assert "Simon Willison newsletter: Opus 4" in out
+    assert 'class="story"' in out
 
 
 # --- Bug 9: cards with no body, no so-what, no url AND no source are skipped — #
@@ -196,7 +200,7 @@ def test_empty_synthesis_card_is_skipped_entirely():
 
     # And a normal card still renders.
     out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
-    articles = re.findall(r'<article class="item"[^>]*>', out)
+    articles = re.findall(r'<article class="story"[^>]*>', out)
     assert len(articles) == 1
 
 
@@ -238,8 +242,8 @@ def test_synthesis_card_drops_non_http_source_links():
         source_name="Source",
     )
     assert "javascript:" not in out
-    assert 'class="read-article"' not in out
-    assert 'class="source"' in out
+    assert 'class="read"' not in out
+    assert 'class="src"' in out
 
 
 # --- Bug 10: generic LLM link labels get a useful source, not literal "Source" — #
@@ -267,13 +271,14 @@ def test_generic_link_label_falls_back_to_useful_source_name():
     placeholder word."""
     out = cf.wrap_synthesis_html(GENERIC_LABEL_FIXTURE, page_date=date(2026, 5, 6))
     articles = re.findall(
-        r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL,
+        r'<article class="story"[^>]*>(.*?)</article>', out, re.DOTALL,
     )
     assert len(articles) == 4
 
     sources_in_meta = []
     for art in articles:
-        m = re.search(r'<span class="source">([^<]+)</span>', art)
+        # V2 shows the short source label in .src (visible while collapsed)
+        m = re.search(r'<span class="src">([^<]+)</span>', art)
         sources_in_meta.append(m.group(1) if m else None)
 
     # Literal placeholder words must never reach the rendered .source span.
@@ -299,7 +304,7 @@ def test_real_source_names_are_preserved_unchanged():
 - **Headline** — Body. **So what:** Implication. [Stratechery](https://stratechery.com/2026/x/) {tags: Enterprise}
 """
     out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 6))
-    m = re.search(r'<span class="source">([^<]+)</span>', out)
+    m = re.search(r'<span class="src">([^<]+)</span>', out)
     assert m and m.group(1) == "Stratechery"
 
 
@@ -314,10 +319,10 @@ def test_synthesis_card_without_url_omits_read_article_link():
 - **Anna's Archive on llms.txt** — Detailed post on structuring web content for AI retrieval. **So what:** PMs should note emerging norms around llms.txt as a potential standards vector. {tags: Research}
 """
     out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 23))
-    articles = re.findall(r'<article class="item"[^>]*>(.*?)</article>', out, re.DOTALL)
+    articles = re.findall(r'<article class="story"[^>]*>(.*?)</article>', out, re.DOTALL)
     assert len(articles) == 1, f"expected 1 card, got {len(articles)}"
-    assert 'class="read-article"' not in articles[0], (
-        "card without a URL should not emit a read-article link"
+    assert 'class="read"' not in articles[0], (
+        "card without a URL should not emit a .read pill"
     )
 
 
