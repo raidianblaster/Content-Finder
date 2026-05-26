@@ -115,6 +115,23 @@ def test_v2_sowhat_callout_renders_when_so_what_present():
     assert out.count('class="sowhat-label">So what</') == 2
 
 
+def test_v2_sowhat_body_wraps_in_paragraph_for_separation():
+    """The So-what body text must be wrapped in a <p class="sowhat-body">
+    (not appended as a bare text node) so the label-to-body separation
+    comes from native paragraph rhythm, not a fragile margin tweak."""
+    out = cf._build_card_html(
+        item_id=1,
+        data_tags="Models",
+        title="Headline",
+        snippet="Body sentence.",
+        so_what="The implication that matters here.",
+        url="https://example.com/x",
+        source_name="Example",
+    )
+    assert '<p class="sowhat-body">The implication that matters here.</p>' in out, \
+        "So-what body should be wrapped in <p class=\"sowhat-body\">"
+
+
 def test_v2_sowhat_callout_omitted_when_so_what_empty():
     """Per CLAUDE.md / V2 spec: hide the amber callout entirely when there's
     no so-what text rather than rendering an empty box."""

@@ -865,11 +865,18 @@ footer.site-footer a:hover { color: var(--accent); }
   line-height: 1.55;
 }
 .sowhat-label {
-  display: inline-block;
+  display: block;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+}
+.sowhat-body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg);
+  text-wrap: pretty;
 }
 .story-actions {
   display: flex; align-items: center; justify-content: space-between;
@@ -1534,7 +1541,7 @@ def _build_card_html(
         body_blocks.append(
             '<div class="sowhat">'
             '<div class="sowhat-label">So what</div>'
-            f'{so_what}'
+            f'<p class="sowhat-body">{so_what}</p>'
             '</div>'
         )
     action_parts = []
