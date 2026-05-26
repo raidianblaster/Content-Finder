@@ -26,19 +26,51 @@ def test_html_css_includes_v2_design_tokens():
     assert "#14141c" in css
 
 
-def test_section_label_uses_v2_neutral_not_legacy_purple():
-    """The section labels emitted by _render_synthesis_sections (Top Story,
-    Models & Capabilities, etc.) must paint in a V2 neutral (--fg-3) — not
-    the legacy --purple. The .section-label CSS rule is the load-bearing one
-    because it's actually emitted into the rendered output for every digest.
-    """
+def test_synthesis_sections_use_v2_sec_head_markup():
+    """Story-section headers (Top Story / Models & Capabilities / etc.) must
+    use the same V2 .sec-head + .sec-title + .sec-meta markup as Key takeaways.
+    A tiny mono "section-label" divider is visually inconsistent with the
+    section pattern set by the takeaways block."""
+    md = """## Key takeaways
+- one
+- two
+- three
+
+## Top story
+- **Five Eyes** — body. **So what:** implication. [Five Eyes](https://example.com/five-eyes) {tags: Regulation}
+
+## Models & capability releases
+- **Mistral 3.5** — body. **So what:** implication. [Mistral](https://mistral.ai) {tags: Models}
+- **Llama 4** — body. **So what:** implication. [Meta](https://meta.ai) {tags: Models}
+"""
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 26))
+    # Each story section is wrapped in <section class="block"> with the same
+    # .sec-head pattern Key takeaways uses.
+    assert out.count('<section class="block"') >= 3, \
+        "expected one section.block per category (takeaways + top story + models)"
+    assert '<h2 class="sec-title">Top Story</h2>' in out
+    assert '<h2 class="sec-title">Models &amp; Capabilities</h2>' in out
+    # Section meta shows the count of stories in that section
+    assert re.search(
+        r'<h2 class="sec-title">Models &amp; Capabilities</h2>\s*<span class="sec-meta">[^<]*2 stories',
+        out,
+    ), "Models section should show '2 stories' in its sec-meta"
+    assert re.search(
+        r'<h2 class="sec-title">Top Story</h2>\s*<span class="sec-meta">[^<]*1 story[^s]',
+        out,
+    ), "Top Story section should show '1 story' (singular) in its sec-meta"
+
+
+def test_section_headers_use_v2_neutral_not_legacy_purple():
+    """The story-section headers (Top Story, Models & Capabilities, etc.)
+    now render via .sec-title + .sec-meta — neither rule should reference
+    --purple."""
     css = cf.HTML_CSS
-    # Pull out the .section-label block specifically and assert no var(--purple)
-    m = re.search(r'\.section-label\s*\{[^}]*\}', css)
-    assert m, ".section-label CSS rule missing"
-    block = m.group(0)
-    assert "var(--purple)" not in block, \
-        ".section-label still references --purple — should use V2 fg/accent token"
+    for selector in [".sec-title", ".sec-meta"]:
+        m = re.search(rf'{re.escape(selector)}\s*\{{[^}}]*\}}', css)
+        assert m, f"{selector} CSS rule missing"
+        assert "var(--purple)" not in m.group(0), \
+            f"{selector} references --purple — should use V2 token"
 
 
 def test_css_uses_warm_amber_accent():

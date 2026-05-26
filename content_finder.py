@@ -1018,24 +1018,8 @@ section.block:last-of-type { border-bottom: 0; }
   section.block { padding: 40px 0; }
 }
 
-/* Article list + section labels — V2 mono uppercase divider rule */
+/* Article list — wraps the per-section <section class="block"> groups */
 .article-list { padding-bottom: 24px; }
-.section-label {
-  padding: 32px 0 12px;
-  display: flex; align-items: center; gap: 12px;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 12px; font-weight: 500;
-  color: var(--fg-3);
-  letter-spacing: 0.1em; text-transform: uppercase;
-  background: transparent;
-}
-.section-label::before {
-  content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
-}
-.section-label::after {
-  content: ""; flex: 1; height: 1px; background: var(--line);
-}
 
 /* Score pill + resurfacing badge — used by the no-summarize --no-summarize path */
 .score-pill {
@@ -1774,14 +1758,36 @@ def render_takeaways_section(
 
 
 def _render_synthesis_sections(rest_sections: list[tuple[str, str]]) -> tuple[str, int]:
+    """V2: each topical section is its own <section class="block"> with the
+    same .sec-head + .sec-title + .sec-meta pattern Key takeaways uses.
+
+    sec-meta shows a zero-padded section number + count of stories
+    ("01 · 1 story", "02 · 3 stories") for visual rhythm.
+    """
     parts: list[str] = ['<div class="article-list">']
     item_id = 0
+    sec_no = 0
     for title, content in rest_sections:
         label = _section_display_label(title)
-        parts.append(f'<div class="section-label">{html.escape(label)}</div>')
+        # Parse cards for this section first so we know the count.
+        section_cards: list[str] = []
         for li_m in _BODY_LI_OUTER_RE.finditer(content):
             item_id += 1
-            parts.append(_parse_synthesis_li(li_m.group(0), item_id))
+            section_cards.append(_parse_synthesis_li(li_m.group(0), item_id))
+        if not section_cards:
+            continue
+        sec_no += 1
+        n = len(section_cards)
+        sec_meta = f"{sec_no:02d} · {n} stor{'y' if n == 1 else 'ies'}"
+        parts.append('<section class="block">')
+        parts.append('<div class="sec-head">')
+        parts.append(f'<h2 class="sec-title">{html.escape(label)}</h2>')
+        parts.append(f'<span class="sec-meta">{sec_meta}</span>')
+        parts.append('</div>')
+        parts.append('<div class="stories">')
+        parts.extend(section_cards)
+        parts.append('</div>')
+        parts.append('</section>')
     parts.append('</div>')
     return "".join(parts), item_id
 
