@@ -134,7 +134,12 @@ def run_judge(
         f"Return at most {k} suspect_drops and {k} suspect_keeps.\n\n{prompt}"
     )
 
-    msg = client.messages.create(
+    from tracing import traced_message
+    msg = traced_message(
+        client,
+        call_site="judge",
+        prompt_version=JUDGE_PROMPT_VERSION,
+        trace_path=root / "docs" / "logs" / "traces.jsonl",
         model="claude-haiku-4-5-20251001",
         max_tokens=4096,
         system=JUDGE_SYSTEM,
