@@ -101,8 +101,24 @@ After that, every click on a keep/drop/unsure button schedules a debounced commi
 
 ## Roadmap
 
-`ROADMAP.md` is the source of truth. Phase 1 ("now") items still open:
-1. Cross-day deduplication via a `seen.json` state file (today's hot story shouldn't resurface for 5 days).
-2. Move `RSS_SOURCES` / `HN_QUERIES` / `KEYWORD_WEIGHTS` into a `sources.yml` so they're editable from the GitHub mobile web UI on iPad without a Python edit.
+`ROADMAP.md` is the source of truth — a single **unified** roadmap (vision, a
+six-milestone trunk, and optional side quests). The three prior roadmaps (v1
+product, v2 learning ladder, v3 self-improving) are consolidated there and archived
+under `roadmap-archive/` for provenance.
 
-Anti-features (deliberately out of scope): native mobile app, multi-user, comments, real-time push.
+Trunk: **M0** Foundations (tracing, log score features / issue #9) → **M1** eval
+harness + gold set → **M2** self-learning core (self-tuning scorer, structured-output
+synthesis, eval-gated prompts) → **M3** memory (episodic; optional knowledge graph) →
+**M4** agentic core (deep-research agent, multi-agent rollup, source-scout, MCP
+server) → **M5** self-improving + edge capstone. Minimal first loop: **issue #9 →
+eval harness → self-tuning scorer**.
+
+Both former Phase 1 "now" items (cross-day dedup; `sources.yml`) are **landed**.
+
+Note: `ROADMAP.md` §3 defines where two constraints below intentionally bend *later* —
+the Anthropic-key path (key-free stays the CI gate + fallback) and the no-backend
+ceiling (relaxed only at the M5 edge capstone). Those constraints remain in force
+until that work ships.
+
+Anti-features (deliberately out of scope): native mobile app, multi-user, comments,
+real-time push. The full merged anti-feature list lives in `ROADMAP.md` §9.

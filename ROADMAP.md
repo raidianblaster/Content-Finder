@@ -1,262 +1,519 @@
 # Content Finder — Roadmap
 
-Brainstormed feature plan for the agentic-AI digest tool. Organised by
-category, then phased by suggested order of work.
+> **This is the single source of truth.** It supersedes and consolidates the
+> three prior roadmaps:
+> - `ROADMAP.md` (v1) — product value (a more useful daily digest)
+> - `ROADMAP-v2.md` — a six-rung agentic-engineering learning ladder
+> - `ROADMAP-v3.md` — making the system self-improving
+>
+> Nothing was dropped silently — §10 (Coverage Map) shows where every item from
+> all three landed. The three prior roadmaps are archived under `roadmap-archive/`
+> (`ROADMAP-v1.md`, `ROADMAP-v2.md`, `ROADMAP-v3.md`).
 
 ---
 
-## 1. Ranking & relevance
+## 1. Vision & North Star
 
-Current scorer: keyword match + recency + source-trust + HN points.
+**Content Finder is a personal agentic-AI news analyst that is also a hands-on lab
+for building agentic, self-improving systems.**
 
-- **Cross-day deduplication.** Today's Stratechery piece resurfaces for days as feeds catch up. Two-stage check inside a 72-hour window:
-  1. **Canonical URL match** — strip UTM params, fragments, mobile prefixes (`m.`, `amp.`), trailing slashes; compare normalised URLs.
-  2. **SimHash over title + summary** — catches the same story rewritten by aggregators. Configurable Hamming-distance threshold; log dedup metrics in the run summary.
-  State lives in `seen.json` (or a single sqlite file with hand-written DDL once it grows past trivial).
-- **Source diversity cap.** Limit each source to N items per digest so one hot day on Simon Willison doesn't take 7 of the top 10.
-- **Cluster detection.** When N sources cover the same news, merge into one entry with all source links. Trending sub-section uses **z-score on rolling 7- and 30-day theme frequency** to flag heating-up vs cooling-down topics — not just "multiple sources today."
-- **Personalised weights.** A `weights.local.yml` you tune over time ("boost regulation +2, demote AI coding tools -1"). No ML, just config.
-- **Source credibility scoring v1.** Replace the static `+3/+2/+1` trust weights with computed per source: **timeliness** (lead vs lag on stories that later cluster), **originality** (broke vs aggregated), **signal density** (claims per token in structured summaries), **feedback-weighted accuracy** (from §5 hype-filter agreement). Use scores to weight items in synthesis. Static weights stay as the seed/fallback.
-- **Click-feedback loop.** Track which items you actually open, learn from it. (Needs frontend instrumentation; later.)
-- **Filter-log review harness — 3 stages.** A semi-automated loop for catching filtering mistakes and iterating on the synthesis prompt.
-  - **Stage 1 (landed, PR #7).** Per-run filter log at `docs/logs/<date>.json` plus a labelable HTML page at `docs/review/<date>.html` (built by `review.py`). Verdicts persist in localStorage and export as `feedback/<date>.jsonl`.
-  - **Stage 2 (landed, PRs #8 + #10).** Haiku judge in `judge.py` triages the long tail and writes `docs/review/<date>.judge.json`; suspect cards get highlighted server-side in the review HTML. Surfaces likely false-negatives (good items dropped by keyword/source-cap) and likely false-positives (low-quality items in `final`).
-  - **Stage 3 (pending — see below).** Side-by-side prompt-replay comparing versions of `prompts/synthesis_system.md` against labelled `final` items.
-  - **Blocked on data, not code.** Stage 3 needs a labelled golden set to compare prompts against. Use the harness first; label ≥30 items across a week before building. Issue [#9](https://github.com/raidianblaster/Content-Finder/issues/9) (logging item summaries) is the one cheap prep-work item to land in parallel so feedback rows carry the full text the synthesis prompt would see.
+It serves two goals at once, and refuses to trade one for the other:
 
-### Stage 3 spec — prompt-replay (next implementation)
+1. **Keep an AI PM current** on agentic-AI / LLM news, at PM/strategy altitude,
+   in a regulated corporate environment.
+2. **Teach agentic AI engineering by building it** — each step puts one concept
+   under your hands and makes the system measurably more autonomous.
 
-New file `compare_prompts.py`. CLI: `python compare_prompts.py <date> <promptA.md> <promptB.md>`.
+The two goals are unified by one rule (the **do-no-harm gate**, §3): every change
+must leave the daily digest at least as useful as it found it. You never burn your
+news utility to chase a learning exercise — the learning *rides on top of* a digest
+that stays good.
 
-- Reads `docs/logs/<date>.json` and `feedback/<date>.jsonl` (if present).
-- Loads both prompt files. Bumps `PROMPT_VERSION` only on user-accepted promotion — comparisons are tagged with a transient version string (`v1`, `v1+exp`) so they don't pollute attribution in past digests.
-- Re-runs `synthesize_with_claude()` against that day's `final` items twice, once per prompt. The model is Sonnet/Haiku — same as production synthesis, not Haiku-the-judge.
-- Writes `experiments/<date>/<promptA>_vs_<promptB>.html` with two-column layout, per-bullet 👍/👎/skip buttons backed by localStorage.
-- Verdicts export to `feedback/prompts.jsonl` (separate stream from the item feedback). Each line: `{date, prompt_a, prompt_b, bullet_id, item_url, preferred: "a"|"b"|"neither", note, labelled_at}`.
-- Acceptance: side-by-side renders for a real day, both columns are clearly attributed to their prompt version, verdicts round-trip through localStorage.
+### The 1.0 end-state
 
-Defer (Stage 3.5, optional): aggregating `feedback/prompts.jsonl` into a "which prompt wins" report; auto-promoting a new prompt to `synthesis_system.md` after N wins.
+A system that, with a human holding every promotion gate:
+- **learns your taste** from the keep/drop feedback you already collect,
+- **researches** the day's top story with a multi-step agent (Exa-backed),
+- **expands its own sources** by discovering and proposing new feeds,
+- **evolves its own prompts**, drafting and eval-testing candidates,
+- **remembers and connects** stories across time (episodic + semantic memory),
+- **serves an agentic RAG endpoint** at the edge, and
+- **reviews itself** weekly and proposes its own next steps.
 
-#### How to use Stage 3 (once built)
+Everything below is the path from where the project is today to that end-state.
 
-This is the prompt-iteration loop you'll come back to whenever you want to improve `prompts/synthesis_system.md`. Built around the same labelling muscle as the review harness — you read two outputs side by side and click which is better.
+---
 
-**When to reach for it:** you've read a week of digests and noticed the per-item bullets miss something specific (e.g. governance signals are too vague, or claims aren't being challenged). Open `synthesis_system.md`, draft a candidate edit, save it next to the original.
+## 2. How to read this roadmap
 
-**Prerequisites:**
-- Anthropic API key in env (`ANTHROPIC_API_KEY`) — this runs Claude twice per day's items, so it costs ~$0.10–0.30 per comparison day. Not free, not expensive.
-- Run from the laptop, not phone — API key isn't on mobile.
-- At least one day's worth of `final` items (i.e. a normal `docs/logs/<date>.json` exists).
-- Two prompt files to compare. Convention: keep candidates as `prompts/synthesis_system_<short-name>.md` (e.g. `synthesis_system_v2-claims-led.md`).
+The plan is a **trunk** with optional **branches**.
 
-**Run:**
+- **The Trunk (§6)** is the main quest: an ordered critical path, Milestones 0–5.
+  Each milestone produces an artifact the next one consumes. Do these in order.
+- **Side Quests (§7)** are optional branches: product polish, extra delivery
+  channels, role-specific tools. They hang off the trunk, never block it, and can
+  be picked up any time the mood strikes.
 
-```bash
-.venv/bin/python compare_prompts.py 2026-05-21 \
-  prompts/synthesis_system.md \
-  prompts/synthesis_system_v2-claims-led.md
-```
+Every **trunk** item carries a one-line annotation:
 
-Writes `experiments/2026-05-21/synthesis_system_vs_v2-claims-led.html`.
+> *agency level · concept taught · news value · effort · cost · constraint touched · success metric*
 
-**Label:** open the HTML in a browser. For each item, two bullets are shown side by side, A on the left and B on the right. Three buttons per row: 👍 A · 👍 B · skip. Click whichever is better, or skip if they're equivalent / both bad. Verdicts auto-save to `feedback/prompts.jsonl` via the same PAT mechanism as the review page (one-time settings setup if you haven't done it on this device).
+**Agency ladder** (the autonomy axis the trunk climbs):
+`L0` scripted · `L1` LLM-in-the-loop · `L2` tool-using agent · `L3` self-evaluating ·
+`L4` self-improving (human-gated).
 
-**Decide:**
-- Run the comparison on 3–5 different days, not just one — picks vary with item mix.
-- Tally the result. If B wins ≥60% of non-skipped rows across the days, promote it: `cp prompts/synthesis_system_v2-claims-led.md prompts/synthesis_system.md`, bump `PROMPT_VERSION` in `content_finder.py`, commit.
-- If it's close (50/50), the diff isn't doing what you thought. Re-read the bullets where A won and ask why — usually the prompt change had a side-effect.
-- If B loses, archive the candidate file (don't delete — `git log` is your prompt-experiment history).
+"More agentic and self-learning" = climb toward **L4 with a human at the promotion
+gate**. The gate is non-negotiable in a regulated context.
 
-**Output shape locked.** Both prompts must read/write the per-item summary schema in CLAUDE.md (`{tldr, what_changed, why_it_matters, claims[], code_or_api_changes[], numbers[], governance_signals[], open_questions[]}`). The side-by-side renders the same field for both, so a meaningful comparison requires both prompts populate the same fields.
+---
 
-**Stage 3.5 makes this faster** — once `feedback/prompts.jsonl` has ~50+ rows, a small aggregator will rank candidates without your having to count by hand.
+## 3. Principles (load-bearing)
 
-## 2. Tags & topic sorting
+1. **Do-no-harm-to-the-daily gate.** `python content_finder.py --no-summarize`
+   stays green in CI as a regression test — it's your guaranteed-free news utility.
+   New agentic features are **additive / opt-in** until their eval beats baseline.
+2. **TDD for deterministic code, EDD for probabilistic code.** Keep the repo's
+   test discipline. Add **Eval-Driven Development**: no scoring or prompt change
+   merges without an eval delta (§6, Milestone 1). "Vibe-checked it" is not a merge
+   criterion.
+3. **Human-gated autonomy.** Self-tuning, prompt promotion, source additions, and
+   the self-review agent all stop at a PR / approval. L4 means *human-gated*
+   self-improvement — never auto-merge to `main`.
+4. **Three memory types.** The memory work spans the full taxonomy:
+   *episodic* (what happened — Milestone 3.1), *semantic* (facts & relations —
+   3.2), *procedural* (how to judge — the self-tuning scorer, 2.1).
+5. **Retrieval tools ≠ model swaps.** Search/retrieval APIs (Exa: neural search,
+   `find_similar`, content fetch) are **tools** and are allowed. Non-Anthropic
+   *answer engines* (Perplexity Sonar) are allowed **only** as scoped research
+   tools whose output Claude consumes, or as eval comparisons — **never** as the
+   synthesis/reasoning layer. This preserves the Anthropic-only synthesis rule
+   while still letting you learn from other retrieval paradigms.
+6. **No agent frameworks.** Use the Anthropic SDK tool-use directly. LangChain /
+   CrewAI / AutoGen hide the exact mechanics this roadmap teaches.
 
-Three tiers:
+### Constraints — which bend, which don't
 
-- **Tier 1 (cheap, no LLM):** keyword-table auto-tagging. Categories: `Models · Agents · Tooling · Regulation · Enterprise · Research · Hot-take`.
-- **Tier 2 (with LLM):** Claude assigns 1–3 tags from a fixed taxonomy. Better quality, ~$0.001/item.
-- **Tier 3:** filter chips at the top of the HTML page (CSS+JS, no backend). Per-tag RSS feeds for power users.
+| Constraint (from `CLAUDE.md`) | Stance |
+|---|---|
+| "No backend / PWA is the ceiling." | **Relaxed only at the edge capstone** (Milestone 5.2). Pages remains the daily home; the Worker is additive. |
+| "No Anthropic key in regular use." | **Key-free path stays as CI gate + fallback.** New features assume a key; the daily cron never breaks if the key is revoked. |
+| "Regulated env — only public news, nothing private outbound." | **Inviolate.** Every loop here touches only public RSS/HN/web + your own keep/drop labels. Exa/Sonar queries are public-topic, no private data. |
 
-## 3. Easier source management
+---
 
-- Move `RSS_SOURCES`, `HN_QUERIES`, `KEYWORD_WEIGHTS` from Python into a `sources.yml` config. Editable from the GitHub mobile web UI on iPad.
-- A `--add-source <URL>` command that auto-discovers the feed, validates it, appends to `sources.yml`, and commits.
-- A weekly health-check job that flags feeds returning errors or zero items in 14 days. Concrete shape: per-source `last_success_at`, `consecutive_failures`, ETag/`Last-Modified` for conditional GETs, and a green/yellow/red flag surfaced in the run summary. Required input for the unsubscribe dashboard (Phase 9).
-- **Suggested additions** to evaluate: arXiv cs.AI, Dwarkesh Podcast, Stratechery (headlines), Last Week in AI, Ben's Bites, NIST AI RMF blog, EU AI Office, GitHub release feeds for `anthropics/`, `openai/`, `langchain-ai/`.
+## 4. Status — what's already landed
 
-## 4. Frontend
+Start from reality. These are done; the roadmap does not re-list them as future work.
 
-Ranked by impact per hour of effort:
+| Capability | Status | Evidence |
+|---|---|---|
+| Cross-day dedup | **Landed** | `dedup-state.json`, `canonical_url()`, `filter_unseen()` |
+| `sources.yml` config | **Landed** | `load_sources()`, mobile-editable |
+| Source diversity cap | **Landed** | `apply_source_cap()` (default 3) |
+| Filter log per run | **Landed** | `docs/logs/<date>.json` + `latest.json` |
+| Review / labelling page | **Landed** | `review.py`, PAT auto-save → `feedback/<date>.jsonl` |
+| Haiku judge triage | **Landed + in CI** | `judge.py`, runs in `daily.yml` |
+| Tags + chip filter bar | **Landed** | `TAG_TAXONOMY`, chip JS |
+| Reading-time estimate | **Partial** | `estimated_read_minutes()` exists; UI display is a side quest |
+| LLM synthesis (opt-in) | **Landed** | `synthesize_with_claude()` (`claude-sonnet-4-6`), `PROMPT_VERSION="v1"` |
+| Skill handoff seam | **Landed** | `latest.json` / `latest.judge.json` feed the *Hermes Discovery Queue* skill |
 
-- **Filter chips for tags** — biggest UX upgrade once tags exist.
-- **Search across archive** — pure client-side JS over a JSON index.
-- **Reading-time estimate** on each item.
-- **og:image previews** — pulled thumbnails; makes the page feel like a feed reader.
-- **PWA manifest** — installs as a real app on iOS/iPadOS with offline caching of last 7 digests.
-- **Sticky filter bar + keyboard nav** (j/k) for iPad keyboard.
-- **"Trending" section** at top — items where multiple sources converged today.
-- **Dark mode toggle** (currently auto-only) + font-size control.
+**The unrealized asset:** you collect a labelled preference stream daily and a judge
+flags mistakes — but nothing reads them back into the pipeline. The flywheel is
+built and *not spinning*. The trunk spins it.
 
-## 5. LLM annotation layer (the killer feature)
+**The one cheap prerequisite:** open issue **#9** (log the `summary` + score
+components into the filter log + JSONL). A feedback row currently knows the verdict
+and final `score`, but not the features the model saw — and you can't learn weights
+from labels without the features. It's Milestone 0.2 for exactly this reason.
 
-Requires Anthropic API key (~$2–5/month at this volume).
+---
 
-- **Per-item "PM angle"** — one-line synthesis: *"Why this matters: signals enterprise vendors are bundling agent infra — relevant to your buy-vs-build evaluation."* For a PM who can't play with tools firsthand, this annotation is the product. Without it the tool is yet another feed reader; with it, it's a personal AI industry analyst.
-  - **Output shape is locked.** Use Anthropic tool-use to enforce a JSON schema per item: `{tldr, what_changed, why_it_matters, claims[], code_or_api_changes[], numbers[], governance_signals[], open_questions[]}`. Stored alongside the item; rendered as the "PM angle" line plus collapsible detail. Free-form text is a dead end — every later feature (citations, trends, credibility scoring, weekly rollup) reads from this shape.
-- **Hype filter** — Claude badges vendor PR / overhype vs substantive reporting (🎙️ marketing vs 🔬 substantive).
-- **Weekly exec summary** every Friday — 5-bullet "what changed in agentic AI this week," shareable in team chat / LinkedIn.
-- **Q&A over the archive** — "What's happened with MCP adoption since January?" — answers from indexed past digests.
-
-## 6. Multi-channel delivery
-
-- **Email digest** (parallel) — morning inbox delivery, no bookmark needed.
-- **Telegram / Signal bot** for breaking-news threshold (score > 25).
-- **iOS Shortcut + Widget** — home-screen widget with today's top 3 headlines.
-- **Export to Readwise / Notion** for starred items.
-
-## 7. Weekly rollup layer (Simon Willison `monthly/` pattern)
-
-Inspired by the `monthly/` Django app in `simonw/simonwillisonblog`. Simon
-runs two layers of content at different cadences:
-
-| Layer | Cadence | Form | Audience use |
-|---|---|---|---|
-| Blog entries | Many per day | Atomic, raw | Power readers, RSS, search |
-| Monthly newsletter | Once a month | Curated, narrative | Casual readers, inbox, sharing |
-
-The newsletter isn't a separate system — it's a periodic rollup of the same
-content, stored as `(subject, body_markdown, sent_at)` with a public archive.
-
-### Why this matters for Content Finder
-
-The daily digest helps the user stay current. A weekly rollup does two
-additional jobs the daily can't:
-
-1. **Synthesis.** Reduces a week of activity into "here's what mattered."
-2. **Shareability.** A polished weekly doc can be forwarded inside the org,
-   posted on LinkedIn, or dropped in a team chat — a feed-reader page never
-   is. For an AI PM in a regulated environment, this is a credibility
-   artefact, not just a personal info source.
-
-### Proposed shape
+## 5. Tech tree
 
 ```
-docs/
-├── index.html              ← daily digest (existing)
-├── archive/                ← daily archive (existing)
-├── weekly/                 ← NEW
-│   ├── index.html          ← list of past weekly editions
-│   └── 2026-W18.html       ← each weekly rollup, ISO-week named
-└── archive.html
+            ┌──────────────────────────────────────────────────────────────┐
+ FOUNDATION │  M0 See & Measure ──▶ M1 The Ruler ──▶ M2 Self-Learning Core  │
+            └──────────────────────────────────────────────────────────────┘
+                                                              │
+                          (M2 = minimal first loop: #9 ▶ eval harness ▶ self-tuning scorer)
+                                                              ▼
+            ┌──────────────────────────────────────────────────────────────┐
+   MEMORY   │  M3 Memory: episodic ──┬── (optional fork) semantic / KG       │
+            └────────────────────────┼─────────────────────────────────────┘
+                                      ▼
+            ┌──────────────────────────────────────────────────────────────┐
+   AGENTIC  │  M4 Agentic Core:                                              │
+    CORE    │   research agent (Exa) · weekly rollup+reflection · source-    │
+            │   scout (Exa) · MCP server+routing · [opt] Exa discovery fetch │
+            └──────────────────────────────────────────────────────────────┘
+                                      ▼
+            ┌──────────────────────────────────────────────────────────────┐
+ SELF-IMPR  │  M5 Self-Improving & Capstone:                                 │
+ & CAPSTONE │   prompt-optimizer · agentic RAG @ edge · actions/drills ·     │
+            │   meta self-review agent                                       │
+            └──────────────────────────────────────────────────────────────┘
+
+  OPTIONAL BRANCHES (pick anytime, never block the trunk):
+   ├─ Product/UX ........ og:image · search · dark mode · PWA · keyboard · trending
+   ├─ Delivery .......... email · Telegram/Signal alert · iOS widget · Readwise/Notion
+   ├─ Newsletter consol.. import · feed health · confidence-confirm · unsubscribe dash
+   │                       (consumes M4 source-scout)
+   ├─ Role-specific ..... regulation tracker · vendor log · glossary · talking points
+   └─ Retrieval bake-off  Exa neural vs HN keyword vs Sonar (uses M1 harness)
 ```
 
-- Second GitHub Action runs **Sundays 07:00 HKT** (`0 23 * * 6` UTC).
-- Scans the last 7 days of `docs/archive/*.html`, extracts all items.
-- Two output modes:
-  - **Heuristic (no API key):** clusters by tag, picks top-N per cluster, structured "this week in agentic AI" page. Predictable but list-shaped.
-  - **LLM (with API key):** feeds the week's items to Claude with a "newsletter for an AI PM in regulated industry" prompt. Genuine narrative prose — the unlock.
-- Optional email-out via Resend / Gmail. Newsletter format reads far better in inbox than a feed page.
+---
 
-### Why this collapses several roadmap items
+## 6. The Trunk — main progression
 
-This feature naturally absorbs three items previously in separate phases:
+### Milestone 0 — Foundations: "See & Measure"
+*Goal: be able to observe the system and prove you didn't regress it — before changing anything.*
 
-- "Weekly exec summary" (was Phase 3)
-- "Email channel" (was Phase 4)
-- "Talking-points generator" (was Phase 4)
+**0.1 · Tracing & cost ledger**
+One JSONL trace row per LLM call (`docs/logs/traces.jsonl`): `ts, call_site, model,
+prompt_version, input_tokens, output_tokens, cost_usd, latency_ms, ok`. A `traces`
+CLI prints a daily cost/latency rollup.
+> *L0 · LLM observability · news: indirect · ~2h · ~$0 · constraint: none · metric: every `judge.py` + `synthesize_with_claude` call appears in the ledger.*
 
-…all become outputs of the same weekly job, leaning on the daily archive
-already accumulating in the repo. The longer the daily runs, the better the
-weekly rollup gets — no rework.
+**0.2 · Log score features (issue #9)**
+Add `summary` + the per-component score breakdown (`keyword_score`, `recency`,
+`src_bonus`, `hn_bonus`) to `_item_log_dict()`; propagate to the JSONL.
+> *L0 · feature logging for learning · news: indirect · ~1h · ~$0 · constraint: none · metric: a feedback row reconstructs the exact feature vector the scorer saw. **Unblocks the entire Learn track.***
 
-### Trigger condition
-
-The heuristic-only version is mostly a longer daily digest — not actually
-more shareable. The Claude-narrated version is the unlock. **This feature is
-the natural trigger for getting an Anthropic API key**, since the daily can
-remain key-free indefinitely but the weekly's value is mostly in synthesis.
+**0.3 · Adopt the gate + EDD** (practice, not code)
+Wire `--no-summarize` into CI as the do-no-harm regression test; establish the
+"no scoring/prompt change without an eval delta" rule.
+> *L0 · engineering discipline · news: protects it · ~1h · ~$0 · constraint: formalizes the key-free fallback · metric: CI fails if the key-free daily path breaks.*
 
 ---
 
-## 8. Role-specific bonuses (AI PM in regulated industry)
+### Milestone 1 — "The Ruler"
+*Goal: a way to measure better-vs-worse, so every later change is decidable.*
 
-- **Regulation tracker page** — separate sub-page only watching AI policy (EU AI Act, NIST RMF, HK PCPD, MAS). Different sources, weekly cadence.
-- **Vendor capability log** — append-only timeline: "2026-04-15 Anthropic ships X." Useful for vendor evaluation decks.
-- **Self-building glossary** — new acronyms (MCP, GRPO, etc.) get auto-added with definitions on first appearance.
-- **Talking-points generator** — for each top story, 3 bullets you could use in a meeting. Differentiates "read it" from "internalised it."
+**1.1 · Eval harness + frozen gold set**
+`evals/gold.jsonl`: ~30 hand-labelled archive items with `expected_verdict`,
+`expected_tags`, a one-line "why it matters." `content_finder.py eval` scores the
+pipeline against it (ranking agreement, tag accuracy, dedup precision/recall) and
+writes a baseline. A CI workflow posts an eval **delta** on any PR touching
+`score_item`, `sources.yml`, or `prompts/`.
+> *L3 · eval-set design, reference-based + LLM-as-judge · news: indirect · ~4h · ~$1 build + ~$0.10/run · constraint: none · metric: baseline report exists; PR deltas post automatically.*
 
----
-
-## 9. Newsletter consolidation (the unsubscribe goal)
-
-The product north star from `CLAUDE.md` operationalised. The user is paying time-tax on a stack of AI/PM newsletters — Substacks, Last Week in AI, Ben's Bites, etc. This phase makes Content Finder good enough to *replace* those subscriptions, then proves it source-by-source.
-
-Don't start until §5 (LLM annotation, JSON schema) is solid — synthesis quality has to be high enough that you'd actually trust it as a replacement.
-
-### 9.1 — Source registry import
-
-`content_finder.py sources import <file>` takes a list of newsletter names or URLs (one per line) and creates `pending` entries. Idempotent on re-import. List/show/delete subcommands.
-
-### 9.2 — Feed auto-discovery
-
-For each pending source, try in order:
-1. `<name>.substack.com/feed` (most newsletters live here).
-2. Fetch the homepage and look for `<link rel="alternate" type="application/rss+xml">`.
-3. Common paths: `/feed`, `/rss`, `/feed.xml`, `/atom.xml`.
-
-Each candidate is fetched and validated: must parse, must contain ≥1 item from the last 60 days. Per-strategy unit tests with recorded fixtures.
-
-### 9.3 — Mapping confidence + manual confirmation
-
-Each candidate gets a confidence score (0–1) from: domain match with input, recency of items, title overlap with the user-provided name. `content_finder.py sources confirm` walks the user through pending sources showing the top candidate and recent titles, prompts `[y/n/skip/manual]`. Confirmed → `active`; ambiguous → `needs_fallback`.
-
-### 9.4 — Unsubscribe dashboard
-
-`content_finder.py unsubscribe` (or a static HTML page) listing each source with: status pill, 14-day capture rate, items synthesized in last 7 days, recommendation, and the unsubscribe URL if found in feed metadata.
-
-Recommendation logic:
-- `safe_to_unsubscribe` — 14 days green health AND ≥3 items captured AND items appeared in synthesised digest.
-- `keep_email` — green health but capture below threshold (the newsletter has signal you'd lose).
-- `needs_fallback` — auto-discovery failed or feed is incomplete vs. email version.
-
-This is the surface that closes the loop. Without it, "I aggregate your newsletters" is a claim; with it, it's a defended decision.
-
-### 9.5 — Forwarding-alias fallback (optional, may skip)
-
-For `needs_fallback` sources only — and only if there are any newsletters the user actually cares about that lack a usable feed. Setup: Cloudflare Email Routing → dedicated mailbox → IMAP poller parses incoming HTML emails into items, tagged `source-forwarded`.
-
-⚠️ **Conflicts with the "PWA + GitHub Pages is the ceiling" constraint** — an IMAP poller can't run inside the GH Actions cron the same way. Defer until Phase 9.4 surfaces a real list of `needs_fallback` sources worth the infra cost. For most newsletters (Substack, Beehiiv, Ghost), 9.2 will succeed and this stage isn't needed.
+*Pairs with the optional **Retrieval bake-off** side quest (§7).*
 
 ---
 
-## Suggested phasing
+### Milestone 2 — Self-Learning Core (the flywheel)
+*Goal: the system starts learning your taste and improving its own outputs.*
+*This is the headline of the whole roadmap.*
 
-| Phase | Theme | Items | Effort | Unlocks |
+**2.1 · Self-tuning scorer (procedural memory)** — *the quick win*
+`score_item` today is a hand-tuned linear model: `keyword_score + 2·recency +
+src_bonus + hn_bonus`. Fit it instead from `feedback/*.jsonl` — features
+`[keyword_score, recency, per-source trust, hn_points, tag one-hots, age_days]`,
+label `keep=1 / drop=0` — with **plain numpy logistic regression** (no ML
+framework). Learned coefficients stay interpretable (read off the learned
+per-source trust vs your hand-set integers). **Promotes only if it beats the
+heuristic** on held-out days in the §1 harness, and you approve. Static weights stay
+the seed/fallback.
+> *L4 · feature engineering, offline eval, the "does learned beat heuristic at this scale?" question · news: high (ranks by your taste) · ~4h · ~$0 (local) · constraint: none · metric: learned scorer's precision@10 vs heuristic over the last 14 days.*
+
+**2.2 · Structured-output synthesis via tool-use** — *the backbone*
+Move `synthesize_with_claude` from free markdown to the fixed per-item JSON schema
+in `CLAUDE.md` (`tldr, what_changed, why_it_matters, claims[], …`), enforced with
+Anthropic tool-use; render markdown *from* the JSON. Folds in the v1 "per-item PM
+angle," "hype filter" badge, and LLM tag assignment as fields of the same schema.
+> *L1 (schema-enforced) · structured output / schema enforcement · news: high (the "PM angle" annotation) · ~3h · ~$2–5/mo · constraint: relaxes "no key" (gated; key-free path still renders the list) · metric: 100% of synthesized items validate against the schema.*
+
+**2.3 · Eval-gated prompt evolution**
+Automate v1's manual Stage-3 prompt-replay: an LLM-judge scores candidate
+`prompts/synthesis_system_<name>.md` against the gold set + your labels and ranks
+them. A candidate **auto-promotes only on a win margin + your approval** (bump
+`PROMPT_VERSION`, commit).
+> *L3→L4 · LLM-as-judge, regression gating, the reward-hacking risk · news: medium · ~4h · ~$0.20/run · constraint: none · metric: every prompt promotion is backed by a logged eval win.*
+
+> **If you only do three things:** 0.2 (#9) → 1.1 (eval harness) → 2.1 (self-tuning
+> scorer). That trio turns your idle feedback stream into a system that measurably
+> learns your taste — all local, ~$1 total — and answers "does learned beat my
+> heuristic at 10–25 items/day?" within a week of labelling.
+
+---
+
+### Milestone 3 — Memory
+*Goal: the digest remembers and connects stories instead of treating each day as new.*
+
+**3.1 · Episodic memory + embeddings**
+Embed item title+summary into SQLite + `sqlite-vec`; cluster recurring narratives
+("MCP adoption", "EU AI Act enforcement") so one story *updates* across days rather
+than resurfacing five times. Absorbs v1's "cluster detection" (incl. z-score
+trending) and v2's Rung 2.
+> *L1 · embeddings & clustering for small corpora, dedup-vs-clustering distinction · news: high (kills repetition; powers "trending") · ~6h · ~$0.50 one-time · constraint: none · metric: a tracked narrative shows as one updating entry across ≥3 days.*
+
+**3.2 · Semantic memory / knowledge graph** *(optional fork)*
+Extend the per-item schema with `entities[]` / `relations[]` over a closed
+vocabulary; persist to SQLite tables; resolve hints via an alias table + review
+queue. **The heaviest build for the least immediate payoff** — gate it on real
+demand: it shines once 4.1 (research agent) or 5.2 (edge RAG) needs to traverse
+"X said Y about Z." Build it then; skip it until.
+> *L1 · closed-vocab extraction, entity resolution without ML, graph-vs-vector tradeoffs · news: medium · ~5h · +$0.10–0.20/run · constraint: none · metric: `kg query` answers a "who released what when" question vector search can't.*
+
+---
+
+### Milestone 4 — The Agentic Core
+*Goal: real multi-step agents do the work — the most "agentic" part of the roadmap.*
+
+**4.1 · Deep-research agent for the top story** — *the flagship loop*
+For the day's #1 item, a multi-step agent: plans what it needs → calls tools →
+writes a deeper, citation-backed brief with a **"Contested"** sub-section when
+sources disagree → validates citations → stops on a budget.
+**Tools:** `exa_search` (neural search for corroborating/contradicting coverage),
+`exa_contents` (read primary sources), optional `exa_find_similar`; optional
+`sonar_ask` as a scoped sourced-answer sub-tool (per Principle §3.5 — Claude still
+writes the brief).
+> *L2 · tool design, plan→act→observe loops, neural-vs-keyword-vs-answer-engine comparison, stopping criteria, token budgets · news: highest single feature · ~6h · ~$0.10–0.30/day + Exa/Sonar API · constraint: relaxes "no key"; public-topic queries only · metric: surfaces ≥1 corroborating/contradicting source the one-shot synthesis missed, on most spot-checked days.*
+
+**4.2 · Multi-agent weekly rollup + reflection (+ provenance validator)**
+Researcher → Critic → Writer, with the critic upgraded to a real **reflexion loop**
+(bounded retries) and a **provenance validator** as the stopping gate: any citation
+token (`[c12]`, `[e:org:anthropic]`) that doesn't resolve fails the run. Run the
+with/without-critic question as an **eval (§1)**, not a vibe. Absorbs v1's weekly
+exec summary + talking-points-as-output and v2's Rung 3.
+> *L2 · role separation, reflection loops, structured state hand-off, trust/provenance · news: high (the shareable org-credibility artefact) · ~4h · ~$0.30/wk · constraint: relaxes "no key" · metric: critic-on vs critic-off measured on real weeks; keep the critic only if it wins.*
+
+**4.3 · Source-scout agent**
+A weekly agent that discovers *emerging* AI sources via **Exa `find_similar`**
+against your trusted feeds (e.g. "more like Interconnects / Simon Willison"),
+auto-discovers + validates each feed (parses, ≥1 item in 60d), scores candidate
+quality, and opens a **PR to `sources.yml`** with rationale. Harmonizes v1's
+`--add-source` + auto-discovery. Implementable as a skill, like *Hermes Discovery Queue*.
+> *L2 · tool-use loop, self-expanding sources, junk guardrails · news: high (coverage grows itself) · ~4h · ~$0.10/wk + Exa · constraint: public sources only (inviolate rule respected) · metric: ≥1 agent-found source that later lands in a digest.*
+
+**4.4 · MCP server + model routing**
+Expose the embedded archive (+ graph, if 3.2 is built) as a local MCP server
+(`search_archive`, `get_story_timeline`, `weekly_brief`, `query_graph`) attached to
+Claude Desktop / Code. Add **model routing**: Haiku for trivial items, Sonnet for
+high-signal, measured in the §0.1 ledger.
+> *L2 · MCP tool-schema design, cost-aware orchestration · news: medium (your data as tools — value conditional on using an MCP client) · ~3h · ~$0 · constraint: relaxes "no backend"? no — stays local · metric: Claude Desktop calls the tools unaided; routing cuts cost ≥30% at equal eval score.*
+
+**4.x · Exa discovery fetcher** *(optional, pairs here)*
+A third fetcher alongside `fetch_rss`/`fetch_hn`: neural-search for fresh
+agentic-AI content, routed through the **same** scoring + judge + source-cap so it
+widens coverage without flooding. Can be done any time after Milestone 1 (the
+harness proves it doesn't degrade quality).
+> *L1 · neural search as ingestion, quality-gating a firehose · news: high (widens intake) · ~3h · Exa API · constraint: public-topic queries only · metric: Exa-sourced items clear the judge at a rate within 10% of curated RSS.*
+
+---
+
+### Milestone 5 — Self-Improving & Capstone
+*Goal: the system improves itself and goes public — with a human at every gate.*
+
+**5.1 · Prompt-optimizer agent**
+An agent reads recent `suspect_keeps` / `suspect_drops` from `judge.py` plus your
+`note` fields, diagnoses the failure pattern, and **drafts the next candidate
+prompt itself** — then runs 2.3 to prove it wins. Human still gates promotion.
+> *L4 · automated prompt optimization (DSPy/APE ideas, hand-built), agent-as-engineer · news: medium · ~4h · ~$0.30/run · constraint: human-gated promotion · metric: ≥1 agent-drafted prompt beats the incumbent in a real eval.*
+
+**5.2 · Agentic RAG at the edge (capstone)**
+A Cloudflare Worker hosting an **agentic** `/ask` endpoint over the archive — not
+static "embed→top-k→answer," but an agent that decides what to retrieve,
+reformulates queries, retrieves across **both** the vector index and the graph, and
+**verifies its answer against sources** before streaming. Absorbs v1's "Q&A over the
+archive." *Optional fork:* hybrid **live-web augmentation** via Exa/Sonar (flagged:
+added cost, latency, and public-endpoint abuse surface).
+> *L2→L3 · RAG vs agentic RAG, edge runtime limits, streaming, auth without accounts (Turnstile/rate-limit) · news: high (public, shareable) · ~6–10h · free tier + per-request · constraint: **the one place "no backend" is relaxed — explicit go/no-go gate** · metric: a cold `/ask` returns a verified, citation-backed answer within the free tier.*
+
+**5.3 · Actions & drills**
+"What to try next" actions appended to each brief (a prompt to run, a repo to
+clone, a paper to read), each citing its cluster; plus optional 5-minute drills on a
+Leitner schedule. Build **actions first**; gate drills on whether you use them.
+v2's Rung 6.
+> *L1/L2 · action-extraction with guardrails (respect the regulated-env context), spaced repetition · news: high (reading → practice — directly serves your learning goal) · ~3h actions / +2h drills · ~$0.20/day · constraint: none · metric: you complete ≥1 suggested action/week for a month.*
+
+**5.4 · Meta self-review agent**
+Weekly, an agent reads the trace ledger, eval deltas, `feedback/*.jsonl`, judge
+findings, and open issues, then writes `docs/learning/self-review-<week>.md`: what
+improved, what regressed, what to build next — and can open **draft** issues. You
+review and decide.
+> *L4 · closing the outer loop, agent-as-maintainer, human-in-command · news: meta (the purest "self-learning") · ~3h · ~$0.10/wk · constraint: reads repo state only, never private data · metric: a self-review note that proposes a change you actually adopt.*
+
+---
+
+## 7. Side Quests — optional branches
+
+Non-blocking; pick any time. Each is tagged with the trunk milestone it pairs with.
+
+### Product / UX branch *(from v1 §4)*
+- **Archive search** (client-side JS over a JSON index) · **og:image previews** ·
+  **dark-mode toggle** + font-size · **PWA install** (offline last-7 digests) ·
+  **sticky filter bar + keyboard nav** (j/k) · **reading-time display** (logic
+  already exists) · **"Trending" section** *(pairs with 3.1 clustering)*.
+- *Why optional:* pure presentation; no agentic concept attached.
+
+### Delivery branch *(from v1 §6)*
+- **Email digest** (morning inbox) · **Telegram / Signal breaking-news alert**
+  (fires when `score > ~25`) · **iOS Shortcut + home-screen widget** ·
+  **Readwise / Notion export** for starred items.
+- *Why optional:* multi-channel reach is a product win, not a learning win.
+
+### Newsletter-consolidation branch — the "unsubscribe" goal *(from v1 §9)*
+- **Source registry import** (`sources import <file>`) · **feed health-check**
+  (per-source `last_success_at`, consecutive failures, conditional GETs) ·
+  **confidence-scored confirm** · **unsubscribe dashboard** (status, 14-day capture
+  rate, recommendation). *Consumes the trunk's 4.3 source-scout for discovery.*
+- *Why optional:* a strong product milestone, but downstream of synthesis quality
+  (do it once the trunk's synthesis is trustworthy). Forwarding-alias/IMAP fallback
+  stays out (conflicts with the no-backend ceiling).
+
+### Role-specific branch *(from v1 §8)*
+- **Regulation-tracker sub-page** (EU AI Act, NIST RMF, HK PCPD, MAS) ·
+  **vendor-capability log** (append-only timeline) · **self-building glossary**
+  (new acronyms auto-defined on first appearance) · **talking-points generator**.
+- *Why optional:* high personal value, but specific to your role rather than to the
+  agentic-engineering curriculum.
+
+### Retrieval bake-off *(learning side quest; pairs with Milestone 1)*
+- An eval comparing **Exa neural search vs HN keyword vs Perplexity Sonar** on
+  recall of relevant items for a fixed query set. Pure learning on retrieval
+  paradigms; uses the harness you'll already have.
+
+---
+
+## 8. Suggested pacing
+
+| Phase | Trunk milestone | ~Effort | ~Cost | Note |
 |---|---|---|---|---|
-| **Now (this week)** | Reduce noise, look better | Cross-day dedup · source diversity cap · `sources.yml` config · og:image previews · reading-time | ~2–3 hrs | Cleaner daily digests immediately |
-| **Next (week 2)** | Tags & navigation | Keyword auto-tagging · filter chips · client-side archive search · PWA install | ~3–4 hrs | iPad feels like a real app, fast topic filtering |
-| **2.5 (week 3)** | **Weekly rollup layer** | Sunday cron · `docs/weekly/` archive · heuristic rollup first, LLM rollup once API key arrives · optional email | ~3 hrs heuristic · +1 hr LLM | Shareable artefact for org / LinkedIn; trigger for API key |
-| **Then (week 4+)** | LLM intelligence layer | Anthropic key · per-item PM angle (JSON schema) · narrated weekly · hype filter | ~2 hrs + ongoing API cost | Tool becomes irreplaceable |
-| **Unsubscribe milestone** | Newsletter consolidation (§9) | Source import · auto-discovery · confidence-scored confirm · unsubscribe dashboard | ~3–4 hrs | One-by-one defended unsubscribes — the product north star |
-| **Later** | Role-specific extensions | Regulation tracker page · vendor capability log · Telegram alerts · talking-points generator · source credibility v1 | varies | Personal AI-strategy ops platform |
+| Now | M0 (0.1–0.3) | ~4h | $0 | Foundations; #9 is one hour and unblocks the Learn track |
+| Next | M1 (1.1) | ~4h | ~$1 | The ruler |
+| **Then** | **M2 (2.1→2.2→2.3)** | ~11h | ~$3/mo | **The self-learning flywheel — the payoff** |
+| | M3 (3.1; 3.2 optional) | ~6h (+5h) | ~$0.50 (+) | Memory substrate for the agentic core |
+| | M4 (4.1→4.2→4.3→4.4; 4.x opt) | ~17h | ~$10–15/mo | The agentic core; Exa enters here |
+| | M5 (5.1→5.2→5.3→5.4) | ~16–20h | variable | Self-improving + edge capstone (go/no-go gate before 5.2) |
+
+Read the digest for ~3–5 days between milestones — real use reorders priorities,
+and labelling feeds 2.1.
 
 ---
 
-## Recommended order of work
+## 9. Anti-features (merged from v1 + v2 + v3)
 
-1. **This week:** cross-day dedup + `sources.yml` config. (Highest payback per hour, no dependencies.)
-2. **Read it for 3–5 days.** Real use will reorder the roadmap.
-3. **Then commit to the API key** if the noise/value ratio is still off — LLM annotations fix it more cheaply than any heuristic could.
+**Scope ceilings**
+- Native mobile app (PWA covers it) · user accounts / multi-user · comments / social
+  · real-time push (daily cadence is the point).
 
-## Anti-features (deliberately out of scope)
+**Architecture**
+- **No modularising `content_finder.py`** into a package until it passes ~3000 LOC
+  (single-file is the deliberate identity; it's ~2.2k now).
+- **No ORM / migration runner** — flat `seen.json` or single SQLite with hand-DDL
+  until the corpus crosses ~100k items.
+- **No pluggable `SourceAdapter` protocol** — premature for ~15 sources +
+  Substack shim.
+- **No vector DB** (Pinecone/Weaviate/pgvector) — `sqlite-vec` covers this corpus
+  for years. **No graph DB** (Neo4j) — SQLite handles 3.2.
 
-- Native mobile app (PWA covers it).
-- User accounts / multi-user.
-- Comments / social.
-- Real-time push (daily cadence is the point).
-- **Modularising `content_finder.py` into a `contentfinder/` package.** Single-file is the deliberate identity at current scale (~1500 LOC). Reconsider only if the file passes ~3000 lines.
-- **ORM + migration runner.** A flat `seen.json` or single sqlite file with hand-written DDL is enough until the corpus crosses ~100k items.
-- **Pluggable `SourceAdapter` protocol.** Premature abstraction for ~15 sources. The two existing fetchers (`fetch_rss`, `fetch_hn`) plus a Substack-aware shim cover the planned newsletter expansion.
-- **Vector DB.** sqlite-vec / sqlite-vss covers the corpus for years. Don't reach for Pinecone/Weaviate/pgvector.
+**Agentic discipline**
+- **No agent frameworks** (LangChain/CrewAI/AutoGen) — SDK tool-use directly.
+- **No multi-model for *synthesis/reasoning*** — Anthropic only. Exa is a tool;
+  Sonar is tool-/eval-scoped only (Principle §3.5).
+- **No autonomous writes without a human gate** — self-tuning, prompt promotion,
+  source-scout, self-review all stop at a PR/approval.
+- **Don't optimize the scorer against the same judge that grades it** — keep the
+  human gold set separate from the LLM-judge, or you'll reward-hack yourself.
+- **No knowledge graph (3.2) before something queries it.** No self-review agent
+  (5.4) before traces (0.1) + evals (1.1) exist. No edge UI before the endpoint
+  works headlessly.
+
+**Deferred (not dropped)**
+- **Click-feedback loop** (v1 §1) — would turn the digest into a true preference
+  dataset, but only meaningful once 5.2 (edge) can capture clicks server-side. Park
+  until then.
+
+---
+
+## 10. Coverage map — where every prior item went
+
+Proof the merge is lossless. `L` = already landed (§4).
+
+### From `ROADMAP.md` (v1)
+| v1 item | Destination |
+|---|---|
+| Cross-day deduplication | **L** (§4) |
+| Source diversity cap | **L** (§4) |
+| Cluster detection / z-score trending | Trunk **3.1**; UI in Product/UX "Trending" |
+| Personalised weights | Trunk **2.1** |
+| Source credibility scoring v1 | Trunk **2.1** |
+| Click-feedback loop | §9 Deferred (post-5.2) |
+| Filter-log harness Stage 1 & 2 | **L** (§4) |
+| Filter-log harness Stage 3 (prompt-replay) | Trunk **2.3** |
+| Tier-1 keyword auto-tagging / Tier-3 chips | **L** (§4); per-tag RSS → Product/UX |
+| Tier-2 LLM tagging | Trunk **2.2** (schema field) |
+| `sources.yml` migration | **L** (§4) |
+| `--add-source` auto-discovery | Trunk **4.3** (source-scout) |
+| Weekly feed health-check | Side quest: Newsletter consolidation |
+| Suggested source additions | **L** (mostly added to `sources.yml`) |
+| Archive search · og:image · reading-time · PWA · keyboard nav · dark mode | Side quest: Product/UX |
+| Per-item "PM angle" (JSON schema) | Trunk **2.2** |
+| Hype filter badge | Trunk **2.2** (schema field) |
+| Weekly exec summary | Trunk **4.2** |
+| Q&A over the archive | Trunk **5.2** |
+| Multi-channel delivery (email, Telegram, iOS, Readwise) | Side quest: Delivery |
+| Weekly rollup layer (§7) | Trunk **4.2** |
+| Role-specific bonuses (§8) | Side quest: Role-specific |
+| Newsletter consolidation (§9) | Side quest: Newsletter consolidation (+ 4.3) |
+
+### From `ROADMAP-v2.md`
+| v2 rung | Destination |
+|---|---|
+| Rung 1 — structured output + evals | Split: **1.1** (eval harness) + **2.1** (scorer) + **2.2** (structured output) |
+| Rung 2 — memory + embeddings | Trunk **3.1** |
+| Rung 2.5 — knowledge graph | Trunk **3.2** (optional fork) |
+| Rung 3 — multi-agent weekly rollup | Trunk **4.2** |
+| Rung 4 — MCP server | Trunk **4.4** |
+| Rung 5 — edge function | Trunk **5.2** |
+| Rung 6 — actions + drills | Trunk **5.3** |
+| Constraints-relaxed table | §3 (Principles / Constraints) |
+
+### From `ROADMAP-v3.md`
+| v3 item | Destination |
+|---|---|
+| F1 tracing ledger | Trunk **0.1** |
+| F2 issue #9 features | Trunk **0.2** |
+| F3 structured-output synthesis | Trunk **2.2** |
+| E1 eval harness + gold set | Trunk **1.1** |
+| E2 provenance validator | Trunk **4.2** |
+| L1 self-tuning scorer | Trunk **2.1** |
+| L2 eval-gated prompt evolution | Trunk **2.3** |
+| L3 prompt-optimizer agent | Trunk **5.1** |
+| L4 actions & drills | Trunk **5.3** |
+| P1 episodic memory | Trunk **3.1** |
+| P2 source-scout | Trunk **4.3** |
+| P3 knowledge graph | Trunk **3.2** |
+| A1 deep-research agent | Trunk **4.1** |
+| A2 multi-agent rollup + reflection | Trunk **4.2** |
+| A3 MCP + routing | Trunk **4.4** |
+| A4 agentic RAG at edge | Trunk **5.2** |
+| M1 self-review agent | Trunk **5.4** |
+| Agency ladder · do-no-harm gate · EDD · 3 memory types | §2–§3 |
+
+### New in this consolidation
+| Item | Destination |
+|---|---|
+| Exa as research-agent tool | Trunk **4.1** |
+| Exa `find_similar` for source discovery | Trunk **4.3** |
+| Exa discovery fetcher | Trunk **4.x** (optional) |
+| Perplexity Sonar (scoped) | Trunk **4.1** sub-tool + Retrieval bake-off |
+| "Retrieval tools ≠ model swaps" principle | §3.5 |
+| Retrieval bake-off | Side quest (pairs with **1.1**) |
+
+---
+
+## 11. The next move
+
+1. **Done — cut over.** This file is now `ROADMAP.md`; v1/v2/v3 are archived under
+   `roadmap-archive/`, and `CLAUDE.md`'s Roadmap section points here. The two §3
+   constraints (key-free path, no-backend) stay in force until the work that relaxes
+   them actually ships (M2 / M5).
+2. **Set an Anthropic monthly cap** before any keyed milestone (~$5–15/mo steady;
+   the edge rung is variable).
+3. **Land Milestone 0.2 (#9) this week** — one hour, no key, unblocks everything.
+   Then 1.1, then 2.1. You'll have a self-learning loop running locally for ~$1, and
+   a real answer to "does learned beat heuristic at my volume?" within a week.
