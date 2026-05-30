@@ -359,6 +359,7 @@ function buildJSONL() {
       url: url,
       title: meta.title || "",
       source: meta.source || "",
+      summary: meta.summary || "",
       stage: meta.stage || "",
       score: meta.score,
       age_days: meta.age_days,
@@ -637,6 +638,7 @@ def render(log: dict, judge: dict | None = None) -> str:
                 url_to_stage[url] = stage_key
                 item_meta[url] = {
                     "title": it.get("title", ""),
+                    "summary": it.get("summary", ""),
                     "source": it.get("source", ""),
                     "stage": stage_key,
                     "score": it.get("score"),

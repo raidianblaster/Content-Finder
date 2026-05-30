@@ -249,9 +249,11 @@ class FilterLog:
 def _item_log_dict(it: "Item") -> dict:
     d = {
         "title": it.title,
+        "summary": it.summary,                       # #9: the text the scorer saw
         "url": it.url,
         "source": it.source,
         "score": round(it.score, 2),
+        "score_components": score_components(it),     # #9: per-term feature breakdown
         "age_days": round(it.age_hours / 24, 1),
     }
     if it.first_seen is not None:
@@ -374,13 +376,17 @@ def keyword_score(text: str) -> int:
     return score
 
 
-def score_item(item: Item) -> float:
-    body = f"{item.title} {item.summary}"
-    base = keyword_score(body)
+def score_components(item: Item) -> dict:
+    """Per-term breakdown behind score_item, logged for #9 / the self-tuning
+    scorer (roadmap M2.1).
 
-    # Recency bonus: fresher = higher.
-    age_days = item.age_hours / 24
-    recency = max(0.0, 7 - age_days) / 7  # 0..1
+    ``total`` is computed unrounded and is exactly ``score_item(item)``; the
+    other fields are rounded for human-readable logs.
+    """
+    base = keyword_score(f"{item.title} {item.summary}")
+
+    # Recency bonus: fresher = higher (0..1, linear decay over 7 days).
+    recency = max(0.0, 7 - item.age_hours / 24) / 7
 
     # Source-credibility bonus (loaded from sources.yml).
     src_bonus = _TRUSTED_WEIGHTS.get(item.source, 0)
@@ -388,10 +394,21 @@ def score_item(item: Item) -> float:
     # HN points contribute lightly (caps to avoid drowning the rest).
     hn_bonus = 0.0
     if item.source == "Hacker News":
-        pts = item.extra.get("points", 0)
-        hn_bonus = min(pts / 100.0, 4.0)
+        hn_bonus = min(item.extra.get("points", 0) / 100.0, 4.0)
 
-    return base + 2 * recency + src_bonus + hn_bonus
+    recency_term = 2 * recency
+    return {
+        "keyword": base,
+        "recency": round(recency, 4),
+        "recency_term": round(recency_term, 4),
+        "src_bonus": src_bonus,
+        "hn_bonus": round(hn_bonus, 4),
+        "total": base + recency_term + src_bonus + hn_bonus,
+    }
+
+
+def score_item(item: Item) -> float:
+    return score_components(item)["total"]
 
 
 # --------------------------------------------------------------------------- #
