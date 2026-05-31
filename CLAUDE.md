@@ -117,12 +117,16 @@ six-milestone trunk, and optional side quests). The three prior roadmaps (v1
 product, v2 learning ladder, v3 self-improving) are consolidated there and archived
 under `roadmap-archive/` for provenance.
 
-Trunk: **M0** Foundations (tracing, log score features / issue #9) → **M1** eval
-harness + gold set → **M2** self-learning core (self-tuning scorer, structured-output
-synthesis, eval-gated prompts) → **M3** memory (episodic; optional knowledge graph) →
-**M4** agentic core (deep-research agent, multi-agent rollup, source-scout, MCP
-server) → **M5** self-improving + edge capstone. Minimal first loop: **issue #9 →
-eval harness → self-tuning scorer**.
+Trunk: **M0** Foundations (tracing, log score features / issue #9, CI do-no-harm
+gate) → **M1** eval harness + gold set → **M2** self-learning core (self-tuning
+scorer, structured-output synthesis, eval-gated prompts) → **M3** memory
+(episodic; optional knowledge graph) → **M4** agentic core (deep-research agent,
+multi-agent rollup, source-scout, MCP server) → **M5** self-improving + edge
+capstone.
+
+Current checkpoint: **M0.1–M0.3 are landed in code**. The next move is **M0.4**
+(fix the quarantined archive "today" test and remove the CI deselect), then **M1
+eval harness**, then **M2.1 self-tuning scorer**.
 
 Both former Phase 1 "now" items (cross-day dedup; `sources.yml`) are **landed**.
 

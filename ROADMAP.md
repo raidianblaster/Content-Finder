@@ -44,6 +44,23 @@ Everything below is the path from where the project is today to that end-state.
 
 ---
 
+## Current Checkpoint
+
+**Landed in code:** Milestone 0.1 tracing/cost ledger, Milestone 0.2 score-feature
+logging, and Milestone 0.3 CI/do-no-harm gate.
+
+**Current task:** fix the quarantined archive "today" test so CI can run the full
+suite without a deselect.
+
+**Next trunk task:** Milestone 1.1 — build the eval harness and frozen gold set.
+After that, Milestone 2.1 can train the first self-tuning scorer from the feedback
+stream.
+
+**Active metric:** a PR touching scoring, prompts, or source config should be able
+to show both deterministic test status and an eval delta.
+
+---
+
 ## 2. How to read this roadmap
 
 The plan is a **trunk** with optional **branches**.
@@ -112,20 +129,22 @@ Start from reality. These are done; the roadmap does not re-list them as future 
 | Source diversity cap | **Landed** | `apply_source_cap()` (default 3) |
 | Filter log per run | **Landed** | `docs/logs/<date>.json` + `latest.json` |
 | Review / labelling page | **Landed** | `review.py`, PAT auto-save → `feedback/<date>.jsonl` |
-| Haiku judge triage | **Landed + in CI** | `judge.py`, runs in `daily.yml` |
+| Haiku judge triage | **Landed + scheduled** | `judge.py`, runs best-effort in `daily.yml` |
 | Tags + chip filter bar | **Landed** | `TAG_TAXONOMY`, chip JS |
 | Reading-time estimate | **Partial** | `estimated_read_minutes()` exists; UI display is a side quest |
 | LLM synthesis (opt-in) | **Landed** | `synthesize_with_claude()` (`claude-sonnet-4-6`), `PROMPT_VERSION="v1"` |
 | Skill handoff seam | **Landed** | `latest.json` / `latest.judge.json` feed the *Hermes Discovery Queue* skill |
+| LLM trace/cost ledger | **Landed** | `tracing.py`, `traces.py`, traced synthesis + judge calls |
+| Score-feature logging (#9) | **Landed in code** | `_item_log_dict()` writes `summary` + `score_components`; daily artifacts refresh on the next run |
+| CI do-no-harm gate | **Landed with one quarantine** | `.github/workflows/ci.yml` runs tests + key-free smoke; archive today test is deselected pending fix |
 
 **The unrealized asset:** you collect a labelled preference stream daily and a judge
 flags mistakes — but nothing reads them back into the pipeline. The flywheel is
 built and *not spinning*. The trunk spins it.
 
-**The one cheap prerequisite:** open issue **#9** (log the `summary` + score
-components into the filter log + JSONL). A feedback row currently knows the verdict
-and final `score`, but not the features the model saw — and you can't learn weights
-from labels without the features. It's Milestone 0.2 for exactly this reason.
+**The remaining cheap cleanup:** remove the CI quarantine by fixing the
+time-dependent archive test. After that, the next meaningful trunk work is the
+Milestone 1 eval harness.
 
 ---
 
@@ -170,21 +189,27 @@ from labels without the features. It's Milestone 0.2 for exactly this reason.
 ### Milestone 0 — Foundations: "See & Measure"
 *Goal: be able to observe the system and prove you didn't regress it — before changing anything.*
 
-**0.1 · Tracing & cost ledger**
+**0.1 · Tracing & cost ledger — Landed**
 One JSONL trace row per LLM call (`docs/logs/traces.jsonl`): `ts, call_site, model,
 prompt_version, input_tokens, output_tokens, cost_usd, latency_ms, ok`. A `traces`
 CLI prints a daily cost/latency rollup.
 > *L0 · LLM observability · news: indirect · ~2h · ~$0 · constraint: none · metric: every `judge.py` + `synthesize_with_claude` call appears in the ledger.*
 
-**0.2 · Log score features (issue #9)**
+**0.2 · Log score features (issue #9) — Landed in code**
 Add `summary` + the per-component score breakdown (`keyword_score`, `recency`,
 `src_bonus`, `hn_bonus`) to `_item_log_dict()`; propagate to the JSONL.
 > *L0 · feature logging for learning · news: indirect · ~1h · ~$0 · constraint: none · metric: a feedback row reconstructs the exact feature vector the scorer saw. **Unblocks the entire Learn track.***
 
-**0.3 · Adopt the gate + EDD** (practice, not code)
+**0.3 · Adopt the gate + EDD — Landed, with one quarantined test**
 Wire `--no-summarize` into CI as the do-no-harm regression test; establish the
 "no scoring/prompt change without an eval delta" rule.
 > *L0 · engineering discipline · news: protects it · ~1h · ~$0 · constraint: formalizes the key-free fallback · metric: CI fails if the key-free daily path breaks.*
+
+**0.4 · Remove the archive-test quarantine**
+Fix `test_archive_first_row_has_today_modifier_and_pill` so it passes a pinned
+`today` value instead of depending on the wall-clock date, then remove the CI
+`--deselect`.
+> *L0 · test reliability · news: protects it · ~20m · ~$0 · constraint: none · metric: CI runs the full pytest suite with no deselected tests.*
 
 ---
 
@@ -209,9 +234,9 @@ writes a baseline. A CI workflow posts an eval **delta** on any PR touching
 
 **2.1 · Self-tuning scorer (procedural memory)** — *the quick win*
 `score_item` today is a hand-tuned linear model: `keyword_score + 2·recency +
-src_bonus + hn_bonus`. Fit it instead from `feedback/*.jsonl` — features
-`[keyword_score, recency, per-source trust, hn_points, tag one-hots, age_days]`,
-label `keep=1 / drop=0` — with **plain numpy logistic regression** (no ML
+src_bonus + hn_bonus`. Fit it instead from `feedback/*.jsonl` — v1 features are
+`[keyword_score, recency, per-source trust, hn_points, age_days]`; add tag one-hots
+after 2.2 makes tags schema-backed. Use **plain numpy logistic regression** (no ML
 framework). Learned coefficients stay interpretable (read off the learned
 per-source trust vs your hand-set integers). **Promotes only if it beats the
 heuristic** on held-out days in the §1 harness, and you approve. Static weights stay
@@ -232,10 +257,11 @@ them. A candidate **auto-promotes only on a win margin + your approval** (bump
 `PROMPT_VERSION`, commit).
 > *L3→L4 · LLM-as-judge, regression gating, the reward-hacking risk · news: medium · ~4h · ~$0.20/run · constraint: none · metric: every prompt promotion is backed by a logged eval win.*
 
-> **If you only do three things:** 0.2 (#9) → 1.1 (eval harness) → 2.1 (self-tuning
-> scorer). That trio turns your idle feedback stream into a system that measurably
-> learns your taste — all local, ~$1 total — and answers "does learned beat my
-> heuristic at 10–25 items/day?" within a week of labelling.
+> **If you only do three things from here:** 0.4 (remove the test quarantine) → 1.1
+> (eval harness) → 2.1 (self-tuning scorer). That trio turns your idle feedback
+> stream into a system that measurably learns your taste — all local, ~$1 total —
+> and answers "does learned beat my heuristic at 10–25 items/day?" within a week of
+> labelling.
 
 ---
 
@@ -382,7 +408,7 @@ Non-blocking; pick any time. Each is tagged with the trunk milestone it pairs wi
 
 | Phase | Trunk milestone | ~Effort | ~Cost | Note |
 |---|---|---|---|---|
-| Now | M0 (0.1–0.3) | ~4h | $0 | Foundations; #9 is one hour and unblocks the Learn track |
+| Now | M0.4 | ~20m | $0 | Remove the archive-test quarantine so CI measures the full suite |
 | Next | M1 (1.1) | ~4h | ~$1 | The ruler |
 | **Then** | **M2 (2.1→2.2→2.3)** | ~11h | ~$3/mo | **The self-learning flywheel — the payoff** |
 | | M3 (3.1; 3.2 optional) | ~6h (+5h) | ~$0.50 (+) | Memory substrate for the agentic core |
@@ -508,12 +534,12 @@ Proof the merge is lossless. `L` = already landed (§4).
 
 ## 11. The next move
 
-1. **Done — cut over.** This file is now `ROADMAP.md`; v1/v2/v3 are archived under
-   `roadmap-archive/`, and `CLAUDE.md`'s Roadmap section points here. The two §3
-   constraints (key-free path, no-backend) stay in force until the work that relaxes
-   them actually ships (M2 / M5).
-2. **Set an Anthropic monthly cap** before any keyed milestone (~$5–15/mo steady;
-   the edge rung is variable).
-3. **Land Milestone 0.2 (#9) this week** — one hour, no key, unblocks everything.
-   Then 1.1, then 2.1. You'll have a self-learning loop running locally for ~$1, and
-   a real answer to "does learned beat heuristic at my volume?" within a week.
+1. **Clean up M0.4:** fix the quarantined archive "today" test and remove the CI
+   deselect.
+2. **Build Milestone 1.1:** create `evals/gold.jsonl`, an eval CLI/report, and the
+   first baseline. This is now the trunk's real next move.
+3. **Then build Milestone 2.1:** train the first self-tuning scorer from the
+   feedback stream and promote it only if it beats the heuristic on held-out days.
+4. **Before keyed milestones:** set an Anthropic monthly cap (~$5–15/mo steady; the
+   edge rung is variable). The key-free path and no-backend ceiling stay in force
+   until the roadmap explicitly relaxes them.

@@ -9,6 +9,8 @@ Snake Oil, Pragmatic Engineer) plus Hacker News stories matching agentic-AI
 queries, scores everything for relevance + recency + source trust, dedupes,
 and either prints the ranked list or asks Claude to synthesise a themed brief.
 
+Live page: https://raidianblaster.github.io/Content-Finder/
+
 ## Setup
 
 ```bash
@@ -53,9 +55,16 @@ Sections with no relevant items are skipped rather than padded.
 
 ## Tweaking sources
 
-Edit `RSS_SOURCES`, `HN_QUERIES`, and `KEYWORD_WEIGHTS` at the top of
-`content_finder.py`. The trusted-source weights inside `score_item()` are
-where you nudge specific outlets up or down the ranking.
+Edit `sources.yml` to change RSS feeds, Hacker News queries, keyword weights,
+and per-source trust bonuses. The loader validates HTTPS feed URLs, duplicate
+source names, trust ranges, and required top-level keys.
+
+## Roadmap status
+
+`ROADMAP.md` is the source of truth. Milestone 0.1 tracing, 0.2 score-feature
+logging, and 0.3 CI/do-no-harm gate are landed in code. The current trunk path is:
+fix the quarantined archive test, build the eval harness, then train the first
+self-tuning scorer from feedback labels.
 
 ## Schedule it
 
