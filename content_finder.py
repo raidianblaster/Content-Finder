@@ -766,6 +766,35 @@ body {
   color: var(--fg-2);
 }
 
+/* Dateline (prominent date row above kicker) */
+.mast-dateline {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 16px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px; margin-bottom: 28px;
+}
+.mast-dateline-day {
+  text-transform: uppercase;
+  letter-spacing: 0.16em; font-size: 0.7em; font-weight: 500;
+  color: var(--accent);
+  padding: 4px 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  border-radius: 6px;
+}
+.mast-dateline-date {
+  font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums;
+}
+
+/* Compact density + prominent date (today page) */
+[data-mast="compact"] .masthead { padding: 36px 0 24px; }
+[data-mast="compact"] .mast-title {
+  font-size: clamp(26px, 3.2vw, 34px);
+  margin: 10px 0 10px;
+}
+[data-mast="compact"] .mast-meta { margin-top: 18px; }
+
 /* Footer */
 footer.site-footer {
   padding: 48px 0 56px;
@@ -1872,12 +1901,6 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
     )
 
 
-DEFAULT_MAST_SUBTITLE = (
-    "Stories worth your attention — distilled with the “so what” "
-    "for product managers building in regulated and enterprise contexts."
-)
-
-
 def _render_masthead(
     page_date: date,
     *,
@@ -1885,25 +1908,27 @@ def _render_masthead(
     source_count: int | None,
     read_minutes: int | None,
     issue_number: int | None,
-    subtitle: str = DEFAULT_MAST_SUBTITLE,
 ) -> str:
-    full_date = page_date.strftime("%a %d %b %Y")
+    day_chip = page_date.strftime("%a")        # e.g. "Tue"
+    full_date = page_date.strftime("%d %b %Y") # e.g. "26 May 2026"
     kicker_label = "AI Digest"
     if issue_number is not None:
         kicker_label = f"AI Digest · Issue {issue_number}"
-    meta_parts = [f"<span><b>{html.escape(full_date)}</b></span>"]
     counts_bits = [f"{item_count} items"]
     if source_count is not None:
         counts_bits.append(f"{source_count} sources")
-    meta_parts.append(f"<span>{html.escape(' · '.join(counts_bits))}</span>")
+    meta_parts = [f"<span>{html.escape(' · '.join(counts_bits))}</span>"]
     if read_minutes is not None:
         meta_parts.append(f'<span class="pill">~{read_minutes} min read</span>')
     return (
         '<section class="masthead">'
+        f'<div class="mast-dateline">'
+        f'<span class="mast-dateline-day">{html.escape(day_chip)}</span>'
+        f'<span class="mast-dateline-date">{html.escape(full_date)}</span>'
+        f'</div>'
         f'<div class="kicker"><span class="dot"></span>{html.escape(kicker_label)}</div>'
         '<h1 class="mast-title">What moved in AI '
         '<span class="accent">today.</span></h1>'
-        f'<p class="mast-sub">{html.escape(subtitle)}</p>'
         f'<div class="mast-meta">{"".join(meta_parts)}</div>'
         '</section>'
     )
@@ -1935,7 +1960,7 @@ def _page_shell(
     )
     return "\n".join([
         "<!doctype html>",
-        '<html lang="en" data-theme="dark"><head>',
+        '<html lang="en" data-theme="dark" data-mast="compact" data-date="prominent"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<meta name="theme-color" content="#0a0a0e">',
