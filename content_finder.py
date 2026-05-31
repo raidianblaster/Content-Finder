@@ -2033,8 +2033,12 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
         )
     user_msg = "Articles:\n\n" + "\n".join(payload_lines)
 
+    from tracing import traced_message
     client = Anthropic()
-    resp = client.messages.create(
+    resp = traced_message(
+        client,
+        call_site="synthesis",
+        prompt_version=PROMPT_VERSION,
         model=model,
         max_tokens=2000,
         system=SYSTEM_PROMPT,
