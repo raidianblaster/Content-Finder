@@ -58,6 +58,17 @@ Every feature and bugfix in this repo follows test-driven development. Not negot
 
 If a test is genuinely hard to write, that's a design signal — pause and ask whether the code under test should be restructured (extract a pure function, push I/O to the edge), not whether the test can be skipped.
 
+### Eval-Driven Development (EDD) — the partner to TDD
+
+Deterministic code is guarded by **unit tests** (above). Probabilistic / LLM
+behaviour (scoring weights, the synthesis and judge prompts) is guarded by
+**evals**: a change there should ship with an **eval delta** the same way a
+deterministic change ships with a test. Until the eval harness lands
+(`ROADMAP.md` Milestone 1), at minimum keep the key-free digest green — the
+do-no-harm gate in `.github/workflows/ci.yml` runs `pytest` plus a no-key
+`--no-summarize` render on every PR. "Vibe-checked the output" is not a merge
+criterion.
+
 ## Session start checklist
 
 Before writing any code, always run:
