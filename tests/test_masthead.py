@@ -1,8 +1,11 @@
 """V2 masthead + topbar markup tests.
 
 The V2 redesign replaces the old left-aligned topbar ("AI Digest · <date> · archive")
-with a sticky topbar (brand mark + nav) plus a masthead block (kicker, accented title,
-subtitle, meta row).
+with a sticky topbar (brand mark + nav) plus a masthead block (dateline, kicker,
+compact title, meta row).  The compact + prominent configuration is the locked state:
+- dateline leads the masthead with a day-of-week chip + full date
+- subtitle is not rendered
+- inline meta-date is not rendered (date lives in the dateline only)
 
 These tests pin the visible markup contract — change them only when the design
 spec itself changes.
@@ -79,18 +82,29 @@ def test_masthead_title_has_accent_span_on_last_word():
         "masthead title should end with <span class=\"accent\">today.</span>"
 
 
-def test_masthead_subtitle_present():
+def test_masthead_subtitle_not_rendered():
+    # Compact config hides the subtitle; it should not appear in the markup at all.
     out = cf.render_html(_items(3), top_n=3, page_date=date(2026, 5, 26))
-    assert '<p class="mast-sub">' in out
+    assert '<p class="mast-sub">' not in out
 
 
-def test_masthead_meta_row_shows_date_items_sources_and_read_time():
+def test_masthead_dateline_shows_day_chip_and_full_date():
+    out = cf.render_html(_items(3), top_n=3, page_date=date(2026, 5, 26))
+    # Dateline container
+    assert '<div class="mast-dateline">' in out
+    # Day-of-week chip (text is "Tue"; CSS uppercases it)
+    assert '<span class="mast-dateline-day">Tue</span>' in out
+    # Full date without the day name
+    assert '<span class="mast-dateline-date">26 May 2026</span>' in out
+
+
+def test_masthead_meta_row_shows_items_sources_and_read_time_no_inline_date():
     items = _items(7, sources=["NYT", "Techmeme", "Simon Willison",
                                 "The Verge", "Stratechery", "Bloomberg", "Reuters"])
     out = cf.render_html(items, top_n=7, page_date=date(2026, 5, 26))
     assert '<div class="mast-meta">' in out
-    # Date phrasing matches the spec ("Tue 26 May 2026")
-    assert "Tue 26 May 2026" in out
+    # Date lives in the dateline only — not duplicated inside mast-meta
+    assert 'class="mast-meta-date"' not in out
     # Items count
     assert "7 items" in out
     # Distinct sources count (all 7 unique here)
