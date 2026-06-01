@@ -519,3 +519,35 @@ def test_existing_download_and_copy_buttons_preserved(log_root):
     html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
     assert re.search(r'id="download-jsonl"', html)
     assert re.search(r'id="copy-jsonl"', html)
+
+
+def test_save_caches_put_response_sha(log_root):
+    """Consecutive saves must not trip GitHub's 409 'does not match' on a stale
+    sha. After a successful PUT, the new blob sha is in the response body
+    (`content.sha`); the next save must reuse that instead of re-reading via a
+    GET that can lag (replica) or be HTTP-cached (browser). Regression for the
+    two-cycle 409 bug.
+    """
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    # A module-level cache for the last-written sha.
+    assert "lastKnownSha" in html, (
+        "expected a cached sha variable so save #2 skips the stale GET"
+    )
+    # The cache is populated from the PUT response body's blob sha.
+    assert "content.sha" in html, (
+        "expected the PUT response's content.sha to be captured for reuse"
+    )
+
+
+def test_fetch_sha_bypasses_http_cache(log_root):
+    """The sha GET must be uncached, or the 409 fallback re-fetch returns the
+    same browser-cached stale sha and the retry fails identically.
+    """
+    import review
+    review.build(SAMPLE_LOG["date"], root=log_root)
+    html = (log_root / "docs" / "review" / f"{SAMPLE_LOG['date']}.html").read_text()
+    assert "no-store" in html, (
+        "expected cache: 'no-store' on the sha fetch so the retry can recover"
+    )
