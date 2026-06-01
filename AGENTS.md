@@ -16,7 +16,7 @@ Live page: https://raidianblaster.github.io/Content-Finder/
 - `.github/workflows/daily.yml` — cron `7 22 * * *` UTC ≈ 06:07 HKT (off-peak; lands ~06:15–06:25). Steps run in order: digest → `render_index.py` → `review.py build` → `judge.py run` → rebuild review → refresh `latest.html` alias → `review.py build-index`. Uses `actions/checkout@v6` and `actions/setup-python@v6` (both bundle Node 24). Do **not** downgrade these to v4/v5 — that's what triggered the prior "Node.js 20 deprecated" warning. Node 20 is fully removed from runners September 2026.
 - `docs/` — GitHub Pages root. `index.html` is overwritten daily; `archive/YYYY-MM-DD.html` is preserved. `docs/logs/` (filter logs + trace ledger) and `docs/review/` (review pages + judge JSON) are generated, not hand-edited.
 - `tests/` — pytest. Tests are tightly coupled to the rendered HTML (chip bar, cards, tags, source cap). Run before any rendering change.
-- `AGENTS.md` is a parallel copy of this file for Codex/other agents — **keep the two in sync** when you change shared facts here.
+- `CLAUDE.md` is the canonical twin of this file (read by Claude Code); this `AGENTS.md` is the Codex/other-agent copy — **keep the two in sync** when you change shared facts here.
 
 ## Constraints (load-bearing)
 
