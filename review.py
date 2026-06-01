@@ -439,8 +439,11 @@ function contentsUrl() {
 }
 
 async function fetchSha(pat) {
-  const r = await fetch(contentsUrl() + "?ref=" + BRANCH,
-    { headers: ghHeaders(pat) });
+  // cache:"no-store" + a cache-buster: GitHub serves authenticated GETs with a
+  // short max-age, so without this the 409-retry re-fetch returns the same
+  // browser-cached stale sha and fails identically.
+  const r = await fetch(contentsUrl() + "?ref=" + BRANCH + "&_=" + Date.now(),
+    { headers: ghHeaders(pat), cache: "no-store" });
   if (r.status === 404) return null;
   if (!r.ok) throw new Error("get sha: " + r.status);
   const j = await r.json();
@@ -456,6 +459,12 @@ async function putContents(pat, body) {
   return r;
 }
 
+// Blob sha of the file as we last wrote it. The PUT response carries the new
+// sha authoritatively, so reusing it lets save #2 skip the GET entirely — the
+// GET is exactly what returns a stale sha (replica lag / HTTP cache) and trips
+// GitHub's 409 "does not match". null = unknown (first save, or after a 409).
+let lastKnownSha = null;
+
 async function commitJsonl() {
   const pat = loadPat();
   if (!pat) { setStatus("idle", "not connected"); return; }
@@ -464,7 +473,7 @@ async function commitJsonl() {
 
   setStatus("saving", "saving…");
   try {
-    let sha = await fetchSha(pat);
+    let sha = lastKnownSha || await fetchSha(pat);
     const body = {
       message: "review: update " + feedbackPath(),
       content: utf8ToBase64(jsonl),
@@ -473,6 +482,9 @@ async function commitJsonl() {
     if (sha) body.sha = sha;
     let r = await putContents(pat, body);
     if (r.status === 409) {
+      // Our sha was stale (another device wrote, or a lagging read). Forget it
+      // and re-fetch the authoritative one before retrying once.
+      lastKnownSha = null;
       sha = await fetchSha(pat);
       if (sha) body.sha = sha; else delete body.sha;
       r = await putContents(pat, body);
@@ -481,6 +493,9 @@ async function commitJsonl() {
       const j = await r.json().catch(() => ({}));
       throw new Error(r.status + " " + (j.message || ""));
     }
+    // Cache the new blob sha so the next save doesn't depend on a fresh read.
+    const ok = await r.json().catch(() => ({}));
+    lastKnownSha = (ok.content && ok.content.sha) || null;
     const now = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
     setStatus("saved", "saved " + now);
   } catch (e) {
