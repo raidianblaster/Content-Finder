@@ -1007,6 +1007,23 @@ footer.site-footer a:hover { color: var(--accent); }
 .chip[aria-pressed="true"] .n {
   color: var(--bg); background: rgba(0,0,0,0.1);
 }
+/* Category tints — mirror the per-item .tag colours onto the filter chips so
+   the nav rail reads in the same colour language. Resting state tints the
+   text + border; the combined [aria-pressed="true"] selector fills with the
+   pastel (needs both attrs to outrank the generic active rule above). The
+   "All" chip is data-tag="all" and matches none of these, so it stays neutral. */
+.chip[data-tag="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.chip[data-tag="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.chip[data-tag="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.chip[data-tag="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.chip[data-tag="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.chip[data-tag="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.chip[data-tag="Models"][aria-pressed="true"]     { background: var(--cat-models);     border-color: var(--cat-models);     color: var(--bg); }
+.chip[data-tag="Agents"][aria-pressed="true"]     { background: var(--cat-agents);     border-color: var(--cat-agents);     color: var(--bg); }
+.chip[data-tag="Tooling"][aria-pressed="true"]    { background: var(--cat-tooling);    border-color: var(--cat-tooling);    color: var(--bg); }
+.chip[data-tag="Regulation"][aria-pressed="true"] { background: var(--cat-regulation); border-color: var(--cat-regulation); color: var(--bg); }
+.chip[data-tag="Enterprise"][aria-pressed="true"] { background: var(--cat-enterprise); border-color: var(--cat-enterprise); color: var(--bg); }
+.chip[data-tag="Research"][aria-pressed="true"]   { background: var(--cat-research);   border-color: var(--cat-research);   color: var(--bg); }
 
 /* ===== V2 sections (used by takeaways + future named sections) ===== */
 section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }

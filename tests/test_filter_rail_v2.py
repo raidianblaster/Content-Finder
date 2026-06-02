@@ -97,6 +97,49 @@ def test_rail_css_present():
     assert ".chip .n" in css
 
 
+def test_rail_chips_carry_category_colour_css():
+    """The per-item .tag chips are tinted per category (var(--cat-*)); the
+    filter-rail chips should mirror that so the nav bar reads in the same
+    colour language. The rules key off the existing data-tag attribute, so
+    every taxonomy chip gets a resting tint and the "All" chip (data-tag=all)
+    stays neutral."""
+    css = cf.HTML_CSS
+    cat_var = {
+        "Models": "--cat-models",
+        "Agents": "--cat-agents",
+        "Tooling": "--cat-tooling",
+        "Regulation": "--cat-regulation",
+        "Enterprise": "--cat-enterprise",
+        "Research": "--cat-research",
+    }
+    for tag, var in cat_var.items():
+        # Resting tint: a .chip[data-tag="<tag>"] rule that references the
+        # category colour variable.
+        resting = re.search(
+            r'\.chip\[data-tag="' + tag + r'"\][^{]*\{[^}]*' + re.escape(var),
+            css,
+        )
+        assert resting, f"rail chip {tag} missing resting var({var}) tint"
+
+
+def test_rail_active_chip_colour_beats_resting_tint():
+    """The active fill must win over the resting tint, so it needs the combined
+    [data-tag][aria-pressed=true] selector (equal specificity would let
+    stylesheet order decide)."""
+    css = cf.HTML_CSS
+    for tag in ("Models", "Agents", "Tooling", "Regulation", "Enterprise", "Research"):
+        assert re.search(
+            r'\.chip\[data-tag="' + tag + r'"\]\[aria-pressed="true"\]',
+            css,
+        ), f"rail chip {tag} missing combined active-state selector"
+
+
+def test_rail_all_chip_stays_neutral():
+    """The All chip is data-tag='all' and must not pick up a category tint."""
+    css = cf.HTML_CSS
+    assert '.chip[data-tag="all"]' not in css
+
+
 def test_rail_filter_js_uses_aria_pressed():
     """JS toggle must sync aria-pressed (not the legacy is-active class)."""
     out = cf.wrap_synthesis_html(
