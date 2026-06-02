@@ -3,96 +3,88 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2605.30838",
+      "url": "https://arxiv.org/abs/2504.16129",
       "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agents paper (COMPASS: MCTS-guided process alignment) with score 10.77 deserved to pass source cap given clear AI/agents relevance."
+      "reason": "High-quality agent research (MARFT) from arXiv with score 13.9 deserves inclusion over lower-scoring kept items."
     },
     {
-      "url": "https://arxiv.org/abs/2605.31278",
+      "url": "https://arxiv.org/abs/2606.02132",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv work on industrializing prediction-powered inference for GenAI/agentic systems (GLIDE library) with score 10.77 warrants inclusion."
+      "reason": "Substantive agent safety work (tool abuse mitigation) with score 12.9 is highly relevant and should not be capped."
     },
     {
-      "url": "https://arxiv.org/abs/2605.29146",
+      "url": "https://arxiv.org/abs/2606.02282",
       "stage": "dropped_source_cap",
-      "reason": "Multi-agent framework for medication recommendation (SafeRx-Agent) is high-quality applied agents research with score 10.77 that should not be capped."
+      "reason": "Multi-agent failure detection (POIROT) with score 12.9 is core agent research that merits inclusion."
     },
     {
-      "url": "https://arxiv.org/abs/2605.30677",
+      "url": "https://arxiv.org/abs/2605.17034",
       "stage": "dropped_source_cap",
-      "reason": "Security-focused agents research (prompt injection against reverse-engineering agents) with score 9.77 is substantive and cap-worthy."
+      "reason": "Privacy-RAG guardrails with score 11.9 addresses critical safety concerns in agent systems."
     },
     {
-      "url": "https://arxiv.org/abs/2605.30711",
+      "url": "https://arxiv.org/abs/2605.24248",
       "stage": "dropped_source_cap",
-      "reason": "SAGE: novel memory-efficiency work for agentic LLMs with score 9.77 addresses practical agent scaling concerns."
+      "reason": "MCP security extension work with score 11.9 is essential infrastructure for agent safety."
     },
     {
-      "url": "https://arxiv.org/abs/2605.30790",
+      "url": "https://arxiv.org/abs/2606.00708",
       "stage": "dropped_source_cap",
-      "reason": "RAG pipeline optimization work with score 9.77 is core to agentic system reliability and deserves passage."
+      "reason": "Modular agent orchestration (MOSAIC) with score 9.9 is core architectural research for agents."
     },
     {
-      "url": "https://arxiv.org/abs/2605.31468",
+      "url": "https://arxiv.org/abs/2606.01365",
       "stage": "dropped_source_cap",
-      "reason": "AutoSci: memory-centric agentic system for scientific research lifecycle with score 8.77 is substantive applied work."
+      "reason": "Failure detection in multi-agent systems with score 9.9 is critical for deployment safety."
     },
     {
-      "url": "https://arxiv.org/abs/2605.30862",
+      "url": "https://arxiv.org/abs/2606.00189",
       "stage": "dropped_source_cap",
-      "reason": "Sophrosyne: agentic exploration of relational data systems (moderation) with score 8.77 addresses real agent safety concerns."
+      "reason": "Practical agentic systems construction guidance with score 8.9 has direct applicability."
     },
     {
-      "url": "https://arxiv.org/abs/2605.30899",
+      "url": "https://arxiv.org/abs/2606.01065",
       "stage": "dropped_source_cap",
-      "reason": "Reproducible experimentation framework for speech understanding with score 8.77 supports broader agent/ML reproducibility goals."
+      "reason": "KV cache optimization for agentic inference with score 8.9 addresses practical deployment needs."
     },
     {
-      "url": "https://arxiv.org/abs/2605.31042",
+      "url": "https://arxiv.org/abs/2605.24202",
       "stage": "dropped_source_cap",
-      "reason": "Agent harness defense against trojan backdoors with score 8.77 is critical safety research for agentic systems."
+      "reason": "Multi-agent RL and LLM workflow integration with score 8.9 explores fundamental agent design tradeoffs."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/portable-ai-agent-stack-avoid-anthropic-lock-in/",
-      "reason": "Vendor-adjacent marketing content reframed as framework guidance; lacks independent research or novel insights."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/how-to-build-ai-agent-avoid-vendor-lock-in/",
-      "reason": "Duplicative vendor marketing (similar lock-in messaging) with generic framework advice; low substance."
-    },
-    {
-      "url": "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws",
-      "reason": "Product availability announcement (AWS partnership) without substantive technical or research content."
-    },
-    {
-      "url": "https://openai.com/index/stargate-michigan-data-center",
-      "reason": "Infrastructure/corporate announcement lacking technical or research substance for AI product audience."
-    },
-    {
-      "url": "https://www.techmeme.com/260601/p45#a260601p45",
-      "reason": "Corporate earnings/IPO filing news (Anthropic S-1) is business news, not technical AI/ML content."
-    },
-    {
-      "url": "https://www.techmeme.com/260601/p46#a260601p46",
-      "reason": "Corporate financial/IPO news curated from mainstream press; lacks AI/ML research or product substance."
-    },
-    {
-      "url": "https://www.techmeme.com/260601/p49#a260601p49",
-      "reason": "Venture funding/equity news (Salesforce stake in Anthropic) is financial gossip, not technical content."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/depth-vs-width-claude-code-goal-vs-dynamic-workflows/",
-      "reason": "Vendor how-to guide for Claude-specific features; marketing content disguised as technical education."
-    },
-    {
       "url": "https://www.mindstudio.ai/blog/dynamic-workflows-vs-goal-vs-agent-teams-claude-code/",
-      "reason": "Claude product tutorial content; low-signal vendor marketing repeated across multiple posts."
+      "reason": "Vendor marketing content for MindStudio's Claude products lacks academic rigor."
     },
     {
-      "url": "https://github.com/stanford-cs336/assignment1-basics/blob/main/CLAUDE.md",
-      "reason": "Academic assignment guidelines (not research); tangentially relevant only as AI policy meta-content."
+      "url": "https://www.mindstudio.ai/blog/what-is-ultra-code-mode-claude-code/",
+      "reason": "Product feature explainer is promotional marketing rather than substantive analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/portable-ai-agent-stack-avoid-anthropic-lock-in/",
+      "reason": "Vendor-focused tutorial on MindStudio tooling lacks generalizable research value."
+    },
+    {
+      "url": "https://www.businessinsider.com/big-short-michael-burry-spacex-anthropic-ipo-ai-bubble-claude-2026-6",
+      "reason": "Market valuation opinion piece unrelated to AI/ML/agents technical content."
+    },
+    {
+      "url": "https://www.techmeme.com/260602/p5#a260602p5",
+      "reason": "Business interview about Stargate data center is infrastructure news, not technical AI content."
+    },
+    {
+      "url": "https://openai.com/index/our-views-on-ai-policy-and-political-advocacy",
+      "reason": "Policy advocacy statement is not technical research or product update."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agent-isolated-database-environments-fork-experiment/",
+      "reason": "Procedural tutorial on MindStudio-specific tooling is vendor marketing."
+    },
+    {
+      "url": "https://www.techmeme.com/260602/p14#a260602p14",
+      "reason": "Codex user metrics aggregation is marketing data, not substantive AI research."
     }
   ]
 }
