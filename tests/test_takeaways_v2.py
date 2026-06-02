@@ -29,9 +29,9 @@ import content_finder as cf
 
 
 FIXTURE_MD = """## Key takeaways
-- One: enterprises are being asked to ship agent guardrails. [Five Eyes guidance](https://example.com/five-eyes)
-- Two: model launches keep accelerating, with mid-tier the new battleground. [Mistral Medium](https://mistral.ai)
-- Three: regulation is now arriving from joint multi-country bodies.
+- **Guardrails go compliance** — enterprises are being asked to ship agent guardrails. [Five Eyes guidance](https://example.com/five-eyes)
+- **Mid-tier is the battleground** — model launches keep accelerating, with mid-tier the new battleground. [Mistral Medium](https://mistral.ai)
+- **Joint regulation arrives** — regulation is now arriving from joint multi-country bodies.
 
 ## Top story
 - **Five Eyes guidance on agentic AI** — Joint guidance warns over-privileged agents are already inside critical infrastructure. **So what:** least-privilege architecture is moving from best practice to compliance. [Five Eyes](https://example.com/five-eyes) {tags: Regulation, Agents}
@@ -89,6 +89,40 @@ def test_takeaways_cards_have_body_with_text():
     assert "enterprises are being asked" in bodies[0]
     assert "model launches keep accelerating" in bodies[1]
     assert "regulation is now arriving" in bodies[2]
+
+
+# ---------------------------------------------------------------------------
+# Headline + supporting line (a takeaway leads with a short bold hook headline,
+# then one supporting sentence underneath — keeps the 3-col grid scannable).
+# ---------------------------------------------------------------------------
+
+def test_takeaway_renders_headline_in_take_head():
+    out = cf.wrap_synthesis_html(FIXTURE_MD, page_date=date(2026, 5, 26))
+    heads = re.findall(r'<div class="take-head">(.*?)</div>', out, re.DOTALL)
+    assert len(heads) == 3
+    assert "Guardrails go compliance" in heads[0]
+    assert "Mid-tier is the battleground" in heads[1]
+    assert "Joint regulation arrives" in heads[2]
+    # The headline must NOT be duplicated into the supporting body.
+    bodies = re.findall(r'<div class="take-body">(.*?)</div>', out, re.DOTALL)
+    assert "Guardrails go compliance" not in bodies[0]
+    assert "enterprises are being asked" in bodies[0]
+
+
+def test_takeaway_without_headline_falls_back_to_body_only():
+    """A bullet with no bold lead must degrade to today's body-only card (no
+    empty .take-head). This is the fallback the bare-bullet fixtures in
+    test_design.py / test_tags_and_chips.py / test_filter_rail_v2.py rely on."""
+    md = (
+        "## Key takeaways\n"
+        "- a plain takeaway with no bold lead\n"
+        "- another plain takeaway\n"
+    )
+    out = cf.wrap_synthesis_html(md, page_date=date(2026, 5, 26))
+    assert 'class="take-head"' not in out
+    bodies = re.findall(r'<div class="take-body">(.*?)</div>', out, re.DOTALL)
+    assert "a plain takeaway with no bold lead" in bodies[0]
+    assert "another plain takeaway" in bodies[1]
 
 
 # ---------------------------------------------------------------------------

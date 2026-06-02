@@ -15,6 +15,16 @@ def test_prompt_requires_key_takeaways_block():
     assert lower.index("key takeaways") < lower.index("top story")
 
 
+def test_prompt_takeaways_require_bold_headline():
+    """Each Key-takeaway bullet must lead with a short bold hook headline so the
+    UI can render headline-on-top + supporting-line-below."""
+    p = cf.SYSTEM_PROMPT
+    kta_block = p.split("Key takeaways")[1].split("Top story")[0].lower()
+    assert "bold" in kta_block and "headline" in kta_block, (
+        "takeaways spec must instruct a leading bold headline"
+    )
+
+
 def test_prompt_requires_so_what_per_story():
     p = cf.SYSTEM_PROMPT
     assert "So what" in p

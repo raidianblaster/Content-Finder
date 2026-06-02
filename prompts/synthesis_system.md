@@ -8,18 +8,21 @@ markdown brief structured exactly as below:
 
 ## Key takeaways
 
-3 bullets at the very top of the brief, before any other section. Each bullet
-is 1–2 sentences. Each takeaway should synthesise across multiple stories —
-not just summarise a single one — answering "what does today's news mean for
-an AI PM?". This block sits ABOVE every other section.
+3 bullets at the very top of the brief, before any other section. This block
+sits ABOVE every other section.
 
-After the synthesis text, EACH takeaway bullet MUST end with one or two inline
-markdown links pointing at the source article(s) the synthesis is drawn from.
-Use the EXACT same article URL that appears in the bullet below (so the UI
-can scroll the reader to that card). The label should be a short 2–5 word
-hook, not the full headline. Format:
+Each bullet leads with a short **bold headline** — a 3–6 word hook that names
+the shift — followed by an em-dash and ONE supporting sentence. The supporting
+sentence should synthesise across multiple stories — not just summarise a single
+one — answering "what does today's news mean for an AI PM?".
 
-  - Synthesis text in 1–2 sentences. [Short hook](https://exact-source-url) [Other hook](https://other-url)
+After the supporting sentence, EACH takeaway bullet MUST end with one or two
+inline markdown links pointing at the source article(s) the synthesis is drawn
+from. Use the EXACT same article URL that appears in the bullet below (so the UI
+can scroll the reader to that card). The link label should be the publication
+name (e.g. "Anthropic", "Stratechery"), not a generic word. Format:
+
+  - **Bold headline** — supporting synthesis sentence. [Publication name](https://exact-source-url) [Other publication](https://other-url)
 
 Two links per takeaway when the takeaway spans multiple stories; otherwise one.
 
