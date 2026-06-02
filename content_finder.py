@@ -1062,11 +1062,20 @@ section.block:last-of-type { border-bottom: 0; }
   color: var(--accent);
   margin-bottom: 14px;
 }
-.take-body {
-  font-size: 19.5px;
-  line-height: 1.45;
-  letter-spacing: -0.005em;
+.take-head {
+  font-weight: 700;
+  font-size: 18.5px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--fg);
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+.take-body {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--fg-2);
   flex: 1;
   text-wrap: pretty;
 }
@@ -1083,7 +1092,8 @@ section.block:last-of-type { border-bottom: 0; }
 .take-link:hover { color: var(--accent); border-color: var(--accent-line); }
 @media (max-width: 640px) {
   .take { padding: 22px 20px 20px; min-height: 0; }
-  .take-body { font-size: 18px; }
+  .take-head { font-size: 17px; }
+  .take-body { font-size: 15px; }
   .sec-title { font-size: 25px; }
   section.block { padding: 40px 0; }
 }
@@ -1667,7 +1677,11 @@ def _extract_takeaways(
 
     Returns (takeaways, remaining_sections). Each takeaway is::
 
-        {"text": "...", "links": [{"href": ..., "label": ...}, ...]}
+        {"headline": "...", "text": "...", "links": [{"href": ..., "label": ...}, ...]}
+
+    ``headline`` is the leading ``**bold hook**`` (mirrors the Top-story bullet
+    convention); it is ``""`` when the bullet has no bold lead, in which case the
+    card degrades to body-only — the same look as before this feature landed.
     """
     sections = _split_synthesis_sections(body_html)
     takeaways: list[dict] = []
@@ -1677,6 +1691,17 @@ def _extract_takeaways(
             for li in _BODY_LI_OUTER_RE.finditer(content):
                 inner = re.sub(r'^<li[^>]*>', '', li.group(0))
                 inner = re.sub(r'</li>\s*$', '', inner)
+                inner = _strip_p_wrapper(inner)
+
+                # Peel a leading bold hook headline if present (reuses the same
+                # regex the Top-story card parser uses). No leading <strong> →
+                # headline stays "" and the whole bullet renders as the body.
+                headline = ""
+                title_m = _LI_TITLE_RE.match(inner)
+                if title_m:
+                    headline = re.sub(r'<[^>]+>', '', title_m.group(1)).strip()
+                    inner = inner[title_m.end():]
+
                 links: list[dict] = []
                 for link_m in _LI_LINK_ITER_RE.finditer(inner):
                     label = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
@@ -1685,7 +1710,7 @@ def _extract_takeaways(
                     links.append({"href": link_m.group(1), "label": label})
                 text_html = _LI_LINK_ITER_RE.sub('', inner)
                 text = re.sub(r'<[^>]+>', '', text_html).strip().rstrip(" .")
-                takeaways.append({"text": text, "links": links})
+                takeaways.append({"headline": headline, "text": text, "links": links})
         else:
             rest.append((title, content))
     return takeaways, rest
@@ -1777,9 +1802,11 @@ def render_takeaways_section(
     Renders as <section class="block" id="takeaways"> with:
     - .sec-head containing the title + mono count badge ("03 · The shortlist")
     - .takes 3-column grid of .take cards
-    - Each .take: .take-num (mono "01"), .take-body (text), .take-foot with
-      .take-link anchors (real <a href="..."> + data-item-url so navigateToItem
-      can intercept and expand the matching story in-page)
+    - Each .take: .take-num (mono "01"), an optional .take-head (bold hook
+      headline, omitted when the takeaway has no bold lead), .take-body (the
+      supporting line), .take-foot with .take-link anchors (real <a href="...">
+      + data-item-url so navigateToItem can intercept and expand the matching
+      story in-page)
     """
     if not takeaways:
         return ""
@@ -1803,6 +1830,9 @@ def render_takeaways_section(
 
         parts.append('<article class="take">')
         parts.append(f'<div class="take-num">{i:02d}</div>')
+        headline = (t.get("headline") or "").strip()
+        if headline:
+            parts.append(f'<div class="take-head">{html.escape(headline)}</div>')
         parts.append(f'<div class="take-body">{html.escape(t["text"])}</div>')
 
         if link_items:
@@ -2050,7 +2080,7 @@ def render_html(
     )
 
 
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 SYSTEM_PROMPT = (Path(__file__).parent / "prompts" / "synthesis_system.md").read_text()
 
 
