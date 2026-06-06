@@ -12,3 +12,5 @@
 {"ts": "2026-06-04T23:19:30.506913+00:00", "call_site": "judge", "model": "claude-haiku-4-5-20251001", "prompt_version": "v1", "input_tokens": 30819, "output_tokens": 1367, "cost_usd": 0.037654, "latency_ms": 12867.5, "ok": true}
 {"ts": "2026-06-05T23:20:42.945557+00:00", "call_site": "synthesis", "model": "claude-sonnet-4-6", "prompt_version": "v2", "input_tokens": 2536, "output_tokens": 2000, "cost_usd": 0.037608, "latency_ms": 38887.8, "ok": true}
 {"ts": "2026-06-05T23:20:58.045606+00:00", "call_site": "judge", "model": "claude-haiku-4-5-20251001", "prompt_version": "v1", "input_tokens": 32532, "output_tokens": 1453, "cost_usd": 0.039797, "latency_ms": 14018.9, "ok": true}
+{"ts": "2026-06-06T23:13:34.741763+00:00", "call_site": "synthesis", "model": "claude-sonnet-4-6", "prompt_version": "v2", "input_tokens": 2746, "output_tokens": 2000, "cost_usd": 0.038238, "latency_ms": 42098.3, "ok": true}
+{"ts": "2026-06-06T23:13:47.000006+00:00", "call_site": "judge", "model": "claude-haiku-4-5-20251001", "prompt_version": "v1", "input_tokens": 30004, "output_tokens": 1380, "cost_usd": 0.036904, "latency_ms": 11117.0, "ok": true}
