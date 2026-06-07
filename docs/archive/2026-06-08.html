@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark"><head>
+<html lang="en" data-theme="dark" data-mast="compact" data-date="prominent"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0a0a0e">
@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>Archive · Content Finder</title>
+<title>AI Digest — Mon 08 Jun 2026</title>
 <style>
 :root {
   /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
@@ -498,176 +498,114 @@ section.block:last-of-type { border-bottom: 0; }
 }
 
 .is-hidden { display: none !important; }
-
-body.archive { --col: 760px; }
-.arch-list { padding: 8px 0 24px; }
-.arch-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 24px;
-  align-items: center;
-  padding: 18px 4px;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  transition: background 140ms ease;
-}
-.arch-row::after {
-  content: '';
-  position: absolute; left: -12px; right: -12px; top: 0; bottom: 0;
-  border-radius: 10px; pointer-events: none;
-  background: transparent; transition: background 140ms ease;
-  z-index: -1;
-}
-.arch-row:hover::after { background: rgba(255,255,255,0.025); }
-.arch-row:hover .arch-date { color: var(--accent); }
-.arch-row:hover .arch-arrow { color: var(--accent); transform: translateX(4px); }
-.arch-row:last-child { border-bottom: 0; }
-.arch-date {
-  font-size: 19px;
-  font-weight: 500;
-  color: var(--fg);
-  letter-spacing: -0.012em;
-  transition: color 140ms ease;
-}
-.arch-day {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 12.5px;
-  color: var(--fg-3);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-align: right;
-  min-width: 90px;
-}
-.arch-arrow {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  color: var(--fg-4);
-  transition: transform 160ms ease, color 140ms ease;
-  min-width: 16px; text-align: right;
-}
-.arch-row.is-today { border-bottom-color: var(--accent-line); }
-.arch-row.is-today::after { background: var(--accent-soft); }
-.arch-row.is-today .arch-arrow { color: var(--accent); }
-.today-pill {
-  display: inline-flex;
-  margin-left: 12px;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 10.5px; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-ink);
-  background: var(--accent);
-  padding: 3px 8px; border-radius: 4px;
-  vertical-align: middle;
-}
-
-/* Topline row: latest link + count */
-.topline {
-  margin-top: 30px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px;
-}
-.latest-link {
-  display: inline-flex; align-items: center; gap: 10px;
-  text-decoration: none; color: var(--fg-2);
-  font-size: 14.5px; font-weight: 500;
-  padding: 6px 0;
-  transition: color 140ms ease;
-}
-.latest-link:hover { color: var(--accent); }
-.latest-link .back { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
-.latest-link:hover .back { transform: translateX(-3px); }
-.count {
-  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
-  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
-}
-.count b { color: var(--fg); font-weight: 500; }
-
-.arch-empty {
-  padding: 36px 4px; color: var(--fg-3); font-size: 15px;
-  text-align: center;
-  border-bottom: 1px solid var(--line);
-}
-
-@media (max-width: 640px) {
-  .arch-row {
-    grid-template-columns: 1fr auto;
-    gap: 14px;
-    padding: 16px 4px;
-  }
-  .arch-arrow { display: none; }
-  .arch-date { font-size: 17.5px; }
-  .arch-day { font-size: 11.5px; min-width: 72px; }
-  .arch-row.is-today .today-pill { font-size: 10px; padding: 2px 6px; }
-}
 </style>
-</head><body class="archive">
+</head><body>
 <header class="topbar">
 <div class="wrap topbar-inner">
 <a class="brand" href="index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
 <nav class="topnav">
-<a href="index.html">Today</a>
-<a href="archive.html" class="active">Archive</a>
+<a href="index.html" class="active">Today</a>
+<a href="../archive.html">Archive</a>
+<a href="#takeaways">Takeaways</a>
 </nav>
 </div>
 </header>
 <main class="wrap">
-<section class="masthead">
-<div class="kicker"><span class="dot"></span>AI Digest Archive</div>
-<h1 class="mast-title">All past <span class="accent">digests.</span></h1>
-<p class="mast-sub">Every issue, newest first. Click any date to read its digest.</p>
-<div class="topline">
-<a class="latest-link" href="index.html"><span class="back">←</span><span>Latest digest</span></a>
-<span class="count"><b>39</b> archived digests</span>
-</div>
-</section>
-<div class="arch-list">
-<a class="arch-row is-today" href="archive/2026-06-08.html"><span class="arch-date">08 Jun 2026 <span class="today-pill">Today</span></span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-07.html"><span class="arch-date">07 Jun 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-06.html"><span class="arch-date">06 Jun 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-05.html"><span class="arch-date">05 Jun 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-04.html"><span class="arch-date">04 Jun 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-03.html"><span class="arch-date">03 Jun 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-02.html"><span class="arch-date">02 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-01.html"><span class="arch-date">01 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-31.html"><span class="arch-date">31 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-30.html"><span class="arch-date">30 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-29.html"><span class="arch-date">29 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-28.html"><span class="arch-date">28 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-27.html"><span class="arch-date">27 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-26.html"><span class="arch-date">26 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-25.html"><span class="arch-date">25 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-24.html"><span class="arch-date">24 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-23.html"><span class="arch-date">23 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-22.html"><span class="arch-date">22 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-21.html"><span class="arch-date">21 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-20.html"><span class="arch-date">20 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-19.html"><span class="arch-date">19 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-18.html"><span class="arch-date">18 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-17.html"><span class="arch-date">17 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-16.html"><span class="arch-date">16 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-15.html"><span class="arch-date">15 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-14.html"><span class="arch-date">14 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-13.html"><span class="arch-date">13 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-12.html"><span class="arch-date">12 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-11.html"><span class="arch-date">11 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-10.html"><span class="arch-date">10 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-09.html"><span class="arch-date">09 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-08.html"><span class="arch-date">08 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-07.html"><span class="arch-date">07 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-06.html"><span class="arch-date">06 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-05.html"><span class="arch-date">05 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-04.html"><span class="arch-date">04 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-03.html"><span class="arch-date">03 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-02.html"><span class="arch-date">02 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-01.html"><span class="arch-date">01 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-</div>
+<section class="masthead"><div class="mast-dateline"><span class="mast-dateline-day">Mon</span><span class="mast-dateline-date">08 Jun 2026</span></div><div class="kicker"><span class="dot"></span>AI Digest</div><h1 class="mast-title">What moved in AI <span class="accent">today.</span></h1><div class="mast-meta"><span>5 items</span></div></section>
+<div class="rail"><div class="wrap rail-inner" role="tablist"><button type="button" class="chip" role="tab" data-tag="all" aria-pressed="true"><span>All</span><span class="n">5</span></button><button type="button" class="chip" role="tab" data-tag="Models" aria-pressed="false"><span>Models</span><span class="n">1</span></button><button type="button" class="chip" role="tab" data-tag="Agents" aria-pressed="false"><span>Agents</span><span class="n">2</span></button><button type="button" class="chip" role="tab" data-tag="Tooling" aria-pressed="false"><span>Tooling</span><span class="n">2</span></button><button type="button" class="chip" role="tab" data-tag="Regulation" aria-pressed="false"><span>Regulation</span><span class="n">1</span></button><button type="button" class="chip" role="tab" data-tag="Enterprise" aria-pressed="false"><span>Enterprise</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Research" aria-pressed="false"><span>Research</span><span class="n">1</span></button></div></div>
+<section class="block" id="takeaways"><div class="sec-head"><h2 class="sec-title">Key takeaways</h2><span class="sec-meta">03 · The shortlist</span></div><div class="takes"><article class="take"><div class="take-num">01</div><div class="take-head">ChatGPT superapp signals platform consolidation</div><div class="take-body">OpenAI&#x27;s plan to embed coding tools and agents into ChatGPT as a gateway product suggests the competitive surface for enterprise AI is shifting from raw model capability to integrated platform lock-in, raising urgency for PMs to define where their products sit in that stack</div><div class="take-foot"><a class="take-link" href="https://www.techmeme.com/260607/p1#a260607p1" data-item-url="https://www.techmeme.com/260607/p1#a260607p1">Financial Times via Techmeme →</a></div></article><article class="take"><div class="take-num">02</div><div class="take-head">LLM tooling gaps fuel developer frustration</div><div class="take-body">High community engagement around both the missing Claude Linux desktop client and a blog post on AI eroding engineering careers signals that platform friction and workforce anxiety are now mainstream PM concerns, not edge cases</div><div class="take-foot"><a class="take-link" href="https://github.com/anthropics/claude-code/issues/65697" data-item-url="https://github.com/anthropics/claude-code/issues/65697">Hacker News →</a><a class="take-link" href="https://human-in-the-loop.bearblog.dev/llms-are-eroding-my-software-engineering-career-and-i-dont-know-what-to-do/" data-item-url="https://human-in-the-loop.bearblog.dev/llms-are-eroding-my-software-engineering-career-and-i-dont-know-what-to-do/">Hacker News →</a></div></article><article class="take"><div class="take-num">03</div><div class="take-head">Post-AGI scarcity reframes value creation</div><div class="take-body">Economists at DeepMind and Epoch AI argue that physical constraints and human attention will remain scarce even after AGI, a framing that helps regulated-industry PMs anticipate which workflows AI will transform versus which it cannot</div><div class="take-foot"><a class="take-link" href="https://www.techmeme.com/260607/p5#a260607p5" data-item-url="https://www.techmeme.com/260607/p5#a260607p5">Dwarkesh Podcast via Techmeme →</a></div></article></div></section>
+<div class="article-list"><section class="block"><div class="sec-head"><h2 class="sec-title">Top Story</h2><span class="sec-meta">01 · 1 story</span></div><div class="stories"><article class="story" data-tags="Enterprise Agents Models" id="story-1"><div class="story-head" role="button" tabindex="0" aria-expanded="false"><div><div class="story-meta-row"><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Models">Models</span><span class="src">Financial Times via Techmeme</span></div><h3 class="story-title">OpenAI recasts ChatGPT as a superapp</h3><p class="story-summary">OpenAI plans a major ChatGPT overhaul in coming weeks, bundling coding tools and AI agents into the product as a route to higher-margin revenue ahead of a potential IPO at an $850bn valuation</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For an AI PM in a regulated enterprise, this consolidation move means ChatGPT could become a direct competitor to internal AI tooling and productivity suites — worth pressure-testing your build-vs-integrate strategy now</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260607/p1#a260607p1" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Financial Times via Techmeme</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Agentic Engineering</h2><span class="sec-meta">02 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Tooling Agents" id="story-2"><div class="story-head" role="button" tabindex="0" aria-expanded="false"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Agents">Agents</span><span class="src">Hacker News</span></div><h3 class="story-title">Lathe teaches domains via LLMs, not around them</h3><p class="story-summary">A Show HN project proposes using LLMs as active tutors to help developers build genuine domain knowledge rather than outsourcing understanding to the model entirely, earning 214 upvotes and substantive discussion</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This pattern — LLM as Socratic guide rather than answer machine — is a design philosophy worth piloting in regulated environments where staff need defensible expertise, not just AI-generated outputs</p></div><div class="story-actions"><a class="read" href="https://github.com/devenjarvis/lathe" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article><article class="story" data-tags="Tooling Enterprise" id="story-3"><div class="story-head" role="button" tabindex="0" aria-expanded="false"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Hacker News</span></div><h3 class="story-title">Community demands Claude Desktop on Linux</h3><p class="story-summary">A GitHub issue requesting an official Anthropic Linux client for Claude Code has 425 upvotes, surfacing a real gap in Anthropic's enterprise-developer reach given Linux's dominance in backend and regulated-infrastructure teams</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Platform coverage is now a procurement criterion — PMs evaluating Anthropic tooling for developer workflows should flag this gap in vendor conversations and track whether Anthropic responds</p></div><div class="story-actions"><a class="read" href="https://github.com/anthropics/claude-code/issues/65697" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Enterprise &amp; Regulation</h2><span class="sec-meta">03 · 1 story</span></div><div class="stories"><article class="story" data-tags="Enterprise Regulation" id="story-4"><div class="story-head" role="button" tabindex="0" aria-expanded="false"><div><div class="story-meta-row"><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Hacker News</span></div><h3 class="story-title">LLM impact on engineering careers sparks mass discussion</h3><p class="story-summary">A personal blog post describing AI as quietly eroding the author's software engineering role drew 751 points and 722 comments on Hacker News, one of the highest-engagement pieces of the day, reflecting widespread anxiety about role displacement in technical teams</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Regulated organisations adopting AI coding tools need explicit workforce strategies — not just technical rollout plans — or they risk talent attrition and morale damage among the engineers they still need to oversee AI outputs</p></div><div class="story-actions"><a class="read" href="https://human-in-the-loop.bearblog.dev/llms-are-eroding-my-software-engineering-career-and-i-dont-know-what-to-do/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Worth a Deeper Read</h2><span class="sec-meta">04 · 1 story</span></div><div class="stories"><article class="story" data-tags="Research Enterprise" id="story-5"><div class="story-head" role="button" tabindex="0" aria-expanded="false"><div><div class="story-meta-row"><span class="tag" data-cat="Research">Research</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Dwarkesh Podcast via Techmeme</span></div><h3 class="story-title">Economics of AGI: what stays scarce</h3><p class="story-summary">Google DeepMind's Alex Imas and Epoch AI's Phil Trammell argue that physical capital, human attention, and certain creative outputs remain genuinely scarce post-AGI, offering a rigorous framework for thinking beyond hype</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This is essential intellectual grounding for PMs building business cases in regulated industries where "AI does everything" narratives must be countered with specificity about where human judgment remains irreplaceable</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260607/p5#a260607p5" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Dwarkesh Podcast via Techmeme</span></div></div></div></div></article></div></section></div>
 <footer class="site-footer">
 <span>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></span>
-<span>39 issues</span>
+<span>Mon 08 Jun 2026</span>
 </footer>
 </main>
+
+<script>
+(function () {
+  // Topic filter chips — V2 uses aria-pressed for active state.
+  var chips = document.querySelectorAll('.chip');
+  function applyFilter(tag) {
+    chips.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.tag === tag ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-tags]').forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      // Untagged items (e.g. Key takeaways bullets) stay visible under
+      // every filter — they're synthesis, not topic-scoped.
+      var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+      el.classList.toggle('is-hidden', !show);
+    });
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      applyFilter(chip.dataset.tag);
+    });
+  });
+
+  // V2 story expand/collapse: clicking the head (or pressing Enter/Space
+  // when focused) toggles a `.open` class on the .story article, which the
+  // CSS animates via grid-template-rows 0fr → 1fr.
+  function toggleStory(head) {
+    var story = head.closest('.story');
+    if (!story) return;
+    var open = story.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.story-head').forEach(function (head) {
+    head.addEventListener('click', function () { toggleStory(head); });
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleStory(head);
+      }
+    });
+  });
+
+  // Takeaways collapsible
+  // Takeaway → story navigation (V2). Each .take-link is a normal <a>
+  // with both href="<article-url>" and data-item-url. Default click would
+  // open the article in a new tab; we intercept when there's a matching
+  // in-page .story card and expand it instead. JS-off / unmatched falls
+  // back to following the href.
+  function navigateToItem(itemUrl) {
+    if (!itemUrl) return;
+    var safe = itemUrl.replace(/"/g, '\\"');
+    var matchLink = document.querySelector('.story .read[href="' + safe + '"]');
+    var story = matchLink ? matchLink.closest('.story') : null;
+    if (!story) {
+      window.open(itemUrl, '_blank', 'noopener');
+      return;
+    }
+    applyFilter('all');
+    document.querySelectorAll('.story.open').forEach(function (el) {
+      if (el !== story) {
+        el.classList.remove('open');
+        var h = el.querySelector('.story-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      }
+    });
+    story.classList.add('open');
+    var head = story.querySelector('.story-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
+    setTimeout(function () {
+      story.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
+  window.navigateToItem = navigateToItem;
+  document.querySelectorAll('.take-link').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      // If the matching story exists on this page, intercept. Otherwise
+      // let the browser follow the href (article URL in new tab via the
+      // anchor's default behaviour — handled by markup attrs in HTML).
+      var safe = (a.dataset.itemUrl || '').replace(/"/g, '\\"');
+      if (safe && document.querySelector('.story .read[href="' + safe + '"]')) {
+        ev.preventDefault();
+        navigateToItem(a.dataset.itemUrl);
+      }
+    });
+  });
+})();
+</script>
+
 </body></html>
