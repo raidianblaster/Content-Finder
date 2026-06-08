@@ -6,13 +6,13 @@ Live page: https://raidianblaster.github.io/Content-Finder/
 
 ## Layout
 
-- `content_finder.py` — single-file pipeline (~2300 lines). Sections, in order: sources/keywords → `Item` dataclass → fetchers (`fetch_rss`, `fetch_hn`) → scoring/dedupe (`score_item`, `dedupe`, `apply_source_cap`) → renderers (`render_plain`, `render_html`, chip bar, card builders) → `synthesize_with_claude` → `gather` → `main`. Also writes a per-run **filter log** to `docs/logs/<date>.json` (every item the pipeline saw + the stage that decided its fate) — this is the substrate the review/judge tooling reads.
+- `content_finder.py` — single-file pipeline (~2300 lines). Sections, in order: sources/keywords → `Item` dataclass → fetchers (`fetch_rss`, `fetch_hn`) → scoring/dedupe (`score_components` — per-feature breakdown: keyword/recency/recency_term/src_bonus/hn_bonus/total, feeding the filter log for #9/M2.1 self-tuning groundwork; `score_item`, `dedupe`, `apply_source_cap`) → renderers (`render_plain`, `render_html`, chip bar, card builders) → `synthesize_with_claude` → `gather` → `main`. Also writes a per-run **filter log** to `docs/logs/<date>.json` (every item the pipeline saw + the stage that decided its fate) — this is the substrate the review/judge tooling reads.
 - `render_index.py` — rebuilds `docs/archive.html` from files in `docs/archive/`.
 - **M0 harness (landed — not future):** the tracing/review/judge loop is real code, not roadmap:
   - `review.py` — `build <date>` emits the labelable `docs/review/<date>.html` from the filter log; `build-index` rebuilds `docs/review/index.html`. Verdicts persist to `feedback/<date>.jsonl`.
   - `judge.py` — `run <date>` sends a curated subset of filter decisions to Claude Haiku and writes `docs/review/<date>.judge.json`, inlined into the review HTML to flag suspect keeps/drops. Opt-in (needs a key); failures are swallowed so the digest still ships.
   - `tracing.py` / `traces.py` — every Claude call appends one row to `docs/logs/traces.jsonl` (tokens, cost, latency, model, prompt_version). `python traces.py` rolls it up. Tracing must never break the pipeline.
-- `prompts/synthesis_system.md` — the synthesis system prompt lives **here**, not inline. `content_finder.py` reads it at import (`SYSTEM_PROMPT`) and stamps `PROMPT_VERSION` ("v1") into traces. Bump the version when the prompt changes.
+- `prompts/synthesis_system.md` — the synthesis system prompt lives **here**, not inline. `content_finder.py` reads it at import (`SYSTEM_PROMPT`) and stamps `PROMPT_VERSION` ("v2") into traces. Bump the version when the prompt changes.
 - `.github/workflows/daily.yml` — cron `7 22 * * *` UTC ≈ 06:07 HKT (off-peak; lands ~06:15–06:25). Steps run in order: digest → `render_index.py` → `review.py build` → `judge.py run` → rebuild review → refresh `latest.html` alias → `review.py build-index`. Uses `actions/checkout@v6` and `actions/setup-python@v6` (both bundle Node 24). Do **not** downgrade these to v4/v5 — that's what triggered the prior "Node.js 20 deprecated" warning. Node 20 is fully removed from runners September 2026.
 - `docs/` — GitHub Pages root. `index.html` is overwritten daily; `archive/YYYY-MM-DD.html` is preserved. `docs/logs/` (filter logs + trace ledger) and `docs/review/` (review pages + judge JSON) are generated, not hand-edited.
 - `tests/` — pytest. Tests are tightly coupled to the rendered HTML (chip bar, cards, tags, source cap). Run before any rendering change.
@@ -29,7 +29,7 @@ Live page: https://raidianblaster.github.io/Content-Finder/
 
 ## Conventions
 
-- Source-trust weights live inside `score_item()` (not in a config file yet — see roadmap).
+- Source-trust weights live in `sources.yml` (`trust: 0–5` per source), parsed by `load_sources()` into `_TRUSTED_WEIGHTS` and consumed by `score_item()` — not hardcoded.
 - Tag taxonomy is fixed: `Models · Agents · Tooling · Regulation · Enterprise · Research`. Defined once as `TAG_TAXONOMY` and consumed by both the LLM prompt and the chip filter bar — keep them in sync.
 - Per-source cap defaults to 3 (`apply_source_cap`) to stop a hot day on one outlet from crowding out diversity.
 - No emojis in generated digests except the existing chip/section UI.
