@@ -691,6 +691,24 @@ body {
   padding: 0 var(--pad);
 }
 
+/* Skip link (keyboard users) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
 /* Top bar — sticky, blurred, brand + nav */
 .topbar {
   position: sticky; top: 0; z-index: 50;
@@ -1120,6 +1138,15 @@ section.block:last-of-type { border-bottom: 0; }
 }
 
 .is-hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
 """
 
 
@@ -1642,10 +1669,11 @@ def _build_card_html(
     parts = [
         f'<article class="story" data-tags="{html.escape(data_tags)}" '
         f'id="story-{item_id}">',
-        '<div class="story-head" role="button" tabindex="0" aria-expanded="false">',
+        f'<div class="story-head" role="button" tabindex="0" aria-expanded="false" '
+        f'aria-controls="story-body-{item_id}">',
         "".join(head_inner),
         '</div>',
-        f'<div class="story-body">{body_html_inner}</div>',
+        f'<div class="story-body" id="story-body-{item_id}">{body_html_inner}</div>',
         '</article>',
     ]
     return "".join(parts)
@@ -1940,10 +1968,11 @@ def _render_ranked_card(item: Item, item_id: int) -> str:
 
     return (
         f'<article class="story" id="story-{item_id}">'
-        '<div class="story-head" role="button" tabindex="0" aria-expanded="false">'
+        f'<div class="story-head" role="button" tabindex="0" aria-expanded="false" '
+        f'aria-controls="story-body-{item_id}">'
         f'{"".join(head_inner)}'
         '</div>'
-        f'<div class="story-body">{body_inner}</div>'
+        f'<div class="story-body" id="story-body-{item_id}">{body_inner}</div>'
         '</article>'
     )
 
@@ -2020,6 +2049,7 @@ def _page_shell(
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}</style>",
         "</head><body>",
+        '<a class="skip-link" href="#content">Skip to content</a>',
         '<header class="topbar">',
         '<div class="wrap topbar-inner">',
         '<a class="brand" href="index.html">'
@@ -2033,7 +2063,7 @@ def _page_shell(
         '</nav>',
         '</div>',
         '</header>',
-        '<main class="wrap">',
+        '<main class="wrap" id="content">',
         masthead_html,
         # V2 rail goes BETWEEN the masthead and the takeaways section so it
         # stays sticky right under the topbar as the user scrolls.
@@ -2112,7 +2142,10 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
         call_site="synthesis",
         prompt_version=PROMPT_VERSION,
         model=model,
-        max_tokens=2000,
+        # The full brief (key takeaways + ~9 stories, each with a So-what) runs
+        # past 2000 output tokens; that cap truncated the final bullet before its
+        # source link, so the last card rendered with no "Read the article" link.
+        max_tokens=4000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_msg}],
     )

@@ -158,7 +158,14 @@ def render_archive_html(
     Pure function: takes the list of (date, filename) entries already sorted
     in display order (newest first) and returns the full document.
     """
-    today_value = today or today_hkt()
+    # Archive UX: the newest digest in the list should be highlighted as
+    # "Today" regardless of the machine clock that generated the page.
+    #
+    # Why: GitHub Pages hosts static HTML; readers interpret "Today" as
+    # "newest issue in this archive list", not "matches my local date".
+    # We still accept an explicit `today=` override for callers/tests that
+    # want calendar matching.
+    today_value = today
     count = len(entries)
 
     parts: list[str] = [
@@ -212,8 +219,8 @@ def render_archive_html(
             '<div class="arch-empty">No archived digests yet.</div>'
         )
     else:
-        for d, name in entries:
-            is_today = d.date() == today_value
+        for i, (d, name) in enumerate(entries):
+            is_today = (i == 0) if today_value is None else (d.date() == today_value)
             parts.append(_render_arch_row(d, name, is_today=is_today))
 
     parts.extend([

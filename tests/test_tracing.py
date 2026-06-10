@@ -18,9 +18,10 @@ class _Usage:
 
 
 class _Resp:
-    def __init__(self, text="ok", i=100, o=50):
+    def __init__(self, text="ok", i=100, o=50, stop_reason="end_turn"):
         self.content = [type("C", (), {"text": text})()]
         self.usage = _Usage(i, o)
+        self.stop_reason = stop_reason
 
 
 class _FakeClient:
@@ -63,6 +64,20 @@ def test_traced_message_writes_row_and_returns_response(tmp_path):
     assert r["ok"] is True
     assert r["cost_usd"] == pytest.approx(tracing.estimate_cost("claude-sonnet-4-6", 200, 80))
     assert isinstance(r["latency_ms"], (int, float))
+
+
+def test_traced_message_records_stop_reason(tmp_path):
+    """A truncated synthesis (stop_reason='max_tokens') must be visible in the
+    ledger — that's the only signal that a card shipped without its link."""
+    tp = tmp_path / "traces.jsonl"
+    client = _FakeClient(_Resp(text="cut off…", stop_reason="max_tokens"))
+    tracing.traced_message(
+        client, call_site="synthesis", trace_path=tp,
+        model="claude-sonnet-4-6", max_tokens=10,
+        messages=[{"role": "user", "content": "x"}],
+    )
+    r = [json.loads(l) for l in tp.read_text().splitlines() if l.strip()][0]
+    assert r["stop_reason"] == "max_tokens"
 
 
 def test_traced_message_records_failure_and_reraises(tmp_path):
