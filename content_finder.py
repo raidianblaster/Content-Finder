@@ -2112,7 +2112,10 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
         call_site="synthesis",
         prompt_version=PROMPT_VERSION,
         model=model,
-        max_tokens=2000,
+        # The full brief (key takeaways + ~9 stories, each with a So-what) runs
+        # past 2000 output tokens; that cap truncated the final bullet before its
+        # source link, so the last card rendered with no "Read the article" link.
+        max_tokens=4000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_msg}],
     )

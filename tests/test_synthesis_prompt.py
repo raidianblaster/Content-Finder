@@ -1,7 +1,51 @@
 """Tests for the SYSTEM_PROMPT structure (feature 2)."""
 from __future__ import annotations
 
+import sys
+import types
+from datetime import datetime, timezone
+
 import content_finder as cf
+
+
+def test_synthesis_requests_enough_output_tokens(monkeypatch):
+    """The full brief (takeaways + ~9 stories, each with a So-what) overruns a
+    2000-token cap, truncating the final bullet so its source link never lands
+    and the last card renders without a 'Read the article' link. Guard the
+    budget so that regression can't silently return.
+    """
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
+    # Stub the anthropic SDK so construction succeeds without the package/network.
+    fake_sdk = types.ModuleType("anthropic")
+    fake_sdk.Anthropic = lambda *a, **k: object()
+    monkeypatch.setitem(sys.modules, "anthropic", fake_sdk)
+
+    captured: dict = {}
+
+    class _Resp:
+        content = [type("C", (), {"text": "# brief"})()]
+
+    def _fake_traced(client, **kwargs):
+        captured.update(kwargs)
+        return _Resp()
+
+    monkeypatch.setattr("tracing.traced_message", _fake_traced)
+
+    items = [
+        cf.Item(
+            title="Headline",
+            url="https://example.com/x",
+            source="Example",
+            published=datetime.now(timezone.utc),
+            summary="Body.",
+        )
+    ]
+    cf.synthesize_with_claude(items, model="claude-sonnet-4-6")
+
+    assert captured.get("max_tokens", 0) >= 4000, (
+        f"synthesis max_tokens too low ({captured.get('max_tokens')}); the brief "
+        "truncates and the last card loses its link"
+    )
 
 
 def test_prompt_requires_key_takeaways_block():

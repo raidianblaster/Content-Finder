@@ -77,6 +77,9 @@ def _append_row(trace_path, *, call_site, prompt_version, model, msg, ok, latenc
             "output_tokens": out_tok,
             "cost_usd": estimate_cost(model, in_tok, out_tok),
             "latency_ms": round(latency_ms, 1),
+            # Surfaces truncation: "max_tokens" here means the response was cut
+            # off and a trailing card may have lost its source link.
+            "stop_reason": getattr(msg, "stop_reason", None),
             "ok": ok,
         }
         path = Path(trace_path)
