@@ -2152,8 +2152,14 @@ def synthesize_with_claude(items: list[Item], model: str) -> str:
     return resp.content[0].text
 
 
-def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
-    """Render a Claude-synthesised brief in the Variant A card layout."""
+def _wrap_synthesis_counted(
+    md_text: str, *, page_date: date | None = None
+) -> tuple[str, int]:
+    """Render the synthesised brief and return (html, story_card_count).
+
+    The count lets callers detect a degenerate synthesis reply (no parseable
+    story bullets) and fall back rather than ship a blank page.
+    """
     import markdown as md_lib
     page_date = page_date or today_hkt()
 
@@ -2165,12 +2171,44 @@ def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
     takeaways_html = render_takeaways_section(takeaways, url_to_source)
     items_html, item_count = _render_synthesis_sections(rest)
 
-    return _page_shell(
+    html_out = _page_shell(
         page_date,
         item_count=item_count,
         takeaways_html=takeaways_html,
         body_html=items_html,
     )
+    return html_out, item_count
+
+
+def wrap_synthesis_html(md_text: str, *, page_date: date | None = None) -> str:
+    """Render a Claude-synthesised brief in the Variant A card layout."""
+    html_out, _ = _wrap_synthesis_counted(md_text, page_date=page_date)
+    return html_out
+
+
+def render_digest_html(
+    md_output: str,
+    items: list[Item],
+    *,
+    page_date: date | None = None,
+    top_n: int = 25,
+    issue_number: int | None = None,
+) -> str:
+    """Render the Claude brief, falling back to the ranked list when synthesis
+    produced no story cards while items exist.
+
+    Why: synthesis builds the whole article list by *parsing* Claude's markdown.
+    On a thin day the model may answer with a short prose note that carries none
+    of the expected story bullets, yielding an empty page that silently drops
+    items the pipeline already approved (the 2026-06-21 blank homepage). The
+    ranked ``render_html`` view guarantees those items still ship.
+    """
+    html_out, item_count = _wrap_synthesis_counted(md_output, page_date=page_date)
+    if item_count == 0 and items:
+        return render_html(
+            items, top_n=top_n, page_date=page_date, issue_number=issue_number,
+        )
+    return html_out
 
 
 # --------------------------------------------------------------------------- #
@@ -2340,7 +2378,10 @@ def main() -> int:
     else:
         md_output = synthesize_with_claude(items, model=args.model)
         if args.format == "html":
-            output = wrap_synthesis_html(md_output, page_date=page_date)
+            output = render_digest_html(
+                md_output, items, page_date=page_date,
+                top_n=args.top, issue_number=issue_no,
+            )
         else:
             output = md_output
 
