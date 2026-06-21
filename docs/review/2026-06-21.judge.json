@@ -3,64 +3,28 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2606.19899",
-      "stage": "dropped_source_cap",
-      "reason": "High-relevance agent safety research on biological AI capabilities from arXiv, substantive and timely."
+      "url": "https://www.latent.space/p/ainews-not-much-happened-today-e7b",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space is a high-signal trusted source for AI news; this should not have been filtered despite self-deprecating title."
     },
     {
-      "url": "https://arxiv.org/abs/2606.19501",
-      "stage": "dropped_source_cap",
-      "reason": "Strong agents + financial risk supervision benchmark paper, directly relevant to agentic AI deployment concerns."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.19787",
-      "stage": "dropped_source_cap",
-      "reason": "Benchmark for LLM agents solving operations research tasks end-to-end, substantive capability evaluation."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.19887",
-      "stage": "dropped_source_cap",
-      "reason": "Financial LLM red-teaming framework with expert guidance, critical for regulated AI safety."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.20493",
-      "stage": "dropped_source_cap",
-      "reason": "Multi-agent LLM systems evaluator bias propagation study, addresses governance concern in agentic systems."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.19464",
-      "stage": "dropped_ttl",
-      "reason": "Deontic policies for agentic AI governance, directly addresses regulatory compliance for agent systems."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.19749",
-      "stage": "dropped_ttl",
-      "reason": "Benchmarking agentic review systems, substantive evaluation framework for agent oversight."
-    },
-    {
-      "url": "https://arxiv.org/abs/2510.18383",
-      "stage": "dropped_ttl",
-      "reason": "MENTOR framework for reinforcement learning via teacher-optimized rewards for tool use, relevant to agent training."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.20023",
-      "stage": "dropped_source_cap",
-      "reason": "Investigates over-privileged tool selection in LLM agents, important security/governance research."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.20510",
-      "stage": "dropped_source_cap",
-      "reason": "Efficient probabilistic verification for AI agents, critical for safe agentic system deployment."
+      "url": "https://www.dwarkesh.com/p/the-sample-efficiency-black-hole",
+      "stage": "dropped_keyword",
+      "reason": "Substantive AI/ML content on data efficiency from established podcast host; keyword filter likely over-aggressive."
     }
   ],
   "suspect_keeps": [
     {
       "url": "https://www.techmeme.com/260620/p8#a260620p8",
-      "reason": "Claude Guillemot death notice is unrelated to AI/ML and should not be in an AI-focused pipeline."
+      "reason": "Personal tragedy of gaming executive has no relevance to AI/ML pipeline focus."
     },
     {
       "url": "https://www.techmeme.com/260620/p5#a260620p5",
-      "reason": "Signal encryption debate, while touching on online policy, lacks substantive AI/ML or agentic system content."
+      "reason": "Signal encryption/surveillance policy debate is tangential to AI content pipeline; belongs in security/privacy vertical."
+    },
+    {
+      "url": "https://stratechery.com/2026/the-stuff-of-mythos/",
+      "reason": "Generic tech strategy essay with unclear AI/ML relevance; low score suggests weak signal."
     }
   ]
 }
