@@ -101,6 +101,55 @@ def test_source_cap_drops_are_logged(monkeypatch):
             assert log.dropped_source_cap[0]["source"] == source
 
 
+def test_fetch_status_logged_per_source(monkeypatch):
+    """Each source's fetch outcome (ok + item count, or the error) must be
+    recorded so a quiet day can be told apart from silently-broken feeds.
+    Regression for 2026-06-21, where ~all feeds returned nothing and stderr
+    was the only (lost) signal."""
+    monkeypatch.setattr(cf, "RSS_SOURCES", [
+        ("Good Feed", "https://good.example/rss"),
+        ("Empty Feed", "https://empty.example/rss"),
+        ("Bad Feed", "https://bad.example/rss"),
+    ])
+    monkeypatch.setattr(cf, "HN_QUERIES", [])
+
+    def fake_fetch_rss(src, url, since):
+        if src == "Bad Feed":
+            raise RuntimeError("HTTP 503 Service Unavailable")
+        if src == "Empty Feed":
+            return []
+        return [_item("LLM agent shipped", "https://good.example/1",
+                      source=src, summary="agentic llm model")]
+
+    monkeypatch.setattr(cf, "fetch_rss", fake_fetch_rss)
+    monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
+
+    _, log = cf.gather(days=1, hn_min_points=50)
+
+    by_source = {s["source"]: s for s in log.fetch_status}
+    assert by_source["Good Feed"]["ok"] is True
+    assert by_source["Good Feed"]["items"] == 1
+    assert by_source["Empty Feed"]["ok"] is True
+    assert by_source["Empty Feed"]["items"] == 0
+    assert by_source["Bad Feed"]["ok"] is False
+    assert by_source["Bad Feed"]["items"] == 0
+    assert "503" in by_source["Bad Feed"]["error"]
+
+
+def test_fetch_status_serialized_in_to_dict(monkeypatch):
+    """fetch_status must round-trip through to_dict()/JSON for the review tools."""
+    monkeypatch.setattr(cf, "RSS_SOURCES", [("Good Feed", "https://good.example/rss")])
+    monkeypatch.setattr(cf, "HN_QUERIES", [])
+    monkeypatch.setattr(cf, "fetch_rss", lambda src, url, since: [])
+    monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
+
+    _, log = cf.gather(days=1, hn_min_points=50)
+    decoded = json.loads(json.dumps(log.to_dict()))
+
+    assert "fetch_status" in decoded
+    assert decoded["fetch_status"][0]["source"] == "Good Feed"
+
+
 def test_filter_log_json_serializable(monkeypatch):
     """FilterLog.to_dict() must be JSON-serialisable without error."""
     _bypass_fetchers(monkeypatch, [])
