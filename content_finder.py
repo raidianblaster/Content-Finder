@@ -2297,7 +2297,24 @@ def gather(
         log.after_ttl = len(items)
 
     pre_cap = {it.url: it for it in items}
-    final_items = apply_source_cap(items, max_per_source=max_per_source)
+    capped = apply_source_cap(items, max_per_source=max_per_source)
+
+    # Low-diversity floor: on a quiet day a single source (e.g. a weekend arXiv
+    # flood with dead news feeds) can leave the per-source cap below the
+    # minimum. The TTL top-up above only guards the TTL stage, so without this
+    # the cap is a hard floor -- which shipped a 5-item digest on 2026-06-21.
+    # Top up from the capped-out items (highest score first): a fuller
+    # single-source digest beats a near-empty page, and diversity is moot when
+    # there is only one source to draw from anyway.
+    if len(capped) < minimum_items:
+        capped_ids = {id(it) for it in capped}
+        capped_out = [it for it in items if id(it) not in capped_ids]
+        final_items = topup_to_minimum(
+            fresh=capped, filtered_out=capped_out, minimum=minimum_items
+        )
+    else:
+        final_items = capped
+
     final_urls = {it.url for it in final_items}
     log.dropped_source_cap = [
         _item_log_dict(it) for url, it in pre_cap.items()
