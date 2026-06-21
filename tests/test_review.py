@@ -551,3 +551,57 @@ def test_fetch_sha_bypasses_http_cache(log_root):
     assert "no-store" in html, (
         "expected cache: 'no-store' on the sha fetch so the retry can recover"
     )
+
+
+# --------------------------------------------------------------------------- #
+# Fetch-status summary (per-source fetch outcome surfaced in the review page)
+# --------------------------------------------------------------------------- #
+
+def test_fetch_status_failures_surfaced_in_page():
+    """A failed feed must be visible by name + error so a broken source isn't
+    mistaken for a quiet day."""
+    import review
+    log = dict(SAMPLE_LOG)
+    log["fetch_status"] = [
+        {"source": "Good Feed", "kind": "rss", "ok": True, "items": 3, "error": None},
+        {"source": "Empty Feed", "kind": "rss", "ok": True, "items": 0, "error": None},
+        {"source": "Bad Feed", "kind": "rss", "ok": False, "items": 0,
+         "error": "HTTP 503 Service Unavailable"},
+    ]
+    html = review.render(log)
+
+    # Summary counts present.
+    assert "2/3 ok" in html or "2 / 3 ok" in html
+    assert "1 failed" in html
+    # The failing source and its error are named.
+    assert "Bad Feed" in html
+    assert "503" in html
+
+
+def test_fetch_status_all_ok_has_no_failure_list():
+    """When every feed succeeded the summary shows zero failures and no
+    failure list is emitted."""
+    import review
+    log = dict(SAMPLE_LOG)
+    log["fetch_status"] = [
+        {"source": "Good Feed", "kind": "rss", "ok": True, "items": 3, "error": None},
+        {"source": "Empty Feed", "kind": "rss", "ok": True, "items": 0, "error": None},
+    ]
+    html = review.render(log)
+
+    assert "0 failed" in html
+    # No failure <ul> rendered when nothing failed (CSS may define the class).
+    assert '<ul class="fetch-failures">' not in html
+
+
+def test_fetch_status_absent_does_not_crash_or_render_block():
+    """Historical logs predate fetch_status; render must not crash or emit the
+    fetch-status block for them."""
+    import review
+    log = dict(SAMPLE_LOG)
+    log.pop("fetch_status", None)
+    html = review.render(log)
+
+    assert "<html" in html
+    # No fetch-status block rendered (CSS may define the class).
+    assert '<div class="fetch-status' not in html
