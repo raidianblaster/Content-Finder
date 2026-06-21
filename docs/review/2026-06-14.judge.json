@@ -1,0 +1,90 @@
+{
+  "date": "2026-06-14",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/",
+      "stage": "dropped_ttl",
+      "reason": "High-signal Simon Willison analysis of Claude Fable behavior (score 9.45) dropped by TTL despite being substantive AI commentary from a trusted source."
+    },
+    {
+      "url": "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring AI agent incident analysis (11.49) with clear agent/agentic implications dropped by TTL despite being fresh and relevant."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-fable-and-mythos-officially",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space coverage of major Fable/Mythos suspension (score 3.78) from trusted source dropped by keyword filter despite direct relevance to regulatory AI news."
+    },
+    {
+      "url": "https://huggingface.co/blog/allenai/olmo-eval",
+      "stage": "dropped_ttl",
+      "reason": "Hugging Face blog on model evaluation workbench (score 3.63) from trusted source dropped by TTL despite substantive AI/ML infrastructure content."
+    },
+    {
+      "url": "https://status.claude.com/incidents/s9w82lp9dcn9",
+      "stage": "dropped_source_cap",
+      "reason": "Official Anthropic status page on Fable/Mythos suspension (score 6.24) from direct source dropped by source cap despite critical regulatory news."
+    },
+    {
+      "url": "https://github.com/Paca-AI/paca",
+      "stage": "dropped_source_cap",
+      "reason": "Show HN human-AI collaboration tool (score 6.11) relevant to agentic workflows dropped by source cap despite substantive product signal."
+    },
+    {
+      "url": "https://bitboard.work/",
+      "stage": "dropped_source_cap",
+      "reason": "YC-backed Launch HN analytics workspace for agents (score 5.17) dropped by source cap despite high relevance to AI agent infrastructure."
+    },
+    {
+      "url": "https://twitter.com/ClaudeDevs/status/2065597942602531163",
+      "stage": "dropped_source_cap",
+      "reason": "Official Claude Developers announcement of Fable 5 suspension (score 4.63) dropped by source cap despite being direct, authoritative regulatory news."
+    },
+    {
+      "url": "https://www.techmeme.com/260613/p11#a260613p11",
+      "stage": "dropped_source_cap",
+      "reason": "Techmeme aggregation of major regulatory story on Fable/Mythos with geopolitical implications (score 4.96) dropped by source cap."
+    },
+    {
+      "url": "https://www.techmeme.com/260613/p7#a260613p7",
+      "stage": "dropped_source_cap",
+      "reason": "New York Times coverage of US export controls on Anthropic models (score 4.9) dropped by source cap despite major regulatory significance."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/",
+      "reason": "MindStudio vendor marketing comparing models (age 2.0 days, score 3.44) made it to final despite being stale product-focused content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/",
+      "reason": "MindStudio benchmark comparison dropped to TTL then kept in final (age 2.0 days, score 7.44) despite being aging vendor content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/",
+      "reason": "MindStudio explainer on Fable 5 (age 2.0 days, score 8.44) kept in final despite being explanatory vendor content rather than news."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/",
+      "reason": "MindStudio how-to guide on Fable workflows (age 2.0 days, score 6.44) kept in final despite being tutorial-style vendor content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/",
+      "reason": "MindStudio how-to on film production workflows (age 2.0 days, score 6.44) kept in final despite being use-case marketing content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/",
+      "reason": "MindStudio explainer on inference-time compute (age 2.0 days, score 5.44) kept in final despite being vendor-authored trend commentary."
+    },
+    {
+      "url": "https://www.techmeme.com/260613/p13#a260613p13",
+      "reason": "Semafor story on China-linked access concerns (age 0.0 days, score 4.99) lacks sufficient substantiation for regulatory story inclusion."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything",
+      "reason": "Simon Willison brief on OpenAI WebRTC feature (score 6.72) is feature announcement rather than substantive analysis or news."
+    }
+  ]
+}

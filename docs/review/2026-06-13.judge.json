@@ -1,0 +1,98 @@
+{
+  "date": "2026-06-13",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.12821",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agents benchmark (GeoNatureAgent) with strong score (11.77) addressing frontier models—substantive AI/ML content from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.12563",
+      "stage": "dropped_source_cap",
+      "reason": "Arbor tree-search agents paper (score 10.77) from arXiv—core agent reasoning work from trusted academic source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.13262",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-stage fact-verification agents paper (score 10.77)—substantive agentic ML research from arXiv."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.12040",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent framework for concrete barrier design (score 10.77)—practical agentic systems application from arXiv."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.27628",
+      "stage": "dropped_source_cap",
+      "reason": "Governance and escalation for agentic AI systems (score 9.77)—critical policy-relevant agent research from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.07489",
+      "stage": "dropped_source_cap",
+      "reason": "How AI agents reshape knowledge work (score 9.77)—high-signal analysis of agent impact from arXiv."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.12797",
+      "stage": "dropped_source_cap",
+      "reason": "The Containment Gap—safety-critical paper on deployed agentic AI frameworks (score 7.77) from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.06525",
+      "stage": "dropped_ttl",
+      "reason": "Agentic LLMs for structural analysis (score 13.77)—high-signal applied agents work dropped by TTL despite fresh arXiv source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.11042",
+      "stage": "dropped_ttl",
+      "reason": "Workflow-GYM long-horizon agents benchmark (score 11.77)—substantive evaluation framework from arXiv, dropped by cross-day TTL."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Anthropic policy reversal from trusted source Simon Willison (score 10.48)—high-signal AI governance news dropped by TTL."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-mythos-grade-hype/",
+      "reason": "Vendor marketing content (MindStudio blog) with speculative framing ('mythos-grade hype')—low-substance promotional piece."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/",
+      "reason": "MindStudio tutorial blog—vendor-sponsored how-to content with limited substantive technical insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-dynamic-workflows-parallel-sub-agents/",
+      "reason": "MindStudio promotional content on workflow patterns—vendor marketing disguised as technical guidance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/deploy-ai-agents-google-cloud-agent-cli/",
+      "reason": "Vendor marketing for Google deployment tools via MindStudio blog—low-substance promotional content."
+    },
+    {
+      "url": "https://www.techmeme.com/260612/p20#a260612p20",
+      "reason": "Profile of OpenAI executive—business/personnel news rather than substantive AI/ML technical content."
+    },
+    {
+      "url": "https://openai.com/index/academy-courses-applying-ai-at-work/",
+      "reason": "OpenAI course announcement—vendor marketing for training products, not substantive technical insight."
+    },
+    {
+      "url": "https://openai.com/index/preply/",
+      "reason": "Case study of customer using OpenAI—vendor success story marketing content."
+    },
+    {
+      "url": "https://stratechery.com/2026/hey-siri-tell-me-a-fable/",
+      "reason": "Opinion/commentary on Fable model release—analysis piece lacking technical substance or novel insight."
+    },
+    {
+      "url": "https://www.techmeme.com/260612/p29#a260612p29",
+      "reason": "Legal/regulatory news (state AG subpoena)—industry news without direct AI research or technical relevance."
+    },
+    {
+      "url": "https://www.techmeme.com/260612/p22#a260612p22",
+      "reason": "Business news on SpaceX/Anthropic data center deal—infrastructure news without substantive AI/ML technical content."
+    }
+  ]
+}

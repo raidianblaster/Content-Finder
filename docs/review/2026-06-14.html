@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Review — 2026-06-14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg-0: #0a0a0d; --bg-1: #111116; --bg-2: #1a1a22;
+  --border: #2a2a35; --fg: #e8e8f0; --fg-mid: #a0a0b0; --fg-dim: #6a6a80;
+  --purple: hsl(292 60% 65%); --green: #6ee7b7; --amber: #fcd34d; --red: #fca5a5;
+  --keep-bg: rgba(110, 231, 183, 0.15); --drop-bg: rgba(252, 165, 165, 0.18);
+  --unsure-bg: rgba(252, 211, 77, 0.18);
+  --judge-drop-accent: hsl(45 90% 55%); --judge-keep-accent: hsl(0 80% 65%);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 16px 96px; background: var(--bg-0); color: var(--fg);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px; line-height: 1.5;
+}
+header {
+  padding: 24px 0 16px; border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--fg-mid); font-size: 13px; }
+.pipeline {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-mid); margin-top: 8px;
+}
+section { margin-bottom: 32px; }
+section h2 {
+  font-size: 16px; margin: 0 0 4px; color: var(--purple);
+}
+section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
+.card {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.card.verdict-keep { background: var(--keep-bg); border-color: var(--green); }
+.card.verdict-drop { background: var(--drop-bg); border-color: var(--red); }
+.card.verdict-unsure { background: var(--unsure-bg); border-color: var(--amber); }
+.card.judge-suspect-drop { border-left: 3px solid var(--judge-drop-accent); }
+.card.judge-suspect-keep { border-left: 3px solid var(--judge-keep-accent); }
+.judge-flag {
+  display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  margin-left: 6px; vertical-align: middle; font-family: 'DM Mono', ui-monospace, monospace;
+}
+.judge-flag-drop { background: hsla(45,90%,55%,0.2); color: var(--judge-drop-accent); }
+.judge-flag-keep { background: hsla(0,80%,65%,0.2); color: var(--judge-keep-accent); }
+.from-stage {
+  display: inline-block; font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 10px; color: var(--fg-dim); margin-left: 8px;
+  padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px;
+  vertical-align: middle;
+}
+.judge-reason {
+  font-size: 12px; color: var(--fg-mid); font-style: italic;
+  margin: 4px 0 8px; padding-left: 8px; border-left: 2px solid var(--border);
+}
+.judge-reason::before { content: "Haiku: "; color: var(--fg-dim); font-style: normal; }
+#needs-review h2 { color: var(--judge-drop-accent); }
+.card .title {
+  font-weight: 500; margin-bottom: 4px; display: block;
+  color: var(--fg); text-decoration: none;
+}
+.card .title:hover { color: var(--purple); text-decoration: underline; }
+.card .meta {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); margin-bottom: 8px;
+}
+.card .meta .sep { margin: 0 6px; opacity: 0.5; }
+.verdicts { display: flex; gap: 6px; }
+.verdicts button {
+  background: var(--bg-2); border: 1px solid var(--border); color: var(--fg-mid);
+  font-family: inherit; font-size: 12px; padding: 4px 10px; border-radius: 4px;
+  cursor: pointer;
+}
+.verdicts button:hover { color: var(--fg); border-color: var(--fg-dim); }
+.verdicts button.active[data-verdict="keep"] {
+  background: var(--green); color: var(--bg-0); border-color: var(--green);
+}
+.verdicts button.active[data-verdict="drop"] {
+  background: var(--red); color: var(--bg-0); border-color: var(--red);
+}
+.verdicts button.active[data-verdict="unsure"] {
+  background: var(--amber); color: var(--bg-0); border-color: var(--amber);
+}
+.note-input {
+  display: none; margin-top: 8px; width: 100%; background: var(--bg-2);
+  border: 1px solid var(--border); color: var(--fg); padding: 6px 8px;
+  border-radius: 4px; font-family: inherit; font-size: 13px;
+}
+.card.has-verdict .note-input { display: block; }
+footer {
+  position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-1);
+  border-top: 1px solid var(--border); padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+}
+footer .count { color: var(--fg-mid); flex: 1; }
+footer button {
+  background: var(--purple); border: 0; color: var(--bg-0); font-weight: 500;
+  padding: 6px 14px; border-radius: 4px; cursor: pointer; font-family: inherit;
+  font-size: 12px;
+}
+footer button.secondary { background: var(--bg-2); color: var(--fg); }
+footer .hint { color: var(--fg-dim); font-size: 11px; }
+footer .save-status {
+  font-size: 11px; padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2); color: var(--fg-dim);
+  border: 1px solid var(--border);
+}
+footer .save-status.dirty { color: var(--amber); border-color: var(--amber); }
+footer .save-status.saving { color: var(--purple); border-color: var(--purple); }
+footer .save-status.saved { color: var(--green); border-color: var(--green); }
+footer .save-status.error { color: var(--red); border-color: var(--red); }
+footer button.icon {
+  background: var(--bg-2); color: var(--fg-mid); font-size: 14px;
+  padding: 4px 8px; border: 1px solid var(--border);
+}
+#settings-panel {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: none; align-items: center; justify-content: center;
+  z-index: 50;
+}
+#settings-panel.open { display: flex; }
+#settings-panel .card-inner {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; width: min(420px, calc(100% - 32px));
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+#settings-panel h3 { margin: 0 0 8px; font-size: 16px; color: var(--fg); }
+#settings-panel p { margin: 0 0 14px; font-size: 13px; color: var(--fg-mid); }
+#settings-panel a { color: var(--purple); }
+#settings-panel input {
+  width: 100%; background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--fg); padding: 8px 10px; border-radius: 4px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  margin-bottom: 12px;
+}
+#settings-panel .row { display: flex; gap: 8px; justify-content: flex-end; }
+#settings-panel button {
+  background: var(--bg-2); color: var(--fg); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 4px; cursor: pointer;
+  font-family: inherit; font-size: 13px;
+}
+#settings-panel button.primary {
+  background: var(--purple); color: var(--bg-0); border-color: var(--purple);
+  font-weight: 500;
+}
+#settings-panel .test-result {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); min-height: 16px; margin-bottom: 8px;
+}
+#settings-panel .test-result.ok { color: var(--green); }
+#settings-panel .test-result.fail { color: var(--red); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Filter-log review — 2026-06-14</h1>
+  <div class="sub">prompt version <code>v2</code> · label each item <code>keep / drop / unsure</code>, then download as <code>feedback/2026-06-14.jsonl</code>.</div>
+  <div class="pipeline">fetched: 87 · after_keyword_filter: 45 · after_dedupe: 36 · after_ttl_filter: 28 · after_source_cap: 11</div>
+</header>
+<section id="needs-review">
+  <h2>Needs review <span style="color:var(--fg-dim);font-weight:400">(18)</span></h2>
+  <div class="blurb">Items the judge flagged for your attention. Label these first — the rest of the page is for context.</div>
+  <div class="card judge-suspect-drop" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/" data-stage="dropped_ttl">
+    <a class="title" href="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/" target="_blank" rel="noopener">Claude Fable is relentlessly proactive</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 9.45</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="judge-reason">High-signal Simon Willison analysis of Claude Fable behavior (score 9.45) dropped by TTL despite being substantive AI commentary from a trusted source.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/" data-stage="dropped_ttl">
+    <a class="title" href="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/" target="_blank" rel="noopener">AI agent bankrupted their operator while trying to scan DN42</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 11.49</span><span class="sep">·</span><span>1.8d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="judge-reason">High-scoring AI agent incident analysis (11.49) with clear agent/agentic implications dropped by TTL despite being fresh and relevant.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially" data-stage="dropped_keyword">
+    <a class="title" href="https://www.latent.space/p/ainews-fable-and-mythos-officially" target="_blank" rel="noopener">[AINews] Fable and Mythos officially too dangerous to release</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: keyword filter</span>
+    <div class="meta"><span class="src">Latent Space</span><span class="sep">·</span><span>score 3.78</span><span class="sep">·</span><span>0.8d old</span></div>
+    <div class="judge-reason">Latent Space coverage of major Fable/Mythos suspension (score 3.78) from trusted source dropped by keyword filter despite direct relevance to regulatory AI news.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://huggingface.co/blog/allenai/olmo-eval" data-stage="dropped_ttl">
+    <a class="title" href="https://huggingface.co/blog/allenai/olmo-eval" target="_blank" rel="noopener">olmo-eval: An evaluation workbench for the model development loop</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Hugging Face Blog</span><span class="sep">·</span><span>score 3.63</span><span class="sep">·</span><span>1.3d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="judge-reason">Hugging Face blog on model evaluation workbench (score 3.63) from trusted source dropped by TTL despite substantive AI/ML infrastructure content.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://huggingface.co/blog/allenai/olmo-eval">keep ✓</button>
+      <button data-verdict="drop" data-url="https://huggingface.co/blog/allenai/olmo-eval">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://huggingface.co/blog/allenai/olmo-eval">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://huggingface.co/blog/allenai/olmo-eval">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://status.claude.com/incidents/s9w82lp9dcn9" data-stage="dropped_source_cap">
+    <a class="title" href="https://status.claude.com/incidents/s9w82lp9dcn9" target="_blank" rel="noopener">We&#x27;ve suspended access to Claude Mythos 5 and Claude Fable 5</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.24</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="judge-reason">Official Anthropic status page on Fable/Mythos suspension (score 6.24) from direct source dropped by source cap despite critical regulatory news.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">keep ✓</button>
+      <button data-verdict="drop" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://github.com/Paca-AI/paca" data-stage="dropped_source_cap">
+    <a class="title" href="https://github.com/Paca-AI/paca" target="_blank" rel="noopener">Show HN: Paca – Lightweight Jira alternative for human-AI collaboration</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.11</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="judge-reason">Show HN human-AI collaboration tool (score 6.11) relevant to agentic workflows dropped by source cap despite substantive product signal.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/Paca-AI/paca">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/Paca-AI/paca">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/Paca-AI/paca">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/Paca-AI/paca">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://bitboard.work/" data-stage="dropped_source_cap">
+    <a class="title" href="https://bitboard.work/" target="_blank" rel="noopener">Launch HN: BitBoard (YC P25) – Analytics Workspace for Agents</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.17</span><span class="sep">·</span><span>1.3d old</span></div>
+    <div class="judge-reason">YC-backed Launch HN analytics workspace for agents (score 5.17) dropped by source cap despite high relevance to AI agent infrastructure.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://bitboard.work/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://bitboard.work/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://bitboard.work/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://bitboard.work/">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163" data-stage="dropped_source_cap">
+    <a class="title" href="https://twitter.com/ClaudeDevs/status/2065597942602531163" target="_blank" rel="noopener">As a result of a US Government directive, we are suspending access to Fable 5</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.63</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="judge-reason">Official Claude Developers announcement of Fable 5 suspension (score 4.63) dropped by source cap despite being direct, authoritative regulatory news.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">keep ✓</button>
+      <button data-verdict="drop" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://www.techmeme.com/260613/p11#a260613p11" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260613/p11#a260613p11" target="_blank" rel="noopener">European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a &quot;wake-up call&quot; about the risks of depending on the US for AI tech (Nathan Rennolds/Associated Press)</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.96</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="judge-reason">Techmeme aggregation of major regulatory story on Fable/Mythos with geopolitical implications (score 4.96) dropped by source cap.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p11#a260613p11">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p11#a260613p11">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p11#a260613p11">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p11#a260613p11">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://www.techmeme.com/260613/p7#a260613p7" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260613/p7#a260613p7" target="_blank" rel="noopener">US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic (New York Times)</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.9</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="judge-reason">New York Times coverage of US export controls on Anthropic models (score 4.9) dropped by source cap despite major regulatory significance.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p7#a260613p7">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p7#a260613p7">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p7#a260613p7">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p7#a260613p7">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/" target="_blank" rel="noopener">AI Model Routing in 2026: When to Use Fable 5, Opus, Sonnet, and Haiku</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 3.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="judge-reason">MindStudio vendor marketing comparing models (age 2.0 days, score 3.44) made it to final despite being stale product-focused content.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/" data-stage="dropped_ttl">
+    <a class="title" href="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/" target="_blank" rel="noopener">Claude Fable 5 vs GPT 5.5: Benchmark Breakdown and Real-World Coding Results</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 7.44</span><span class="sep">·</span><span>2.0d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="judge-reason">MindStudio benchmark comparison dropped to TTL then kept in final (age 2.0 days, score 7.44) despite being aging vendor content.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/" data-stage="dropped_ttl">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/" target="_blank" rel="noopener">What Is Claude Fable 5? Anthropic&#x27;s Mythos-Class Model for General Use Explained</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 8.44</span><span class="sep">·</span><span>2.0d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="judge-reason">MindStudio explainer on Fable 5 (age 2.0 days, score 8.44) kept in final despite being explanatory vendor content rather than news.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/" target="_blank" rel="noopener">How to Use Claude Fable 5 for Complex Agentic Workflows: Tips and Best Practices</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="judge-reason">MindStudio how-to guide on Fable workflows (age 2.0 days, score 6.44) kept in final despite being tutorial-style vendor content.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/" target="_blank" rel="noopener">How to Build an AI Film Production Workflow with Claude Code and MCP</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 6.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="judge-reason">MindStudio how-to on film production workflows (age 2.0 days, score 6.44) kept in final despite being use-case marketing content.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/" data-stage="final">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/" target="_blank" rel="noopener">What Is Inference-Time Compute? Why OpenAI, Google, and Anthropic Are All Pivoting</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 5.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="judge-reason">MindStudio explainer on inference-time compute (age 2.0 days, score 5.44) kept in final despite being vendor-authored trend commentary.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.techmeme.com/260613/p13#a260613p13" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260613/p13#a260613p13" target="_blank" rel="noopener">Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it (Reed Albergotti/Semafor)</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.99</span><span class="sep">·</span><span>0.0d old</span></div>
+    <div class="judge-reason">Semafor story on China-linked access concerns (age 0.0 days, score 4.99) lacks sufficient substantiation for regulatory story inclusion.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p13#a260613p13">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p13#a260613p13">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p13#a260613p13">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p13#a260613p13">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" data-stage="final">
+    <a class="title" href="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" target="_blank" rel="noopener">OpenAI WebRTC Audio Session, now with document context</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 6.72</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="judge-reason">Simon Willison brief on OpenAI WebRTC feature (score 6.72) is feature announcement rather than substantive analysis or news.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">
+  </div>
+</section>
+<section>
+  <h2>Final — kept in today&#x27;s digest <span style="color:var(--fg-dim);font-weight:400">(6)</span></h2>
+  <div class="blurb">Items that survived every filter. Mark drop if you&#x27;d have cut them.</div>
+  <div class="card" data-url="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos" data-stage="final">
+    <a class="title" href="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos" target="_blank" rel="noopener">How to setup a local coding agent on macOS</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 8.65</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos">keep ✓</button>
+      <button data-verdict="drop" data-url="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos">
+  </div>
+  <div class="card" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink" data-stage="final">
+    <a class="title" href="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink" target="_blank" rel="noopener">Amazon CEO&#x27;s talks with U.S. officials triggered crackdown on Anthropic models</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 7.92</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" data-stage="final">
+    <a class="title" href="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" target="_blank" rel="noopener">Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 7.74</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">
+  </div>
+  <div class="card" data-url="https://www.anthropic.com/news/fable-mythos-access" data-stage="final">
+    <a class="title" href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Statement on US government directive to suspend access to Fable 5 and Mythos 5</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 7.73</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.anthropic.com/news/fable-mythos-access">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.anthropic.com/news/fable-mythos-access">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.anthropic.com/news/fable-mythos-access">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.anthropic.com/news/fable-mythos-access">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p1#a260613p1" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260613/p1#a260613p1" target="_blank" rel="noopener">Huawei unveils HarmonyOS 7, introducing an &quot;agent-friendly&quot; architecture that connects to 2,000+ specialized AI agents and features an enhanced voice assistant (Iris Deng/South China Morning Post)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 5.79</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p1#a260613p1">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p1#a260613p1">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p1#a260613p1">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p1#a260613p1">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p12#a260613p12" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260613/p12#a260613p12" target="_blank" rel="noopener">Source: the White House is unlikely to extend export restrictions to other AI companies (Leo Schwartz/The Information)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.97</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p12#a260613p12">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p12#a260613p12">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p12#a260613p12">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p12#a260613p12">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Source cap <span style="color:var(--fg-dim);font-weight:400">(10)</span></h2>
+  <div class="blurb">Cut because the source already had its quota for the day.</div>
+  <div class="card" data-url="https://twitter.com/jietang/status/2065784751345287314" data-stage="dropped_source_cap">
+    <a class="title" href="https://twitter.com/jietang/status/2065784751345287314" target="_blank" rel="noopener">GLM 5.2 Is Out</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.33</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://twitter.com/jietang/status/2065784751345287314">keep ✓</button>
+      <button data-verdict="drop" data-url="https://twitter.com/jietang/status/2065784751345287314">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://twitter.com/jietang/status/2065784751345287314">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://twitter.com/jietang/status/2065784751345287314">
+  </div>
+  <div class="card" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog" data-stage="dropped_source_cap">
+    <a class="title" href="https://koenvangilst.nl/lab/claude-fable-shepherds-dog" target="_blank" rel="noopener">Shepherd&#x27;s Dog: A Game by Fable</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.52</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">keep ✓</button>
+      <button data-verdict="drop" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">
+  </div>
+  <div class="card" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730" data-stage="dropped_source_cap">
+    <a class="title" href="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730" target="_blank" rel="noopener">On CPU Physics and CPU Cycles</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.41</span><span class="sep">·</span><span>0.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">keep ✓</button>
+      <button data-verdict="drop" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">
+  </div>
+  <div class="card" data-url="https://yalereview.org/article/sheila-liming-the-end-of-books" data-stage="dropped_source_cap">
+    <a class="title" href="https://yalereview.org/article/sheila-liming-the-end-of-books" target="_blank" rel="noopener">A dumpster arrived behind my university&#x27;s library</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.33</span><span class="sep">·</span><span>1.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://yalereview.org/article/sheila-liming-the-end-of-books">keep ✓</button>
+      <button data-verdict="drop" data-url="https://yalereview.org/article/sheila-liming-the-end-of-books">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://yalereview.org/article/sheila-liming-the-end-of-books">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://yalereview.org/article/sheila-liming-the-end-of-books">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p9#a260613p9" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260613/p9#a260613p9" target="_blank" rel="noopener">David Sacks says Dario Amodei refused to &quot;fix the jailbreak or de-deploy the model&quot; after &quot;a highly credible trusted partner&quot; reported a Fable jailbreak (David Sacks/@davidsacks)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.94</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p9#a260613p9">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p9#a260613p9">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p9#a260613p9">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p9#a260613p9">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p5#a260613p5" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260613/p5#a260613p5" target="_blank" rel="noopener">Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a &quot;complete overreaction&quot; (Amrith Ramkumar/Wall Street Journal)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.85</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p5#a260613p5">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p5#a260613p5">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p5#a260613p5">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p5#a260613p5">
+  </div>
+  <div class="card" data-url="https://worldofclaudecraft.com/" data-stage="dropped_source_cap">
+    <a class="title" href="https://worldofclaudecraft.com/" target="_blank" rel="noopener">Mmorpg World of ClaudeCraft, vibe coded with Fable 5</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.6</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://worldofclaudecraft.com/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://worldofclaudecraft.com/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://worldofclaudecraft.com/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://worldofclaudecraft.com/">
+  </div>
+  <div class="card" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko" data-stage="dropped_source_cap">
+    <a class="title" href="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko" target="_blank" rel="noopener">An Interview with Intel&#x27;s Kira Boyko: Xeon 6&#x27;s Product Director</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.37</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">keep ✓</button>
+      <button data-verdict="drop" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">
+  </div>
+  <div class="card" data-url="https://github.com/MatteoLeonesi/bulk-delete-claude-chat" data-stage="dropped_source_cap">
+    <a class="title" href="https://github.com/MatteoLeonesi/bulk-delete-claude-chat" target="_blank" rel="noopener">Show HN: Script to bulk delete Claude chats from the web UI</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.21</span><span class="sep">·</span><span>1.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/MatteoLeonesi/bulk-delete-claude-chat">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/MatteoLeonesi/bulk-delete-claude-chat">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/MatteoLeonesi/bulk-delete-claude-chat">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/MatteoLeonesi/bulk-delete-claude-chat">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/" target="_blank" rel="noopener">The Compliance Case for Letting Everyone Build</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 2.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/">
+  </div>
+</section>
+<section>
+  <h2>Dropped: TTL (cross-day) <span style="color:var(--fg-dim);font-weight:400">(3)</span></h2>
+  <div class="blurb">Cut because we already showed this story on a prior day.</div>
+  <div class="card" data-url="https://openai.com/index/academy-courses-applying-ai-at-work" data-stage="dropped_ttl">
+    <a class="title" href="https://openai.com/index/academy-courses-applying-ai-at-work" target="_blank" rel="noopener">New OpenAI Academy courses for the next era of work</a>
+    <div class="meta"><span class="src">OpenAI News</span><span class="sep">·</span><span>score 6.56</span><span class="sep">·</span><span>1.6d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://openai.com/index/academy-courses-applying-ai-at-work">keep ✓</button>
+      <button data-verdict="drop" data-url="https://openai.com/index/academy-courses-applying-ai-at-work">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://openai.com/index/academy-courses-applying-ai-at-work">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://openai.com/index/academy-courses-applying-ai-at-work">
+  </div>
+  <div class="card" data-url="https://openai.com/index/preply" data-stage="dropped_ttl">
+    <a class="title" href="https://openai.com/index/preply" target="_blank" rel="noopener">How Preply combines AI and human tutors to personalize learning</a>
+    <div class="meta"><span class="src">OpenAI News</span><span class="sep">·</span><span>score 6.44</span><span class="sep">·</span><span>2.0d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://openai.com/index/preply">keep ✓</button>
+      <button data-verdict="drop" data-url="https://openai.com/index/preply">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://openai.com/index/preply">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://openai.com/index/preply">
+  </div>
+  <div class="card" data-url="https://stratechery.com/2026/hey-siri-tell-me-a-fable/" data-stage="dropped_ttl">
+    <a class="title" href="https://stratechery.com/2026/hey-siri-tell-me-a-fable/" target="_blank" rel="noopener">2026.24: Hey Siri, Tell Me a Fable</a>
+    <div class="meta"><span class="src">Stratechery</span><span class="sep">·</span><span>score 5.64</span><span class="sep">·</span><span>1.3d old</span><span class="sep">·</span><span>first seen 2026-06-13</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://stratechery.com/2026/hey-siri-tell-me-a-fable/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://stratechery.com/2026/hey-siri-tell-me-a-fable/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://stratechery.com/2026/hey-siri-tell-me-a-fable/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://stratechery.com/2026/hey-siri-tell-me-a-fable/">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Dedupe <span style="color:var(--fg-dim);font-weight:400">(1)</span></h2>
+  <div class="blurb">Cut as a duplicate of another item in the same run.</div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything" data-stage="dropped_dedupe">
+    <a class="title" href="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything" target="_blank" rel="noopener">Claude Fable is relentlessly proactive</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 6.43</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Keyword filter <span style="color:var(--fg-dim);font-weight:400">(38)</span></h2>
+  <div class="blurb">Cut because the title + summary contained no scored keywords. Voluminous — skim, don&#x27;t read every one.</div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything" target="_blank" rel="noopener">Quoting Andrew Singleton</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.65</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p14#a260613p14" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p14#a260613p14" target="_blank" rel="noopener">How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet&#x27;s planned ~$85B in equity offerings for AI (Robert Armstrong/Financial Times)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.99</span><span class="sep">·</span><span>0.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p14#a260613p14">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p14#a260613p14">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p14#a260613p14">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p14#a260613p14">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p10#a260613p10" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p10#a260613p10" target="_blank" rel="noopener">Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states (Allan Smith/NBC News)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.95</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p10#a260613p10">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p10#a260613p10">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p10#a260613p10">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p10#a260613p10">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p8#a260613p8" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p8#a260613p8" target="_blank" rel="noopener">Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions (The Information)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.92</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p8#a260613p8">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p8#a260613p8">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p8#a260613p8">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p8#a260613p8">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p6#a260613p6" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p6#a260613p6" target="_blank" rel="noopener">A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade (Jessica Loudis/Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.89</span><span class="sep">·</span><span>0.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p6#a260613p6">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p6#a260613p6">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p6#a260613p6">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p6#a260613p6">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p4#a260613p4" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p4#a260613p4" target="_blank" rel="noopener">After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype (Michael Peel/Financial Times)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p4#a260613p4">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p4#a260613p4">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p4#a260613p4">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p4#a260613p4">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p3#a260613p3" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p3#a260613p3" target="_blank" rel="noopener">An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon (Christopher Mims/Wall Street Journal)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p3#a260613p3">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p3#a260613p3">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p3#a260613p3">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p3#a260613p3">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260613/p2#a260613p2" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260613/p2#a260613p2" target="_blank" rel="noopener">South Korea&#x27;s &quot;semiconductor belt&quot; town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers (Daniel Tudor/Financial Times)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260613/p2#a260613p2">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260613/p2#a260613p2">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260613/p2#a260613p2">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260613/p2#a260613p2">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260612/p35#a260612p35" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260612/p35#a260612p35" target="_blank" rel="noopener">A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 (Lawrence Abrams/BleepingComputer)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.75</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260612/p35#a260612p35">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260612/p35#a260612p35">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260612/p35#a260612p35">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260612/p35#a260612p35">
+  </div>
+  <div class="card" data-url="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking" data-stage="dropped_keyword">
+    <a class="title" href="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking" target="_blank" rel="noopener">[AINews] Loopcraft: The Art of Stacking Loops</a>
+    <div class="meta"><span class="src">Latent Space</span><span class="sep">·</span><span>score 3.5</span><span class="sep">·</span><span>1.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking">
+  </div>
+  <div class="card" data-url="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/" target="_blank" rel="noopener">Electric motors with no rare earths</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.7</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/">
+  </div>
+  <div class="card" data-url="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/" data-stage="dropped_keyword">
+    <a class="title" href="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/" target="_blank" rel="noopener">A Call to Action: Stop the FCC&#x27;s KYC Regime</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.9</span><span class="sep">·</span><span>1.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/">
+  </div>
+  <div class="card" data-url="https://github.com/tensorzero/tensorzero" data-stage="dropped_keyword">
+    <a class="title" href="https://github.com/tensorzero/tensorzero" target="_blank" rel="noopener">AI OSS tool repo goes archived over night after raising $7.3M Seed</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.17</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/tensorzero/tensorzero">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/tensorzero/tensorzero">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/tensorzero/tensorzero">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/tensorzero/tensorzero">
+  </div>
+  <div class="card" data-url="https://news.ycombinator.com/item?id=48504034" data-stage="dropped_keyword">
+    <a class="title" href="https://news.ycombinator.com/item?id=48504034" target="_blank" rel="noopener">Tell HN: Meta is down</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.85</span><span class="sep">·</span><span>1.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://news.ycombinator.com/item?id=48504034">keep ✓</button>
+      <button data-verdict="drop" data-url="https://news.ycombinator.com/item?id=48504034">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://news.ycombinator.com/item?id=48504034">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://news.ycombinator.com/item?id=48504034">
+  </div>
+  <div class="card" data-url="https://stackscope.dev/" data-stage="dropped_keyword">
+    <a class="title" href="https://stackscope.dev/" target="_blank" rel="noopener">Show HN: StackScope – I crawled over 40k indie launches to see what they ship</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.23</span><span class="sep">·</span><span>1.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://stackscope.dev/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://stackscope.dev/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://stackscope.dev/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://stackscope.dev/">
+  </div>
+  <div class="card" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html" data-stage="dropped_keyword">
+    <a class="title" href="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html" target="_blank" rel="noopener">The adder at the heart of Intel&#x27;s 8087 floating-point chip</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.71</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">
+  </div>
+  <div class="card" data-url="https://tonsky.me/blog/every-frame-perfect/" data-stage="dropped_keyword">
+    <a class="title" href="https://tonsky.me/blog/every-frame-perfect/" target="_blank" rel="noopener">Every Frame Perfect</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.86</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://tonsky.me/blog/every-frame-perfect/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://tonsky.me/blog/every-frame-perfect/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://tonsky.me/blog/every-frame-perfect/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://tonsky.me/blog/every-frame-perfect/">
+  </div>
+  <div class="card" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/" data-stage="dropped_keyword">
+    <a class="title" href="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/" target="_blank" rel="noopener">Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.58</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">
+  </div>
+  <div class="card" data-url="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979" data-stage="dropped_keyword">
+    <a class="title" href="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979" target="_blank" rel="noopener">Palantir loses legal challenge against Swiss investigative magazine</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.66</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979">
+  </div>
+  <div class="card" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal" data-stage="dropped_keyword">
+    <a class="title" href="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal" target="_blank" rel="noopener">Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.7</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">
+  </div>
+  <div class="card" data-url="https://kagi.com/magic" data-stage="dropped_keyword">
+    <a class="title" href="https://kagi.com/magic" target="_blank" rel="noopener">Kagi Magic</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.18</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://kagi.com/magic">keep ✓</button>
+      <button data-verdict="drop" data-url="https://kagi.com/magic">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://kagi.com/magic">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://kagi.com/magic">
+  </div>
+  <div class="card" data-url="https://bytecodealliance.org/articles/WASI-0.3" data-stage="dropped_keyword">
+    <a class="title" href="https://bytecodealliance.org/articles/WASI-0.3" target="_blank" rel="noopener">WASI 0.3</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.12</span><span class="sep">·</span><span>1.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://bytecodealliance.org/articles/WASI-0.3">keep ✓</button>
+      <button data-verdict="drop" data-url="https://bytecodealliance.org/articles/WASI-0.3">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://bytecodealliance.org/articles/WASI-0.3">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://bytecodealliance.org/articles/WASI-0.3">
+  </div>
+  <div class="card" data-url="https://news.ycombinator.com/item?id=48506850" data-stage="dropped_keyword">
+    <a class="title" href="https://news.ycombinator.com/item?id=48506850" target="_blank" rel="noopener">Ask HN: Why is there some sort of a scam website being advertised on HN?</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.98</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://news.ycombinator.com/item?id=48506850">keep ✓</button>
+      <button data-verdict="drop" data-url="https://news.ycombinator.com/item?id=48506850">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://news.ycombinator.com/item?id=48506850">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://news.ycombinator.com/item?id=48506850">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/" target="_blank" rel="noopener">How to Build an AI Content Empire: One Input, 15 Outputs with AI Video Tools</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/" target="_blank" rel="noopener">How to Build an AI Digital Twin for Content Creation Using HeyGen</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/" target="_blank" rel="noopener">AI Scaling Laws Are Breaking Down: What It Means for AI Builders</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/" target="_blank" rel="noopener">How to Build an AI Second Brain with the Four C&#x27;s Framework: Context, Connections, Capabilities, Cadence</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/" target="_blank" rel="noopener">What Is Apple&#x27;s AI Strategy? How WWDC 2026 Changes the AI Landscape for Builders</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/" target="_blank" rel="noopener">7 Apps Your Operations Team Can Build This Quarter—No Engineers</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/" target="_blank" rel="noopener">How to Build a Brainstorm-First AI Workflow: Separate Ideation from Execution</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/" target="_blank" rel="noopener">Buy the Commodity, Build What&#x27;s Yours</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/" target="_blank" rel="noopener">Decentralize the Building. Centralize the Seeing.</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/" target="_blank" rel="noopener">Diffusion Language Models Explained: How Google&#x27;s Diffusion Gemma Works</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/" target="_blank" rel="noopener">Your Best Engineers Should Architect Substrates, Not CRUD Apps</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/engineers-should-architect-substrates/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/" target="_blank" rel="noopener">Fragmented Tools Make Your Org Illegible to Its Own Leadership</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/" target="_blank" rel="noopener">Your Processes Change Faster Than Your Software Can</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/" target="_blank" rel="noopener">What Is Analogical Reasoning in AI? Why Bigger Models Don&#x27;t Always Win</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/">
+  </div>
+  <div class="card" data-url="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/" data-stage="dropped_keyword">
+    <a class="title" href="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/" target="_blank" rel="noopener">The Companies Winning at AI Don&#x27;t Have the Biggest Budgets</a>
+    <div class="meta"><span class="src">MindStudio</span><span class="sep">·</span><span>score 1.44</span><span class="sep">·</span><span>2.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/">
+  </div>
+</section>
+<footer>
+  <span class="count" id="count">0 / 0 labelled</span>
+  <span id="save-status" class="save-status" title="auto-save status (click on error to retry)">not connected</span>
+  <button id="settings-toggle" class="icon" title="connect to GitHub">⚙</button>
+  <button id="copy-jsonl" class="secondary">copy</button>
+  <button id="download-jsonl" class="secondary">download</button>
+</footer>
+<div id="settings-panel">
+  <div class="card-inner">
+    <h3>Connect to GitHub</h3>
+    <p>Paste a fine-grained Personal Access Token scoped to <code>raidianblaster/Content-Finder</code> with <code>Contents: Read and write</code>. After this, your labels auto-save to <code>feedback/2026-06-14.jsonl</code>.</p>
+    <input id="pat-input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <div id="pat-test-result" class="test-result"></div>
+    <div class="row">
+      <button id="settings-close">cancel</button>
+      <button id="pat-test">test connection</button>
+      <button id="pat-save" class="primary">save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const REVIEW_DATE = "2026-06-14";
+const TOTAL_ITEMS = 76;
+const ITEM_INDEX = ["https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/", "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/", "https://www.latent.space/p/ainews-fable-and-mythos-officially", "https://huggingface.co/blog/allenai/olmo-eval", "https://status.claude.com/incidents/s9w82lp9dcn9", "https://github.com/Paca-AI/paca", "https://bitboard.work/", "https://twitter.com/ClaudeDevs/status/2065597942602531163", "https://www.techmeme.com/260613/p11#a260613p11", "https://www.techmeme.com/260613/p7#a260613p7", "https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/", "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/", "https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/", "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/", "https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/", "https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/", "https://www.techmeme.com/260613/p13#a260613p13", "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything", "https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos", "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink", "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything", "https://www.anthropic.com/news/fable-mythos-access", "https://www.techmeme.com/260613/p1#a260613p1", "https://www.techmeme.com/260613/p12#a260613p12", "https://twitter.com/jietang/status/2065784751345287314", "https://koenvangilst.nl/lab/claude-fable-shepherds-dog", "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730", "https://yalereview.org/article/sheila-liming-the-end-of-books", "https://www.techmeme.com/260613/p9#a260613p9", "https://www.techmeme.com/260613/p5#a260613p5", "https://worldofclaudecraft.com/", "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko", "https://github.com/MatteoLeonesi/bulk-delete-claude-chat", "https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/", "https://openai.com/index/academy-courses-applying-ai-at-work", "https://openai.com/index/preply", "https://stratechery.com/2026/hey-siri-tell-me-a-fable/", "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything", "https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything", "https://www.techmeme.com/260613/p14#a260613p14", "https://www.techmeme.com/260613/p10#a260613p10", "https://www.techmeme.com/260613/p8#a260613p8", "https://www.techmeme.com/260613/p6#a260613p6", "https://www.techmeme.com/260613/p4#a260613p4", "https://www.techmeme.com/260613/p3#a260613p3", "https://www.techmeme.com/260613/p2#a260613p2", "https://www.techmeme.com/260612/p35#a260612p35", "https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking", "https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/", "https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/", "https://github.com/tensorzero/tensorzero", "https://news.ycombinator.com/item?id=48504034", "https://stackscope.dev/", "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html", "https://tonsky.me/blog/every-frame-perfect/", "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/", "https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979", "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal", "https://kagi.com/magic", "https://bytecodealliance.org/articles/WASI-0.3", "https://news.ycombinator.com/item?id=48506850", "https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/", "https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/", "https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/", "https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/", "https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/", "https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/", "https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/", "https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/", "https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/", "https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/", "https://www.mindstudio.ai/blog/engineers-should-architect-substrates/", "https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/", "https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/", "https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/", "https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/"];
+const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
+const JUDGE = {"suspect_drops": {"https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/": {"stage": "dropped_ttl", "reason": "High-signal Simon Willison analysis of Claude Fable behavior (score 9.45) dropped by TTL despite being substantive AI commentary from a trusted source."}, "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/": {"stage": "dropped_ttl", "reason": "High-scoring AI agent incident analysis (11.49) with clear agent/agentic implications dropped by TTL despite being fresh and relevant."}, "https://www.latent.space/p/ainews-fable-and-mythos-officially": {"stage": "dropped_keyword", "reason": "Latent Space coverage of major Fable/Mythos suspension (score 3.78) from trusted source dropped by keyword filter despite direct relevance to regulatory AI news."}, "https://huggingface.co/blog/allenai/olmo-eval": {"stage": "dropped_ttl", "reason": "Hugging Face blog on model evaluation workbench (score 3.63) from trusted source dropped by TTL despite substantive AI/ML infrastructure content."}, "https://status.claude.com/incidents/s9w82lp9dcn9": {"stage": "dropped_source_cap", "reason": "Official Anthropic status page on Fable/Mythos suspension (score 6.24) from direct source dropped by source cap despite critical regulatory news."}, "https://github.com/Paca-AI/paca": {"stage": "dropped_source_cap", "reason": "Show HN human-AI collaboration tool (score 6.11) relevant to agentic workflows dropped by source cap despite substantive product signal."}, "https://bitboard.work/": {"stage": "dropped_source_cap", "reason": "YC-backed Launch HN analytics workspace for agents (score 5.17) dropped by source cap despite high relevance to AI agent infrastructure."}, "https://twitter.com/ClaudeDevs/status/2065597942602531163": {"stage": "dropped_source_cap", "reason": "Official Claude Developers announcement of Fable 5 suspension (score 4.63) dropped by source cap despite being direct, authoritative regulatory news."}, "https://www.techmeme.com/260613/p11#a260613p11": {"stage": "dropped_source_cap", "reason": "Techmeme aggregation of major regulatory story on Fable/Mythos with geopolitical implications (score 4.96) dropped by source cap."}, "https://www.techmeme.com/260613/p7#a260613p7": {"stage": "dropped_source_cap", "reason": "New York Times coverage of US export controls on Anthropic models (score 4.9) dropped by source cap despite major regulatory significance."}}, "suspect_keeps": {"https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/": {"reason": "MindStudio vendor marketing comparing models (age 2.0 days, score 3.44) made it to final despite being stale product-focused content."}, "https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/": {"reason": "MindStudio explainer on Fable 5 (age 2.0 days, score 8.44) kept in final despite being explanatory vendor content rather than news."}, "https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/": {"reason": "MindStudio explainer on inference-time compute (age 2.0 days, score 5.44) kept in final despite being vendor-authored trend commentary."}, "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/": {"reason": "MindStudio benchmark comparison dropped to TTL then kept in final (age 2.0 days, score 7.44) despite being aging vendor content."}, "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything": {"reason": "Simon Willison brief on OpenAI WebRTC feature (score 6.72) is feature announcement rather than substantive analysis or news."}, "https://www.techmeme.com/260613/p13#a260613p13": {"reason": "Semafor story on China-linked access concerns (age 0.0 days, score 4.99) lacks sufficient substantiation for regulatory story inclusion."}, "https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/": {"reason": "MindStudio how-to on film production workflows (age 2.0 days, score 6.44) kept in final despite being use-case marketing content."}, "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/": {"reason": "MindStudio how-to guide on Fable workflows (age 2.0 days, score 6.44) kept in final despite being tutorial-style vendor content."}}};
+
+const REPO_OWNER = "raidianblaster";
+const REPO_NAME = "Content-Finder";
+const BRANCH = "main";
+const PAT_KEY = "cf-review::__pat__";
+const SAVE_DEBOUNCE_MS = 10000;
+
+function key(url) { return STORAGE_PREFIX + url; }
+
+function loadVerdict(url) {
+  const raw = localStorage.getItem(key(url));
+  return raw ? JSON.parse(raw) : null;
+}
+
+function saveVerdict(url, patch) {
+  const cur = loadVerdict(url) || {};
+  const next = Object.assign({}, cur, patch, {
+    labelled_at: new Date().toISOString(),
+  });
+  localStorage.setItem(key(url), JSON.stringify(next));
+  updateCount();
+}
+
+function updateCard(card) {
+  const url = card.dataset.url;
+  const v = loadVerdict(url);
+  card.classList.remove("verdict-keep", "verdict-drop", "verdict-unsure", "has-verdict");
+  card.querySelectorAll(".verdicts button").forEach(b => b.classList.remove("active"));
+  if (v && v.verdict) {
+    card.classList.add("verdict-" + v.verdict, "has-verdict");
+    const btn = card.querySelector(`.verdicts button[data-verdict="${v.verdict}"]`);
+    if (btn) btn.classList.add("active");
+    const note = card.querySelector(".note-input");
+    if (note) note.value = v.note || "";
+  }
+}
+
+function updateCount() {
+  let n = 0;
+  for (const url of ITEM_INDEX) {
+    if (loadVerdict(url)) n++;
+  }
+  const el = document.getElementById("count");
+  if (el) el.textContent = n + " / " + TOTAL_ITEMS + " labelled";
+}
+
+function buildJSONL() {
+  const lines = [];
+  for (const url of ITEM_INDEX) {
+    const v = loadVerdict(url);
+    if (!v || !v.verdict) continue;
+    const meta = ITEM_META[url] || {};
+    lines.push(JSON.stringify({
+      date: REVIEW_DATE,
+      url: url,
+      title: meta.title || "",
+      source: meta.source || "",
+      summary: meta.summary || "",
+      stage: meta.stage || "",
+      score: meta.score,
+      age_days: meta.age_days,
+      verdict: v.verdict,
+      note: v.note || "",
+      labelled_at: v.labelled_at,
+    }));
+  }
+  return lines.join("\n") + (lines.length ? "\n" : "");
+}
+
+function downloadJSONL() {
+  const blob = new Blob([buildJSONL()], {type: "application/x-ndjson"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "feedback/" + REVIEW_DATE + ".jsonl";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+async function copyJSONL() {
+  await navigator.clipboard.writeText(buildJSONL());
+  const btn = document.getElementById("copy-jsonl");
+  const orig = btn.textContent;
+  btn.textContent = "copied!";
+  setTimeout(() => { btn.textContent = orig; }, 1200);
+}
+
+// -- Auto-save to GitHub ---------------------------------------------------
+
+function loadPat() { return localStorage.getItem(PAT_KEY) || ""; }
+function savePat(t) {
+  if (t) localStorage.setItem(PAT_KEY, t);
+  else localStorage.removeItem(PAT_KEY);
+}
+
+function setStatus(state, text) {
+  const el = document.getElementById("save-status");
+  if (!el) return;
+  el.className = "save-status " + state;
+  el.textContent = text;
+}
+
+function refreshStatusIdle() {
+  if (!loadPat()) {
+    // If there are unsaved labels in localStorage already, surface that so the
+    // user knows connecting will rescue them.
+    const pending = buildJSONL();
+    if (pending) setStatus("dirty", "unsaved · connect to save");
+    else setStatus("idle", "not connected");
+    return;
+  }
+  setStatus("idle", "ready");
+}
+
+function utf8ToBase64(s) {
+  const bytes = new TextEncoder().encode(s);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function ghHeaders(pat) {
+  return {
+    "Authorization": "Bearer " + pat,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+
+function feedbackPath() { return "feedback/" + REVIEW_DATE + ".jsonl"; }
+
+function contentsUrl() {
+  return "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME
+       + "/contents/" + feedbackPath();
+}
+
+async function fetchSha(pat) {
+  // cache:"no-store" + a cache-buster: GitHub serves authenticated GETs with a
+  // short max-age, so without this the 409-retry re-fetch returns the same
+  // browser-cached stale sha and fails identically.
+  const r = await fetch(contentsUrl() + "?ref=" + BRANCH + "&_=" + Date.now(),
+    { headers: ghHeaders(pat), cache: "no-store" });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error("get sha: " + r.status);
+  const j = await r.json();
+  return j.sha || null;
+}
+
+async function putContents(pat, body) {
+  const r = await fetch(contentsUrl(), {
+    method: "PUT",
+    headers: Object.assign({"Content-Type": "application/json"}, ghHeaders(pat)),
+    body: JSON.stringify(body),
+  });
+  return r;
+}
+
+// Blob sha of the file as we last wrote it. The PUT response carries the new
+// sha authoritatively, so reusing it lets save #2 skip the GET entirely — the
+// GET is exactly what returns a stale sha (replica lag / HTTP cache) and trips
+// GitHub's 409 "does not match". null = unknown (first save, or after a 409).
+let lastKnownSha = null;
+
+async function commitJsonl() {
+  const pat = loadPat();
+  if (!pat) { setStatus("idle", "not connected"); return; }
+  const jsonl = buildJSONL();
+  if (!jsonl) { setStatus("idle", "nothing to save"); return; }
+
+  setStatus("saving", "saving…");
+  try {
+    let sha = lastKnownSha || await fetchSha(pat);
+    const body = {
+      message: "review: update " + feedbackPath(),
+      content: utf8ToBase64(jsonl),
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+    let r = await putContents(pat, body);
+    if (r.status === 409) {
+      // Our sha was stale (another device wrote, or a lagging read). Forget it
+      // and re-fetch the authoritative one before retrying once.
+      lastKnownSha = null;
+      sha = await fetchSha(pat);
+      if (sha) body.sha = sha; else delete body.sha;
+      r = await putContents(pat, body);
+    }
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(r.status + " " + (j.message || ""));
+    }
+    // Cache the new blob sha so the next save doesn't depend on a fresh read.
+    const ok = await r.json().catch(() => ({}));
+    lastKnownSha = (ok.content && ok.content.sha) || null;
+    const now = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+    setStatus("saved", "saved " + now);
+  } catch (e) {
+    setStatus("error", "error: " + e.message + " · click to retry");
+  }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  if (!loadPat()) { setStatus("dirty", "unsaved (connect repo)"); return; }
+  setStatus("dirty", "unsaved · saving in " + (SAVE_DEBOUNCE_MS / 1000) + "s");
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { saveTimer = null; commitJsonl(); }, SAVE_DEBOUNCE_MS);
+}
+
+async function testPat() {
+  const input = document.getElementById("pat-input");
+  const out = document.getElementById("pat-test-result");
+  const pat = input.value.trim();
+  if (!pat) { out.className = "test-result fail"; out.textContent = "paste a token first"; return; }
+  out.className = "test-result"; out.textContent = "testing…";
+  try {
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME,
+      { headers: ghHeaders(pat) });
+    if (!r.ok) throw new Error(r.status + "");
+    out.className = "test-result ok"; out.textContent = "connection ok";
+  } catch (e) {
+    out.className = "test-result fail"; out.textContent = "failed: " + e.message;
+  }
+}
+
+function openSettings() {
+  document.getElementById("pat-input").value = loadPat();
+  document.getElementById("pat-test-result").textContent = "";
+  document.getElementById("settings-panel").classList.add("open");
+}
+function closeSettings() {
+  document.getElementById("settings-panel").classList.remove("open");
+}
+
+const ITEM_META = {"https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos": {"title": "How to setup a local coding agent on macOS", "summary": "468 points \u00b7 116 comments \u00b7 query: agentic", "source": "Hacker News", "stage": "final", "score": 8.65, "age_days": 1.2}, "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink": {"title": "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models", "summary": "451 points \u00b7 329 comments \u00b7 query: Anthropic", "source": "Hacker News", "stage": "final", "score": 7.92, "age_days": 0.3}, "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything": {"title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5", "summary": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5 Well this is nuts : The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthropic employees. The net effect of this order is that we must abruptly disable Fable 5 and Mythos 5 for all our customers to ensure compliance. Access to ", "source": "Simon Willison", "stage": "final", "score": 7.74, "age_days": 0.9}, "https://www.anthropic.com/news/fable-mythos-access": {"title": "Statement on US government directive to suspend access to Fable 5 and Mythos 5", "summary": "3045 points \u00b7 2207 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "final", "score": 7.73, "age_days": 0.9}, "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything": {"title": "OpenAI WebRTC Audio Session, now with document context", "summary": "OpenAI WebRTC Audio Session, now with document context I built the first version of this tool in December 2024 to try out the then-new OpenAI WebRTC API for interacting with their realtime audio models. Last month OpenAI introduced a brand new model to that API called GPT\u2011Realtime\u20112 , which they promoted as \"our first voice model with GPT\u20115\u2011class reasoning\" - with a Sep 30, 2024 knowledge cut-off. I've been waiting for that model to show up in the ChatGPT iPhone app but it still hasn't, so I rev", "source": "Simon Willison", "stage": "final", "score": 6.72, "age_days": 1.0}, "https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/": {"title": "How to Build an AI Film Production Workflow with Claude Code and MCP", "summary": "Learn how to use Claude Code as a production office for AI filmmaking\u2014story breakdowns, character references, scene generation, and asset tracking via MCP.", "source": "MindStudio", "stage": "final", "score": 6.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/": {"title": "How to Use Claude Fable 5 for Complex Agentic Workflows: Tips and Best Practices", "summary": "Claude Fable 5 excels at long, complex tasks but burns tokens fast. Learn how to set effort levels, manage costs, and get the most out of this model.", "source": "MindStudio", "stage": "final", "score": 6.44, "age_days": 2.0}, "https://www.techmeme.com/260613/p1#a260613p1": {"title": "Huawei unveils HarmonyOS 7, introducing an \"agent-friendly\" architecture that connects to 2,000+ specialized AI agents and features an enhanced voice assistant (Iris Deng/South China Morning Post)", "summary": "Iris Deng / South China Morning Post : Huawei unveils HarmonyOS 7, introducing an &ldquo;agent-friendly&rdquo; architecture that connects to 2,000+ specialized AI agents and features an enhanced voice assistant &nbsp; &mdash;&nbsp; HarmonyOS 7 introduces an agent-friendly architecture and upgraded AI assistant as Huawei seeks to capitalise on Apple's China AI gap", "source": "Techmeme", "stage": "final", "score": 5.79, "age_days": 0.7}, "https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/": {"title": "What Is Inference-Time Compute? Why OpenAI, Google, and Anthropic Are All Pivoting", "summary": "Inference-time compute lets AI models think longer at query time instead of relying on bigger base models. Here's why every major lab is making this shift.", "source": "MindStudio", "stage": "final", "score": 5.44, "age_days": 2.0}, "https://www.techmeme.com/260613/p13#a260613p13": {"title": "Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it (Reed Albergotti/Semafor)", "summary": "Reed Albergotti / Semafor : Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it &nbsp; &mdash;&nbsp; THE SCOOP&nbsp; &mdash;&nbsp; The White House imposed export controls on Anthropic's powerful Mythos AI model partly over suspicions that a China-linked group had accessed it, a person familiar with the matter said.", "source": "Techmeme", "stage": "final", "score": 4.99, "age_days": 0.0}, "https://www.techmeme.com/260613/p12#a260613p12": {"title": "Source: the White House is unlikely to extend export restrictions to other AI companies (Leo Schwartz/The Information)", "summary": "Leo Schwartz / The Information : Source: the White House is unlikely to extend export restrictions to other AI companies &nbsp; &mdash;&nbsp; The White House is unlikely to extend export restrictions on Anthropic's advanced models to other AI companies, an official close to the U.S. government said Saturday.", "source": "Techmeme", "stage": "final", "score": 4.97, "age_days": 0.1}, "https://twitter.com/jietang/status/2065784751345287314": {"title": "GLM 5.2 Is Out", "summary": "241 points \u00b7 118 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 6.33, "age_days": 0.3}, "https://status.claude.com/incidents/s9w82lp9dcn9": {"title": "We've suspended access to Claude Mythos 5 and Claude Fable 5", "summary": "251 points \u00b7 5 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 6.24, "age_days": 0.9}, "https://github.com/Paca-AI/paca": {"title": "Show HN: Paca \u2013 Lightweight Jira alternative for human-AI collaboration", "summary": "127 points \u00b7 50 comments \u00b7 query: AI agents", "source": "Hacker News", "stage": "dropped_source_cap", "score": 6.11, "age_days": 0.6}, "https://koenvangilst.nl/lab/claude-fable-shepherds-dog": {"title": "Shepherd's Dog: A Game by Fable", "summary": "173 points \u00b7 127 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.52, "age_days": 0.7}, "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730": {"title": "On CPU Physics and CPU Cycles", "summary": "63 points \u00b7 9 comments \u00b7 query: MCP", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.41, "age_days": 0.8}, "https://yalereview.org/article/sheila-liming-the-end-of-books": {"title": "A dumpster arrived behind my university's library", "summary": "172 points \u00b7 172 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.33, "age_days": 1.4}, "https://bitboard.work/": {"title": "Launch HN: BitBoard (YC P25) \u2013 Analytics Workspace for Agents", "summary": "53 points \u00b7 23 comments \u00b7 query: AI agents", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.17, "age_days": 1.3}, "https://www.techmeme.com/260613/p11#a260613p11": {"title": "European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a \"wake-up call\" about the risks of depending on the US for AI tech (Nathan Rennolds/Associated Press)", "summary": "Nathan Rennolds / Associated Press : European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a &ldquo;wake-up call&rdquo; about the risks of depending on the US for AI tech &nbsp; &mdash;&nbsp; Anthropic said it believed the US government had become aware of a potential means of jailbreaking Fable 5.", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.96, "age_days": 0.1}, "https://www.techmeme.com/260613/p9#a260613p9": {"title": "David Sacks says Dario Amodei refused to \"fix the jailbreak or de-deploy the model\" after \"a highly credible trusted partner\" reported a Fable jailbreak (David Sacks/@davidsacks)", "summary": "David Sacks / @davidsacks : David Sacks says Dario Amodei refused to &ldquo;fix the jailbreak or de-deploy the model&rdquo; after &ldquo;a highly credible trusted partner&rdquo; reported a Fable jailbreak &nbsp; &mdash;&nbsp; I've had a number of conversations with folks inside and outside government about the current situation with Anthropic, and here is what I believe to be true: &mdash; As we know, Anthropic publicly released its Mythos class models earlier this week under the commercial name", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.94, "age_days": 0.2}, "https://www.techmeme.com/260613/p7#a260613p7": {"title": "US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic (New York Times)", "summary": "New York Times : US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic &nbsp; &mdash;&nbsp; The company said on Friday night that the federal government had ordered limits on its Mythos and Fable 5 A.I. systems, citing national security concerns.", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.9, "age_days": 0.3}, "https://www.techmeme.com/260613/p5#a260613p5": {"title": "Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a \"complete overreaction\" (Amrith Ramkumar/Wall Street Journal)", "summary": "Amrith Ramkumar / Wall Street Journal : Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a &ldquo;complete overreaction&rdquo; &nbsp; &mdash;&nbsp; The Trump administration is banning foreign governments, companies and individuals from using Anthropic's &hellip;", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.85, "age_days": 0.5}, "https://twitter.com/ClaudeDevs/status/2065597942602531163": {"title": "As a result of a US Government directive, we are suspending access to Fable 5", "summary": "89 points \u00b7 4 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.63, "age_days": 0.9}, "https://worldofclaudecraft.com/": {"title": "Mmorpg World of ClaudeCraft, vibe coded with Fable 5", "summary": "92 points \u00b7 105 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.6, "age_days": 1.1}, "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko": {"title": "An Interview with Intel's Kira Boyko: Xeon 6's Product Director", "summary": "50 points \u00b7 3 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.37, "age_days": 0.5}, "https://github.com/MatteoLeonesi/bulk-delete-claude-chat": {"title": "Show HN: Script to bulk delete Claude chats from the web UI", "summary": "59 points \u00b7 19 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.21, "age_days": 1.3}, "https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/": {"title": "AI Model Routing in 2026: When to Use Fable 5, Opus, Sonnet, and Haiku", "summary": "Not every task needs your most expensive model. Learn how to route tasks across Claude Fable 5, Opus, Sonnet, and Haiku to cut costs without losing quality.", "source": "MindStudio", "stage": "dropped_source_cap", "score": 3.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/": {"title": "The Compliance Case for Letting Everyone Build", "summary": "Compliance teams treat citizen development as a risk. On a governed substrate it delivers a better audit trail and access control than the status quo.", "source": "MindStudio", "stage": "dropped_source_cap", "score": 2.44, "age_days": 2.0}, "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/": {"title": "AI agent bankrupted their operator while trying to scan DN42", "summary": "1438 points \u00b7 525 comments \u00b7 query: agentic", "source": "Hacker News", "stage": "dropped_ttl", "score": 11.49, "age_days": 1.8}, "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/": {"title": "Claude Fable is relentlessly proactive", "summary": "759 points \u00b7 652 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_ttl", "score": 9.45, "age_days": 1.9}, "https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/": {"title": "What Is Claude Fable 5? Anthropic's Mythos-Class Model for General Use Explained", "summary": "Claude Fable 5 is Anthropic's most capable publicly available model. Learn what makes it different, its pricing, and best use cases for agentic work.", "source": "MindStudio", "stage": "dropped_ttl", "score": 8.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/": {"title": "Claude Fable 5 vs GPT 5.5: Benchmark Breakdown and Real-World Coding Results", "summary": "Compare Claude Fable 5 and GPT 5.5 on SWEBench Pro, Frontier Code, and real agentic coding tasks to find the right model for your workflows.", "source": "MindStudio", "stage": "dropped_ttl", "score": 7.44, "age_days": 2.0}, "https://openai.com/index/academy-courses-applying-ai-at-work": {"title": "New OpenAI Academy courses for the next era of work", "summary": "OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.", "source": "OpenAI News", "stage": "dropped_ttl", "score": 6.56, "age_days": 1.6}, "https://openai.com/index/preply": {"title": "How Preply combines AI and human tutors to personalize learning", "summary": "Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises.", "source": "OpenAI News", "stage": "dropped_ttl", "score": 6.44, "age_days": 2.0}, "https://stratechery.com/2026/hey-siri-tell-me-a-fable/": {"title": "2026.24: Hey Siri, Tell Me a Fable", "summary": "The best Stratechery content from the week of June 8, 2026, including Apple finally shipping Intelligence, Anthropic's fable, and the future of European industry.", "source": "Stratechery", "stage": "dropped_ttl", "score": 5.64, "age_days": 1.3}, "https://huggingface.co/blog/allenai/olmo-eval": {"title": "olmo-eval: An evaluation workbench for the model development loop", "summary": "", "source": "Hugging Face Blog", "stage": "dropped_ttl", "score": 3.63, "age_days": 1.3}, "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything": {"title": "Claude Fable is relentlessly proactive", "summary": "After two days of experience with Claude Fable 5 I think the best way to describe it is relentlessly proactive . It knows a whole lot of tricks and it will deploy pretty much any of them to get to its goal. I'll illustrate this with an example. I was hacking on Datasette Agent today when I noticed a glitch: a horizontal scrollbar that shouldn't be there in the jump menu chat prompt. I snapped this screenshot: Then I started a fresh claude session in my datasette-agent checkout, dragged in the sc", "source": "Simon Willison", "stage": "dropped_dedupe", "score": 6.43, "age_days": 2.0}, "https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything": {"title": "Quoting Andrew Singleton", "summary": "Jenny owns a crematorium. John\u2019s propane company gives her a $20 billion investment in return for 5 percent of her operation. Jenny throws $10 billion into the incinerator, then pays John $10 billion to buy propane to burn that money to ashes. John reports that his AI investments have generated $10 billion in revenue this quarter and that he owns 5 percent of a $100 billion business. A reporter from Forbes is assigned to profile John and Jenny, and over the course of his research, he becomes emb", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.65, "age_days": 1.2}, "https://www.techmeme.com/260613/p14#a260613p14": {"title": "How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet's planned ~$85B in equity offerings for AI (Robert Armstrong/Financial Times)", "summary": "Robert Armstrong / Financial Times : How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet's planned ~$85B in equity offerings for AI &nbsp; &mdash;&nbsp; Big Tech no longer prints money; it needs it.&nbsp; What will that mean when confidence dips?&nbsp; Artificial intelligence will change &hellip;", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.99, "age_days": 0.0}, "https://www.techmeme.com/260613/p10#a260613p10": {"title": "Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states (Allan Smith/NBC News)", "summary": "Allan Smith / NBC News : Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states &nbsp; &mdash;&nbsp; The authors found that data center opponents blocked or delayed at least 75 projects nationwide from January through March.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.95, "age_days": 0.2}, "https://www.techmeme.com/260613/p8#a260613p8": {"title": "Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions (The Information)", "summary": "The Information : Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions &nbsp; &mdash;&nbsp; Amazon CEO Andy Jassy was among the tech leaders who raised concerns to senior Trump administration officials this week about security risks &hellip;", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.92, "age_days": 0.3}, "https://www.techmeme.com/260613/p6#a260613p6": {"title": "A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade (Jessica Loudis/Bloomberg)", "summary": "Jessica Loudis / Bloomberg : A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade &nbsp; &mdash;&nbsp; Nigeria's &ldquo;Yahoo Boys&rdquo; have industrialized romance scamming, reflecting and distorting modern hustle culture in the face of collapsing economic prospects.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.89, "age_days": 0.4}, "https://www.techmeme.com/260613/p4#a260613p4": {"title": "After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype (Michael Peel/Financial Times)", "summary": "Michael Peel / Financial Times : After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype &nbsp; &mdash;&nbsp; Companies are betting on big implications for pharmaceuticals, financial services and crypto.&nbsp; But sceptics worry about hype.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260613/p3#a260613p3": {"title": "An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon (Christopher Mims/Wall Street Journal)", "summary": "Christopher Mims / Wall Street Journal : An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon &nbsp; &mdash;&nbsp; CEO Wendell Weeks remembers the dot-com crash and other hardships, and those lessons help him hedge even the most optimistic data-center bets", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260613/p2#a260613p2": {"title": "South Korea's \"semiconductor belt\" town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers (Daniel Tudor/Financial Times)", "summary": "Daniel Tudor / Financial Times : South Korea's &ldquo;semiconductor belt&rdquo; town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers &nbsp; &mdash;&nbsp; Windfall bonus for workers drives up property prices and department store purchases", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260612/p35#a260612p35": {"title": "A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 (Lawrence Abrams/BleepingComputer)", "summary": "Lawrence Abrams / BleepingComputer : A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 &nbsp; &mdash;&nbsp; A Ukrainian national extradited from Ireland to the United States last year has pleaded guilty to conspiracy charges tied to the Conti ransomware operation.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.75, "age_days": 0.9}, "https://www.latent.space/p/ainews-fable-and-mythos-officially": {"title": "[AINews] Fable and Mythos officially too dangerous to release", "summary": "We are in the strangest timeline.", "source": "Latent Space", "stage": "dropped_keyword", "score": 3.78, "age_days": 0.8}, "https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking": {"title": "[AINews] Loopcraft: The Art of Stacking Loops", "summary": "a quiet day lets us highlight a great concept from Peter Steinberger, Boris Cherny, and Andrej Karpathy", "source": "Latent Space", "stage": "dropped_keyword", "score": 3.5, "age_days": 1.7}, "https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/": {"title": "Electric motors with no rare earths", "summary": "679 points \u00b7 197 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.7, "age_days": 1.0}, "https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/": {"title": "A Call to Action: Stop the FCC's KYC Regime", "summary": "329 points \u00b7 223 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 4.9, "age_days": 1.4}, "https://github.com/tensorzero/tensorzero": {"title": "AI OSS tool repo goes archived over night after raising $7.3M Seed", "summary": "230 points \u00b7 149 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 4.17, "age_days": 0.5}, "https://news.ycombinator.com/item?id=48504034": {"title": "Tell HN: Meta is down", "summary": "125 points \u00b7 94 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.85, "age_days": 1.4}, "https://stackscope.dev/": {"title": "Show HN: StackScope \u2013 I crawled over 40k indie launches to see what they ship", "summary": "61 points \u00b7 17 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.23, "age_days": 1.3}, "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html": {"title": "The adder at the heart of Intel's 8087 floating-point chip", "summary": "79 points \u00b7 23 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.71, "age_days": 0.3}, "https://tonsky.me/blog/every-frame-perfect/": {"title": "Every Frame Perfect", "summary": "475 points \u00b7 156 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.86, "age_days": 0.5}, "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/": {"title": "Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch", "summary": "64 points \u00b7 12 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.58, "age_days": 0.2}, "https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979": {"title": "Palantir loses legal challenge against Swiss investigative magazine", "summary": "398 points \u00b7 106 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.66, "age_days": 1.1}, "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal": {"title": "Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case", "summary": "83 points \u00b7 69 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.7, "age_days": 0.5}, "https://kagi.com/magic": {"title": "Kagi Magic", "summary": "51 points \u00b7 25 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.18, "age_days": 1.1}, "https://bytecodealliance.org/articles/WASI-0.3": {"title": "WASI 0.3", "summary": "252 points \u00b7 95 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 4.12, "age_days": 1.4}, "https://news.ycombinator.com/item?id=48506850": {"title": "Ask HN: Why is there some sort of a scam website being advertised on HN?", "summary": "134 points \u00b7 51 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.98, "age_days": 1.2}, "https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/": {"title": "How to Build an AI Content Empire: One Input, 15 Outputs with AI Video Tools", "summary": "Learn how to turn one PDF or newsletter into YouTube videos, shorts, LinkedIn posts, and multilingual content using AI avatar and video generation tools.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/": {"title": "How to Build an AI Digital Twin for Content Creation Using HeyGen", "summary": "Create a digital avatar from 15 seconds of video, then use it to publish scripts, change outfits, and deliver content in 15+ languages without re-filming.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/": {"title": "AI Scaling Laws Are Breaking Down: What It Means for AI Builders", "summary": "New research shows bigger AI models don't reliably improve analogical reasoning. Here's what the scaling law breakdown means for your AI stack.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/": {"title": "How to Build an AI Second Brain with the Four C's Framework: Context, Connections, Capabilities, Cadence", "summary": "The Four C's framework gives you a repeatable system for building an AI operating system that knows your business and automates work while you sleep.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/": {"title": "What Is Apple's AI Strategy? How WWDC 2026 Changes the AI Landscape for Builders", "summary": "Apple is turning AI into part of the operating system, not a chatbot tab. Here's what WWDC 2026's announcements mean for AI builders and enterprise teams.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/": {"title": "7 Apps Your Operations Team Can Build This Quarter\u2014No Engineers", "summary": "Vendor SLAs, onboarding checklists, incident logs\u2014the internal tools ops keeps faking in spreadsheets. Here are seven your team can build this quarter.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/": {"title": "How to Build a Brainstorm-First AI Workflow: Separate Ideation from Execution", "summary": "Instead of asking AI for one answer, ask for five options first. This brainstorm-first technique consistently produces better outputs across any AI task.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/": {"title": "Buy the Commodity, Build What's Yours", "summary": "Buy SaaS for the undifferentiated work\u2014payroll, accounting, the system of record. Build the workflows that are core to how your org actually operates.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/": {"title": "Decentralize the Building. Centralize the Seeing.", "summary": "The two motions look contradictory: push building to the edges, pull visibility to the center. They only conflict when every tool is a separate island.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/": {"title": "Diffusion Language Models Explained: How Google's Diffusion Gemma Works", "summary": "Diffusion Gemma is Google's first open-weight diffusion language model. Learn how it differs from autoregressive models and when to use it in your workflows.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/engineers-should-architect-substrates/": {"title": "Your Best Engineers Should Architect Substrates, Not CRUD Apps", "summary": "When non-engineers build the long tail of internal tools, scarce engineering talent moves up: design the governed substrate, set patterns, review what ships.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/": {"title": "Fragmented Tools Make Your Org Illegible to Its Own Leadership", "summary": "Run on dozens of disconnected tools and leadership can't see across them\u2014can't answer cross-cutting questions, govern, or steer. The org goes blind to itself.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/": {"title": "Your Processes Change Faster Than Your Software Can", "summary": "In most orgs, the business learns faster than its tools can be rebuilt, so understanding outpaces software and the company slows to the speed of its backlog.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/": {"title": "What Is Analogical Reasoning in AI? Why Bigger Models Don't Always Win", "summary": "Analogical reasoning is one of the most human-like AI capabilities\u2014and it doesn't scale with model size. Here's what the research shows and why it matters.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}, "https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/": {"title": "The Companies Winning at AI Don't Have the Biggest Budgets", "summary": "AI returns don't track with spend. The orgs pulling ahead didn't buy the most licenses or GPUs\u2014they shortened the distance between a problem and a working tool.", "source": "MindStudio", "stage": "dropped_keyword", "score": 1.44, "age_days": 2.0}};
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".card").forEach(card => {
+    updateCard(card);
+    card.querySelectorAll(".verdicts button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const url = btn.dataset.url;
+        const cur = loadVerdict(url);
+        if (cur && cur.verdict === btn.dataset.verdict) {
+          localStorage.removeItem(key(url));
+        } else {
+          saveVerdict(url, {verdict: btn.dataset.verdict});
+        }
+        updateCard(card);
+        scheduleSave();
+      });
+    });
+    const note = card.querySelector(".note-input");
+    if (note) {
+      note.addEventListener("input", () => {
+        if (loadVerdict(note.dataset.url)) {
+          saveVerdict(note.dataset.url, {note: note.value});
+          scheduleSave();
+        }
+      });
+    }
+  });
+  document.getElementById("download-jsonl").addEventListener("click", downloadJSONL);
+  document.getElementById("copy-jsonl").addEventListener("click", copyJSONL);
+  document.getElementById("settings-toggle").addEventListener("click", openSettings);
+  document.getElementById("settings-close").addEventListener("click", closeSettings);
+  document.getElementById("pat-test").addEventListener("click", testPat);
+  document.getElementById("pat-save").addEventListener("click", () => {
+    const v = document.getElementById("pat-input").value.trim();
+    savePat(v);
+    closeSettings();
+    // Flush any labels already in localStorage (e.g. labelled before the PAT
+    // was connected) the moment a token lands.
+    if (v && buildJSONL()) commitJsonl(); else refreshStatusIdle();
+  });
+  document.getElementById("save-status").addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains("error")) commitJsonl();
+  });
+  updateCount();
+  refreshStatusIdle();
+});
+</script>
+
+</body>
+</html>

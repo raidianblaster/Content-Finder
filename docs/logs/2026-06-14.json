@@ -1,0 +1,1245 @@
+{
+  "date": "2026-06-14",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 87,
+    "after_keyword_filter": 45,
+    "after_dedupe": 36,
+    "after_ttl_filter": 28,
+    "after_source_cap": 11
+  },
+  "dropped_keyword": [
+    {
+      "title": "Quoting Andrew Singleton",
+      "summary": "Jenny owns a crematorium. John\u2019s propane company gives her a $20 billion investment in return for 5 percent of her operation. Jenny throws $10 billion into the incinerator, then pays John $10 billion to buy propane to burn that money to ashes. John reports that his AI investments have generated $10 billion in revenue this quarter and that he owns 5 percent of a $100 billion business. A reporter from Forbes is assigned to profile John and Jenny, and over the course of his research, he becomes emb",
+      "url": "https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.65,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8266,
+        "recency_term": 1.6532,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.6531698408465605
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet's planned ~$85B in equity offerings for AI (Robert Armstrong/Financial Times)",
+      "summary": "Robert Armstrong / Financial Times : How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet's planned ~$85B in equity offerings for AI &nbsp; &mdash;&nbsp; Big Tech no longer prints money; it needs it.&nbsp; What will that mean when confidence dips?&nbsp; Artificial intelligence will change &hellip;",
+      "url": "https://www.techmeme.com/260613/p14#a260613p14",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9946,
+        "recency_term": 1.9893,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.989297486259921
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states (Allan Smith/NBC News)",
+      "summary": "Allan Smith / NBC News : Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states &nbsp; &mdash;&nbsp; The authors found that data center opponents blocked or delayed at least 75 projects nationwide from January through March.",
+      "url": "https://www.techmeme.com/260613/p10#a260613p10",
+      "source": "Techmeme",
+      "score": 2.95,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.977,
+        "recency_term": 1.9539,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.953900660790344
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions (The Information)",
+      "summary": "The Information : Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions &nbsp; &mdash;&nbsp; Amazon CEO Andy Jassy was among the tech leaders who raised concerns to senior Trump administration officials this week about security risks &hellip;",
+      "url": "https://www.techmeme.com/260613/p8#a260613p8",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9601,
+        "recency_term": 1.9202,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9201705019907407
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade (Jessica Loudis/Bloomberg)",
+      "summary": "Jessica Loudis / Bloomberg : A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade &nbsp; &mdash;&nbsp; Nigeria's &ldquo;Yahoo Boys&rdquo; have industrialized romance scamming, reflecting and distorting modern hustle culture in the face of collapsing economic prospects.",
+      "url": "https://www.techmeme.com/260613/p6#a260613p6",
+      "source": "Techmeme",
+      "score": 2.89,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9427,
+        "recency_term": 1.8854,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8854449728141534
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype (Michael Peel/Financial Times)",
+      "summary": "Michael Peel / Financial Times : After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype &nbsp; &mdash;&nbsp; Companies are betting on big implications for pharmaceuticals, financial services and crypto.&nbsp; But sceptics worry about hype.",
+      "url": "https://www.techmeme.com/260613/p4#a260613p4",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9006,
+        "recency_term": 1.8011,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8011195759160055
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon (Christopher Mims/Wall Street Journal)",
+      "summary": "Christopher Mims / Wall Street Journal : An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon &nbsp; &mdash;&nbsp; CEO Wendell Weeks remembers the dot-com crash and other hardships, and those lessons help him hedge even the most optimistic data-center bets",
+      "url": "https://www.techmeme.com/260613/p3#a260613p3",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8986,
+        "recency_term": 1.7972,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7971513218088626
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "South Korea's \"semiconductor belt\" town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers (Daniel Tudor/Financial Times)",
+      "summary": "Daniel Tudor / Financial Times : South Korea's &ldquo;semiconductor belt&rdquo; town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers &nbsp; &mdash;&nbsp; Windfall bonus for workers drives up property prices and department store purchases",
+      "url": "https://www.techmeme.com/260613/p2#a260613p2",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8976,
+        "recency_term": 1.7952,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.795167194748677
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 (Lawrence Abrams/BleepingComputer)",
+      "summary": "Lawrence Abrams / BleepingComputer : A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 &nbsp; &mdash;&nbsp; A Ukrainian national extradited from Ireland to the United States last year has pleaded guilty to conspiracy charges tied to the Conti ransomware operation.",
+      "url": "https://www.techmeme.com/260612/p35#a260612p35",
+      "source": "Techmeme",
+      "score": 2.75,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8768,
+        "recency_term": 1.7535,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.753503834880952
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "[AINews] Fable and Mythos officially too dangerous to release",
+      "summary": "We are in the strangest timeline.",
+      "url": "https://www.latent.space/p/ainews-fable-and-mythos-officially",
+      "source": "Latent Space",
+      "score": 3.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8882,
+        "recency_term": 1.7765,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.7764866390806877
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "[AINews] Loopcraft: The Art of Stacking Loops",
+      "summary": "a quiet day lets us highlight a great concept from Peter Steinberger, Boris Cherny, and Andrej Karpathy",
+      "url": "https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking",
+      "source": "Latent Space",
+      "score": 3.5,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7517,
+        "recency_term": 1.5033,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.5033285702612433
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "Electric motors with no rare earths",
+      "summary": "679 points \u00b7 197 comments \u00b7 query: RAG",
+      "url": "https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/",
+      "source": "Hacker News",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8503,
+        "recency_term": 1.7005,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.700530951180555
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "A Call to Action: Stop the FCC's KYC Regime",
+      "summary": "329 points \u00b7 223 comments \u00b7 query: RAG",
+      "url": "https://blog.lopp.net/call-to-action-stop-the-fcc-kyc-regime/",
+      "source": "Hacker News",
+      "score": 4.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8052,
+        "recency_term": 1.6103,
+        "src_bonus": 0,
+        "hn_bonus": 3.29,
+        "total": 4.900339152202381
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "AI OSS tool repo goes archived over night after raising $7.3M Seed",
+      "summary": "230 points \u00b7 149 comments \u00b7 query: RAG",
+      "url": "https://github.com/tensorzero/tensorzero",
+      "source": "Hacker News",
+      "score": 4.17,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9339,
+        "recency_term": 1.8677,
+        "src_bonus": 0,
+        "hn_bonus": 2.3,
+        "total": 4.167739945813492
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Tell HN: Meta is down",
+      "summary": "125 points \u00b7 94 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=48504034",
+      "source": "Hacker News",
+      "score": 2.85,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8008,
+        "recency_term": 1.6016,
+        "src_bonus": 0,
+        "hn_bonus": 1.25,
+        "total": 2.8515593902281746
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Show HN: StackScope \u2013 I crawled over 40k indie launches to see what they ship",
+      "summary": "61 points \u00b7 17 comments \u00b7 query: RAG",
+      "url": "https://stackscope.dev/",
+      "source": "Hacker News",
+      "score": 2.23,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8104,
+        "recency_term": 1.6208,
+        "src_bonus": 0,
+        "hn_bonus": 0.61,
+        "total": 2.2307988081746033
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "The adder at the heart of Intel's 8087 floating-point chip",
+      "summary": "79 points \u00b7 23 comments \u00b7 query: RAG",
+      "url": "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html",
+      "source": "Hacker News",
+      "score": 2.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9615,
+        "recency_term": 1.9231,
+        "src_bonus": 0,
+        "hn_bonus": 0.79,
+        "total": 2.7130805541732803
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Every Frame Perfect",
+      "summary": "475 points \u00b7 156 comments \u00b7 query: RAG",
+      "url": "https://tonsky.me/blog/every-frame-perfect/",
+      "source": "Hacker News",
+      "score": 5.86,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9308,
+        "recency_term": 1.8617,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.861698279011243
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch",
+      "summary": "64 points \u00b7 12 comments \u00b7 query: RAG",
+      "url": "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/",
+      "source": "Hacker News",
+      "score": 2.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9717,
+        "recency_term": 1.9435,
+        "src_bonus": 0,
+        "hn_bonus": 0.64,
+        "total": 2.5834509244775132
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Palantir loses legal challenge against Swiss investigative magazine",
+      "summary": "398 points \u00b7 106 comments \u00b7 query: RAG",
+      "url": "https://www.ft.com/content/7ffcace7-9dc0-4e7e-9912-895ac073f979",
+      "source": "Hacker News",
+      "score": 5.66,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8415,
+        "recency_term": 1.683,
+        "src_bonus": 0,
+        "hn_bonus": 3.98,
+        "total": 5.662981347724868
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case",
+      "summary": "83 points \u00b7 69 comments \u00b7 query: RAG",
+      "url": "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal",
+      "source": "Hacker News",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9345,
+        "recency_term": 1.8691,
+        "src_bonus": 0,
+        "hn_bonus": 0.83,
+        "total": 2.6990626968948415
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Kagi Magic",
+      "summary": "51 points \u00b7 25 comments \u00b7 query: RAG",
+      "url": "https://kagi.com/magic",
+      "source": "Hacker News",
+      "score": 2.18,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8363,
+        "recency_term": 1.6726,
+        "src_bonus": 0,
+        "hn_bonus": 0.51,
+        "total": 2.182574601626984
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "WASI 0.3",
+      "summary": "252 points \u00b7 95 comments \u00b7 query: RAG",
+      "url": "https://bytecodealliance.org/articles/WASI-0.3",
+      "source": "Hacker News",
+      "score": 4.12,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.801,
+        "recency_term": 1.602,
+        "src_bonus": 0,
+        "hn_bonus": 2.52,
+        "total": 4.12195952223545
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Ask HN: Why is there some sort of a scam website being advertised on HN?",
+      "summary": "134 points \u00b7 51 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=48506850",
+      "source": "Hacker News",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8219,
+        "recency_term": 1.6438,
+        "src_bonus": 0,
+        "hn_bonus": 1.34,
+        "total": 2.9837948396593914
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "How to Build an AI Content Empire: One Input, 15 Outputs with AI Video Tools",
+      "summary": "Learn how to turn one PDF or newsletter into YouTube videos, shorts, LinkedIn posts, and multilingual content using AI avatar and video generation tools.",
+      "url": "https://www.mindstudio.ai/blog/ai-content-empire-one-input-15-outputs-workflow/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289665972222
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Build an AI Digital Twin for Content Creation Using HeyGen",
+      "summary": "Create a digital avatar from 15 seconds of video, then use it to publish scripts, change outfits, and deliver content in 15+ languages without re-filming.",
+      "url": "https://www.mindstudio.ai/blog/ai-digital-twin-content-creation-heygen/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.437028966554233
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "AI Scaling Laws Are Breaking Down: What It Means for AI Builders",
+      "summary": "New research shows bigger AI models don't reliably improve analogical reasoning. Here's what the scaling law breakdown means for your AI stack.",
+      "url": "https://www.mindstudio.ai/blog/ai-scaling-laws-breaking-down-what-it-means-for-builders/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289665112435
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Build an AI Second Brain with the Four C's Framework: Context, Connections, Capabilities, Cadence",
+      "summary": "The Four C's framework gives you a repeatable system for building an AI operating system that knows your business and automates work while you sleep.",
+      "url": "https://www.mindstudio.ai/blog/ai-second-brain-four-cs-framework-context-connections-capabilities-cadence/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289664649472
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Apple's AI Strategy? How WWDC 2026 Changes the AI Landscape for Builders",
+      "summary": "Apple is turning AI into part of the operating system, not a chatbot tab. Here's what WWDC 2026's announcements mean for AI builders and enterprise teams.",
+      "url": "https://www.mindstudio.ai/blog/apple-wwdc-2026-ai-strategy-what-it-means-for-builders/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289664219575
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "7 Apps Your Operations Team Can Build This Quarter\u2014No Engineers",
+      "summary": "Vendor SLAs, onboarding checklists, incident logs\u2014the internal tools ops keeps faking in spreadsheets. Here are seven your team can build this quarter.",
+      "url": "https://www.mindstudio.ai/blog/apps-operations-teams-can-build-with-ai/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289663690474
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Build a Brainstorm-First AI Workflow: Separate Ideation from Execution",
+      "summary": "Instead of asking AI for one answer, ask for five options first. This brainstorm-first technique consistently produces better outputs across any AI task.",
+      "url": "https://www.mindstudio.ai/blog/brainstorm-first-ai-workflow-ideation-before-execution/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289663227513
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Buy the Commodity, Build What's Yours",
+      "summary": "Buy SaaS for the undifferentiated work\u2014payroll, accounting, the system of record. Build the workflows that are core to how your org actually operates.",
+      "url": "https://www.mindstudio.ai/blog/buy-the-commodity-build-whats-yours/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289662764553
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Decentralize the Building. Centralize the Seeing.",
+      "summary": "The two motions look contradictory: push building to the edges, pull visibility to the center. They only conflict when every tool is a separate island.",
+      "url": "https://www.mindstudio.ai/blog/decentralize-building-centralize-seeing/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289662334657
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Diffusion Language Models Explained: How Google's Diffusion Gemma Works",
+      "summary": "Diffusion Gemma is Google's first open-weight diffusion language model. Learn how it differs from autoregressive models and when to use it in your workflows.",
+      "url": "https://www.mindstudio.ai/blog/diffusion-language-models-google-diffusion-gemma-explained/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289661904763
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Your Best Engineers Should Architect Substrates, Not CRUD Apps",
+      "summary": "When non-engineers build the long tail of internal tools, scarce engineering talent moves up: design the governed substrate, set patterns, review what ships.",
+      "url": "https://www.mindstudio.ai/blog/engineers-should-architect-substrates/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289661441797
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Fragmented Tools Make Your Org Illegible to Its Own Leadership",
+      "summary": "Run on dozens of disconnected tools and leadership can't see across them\u2014can't answer cross-cutting questions, govern, or steer. The org goes blind to itself.",
+      "url": "https://www.mindstudio.ai/blog/fragmented-tools-make-orgs-illegible/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.437028966087963
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Your Processes Change Faster Than Your Software Can",
+      "summary": "In most orgs, the business learns faster than its tools can be rebuilt, so understanding outpaces software and the company slows to the speed of its backlog.",
+      "url": "https://www.mindstudio.ai/blog/software-at-the-speed-of-understanding/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289660482805
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "What Is Analogical Reasoning in AI? Why Bigger Models Don't Always Win",
+      "summary": "Analogical reasoning is one of the most human-like AI capabilities\u2014and it doesn't scale with model size. Here's what the research shows and why it matters.",
+      "url": "https://www.mindstudio.ai/blog/what-is-analogical-reasoning-ai-scaling-limits/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289659953703
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "The Companies Winning at AI Don't Have the Biggest Budgets",
+      "summary": "AI returns don't track with spend. The orgs pulling ahead didn't buy the most licenses or GPUs\u2014they shortened the distance between a problem and a working tool.",
+      "url": "https://www.mindstudio.ai/blog/winning-at-ai-isnt-about-budget/",
+      "source": "MindStudio",
+      "score": 1.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4370289659424602
+      },
+      "age_days": 2.0
+    }
+  ],
+  "dropped_dedupe": [
+    {
+      "title": "Claude Fable is relentlessly proactive",
+      "summary": "After two days of experience with Claude Fable 5 I think the best way to describe it is relentlessly proactive . It knows a whole lot of tricks and it will deploy pretty much any of them to get to its goal. I'll illustrate this with an example. I was hacking on Datasette Agent today when I noticed a glitch: a horizontal scrollbar that shouldn't be there in the jump menu chat prompt. I snapped this screenshot: Then I started a fresh claude session in my datasette-agent checkout, dragged in the sc",
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7161,
+        "recency_term": 1.4321,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.432124862972884
+      },
+      "age_days": 2.0
+    }
+  ],
+  "dropped_ttl": [
+    {
+      "title": "AI agent bankrupted their operator while trying to scan DN42",
+      "summary": "1438 points \u00b7 525 comments \u00b7 query: agentic",
+      "url": "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/",
+      "source": "Hacker News",
+      "score": 11.49,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.7466,
+        "recency_term": 1.4932,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 11.493156608406085
+      },
+      "age_days": 1.8,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "Claude Fable is relentlessly proactive",
+      "summary": "759 points \u00b7 652 comments \u00b7 query: LLM",
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/",
+      "source": "Hacker News",
+      "score": 9.45,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.7251,
+        "recency_term": 1.4503,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 9.450292851736112
+      },
+      "age_days": 1.9,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "What Is Claude Fable 5? Anthropic's Mythos-Class Model for General Use Explained",
+      "summary": "Claude Fable 5 is Anthropic's most capable publicly available model. Learn what makes it different, its pricing, and best use cases for agentic work.",
+      "url": "https://www.mindstudio.ai/blog/what-is-claude-fable-5-anthropic-mythos-class-model-2/",
+      "source": "MindStudio",
+      "score": 8.44,
+      "score_components": {
+        "keyword": 7,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 8.437028962794312
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "Claude Fable 5 vs GPT 5.5: Benchmark Breakdown and Real-World Coding Results",
+      "summary": "Compare Claude Fable 5 and GPT 5.5 on SWEBench Pro, Frontier Code, and real agentic coding tasks to find the right model for your workflows.",
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-benchmark-comparison/",
+      "source": "MindStudio",
+      "score": 7.44,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 7.437028962748016
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "New OpenAI Academy courses for the next era of work",
+      "summary": "OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.",
+      "url": "https://openai.com/index/academy-courses-applying-ai-at-work",
+      "source": "OpenAI News",
+      "score": 6.56,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.778,
+        "recency_term": 1.5561,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.5560765817493385
+      },
+      "age_days": 1.6,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "How Preply combines AI and human tutors to personalize learning",
+      "summary": "Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises.",
+      "url": "https://openai.com/index/preply",
+      "source": "OpenAI News",
+      "score": 6.44,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.43702896265873
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "2026.24: Hey Siri, Tell Me a Fable",
+      "summary": "The best Stratechery content from the week of June 8, 2026, including Apple finally shipping Intelligence, Anthropic's fable, and the future of European industry.",
+      "url": "https://stratechery.com/2026/hey-siri-tell-me-a-fable/",
+      "source": "Stratechery",
+      "score": 5.64,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8197,
+        "recency_term": 1.6394,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 5.6394099149933865
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-06-13"
+    },
+    {
+      "title": "olmo-eval: An evaluation workbench for the model development loop",
+      "summary": "",
+      "url": "https://huggingface.co/blog/allenai/olmo-eval",
+      "source": "Hugging Face Blog",
+      "score": 3.63,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8134,
+        "recency_term": 1.6267,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.6267445710482806
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-06-13"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "GLM 5.2 Is Out",
+      "summary": "241 points \u00b7 118 comments \u00b7 query: LLM",
+      "url": "https://twitter.com/jietang/status/2065784751345287314",
+      "source": "Hacker News",
+      "score": 6.33,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9584,
+        "recency_term": 1.9169,
+        "src_bonus": 0,
+        "hn_bonus": 2.41,
+        "total": 6.326893380486111
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "We've suspended access to Claude Mythos 5 and Claude Fable 5",
+      "summary": "251 points \u00b7 5 comments \u00b7 query: Claude",
+      "url": "https://status.claude.com/incidents/s9w82lp9dcn9",
+      "source": "Hacker News",
+      "score": 6.24,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8671,
+        "recency_term": 1.7343,
+        "src_bonus": 0,
+        "hn_bonus": 2.51,
+        "total": 6.244271025945767
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Show HN: Paca \u2013 Lightweight Jira alternative for human-AI collaboration",
+      "summary": "127 points \u00b7 50 comments \u00b7 query: AI agents",
+      "url": "https://github.com/Paca-AI/paca",
+      "source": "Hacker News",
+      "score": 6.11,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9193,
+        "recency_term": 1.8387,
+        "src_bonus": 0,
+        "hn_bonus": 1.27,
+        "total": 6.108698935949073
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Shepherd's Dog: A Game by Fable",
+      "summary": "173 points \u00b7 127 comments \u00b7 query: Claude",
+      "url": "https://koenvangilst.nl/lab/claude-fable-shepherds-dog",
+      "source": "Hacker News",
+      "score": 5.52,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8956,
+        "recency_term": 1.7911,
+        "src_bonus": 0,
+        "hn_bonus": 1.73,
+        "total": 5.521149332741402
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "On CPU Physics and CPU Cycles",
+      "summary": "63 points \u00b7 9 comments \u00b7 query: MCP",
+      "url": "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730",
+      "source": "Hacker News",
+      "score": 5.41,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8889,
+        "recency_term": 1.7777,
+        "src_bonus": 0,
+        "hn_bonus": 0.63,
+        "total": 5.407730020539021
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "A dumpster arrived behind my university's library",
+      "summary": "172 points \u00b7 172 comments \u00b7 query: LLM",
+      "url": "https://yalereview.org/article/sheila-liming-the-end-of-books",
+      "source": "Hacker News",
+      "score": 5.33,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.804,
+        "recency_term": 1.6079,
+        "src_bonus": 0,
+        "hn_bonus": 1.72,
+        "total": 5.327935046960978
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Launch HN: BitBoard (YC P25) \u2013 Analytics Workspace for Agents",
+      "summary": "53 points \u00b7 23 comments \u00b7 query: AI agents",
+      "url": "https://bitboard.work/",
+      "source": "Hacker News",
+      "score": 5.17,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8195,
+        "recency_term": 1.639,
+        "src_bonus": 0,
+        "hn_bonus": 0.53,
+        "total": 5.169023009880953
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a \"wake-up call\" about the risks of depending on the US for AI tech (Nathan Rennolds/Associated Press)",
+      "summary": "Nathan Rennolds / Associated Press : European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a &ldquo;wake-up call&rdquo; about the risks of depending on the US for AI tech &nbsp; &mdash;&nbsp; Anthropic said it believed the US government had become aware of a potential means of jailbreaking Fable 5.",
+      "url": "https://www.techmeme.com/260613/p11#a260613p11",
+      "source": "Techmeme",
+      "score": 4.96,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9799,
+        "recency_term": 1.9598,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.959849729381614
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "David Sacks says Dario Amodei refused to \"fix the jailbreak or de-deploy the model\" after \"a highly credible trusted partner\" reported a Fable jailbreak (David Sacks/@davidsacks)",
+      "summary": "David Sacks / @davidsacks : David Sacks says Dario Amodei refused to &ldquo;fix the jailbreak or de-deploy the model&rdquo; after &ldquo;a highly credible trusted partner&rdquo; reported a Fable jailbreak &nbsp; &mdash;&nbsp; I've had a number of conversations with folks inside and outside government about the current situation with Anthropic, and here is what I believe to be true: &mdash; As we know, Anthropic publicly released its Mythos class models earlier this week under the commercial name",
+      "url": "https://www.techmeme.com/260613/p9#a260613p9",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9705,
+        "recency_term": 1.941,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.941003829824735
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic (New York Times)",
+      "summary": "New York Times : US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic &nbsp; &mdash;&nbsp; The company said on Friday night that the federal government had ordered limits on its Mythos and Fable 5 A.I. systems, citing national security concerns.",
+      "url": "https://www.techmeme.com/260613/p7#a260613p7",
+      "source": "Techmeme",
+      "score": 4.9,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9517,
+        "recency_term": 1.9033,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.903302110178571
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a \"complete overreaction\" (Amrith Ramkumar/Wall Street Journal)",
+      "summary": "Amrith Ramkumar / Wall Street Journal : Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a &ldquo;complete overreaction&rdquo; &nbsp; &mdash;&nbsp; The Trump administration is banning foreign governments, companies and individuals from using Anthropic's &hellip;",
+      "url": "https://www.techmeme.com/260613/p5#a260613p5",
+      "source": "Techmeme",
+      "score": 4.85,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9244,
+        "recency_term": 1.8487,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.848738618039022
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "As a result of a US Government directive, we are suspending access to Fable 5",
+      "summary": "89 points \u00b7 4 comments \u00b7 query: Claude",
+      "url": "https://twitter.com/ClaudeDevs/status/2065597942602531163",
+      "source": "Hacker News",
+      "score": 4.63,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8676,
+        "recency_term": 1.7352,
+        "src_bonus": 0,
+        "hn_bonus": 0.89,
+        "total": 4.625180416944445
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Mmorpg World of ClaudeCraft, vibe coded with Fable 5",
+      "summary": "92 points \u00b7 105 comments \u00b7 query: Claude",
+      "url": "https://worldofclaudecraft.com/",
+      "source": "Hacker News",
+      "score": 4.6,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.841,
+        "recency_term": 1.682,
+        "src_bonus": 0,
+        "hn_bonus": 0.92,
+        "total": 4.602009120611773
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "An Interview with Intel's Kira Boyko: Xeon 6's Product Director",
+      "summary": "50 points \u00b7 3 comments \u00b7 query: LLM",
+      "url": "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko",
+      "source": "Hacker News",
+      "score": 4.37,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9348,
+        "recency_term": 1.8696,
+        "src_bonus": 0,
+        "hn_bonus": 0.5,
+        "total": 4.369585178776455
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Show HN: Script to bulk delete Claude chats from the web UI",
+      "summary": "59 points \u00b7 19 comments \u00b7 query: Claude",
+      "url": "https://github.com/MatteoLeonesi/bulk-delete-claude-chat",
+      "source": "Hacker News",
+      "score": 4.21,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8087,
+        "recency_term": 1.6174,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 4.207382797791006
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "AI Model Routing in 2026: When to Use Fable 5, Opus, Sonnet, and Haiku",
+      "summary": "Not every task needs your most expensive model. Learn how to route tasks across Claude Fable 5, Opus, Sonnet, and Haiku to cut costs without losing quality.",
+      "url": "https://www.mindstudio.ai/blog/ai-model-routing-fable-5-opus-sonnet-haiku/",
+      "source": "MindStudio",
+      "score": 3.44,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.437028961765873
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "The Compliance Case for Letting Everyone Build",
+      "summary": "Compliance teams treat citizen development as a risk. On a governed substrate it delivers a better audit trail and access control than the status quo.",
+      "url": "https://www.mindstudio.ai/blog/the-compliance-case-for-citizen-development/",
+      "source": "MindStudio",
+      "score": 2.44,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.4370289617228837
+      },
+      "age_days": 2.0
+    }
+  ],
+  "final": [
+    {
+      "title": "How to setup a local coding agent on macOS",
+      "summary": "468 points \u00b7 116 comments \u00b7 query: agentic",
+      "url": "https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos",
+      "source": "Hacker News",
+      "score": 8.65,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8232,
+        "recency_term": 1.6463,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 8.646337824117063
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models",
+      "summary": "451 points \u00b7 329 comments \u00b7 query: Anthropic",
+      "url": "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink",
+      "source": "Hacker News",
+      "score": 7.92,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9623,
+        "recency_term": 1.9247,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.924690998680555
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5 Well this is nuts : The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthropic employees. The net effect of this order is that we must abruptly disable Fable 5 and Mythos 5 for all our customers to ensure compliance. Access to ",
+      "url": "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything",
+      "source": "Simon Willison",
+      "score": 7.74,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8675,
+        "recency_term": 1.735,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 7.735011765793651
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Statement on US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "3045 points \u00b7 2207 comments \u00b7 query: Claude",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "source": "Hacker News",
+      "score": 7.73,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8665,
+        "recency_term": 1.733,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.732961501203704
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "OpenAI WebRTC Audio Session, now with document context",
+      "summary": "OpenAI WebRTC Audio Session, now with document context I built the first version of this tool in December 2024 to try out the then-new OpenAI WebRTC API for interacting with their realtime audio models. Last month OpenAI introduced a brand new model to that API called GPT\u2011Realtime\u20112 , which they promoted as \"our first voice model with GPT\u20115\u2011class reasoning\" - with a Sep 30, 2024 knowledge cut-off. I've been waiting for that model to show up in the ChatGPT iPhone app but it still hasn't, so I rev",
+      "url": "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.72,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8607,
+        "recency_term": 1.7214,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.721367585763889
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "How to Build an AI Film Production Workflow with Claude Code and MCP",
+      "summary": "Learn how to use Claude Code as a production office for AI filmmaking\u2014story breakdowns, character references, scene generation, and asset tracking via MCP.",
+      "url": "https://www.mindstudio.ai/blog/ai-film-production-workflow-claude-code-mcp/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.437028961362434
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Use Claude Fable 5 for Complex Agentic Workflows: Tips and Best Practices",
+      "summary": "Claude Fable 5 excels at long, complex tasks but burns tokens fast. Learn how to set effort levels, manage costs, and get the most out of this model.",
+      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-fable-5-agentic-workflows/",
+      "source": "MindStudio",
+      "score": 6.44,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.4370289613161376
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Huawei unveils HarmonyOS 7, introducing an \"agent-friendly\" architecture that connects to 2,000+ specialized AI agents and features an enhanced voice assistant (Iris Deng/South China Morning Post)",
+      "summary": "Iris Deng / South China Morning Post : Huawei unveils HarmonyOS 7, introducing an &ldquo;agent-friendly&rdquo; architecture that connects to 2,000+ specialized AI agents and features an enhanced voice assistant &nbsp; &mdash;&nbsp; HarmonyOS 7 introduces an agent-friendly architecture and upgraded AI assistant as Huawei seeks to capitalise on Apple's China AI gap",
+      "url": "https://www.techmeme.com/260613/p1#a260613p1",
+      "source": "Techmeme",
+      "score": 5.79,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8946,
+        "recency_term": 1.7892,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.789218114679233
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "What Is Inference-Time Compute? Why OpenAI, Google, and Anthropic Are All Pivoting",
+      "summary": "Inference-time compute lets AI models think longer at query time instead of relying on bigger base models. Here's why every major lab is making this shift.",
+      "url": "https://www.mindstudio.ai/blog/what-is-inference-time-compute-ai-pivot-explained/",
+      "source": "MindStudio",
+      "score": 5.44,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.7185,
+        "recency_term": 1.437,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.437028961193783
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it (Reed Albergotti/Semafor)",
+      "summary": "Reed Albergotti / Semafor : Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it &nbsp; &mdash;&nbsp; THE SCOOP&nbsp; &mdash;&nbsp; The White House imposed export controls on Anthropic's powerful Mythos AI model partly over suspicions that a China-linked group had accessed it, a person familiar with the matter said.",
+      "url": "https://www.techmeme.com/260613/p13#a260613p13",
+      "source": "Techmeme",
+      "score": 4.99,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9946,
+        "recency_term": 1.9893,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.98929747963955
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Source: the White House is unlikely to extend export restrictions to other AI companies (Leo Schwartz/The Information)",
+      "summary": "Leo Schwartz / The Information : Source: the White House is unlikely to extend export restrictions to other AI companies &nbsp; &mdash;&nbsp; The White House is unlikely to extend export restrictions on Anthropic's advanced models to other AI companies, an official close to the U.S. government said Saturday.",
+      "url": "https://www.techmeme.com/260613/p12#a260613p12",
+      "source": "Techmeme",
+      "score": 4.97,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9829,
+        "recency_term": 1.9658,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.965802109203042
+      },
+      "age_days": 0.1
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-mast="compact" data-date="prominent"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0e">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>AI Digest — Thu 18 Jun 2026</title>
+<style>
+:root {
+  /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
+  --bg:          #0a0a0e;
+  --bg-soft:     #0f0f15;
+  --surface:     #14141c;
+  --surface-2:   #1a1a24;
+  --line:        rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --fg:    #f3f1ec;
+  --fg-2:  #b3aea1;
+  --fg-3:  #7a766c;
+  --fg-4:  #54514a;
+
+  --accent:      #e8b765;
+  --accent-soft: rgba(232, 183, 101, 0.12);
+  --accent-line: rgba(232, 183, 101, 0.32);
+  --accent-ink:  #0a0a0e;
+  --accent-bg:   var(--accent-soft);
+  --accent-border: var(--accent-line);
+
+  /* Category-chip tints — pastel on dark, used as tag text + border */
+  --cat-models:     #c7d2fe;
+  --cat-agents:     #fcd5b5;
+  --cat-tooling:    #b9e4c9;
+  --cat-regulation: #f7c0c8;
+  --cat-enterprise: #d6c7f0;
+  --cat-research:   #b9d7e8;
+
+  --col:       920px;
+  --pad:       28px;
+  --radius:    14px;
+  --radius-sm: 10px;
+
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--fg); }
+body {
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(232,183,101,0.04), transparent 60%),
+    var(--bg);
+}
+.page {
+  max-width: var(--col);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.wrap {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* Skip link (keyboard users) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Top bar — sticky, blurred, brand + nav */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; gap: 16px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
+  color: var(--fg); text-decoration: none;
+}
+.brand-mark {
+  width: 24px; height: 24px; border-radius: 7px;
+  background: var(--accent);
+  display: grid; place-items: center;
+  color: var(--accent-ink);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 600; font-size: 12px;
+}
+.topnav { display: flex; gap: 6px; align-items: center; }
+.topnav a {
+  color: var(--fg-2); text-decoration: none;
+  font-size: 14.5px; font-weight: 500;
+  padding: 8px 12px; border-radius: 8px;
+  transition: background 120ms ease, color 120ms ease;
+}
+.topnav a:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
+.topnav a.active { color: var(--fg); background: rgba(255,255,255,0.06); }
+
+/* Masthead */
+.masthead { padding: 72px 0 40px; }
+.kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.mast-title {
+  font-weight: 700;
+  font-size: clamp(40px, 5.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 16px 0 18px;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.mast-title .accent { color: var(--accent); }
+.mast-sub {
+  color: var(--fg-2);
+  font-size: 19px;
+  max-width: 58ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.mast-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center;
+  margin-top: 32px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.mast-meta b { color: var(--fg-2); font-weight: 500; }
+.mast-meta .pill {
+  border: 1px solid var(--line);
+  padding: 5px 11px; border-radius: 999px;
+  color: var(--fg-2);
+}
+
+/* Dateline (prominent date row above kicker) */
+.mast-dateline {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 16px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px; margin-bottom: 28px;
+}
+.mast-dateline-day {
+  text-transform: uppercase;
+  letter-spacing: 0.16em; font-size: 0.7em; font-weight: 500;
+  color: var(--accent);
+  padding: 4px 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  border-radius: 6px;
+}
+.mast-dateline-date {
+  font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums;
+}
+
+/* Compact density + prominent date (today page) */
+[data-mast="compact"] .masthead { padding: 36px 0 24px; }
+[data-mast="compact"] .mast-title {
+  font-size: clamp(26px, 3.2vw, 34px);
+  margin: 10px 0 10px;
+}
+[data-mast="compact"] .mast-meta { margin-top: 18px; }
+
+/* Footer */
+footer.site-footer {
+  padding: 48px 0 56px;
+  border-top: 1px solid var(--line);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+}
+footer.site-footer a { color: var(--fg-2); text-decoration: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+/* ===== V2 story card ===== */
+.article-list, .stories { display: flex; flex-direction: column; gap: 12px; }
+.story {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.story:hover { border-color: var(--line-strong); }
+.story.open { border-color: var(--accent-line); background: var(--surface-2); }
+.story-head {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; padding: 24px 26px;
+  cursor: pointer; align-items: start;
+}
+.story-head:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.story-meta-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px; margin-bottom: 12px;
+}
+.tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 5px;
+  color: var(--fg-2);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+.tag[data-cat="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.tag[data-cat="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.tag[data-cat="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.tag[data-cat="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.tag[data-cat="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.tag[data-cat="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.src {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-left: auto;
+}
+.src::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--fg-4);
+}
+.story-title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.28;
+  color: var(--fg);
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+  margin: 0;
+}
+.story-summary {
+  color: var(--fg-2);
+  font-size: 17px;
+  line-height: 1.55;
+  margin-top: 10px;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.chev {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--fg-3);
+  display: grid; place-items: center;
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1),
+              color 160ms ease, background 160ms ease, border-color 160ms ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+.story.open .chev {
+  transform: rotate(180deg);
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.story-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms cubic-bezier(.2,.7,.2,1);
+}
+.story.open .story-body { grid-template-rows: 1fr; }
+.story-body > .inner { overflow: hidden; min-height: 0; }
+.story-inner-pad {
+  padding: 0 26px 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.sowhat {
+  padding: 16px 20px;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.sowhat-label {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sowhat-body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+.story-actions {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.read {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14.5px; font-weight: 600;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  padding: 9px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.read:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.read .arrow { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
+.read:hover .arrow { transform: translateX(3px); }
+.src-full {
+  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.meta-age {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+@media (max-width: 640px) {
+  .story-head { padding: 20px; gap: 14px; }
+  .story-inner-pad { padding: 0 20px 20px; }
+  .story-title { font-size: 19.5px; }
+  .story-summary { font-size: 16px; }
+}
+
+/* ===== V2 filter rail (sticky chip bar) ===== */
+.rail {
+  position: sticky; top: 60px; z-index: 40;
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.rail-inner {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.rail-inner::-webkit-scrollbar { display: none; }
+.chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg-2);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.chip:hover { color: var(--fg); border-color: var(--line-strong); }
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.chip[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+.chip .n {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--fg-3);
+  padding: 1px 7px; border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  min-width: 20px; text-align: center;
+}
+.chip[aria-pressed="true"] .n {
+  color: var(--bg); background: rgba(0,0,0,0.1);
+}
+/* Category tints — mirror the per-item .tag colours onto the filter chips so
+   the nav rail reads in the same colour language. Resting state tints the
+   text + border; the combined [aria-pressed="true"] selector fills with the
+   pastel (needs both attrs to outrank the generic active rule above). The
+   "All" chip is data-tag="all" and matches none of these, so it stays neutral. */
+.chip[data-tag="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.chip[data-tag="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.chip[data-tag="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.chip[data-tag="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.chip[data-tag="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.chip[data-tag="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.chip[data-tag="Models"][aria-pressed="true"]     { background: var(--cat-models);     border-color: var(--cat-models);     color: var(--bg); }
+.chip[data-tag="Agents"][aria-pressed="true"]     { background: var(--cat-agents);     border-color: var(--cat-agents);     color: var(--bg); }
+.chip[data-tag="Tooling"][aria-pressed="true"]    { background: var(--cat-tooling);    border-color: var(--cat-tooling);    color: var(--bg); }
+.chip[data-tag="Regulation"][aria-pressed="true"] { background: var(--cat-regulation); border-color: var(--cat-regulation); color: var(--bg); }
+.chip[data-tag="Enterprise"][aria-pressed="true"] { background: var(--cat-enterprise); border-color: var(--cat-enterprise); color: var(--bg); }
+.chip[data-tag="Research"][aria-pressed="true"]   { background: var(--cat-research);   border-color: var(--cat-research);   color: var(--bg); }
+
+/* ===== V2 sections (used by takeaways + future named sections) ===== */
+section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }
+section.block:last-of-type { border-bottom: 0; }
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 32px; gap: 16px;
+}
+.sec-title {
+  font-weight: 700; font-size: 30px; letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0;
+}
+.sec-meta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ===== V2 takeaways grid (3-col card row) ===== */
+.takes { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 760px) { .takes { grid-template-columns: 1fr 1fr 1fr; } }
+.take {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px 22px;
+  display: flex; flex-direction: column;
+  min-height: 220px;
+  transition: border-color 160ms ease;
+}
+.take:hover { border-color: var(--accent-line); }
+.take-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.take-head {
+  font-weight: 700;
+  font-size: 18.5px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+.take-body {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--fg-2);
+  flex: 1;
+  text-wrap: pretty;
+}
+.take-foot {
+  margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+}
+.take-link {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--fg-3); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.take-link:hover { color: var(--accent); border-color: var(--accent-line); }
+@media (max-width: 640px) {
+  .take { padding: 22px 20px 20px; min-height: 0; }
+  .take-head { font-size: 17px; }
+  .take-body { font-size: 15px; }
+  .sec-title { font-size: 25px; }
+  section.block { padding: 40px 0; }
+}
+
+/* Article list — wraps the per-section <section class="block"> groups */
+.article-list { padding-bottom: 24px; }
+
+/* Score pill + resurfacing badge — used by the no-summarize --no-summarize path */
+.score-pill {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: var(--fg-3);
+  background: rgba(255,255,255,0.04);
+}
+.score-pill.score-high { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+.score-pill.score-mid  { color: var(--fg-2); }
+.score-pill.score-low  { color: var(--fg-4); }
+.resurfacing {
+  font-size: 12px; color: var(--fg-3);
+  cursor: help; user-select: none;
+}
+
+.is-hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head><body>
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="topbar">
+<div class="wrap topbar-inner">
+<a class="brand" href="index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
+<nav class="topnav">
+<a href="index.html" class="active">Today</a>
+<a href="../archive.html">Archive</a>
+<a href="#takeaways">Takeaways</a>
+</nav>
+</div>
+</header>
+<main class="wrap" id="content">
+<section class="masthead"><div class="mast-dateline"><span class="mast-dateline-day">Thu</span><span class="mast-dateline-date">18 Jun 2026</span></div><div class="kicker"><span class="dot"></span>AI Digest</div><h1 class="mast-title">What moved in AI <span class="accent">today.</span></h1><div class="mast-meta"><span>12 items</span></div></section>
+<div class="rail"><div class="wrap rail-inner" role="tablist"><button type="button" class="chip" role="tab" data-tag="all" aria-pressed="true"><span>All</span><span class="n">12</span></button><button type="button" class="chip" role="tab" data-tag="Models" aria-pressed="false"><span>Models</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Agents" aria-pressed="false"><span>Agents</span><span class="n">3</span></button><button type="button" class="chip" role="tab" data-tag="Tooling" aria-pressed="false"><span>Tooling</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Regulation" aria-pressed="false"><span>Regulation</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Enterprise" aria-pressed="false"><span>Enterprise</span><span class="n">5</span></button><button type="button" class="chip" role="tab" data-tag="Research" aria-pressed="false"><span>Research</span><span class="n">4</span></button></div></div>
+<section class="block" id="takeaways"><div class="sec-head"><h2 class="sec-title">Key takeaways</h2><span class="sec-meta">03 · The shortlist</span></div><div class="takes"><article class="take"><div class="take-num">01</div><div class="take-head">Frontier models not yet cybersecurity-ready</div><div class="take-body">Benchmark evidence across six frontier models shows significant gaps in both code-level vulnerability detection and black-box web app security testing, signalling that AI PMs in regulated environments should treat LLM-assisted security tooling as augmentation, not replacement</div><div class="take-foot"><a class="take-link" href="https://arxiv.org/abs/2605.23243" data-item-url="https://arxiv.org/abs/2605.23243">arXiv 2605.23243 →</a></div></article><article class="take"><div class="take-num">02</div><div class="take-head">AI autonomy expanding into hard science</div><div class="take-body">OpenAI&#x27;s near-autonomous AI chemist and a new LifeSciBench benchmark both signal that agentic systems are moving into high-stakes, expert domains, raising the bar for validation and auditability requirements in regulated industries</div><div class="take-foot"><a class="take-link" href="https://openai.com/index/ai-chemist-improves-reaction" data-item-url="https://openai.com/index/ai-chemist-improves-reaction">OpenAI News →</a><a class="take-link" href="https://openai.com/index/introducing-life-sci-bench" data-item-url="https://openai.com/index/introducing-life-sci-bench">OpenAI News →</a></div></article><article class="take"><div class="take-num">03</div><div class="take-head">Governance pressure building at the top</div><div class="take-body">Anthropic and DeepMind CEOs lobbying G7 for a U.S.-led AI standards coalition, alongside the EU&#x27;s Digital Decade progress report, shows that the international regulatory landscape is actively consolidating, making it critical for enterprise AI PMs to track emerging standards now</div><div class="take-foot"><a class="take-link" href="https://www.techmeme.com/260617/p39#a260617p39" data-item-url="https://www.techmeme.com/260617/p39#a260617p39">Techmeme →</a><a class="take-link" href="https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-progress-report-multi-country-projects" data-item-url="https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-progress-report-multi-country-projects">EU AI Office →</a></div></article></div></section>
+<div class="article-list"><section class="block"><div class="sec-head"><h2 class="sec-title">Top Story</h2><span class="sec-meta">01 · 1 story</span></div><div class="stories"><article class="story" data-tags="Regulation Enterprise" id="story-1"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-1"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Techmeme</span></div><h3 class="story-title">Anthropic &amp; DeepMind CEOs Push U.S.-Led AI Coalition at G7</h3><p class="story-summary">Dario Amodei and Demis Hassabis jointly called for a U.S.-led coalition to shape global AI rules and standards at a G7 meeting with tech leaders and heads of state, marking a rare public alignment between rival frontier labs on governance priorities</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-1"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For AI PMs in large regulated corporations, this signals that international AI governance frameworks could crystallise faster than expected — compliance roadmaps and vendor risk assessments should be built with geopolitical standards fragmentation (or consolidation) as an explicit scenario</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260617/p39#a260617p39" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Models &amp; Capabilities</h2><span class="sec-meta">02 · 4 stories</span></div><div class="stories"><article class="story" data-tags="Agents Research" id="story-2"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-2"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Research">Research</span><span class="src">OpenAI News</span></div><h3 class="story-title">OpenAI's Near-Autonomous AI Chemist Advances Drug Synthesis</h3><p class="story-summary">OpenAI and Molecule.one demonstrated a GPT-5.4-powered near-autonomous agent that improved a challenging medicinal chemistry reaction, representing a meaningful step toward agentic AI in scientific R&amp;D pipelines</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-2"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs in pharma, biotech, or any highly regulated R&amp;D environment should note this as a proof point for agentic task autonomy — but also as a prompt to define human-in-the-loop checkpoints before deploying similar systems internally</p></div><div class="story-actions"><a class="read" href="https://openai.com/index/ai-chemist-improves-reaction" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">OpenAI News</span></div></div></div></div></article><article class="story" data-tags="Research Models" id="story-3"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-3"><div><div class="story-meta-row"><span class="tag" data-cat="Research">Research</span><span class="tag" data-cat="Models">Models</span><span class="src">OpenAI News</span></div><h3 class="story-title">OpenAI Releases LifeSciBench for Life Science AI Evaluation</h3><p class="story-summary">OpenAI introduced LifeSciBench, an expert-authored and expert-reviewed benchmark designed to assess how AI systems handle real-world life science research tasks and decisions</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-3"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Having a rigorous, domain-specific benchmark is a prerequisite for responsible AI adoption in regulated science contexts — AI PMs should watch whether their vendors cite and pass benchmarks like this before greenlighting deployments in research workflows</p></div><div class="story-actions"><a class="read" href="https://openai.com/index/introducing-life-sci-bench" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">OpenAI News</span></div></div></div></div></article><article class="story" data-tags="Models Research" id="story-4"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-4"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Research">Research</span><span class="src">arXiv 2605.23243</span></div><h3 class="story-title">Frontier LLMs Show Gaps in Cybersecurity Benchmarks</h3><p class="story-summary">A dual-mode evaluation across six frontier models (including GPT-5.4, Claude Opus 4.7, Gemini 3.1 Pro) on both white-box vulnerability detection and black-box web app security testing found meaningful shortfalls, suggesting specialised vertical models may be needed</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-4"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs evaluating LLM-assisted security tooling for regulated environments should demand benchmark-backed evidence of capability rather than relying on general model rankings</p></div><div class="story-actions"><a class="read" href="https://arxiv.org/abs/2605.23243" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">arXiv 2605.23243</span></div></div></div></div></article><article class="story" data-tags="Tooling Models" id="story-5"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-5"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Models">Models</span><span class="src">Techmeme</span></div><h3 class="story-title">Anthropic Upgrades Claude Design with Code Integration and Efficiency Gains</h3><p class="story-summary">Anthropic updated Claude Design with design system imports, bidirectional integration with Claude Code, lower token consumption, and expanded export destinations, building out a more complete design-to-code pipeline</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-5"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">The tightening loop between design tooling and code generation is accelerating; AI PMs overseeing product development workflows should assess whether this integration reduces handoff friction enough to justify adding it to approved tooling lists</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260617/p42#a260617p42" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Agentic Engineering</h2><span class="sec-meta">03 · 3 stories</span></div><div class="stories"><article class="story" data-tags="Agents Tooling" id="story-6"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-6"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Tooling">Tooling</span><span class="src">Hugging Face Blog</span></div><h3 class="story-title">Hugging Face Launches Agentic Resource Discovery</h3><p class="story-summary">Hugging Face released a new capability enabling agents to search for and discover resources autonomously, expanding what agents can do without predefined tool configurations</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-6"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">As agents gain the ability to self-direct resource discovery, AI PMs in regulated settings need to reassess permission boundaries and audit trails — autonomous resource access without guardrails is a compliance risk</p></div><div class="story-actions"><a class="read" href="https://huggingface.co/blog/agentic-resource-discovery-launch" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hugging Face Blog</span></div></div></div></div></article><article class="story" data-tags="Tooling Enterprise" id="story-7"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-7"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Techmeme</span></div><h3 class="story-title">Unreal Engine 6 to Embed Claude and Gemini Natively</h3><p class="story-summary">Epic Games announced Unreal Engine 6, targeting early access in late 2027, will unify its editor ecosystem and prominently integrate Claude and Gemini to assist game developers generatively</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-7"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Native LLM integration in major creative platforms signals a broader shift where AI assistance becomes a platform default rather than a bolt-on — AI PMs should monitor how approved model lists interact with third-party platforms their teams already use</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260617/p41#a260617p41" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article><article class="story" data-tags="Agents Research" id="story-8"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-8"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Research">Research</span><span class="src">arXiv 2606.18068</span></div><h3 class="story-title">Agentic Healthcare Framework Targets Hallucination and Premature Handoff</h3><p class="story-summary">Researchers proposed a multi-agent system replacing "LLM-as-judge" with specialised verification agents to catch silent clinical hallucinations and prevent premature diagnostic handoffs before they reach patients</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-8"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For AI PMs in healthcare or any domain where LLM errors carry direct human risk, this architecture — separating generation from verification via dedicated agents — offers a concrete pattern worth evaluating in your own high-stakes pipelines</p></div><div class="story-actions"><a class="read" href="https://arxiv.org/abs/2606.18068" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">arXiv 2606.18068</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Enterprise &amp; Regulation</h2><span class="sec-meta">04 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Regulation Enterprise" id="story-9"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-9"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">EU AI Office</span></div><h3 class="story-title">EU Digital Decade 2026 Reports Progress on Multi-Country AI Infrastructure</h3><p class="story-summary">The EU AI Office's Digital Decade 2026 progress report covers large-scale multi-country projects advancing Europe's technological infrastructure from May 2025–2026, with activity areas remaining stable across the period</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-9"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Stability in EU multi-country project scope means the regulatory and infrastructure environment for European AI deployments is maturing predictably — AI PMs with EU operations should map their initiatives against these EDICs to identify partnership or compliance alignment opportunities</p></div><div class="story-actions"><a class="read" href="https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-progress-report-multi-country-projects" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">EU AI Office</span></div></div></div></div></article><article class="story" data-tags="Regulation Enterprise" id="story-10"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-10"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">arXiv 2606.17443</span></div><h3 class="story-title">LLM Brand Bias Creates New Competitive Risk in Recommendation Contexts</h3><p class="story-summary">Research across GPT-4o-mini, Claude Sonnet, and Gemini Flash found that LLMs systematically favour incumbent brands in product recommendations, especially in categories where quality is hard to judge pre-purchase</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-10"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs building or procuring LLM-powered recommendation or discovery features should factor in brand bias as a regulatory and fairness risk — particularly in financial services or healthcare where recommendation neutrality may be legally mandated</p></div><div class="story-actions"><a class="read" href="https://arxiv.org/abs/2606.17443" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">arXiv 2606.17443</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Worth a Deeper Read</h2><span class="sec-meta">05 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Regulation Models" id="story-11"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-11"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Models">Models</span><span class="src">Stratechery</span></div><h3 class="story-title">The Jailbreak Problem and Fable's Strategic Stakes</h3><p class="story-summary">Ben Thompson examines the Fable controversy and the broader "jailbreak problem," arguing that Anthropic bears ultimate responsibility for how Claude is deployed even when misuse occurs at the application layer</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-11"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs relying on third-party model APIs need to understand that platform-level safety decisions by model providers can directly affect their product's viability — a risk that belongs in your dependency and vendor management framework</p></div><div class="story-actions"><a class="read" href="https://stratechery.com/2026/the-state-of-fable-the-jailbreak-problem-spacex-acquires-cursor/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Stratechery</span></div></div></div></div></article><article class="story" data-tags="Tooling Enterprise" id="story-12"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-12"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Simon Willison</span></div><h3 class="story-title">Code Is Now Disposable — Engineering Discipline Must Rise to Match</h3><p class="story-summary">Simon Willison quotes Charity Majors on how 2025 inverted the economics of code production: generation became free and instant, flipping code from treasured asset to disposable output, which demands &lt;em&gt;more&lt;/em&gt; engineering rigour, not less</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-12"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For AI PMs overseeing developer tooling or AI-assisted engineering workflows, this is the strategic frame — the bottleneck has shifted from writing code to reviewing, governing, and maintaining it, which should reshape how you measure productivity and allocate human oversight</p></div><div class="story-actions"><a class="read" href="https://simonwillison.net/2026/Jun/17/charity-majors/#atom-everything" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Simon Willison</span></div></div></div></div></article></div></section></div>
+<footer class="site-footer">
+<span>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></span>
+<span>Thu 18 Jun 2026</span>
+</footer>
+</main>
+
+<script>
+(function () {
+  // Topic filter chips — V2 uses aria-pressed for active state.
+  var chips = document.querySelectorAll('.chip');
+  function applyFilter(tag) {
+    chips.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.tag === tag ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-tags]').forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      // Untagged items (e.g. Key takeaways bullets) stay visible under
+      // every filter — they're synthesis, not topic-scoped.
+      var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+      el.classList.toggle('is-hidden', !show);
+    });
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      applyFilter(chip.dataset.tag);
+    });
+  });
+
+  // V2 story expand/collapse: clicking the head (or pressing Enter/Space
+  // when focused) toggles a `.open` class on the .story article, which the
+  // CSS animates via grid-template-rows 0fr → 1fr.
+  function toggleStory(head) {
+    var story = head.closest('.story');
+    if (!story) return;
+    var open = story.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.story-head').forEach(function (head) {
+    head.addEventListener('click', function () { toggleStory(head); });
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleStory(head);
+      }
+    });
+  });
+
+  // Takeaways collapsible
+  // Takeaway → story navigation (V2). Each .take-link is a normal <a>
+  // with both href="<article-url>" and data-item-url. Default click would
+  // open the article in a new tab; we intercept when there's a matching
+  // in-page .story card and expand it instead. JS-off / unmatched falls
+  // back to following the href.
+  function navigateToItem(itemUrl) {
+    if (!itemUrl) return;
+    var safe = itemUrl.replace(/"/g, '\\"');
+    var matchLink = document.querySelector('.story .read[href="' + safe + '"]');
+    var story = matchLink ? matchLink.closest('.story') : null;
+    if (!story) {
+      window.open(itemUrl, '_blank', 'noopener');
+      return;
+    }
+    applyFilter('all');
+    document.querySelectorAll('.story.open').forEach(function (el) {
+      if (el !== story) {
+        el.classList.remove('open');
+        var h = el.querySelector('.story-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      }
+    });
+    story.classList.add('open');
+    var head = story.querySelector('.story-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
+    setTimeout(function () {
+      story.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
+  window.navigateToItem = navigateToItem;
+  document.querySelectorAll('.take-link').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      // If the matching story exists on this page, intercept. Otherwise
+      // let the browser follow the href (article URL in new tab via the
+      // anchor's default behaviour — handled by markup attrs in HTML).
+      var safe = (a.dataset.itemUrl || '').replace(/"/g, '\\"');
+      if (safe && document.querySelector('.story .read[href="' + safe + '"]')) {
+        ev.preventDefault();
+        navigateToItem(a.dataset.itemUrl);
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>

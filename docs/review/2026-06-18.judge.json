@@ -1,0 +1,98 @@
+{
+  "date": "2026-06-18",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.18005",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent/LLM research (LLM Consumer Behavior Theory) with solid score (11.76) from trusted source deserves inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18037",
+      "stage": "dropped_source_cap",
+      "reason": "Critical agent safety paper (ProvenanceGuard on factuality verification for MCP agents) with score 11.76 addresses key regulatory concerns."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.04990",
+      "stage": "dropped_source_cap",
+      "reason": "Foundational survey on agent provenance and execution tracing (score 11.76) is highly relevant to regulated environment oversight."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18142",
+      "stage": "dropped_source_cap",
+      "reason": "Benchmark paper on implicit welfare concerns in agentic models (score 10.76) addresses alignment and safety in frontier systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.17819",
+      "stage": "dropped_source_cap",
+      "reason": "Framework for evaluating agentic skills at scale (score 10.76) directly relevant to assessing agent capability and governance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14517",
+      "stage": "dropped_source_cap",
+      "reason": "Security research on DoS attacks against LLM guardrails (score 9.76) has direct regulatory and safety implications for deployed systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18193",
+      "stage": "dropped_source_cap",
+      "reason": "Red-team study of Anthropic models (score 7.76) provides direct security assessment relevant to corporate regulatory environment."
+    },
+    {
+      "url": "https://www.techmeme.com/260617/p49#a260617p49",
+      "stage": "dropped_source_cap",
+      "reason": "Breaking news on Anthropic Fable 5 guardrail circumvention concerns (score 5.99) is high-signal regulatory and safety issue for compliance."
+    },
+    {
+      "url": "https://openai.com/index/deployment-simulation",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI piece on predicting model behavior before deployment (score 8.43) is substantive and relevant to regulated deployment practices."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison analysis of Fable 5 export control implications (score 7.49) is trusted-source commentary on regulatory barriers."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260617/p50#a260617p50",
+      "reason": "Frontier carbon-removal consortium announcement is ESG/sustainability news, not core AI/ML/agent signal."
+    },
+    {
+      "url": "https://www.techmeme.com/260617/p40#a260617p40",
+      "reason": "G7 summit geopolitics on US-Mythos collaboration is policy/macro news, tangential to technical AI development."
+    },
+    {
+      "url": "https://www.techmeme.com/260617/p42#a260617p42",
+      "reason": "Claude Design system updates are product feature announcements with minimal technical or regulatory substance."
+    },
+    {
+      "url": "https://www.techmeme.com/260617/p41#a260617p41",
+      "reason": "Unreal Engine 6 LLM integration plan is game-engine product news, not substantive AI research or governance content."
+    },
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-egovernment-benchmark-2026",
+      "reason": "eGovernment benchmark is policy infrastructure metric, not directly relevant to AI/ML system evaluation."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/17/charity-majors/#atom-everything",
+      "reason": "Single quote aggregation lacks substantive content and context."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/17/netnewswire-status/#atom-everything",
+      "reason": "NetNewsWire status update is tool/infrastructure news, not AI/ML signal."
+    },
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/library/digital-decade-2026-progress-report-multi-country-projects",
+      "reason": "Multi-country digital strategy report is broad policy, not focused AI/agents/LLM content."
+    },
+    {
+      "url": "https://huggingface.co/blog/agentic-resource-discovery-launch",
+      "reason": "Hugging Face feature announcement is product marketing rather than research or governance substance."
+    },
+    {
+      "url": "https://openai.com/index/introducing-life-sci-bench",
+      "reason": "Benchmark announcement lacks depth on methodology or regulatory implications for regulated environment."
+    }
+  ]
+}

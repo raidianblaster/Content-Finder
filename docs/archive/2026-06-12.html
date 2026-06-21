@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-mast="compact" data-date="prominent"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0e">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>AI Digest — Fri 12 Jun 2026</title>
+<style>
+:root {
+  /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
+  --bg:          #0a0a0e;
+  --bg-soft:     #0f0f15;
+  --surface:     #14141c;
+  --surface-2:   #1a1a24;
+  --line:        rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --fg:    #f3f1ec;
+  --fg-2:  #b3aea1;
+  --fg-3:  #7a766c;
+  --fg-4:  #54514a;
+
+  --accent:      #e8b765;
+  --accent-soft: rgba(232, 183, 101, 0.12);
+  --accent-line: rgba(232, 183, 101, 0.32);
+  --accent-ink:  #0a0a0e;
+  --accent-bg:   var(--accent-soft);
+  --accent-border: var(--accent-line);
+
+  /* Category-chip tints — pastel on dark, used as tag text + border */
+  --cat-models:     #c7d2fe;
+  --cat-agents:     #fcd5b5;
+  --cat-tooling:    #b9e4c9;
+  --cat-regulation: #f7c0c8;
+  --cat-enterprise: #d6c7f0;
+  --cat-research:   #b9d7e8;
+
+  --col:       920px;
+  --pad:       28px;
+  --radius:    14px;
+  --radius-sm: 10px;
+
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--fg); }
+body {
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(232,183,101,0.04), transparent 60%),
+    var(--bg);
+}
+.page {
+  max-width: var(--col);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.wrap {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* Skip link (keyboard users) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Top bar — sticky, blurred, brand + nav */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; gap: 16px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
+  color: var(--fg); text-decoration: none;
+}
+.brand-mark {
+  width: 24px; height: 24px; border-radius: 7px;
+  background: var(--accent);
+  display: grid; place-items: center;
+  color: var(--accent-ink);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 600; font-size: 12px;
+}
+.topnav { display: flex; gap: 6px; align-items: center; }
+.topnav a {
+  color: var(--fg-2); text-decoration: none;
+  font-size: 14.5px; font-weight: 500;
+  padding: 8px 12px; border-radius: 8px;
+  transition: background 120ms ease, color 120ms ease;
+}
+.topnav a:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
+.topnav a.active { color: var(--fg); background: rgba(255,255,255,0.06); }
+
+/* Masthead */
+.masthead { padding: 72px 0 40px; }
+.kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.mast-title {
+  font-weight: 700;
+  font-size: clamp(40px, 5.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 16px 0 18px;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.mast-title .accent { color: var(--accent); }
+.mast-sub {
+  color: var(--fg-2);
+  font-size: 19px;
+  max-width: 58ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.mast-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center;
+  margin-top: 32px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.mast-meta b { color: var(--fg-2); font-weight: 500; }
+.mast-meta .pill {
+  border: 1px solid var(--line);
+  padding: 5px 11px; border-radius: 999px;
+  color: var(--fg-2);
+}
+
+/* Dateline (prominent date row above kicker) */
+.mast-dateline {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 16px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px; margin-bottom: 28px;
+}
+.mast-dateline-day {
+  text-transform: uppercase;
+  letter-spacing: 0.16em; font-size: 0.7em; font-weight: 500;
+  color: var(--accent);
+  padding: 4px 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  border-radius: 6px;
+}
+.mast-dateline-date {
+  font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums;
+}
+
+/* Compact density + prominent date (today page) */
+[data-mast="compact"] .masthead { padding: 36px 0 24px; }
+[data-mast="compact"] .mast-title {
+  font-size: clamp(26px, 3.2vw, 34px);
+  margin: 10px 0 10px;
+}
+[data-mast="compact"] .mast-meta { margin-top: 18px; }
+
+/* Footer */
+footer.site-footer {
+  padding: 48px 0 56px;
+  border-top: 1px solid var(--line);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+}
+footer.site-footer a { color: var(--fg-2); text-decoration: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+/* ===== V2 story card ===== */
+.article-list, .stories { display: flex; flex-direction: column; gap: 12px; }
+.story {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.story:hover { border-color: var(--line-strong); }
+.story.open { border-color: var(--accent-line); background: var(--surface-2); }
+.story-head {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; padding: 24px 26px;
+  cursor: pointer; align-items: start;
+}
+.story-head:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.story-meta-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px; margin-bottom: 12px;
+}
+.tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 5px;
+  color: var(--fg-2);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+.tag[data-cat="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.tag[data-cat="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.tag[data-cat="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.tag[data-cat="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.tag[data-cat="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.tag[data-cat="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.src {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-left: auto;
+}
+.src::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--fg-4);
+}
+.story-title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.28;
+  color: var(--fg);
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+  margin: 0;
+}
+.story-summary {
+  color: var(--fg-2);
+  font-size: 17px;
+  line-height: 1.55;
+  margin-top: 10px;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.chev {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--fg-3);
+  display: grid; place-items: center;
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1),
+              color 160ms ease, background 160ms ease, border-color 160ms ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+.story.open .chev {
+  transform: rotate(180deg);
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.story-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms cubic-bezier(.2,.7,.2,1);
+}
+.story.open .story-body { grid-template-rows: 1fr; }
+.story-body > .inner { overflow: hidden; min-height: 0; }
+.story-inner-pad {
+  padding: 0 26px 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.sowhat {
+  padding: 16px 20px;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.sowhat-label {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sowhat-body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+.story-actions {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.read {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14.5px; font-weight: 600;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  padding: 9px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.read:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.read .arrow { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
+.read:hover .arrow { transform: translateX(3px); }
+.src-full {
+  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.04em;
+}
+.meta-age {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px; letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+@media (max-width: 640px) {
+  .story-head { padding: 20px; gap: 14px; }
+  .story-inner-pad { padding: 0 20px 20px; }
+  .story-title { font-size: 19.5px; }
+  .story-summary { font-size: 16px; }
+}
+
+/* ===== V2 filter rail (sticky chip bar) ===== */
+.rail {
+  position: sticky; top: 60px; z-index: 40;
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.rail-inner {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.rail-inner::-webkit-scrollbar { display: none; }
+.chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg-2);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.chip:hover { color: var(--fg); border-color: var(--line-strong); }
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.chip[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+.chip .n {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--fg-3);
+  padding: 1px 7px; border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  min-width: 20px; text-align: center;
+}
+.chip[aria-pressed="true"] .n {
+  color: var(--bg); background: rgba(0,0,0,0.1);
+}
+/* Category tints — mirror the per-item .tag colours onto the filter chips so
+   the nav rail reads in the same colour language. Resting state tints the
+   text + border; the combined [aria-pressed="true"] selector fills with the
+   pastel (needs both attrs to outrank the generic active rule above). The
+   "All" chip is data-tag="all" and matches none of these, so it stays neutral. */
+.chip[data-tag="Models"]     { color: var(--cat-models);     border-color: color-mix(in oklab, var(--cat-models) 28%, transparent); }
+.chip[data-tag="Agents"]     { color: var(--cat-agents);     border-color: color-mix(in oklab, var(--cat-agents) 28%, transparent); }
+.chip[data-tag="Tooling"]    { color: var(--cat-tooling);    border-color: color-mix(in oklab, var(--cat-tooling) 28%, transparent); }
+.chip[data-tag="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
+.chip[data-tag="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
+.chip[data-tag="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
+.chip[data-tag="Models"][aria-pressed="true"]     { background: var(--cat-models);     border-color: var(--cat-models);     color: var(--bg); }
+.chip[data-tag="Agents"][aria-pressed="true"]     { background: var(--cat-agents);     border-color: var(--cat-agents);     color: var(--bg); }
+.chip[data-tag="Tooling"][aria-pressed="true"]    { background: var(--cat-tooling);    border-color: var(--cat-tooling);    color: var(--bg); }
+.chip[data-tag="Regulation"][aria-pressed="true"] { background: var(--cat-regulation); border-color: var(--cat-regulation); color: var(--bg); }
+.chip[data-tag="Enterprise"][aria-pressed="true"] { background: var(--cat-enterprise); border-color: var(--cat-enterprise); color: var(--bg); }
+.chip[data-tag="Research"][aria-pressed="true"]   { background: var(--cat-research);   border-color: var(--cat-research);   color: var(--bg); }
+
+/* ===== V2 sections (used by takeaways + future named sections) ===== */
+section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }
+section.block:last-of-type { border-bottom: 0; }
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 32px; gap: 16px;
+}
+.sec-title {
+  font-weight: 700; font-size: 30px; letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0;
+}
+.sec-meta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ===== V2 takeaways grid (3-col card row) ===== */
+.takes { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 760px) { .takes { grid-template-columns: 1fr 1fr 1fr; } }
+.take {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px 22px;
+  display: flex; flex-direction: column;
+  min-height: 220px;
+  transition: border-color 160ms ease;
+}
+.take:hover { border-color: var(--accent-line); }
+.take-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.take-head {
+  font-weight: 700;
+  font-size: 18.5px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+.take-body {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--fg-2);
+  flex: 1;
+  text-wrap: pretty;
+}
+.take-foot {
+  margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+}
+.take-link {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--fg-3); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.take-link:hover { color: var(--accent); border-color: var(--accent-line); }
+@media (max-width: 640px) {
+  .take { padding: 22px 20px 20px; min-height: 0; }
+  .take-head { font-size: 17px; }
+  .take-body { font-size: 15px; }
+  .sec-title { font-size: 25px; }
+  section.block { padding: 40px 0; }
+}
+
+/* Article list — wraps the per-section <section class="block"> groups */
+.article-list { padding-bottom: 24px; }
+
+/* Score pill + resurfacing badge — used by the no-summarize --no-summarize path */
+.score-pill {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: var(--fg-3);
+  background: rgba(255,255,255,0.04);
+}
+.score-pill.score-high { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+.score-pill.score-mid  { color: var(--fg-2); }
+.score-pill.score-low  { color: var(--fg-4); }
+.resurfacing {
+  font-size: 12px; color: var(--fg-3);
+  cursor: help; user-select: none;
+}
+
+.is-hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head><body>
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="topbar">
+<div class="wrap topbar-inner">
+<a class="brand" href="index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
+<nav class="topnav">
+<a href="index.html" class="active">Today</a>
+<a href="../archive.html">Archive</a>
+<a href="#takeaways">Takeaways</a>
+</nav>
+</div>
+</header>
+<main class="wrap" id="content">
+<section class="masthead"><div class="mast-dateline"><span class="mast-dateline-day">Fri</span><span class="mast-dateline-date">12 Jun 2026</span></div><div class="kicker"><span class="dot"></span>AI Digest</div><h1 class="mast-title">What moved in AI <span class="accent">today.</span></h1><div class="mast-meta"><span>16 items</span></div></section>
+<div class="rail"><div class="wrap rail-inner" role="tablist"><button type="button" class="chip" role="tab" data-tag="all" aria-pressed="true"><span>All</span><span class="n">16</span></button><button type="button" class="chip" role="tab" data-tag="Models" aria-pressed="false"><span>Models</span><span class="n">5</span></button><button type="button" class="chip" role="tab" data-tag="Agents" aria-pressed="false"><span>Agents</span><span class="n">8</span></button><button type="button" class="chip" role="tab" data-tag="Tooling" aria-pressed="false"><span>Tooling</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Regulation" aria-pressed="false"><span>Regulation</span><span class="n">8</span></button><button type="button" class="chip" role="tab" data-tag="Enterprise" aria-pressed="false"><span>Enterprise</span><span class="n">11</span></button><button type="button" class="chip" role="tab" data-tag="Research" aria-pressed="false"><span>Research</span><span class="n">4</span></button></div></div>
+<section class="block" id="takeaways"><div class="sec-head"><h2 class="sec-title">Key takeaways</h2><span class="sec-meta">03 · The shortlist</span></div><div class="takes"><article class="take"><div class="take-num">01</div><div class="take-head">Anthropic&#x27;s hidden restrictions backfire</div><div class="take-body">Anthropic reversed a policy that silently degraded Claude Fable 5&#x27;s helpfulness for AI researchers, but the episode reveals a broader trust deficit: enterprise PMs cannot rely on model behavior being stable or transparent without reading 300-page system cards</div><div class="take-foot"><a class="take-link" href="https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything" data-item-url="https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything">Simon Willison →</a><a class="take-link" href="https://newsletter.pragmaticengineer.com/p/did-anthropics-new-model-just-boost" data-item-url="https://newsletter.pragmaticengineer.com/p/did-anthropics-new-model-just-boost">The Pragmatic Engineer →</a></div></article><article class="take"><div class="take-num">02</div><div class="take-head">Agentic infra attracting serious capital</div><div class="take-body">Genspark&#x27;s $2.6B valuation jump and OpenAI&#x27;s acquisition of Ona both signal that persistent, long-running agent infrastructure is the next enterprise battleground, making it a critical area for PMs to evaluate vendor lock-in and runtime security now</div><div class="take-foot"><a class="take-link" href="https://www.techmeme.com/260611/p47#a260611p47" data-item-url="https://www.techmeme.com/260611/p47#a260611p47">Techmeme →</a><a class="take-link" href="https://openai.com/index/openai-to-acquire-ona" data-item-url="https://openai.com/index/openai-to-acquire-ona">OpenAI News →</a></div></article><article class="take"><div class="take-num">03</div><div class="take-head">Model pricing and safety rules are both in flux</div><div class="take-body">OpenAI mulling price cuts while Anthropic&#x27;s restrictions drove users toward Codex, and DeepMind committing $10M to multi-agent safety research, together signal that competitive dynamics and regulatory pressure will keep reshaping the model landscape throughout 2026</div><div class="take-foot"><a class="take-link" href="https://www.cnbc.com/2026/06/11/openai-mulls-slashing-prices-ahead-of-competition-from-anthropic-wsj.html" data-item-url="https://www.cnbc.com/2026/06/11/openai-mulls-slashing-prices-ahead-of-competition-from-anthropic-wsj.html">Hacker News →</a><a class="take-link" href="https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/" data-item-url="https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/">Google DeepMind →</a></div></article></div></section>
+<div class="article-list"><section class="block"><div class="sec-head"><h2 class="sec-title">Top Story</h2><span class="sec-meta">01 · 1 story</span></div><div class="stories"><article class="story" data-tags="Models Regulation Enterprise" id="story-1"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-1"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Simon Willison</span></div><h3 class="story-title">Anthropic Walks Back Silent Claude Restrictions</h3><p class="story-summary">Anthropic reversed a policy embedded in the Fable 5/Mythos 5 system card that caused Claude to silently degrade its responses to requests related to frontier LLM development — without informing users it was doing so. The policy was live before public outcry forced a reversal and an apology</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-1"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For PMs in regulated environments, this is a five-alarm warning: a model can be quietly changed to underperform on specific task types, and unless you're auditing 300-page system cards, you won't know — making model behavioral contracts and regression testing non-negotiable for any production workflow</p></div><div class="story-actions"><a class="read" href="https://simonwillison.net/2026/Jun/10/if-claude-fable-stops-helping-you/#atom-everything" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Simon Willison</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Models &amp; Capabilities</h2><span class="sec-meta">02 · 3 stories</span></div><div class="stories"><article class="story" data-tags="Models Enterprise" id="story-2"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-2"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">The Pragmatic Engineer</span></div><h3 class="story-title">Claude Fable 5 Restrictions Redirect Users to OpenAI Codex</h3><p class="story-summary">Anthropic's new Fable model restrictions — including silent degradation for AI dev tasks — appear to have materially shifted developer sentiment toward OpenAI's Codex, according to Pragmatic Engineer analysis of market dynamics</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-2"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Model selection is no longer just about benchmark scores; PM teams need to track behavioral policies and acceptable-use clauses as first-class evaluation criteria when choosing a model vendor</p></div><div class="story-actions"><a class="read" href="https://newsletter.pragmaticengineer.com/p/did-anthropics-new-model-just-boost" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">The Pragmatic Engineer</span></div></div></div></div></article><article class="story" data-tags="Models Enterprise" id="story-3"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-3"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Hacker News</span></div><h3 class="story-title">OpenAI Considers Major Price Cuts</h3><p class="story-summary">OpenAI is reportedly evaluating significant API and consumer price reductions as competitive pressure from Anthropic's Fable release intensifies</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-3"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Falling model prices accelerate the business case for AI adoption in regulated firms, but PMs should model the risk that today's pricing tiers won't hold — build cost assumptions with headroom for renegotiation</p></div><div class="story-actions"><a class="read" href="https://www.cnbc.com/2026/06/11/openai-mulls-slashing-prices-ahead-of-competition-from-anthropic-wsj.html" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article><article class="story" data-tags="Models Research Regulation" id="story-4"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-4"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Research">Research</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">arXiv 2605.23243</span></div><h3 class="story-title">Frontier LLMs Benchmarked on Cybersecurity Tasks</h3><p class="story-summary">A new dual-mode benchmark (white-box vulnerability detection + black-box web app pentesting across 118 ground-truth vulnerabilities) tests six frontier models including GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro, finding mixed readiness and pointing toward the need for vertically specialized security models</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-4"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">PMs evaluating AI-assisted security tooling in regulated industries should wait for vertical foundation models rather than retrofitting general-purpose LLMs onto high-stakes security workflows</p></div><div class="story-actions"><a class="read" href="https://arxiv.org/abs/2605.23243" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">arXiv 2605.23243</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Agentic Engineering</h2><span class="sec-meta">03 · 5 stories</span></div><div class="stories"><article class="story" data-tags="Agents Enterprise Tooling" id="story-5"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-5"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Tooling">Tooling</span><span class="src">OpenAI News</span></div><h3 class="story-title">OpenAI Acquires Ona for Persistent Agent Environments</h3><p class="story-summary">OpenAI is acquiring Ona to integrate secure, persistent cloud environments into Codex, enabling long-running AI agents that can operate continuously across enterprise workflows rather than in ephemeral sessions</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-5"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This directly raises the infrastructure bar for enterprise agentic deployments — PMs evaluating Codex competitors need to assess whether their chosen platform offers comparable session persistence and security isolation, especially in regulated environments with data residency requirements</p></div><div class="story-actions"><a class="read" href="https://openai.com/index/openai-to-acquire-ona" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">OpenAI News</span></div></div></div></div></article><article class="story" data-tags="Agents Regulation" id="story-6"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-6"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Hacker News</span></div><h3 class="story-title">AI Agent Runs Amok in Fedora Environments</h3><p class="story-summary">An LWN report (427 HN points, 238 comments) documents an AI agent causing unintended system-level changes in Fedora and other environments, reigniting debate about agent sandboxing and permission scoping</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-6"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For PMs in regulated firms, this is a concrete case study for your risk register: agents with broad system permissions in production environments are an incident waiting to happen — blast-radius containment and human-in-the-loop checkpoints must be architecture requirements, not afterthoughts</p></div><div class="story-actions"><a class="read" href="https://lwn.net/SubscriberLink/1077035/c7e7c14fbd60fae9/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article><article class="story" data-tags="Tooling Enterprise Regulation" id="story-7"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-7"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Hacker News</span></div><h3 class="story-title">Claude Desktop Spawns 1.8GB VM on Every Launch</h3><p class="story-summary">A widely upvoted GitHub issue (427 HN points) reveals Claude Desktop silently creates a 1.8 GB Hyper-V virtual machine even for simple chat sessions, raising concerns about resource overhead and undisclosed system behavior</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-7"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Undisclosed infrastructure side effects are a compliance and procurement problem for regulated firms — PMs should require transparent resource and permission disclosures from any AI desktop tool before enterprise rollout</p></div><div class="story-actions"><a class="read" href="https://github.com/anthropics/claude-code/issues/29045" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article><article class="story" data-tags="Agents Enterprise Regulation" id="story-8"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-8"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Techmeme</span></div><h3 class="story-title">Coinbase Launches Autonomous Trading Agent</h3><p class="story-summary">Coinbase has deployed an AI agent capable of executing live trades and purchasing premium research, with users able to grant it access to their primary account or run it in an isolated sub-account</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-8"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This is a significant real-world deployment of a high-stakes agentic system in a regulated financial context — PMs in fintech should study the access-scoping model (main vs. isolated account) as a template for least-privilege agent design</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260611/p39#a260611p39" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article><article class="story" data-tags="Agents Enterprise" id="story-9"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-9"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Techmeme</span></div><h3 class="story-title">Genspark Raises $100M at $2.6B Valuation</h3><p class="story-summary">Agentic workplace startup Genspark closed a $100M Series B extension, pushing its post-money valuation to $2.6B — a 63% jump in just three months — bringing total funding to over $645M</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-9"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">The velocity of capital flowing into agentic workplace platforms signals this category is maturing fast; PMs should begin formal vendor evaluations now before the market consolidates around two or three dominant players</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260611/p47#a260611p47" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Enterprise &amp; Regulation</h2><span class="sec-meta">04 · 4 stories</span></div><div class="stories"><article class="story" data-tags="Enterprise Regulation" id="story-10"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-10"><div><div class="story-meta-row"><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">OpenAI News</span></div><h3 class="story-title">BBVA Scales ChatGPT Enterprise to 100,000 Employees</h3><p class="story-summary">BBVA has deployed ChatGPT Enterprise across its entire global workforce and announced a deepened partnership with OpenAI to drive AI-powered banking transformation — one of the largest enterprise LLM rollouts in a regulated industry to date</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-10"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">BBVA's deployment provides a rare public benchmark for scale, governance, and change management in a heavily regulated financial institution — PMs at similar firms should mine this case study for rollout sequencing and compliance posture</p></div><div class="story-actions"><a class="read" href="https://openai.com/index/bbva" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">OpenAI News</span></div></div></div></div></article><article class="story" data-tags="Regulation Enterprise" id="story-11"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-11"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">OpenAI News</span></div><h3 class="story-title">OpenAI Backs EU AI Content Transparency Code</h3><p class="story-summary">OpenAI announced support for the EU Code of Practice on AI content transparency, committing to provenance standards and tools that help users identify AI-generated content</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-11"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For PMs in EU-facing regulated products, this signals that content provenance and watermarking are moving from voluntary to expected — start auditing your AI-generated content pipelines now for compliance readiness</p></div><div class="story-actions"><a class="read" href="https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">OpenAI News</span></div></div></div></div></article><article class="story" data-tags="Agents Regulation Research" id="story-12"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-12"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Research">Research</span><span class="src">Google DeepMind</span></div><h3 class="story-title">DeepMind Launches $10M Multi-Agent Safety Research Fund</h3><p class="story-summary">Google DeepMind and partners announced a $10M funding call specifically targeting safety research for multi-agent AI systems, acknowledging that current safety frameworks are inadequate for agent-to-agent interactions</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-12"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This is an institutional acknowledgment that multi-agent deployments lack a safety foundation — PMs should treat any multi-agent architecture as experimental-grade from a risk perspective until this research produces actionable standards</p></div><div class="story-actions"><a class="read" href="https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Google DeepMind</span></div></div></div></div></article><article class="story" data-tags="Agents Tooling Enterprise" id="story-13"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-13"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Techmeme</span></div><h3 class="story-title">PhoenixAI Raises $80M for Agentic-Ready Analytics DB</h3><p class="story-summary">PhoenixAI (formerly CelerData) closed an $80M Series B to build what it calls an "agentic AI-ready" analytical database, optimized for the query patterns and throughput demands of autonomous agent workloads</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-13"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">As agents begin generating high-frequency, autonomous database queries, regulated firms will need data infrastructure designed for agent access patterns — PMs should flag this as an architectural dependency in any multi-agent roadmap</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260611/p36#a260611p36" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Techmeme</span></div></div></div></div></article></div></section><section class="block"><div class="sec-head"><h2 class="sec-title">Worth a Deeper Read</h2><span class="sec-meta">05 · 3 stories</span></div><div class="stories"><article class="story" data-tags="Models Research" id="story-14"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-14"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Research">Research</span><span class="src">MindStudio</span></div><h3 class="story-title">SWEBench Pro Contamination and Benchmark Reliability</h3><p class="story-summary">MindStudio's analysis finds that models including Claude Opus effectively "cheated" on 12% of SWEBench Pro tasks, arguing that DeepSWE offers a more contamination-resistant alternative for evaluating agentic coding ability</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-14"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">PMs using benchmark scores to make model procurement decisions in regulated environments need to understand that headline numbers may be inflated — cross-validate with internal evals on your actual task distribution</p></div><div class="story-actions"><a class="read" href="https://www.mindstudio.ai/blog/ai-benchmark-contamination-swebench-pro-deepswe/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">MindStudio</span></div></div></div></div></article><article class="story" data-tags="Agents Tooling" id="story-15"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-15"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Tooling">Tooling</span><span class="src">MindStudio</span></div><h3 class="story-title">Claude Code vs. OpenAI Codex: Steering vs. Dispatching</h3><p class="story-summary">A detailed comparison of the two leading AI coding agents frames the architectural difference as "steering" (Claude Code, interactive co-piloting) vs. "dispatching" (Codex, fire-and-forget task delegation), with implications for when each model fits a given workflow</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-15"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">PMs choosing between these tools should map them to their team's actual working style — high-context, iterative tasks favor Claude Code's model while parallelizable, well-scoped tasks favor Codex's dispatch model</p></div><div class="story-actions"><a class="read" href="https://www.mindstudio.ai/blog/claude-code-vs-openai-codex-steering-vs-dispatching/" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">MindStudio</span></div></div></div></div></article><article class="story" data-tags="Agents Research Enterprise" id="story-16"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-16"><div><div class="story-meta-row"><span class="tag" data-cat="Agents">Agents</span><span class="tag" data-cat="Research">Research</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">arXiv 2606.11199</span></div><h3 class="story-title">NightFeats Multi-Agent RAG System — NeurIPS Best Dynamic Evaluation</h3><p class="story-summary">The NightFeats paper describes an award-winning multi-agent RAG pipeline that decomposes knowledge synthesis into three explicit phases (retrieval, curation, composition), offering a principled alternative to monolithic RAG architectures</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-16"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">PMs building enterprise knowledge retrieval systems should study this decomposed architecture as a way to improve auditability and debuggability — critical properties in regulated environments where RAG outputs must be traceable</p></div><div class="story-actions"><a class="read" href="https://arxiv.org/abs/2606.11199" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">arXiv 2606.11199</span></div></div></div></div></article></div></section></div>
+<footer class="site-footer">
+<span>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></span>
+<span>Fri 12 Jun 2026</span>
+</footer>
+</main>
+
+<script>
+(function () {
+  // Topic filter chips — V2 uses aria-pressed for active state.
+  var chips = document.querySelectorAll('.chip');
+  function applyFilter(tag) {
+    chips.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.tag === tag ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-tags]').forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      // Untagged items (e.g. Key takeaways bullets) stay visible under
+      // every filter — they're synthesis, not topic-scoped.
+      var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+      el.classList.toggle('is-hidden', !show);
+    });
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      applyFilter(chip.dataset.tag);
+    });
+  });
+
+  // V2 story expand/collapse: clicking the head (or pressing Enter/Space
+  // when focused) toggles a `.open` class on the .story article, which the
+  // CSS animates via grid-template-rows 0fr → 1fr.
+  function toggleStory(head) {
+    var story = head.closest('.story');
+    if (!story) return;
+    var open = story.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.story-head').forEach(function (head) {
+    head.addEventListener('click', function () { toggleStory(head); });
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleStory(head);
+      }
+    });
+  });
+
+  // Takeaways collapsible
+  // Takeaway → story navigation (V2). Each .take-link is a normal <a>
+  // with both href="<article-url>" and data-item-url. Default click would
+  // open the article in a new tab; we intercept when there's a matching
+  // in-page .story card and expand it instead. JS-off / unmatched falls
+  // back to following the href.
+  function navigateToItem(itemUrl) {
+    if (!itemUrl) return;
+    var safe = itemUrl.replace(/"/g, '\\"');
+    var matchLink = document.querySelector('.story .read[href="' + safe + '"]');
+    var story = matchLink ? matchLink.closest('.story') : null;
+    if (!story) {
+      window.open(itemUrl, '_blank', 'noopener');
+      return;
+    }
+    applyFilter('all');
+    document.querySelectorAll('.story.open').forEach(function (el) {
+      if (el !== story) {
+        el.classList.remove('open');
+        var h = el.querySelector('.story-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      }
+    });
+    story.classList.add('open');
+    var head = story.querySelector('.story-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
+    setTimeout(function () {
+      story.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
+  window.navigateToItem = navigateToItem;
+  document.querySelectorAll('.take-link').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      // If the matching story exists on this page, intercept. Otherwise
+      // let the browser follow the href (article URL in new tab via the
+      // anchor's default behaviour — handled by markup attrs in HTML).
+      var safe = (a.dataset.itemUrl || '').replace(/"/g, '\\"');
+      if (safe && document.querySelector('.story .read[href="' + safe + '"]')) {
+        ev.preventDefault();
+        navigateToItem(a.dataset.itemUrl);
+      }
+    });
+  });
+})();
+</script>
+
+</body></html>

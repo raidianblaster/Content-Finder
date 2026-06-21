@@ -1,0 +1,98 @@
+{
+  "date": "2026-06-12",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.11290",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring agents/workflows paper from arXiv (11.76) on query-adaptive agentic workflows—core to current AI/agents discourse, dropped purely by source cap despite strong relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.11976",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv paper (11.76) on LLM agents for multi-file code analysis, directly relevant to agentic AI systems, dropped by source cap alone."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.12040",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent framework paper (10.76) with practical application focus, high signal for agents trend, dropped by source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.11672",
+      "stage": "dropped_source_cap",
+      "reason": "Security-focused paper (10.76) on LLM agents replacing SAST tools—timely for regulated corporate environment, dropped by source cap."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison analysis (7.0) on Claude Fable's agentic behavior—trusted source on AI systems, dropped by source cap despite high authority."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.12191",
+      "stage": "dropped_source_cap",
+      "reason": "Comprehensive survey (9.76) on agentic environment engineering for LLMs, directly addresses core agents topic, dropped by source cap."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-anthropic-claude-fable-5-mythos",
+      "stage": "dropped_ttl",
+      "reason": "Latent Space analysis (7.48) on Anthropic Claude Fable 5 with critical vendor terms discussion—authoritative source on frontier models, dropped by TTL despite recency."
+    },
+    {
+      "url": "https://stratechery.com/2026/fable-5-anthropic-alignment-ai-tiers/",
+      "stage": "dropped_ttl",
+      "reason": "Stratechery deep-dive (6.55) on Fable 5, alignment, and AI tiering strategy—substantive analysis from trusted source, dropped by TTL."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.11042",
+      "stage": "dropped_ttl",
+      "reason": "Workflow-GYM benchmark paper (11.76) for long-horizon computer-use agent evaluation in real professional fields—high-signal agentic content, dropped by TTL."
+    },
+    {
+      "url": "https://blue41.com/blog/how-we-helped-bunq-secure-their-financial-ai-assistant/",
+      "stage": "dropped_ttl",
+      "reason": "Real-world security case study (9.63) on banking AI agent vulnerabilities—timely and substantive for regulated environment, dropped by TTL."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.cnbc.com/2026/06/10/trump-inflation-cpi-iran-oil.html",
+      "reason": "Political/economic news unrelated to AI/ML, kept despite low relevance (5.36) to AI-focused pipeline."
+    },
+    {
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "reason": "US inflation statistics, purely macroeconomic data unrelated to AI/agents, kept despite being off-topic (7.32)."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=48477135",
+      "reason": "AMA with Lean Startup author on general startup advice, minimal AI content, kept despite low relevance (7.61)."
+    },
+    {
+      "url": "https://www.extend.ai/ui",
+      "reason": "UI kit product launch—vendor marketing tool announcement, kept despite (8.02) being promotional/low substance."
+    },
+    {
+      "url": "https://mapcomplete.org/",
+      "reason": "Mapping project unrelated to AI/ML agents, kept despite zero AI connection (6.65)."
+    },
+    {
+      "url": "https://openai.com/index/lseg",
+      "reason": "Vendor partnership case study (6.43) from OpenAI News promoting LSEG customer win—corporate marketing, kept despite low editorial value."
+    },
+    {
+      "url": "https://openai.com/index/using-codex-to-simulate-black-holes",
+      "reason": "Astrophysics use case (6.72) for Codex model—customer story/marketing, minimal technical or policy signal."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/why-ai-pilots-never-reach-production/",
+      "reason": "Generic enterprise AI article (2.43) with no substantive methodology or novel insight, purely promotional blog."
+    },
+    {
+      "url": "https://newsletter.pragmaticengineer.com/p/did-anthropics-new-model-just-boost",
+      "reason": "Speculative analysis (6.91) on competitive market share without supporting evidence—unverifiable vendor positioning."
+    },
+    {
+      "url": "https://www.techmeme.com/260611/p37#a260611p37",
+      "reason": "Anthropic infrastructure/financing news (4.92) from sources, not substantive AI/ML research or policy, kept as pure corporate news."
+    }
+  ]
+}

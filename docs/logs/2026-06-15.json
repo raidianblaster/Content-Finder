@@ -1,0 +1,776 @@
+{
+  "date": "2026-06-15",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 54,
+    "after_keyword_filter": 30,
+    "after_dedupe": 26,
+    "after_ttl_filter": 22,
+    "after_source_cap": 7
+  },
+  "dropped_keyword": [
+    {
+      "title": "Publishing WASM wheels to PyPI for use with Pyodide",
+      "summary": "The Pyodide 314.0 release announcement (via Hacker News ) includes news I've been looking forward to for a long time: You can now publish Python packages built for Pyodide (or any Python runtime compatible with the PyEmscripten platform defined in PEP 783 ) directly to PyPI and install them at runtime. Previously, the Pyodide maintainers had to maintain, build, and host over 300 packages ourselves. This created a significant burden on our maintainers and became a major bottleneck for the communi",
+      "url": "https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8605,
+        "recency_term": 1.721,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.721049982648809
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "luau-wasm 0.1a0",
+      "summary": "Release: luau-wasm 0.1a0 See Publishing WASM wheels to PyPI for use with Pyodide for details. Tags: lua , webassembly , pyodide",
+      "url": "https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8565,
+        "recency_term": 1.713,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.712954744494048
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Mapping SQLite result columns back to their source `table.column`",
+      "summary": "Research: Mapping SQLite result columns back to their source `table.column` It would be neat if arbitrary SQL queries in Datasette could be rendered with additional information based on which columns from which tables were included in the results. To build that, we would need to be able to look at a SQL query like select users.name, orders.total from users join orders on orders.user_id = users.id and programmatically identify the table.column for each result - navigating not just joins but also ",
+      "url": "https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything",
+      "source": "Simon Willison",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8555,
+        "recency_term": 1.7111,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.711069823776455
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "A profile of Kalshi COO Luana Lopes Lara, who has overseen a tremendous pace of growth over the past year as the company faces political and regulatory backlash (Emily Nicolle/Bloomberg)",
+      "summary": "Emily Nicolle / Bloomberg : A profile of Kalshi COO Luana Lopes Lara, who has overseen a tremendous pace of growth over the past year as the company faces political and regulatory backlash &nbsp; &mdash;&nbsp; The firm's co-founder talks about the celebrity buzz that sparked her interest in prediction markets, the legal battles her firm faces and Jay-Z's advice.",
+      "url": "https://www.techmeme.com/260614/p16#a260614p16",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9974,
+        "recency_term": 1.9948,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9948032893088623
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Chinese Tesla drivers are using tiny plastic heads to fool Tesla's distracted-driving controls, which appear unable to distinguish figurines from real people (Zeyi Yang/Wired)",
+      "summary": "Zeyi Yang / Wired : Chinese Tesla drivers are using tiny plastic heads to fool Tesla's distracted-driving controls, which appear unable to distinguish figurines from real people &nbsp; &mdash;&nbsp; A cottage industry of celebrity figurines, blinking screens, and other DIY gadgets is helping drivers bypass Tesla's distracted-driving controls.",
+      "url": "https://www.techmeme.com/260614/p15#a260614p15",
+      "source": "Techmeme",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9905,
+        "recency_term": 1.9809,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.980911093468915
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "A government crackdown on online casinos operating in the Isle of Man has led to a major tax revenue loss, accelerating the island's slide toward a fiscal cliff (Jack Adamovi\u0107 Davies/Bloomberg)",
+      "summary": "Jack Adamovi&amp;cacute Davies / Bloomberg : A government crackdown on online casinos operating in the Isle of Man has led to a major tax revenue loss, accelerating the island's slide toward a fiscal cliff &nbsp; &mdash;&nbsp; Online casinos were a big driver of the Isle of Man's economy.&nbsp; Lately, they've become a liability.",
+      "url": "https://www.techmeme.com/260614/p14#a260614p14",
+      "source": "Techmeme",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9835,
+        "recency_term": 1.967,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.967022204477513
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Sources: UK plans to announce an \"Australia plus\" under-16 social media ban, including restrictions on chats with strangers on gaming apps and under-18 curfews (The Guardian)",
+      "summary": "The Guardian : Sources: UK plans to announce an &ldquo;Australia plus&rdquo; under-16 social media ban, including restrictions on chats with strangers on gaming apps and under-18 curfews &nbsp; &mdash;&nbsp; Sources say hardline measures will also prevent young users from being able to talk to strangers on gaming apps",
+      "url": "https://www.techmeme.com/260614/p10#a260614p10",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9587,
+        "recency_term": 1.9174,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9174190298048943
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Since Russia ratcheted up control over the internet this year, some Russians are turning to solutions like using multiple phones and VPNs to evade restrictions (Andrew Osborn/Reuters)",
+      "summary": "Andrew Osborn / Reuters : Since Russia ratcheted up control over the internet this year, some Russians are turning to solutions like using multiple phones and VPNs to evade restrictions &nbsp; &mdash;&nbsp; In a quiet cafe popular for its free Wi-Fi and good coffee, a Russian interior designer logs onto a virtual private network &hellip;",
+      "url": "https://www.techmeme.com/260614/p7#a260614p7",
+      "source": "Techmeme",
+      "score": 2.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9513,
+        "recency_term": 1.9025,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.90253807735119
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Ajinomoto says it can meet demand through 2030 for ABF, a key material for advanced chipmaking substrates, and plans to expand capacity instead of hiking prices (Wall Street Journal)",
+      "summary": "Wall Street Journal : Ajinomoto says it can meet demand through 2030 for ABF, a key material for advanced chipmaking substrates, and plans to expand capacity instead of hiking prices &nbsp; &mdash;&nbsp; The company is expanding its capacity for Ajinomoto Build-up Film, with production expected to begin in 2032",
+      "url": "https://www.techmeme.com/260614/p6#a260614p6",
+      "source": "Techmeme",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9334,
+        "recency_term": 1.8668,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.866823791574074
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "After years of uncertainty, including delayed listings, memory chipmaker Kioxia's shares soared 56x in 18 months, making it Japan's most valuable company (Shuhei Ochiai/Nikkei Asia)",
+      "summary": "Shuhei Ochiai / Nikkei Asia : After years of uncertainty, including delayed listings, memory chipmaker Kioxia's shares soared 56x in 18 months, making it Japan's most valuable company &nbsp; &mdash;&nbsp; TOKYO &mdash; Japanese memory maker Kioxia Holdings is now the top Japanese company by market capitalization, capping off a dramatic period &hellip;",
+      "url": "https://www.techmeme.com/260614/p5#a260614p5",
+      "source": "Techmeme",
+      "score": 2.83,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9156,
+        "recency_term": 1.8311,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.831116119546958
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "As the 2026 FIFA World Cup begins, there is still no clear replacement for \"Sports Twitter\", which was a perfect second-screen experience during live events (Andrew Webster/The Verge)",
+      "summary": "Andrew Webster / The Verge : As the 2026 FIFA World Cup begins, there is still no clear replacement for &ldquo;Sports Twitter&rdquo;, which was a perfect second-screen experience during live events &nbsp; &mdash;&nbsp; The current landscape of social media networks just isn't the same for big moments like this.",
+      "url": "https://www.techmeme.com/260614/p4#a260614p4",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8977,
+        "recency_term": 1.7954,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7954018337665345
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Challenger, Gray & Christmas: out of ~398K US jobs cuts in 2026 through May, employers cited AI as the reason for ~88K of them, up from ~54K in all of 2025 (Hyunsoo Rim/Sherwood News)",
+      "summary": "Hyunsoo Rim / Sherwood News : Challenger, Gray &amp; Christmas: out of ~398K US jobs cuts in 2026 through May, employers cited AI as the reason for ~88K of them, up from ~54K in all of 2025 &nbsp; &mdash;&nbsp; Employers cited AI for nearly 40% of May's cuts &mdash; a share that's kept climbing since Challenger began tracking it in 2023.",
+      "url": "https://www.techmeme.com/260614/p3#a260614p3",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8972,
+        "recency_term": 1.7944,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7944064633300263
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Nothing CEO Carl Pei says memory is now the costliest phone component, accounting for 50%+ of BOM in some models, and predicts phone prices will rise into 2027 (Stevie Bonifield/The Verge)",
+      "summary": "Stevie Bonifield / The Verge : Nothing CEO Carl Pei says memory is now the costliest phone component, accounting for 50%+ of BOM in some models, and predicts phone prices will rise into 2027 &nbsp; &mdash;&nbsp; &#65279;With RAM getting more expensive, Carl Pei says holiday discounts probably won't be the same this year.",
+      "url": "https://www.techmeme.com/260614/p2#a260614p2",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8942,
+        "recency_term": 1.7885,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.788457389186508
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "[AINews] Fable and Mythos officially too dangerous to release",
+      "summary": "We are in the strangest timeline.",
+      "url": "https://www.latent.space/p/ainews-fable-and-mythos-officially",
+      "source": "Latent Space",
+      "score": 3.49,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.745,
+        "recency_term": 1.49,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.4900116219609787
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "Honda Civics and the Evil Valet",
+      "summary": "384 points \u00b7 92 comments \u00b7 query: eval",
+      "url": "https://juniperspring.org/posts/honda-evil-valet/",
+      "source": "Hacker News",
+      "score": 5.57,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8659,
+        "recency_term": 1.7319,
+        "src_bonus": 0,
+        "hn_bonus": 3.84,
+        "total": 5.571856860023148
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "AI OSS tool repo goes archived over night after raising $7.3M Seed",
+      "summary": "272 points \u00b7 170 comments \u00b7 query: RAG",
+      "url": "https://github.com/tensorzero/tensorzero",
+      "source": "Hacker News",
+      "score": 4.3,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7906,
+        "recency_term": 1.5813,
+        "src_bonus": 0,
+        "hn_bonus": 2.72,
+        "total": 4.301264928769841
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "The adder at the heart of Intel's 8087 floating-point chip",
+      "summary": "133 points \u00b7 28 comments \u00b7 query: RAG",
+      "url": "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html",
+      "source": "Hacker News",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8183,
+        "recency_term": 1.6366,
+        "src_bonus": 0,
+        "hn_bonus": 1.33,
+        "total": 2.966605537199074
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Every Frame Perfect",
+      "summary": "817 points \u00b7 269 comments \u00b7 query: RAG",
+      "url": "https://tonsky.me/blog/every-frame-perfect/",
+      "source": "Hacker News",
+      "score": 5.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7876,
+        "recency_term": 1.5752,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.575223261954365
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch",
+      "summary": "110 points \u00b7 30 comments \u00b7 query: RAG",
+      "url": "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/",
+      "source": "Hacker News",
+      "score": 2.76,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8285,
+        "recency_term": 1.657,
+        "src_bonus": 0,
+        "hn_bonus": 1.1,
+        "total": 2.756975907414021
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Show HN: Kage \u2013 Shadow any website to a single binary for offline viewing",
+      "summary": "337 points \u00b7 76 comments \u00b7 query: RAG",
+      "url": "https://github.com/tamnd/kage",
+      "source": "Hacker News",
+      "score": 5.3,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9647,
+        "recency_term": 1.9294,
+        "src_bonus": 0,
+        "hn_bonus": 3.37,
+        "total": 5.29944945234127
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case",
+      "summary": "90 points \u00b7 72 comments \u00b7 query: RAG",
+      "url": "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal",
+      "source": "Hacker News",
+      "score": 2.48,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7913,
+        "recency_term": 1.5826,
+        "src_bonus": 0,
+        "hn_bonus": 0.9,
+        "total": 2.482587679818122
+      },
+      "age_days": 1.5
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models",
+      "summary": "777 points \u00b7 581 comments \u00b7 query: Anthropic",
+      "url": "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink",
+      "source": "Hacker News",
+      "score": 7.64,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8191,
+        "recency_term": 1.6382,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.638215984394842
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-06-14"
+    },
+    {
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5 Well this is nuts : The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthropic employees. The net effect of this order is that we must abruptly disable Fable 5 and Mythos 5 for all our customers to ensure compliance. Access to ",
+      "url": "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything",
+      "source": "Simon Willison",
+      "score": 7.45,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7243,
+        "recency_term": 1.4485,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 7.448536751478175
+      },
+      "age_days": 1.9,
+      "first_seen": "2026-06-14"
+    },
+    {
+      "title": "Statement on US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "3117 points \u00b7 2279 comments \u00b7 query: Claude",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "source": "Hacker News",
+      "score": 7.45,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7232,
+        "recency_term": 1.4465,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.446486486881614
+      },
+      "age_days": 1.9,
+      "first_seen": "2026-06-14"
+    },
+    {
+      "title": "OpenAI WebRTC Audio Session, now with document context",
+      "summary": "OpenAI WebRTC Audio Session, now with document context I built the first version of this tool in December 2024 to try out the then-new OpenAI WebRTC API for interacting with their realtime audio models. Last month OpenAI introduced a brand new model to that API called GPT\u2011Realtime\u20112 , which they promoted as \"our first voice model with GPT\u20115\u2011class reasoning\" - with a Sep 30, 2024 knowledge cut-off. I've been waiting for that model to show up in the ChatGPT iPhone app but it still hasn't, so I rev",
+      "url": "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything",
+      "source": "Simon Willison",
+      "score": 6.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7174,
+        "recency_term": 1.4349,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.434892571431878
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-06-14"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Show HN: Paca \u2013 Lightweight Jira alternative for human-AI collaboration",
+      "summary": "161 points \u00b7 57 comments \u00b7 query: AI agents",
+      "url": "https://github.com/Paca-AI/paca",
+      "source": "Hacker News",
+      "score": 6.16,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7761,
+        "recency_term": 1.5522,
+        "src_bonus": 0,
+        "hn_bonus": 1.61,
+        "total": 6.162223920545635
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Linux 7.1",
+      "summary": "207 points \u00b7 78 comments \u00b7 query: LLM",
+      "url": "https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u",
+      "source": "Hacker News",
+      "score": 5.98,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9564,
+        "recency_term": 1.9128,
+        "src_bonus": 0,
+        "hn_bonus": 2.07,
+        "total": 5.982756327919974
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "We've suspended access to Claude Mythos 5 and Claude Fable 5",
+      "summary": "252 points \u00b7 5 comments \u00b7 query: Claude",
+      "url": "https://status.claude.com/incidents/s9w82lp9dcn9",
+      "source": "Hacker News",
+      "score": 5.97,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7239,
+        "recency_term": 1.4478,
+        "src_bonus": 0,
+        "hn_bonus": 2.52,
+        "total": 5.967796010419974
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Shepherd's Dog: A Game by Fable",
+      "summary": "184 points \u00b7 132 comments \u00b7 query: Claude",
+      "url": "https://koenvangilst.nl/lab/claude-fable-shepherds-dog",
+      "source": "Hacker News",
+      "score": 5.34,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7523,
+        "recency_term": 1.5047,
+        "src_bonus": 0,
+        "hn_bonus": 1.84,
+        "total": 5.344674317265212
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "On CPU Physics and CPU Cycles",
+      "summary": "66 points \u00b7 9 comments \u00b7 query: MCP",
+      "url": "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730",
+      "source": "Hacker News",
+      "score": 5.15,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7456,
+        "recency_term": 1.4913,
+        "src_bonus": 0,
+        "hn_bonus": 0.66,
+        "total": 5.151255005062831
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "EU says it is looking at the practical consequences of US restricting Anthropic's models, notes such measures \"should not be discriminatory against partners\" (Reuters)",
+      "summary": "Reuters : EU says it is looking at the practical consequences of US restricting Anthropic's models, notes such measures &ldquo;should not be discriminatory against partners&rdquo; &nbsp; &mdash;&nbsp; The European Commission said on Sunday that it is assessing the practical implications of a U.S. export control directive &hellip;",
+      "url": "https://www.techmeme.com/260614/p9#a260614p9",
+      "source": "Techmeme",
+      "score": 4.91,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9557,
+        "recency_term": 1.9115,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.9114666452017195
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Siri AI is good enough to ease Apple's AI crisis; sources: the ability to tap third party AI models beyond OpenAI's is already active in internal iOS 27 builds (Mark Gurman/Bloomberg)",
+      "summary": "Mark Gurman / Bloomberg : Siri AI is good enough to ease Apple's AI crisis; sources: the ability to tap third party AI models beyond OpenAI's is already active in internal iOS 27 builds &nbsp; &mdash;&nbsp; The company prepares for the foldable iPhone and touch-screen MacBook.&nbsp; &mdash;&nbsp; Apple's new Siri AI, despite mainly delivering &hellip;",
+      "url": "https://www.techmeme.com/260614/p8#a260614p8",
+      "source": "Techmeme",
+      "score": 4.91,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9542,
+        "recency_term": 1.9085,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.908493761534391
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Why Is Claude Turning into an a**Hole?",
+      "summary": "88 points \u00b7 125 comments \u00b7 query: Claude",
+      "url": "https://bramcohen.com/p/why-is-claude-turning-into-an-asshole",
+      "source": "Hacker News",
+      "score": 4.86,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9923,
+        "recency_term": 1.9847,
+        "src_bonus": 0,
+        "hn_bonus": 0.88,
+        "total": 4.864684237691799
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Did Anthropic ask for this?",
+      "summary": "75 points \u00b7 28 comments \u00b7 query: Anthropic",
+      "url": "https://www.verysane.ai/p/did-anthropic-ask-for-this",
+      "source": "Hacker News",
+      "score": 4.74,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9942,
+        "recency_term": 1.9885,
+        "src_bonus": 0,
+        "hn_bonus": 0.75,
+        "total": 4.738467306441799
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "EU Commission looking at practical consequences of Anthropic decision",
+      "summary": "61 points \u00b7 91 comments \u00b7 query: Anthropic",
+      "url": "https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/",
+      "source": "Hacker News",
+      "score": 4.51,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9476,
+        "recency_term": 1.8952,
+        "src_bonus": 0,
+        "hn_bonus": 0.61,
+        "total": 4.505233179417989
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Chaosnet (1981)",
+      "summary": "53 points \u00b7 5 comments \u00b7 query: LLM",
+      "url": "https://tumbleweed.nu/r/lm-3/uv/amber.html",
+      "source": "Hacker News",
+      "score": 4.48,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9755,
+        "recency_term": 1.951,
+        "src_bonus": 0,
+        "hn_bonus": 0.53,
+        "total": 4.481020216425264
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Show HN: Trace \u2013 Offline Mac meeting transcripts you can flag mid-call",
+      "summary": "69 points \u00b7 21 comments \u00b7 query: LLM",
+      "url": "https://traceapp.info",
+      "source": "Hacker News",
+      "score": 4.37,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8413,
+        "recency_term": 1.6827,
+        "src_bonus": 0,
+        "hn_bonus": 0.69,
+        "total": 4.372690189824736
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "As a result of a US Government directive, we are suspending access to Fable 5",
+      "summary": "90 points \u00b7 4 comments \u00b7 query: Claude",
+      "url": "https://twitter.com/ClaudeDevs/status/2065597942602531163",
+      "source": "Hacker News",
+      "score": 4.35,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7244,
+        "recency_term": 1.4487,
+        "src_bonus": 0,
+        "hn_bonus": 0.9,
+        "total": 4.348705401421958
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Show HN: I built 80 mini-games using Fable before it was shut down",
+      "summary": "53 points \u00b7 75 comments \u00b7 query: LLM",
+      "url": "https://minigames.world/en",
+      "source": "Hacker News",
+      "score": 4.25,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8586,
+        "recency_term": 1.7172,
+        "src_bonus": 0,
+        "hn_bonus": 0.53,
+        "total": 4.247154475459657
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "An Interview with Intel's Kira Boyko: Xeon 6's Product Director",
+      "summary": "55 points \u00b7 4 comments \u00b7 query: LLM",
+      "url": "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko",
+      "source": "Hacker News",
+      "score": 4.13,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7916,
+        "recency_term": 1.5831,
+        "src_bonus": 0,
+        "hn_bonus": 0.55,
+        "total": 4.133110163250661
+      },
+      "age_days": 1.5
+    }
+  ],
+  "final": [
+    {
+      "title": "GLM 5.2 Is Out",
+      "summary": "727 points \u00b7 446 comments \u00b7 query: LLM",
+      "url": "https://twitter.com/jietang/status/2065784751345287314",
+      "source": "Hacker News",
+      "score": 7.63,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8152,
+        "recency_term": 1.6304,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.6304183642724865
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Making Claude a Chemist",
+      "summary": "86 points \u00b7 82 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/research/making-claude-a-chemist",
+      "source": "Hacker News",
+      "score": 6.62,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8784,
+        "recency_term": 1.7568,
+        "src_bonus": 0,
+        "hn_bonus": 0.86,
+        "total": 6.6168237875198415
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Rio de Janeiro's \"homegrown\" LLM appears to be a merge of an existing model",
+      "summary": "252 points \u00b7 134 comments \u00b7 query: LLM",
+      "url": "https://github.com/nex-agi/Nex-N2/issues/4",
+      "source": "Hacker News",
+      "score": 6.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.954,
+        "recency_term": 1.908,
+        "src_bonus": 0,
+        "hn_bonus": 2.52,
+        "total": 6.427997729279101
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Satya Nadella says companies must own their AI \"learning loops\" to compound human and token capital, or risk ceding all value to a handful of frontier models (Satya Nadella/@satyanadella)",
+      "summary": "Satya Nadella / @satyanadella : Satya Nadella says companies must own their AI &ldquo;learning loops&rdquo; to compound human and token capital, or risk ceding all value to a handful of frontier models &nbsp; &mdash;&nbsp; I've been thinking a lot about the future of the firm in an AI-driven economy.&nbsp; This transition is different than any previous platform shift.",
+      "url": "https://www.techmeme.com/260614/p13#a260614p13",
+      "source": "Techmeme",
+      "score": 4.96,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9776,
+        "recency_term": 1.9551,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.955120745076059
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: senior Anthropic technical staff are in DC to meet WH officials and try to fix the Mythos 5 dispute; both sides say they are eager to resolve the issue (Maria Curi/Axios)",
+      "summary": "Maria Curi / Axios : Sources: senior Anthropic technical staff are in DC to meet WH officials and try to fix the Mythos 5 dispute; both sides say they are eager to resolve the issue &nbsp; &mdash;&nbsp; Senior technical Anthropic staff are in Washington to meet with White House officials to try to fix a dispute that has taken &hellip;",
+      "url": "https://www.techmeme.com/260614/p12#a260614p12",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9721,
+        "recency_term": 1.9442,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.944208046590608
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Canadian PM says the Anthropic ban shows the dangers of \"over-reliance on certain models\", and compares the risks to those that led to the 2008 financial crisis (Bloomberg)",
+      "summary": "Bloomberg : Canadian PM says the Anthropic ban shows the dangers of &ldquo;over-reliance on certain models&rdquo;, and compares the risks to those that led to the 2008 financial crisis &nbsp; &mdash;&nbsp; Prime Minister Mark Carney said the US export ban blocking all foreign access to Anthropic PBC's latest artificial &hellip;",
+      "url": "https://www.techmeme.com/260614/p11#a260614p11",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9676,
+        "recency_term": 1.9353,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.935279475092592
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Welcome to the AGI era of AI governance",
+      "summary": "It's a one-way door and we weren't ready for it.",
+      "url": "https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance",
+      "source": "Interconnects (Lambert)",
+      "score": 4.93,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.9665,
+        "recency_term": 1.933,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 4.93303410469246
+      },
+      "age_days": 0.2
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "date": "2026-06-15",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "stage": "dropped_ttl",
+      "reason": "Official Anthropic statement on major regulatory action; high-signal governance event incorrectly filtered by TTL."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison analysis of critical US government directive against Anthropic models; trusted source commentary dropped despite high relevance."
+    },
+    {
+      "url": "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink",
+      "stage": "dropped_ttl",
+      "reason": "High-score (7.64) WSJ investigation of Amazon CEO's role in Anthropic crackdown; substantive policy story filtered by TTL."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-fable-and-mythos-officially",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space coverage of Fable/Mythos suspension; trusted AI source on major regulatory event dropped by keyword filter."
+    },
+    {
+      "url": "https://github.com/Paca-AI/paca",
+      "stage": "dropped_source_cap",
+      "reason": "Human-AI collaboration tool from HN Show; substantive project dropped by source cap despite relevance to agents/workflow space."
+    },
+    {
+      "url": "https://status.claude.com/incidents/s9w82lp9dcn9",
+      "stage": "dropped_source_cap",
+      "reason": "Official Anthropic status page on suspension of Claude models; primary-source regulatory event lost to source cap."
+    },
+    {
+      "url": "https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-2026-06-14/",
+      "stage": "dropped_source_cap",
+      "reason": "Reuters report on EU response to Anthropic restrictions; tier-1 news source on policy impact dropped by source cap."
+    },
+    {
+      "url": "https://bramcohen.com/p/why-is-claude-turning-into-an-asshole",
+      "stage": "dropped_source_cap",
+      "reason": "Technical analysis of Claude behavior changes amid regulatory action; substantive commentary on model behavior dropped."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260614/p13#a260614p13",
+      "reason": "Satya Nadella quote on AI learning loops is generic strategy commentary, not news; low substantive content for regulated pipeline."
+    },
+    {
+      "url": "https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance",
+      "reason": "Broad opinion piece on AI governance without concrete news; low signal relative to specific regulatory developments."
+    },
+    {
+      "url": "https://twitter.com/jietang/status/2065784751345287314",
+      "title": "GLM 5.2 Is Out",
+      "reason": "Bare announcement of Zhipu model release with minimal context; low-substance product update."
+    }
+  ]
+}

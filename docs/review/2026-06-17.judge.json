@@ -1,0 +1,78 @@
+{
+  "date": "2026-06-17",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.15107",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent reasoning paper with score 12.77 on core agentic AI topic deserves inclusion despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.16613",
+      "stage": "dropped_source_cap",
+      "reason": "CoffeeBench benchmarking multi-agent LLM economies with score 12.77 is substantive agent research that should survive source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.16774",
+      "stage": "dropped_source_cap",
+      "reason": "OpenClaw-Skill on agentic LLM capability composition is directly relevant core research despite source cap pressure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14790",
+      "stage": "dropped_source_cap",
+      "reason": "XFlow on reliable multi-agent workflows addresses critical safety/reliability concern for agentic systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.15024",
+      "stage": "dropped_source_cap",
+      "reason": "Resilient consensus in agentic AI tackles fundamental distributed multi-agent coordination problem with high relevance."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Jun/15/axios-clashes-anthropics/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison post on Anthropic personality clashes affecting model availability is substantive industry intelligence that crossed TTL despite high score 8.61."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.04990",
+      "stage": "dropped_source_cap",
+      "reason": "Survey on evidence tracing and execution provenance in LLM agents directly supports trustworthy agentic systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.15485",
+      "stage": "dropped_source_cap",
+      "reason": "Research on how developers perceive and prioritize agentic AI risks provides critical safety-by-design insights."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.15579",
+      "stage": "dropped_source_cap",
+      "reason": "Sequence-level behavioral analysis and governance of LLM agents addresses core monitoring/control problem for deployed agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.16802",
+      "stage": "dropped_source_cap",
+      "reason": "LabOSBench on computer-use agents for scientific instrument control bridges agentic AI to real-world critical systems."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-ipo-what-investors-are-betting-on/",
+      "reason": "Vendor marketing disguised as analysis on speculative OpenAI IPO with no substantive technical or business content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/usage-based-ai-pricing-vs-flat-subscriptions/",
+      "reason": "MindStudio promotional content conflating GitHub Copilot pricing with broader AI trends lacks analytical rigor."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-openrouter-fusion-multi-model-api/",
+      "reason": "Vendor-friendly explainer on OpenRouter Fusion reads as marketing material rather than critical technical analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openrouter-fusion-vs-claude-fable-5-comparison/",
+      "reason": "Cost comparison between AI services lacks substantive analysis and appears designed to drive traffic to MindStudio products."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-workflow-generate-youtube-video-one-prompt/",
+      "reason": "Tutorial on using AI workflows for YouTube generation is generic how-to content without technical depth or novelty."
+    }
+  ]
+}

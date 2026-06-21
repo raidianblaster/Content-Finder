@@ -1,0 +1,98 @@
+{
+  "date": "2026-06-16",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.14027",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agent safety research (Same-Origin Policy for Agentic Browsers) from arXiv with 9.76 score, directly relevant to regulated AI deployment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14517",
+      "stage": "dropped_source_cap",
+      "reason": "Critical security research on LLM agent guardrail vulnerabilities (DoS attacks) with 9.76 score, essential for compliance teams."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14574",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive benchmark paper (SIMMER) on LLM agent planning failures with 9.76 score, directly addresses production risk."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.13707",
+      "stage": "dropped_source_cap",
+      "reason": "Orchestra-o1 omnimodal agent orchestration research with 8.76 score represents core agentic capability advancement."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.13949",
+      "stage": "dropped_source_cap",
+      "reason": "Privacy-aware agent research (Minim) with 8.76 score directly addresses regulated data handling in agentic systems."
+    },
+    {
+      "url": "https://stratechery.com/2026/anthropics-safety-superpower/",
+      "stage": "dropped_source_cap",
+      "reason": "Ben Thompson analysis of Anthropic safety positioning with 6.84 score from trusted source on regulatory strategy."
+    },
+    {
+      "url": "https://www.anthropic.com/news/claude-corps",
+      "stage": "dropped_source_cap",
+      "reason": "Official Anthropic product announcement (Claude Corps) with 6.59 score, direct from source on enterprise agentic offerings."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.13994",
+      "stage": "dropped_source_cap",
+      "reason": "Agent safety benchmark (DECOMPBENCH) evaluating decomposition attack resilience with 7.76 score, critical for deployment risk."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14210",
+      "stage": "dropped_source_cap",
+      "reason": "Data leakage research in split LLMs with 7.76 score addresses infrastructure security for agentic systems."
+    },
+    {
+      "url": "https://github.com/nex-agi/Nex-N2/issues/4",
+      "stage": "dropped_ttl",
+      "reason": "Model integrity issue (model merging misrepresentation) with 7.56 score, material for supply-chain risk assessment."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-security-audits-real-world-results/",
+      "reason": "Vendor marketing disguised as technical guidance (MindStudio) with dubious 'Fable 5' model claims not substantiated."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/notebooklm-upgraded-gemini-3-5-agentic-research/",
+      "reason": "Low-substance product comparison post (MindStudio) with inflated agentic claims on vendor tools."
+    },
+    {
+      "url": "https://developers.google.com/maps/documentation/earth/flight-simulator",
+      "reason": "Google Flight Simulator is unrelated tool demo, not substantive AI/ML/agents research content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-ipo-what-investors-are-betting-on/",
+      "reason": "Speculative investment commentary from MindStudio with no technical substance on AI agents or products."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/usage-based-ai-pricing-vs-flat-subscriptions/",
+      "reason": "Generic pricing analysis post (MindStudio) lacking substantive technical or product-specific insights."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-3-5-live-translate-real-time-ai-translation/",
+      "reason": "Product feature overview from MindStudio lacks depth; primarily vendor promotional content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/one-prompt-ai-video-workflow-script-voice-avatar-edit/",
+      "reason": "How-to guide on commercial tooling with low substantive technical contribution, marketing-oriented."
+    },
+    {
+      "url": "https://tumbleweed.nu/r/lm-3/uv/amber.html",
+      "reason": "Historical Chaosnet 1981 documentation is not current AI/ML/agents content; off-topic nostalgia."
+    },
+    {
+      "url": "https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u",
+      "reason": "Linux 7.1 kernel mailing list is not AI/agents content; systems infrastructure unrelated to focus area."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-export-controls-claude-fable-5-enterprise-implications/",
+      "reason": "Policy speculation post (MindStudio) with dubious model names and inflated regulatory claims lacking rigor."
+    }
+  ]
+}

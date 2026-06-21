@@ -1,0 +1,66 @@
+{
+  "date": "2026-06-19",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.04990",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent/LLM research on evidence tracing in agentic systems with strong relevance score (11.76) inappropriately dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18142",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv agent safety benchmark on implicit animal welfare in frontier models (score 10.76) dropped despite clear signal relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.17819",
+      "stage": "dropped_source_cap",
+      "reason": "Framework for evaluating agentic skills at scale (score 10.76) from trusted arXiv source dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.17930",
+      "stage": "dropped_source_cap",
+      "reason": "Research on how inference compute shapes frontier LLM evaluation (score 9.76) from arXiv dropped despite direct relevance to model evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.17114",
+      "stage": "dropped_source_cap",
+      "reason": "Data leakage risks in tool-using LLM agents (score 9.76) addresses critical agent safety concern dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.14517",
+      "stage": "dropped_source_cap",
+      "reason": "Denial-of-service attacks on LLM guardrails (score 9.76) represents important security research on agents inappropriately dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18193",
+      "stage": "dropped_source_cap",
+      "reason": "Red-team study of Anthropic Fable 5 and Opus models (score 7.76) from trusted source dropped despite high regulatory/safety relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.18068",
+      "stage": "dropped_ttl",
+      "reason": "Agentic AI framework for mitigating diagnostic handoff and hallucination in healthcare (score 12.76) dropped by TTL despite high substantive value."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.17443",
+      "stage": "dropped_ttl",
+      "reason": "Brand bias and cognitive manipulation in LLM recommendation systems (score 11.76) represents important agent safety research dropped by TTL."
+    },
+    {
+      "url": "https://huggingface.co/blog/agentic-resource-discovery-launch",
+      "stage": "dropped_ttl",
+      "reason": "Hugging Face official blog on agentic resource discovery (score 5.43) from trusted source dropped by TTL despite direct relevance."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260618/p41#a260618p41",
+      "reason": "Google warrant story about Jan 6 search data is unrelated to AI/agents and primarily political news without substantive technical content."
+    },
+    {
+      "url": "https://huggingface.co/blog/peft-beyond-lora",
+      "reason": "Fine-tuning technique comparison is general ML content not specifically agent or agentic-system focused despite modest score (4.72)."
+    }
+  ]
+}

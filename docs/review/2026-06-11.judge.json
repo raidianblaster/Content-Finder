@@ -1,0 +1,98 @@
+{
+  "date": "2026-06-11",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.09890",
+      "stage": "dropped_source_cap",
+      "reason": "PreAct-Bench on LLM predictive monitoring is substantive agent research from a trusted arXiv source with solid score (10.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.09961",
+      "stage": "dropped_source_cap",
+      "reason": "3SPO on policy optimization for LLM agents is core agentic research with score 10.77, clearly on-topic."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10156",
+      "stage": "dropped_source_cap",
+      "reason": "τ-Rec benchmarking agentic recommender systems is directly relevant agent evaluation work (score 10.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.24197",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic misalignment in automated workflows is high-priority safety research on agents (score 10.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10749",
+      "stage": "dropped_source_cap",
+      "reason": "Secure LLM agents threat surfaces and defenses is critical agent security research (score 9.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.11150",
+      "stage": "dropped_source_cap",
+      "reason": "ABC-Bench on agentic biosecurity capabilities is important safety benchmark for agents (score 9.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10525",
+      "stage": "dropped_source_cap",
+      "reason": "Automated prompt injection attacks in agentic environments is essential agent security work (score 9.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10071",
+      "stage": "dropped_source_cap",
+      "reason": "Temporal sheaf neural networks with dynamic orthogonal transport is substantive ML research (score 4.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10650",
+      "stage": "dropped_source_cap",
+      "reason": "Dynamic linear attention is fundamental ML architecture research likely relevant to agent efficiency (score 5.77)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.10706",
+      "stage": "dropped_source_cap",
+      "reason": "Survey on data, memory, and compute efficiency in LLM training is comprehensive and valuable (score 5.77)."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://openai.com/index/openai-on-oracle-cloud",
+      "reason": "Partnership announcement for cloud access; light on substantive content, primarily vendor/commercial."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-vs-gpt-5-5-comparison/",
+      "reason": "Comparative marketing blog from third-party vendor; lacks original analysis or substantive depth."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/what-is-an-agentic-loop-ai-coding-agents/",
+      "reason": "Vendor tutorial content from MindStudio; educational but primarily promotional for their platform."
+    },
+    {
+      "url": "https://openai.com/index/using-codex-to-simulate-black-holes",
+      "reason": "Use-case marketing story; light on technical substance, primarily customer testimonial."
+    },
+    {
+      "url": "https://www.techmeme.com/260610/p50#a260610p50",
+      "reason": "OpenAI-Visa partnership announcement is corporate news/business development, not technical innovation."
+    },
+    {
+      "url": "https://openai.com/index/prc-linked-influence-operations-ai-debates",
+      "reason": "Geopolitical influence operation report; off-topic for technical AI/agents pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/260610/p48#a260610p48",
+      "reason": "Internal corporate policy story (Microsoft restricting Claude); gossip-level news, not substantive content."
+    },
+    {
+      "url": "https://stratechery.com/2026/fable-5-anthropic-alignment-ai-tiers/",
+      "reason": "Strategic commentary and opinion; lacks technical depth or novel research contribution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/chatgpt-vs-claude-2026-which-to-use/",
+      "reason": "Vendor comparison marketing; purely opinionated guide without substantive technical analysis."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-anthropic-claude-fable-5-mythos",
+      "reason": "News summary with vendor commentary; aggregation rather than original research or analysis."
+    }
+  ]
+}

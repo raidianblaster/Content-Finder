@@ -1,0 +1,78 @@
+{
+  "date": "2026-06-20",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.18272",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv agents paper on anchoring bias in LLM-based agents with solid score (11.77) and fresh timestamp."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19704",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agents research on LLM agent evaluation methodology with score 10.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19911",
+      "stage": "dropped_source_cap",
+      "reason": "Directly relevant multi-agent systems paper on transactive memory with score 10.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19899",
+      "stage": "dropped_source_cap",
+      "reason": "Critical safety-relevant arXiv paper measuring biological risks of AI agents, score 10.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19787",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive benchmark paper on LLM agents solving operations research tasks end-to-end, score 9.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19382",
+      "stage": "dropped_source_cap",
+      "reason": "Novel multi-agent scheduling framework for asset management with clear practical relevance, score 9.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.19887",
+      "stage": "dropped_source_cap",
+      "reason": "Important financial red-teaming benchmark for LLMs with expert-guided framework, score 9.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.20235",
+      "stage": "dropped_source_cap",
+      "reason": "Taxonomy-guided benchmark for agentic academic research with solid theoretical grounding, score 9.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.20493",
+      "stage": "dropped_source_cap",
+      "reason": "Analysis of critical multi-agent LLM system failure mode (evaluator bias propagation), score 9.77."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.20520",
+      "stage": "dropped_source_cap",
+      "reason": "Security-focused agentic control planes paper addressing certificate-bound authority, score 9.77."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/260619/p21#a260619p21",
+      "reason": "OpenAI financial burn rate (earnings/cash flow reporting) lacks direct AI/ML substance for pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/260619/p18#a260619p18",
+      "reason": "Trump-Anthropic political commentary lacks technical substance despite name-drop."
+    },
+    {
+      "url": "https://www.techmeme.com/260619/p13#a260619p13",
+      "reason": "Amazon MGM movie deal announcement is entertainment industry news, not AI research or development."
+    },
+    {
+      "url": "https://stratechery.com/2026/the-stuff-of-mythos/",
+      "reason": "Philosophical essay on mythology lacks substantive AI/ML technical content for specialized pipeline."
+    },
+    {
+      "url": "https://www.interconnects.ai/p/banning-open-source-ai-would-be-a",
+      "reason": "Policy opinion piece on open-source AI bans lacks technical depth or novel research contribution."
+    }
+  ]
+}

@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Review — 2026-06-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg-0: #0a0a0d; --bg-1: #111116; --bg-2: #1a1a22;
+  --border: #2a2a35; --fg: #e8e8f0; --fg-mid: #a0a0b0; --fg-dim: #6a6a80;
+  --purple: hsl(292 60% 65%); --green: #6ee7b7; --amber: #fcd34d; --red: #fca5a5;
+  --keep-bg: rgba(110, 231, 183, 0.15); --drop-bg: rgba(252, 165, 165, 0.18);
+  --unsure-bg: rgba(252, 211, 77, 0.18);
+  --judge-drop-accent: hsl(45 90% 55%); --judge-keep-accent: hsl(0 80% 65%);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 16px 96px; background: var(--bg-0); color: var(--fg);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px; line-height: 1.5;
+}
+header {
+  padding: 24px 0 16px; border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--fg-mid); font-size: 13px; }
+.pipeline {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-mid); margin-top: 8px;
+}
+section { margin-bottom: 32px; }
+section h2 {
+  font-size: 16px; margin: 0 0 4px; color: var(--purple);
+}
+section .blurb { color: var(--fg-mid); font-size: 13px; margin-bottom: 12px; }
+.card {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.card.verdict-keep { background: var(--keep-bg); border-color: var(--green); }
+.card.verdict-drop { background: var(--drop-bg); border-color: var(--red); }
+.card.verdict-unsure { background: var(--unsure-bg); border-color: var(--amber); }
+.card.judge-suspect-drop { border-left: 3px solid var(--judge-drop-accent); }
+.card.judge-suspect-keep { border-left: 3px solid var(--judge-keep-accent); }
+.judge-flag {
+  display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  margin-left: 6px; vertical-align: middle; font-family: 'DM Mono', ui-monospace, monospace;
+}
+.judge-flag-drop { background: hsla(45,90%,55%,0.2); color: var(--judge-drop-accent); }
+.judge-flag-keep { background: hsla(0,80%,65%,0.2); color: var(--judge-keep-accent); }
+.from-stage {
+  display: inline-block; font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 10px; color: var(--fg-dim); margin-left: 8px;
+  padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px;
+  vertical-align: middle;
+}
+.judge-reason {
+  font-size: 12px; color: var(--fg-mid); font-style: italic;
+  margin: 4px 0 8px; padding-left: 8px; border-left: 2px solid var(--border);
+}
+.judge-reason::before { content: "Haiku: "; color: var(--fg-dim); font-style: normal; }
+#needs-review h2 { color: var(--judge-drop-accent); }
+.card .title {
+  font-weight: 500; margin-bottom: 4px; display: block;
+  color: var(--fg); text-decoration: none;
+}
+.card .title:hover { color: var(--purple); text-decoration: underline; }
+.card .meta {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); margin-bottom: 8px;
+}
+.card .meta .sep { margin: 0 6px; opacity: 0.5; }
+.verdicts { display: flex; gap: 6px; }
+.verdicts button {
+  background: var(--bg-2); border: 1px solid var(--border); color: var(--fg-mid);
+  font-family: inherit; font-size: 12px; padding: 4px 10px; border-radius: 4px;
+  cursor: pointer;
+}
+.verdicts button:hover { color: var(--fg); border-color: var(--fg-dim); }
+.verdicts button.active[data-verdict="keep"] {
+  background: var(--green); color: var(--bg-0); border-color: var(--green);
+}
+.verdicts button.active[data-verdict="drop"] {
+  background: var(--red); color: var(--bg-0); border-color: var(--red);
+}
+.verdicts button.active[data-verdict="unsure"] {
+  background: var(--amber); color: var(--bg-0); border-color: var(--amber);
+}
+.note-input {
+  display: none; margin-top: 8px; width: 100%; background: var(--bg-2);
+  border: 1px solid var(--border); color: var(--fg); padding: 6px 8px;
+  border-radius: 4px; font-family: inherit; font-size: 13px;
+}
+.card.has-verdict .note-input { display: block; }
+footer {
+  position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-1);
+  border-top: 1px solid var(--border); padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+}
+footer .count { color: var(--fg-mid); flex: 1; }
+footer button {
+  background: var(--purple); border: 0; color: var(--bg-0); font-weight: 500;
+  padding: 6px 14px; border-radius: 4px; cursor: pointer; font-family: inherit;
+  font-size: 12px;
+}
+footer button.secondary { background: var(--bg-2); color: var(--fg); }
+footer .hint { color: var(--fg-dim); font-size: 11px; }
+footer .save-status {
+  font-size: 11px; padding: 3px 8px; border-radius: 10px;
+  background: var(--bg-2); color: var(--fg-dim);
+  border: 1px solid var(--border);
+}
+footer .save-status.dirty { color: var(--amber); border-color: var(--amber); }
+footer .save-status.saving { color: var(--purple); border-color: var(--purple); }
+footer .save-status.saved { color: var(--green); border-color: var(--green); }
+footer .save-status.error { color: var(--red); border-color: var(--red); }
+footer button.icon {
+  background: var(--bg-2); color: var(--fg-mid); font-size: 14px;
+  padding: 4px 8px; border: 1px solid var(--border);
+}
+#settings-panel {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: none; align-items: center; justify-content: center;
+  z-index: 50;
+}
+#settings-panel.open { display: flex; }
+#settings-panel .card-inner {
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; width: min(420px, calc(100% - 32px));
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+#settings-panel h3 { margin: 0 0 8px; font-size: 16px; color: var(--fg); }
+#settings-panel p { margin: 0 0 14px; font-size: 13px; color: var(--fg-mid); }
+#settings-panel a { color: var(--purple); }
+#settings-panel input {
+  width: 100%; background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--fg); padding: 8px 10px; border-radius: 4px;
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  margin-bottom: 12px;
+}
+#settings-panel .row { display: flex; gap: 8px; justify-content: flex-end; }
+#settings-panel button {
+  background: var(--bg-2); color: var(--fg); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 4px; cursor: pointer;
+  font-family: inherit; font-size: 13px;
+}
+#settings-panel button.primary {
+  background: var(--purple); color: var(--bg-0); border-color: var(--purple);
+  font-weight: 500;
+}
+#settings-panel .test-result {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px;
+  color: var(--fg-dim); min-height: 16px; margin-bottom: 8px;
+}
+#settings-panel .test-result.ok { color: var(--green); }
+#settings-panel .test-result.fail { color: var(--red); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Filter-log review — 2026-06-15</h1>
+  <div class="sub">prompt version <code>v2</code> · label each item <code>keep / drop / unsure</code>, then download as <code>feedback/2026-06-15.jsonl</code>.</div>
+  <div class="pipeline">fetched: 54 · after_keyword_filter: 30 · after_dedupe: 26 · after_ttl_filter: 22 · after_source_cap: 7</div>
+</header>
+<section id="needs-review">
+  <h2>Needs review <span style="color:var(--fg-dim);font-weight:400">(10)</span></h2>
+  <div class="blurb">Items the judge flagged for your attention. Label these first — the rest of the page is for context.</div>
+  <div class="card judge-suspect-drop" data-url="https://www.anthropic.com/news/fable-mythos-access" data-stage="dropped_ttl">
+    <a class="title" href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Statement on US government directive to suspend access to Fable 5 and Mythos 5</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 7.45</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-06-14</span></div>
+    <div class="judge-reason">Official Anthropic statement on major regulatory action; high-signal governance event incorrectly filtered by TTL.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.anthropic.com/news/fable-mythos-access">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.anthropic.com/news/fable-mythos-access">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.anthropic.com/news/fable-mythos-access">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.anthropic.com/news/fable-mythos-access">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" data-stage="dropped_ttl">
+    <a class="title" href="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" target="_blank" rel="noopener">Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 7.45</span><span class="sep">·</span><span>1.9d old</span><span class="sep">·</span><span>first seen 2026-06-14</span></div>
+    <div class="judge-reason">Simon Willison analysis of critical US government directive against Anthropic models; trusted source commentary dropped despite high relevance.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink" data-stage="dropped_ttl">
+    <a class="title" href="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink" target="_blank" rel="noopener">Amazon CEO&#x27;s talks with U.S. officials triggered crackdown on Anthropic models</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: TTL</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 7.64</span><span class="sep">·</span><span>1.3d old</span><span class="sep">·</span><span>first seen 2026-06-14</span></div>
+    <div class="judge-reason">High-score (7.64) WSJ investigation of Amazon CEO&#x27;s role in Anthropic crackdown; substantive policy story filtered by TTL.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&amp;reflink=desktopwebshare_permalink">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially" data-stage="dropped_keyword">
+    <a class="title" href="https://www.latent.space/p/ainews-fable-and-mythos-officially" target="_blank" rel="noopener">[AINews] Fable and Mythos officially too dangerous to release</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: keyword filter</span>
+    <div class="meta"><span class="src">Latent Space</span><span class="sep">·</span><span>score 3.49</span><span class="sep">·</span><span>1.8d old</span></div>
+    <div class="judge-reason">Latent Space coverage of Fable/Mythos suspension; trusted AI source on major regulatory event dropped by keyword filter.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.latent.space/p/ainews-fable-and-mythos-officially">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://github.com/Paca-AI/paca" data-stage="dropped_source_cap">
+    <a class="title" href="https://github.com/Paca-AI/paca" target="_blank" rel="noopener">Show HN: Paca – Lightweight Jira alternative for human-AI collaboration</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.16</span><span class="sep">·</span><span>1.6d old</span></div>
+    <div class="judge-reason">Human-AI collaboration tool from HN Show; substantive project dropped by source cap despite relevance to agents/workflow space.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/Paca-AI/paca">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/Paca-AI/paca">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/Paca-AI/paca">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/Paca-AI/paca">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://status.claude.com/incidents/s9w82lp9dcn9" data-stage="dropped_source_cap">
+    <a class="title" href="https://status.claude.com/incidents/s9w82lp9dcn9" target="_blank" rel="noopener">We&#x27;ve suspended access to Claude Mythos 5 and Claude Fable 5</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.97</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="judge-reason">Official Anthropic status page on suspension of Claude models; primary-source regulatory event lost to source cap.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">keep ✓</button>
+      <button data-verdict="drop" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://status.claude.com/incidents/s9w82lp9dcn9">
+  </div>
+  <div class="card judge-suspect-drop" data-url="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole" data-stage="dropped_source_cap">
+    <a class="title" href="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole" target="_blank" rel="noopener">Why Is Claude Turning into an a**Hole?</a><span class="judge-flag judge-flag-drop" title="Haiku: possible wrong drop">⚑ suspect drop</span><span class="from-stage">was: source cap</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.86</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="judge-reason">Technical analysis of Claude behavior changes amid regulatory action; substantive commentary on model behavior dropped.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole">keep ✓</button>
+      <button data-verdict="drop" data-url="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://bramcohen.com/p/why-is-claude-turning-into-an-asshole">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.techmeme.com/260614/p13#a260614p13" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260614/p13#a260614p13" target="_blank" rel="noopener">Satya Nadella says companies must own their AI &quot;learning loops&quot; to compound human and token capital, or risk ceding all value to a handful of frontier models (Satya Nadella/@satyanadella)</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.96</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="judge-reason">Satya Nadella quote on AI learning loops is generic strategy commentary, not news; low substantive content for regulated pipeline.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p13#a260614p13">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p13#a260614p13">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p13#a260614p13">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p13#a260614p13">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance" data-stage="final">
+    <a class="title" href="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance" target="_blank" rel="noopener">Welcome to the AGI era of AI governance</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">Interconnects (Lambert)</span><span class="sep">·</span><span>score 4.93</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="judge-reason">Broad opinion piece on AI governance without concrete news; low signal relative to specific regulatory developments.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance">
+  </div>
+  <div class="card judge-suspect-keep" data-url="https://twitter.com/jietang/status/2065784751345287314" data-stage="final">
+    <a class="title" href="https://twitter.com/jietang/status/2065784751345287314" target="_blank" rel="noopener">GLM 5.2 Is Out</a><span class="judge-flag judge-flag-keep" title="Haiku: possible wrong keep">⚑ suspect keep</span><span class="from-stage">was: final</span>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 7.63</span><span class="sep">·</span><span>1.3d old</span></div>
+    <div class="judge-reason">Bare announcement of Zhipu model release with minimal context; low-substance product update.</div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://twitter.com/jietang/status/2065784751345287314">keep ✓</button>
+      <button data-verdict="drop" data-url="https://twitter.com/jietang/status/2065784751345287314">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://twitter.com/jietang/status/2065784751345287314">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://twitter.com/jietang/status/2065784751345287314">
+  </div>
+</section>
+<section>
+  <h2>Final — kept in today&#x27;s digest <span style="color:var(--fg-dim);font-weight:400">(4)</span></h2>
+  <div class="blurb">Items that survived every filter. Mark drop if you&#x27;d have cut them.</div>
+  <div class="card" data-url="https://www.anthropic.com/research/making-claude-a-chemist" data-stage="final">
+    <a class="title" href="https://www.anthropic.com/research/making-claude-a-chemist" target="_blank" rel="noopener">Making Claude a Chemist</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.62</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.anthropic.com/research/making-claude-a-chemist">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.anthropic.com/research/making-claude-a-chemist">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.anthropic.com/research/making-claude-a-chemist">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.anthropic.com/research/making-claude-a-chemist">
+  </div>
+  <div class="card" data-url="https://github.com/nex-agi/Nex-N2/issues/4" data-stage="final">
+    <a class="title" href="https://github.com/nex-agi/Nex-N2/issues/4" target="_blank" rel="noopener">Rio de Janeiro&#x27;s &quot;homegrown&quot; LLM appears to be a merge of an existing model</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 6.43</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/nex-agi/Nex-N2/issues/4">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/nex-agi/Nex-N2/issues/4">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/nex-agi/Nex-N2/issues/4">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/nex-agi/Nex-N2/issues/4">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p12#a260614p12" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260614/p12#a260614p12" target="_blank" rel="noopener">Sources: senior Anthropic technical staff are in DC to meet WH officials and try to fix the Mythos 5 dispute; both sides say they are eager to resolve the issue (Maria Curi/Axios)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.94</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p12#a260614p12">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p12#a260614p12">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p12#a260614p12">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p12#a260614p12">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p11#a260614p11" data-stage="final">
+    <a class="title" href="https://www.techmeme.com/260614/p11#a260614p11" target="_blank" rel="noopener">Canadian PM says the Anthropic ban shows the dangers of &quot;over-reliance on certain models&quot;, and compares the risks to those that led to the 2008 financial crisis (Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.94</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p11#a260614p11">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p11#a260614p11">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p11#a260614p11">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p11#a260614p11">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Source cap <span style="color:var(--fg-dim);font-weight:400">(12)</span></h2>
+  <div class="blurb">Cut because the source already had its quota for the day.</div>
+  <div class="card" data-url="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u" data-stage="dropped_source_cap">
+    <a class="title" href="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u" target="_blank" rel="noopener">Linux 7.1</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.98</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u">keep ✓</button>
+      <button data-verdict="drop" data-url="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u">
+  </div>
+  <div class="card" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog" data-stage="dropped_source_cap">
+    <a class="title" href="https://koenvangilst.nl/lab/claude-fable-shepherds-dog" target="_blank" rel="noopener">Shepherd&#x27;s Dog: A Game by Fable</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.34</span><span class="sep">·</span><span>1.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">keep ✓</button>
+      <button data-verdict="drop" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://koenvangilst.nl/lab/claude-fable-shepherds-dog">
+  </div>
+  <div class="card" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730" data-stage="dropped_source_cap">
+    <a class="title" href="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730" target="_blank" rel="noopener">On CPU Physics and CPU Cycles</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.15</span><span class="sep">·</span><span>1.8d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">keep ✓</button>
+      <button data-verdict="drop" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p9#a260614p9" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260614/p9#a260614p9" target="_blank" rel="noopener">EU says it is looking at the practical consequences of US restricting Anthropic&#x27;s models, notes such measures &quot;should not be discriminatory against partners&quot; (Reuters)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.91</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p9#a260614p9">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p9#a260614p9">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p9#a260614p9">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p9#a260614p9">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p8#a260614p8" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.techmeme.com/260614/p8#a260614p8" target="_blank" rel="noopener">Siri AI is good enough to ease Apple&#x27;s AI crisis; sources: the ability to tap third party AI models beyond OpenAI&#x27;s is already active in internal iOS 27 builds (Mark Gurman/Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 4.91</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p8#a260614p8">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p8#a260614p8">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p8#a260614p8">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p8#a260614p8">
+  </div>
+  <div class="card" data-url="https://www.verysane.ai/p/did-anthropic-ask-for-this" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.verysane.ai/p/did-anthropic-ask-for-this" target="_blank" rel="noopener">Did Anthropic ask for this?</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.74</span><span class="sep">·</span><span>0.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.verysane.ai/p/did-anthropic-ask-for-this">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.verysane.ai/p/did-anthropic-ask-for-this">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.verysane.ai/p/did-anthropic-ask-for-this">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.verysane.ai/p/did-anthropic-ask-for-this">
+  </div>
+  <div class="card" data-url="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/" data-stage="dropped_source_cap">
+    <a class="title" href="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/" target="_blank" rel="noopener">EU Commission looking at practical consequences of Anthropic decision</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.51</span><span class="sep">·</span><span>0.4d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/">
+  </div>
+  <div class="card" data-url="https://tumbleweed.nu/r/lm-3/uv/amber.html" data-stage="dropped_source_cap">
+    <a class="title" href="https://tumbleweed.nu/r/lm-3/uv/amber.html" target="_blank" rel="noopener">Chaosnet (1981)</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.48</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://tumbleweed.nu/r/lm-3/uv/amber.html">keep ✓</button>
+      <button data-verdict="drop" data-url="https://tumbleweed.nu/r/lm-3/uv/amber.html">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://tumbleweed.nu/r/lm-3/uv/amber.html">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://tumbleweed.nu/r/lm-3/uv/amber.html">
+  </div>
+  <div class="card" data-url="https://traceapp.info" data-stage="dropped_source_cap">
+    <a class="title" href="https://traceapp.info" target="_blank" rel="noopener">Show HN: Trace – Offline Mac meeting transcripts you can flag mid-call</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.37</span><span class="sep">·</span><span>1.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://traceapp.info">keep ✓</button>
+      <button data-verdict="drop" data-url="https://traceapp.info">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://traceapp.info">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://traceapp.info">
+  </div>
+  <div class="card" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163" data-stage="dropped_source_cap">
+    <a class="title" href="https://twitter.com/ClaudeDevs/status/2065597942602531163" target="_blank" rel="noopener">As a result of a US Government directive, we are suspending access to Fable 5</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.35</span><span class="sep">·</span><span>1.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">keep ✓</button>
+      <button data-verdict="drop" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://twitter.com/ClaudeDevs/status/2065597942602531163">
+  </div>
+  <div class="card" data-url="https://minigames.world/en" data-stage="dropped_source_cap">
+    <a class="title" href="https://minigames.world/en" target="_blank" rel="noopener">Show HN: I built 80 mini-games using Fable before it was shut down</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.25</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://minigames.world/en">keep ✓</button>
+      <button data-verdict="drop" data-url="https://minigames.world/en">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://minigames.world/en">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://minigames.world/en">
+  </div>
+  <div class="card" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko" data-stage="dropped_source_cap">
+    <a class="title" href="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko" target="_blank" rel="noopener">An Interview with Intel&#x27;s Kira Boyko: Xeon 6&#x27;s Product Director</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.13</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">keep ✓</button>
+      <button data-verdict="drop" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko">
+  </div>
+</section>
+<section>
+  <h2>Dropped: TTL (cross-day) <span style="color:var(--fg-dim);font-weight:400">(1)</span></h2>
+  <div class="blurb">Cut because we already showed this story on a prior day.</div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" data-stage="dropped_ttl">
+    <a class="title" href="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" target="_blank" rel="noopener">OpenAI WebRTC Audio Session, now with document context</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 6.43</span><span class="sep">·</span><span>2.0d old</span><span class="sep">·</span><span>first seen 2026-06-14</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything">
+  </div>
+</section>
+<section>
+  <h2>Dropped: Keyword filter <span style="color:var(--fg-dim);font-weight:400">(20)</span></h2>
+  <div class="blurb">Cut because the title + summary contained no scored keywords. Voluminous — skim, don&#x27;t read every one.</div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything" target="_blank" rel="noopener">Publishing WASM wheels to PyPI for use with Pyodide</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.72</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything" target="_blank" rel="noopener">luau-wasm 0.1a0</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.71</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything">
+  </div>
+  <div class="card" data-url="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything" data-stage="dropped_keyword">
+    <a class="title" href="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything" target="_blank" rel="noopener">Mapping SQLite result columns back to their source `table.column`</a>
+    <div class="meta"><span class="src">Simon Willison</span><span class="sep">·</span><span>score 4.71</span><span class="sep">·</span><span>1.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything">keep ✓</button>
+      <button data-verdict="drop" data-url="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p16#a260614p16" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p16#a260614p16" target="_blank" rel="noopener">A profile of Kalshi COO Luana Lopes Lara, who has overseen a tremendous pace of growth over the past year as the company faces political and regulatory backlash (Emily Nicolle/Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.99</span><span class="sep">·</span><span>0.0d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p16#a260614p16">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p16#a260614p16">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p16#a260614p16">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p16#a260614p16">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p15#a260614p15" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p15#a260614p15" target="_blank" rel="noopener">Chinese Tesla drivers are using tiny plastic heads to fool Tesla&#x27;s distracted-driving controls, which appear unable to distinguish figurines from real people (Zeyi Yang/Wired)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.98</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p15#a260614p15">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p15#a260614p15">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p15#a260614p15">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p15#a260614p15">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p14#a260614p14" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p14#a260614p14" target="_blank" rel="noopener">A government crackdown on online casinos operating in the Isle of Man has led to a major tax revenue loss, accelerating the island&#x27;s slide toward a fiscal cliff (Jack Adamović Davies/Bloomberg)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.97</span><span class="sep">·</span><span>0.1d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p14#a260614p14">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p14#a260614p14">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p14#a260614p14">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p14#a260614p14">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p10#a260614p10" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p10#a260614p10" target="_blank" rel="noopener">Sources: UK plans to announce an &quot;Australia plus&quot; under-16 social media ban, including restrictions on chats with strangers on gaming apps and under-18 curfews (The Guardian)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.92</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p10#a260614p10">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p10#a260614p10">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p10#a260614p10">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p10#a260614p10">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p7#a260614p7" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p7#a260614p7" target="_blank" rel="noopener">Since Russia ratcheted up control over the internet this year, some Russians are turning to solutions like using multiple phones and VPNs to evade restrictions (Andrew Osborn/Reuters)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.9</span><span class="sep">·</span><span>0.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p7#a260614p7">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p7#a260614p7">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p7#a260614p7">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p7#a260614p7">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p6#a260614p6" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p6#a260614p6" target="_blank" rel="noopener">Ajinomoto says it can meet demand through 2030 for ABF, a key material for advanced chipmaking substrates, and plans to expand capacity instead of hiking prices (Wall Street Journal)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.87</span><span class="sep">·</span><span>0.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p6#a260614p6">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p6#a260614p6">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p6#a260614p6">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p6#a260614p6">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p5#a260614p5" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p5#a260614p5" target="_blank" rel="noopener">After years of uncertainty, including delayed listings, memory chipmaker Kioxia&#x27;s shares soared 56x in 18 months, making it Japan&#x27;s most valuable company (Shuhei Ochiai/Nikkei Asia)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.83</span><span class="sep">·</span><span>0.6d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p5#a260614p5">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p5#a260614p5">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p5#a260614p5">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p5#a260614p5">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p4#a260614p4" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p4#a260614p4" target="_blank" rel="noopener">As the 2026 FIFA World Cup begins, there is still no clear replacement for &quot;Sports Twitter&quot;, which was a perfect second-screen experience during live events (Andrew Webster/The Verge)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.8</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p4#a260614p4">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p4#a260614p4">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p4#a260614p4">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p4#a260614p4">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p3#a260614p3" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p3#a260614p3" target="_blank" rel="noopener">Challenger, Gray &amp; Christmas: out of ~398K US jobs cuts in 2026 through May, employers cited AI as the reason for ~88K of them, up from ~54K in all of 2025 (Hyunsoo Rim/Sherwood News)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.79</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p3#a260614p3">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p3#a260614p3">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p3#a260614p3">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p3#a260614p3">
+  </div>
+  <div class="card" data-url="https://www.techmeme.com/260614/p2#a260614p2" data-stage="dropped_keyword">
+    <a class="title" href="https://www.techmeme.com/260614/p2#a260614p2" target="_blank" rel="noopener">Nothing CEO Carl Pei says memory is now the costliest phone component, accounting for 50%+ of BOM in some models, and predicts phone prices will rise into 2027 (Stevie Bonifield/The Verge)</a>
+    <div class="meta"><span class="src">Techmeme</span><span class="sep">·</span><span>score 2.79</span><span class="sep">·</span><span>0.7d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.techmeme.com/260614/p2#a260614p2">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.techmeme.com/260614/p2#a260614p2">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.techmeme.com/260614/p2#a260614p2">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.techmeme.com/260614/p2#a260614p2">
+  </div>
+  <div class="card" data-url="https://juniperspring.org/posts/honda-evil-valet/" data-stage="dropped_keyword">
+    <a class="title" href="https://juniperspring.org/posts/honda-evil-valet/" target="_blank" rel="noopener">Honda Civics and the Evil Valet</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.57</span><span class="sep">·</span><span>0.9d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://juniperspring.org/posts/honda-evil-valet/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://juniperspring.org/posts/honda-evil-valet/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://juniperspring.org/posts/honda-evil-valet/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://juniperspring.org/posts/honda-evil-valet/">
+  </div>
+  <div class="card" data-url="https://github.com/tensorzero/tensorzero" data-stage="dropped_keyword">
+    <a class="title" href="https://github.com/tensorzero/tensorzero" target="_blank" rel="noopener">AI OSS tool repo goes archived over night after raising $7.3M Seed</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 4.3</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/tensorzero/tensorzero">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/tensorzero/tensorzero">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/tensorzero/tensorzero">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/tensorzero/tensorzero">
+  </div>
+  <div class="card" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html" data-stage="dropped_keyword">
+    <a class="title" href="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html" target="_blank" rel="noopener">The adder at the heart of Intel&#x27;s 8087 floating-point chip</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.97</span><span class="sep">·</span><span>1.3d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html">
+  </div>
+  <div class="card" data-url="https://tonsky.me/blog/every-frame-perfect/" data-stage="dropped_keyword">
+    <a class="title" href="https://tonsky.me/blog/every-frame-perfect/" target="_blank" rel="noopener">Every Frame Perfect</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.58</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://tonsky.me/blog/every-frame-perfect/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://tonsky.me/blog/every-frame-perfect/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://tonsky.me/blog/every-frame-perfect/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://tonsky.me/blog/every-frame-perfect/">
+  </div>
+  <div class="card" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/" data-stage="dropped_keyword">
+    <a class="title" href="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/" target="_blank" rel="noopener">Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.76</span><span class="sep">·</span><span>1.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">keep ✓</button>
+      <button data-verdict="drop" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/">
+  </div>
+  <div class="card" data-url="https://github.com/tamnd/kage" data-stage="dropped_keyword">
+    <a class="title" href="https://github.com/tamnd/kage" target="_blank" rel="noopener">Show HN: Kage – Shadow any website to a single binary for offline viewing</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 5.3</span><span class="sep">·</span><span>0.2d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://github.com/tamnd/kage">keep ✓</button>
+      <button data-verdict="drop" data-url="https://github.com/tamnd/kage">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://github.com/tamnd/kage">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://github.com/tamnd/kage">
+  </div>
+  <div class="card" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal" data-stage="dropped_keyword">
+    <a class="title" href="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal" target="_blank" rel="noopener">Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case</a>
+    <div class="meta"><span class="src">Hacker News</span><span class="sep">·</span><span>score 2.48</span><span class="sep">·</span><span>1.5d old</span></div>
+    <div class="verdicts">
+      <button data-verdict="keep" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">keep ✓</button>
+      <button data-verdict="drop" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">drop ✗</button>
+      <button data-verdict="unsure" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">unsure ?</button>
+    </div>
+    <input class="note-input" placeholder="note (optional)" data-url="https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal">
+  </div>
+</section>
+<footer>
+  <span class="count" id="count">0 / 0 labelled</span>
+  <span id="save-status" class="save-status" title="auto-save status (click on error to retry)">not connected</span>
+  <button id="settings-toggle" class="icon" title="connect to GitHub">⚙</button>
+  <button id="copy-jsonl" class="secondary">copy</button>
+  <button id="download-jsonl" class="secondary">download</button>
+</footer>
+<div id="settings-panel">
+  <div class="card-inner">
+    <h3>Connect to GitHub</h3>
+    <p>Paste a fine-grained Personal Access Token scoped to <code>raidianblaster/Content-Finder</code> with <code>Contents: Read and write</code>. After this, your labels auto-save to <code>feedback/2026-06-15.jsonl</code>.</p>
+    <input id="pat-input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <div id="pat-test-result" class="test-result"></div>
+    <div class="row">
+      <button id="settings-close">cancel</button>
+      <button id="pat-test">test connection</button>
+      <button id="pat-save" class="primary">save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const REVIEW_DATE = "2026-06-15";
+const TOTAL_ITEMS = 47;
+const ITEM_INDEX = ["https://www.anthropic.com/news/fable-mythos-access", "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything", "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink", "https://www.latent.space/p/ainews-fable-and-mythos-officially", "https://github.com/Paca-AI/paca", "https://status.claude.com/incidents/s9w82lp9dcn9", "https://bramcohen.com/p/why-is-claude-turning-into-an-asshole", "https://www.techmeme.com/260614/p13#a260614p13", "https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance", "https://twitter.com/jietang/status/2065784751345287314", "https://www.anthropic.com/research/making-claude-a-chemist", "https://github.com/nex-agi/Nex-N2/issues/4", "https://www.techmeme.com/260614/p12#a260614p12", "https://www.techmeme.com/260614/p11#a260614p11", "https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u", "https://koenvangilst.nl/lab/claude-fable-shepherds-dog", "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730", "https://www.techmeme.com/260614/p9#a260614p9", "https://www.techmeme.com/260614/p8#a260614p8", "https://www.verysane.ai/p/did-anthropic-ask-for-this", "https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/", "https://tumbleweed.nu/r/lm-3/uv/amber.html", "https://traceapp.info", "https://twitter.com/ClaudeDevs/status/2065597942602531163", "https://minigames.world/en", "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko", "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything", "https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything", "https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything", "https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything", "https://www.techmeme.com/260614/p16#a260614p16", "https://www.techmeme.com/260614/p15#a260614p15", "https://www.techmeme.com/260614/p14#a260614p14", "https://www.techmeme.com/260614/p10#a260614p10", "https://www.techmeme.com/260614/p7#a260614p7", "https://www.techmeme.com/260614/p6#a260614p6", "https://www.techmeme.com/260614/p5#a260614p5", "https://www.techmeme.com/260614/p4#a260614p4", "https://www.techmeme.com/260614/p3#a260614p3", "https://www.techmeme.com/260614/p2#a260614p2", "https://juniperspring.org/posts/honda-evil-valet/", "https://github.com/tensorzero/tensorzero", "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html", "https://tonsky.me/blog/every-frame-perfect/", "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/", "https://github.com/tamnd/kage", "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal"];
+const STORAGE_PREFIX = "cf-review::" + REVIEW_DATE + "::";
+const JUDGE = {"suspect_drops": {"https://www.anthropic.com/news/fable-mythos-access": {"stage": "dropped_ttl", "reason": "Official Anthropic statement on major regulatory action; high-signal governance event incorrectly filtered by TTL."}, "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything": {"stage": "dropped_ttl", "reason": "Simon Willison analysis of critical US government directive against Anthropic models; trusted source commentary dropped despite high relevance."}, "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink": {"stage": "dropped_ttl", "reason": "High-score (7.64) WSJ investigation of Amazon CEO's role in Anthropic crackdown; substantive policy story filtered by TTL."}, "https://www.latent.space/p/ainews-fable-and-mythos-officially": {"stage": "dropped_keyword", "reason": "Latent Space coverage of Fable/Mythos suspension; trusted AI source on major regulatory event dropped by keyword filter."}, "https://github.com/Paca-AI/paca": {"stage": "dropped_source_cap", "reason": "Human-AI collaboration tool from HN Show; substantive project dropped by source cap despite relevance to agents/workflow space."}, "https://status.claude.com/incidents/s9w82lp9dcn9": {"stage": "dropped_source_cap", "reason": "Official Anthropic status page on suspension of Claude models; primary-source regulatory event lost to source cap."}, "https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-2026-06-14/": {"stage": "dropped_source_cap", "reason": "Reuters report on EU response to Anthropic restrictions; tier-1 news source on policy impact dropped by source cap."}, "https://bramcohen.com/p/why-is-claude-turning-into-an-asshole": {"stage": "dropped_source_cap", "reason": "Technical analysis of Claude behavior changes amid regulatory action; substantive commentary on model behavior dropped."}}, "suspect_keeps": {"https://twitter.com/jietang/status/2065784751345287314": {"reason": "Bare announcement of Zhipu model release with minimal context; low-substance product update."}, "https://www.techmeme.com/260614/p13#a260614p13": {"reason": "Satya Nadella quote on AI learning loops is generic strategy commentary, not news; low substantive content for regulated pipeline."}, "https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance": {"reason": "Broad opinion piece on AI governance without concrete news; low signal relative to specific regulatory developments."}}};
+
+const REPO_OWNER = "raidianblaster";
+const REPO_NAME = "Content-Finder";
+const BRANCH = "main";
+const PAT_KEY = "cf-review::__pat__";
+const SAVE_DEBOUNCE_MS = 10000;
+
+function key(url) { return STORAGE_PREFIX + url; }
+
+function loadVerdict(url) {
+  const raw = localStorage.getItem(key(url));
+  return raw ? JSON.parse(raw) : null;
+}
+
+function saveVerdict(url, patch) {
+  const cur = loadVerdict(url) || {};
+  const next = Object.assign({}, cur, patch, {
+    labelled_at: new Date().toISOString(),
+  });
+  localStorage.setItem(key(url), JSON.stringify(next));
+  updateCount();
+}
+
+function updateCard(card) {
+  const url = card.dataset.url;
+  const v = loadVerdict(url);
+  card.classList.remove("verdict-keep", "verdict-drop", "verdict-unsure", "has-verdict");
+  card.querySelectorAll(".verdicts button").forEach(b => b.classList.remove("active"));
+  if (v && v.verdict) {
+    card.classList.add("verdict-" + v.verdict, "has-verdict");
+    const btn = card.querySelector(`.verdicts button[data-verdict="${v.verdict}"]`);
+    if (btn) btn.classList.add("active");
+    const note = card.querySelector(".note-input");
+    if (note) note.value = v.note || "";
+  }
+}
+
+function updateCount() {
+  let n = 0;
+  for (const url of ITEM_INDEX) {
+    if (loadVerdict(url)) n++;
+  }
+  const el = document.getElementById("count");
+  if (el) el.textContent = n + " / " + TOTAL_ITEMS + " labelled";
+}
+
+function buildJSONL() {
+  const lines = [];
+  for (const url of ITEM_INDEX) {
+    const v = loadVerdict(url);
+    if (!v || !v.verdict) continue;
+    const meta = ITEM_META[url] || {};
+    lines.push(JSON.stringify({
+      date: REVIEW_DATE,
+      url: url,
+      title: meta.title || "",
+      source: meta.source || "",
+      summary: meta.summary || "",
+      stage: meta.stage || "",
+      score: meta.score,
+      age_days: meta.age_days,
+      verdict: v.verdict,
+      note: v.note || "",
+      labelled_at: v.labelled_at,
+    }));
+  }
+  return lines.join("\n") + (lines.length ? "\n" : "");
+}
+
+function downloadJSONL() {
+  const blob = new Blob([buildJSONL()], {type: "application/x-ndjson"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "feedback/" + REVIEW_DATE + ".jsonl";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+async function copyJSONL() {
+  await navigator.clipboard.writeText(buildJSONL());
+  const btn = document.getElementById("copy-jsonl");
+  const orig = btn.textContent;
+  btn.textContent = "copied!";
+  setTimeout(() => { btn.textContent = orig; }, 1200);
+}
+
+// -- Auto-save to GitHub ---------------------------------------------------
+
+function loadPat() { return localStorage.getItem(PAT_KEY) || ""; }
+function savePat(t) {
+  if (t) localStorage.setItem(PAT_KEY, t);
+  else localStorage.removeItem(PAT_KEY);
+}
+
+function setStatus(state, text) {
+  const el = document.getElementById("save-status");
+  if (!el) return;
+  el.className = "save-status " + state;
+  el.textContent = text;
+}
+
+function refreshStatusIdle() {
+  if (!loadPat()) {
+    // If there are unsaved labels in localStorage already, surface that so the
+    // user knows connecting will rescue them.
+    const pending = buildJSONL();
+    if (pending) setStatus("dirty", "unsaved · connect to save");
+    else setStatus("idle", "not connected");
+    return;
+  }
+  setStatus("idle", "ready");
+}
+
+function utf8ToBase64(s) {
+  const bytes = new TextEncoder().encode(s);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+function ghHeaders(pat) {
+  return {
+    "Authorization": "Bearer " + pat,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+
+function feedbackPath() { return "feedback/" + REVIEW_DATE + ".jsonl"; }
+
+function contentsUrl() {
+  return "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME
+       + "/contents/" + feedbackPath();
+}
+
+async function fetchSha(pat) {
+  // cache:"no-store" + a cache-buster: GitHub serves authenticated GETs with a
+  // short max-age, so without this the 409-retry re-fetch returns the same
+  // browser-cached stale sha and fails identically.
+  const r = await fetch(contentsUrl() + "?ref=" + BRANCH + "&_=" + Date.now(),
+    { headers: ghHeaders(pat), cache: "no-store" });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error("get sha: " + r.status);
+  const j = await r.json();
+  return j.sha || null;
+}
+
+async function putContents(pat, body) {
+  const r = await fetch(contentsUrl(), {
+    method: "PUT",
+    headers: Object.assign({"Content-Type": "application/json"}, ghHeaders(pat)),
+    body: JSON.stringify(body),
+  });
+  return r;
+}
+
+// Blob sha of the file as we last wrote it. The PUT response carries the new
+// sha authoritatively, so reusing it lets save #2 skip the GET entirely — the
+// GET is exactly what returns a stale sha (replica lag / HTTP cache) and trips
+// GitHub's 409 "does not match". null = unknown (first save, or after a 409).
+let lastKnownSha = null;
+
+async function commitJsonl() {
+  const pat = loadPat();
+  if (!pat) { setStatus("idle", "not connected"); return; }
+  const jsonl = buildJSONL();
+  if (!jsonl) { setStatus("idle", "nothing to save"); return; }
+
+  setStatus("saving", "saving…");
+  try {
+    let sha = lastKnownSha || await fetchSha(pat);
+    const body = {
+      message: "review: update " + feedbackPath(),
+      content: utf8ToBase64(jsonl),
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+    let r = await putContents(pat, body);
+    if (r.status === 409) {
+      // Our sha was stale (another device wrote, or a lagging read). Forget it
+      // and re-fetch the authoritative one before retrying once.
+      lastKnownSha = null;
+      sha = await fetchSha(pat);
+      if (sha) body.sha = sha; else delete body.sha;
+      r = await putContents(pat, body);
+    }
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(r.status + " " + (j.message || ""));
+    }
+    // Cache the new blob sha so the next save doesn't depend on a fresh read.
+    const ok = await r.json().catch(() => ({}));
+    lastKnownSha = (ok.content && ok.content.sha) || null;
+    const now = new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+    setStatus("saved", "saved " + now);
+  } catch (e) {
+    setStatus("error", "error: " + e.message + " · click to retry");
+  }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  if (!loadPat()) { setStatus("dirty", "unsaved (connect repo)"); return; }
+  setStatus("dirty", "unsaved · saving in " + (SAVE_DEBOUNCE_MS / 1000) + "s");
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { saveTimer = null; commitJsonl(); }, SAVE_DEBOUNCE_MS);
+}
+
+async function testPat() {
+  const input = document.getElementById("pat-input");
+  const out = document.getElementById("pat-test-result");
+  const pat = input.value.trim();
+  if (!pat) { out.className = "test-result fail"; out.textContent = "paste a token first"; return; }
+  out.className = "test-result"; out.textContent = "testing…";
+  try {
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME,
+      { headers: ghHeaders(pat) });
+    if (!r.ok) throw new Error(r.status + "");
+    out.className = "test-result ok"; out.textContent = "connection ok";
+  } catch (e) {
+    out.className = "test-result fail"; out.textContent = "failed: " + e.message;
+  }
+}
+
+function openSettings() {
+  document.getElementById("pat-input").value = loadPat();
+  document.getElementById("pat-test-result").textContent = "";
+  document.getElementById("settings-panel").classList.add("open");
+}
+function closeSettings() {
+  document.getElementById("settings-panel").classList.remove("open");
+}
+
+const ITEM_META = {"https://twitter.com/jietang/status/2065784751345287314": {"title": "GLM 5.2 Is Out", "summary": "727 points \u00b7 446 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "final", "score": 7.63, "age_days": 1.3}, "https://www.anthropic.com/research/making-claude-a-chemist": {"title": "Making Claude a Chemist", "summary": "86 points \u00b7 82 comments \u00b7 query: Anthropic", "source": "Hacker News", "stage": "final", "score": 6.62, "age_days": 0.9}, "https://github.com/nex-agi/Nex-N2/issues/4": {"title": "Rio de Janeiro's \"homegrown\" LLM appears to be a merge of an existing model", "summary": "252 points \u00b7 134 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "final", "score": 6.43, "age_days": 0.3}, "https://www.techmeme.com/260614/p13#a260614p13": {"title": "Satya Nadella says companies must own their AI \"learning loops\" to compound human and token capital, or risk ceding all value to a handful of frontier models (Satya Nadella/@satyanadella)", "summary": "Satya Nadella / @satyanadella : Satya Nadella says companies must own their AI &ldquo;learning loops&rdquo; to compound human and token capital, or risk ceding all value to a handful of frontier models &nbsp; &mdash;&nbsp; I've been thinking a lot about the future of the firm in an AI-driven economy.&nbsp; This transition is different than any previous platform shift.", "source": "Techmeme", "stage": "final", "score": 4.96, "age_days": 0.2}, "https://www.techmeme.com/260614/p12#a260614p12": {"title": "Sources: senior Anthropic technical staff are in DC to meet WH officials and try to fix the Mythos 5 dispute; both sides say they are eager to resolve the issue (Maria Curi/Axios)", "summary": "Maria Curi / Axios : Sources: senior Anthropic technical staff are in DC to meet WH officials and try to fix the Mythos 5 dispute; both sides say they are eager to resolve the issue &nbsp; &mdash;&nbsp; Senior technical Anthropic staff are in Washington to meet with White House officials to try to fix a dispute that has taken &hellip;", "source": "Techmeme", "stage": "final", "score": 4.94, "age_days": 0.2}, "https://www.techmeme.com/260614/p11#a260614p11": {"title": "Canadian PM says the Anthropic ban shows the dangers of \"over-reliance on certain models\", and compares the risks to those that led to the 2008 financial crisis (Bloomberg)", "summary": "Bloomberg : Canadian PM says the Anthropic ban shows the dangers of &ldquo;over-reliance on certain models&rdquo;, and compares the risks to those that led to the 2008 financial crisis &nbsp; &mdash;&nbsp; Prime Minister Mark Carney said the US export ban blocking all foreign access to Anthropic PBC's latest artificial &hellip;", "source": "Techmeme", "stage": "final", "score": 4.94, "age_days": 0.2}, "https://www.interconnects.ai/p/welcome-to-the-agi-era-of-ai-governance": {"title": "Welcome to the AGI era of AI governance", "summary": "It's a one-way door and we weren't ready for it.", "source": "Interconnects (Lambert)", "stage": "final", "score": 4.93, "age_days": 0.2}, "https://github.com/Paca-AI/paca": {"title": "Show HN: Paca \u2013 Lightweight Jira alternative for human-AI collaboration", "summary": "161 points \u00b7 57 comments \u00b7 query: AI agents", "source": "Hacker News", "stage": "dropped_source_cap", "score": 6.16, "age_days": 1.6}, "https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+LxRLmRweUzQw@mail.gmail.com/T/#u": {"title": "Linux 7.1", "summary": "207 points \u00b7 78 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.98, "age_days": 0.3}, "https://status.claude.com/incidents/s9w82lp9dcn9": {"title": "We've suspended access to Claude Mythos 5 and Claude Fable 5", "summary": "252 points \u00b7 5 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.97, "age_days": 1.9}, "https://koenvangilst.nl/lab/claude-fable-shepherds-dog": {"title": "Shepherd's Dog: A Game by Fable", "summary": "184 points \u00b7 132 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.34, "age_days": 1.7}, "https://6it.dev/blog/on-cpu-physics-and-cpu-cycles-80730": {"title": "On CPU Physics and CPU Cycles", "summary": "66 points \u00b7 9 comments \u00b7 query: MCP", "source": "Hacker News", "stage": "dropped_source_cap", "score": 5.15, "age_days": 1.8}, "https://www.techmeme.com/260614/p9#a260614p9": {"title": "EU says it is looking at the practical consequences of US restricting Anthropic's models, notes such measures \"should not be discriminatory against partners\" (Reuters)", "summary": "Reuters : EU says it is looking at the practical consequences of US restricting Anthropic's models, notes such measures &ldquo;should not be discriminatory against partners&rdquo; &nbsp; &mdash;&nbsp; The European Commission said on Sunday that it is assessing the practical implications of a U.S. export control directive &hellip;", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.91, "age_days": 0.3}, "https://www.techmeme.com/260614/p8#a260614p8": {"title": "Siri AI is good enough to ease Apple's AI crisis; sources: the ability to tap third party AI models beyond OpenAI's is already active in internal iOS 27 builds (Mark Gurman/Bloomberg)", "summary": "Mark Gurman / Bloomberg : Siri AI is good enough to ease Apple's AI crisis; sources: the ability to tap third party AI models beyond OpenAI's is already active in internal iOS 27 builds &nbsp; &mdash;&nbsp; The company prepares for the foldable iPhone and touch-screen MacBook.&nbsp; &mdash;&nbsp; Apple's new Siri AI, despite mainly delivering &hellip;", "source": "Techmeme", "stage": "dropped_source_cap", "score": 4.91, "age_days": 0.3}, "https://bramcohen.com/p/why-is-claude-turning-into-an-asshole": {"title": "Why Is Claude Turning into an a**Hole?", "summary": "88 points \u00b7 125 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.86, "age_days": 0.1}, "https://www.verysane.ai/p/did-anthropic-ask-for-this": {"title": "Did Anthropic ask for this?", "summary": "75 points \u00b7 28 comments \u00b7 query: Anthropic", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.74, "age_days": 0.0}, "https://www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14/": {"title": "EU Commission looking at practical consequences of Anthropic decision", "summary": "61 points \u00b7 91 comments \u00b7 query: Anthropic", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.51, "age_days": 0.4}, "https://tumbleweed.nu/r/lm-3/uv/amber.html": {"title": "Chaosnet (1981)", "summary": "53 points \u00b7 5 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.48, "age_days": 0.2}, "https://traceapp.info": {"title": "Show HN: Trace \u2013 Offline Mac meeting transcripts you can flag mid-call", "summary": "69 points \u00b7 21 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.37, "age_days": 1.1}, "https://twitter.com/ClaudeDevs/status/2065597942602531163": {"title": "As a result of a US Government directive, we are suspending access to Fable 5", "summary": "90 points \u00b7 4 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.35, "age_days": 1.9}, "https://minigames.world/en": {"title": "Show HN: I built 80 mini-games using Fable before it was shut down", "summary": "53 points \u00b7 75 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.25, "age_days": 1.0}, "https://chipsandcheese.com/p/an-interview-with-intels-kira-boyko": {"title": "An Interview with Intel's Kira Boyko: Xeon 6's Product Director", "summary": "55 points \u00b7 4 comments \u00b7 query: LLM", "source": "Hacker News", "stage": "dropped_source_cap", "score": 4.13, "age_days": 1.5}, "https://www.wsj.com/tech/ai/amazon-ceos-talks-with-u-s-officials-triggered-crackdown-on-anthropic-models-dcc90578?st=Yct6gx&reflink=desktopwebshare_permalink": {"title": "Amazon CEO's talks with U.S. officials triggered crackdown on Anthropic models", "summary": "777 points \u00b7 581 comments \u00b7 query: Anthropic", "source": "Hacker News", "stage": "dropped_ttl", "score": 7.64, "age_days": 1.3}, "https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything": {"title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5", "summary": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5 Well this is nuts : The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthropic employees. The net effect of this order is that we must abruptly disable Fable 5 and Mythos 5 for all our customers to ensure compliance. Access to ", "source": "Simon Willison", "stage": "dropped_ttl", "score": 7.45, "age_days": 1.9}, "https://www.anthropic.com/news/fable-mythos-access": {"title": "Statement on US government directive to suspend access to Fable 5 and Mythos 5", "summary": "3117 points \u00b7 2279 comments \u00b7 query: Claude", "source": "Hacker News", "stage": "dropped_ttl", "score": 7.45, "age_days": 1.9}, "https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything": {"title": "OpenAI WebRTC Audio Session, now with document context", "summary": "OpenAI WebRTC Audio Session, now with document context I built the first version of this tool in December 2024 to try out the then-new OpenAI WebRTC API for interacting with their realtime audio models. Last month OpenAI introduced a brand new model to that API called GPT\u2011Realtime\u20112 , which they promoted as \"our first voice model with GPT\u20115\u2011class reasoning\" - with a Sep 30, 2024 knowledge cut-off. I've been waiting for that model to show up in the ChatGPT iPhone app but it still hasn't, so I rev", "source": "Simon Willison", "stage": "dropped_ttl", "score": 6.43, "age_days": 2.0}, "https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything": {"title": "Publishing WASM wheels to PyPI for use with Pyodide", "summary": "The Pyodide 314.0 release announcement (via Hacker News ) includes news I've been looking forward to for a long time: You can now publish Python packages built for Pyodide (or any Python runtime compatible with the PyEmscripten platform defined in PEP 783 ) directly to PyPI and install them at runtime. Previously, the Pyodide maintainers had to maintain, build, and host over 300 packages ourselves. This created a significant burden on our maintainers and became a major bottleneck for the communi", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.72, "age_days": 1.0}, "https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything": {"title": "luau-wasm 0.1a0", "summary": "Release: luau-wasm 0.1a0 See Publishing WASM wheels to PyPI for use with Pyodide for details. Tags: lua , webassembly , pyodide", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.71, "age_days": 1.0}, "https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything": {"title": "Mapping SQLite result columns back to their source `table.column`", "summary": "Research: Mapping SQLite result columns back to their source `table.column` It would be neat if arbitrary SQL queries in Datasette could be rendered with additional information based on which columns from which tables were included in the results. To build that, we would need to be able to look at a SQL query like select users.name, orders.total from users join orders on orders.user_id = users.id and programmatically identify the table.column for each result - navigating not just joins but also ", "source": "Simon Willison", "stage": "dropped_keyword", "score": 4.71, "age_days": 1.0}, "https://www.techmeme.com/260614/p16#a260614p16": {"title": "A profile of Kalshi COO Luana Lopes Lara, who has overseen a tremendous pace of growth over the past year as the company faces political and regulatory backlash (Emily Nicolle/Bloomberg)", "summary": "Emily Nicolle / Bloomberg : A profile of Kalshi COO Luana Lopes Lara, who has overseen a tremendous pace of growth over the past year as the company faces political and regulatory backlash &nbsp; &mdash;&nbsp; The firm's co-founder talks about the celebrity buzz that sparked her interest in prediction markets, the legal battles her firm faces and Jay-Z's advice.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.99, "age_days": 0.0}, "https://www.techmeme.com/260614/p15#a260614p15": {"title": "Chinese Tesla drivers are using tiny plastic heads to fool Tesla's distracted-driving controls, which appear unable to distinguish figurines from real people (Zeyi Yang/Wired)", "summary": "Zeyi Yang / Wired : Chinese Tesla drivers are using tiny plastic heads to fool Tesla's distracted-driving controls, which appear unable to distinguish figurines from real people &nbsp; &mdash;&nbsp; A cottage industry of celebrity figurines, blinking screens, and other DIY gadgets is helping drivers bypass Tesla's distracted-driving controls.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.98, "age_days": 0.1}, "https://www.techmeme.com/260614/p14#a260614p14": {"title": "A government crackdown on online casinos operating in the Isle of Man has led to a major tax revenue loss, accelerating the island's slide toward a fiscal cliff (Jack Adamovi\u0107 Davies/Bloomberg)", "summary": "Jack Adamovi&amp;cacute Davies / Bloomberg : A government crackdown on online casinos operating in the Isle of Man has led to a major tax revenue loss, accelerating the island's slide toward a fiscal cliff &nbsp; &mdash;&nbsp; Online casinos were a big driver of the Isle of Man's economy.&nbsp; Lately, they've become a liability.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.97, "age_days": 0.1}, "https://www.techmeme.com/260614/p10#a260614p10": {"title": "Sources: UK plans to announce an \"Australia plus\" under-16 social media ban, including restrictions on chats with strangers on gaming apps and under-18 curfews (The Guardian)", "summary": "The Guardian : Sources: UK plans to announce an &ldquo;Australia plus&rdquo; under-16 social media ban, including restrictions on chats with strangers on gaming apps and under-18 curfews &nbsp; &mdash;&nbsp; Sources say hardline measures will also prevent young users from being able to talk to strangers on gaming apps", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.92, "age_days": 0.3}, "https://www.techmeme.com/260614/p7#a260614p7": {"title": "Since Russia ratcheted up control over the internet this year, some Russians are turning to solutions like using multiple phones and VPNs to evade restrictions (Andrew Osborn/Reuters)", "summary": "Andrew Osborn / Reuters : Since Russia ratcheted up control over the internet this year, some Russians are turning to solutions like using multiple phones and VPNs to evade restrictions &nbsp; &mdash;&nbsp; In a quiet cafe popular for its free Wi-Fi and good coffee, a Russian interior designer logs onto a virtual private network &hellip;", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.9, "age_days": 0.3}, "https://www.techmeme.com/260614/p6#a260614p6": {"title": "Ajinomoto says it can meet demand through 2030 for ABF, a key material for advanced chipmaking substrates, and plans to expand capacity instead of hiking prices (Wall Street Journal)", "summary": "Wall Street Journal : Ajinomoto says it can meet demand through 2030 for ABF, a key material for advanced chipmaking substrates, and plans to expand capacity instead of hiking prices &nbsp; &mdash;&nbsp; The company is expanding its capacity for Ajinomoto Build-up Film, with production expected to begin in 2032", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.87, "age_days": 0.5}, "https://www.techmeme.com/260614/p5#a260614p5": {"title": "After years of uncertainty, including delayed listings, memory chipmaker Kioxia's shares soared 56x in 18 months, making it Japan's most valuable company (Shuhei Ochiai/Nikkei Asia)", "summary": "Shuhei Ochiai / Nikkei Asia : After years of uncertainty, including delayed listings, memory chipmaker Kioxia's shares soared 56x in 18 months, making it Japan's most valuable company &nbsp; &mdash;&nbsp; TOKYO &mdash; Japanese memory maker Kioxia Holdings is now the top Japanese company by market capitalization, capping off a dramatic period &hellip;", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.83, "age_days": 0.6}, "https://www.techmeme.com/260614/p4#a260614p4": {"title": "As the 2026 FIFA World Cup begins, there is still no clear replacement for \"Sports Twitter\", which was a perfect second-screen experience during live events (Andrew Webster/The Verge)", "summary": "Andrew Webster / The Verge : As the 2026 FIFA World Cup begins, there is still no clear replacement for &ldquo;Sports Twitter&rdquo;, which was a perfect second-screen experience during live events &nbsp; &mdash;&nbsp; The current landscape of social media networks just isn't the same for big moments like this.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.8, "age_days": 0.7}, "https://www.techmeme.com/260614/p3#a260614p3": {"title": "Challenger, Gray & Christmas: out of ~398K US jobs cuts in 2026 through May, employers cited AI as the reason for ~88K of them, up from ~54K in all of 2025 (Hyunsoo Rim/Sherwood News)", "summary": "Hyunsoo Rim / Sherwood News : Challenger, Gray &amp; Christmas: out of ~398K US jobs cuts in 2026 through May, employers cited AI as the reason for ~88K of them, up from ~54K in all of 2025 &nbsp; &mdash;&nbsp; Employers cited AI for nearly 40% of May's cuts &mdash; a share that's kept climbing since Challenger began tracking it in 2023.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.79, "age_days": 0.7}, "https://www.techmeme.com/260614/p2#a260614p2": {"title": "Nothing CEO Carl Pei says memory is now the costliest phone component, accounting for 50%+ of BOM in some models, and predicts phone prices will rise into 2027 (Stevie Bonifield/The Verge)", "summary": "Stevie Bonifield / The Verge : Nothing CEO Carl Pei says memory is now the costliest phone component, accounting for 50%+ of BOM in some models, and predicts phone prices will rise into 2027 &nbsp; &mdash;&nbsp; &#65279;With RAM getting more expensive, Carl Pei says holiday discounts probably won't be the same this year.", "source": "Techmeme", "stage": "dropped_keyword", "score": 2.79, "age_days": 0.7}, "https://www.latent.space/p/ainews-fable-and-mythos-officially": {"title": "[AINews] Fable and Mythos officially too dangerous to release", "summary": "We are in the strangest timeline.", "source": "Latent Space", "stage": "dropped_keyword", "score": 3.49, "age_days": 1.8}, "https://juniperspring.org/posts/honda-evil-valet/": {"title": "Honda Civics and the Evil Valet", "summary": "384 points \u00b7 92 comments \u00b7 query: eval", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.57, "age_days": 0.9}, "https://github.com/tensorzero/tensorzero": {"title": "AI OSS tool repo goes archived over night after raising $7.3M Seed", "summary": "272 points \u00b7 170 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 4.3, "age_days": 1.5}, "https://www.righto.com/2026/06/intel-8087-adder-reverse-engineered.html": {"title": "The adder at the heart of Intel's 8087 floating-point chip", "summary": "133 points \u00b7 28 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.97, "age_days": 1.3}, "https://tonsky.me/blog/every-frame-perfect/": {"title": "Every Frame Perfect", "summary": "817 points \u00b7 269 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.58, "age_days": 1.5}, "https://chrisdevblog.com/2026/06/08/running-dos-on-behringers-ddx3216-using-a-diy-x86-bios/": {"title": "Running DOS on Behringers DDX3216 with a DIY x86-Bios from Scratch", "summary": "110 points \u00b7 30 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.76, "age_days": 1.2}, "https://github.com/tamnd/kage": {"title": "Show HN: Kage \u2013 Shadow any website to a single binary for offline viewing", "summary": "337 points \u00b7 76 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 5.3, "age_days": 0.2}, "https://www.theguardian.com/business/2026/jun/12/sam-bankman-fried-loses-appeal": {"title": "Sam Bankman-Fried loses bid to appeal against fraud conviction in FTX case", "summary": "90 points \u00b7 72 comments \u00b7 query: RAG", "source": "Hacker News", "stage": "dropped_keyword", "score": 2.48, "age_days": 1.5}};
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".card").forEach(card => {
+    updateCard(card);
+    card.querySelectorAll(".verdicts button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const url = btn.dataset.url;
+        const cur = loadVerdict(url);
+        if (cur && cur.verdict === btn.dataset.verdict) {
+          localStorage.removeItem(key(url));
+        } else {
+          saveVerdict(url, {verdict: btn.dataset.verdict});
+        }
+        updateCard(card);
+        scheduleSave();
+      });
+    });
+    const note = card.querySelector(".note-input");
+    if (note) {
+      note.addEventListener("input", () => {
+        if (loadVerdict(note.dataset.url)) {
+          saveVerdict(note.dataset.url, {note: note.value});
+          scheduleSave();
+        }
+      });
+    }
+  });
+  document.getElementById("download-jsonl").addEventListener("click", downloadJSONL);
+  document.getElementById("copy-jsonl").addEventListener("click", copyJSONL);
+  document.getElementById("settings-toggle").addEventListener("click", openSettings);
+  document.getElementById("settings-close").addEventListener("click", closeSettings);
+  document.getElementById("pat-test").addEventListener("click", testPat);
+  document.getElementById("pat-save").addEventListener("click", () => {
+    const v = document.getElementById("pat-input").value.trim();
+    savePat(v);
+    closeSettings();
+    // Flush any labels already in localStorage (e.g. labelled before the PAT
+    // was connected) the moment a token lands.
+    if (v && buildJSONL()) commitJsonl(); else refreshStatusIdle();
+  });
+  document.getElementById("save-status").addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains("error")) commitJsonl();
+  });
+  updateCount();
+  refreshStatusIdle();
+});
+</script>
+
+</body>
+</html>
