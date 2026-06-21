@@ -221,6 +221,9 @@ class FilterLog:
     after_dedupe: int = 0
     after_ttl: int = 0
     after_source_cap: int = 0
+    # Per-source fetch outcome: {source, kind, ok, items, error}. Lets a quiet
+    # day be told apart from silently-broken feeds (2026-06-21).
+    fetch_status: list = field(default_factory=list)
     dropped_keyword: list = field(default_factory=list)
     dropped_dedupe: list = field(default_factory=list)
     dropped_ttl: list = field(default_factory=list)
@@ -238,6 +241,7 @@ class FilterLog:
                 "after_ttl_filter": self.after_ttl,
                 "after_source_cap": self.after_source_cap,
             },
+            "fetch_status": self.fetch_status,
             "dropped_keyword": self.dropped_keyword,
             "dropped_dedupe": self.dropped_dedupe,
             "dropped_ttl": self.dropped_ttl,
@@ -2194,16 +2198,31 @@ def gather(
     items: list[Item] = []
 
     with ThreadPoolExecutor(max_workers=8) as pool:
-        futures = []
+        # Map each future to (source_label, kind) so a failure can be attributed
+        # to a specific feed rather than logged anonymously to stderr.
+        future_meta: dict = {}
         for src, url in RSS_SOURCES:
-            futures.append(pool.submit(fetch_rss, src, url, since))
+            future_meta[pool.submit(fetch_rss, src, url, since)] = (src, "rss")
         for q in HN_QUERIES:
-            futures.append(pool.submit(fetch_hn, q, since, hn_min_points))
-        for fut in as_completed(futures):
+            future_meta[pool.submit(fetch_hn, q, since, hn_min_points)] = (
+                f"HN: {q}", "hn"
+            )
+        for fut in as_completed(future_meta):
+            src_label, kind = future_meta[fut]
             try:
-                items.extend(fut.result())
+                result = fut.result()
+                items.extend(result)
+                log.fetch_status.append({
+                    "source": src_label, "kind": kind,
+                    "ok": True, "items": len(result), "error": None,
+                })
             except Exception as exc:
-                print(f"[warn] fetcher failed: {exc}", file=sys.stderr)
+                print(f"[warn] fetcher failed for {src_label}: {exc}",
+                      file=sys.stderr)
+                log.fetch_status.append({
+                    "source": src_label, "kind": kind,
+                    "ok": False, "items": 0, "error": str(exc),
+                })
 
     for it in items:
         it.score = score_item(it)
