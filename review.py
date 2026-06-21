@@ -76,6 +76,14 @@ h1 { font-size: 22px; margin: 0 0 4px; }
   font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
   color: var(--fg-mid); margin-top: 8px;
 }
+.fetch-status {
+  font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;
+  color: var(--fg-mid); margin-top: 6px;
+}
+.fetch-status.has-failures { color: var(--red); }
+.fetch-failures { margin: 4px 0 0; padding-left: 18px; }
+.fetch-failures li { margin: 2px 0; }
+.fetch-failures code { color: var(--fg); }
 section { margin-bottom: 32px; }
 section h2 {
   font-size: 16px; margin: 0 0 4px; color: var(--purple);
@@ -267,6 +275,36 @@ def _render_card(
     </div>
     <input class="note-input" placeholder="note (optional)" data-url="{url}">
   </div>'''
+
+
+def _render_fetch_status(fetch_status: list) -> str:
+    """Summarise per-source fetch outcomes for the page header.
+
+    Surfaces failed feeds by name + error so a silently-broken source is not
+    mistaken for a genuinely quiet day. Empty-but-ok feeds are normal and only
+    counted, not listed. Returns "" for historical logs with no fetch_status.
+    """
+    if not fetch_status:
+        return ""
+    ok = [s for s in fetch_status if s.get("ok")]
+    failed = [s for s in fetch_status if not s.get("ok")]
+    total_items = sum(s.get("items", 0) for s in ok)
+    summary = (
+        f"Feeds: {len(ok)}/{len(fetch_status)} ok · "
+        f"{len(failed)} failed · {total_items} items fetched"
+    )
+    if not failed:
+        return f'<div class="fetch-status ok">{_esc(summary)}</div>'
+    rows = "\n".join(
+        f'    <li><code>{_esc(s.get("source", "") or "?")}</code> — '
+        f'{_esc(s.get("error", "") or "error")}</li>'
+        for s in failed
+    )
+    return (
+        f'<div class="fetch-status has-failures">{_esc(summary)}\n'
+        f'  <ul class="fetch-failures">\n{rows}\n  </ul>\n'
+        f'</div>'
+    )
 
 
 def _render_section(
@@ -711,6 +749,7 @@ def render(log: dict, judge: dict | None = None) -> str:
     sections_html = [s for s in sections_html if s]
 
     pipeline_line = " · ".join(f"{k}: {v}" for k, v in pipeline.items())
+    fetch_status_html = _render_fetch_status(log.get("fetch_status", []))
 
     js = JS_TEMPLATE % {
         "date_json": json.dumps(date),
@@ -736,6 +775,7 @@ def render(log: dict, judge: dict | None = None) -> str:
   <h1>Filter-log review — {_esc(date)}</h1>
   <div class="sub">prompt version <code>{_esc(prompt_version)}</code> · label each item <code>keep / drop / unsure</code>, then download as <code>feedback/{_esc(date)}.jsonl</code>.</div>
   <div class="pipeline">{_esc(pipeline_line)}</div>
+  {fetch_status_html}
 </header>
 {chr(10).join(sections_html)}
 <footer>
