@@ -51,10 +51,15 @@ def test_apply_source_cap_prefers_higher_scores():
 
 
 def test_gather_applies_source_cap(monkeypatch):
-    """gather() must run apply_source_cap so the renderers receive a balanced set."""
-    fake_items = [_item("arXiv cs.AI", 10 - i, f"a-{i}") for i in range(8)] + [
-        _item("Simon Willison", 5, "sw-1"),
-    ]
+    """gather() must run apply_source_cap so the renderers receive a balanced set.
+
+    Uses 8 arXiv + 8 distinct other sources so the cap bites (arXiv capped to 3)
+    without the low-diversity floor kicking in to top arXiv back up.
+    """
+    fake_items = (
+        [_item("arXiv cs.AI", 10 - i, f"a-{i}") for i in range(8)]
+        + [_item(f"Source {i}", 5, f"s-{i}") for i in range(8)]
+    )
     monkeypatch.setattr(cf, "fetch_rss", lambda *a, **kw: [])
     monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
     monkeypatch.setattr(cf, "dedupe", lambda items: fake_items)
@@ -62,3 +67,47 @@ def test_gather_applies_source_cap(monkeypatch):
     out, _ = cf.gather(days=1, hn_min_points=50)
 
     assert sum(1 for it in out if it.source == "arXiv cs.AI") <= 3
+
+
+def test_gather_tops_up_after_source_cap_on_low_diversity(monkeypatch):
+    """A low-diversity day (e.g. weekend arXiv flood + dead feeds) must not be
+    starved by the per-source cap: top up from capped-out items to the minimum
+    so the digest is never near-empty. Regression for 2026-06-21 (5 items)."""
+    fake_items = (
+        [_item("arXiv cs.AI", 100 - i, f"a-{i}") for i in range(20)]
+        + [_item("Techmeme", 50, "t-0")]
+        + [_item("Techmeme", 49, "t-1")]
+    )
+    monkeypatch.setattr(cf, "fetch_rss", lambda *a, **kw: [])
+    monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
+    monkeypatch.setattr(cf, "dedupe", lambda items: fake_items)
+
+    out, log = cf.gather(days=1, hn_min_points=50)
+
+    # Floor honoured: at least MIN_RENDERED_ITEMS surface rather than 5.
+    assert len(out) >= cf.MIN_RENDERED_ITEMS
+    # The cap is relaxed by topping arXiv back up past its cap of 3.
+    assert sum(1 for it in out if it.source == "arXiv cs.AI") > 3
+    # The filter log's `final` matches what is actually rendered.
+    assert len(log.final) == len(out)
+
+
+def test_gather_does_not_top_up_when_enough_after_cap(monkeypatch):
+    """When the cap already leaves >= minimum diverse items, no top-up runs and
+    the per-source cap is still respected."""
+    fake_items = [
+        _item(f"Source {i}", 10, f"s-{i}-{j}")
+        for i in range(12) for j in range(2)
+    ]
+    monkeypatch.setattr(cf, "fetch_rss", lambda *a, **kw: [])
+    monkeypatch.setattr(cf, "fetch_hn", lambda *a, **kw: [])
+    monkeypatch.setattr(cf, "dedupe", lambda items: fake_items)
+
+    out, _ = cf.gather(days=1, hn_min_points=50)
+
+    # 12 sources x 2 items, cap 3 -> all 24 kept (cap never bites), no top-up needed.
+    assert all(
+        sum(1 for it in out if it.source == src) <= 3
+        for src in {it.source for it in out}
+    )
+    assert len(out) == 24

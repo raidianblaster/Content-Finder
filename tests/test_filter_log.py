@@ -86,7 +86,10 @@ def test_source_cap_drops_are_logged(monkeypatch):
     ]
     _bypass_fetchers(monkeypatch, items)
 
-    _, log = cf.gather(days=1, hn_min_points=50, max_per_source=2)
+    # minimum_items=2 keeps the low-diversity floor from rescuing the capped
+    # items, so this test stays focused on cap-drop *logging* (the floor's own
+    # behaviour is covered in test_source_cap.py).
+    _, log = cf.gather(days=1, hn_min_points=50, max_per_source=2, minimum_items=2)
 
     assert len(log.dropped_source_cap) >= 3, (
         f"Expected at least 3 source-capped items, got {len(log.dropped_source_cap)}"
