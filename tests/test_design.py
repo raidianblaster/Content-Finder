@@ -74,15 +74,16 @@ def test_section_headers_use_v2_neutral_not_legacy_purple():
 
 
 def test_css_uses_warm_amber_accent():
-    """V2 spec replaces the purple accent with warm amber #e8b765.
+    """V2 replaced the purple accent with warm amber; Next-Level bumps that
+    amber to the slightly more saturated #e8b14f from the redesign palette.
 
-    Per-tag chip rules + .tag-* pills still reference the old --purple/--green
-    backward-compat aliases (cleaned up in PR2/PR3); the load-bearing assertion
-    is that the primary --accent token resolves to amber, not purple.
+    The load-bearing assertion is that the primary --accent token resolves to
+    the warm amber, not purple. (Hue value tracked precisely in
+    test_next_level_design.py::test_accent_token_bumped_to_next_level_amber.)
     """
     css = cf.HTML_CSS
-    assert "#e8b765" in css, "amber accent hex missing from CSS"
-    assert re.search(r"--accent:\s*#e8b765", css), \
+    assert "#e8b14f" in css, "amber accent hex missing from CSS"
+    assert re.search(r"--accent:\s*#e8b14f", css), \
         "--accent should be bound to the amber hex"
 
 

@@ -636,7 +636,8 @@ def render_plain(items: list[Item], top_n: int) -> str:
 
 HTML_CSS = """
 :root {
-  /* V2 — warm-amber on deep neutral. Spec: Content Finder V2 handoff. */
+  /* Next Level — saturated, unified palette on deep neutral.
+     Spec: Content Finder - Next Level. */
   --bg:          #0a0a0e;
   --bg-soft:     #0f0f15;
   --surface:     #14141c;
@@ -645,29 +646,34 @@ HTML_CSS = """
   --line-strong: rgba(255, 255, 255, 0.16);
 
   --fg:    #f3f1ec;
-  --fg-2:  #b3aea1;
+  --fg-2:  #c8c3b6;
   --fg-3:  #7a766c;
   --fg-4:  #54514a;
 
-  --accent:      #e8b765;
-  --accent-soft: rgba(232, 183, 101, 0.12);
-  --accent-line: rgba(232, 183, 101, 0.32);
+  --accent:      #e8b14f;
+  --accent-soft: rgba(232, 177, 79, 0.12);
+  --accent-line: rgba(232, 177, 79, 0.32);
   --accent-ink:  #0a0a0e;
   --accent-bg:   var(--accent-soft);
   --accent-border: var(--accent-line);
 
-  /* Category-chip tints — pastel on dark, used as tag text + border */
-  --cat-models:     #c7d2fe;
-  --cat-agents:     #fcd5b5;
-  --cat-tooling:    #b9e4c9;
-  --cat-regulation: #f7c0c8;
-  --cat-enterprise: #d6c7f0;
-  --cat-research:   #b9d7e8;
+  /* Category tints — Next-Level saturated hues. One hue per category, shared
+     by the filter chips (.chip[data-tag]) and the story tags (.tag[data-cat]). */
+  --cat-models:     #8ab4ff;
+  --cat-agents:     #e3ab5f;
+  --cat-tooling:    #79c89a;
+  --cat-regulation: #e58fa6;
+  --cat-enterprise: #b69ce8;
+  --cat-research:   #6fc2cf;
 
   --col:       920px;
   --pad:       28px;
   --radius:    14px;
   --radius-sm: 10px;
+
+  /* Editorial serif display face for headlines (Newsreader); body stays
+     Hanken Grotesk, labels stay JetBrains Mono. */
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
 
   color-scheme: dark;
 }
@@ -681,7 +687,7 @@ body {
   text-rendering: optimizeLegibility;
   min-height: 100vh;
   background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(232,183,101,0.04), transparent 60%),
+    radial-gradient(1200px 600px at 20% -10%, rgba(232,177,79,0.04), transparent 60%),
     var(--bg);
 }
 .page {
@@ -749,7 +755,31 @@ body {
 .topnav a.active { color: var(--fg); background: rgba(255,255,255,0.06); }
 
 /* Masthead */
-.masthead { padding: 72px 0 40px; }
+.masthead { position: relative; padding: 72px 0 40px; }
+/* Radial accent glow behind the hero (under the grain + content). */
+.masthead::after {
+  content: '';
+  position: absolute;
+  inset: -40px -200px auto;
+  height: 320px;
+  z-index: 0;
+  background: radial-gradient(55% 80% at 50% 0%,
+              rgba(232,177,79,0.13), rgba(232,177,79,0) 70%);
+  pointer-events: none;
+}
+/* Film grain — SVG fractal noise, overlaid at low opacity. Decorative only. */
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+/* Masthead content sits above the decorative glow + grain layers. */
+.masthead > * { position: relative; z-index: 2; }
 .kicker {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -758,10 +788,12 @@ body {
 }
 .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .mast-title {
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
   font-size: clamp(40px, 5.5vw, 60px);
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   margin: 16px 0 18px;
   color: var(--fg);
   text-wrap: balance;
@@ -879,11 +911,12 @@ footer.site-footer a:hover { color: var(--accent); }
   content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--fg-4);
 }
 .story-title {
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 22px;
-  line-height: 1.28;
+  font-size: 23px;
+  line-height: 1.2;
   color: var(--fg);
-  letter-spacing: -0.018em;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   margin: 0;
 }
@@ -1040,22 +1073,70 @@ footer.site-footer a:hover { color: var(--accent); }
 .chip[data-tag="Regulation"] { color: var(--cat-regulation); border-color: color-mix(in oklab, var(--cat-regulation) 28%, transparent); }
 .chip[data-tag="Enterprise"] { color: var(--cat-enterprise); border-color: color-mix(in oklab, var(--cat-enterprise) 28%, transparent); }
 .chip[data-tag="Research"]   { color: var(--cat-research);   border-color: color-mix(in oklab, var(--cat-research) 28%, transparent); }
-.chip[data-tag="Models"][aria-pressed="true"]     { background: var(--cat-models);     border-color: var(--cat-models);     color: var(--bg); }
-.chip[data-tag="Agents"][aria-pressed="true"]     { background: var(--cat-agents);     border-color: var(--cat-agents);     color: var(--bg); }
-.chip[data-tag="Tooling"][aria-pressed="true"]    { background: var(--cat-tooling);    border-color: var(--cat-tooling);    color: var(--bg); }
-.chip[data-tag="Regulation"][aria-pressed="true"] { background: var(--cat-regulation); border-color: var(--cat-regulation); color: var(--bg); }
-.chip[data-tag="Enterprise"][aria-pressed="true"] { background: var(--cat-enterprise); border-color: var(--cat-enterprise); color: var(--bg); }
-.chip[data-tag="Research"][aria-pressed="true"]   { background: var(--cat-research);   border-color: var(--cat-research);   color: var(--bg); }
+/* Active category chip fills with its hue and glows in the same colour. */
+.chip[data-tag="Models"][aria-pressed="true"]     { background: var(--cat-models);     border-color: var(--cat-models);     color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-models) 55%, transparent),     0 6px 22px color-mix(in oklab, var(--cat-models) 32%, transparent); }
+.chip[data-tag="Agents"][aria-pressed="true"]     { background: var(--cat-agents);     border-color: var(--cat-agents);     color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-agents) 55%, transparent),     0 6px 22px color-mix(in oklab, var(--cat-agents) 32%, transparent); }
+.chip[data-tag="Tooling"][aria-pressed="true"]    { background: var(--cat-tooling);    border-color: var(--cat-tooling);    color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-tooling) 55%, transparent),    0 6px 22px color-mix(in oklab, var(--cat-tooling) 32%, transparent); }
+.chip[data-tag="Regulation"][aria-pressed="true"] { background: var(--cat-regulation); border-color: var(--cat-regulation); color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-regulation) 55%, transparent), 0 6px 22px color-mix(in oklab, var(--cat-regulation) 32%, transparent); }
+.chip[data-tag="Enterprise"][aria-pressed="true"] { background: var(--cat-enterprise); border-color: var(--cat-enterprise); color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-enterprise) 55%, transparent), 0 6px 22px color-mix(in oklab, var(--cat-enterprise) 32%, transparent); }
+.chip[data-tag="Research"][aria-pressed="true"]   { background: var(--cat-research);   border-color: var(--cat-research);   color: var(--bg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cat-research) 55%, transparent),   0 6px 22px color-mix(in oklab, var(--cat-research) 32%, transparent); }
+
+/* ===== Today's pulse strip (category-volume bar under the masthead) ===== */
+.pulse { padding: 10px 0 2px; animation: pulse-in 400ms ease both; }
+.pulse-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 9px;
+}
+.pulse-label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--fg-3);
+}
+.pulse-sub {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; color: var(--fg-4);
+}
+.pulse-bar {
+  display: flex; gap: 3px; height: 10px;
+  border-radius: 6px; overflow: hidden;
+}
+.pulse-seg { flex-basis: 0; min-width: 4px; opacity: 0.85; }
+.pulse-legend {
+  display: flex; gap: 18px; flex-wrap: wrap; margin-top: 11px;
+}
+.pulse-legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; color: var(--fg-2);
+}
+.pulse-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.pulse-seg[data-cat="Models"],     .pulse-dot[data-cat="Models"]     { background: var(--cat-models); }
+.pulse-seg[data-cat="Agents"],     .pulse-dot[data-cat="Agents"]     { background: var(--cat-agents); }
+.pulse-seg[data-cat="Tooling"],    .pulse-dot[data-cat="Tooling"]    { background: var(--cat-tooling); }
+.pulse-seg[data-cat="Regulation"], .pulse-dot[data-cat="Regulation"] { background: var(--cat-regulation); }
+.pulse-seg[data-cat="Enterprise"], .pulse-dot[data-cat="Enterprise"] { background: var(--cat-enterprise); }
+.pulse-seg[data-cat="Research"],   .pulse-dot[data-cat="Research"]   { background: var(--cat-research); }
+@keyframes pulse-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 /* ===== V2 sections (used by takeaways + future named sections) ===== */
-section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }
+section.block { position: relative; padding: 56px 0; border-bottom: 1px solid var(--line); }
 section.block:last-of-type { border-bottom: 0; }
+/* Ghost section number — giant faint numeral behind the section heading. */
+.sec-ghost {
+  position: absolute; top: 16px; left: -12px; z-index: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 700; font-size: 128px; line-height: 1;
+  color: var(--fg); opacity: 0.05;
+  pointer-events: none; user-select: none;
+}
+.sec-head, .stories, .takes { position: relative; z-index: 1; }
 .sec-head {
   display: flex; align-items: baseline; justify-content: space-between;
   margin-bottom: 32px; gap: 16px;
 }
 .sec-title {
-  font-weight: 700; font-size: 30px; letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 32px; letter-spacing: -0.015em;
   color: var(--fg);
   margin: 0;
 }
@@ -1066,8 +1147,8 @@ section.block:last-of-type { border-bottom: 0; }
 }
 
 /* ===== V2 takeaways grid (3-col card row) ===== */
-.takes { display: grid; grid-template-columns: 1fr; gap: 14px; }
-@media (min-width: 760px) { .takes { grid-template-columns: 1fr 1fr 1fr; } }
+.takes { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 760px) { .takes { grid-template-columns: 1fr 1fr; } }
 .take {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1085,9 +1166,10 @@ section.block:last-of-type { border-bottom: 0; }
   margin-bottom: 14px;
 }
 .take-head {
-  font-weight: 700;
-  font-size: 18.5px;
-  line-height: 1.3;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.22;
   letter-spacing: -0.01em;
   color: var(--fg);
   margin-bottom: 10px;
@@ -1118,6 +1200,7 @@ section.block:last-of-type { border-bottom: 0; }
   .take-body { font-size: 15px; }
   .sec-title { font-size: 25px; }
   section.block { padding: 40px 0; }
+  .sec-ghost { font-size: 76px; top: 22px; }
 }
 
 /* Article list — wraps the per-section <section class="block"> groups */
@@ -1295,6 +1378,49 @@ def _chip_counts_for_body(body_html: str) -> dict[str, int] | None:
     """
     counts = _count_tags_in_body(body_html)
     return counts if any(counts.values()) else None
+
+
+def render_pulse_strip(counts: dict[str, int] | None) -> str:
+    """Today's pulse: a stacked category-volume bar + legend under the masthead.
+
+    Each category becomes a `.pulse-seg` whose width is proportional to its
+    count (``flex-grow:N`` over ``flex-basis:0``); zero-count categories are
+    omitted. Returns ``""`` when there are no counts (e.g. the ``--no-summarize``
+    ranked path), mirroring the chip-count suppression so we never render an
+    all-zero bar.
+
+    The strip is decorative and redundant with the chip count badges, so the
+    whole section is ``aria-hidden`` — screen-reader users get the numbers once,
+    from the chips.
+    """
+    if not counts:
+        return ""
+    active = [(tag, counts.get(tag, 0)) for tag in TAG_TAXONOMY
+              if counts.get(tag, 0) > 0]
+    if not active:
+        return ""
+
+    seg_parts: list[str] = []
+    legend_parts: list[str] = []
+    for tag, n in active:
+        seg_parts.append(
+            f'<div class="pulse-seg" data-cat="{tag}" '
+            f'style="flex-grow:{n}" title="{tag} {n}"></div>'
+        )
+        legend_parts.append(
+            '<span class="pulse-legend-item">'
+            f'<span class="pulse-dot" data-cat="{tag}"></span>{tag} {n}</span>'
+        )
+    return (
+        '<section class="pulse" aria-hidden="true">'
+        '<div class="pulse-head">'
+        '<span class="pulse-label">Today\'s pulse</span>'
+        '<span class="pulse-sub">by category volume</span>'
+        '</div>'
+        f'<div class="pulse-bar">{"".join(seg_parts)}</div>'
+        f'<div class="pulse-legend">{"".join(legend_parts)}</div>'
+        '</section>'
+    )
 
 
 INTERACTIONS_JS = """
@@ -1912,6 +2038,8 @@ def _render_synthesis_sections(rest_sections: list[tuple[str, str]]) -> tuple[st
         n = len(section_cards)
         sec_meta = f"{sec_no:02d} · {n} stor{'y' if n == 1 else 'ies'}"
         parts.append('<section class="block">')
+        # Giant low-opacity watermark numeral in the left margin (decorative).
+        parts.append(f'<div class="sec-ghost" aria-hidden="true">{sec_no:02d}</div>')
         parts.append('<div class="sec-head">')
         parts.append(f'<h2 class="sec-title">{html.escape(label)}</h2>')
         parts.append(f'<span class="sec-meta">{sec_meta}</span>')
@@ -2049,7 +2177,9 @@ def _page_shell(
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link href="https://fonts.googleapis.com/css2?'
         'family=Hanken+Grotesk:wght@400;500;600;700&'
-        'family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">',
+        'family=JetBrains+Mono:wght@400;500&'
+        'family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;'
+        '1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">',
         f"<title>{html.escape(title)}</title>",
         f"<style>{HTML_CSS}</style>",
         "</head><body>",
@@ -2075,6 +2205,9 @@ def _page_shell(
             counts=_chip_counts_for_body(body_html),
             total=item_count,
         ),
+        # Today's pulse: stacked category-volume bar. Suppressed (like the chip
+        # counts) when the body carries no tags, e.g. the --no-summarize path.
+        render_pulse_strip(_chip_counts_for_body(body_html)),
         takeaways_html or "",
         body_html,
         '<footer class="site-footer">',
