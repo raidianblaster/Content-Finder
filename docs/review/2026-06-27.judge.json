@@ -3,96 +3,52 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2606.26474",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent research on tool use mechanistic interpretability deserves retention over lower-scoring content."
+      "url": "https://simonwillison.net/2026/Jun/26/timothy-b-lee/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Fresh Simon Willison content (0.5 days old, score 6.84) likely contains substantive AI commentary, but dropped by cross-day TTL despite strong source credibility."
     },
     {
-      "url": "https://arxiv.org/abs/2606.26511",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv work on temporal validity in agentic RAG systems directly addresses frontier agent reliability problems."
+      "url": "https://simonwillison.net/2026/Jun/26/openai/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Recent Simon Willison post on OpenAI (0.7 days, score 6.79) dropped by TTL despite trusted source and timely relevance to major AI news."
     },
     {
-      "url": "https://arxiv.org/abs/2606.26793",
-      "stage": "dropped_source_cap",
-      "reason": "Novel MCTS red-teaming approach for agentic RAG represents significant safety/robustness research for agents."
+      "url": "https://huggingface.co/blog/vllm-jobs",
+      "stage": "dropped_ttl",
+      "reason": "Hugging Face technical blog on vLLM deployment (score 4.59) is substantive tooling content from a trusted source, but dropped by TTL."
     },
     {
-      "url": "https://arxiv.org/abs/2606.27027",
-      "stage": "dropped_source_cap",
-      "reason": "Security research on MCP poisoning attacks is critical infrastructure risk for agent systems."
+      "url": "https://simonwillison.net/2026/Jun/26/hack-my-ai-assistant/#atom-everything",
+      "stage": "dropped_keyword",
+      "reason": "Simon Willison's hands-on security testing of AI assistants (score 4.81) is high-signal content but filtered by keyword despite clear relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2606.26346",
-      "stage": "dropped_source_cap",
-      "reason": "Empirical evaluation of tool-augmented LLM agents on real-world energy tasks provides practical agent benchmarking."
+      "url": "https://simonwillison.net/2026/Jun/26/incident-report/#atom-everything",
+      "stage": "dropped_keyword",
+      "reason": "Simon Willison CVE incident report (score 4.8) provides security-relevant technical content but was rejected by keyword filter."
     },
     {
-      "url": "https://arxiv.org/abs/2606.26216",
-      "stage": "dropped_source_cap",
-      "reason": "Agentic AI security benchmark for smart contract vulnerabilities addresses critical frontier capability assessment."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.25996",
-      "stage": "dropped_source_cap",
-      "reason": "Agentic synthetic data generation represents practical agent application with high signal for practitioners."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.27009",
-      "stage": "dropped_source_cap",
-      "reason": "Semantic early-stopping for iterative agents directly addresses efficiency and reliability in agent loops."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.26099",
-      "stage": "dropped_source_cap",
-      "reason": "Governance-focused benchmarking of open-weight models is substantive policy-relevant AI/ML research."
-    },
-    {
-      "url": "https://arxiv.org/abs/2606.26987",
-      "stage": "dropped_source_cap",
-      "reason": "Mechanistic interpretability research on emotion vectors in LLMs provides novel insights into model internals."
+      "url": "https://www.dwarkesh.com/p/the-next-paradigm",
+      "stage": "dropped_keyword",
+      "reason": "Dwarkesh Podcast on AI learning paradigm shifts (score 3.78) is substantive forward-looking AI analysis but dropped by keyword filter."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/vibe-coding-vs-agentic-engineering-google-spectrum/",
-      "reason": "Vendor marketing content from MindStudio lacks substantive technical contribution beyond marketing framing."
+      "url": "https://www.techmeme.com/260626/p30#a260626p30",
+      "reason": "Duplicate coverage of Anthropic Mythos 5 policy story (nearly identical to p32 at 6.86 vs 6.89 score); one should have been deduped."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/run-glm-5-2-claude-code-openrouter-setup/",
-      "reason": "How-to tutorial from vendor lacks novel research or critical analysis, primarily promotional."
+      "url": "https://www.techmeme.com/260627/p1#a260627p1",
+      "reason": "Insurance tech startup code-reuse dispute (score 3.92) is unrelated to AI/ML news and lacks substantive AI content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-agent-loop-recurring-business-tasks-guide/",
-      "reason": "Generic vendor how-to guide on agent loops lacks substance compared to research-grade content dropped."
-    },
-    {
-      "url": "https://www.techmeme.com/260626/p17#a260626p17",
-      "reason": "Policy commentary on GPT-5.6 availability lacks technical substance; primarily organizational/regulatory news."
+      "url": "https://www.techmeme.com/260626/p31#a260626p31",
+      "reason": "Meta lobbying on child-harm legislation (score 3.87) is regulatory but not AI-specific; tangential to core AI news mission."
     },
     {
       "url": "https://simonwillison.net/2026/Jun/26/dean-w-ball/#atom-everything",
-      "reason": "Quote aggregation post lacks original analysis or substantive technical content."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Jun/26/timothy-b-lee/#atom-everything",
-      "reason": "Quote aggregation lacks independent technical contribution or analysis."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Jun/26/openai/#atom-everything",
-      "reason": "Link aggregation/quoting format provides minimal original insight relative to dropped research papers."
-    },
-    {
-      "url": "https://openai.com/index/previewing-gpt-5-6-sol",
-      "reason": "Vendor product announcement is marketing content, not substantive technical or research contribution."
-    },
-    {
-      "url": "https://www.techmeme.com/260626/p30#a260626p30",
-      "reason": "Regulatory/policy news about model release lacks technical substance compared to dropped research."
-    },
-    {
-      "url": "https://www.latent.space/p/ainews-openai-reports-median-internal",
-      "reason": "Internal metrics reporting lacks independent verification and is company self-reporting rather than research."
+      "reason": "Generic quote-sharing post (score 6.86) lacks substantive content; appears to be quote aggregation rather than original analysis."
     }
   ]
 }
