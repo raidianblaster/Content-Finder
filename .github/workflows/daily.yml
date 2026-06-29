@@ -57,7 +57,12 @@ jobs:
             --format html \
             --out docs/index.html
           cp docs/index.html "docs/archive/${{ steps.date.outputs.today }}.html"
-          sed -i 's|href="archive\.html"|href="../archive.html"|g' \
+          # The archived copy lives one dir deeper, so its root-relative topbar
+          # links (index.html / archive.html) need a ../ prefix or they 404.
+          # relativize_archived_links() is the single, unit-tested source of
+          # truth for that rewrite (replaces the old sed that missed index.html).
+          python -c "import sys, content_finder as c; from pathlib import Path; \
+p = Path(sys.argv[1]); p.write_text(c.relativize_archived_links(p.read_text()))" \
             "docs/archive/${{ steps.date.outputs.today }}.html"
 
       - name: Rebuild archive index

@@ -4,9 +4,9 @@ Locking down `data-theme="dark"` gives a single attribute hook for any
 future CSS-only theming switch — and pins the invariant that the homepage
 and archive ship the same theme declaration.
 
-Note: the homepage <html> tag carries extra data-mast / data-date attributes
-for the compact masthead config; the archive tag does not.  The shared invariant
-is data-theme="dark" on the element itself.
+Note: both the homepage and the archive <html> tag carry data-mast="compact"
+/ data-date="prominent" so their mastheads render at the same density. The
+shared invariant pinned here is data-theme="dark" on the element itself.
 """
 from __future__ import annotations
 

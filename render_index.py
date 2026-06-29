@@ -170,7 +170,8 @@ def render_archive_html(
 
     parts: list[str] = [
         "<!doctype html>",
-        '<html lang="en" data-theme="dark"><head>',
+        '<html lang="en" data-theme="dark" data-mast="compact" '
+        'data-date="prominent"><head>',
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<meta name="theme-color" content="#0a0a0e">',
@@ -181,7 +182,9 @@ def render_archive_html(
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link href="https://fonts.googleapis.com/css2?'
         'family=Hanken+Grotesk:wght@400;500;600;700&'
-        'family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">',
+        'family=JetBrains+Mono:wght@400;500&'
+        'family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;'
+        '1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">',
         "<title>Archive · Content Finder</title>",
         f"<style>{HTML_CSS}{ARCHIVE_LIST_CSS}</style>",
         "</head><body class=\"archive\">",

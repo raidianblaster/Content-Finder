@@ -201,6 +201,20 @@ def count_archived_issues(archive_dir: "Path | str") -> int:
     return sum(1 for entry in p.iterdir() if entry.is_file() and _ARCHIVE_FILE_RE.match(entry.name))
 
 
+def relativize_archived_links(html_text: str) -> str:
+    """Rewrite root-relative topbar links for a digest copied into docs/archive/.
+
+    docs/index.html links to its siblings as ``index.html`` / ``archive.html``.
+    The archived copy lives one directory deeper (docs/archive/<date>.html), so
+    those same links must climb out with ``../`` or they 404 — which is exactly
+    what happened to the CF brand and the "Today" nav link on every archive
+    page. Idempotent: the ``../``-prefixed forms no longer match.
+    """
+    html_text = html_text.replace('href="index.html"', 'href="../index.html"')
+    html_text = html_text.replace('href="archive.html"', 'href="../archive.html"')
+    return html_text
+
+
 def distinct_sources(items: "list[Item]") -> int:
     return len({it.source for it in items if it.source})
 
