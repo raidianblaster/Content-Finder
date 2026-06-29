@@ -149,6 +149,33 @@ def test_archive_non_today_rows_omit_today_pill():
 
 
 # ---------------------------------------------------------------------------
+# Masthead density + font parity with the homepage
+# ---------------------------------------------------------------------------
+
+def test_archive_html_tag_uses_compact_masthead():
+    """Archive must opt into the same compact masthead density as the homepage.
+
+    Without data-mast="compact" the shared CSS renders .mast-title up to 60px
+    (vs the homepage's ~34px), so the archive headline reads visibly larger
+    than every digest page. Pinning the attribute keeps the two consistent.
+    """
+    out = ri.render_archive_html(_entries(3))
+    assert re.search(r'<html\b[^>]*data-mast="compact"[^>]*>', out)
+
+
+def test_archive_loads_newsreader_display_font():
+    """.mast-title uses var(--font-display) = Newsreader; the archive page must
+    actually request that webfont or the headline silently falls back to a
+    different serif than the homepage's."""
+    out = ri.render_archive_html(_entries(3))
+    # Must be in the Google Fonts request, not merely the --font-display CSS
+    # fallback list (which names Newsreader whether or not it's loaded).
+    font_link = re.search(r'<link href="https://fonts\.googleapis\.com[^"]*"', out)
+    assert font_link, "no Google Fonts <link> found"
+    assert "Newsreader" in font_link.group(0)
+
+
+# ---------------------------------------------------------------------------
 # Container width override — archive uses 760px, not the 920px page col
 # ---------------------------------------------------------------------------
 
