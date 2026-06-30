@@ -13,7 +13,18 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import yaml
+
 WORKFLOW = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "daily.yml"
+
+
+def test_workflow_is_valid_yaml():
+    """GitHub rejects the whole file (0s failure, no digest) if daily.yml is not
+    valid YAML. A `run: |` literal block needs every script line indented at
+    least as far as the block start; a flush-left line continuation silently
+    dedents out of the block and breaks parsing. Guard against that regressing.
+    """
+    yaml.safe_load(WORKFLOW.read_text())
 
 
 def _cron_minute() -> int:
