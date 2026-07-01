@@ -29,6 +29,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
 
+      - name: Validate workflow YAML
+        # Guards against the class of bug that silently broke the daily cron:
+        # a malformed .github/workflows/*.yml is rejected by GitHub with a 0s
+        # failure and no digest. check-jsonschema validates each workflow file
+        # against the official GitHub Actions schema (parse errors + bad keys +
+        # structural mistakes) — stronger than a plain YAML parse.
+        run: |
+          check-jsonschema --builtin-schema vendor.github-workflows \
+            .github/workflows/*.yml
+
       - name: Run tests
         # NOTE: test_archive_first_row_has_today_modifier_and_pill is a
         # pre-existing time-dependent test (tests/test_archive_v2.py pins

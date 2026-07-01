@@ -1,2 +1,6 @@
 -r requirements.txt
 pytest>=8.0.0
+# Validates .github/workflows/*.yml against the official GitHub Actions schema
+# (CI "Validate workflow YAML" step). Catches parse errors, bad keys, and
+# malformed structure — the class of bug that silently broke the daily cron.
+check-jsonschema>=0.29
