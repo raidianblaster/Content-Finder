@@ -3,96 +3,66 @@
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2607.13718",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent safety paper on user permissions and enforcement deserves inclusion over lower-signal dropped items."
+      "url": "https://arxiv.org/abs/2607.13104",
+      "stage": "dropped_ttl",
+      "reason": "High-signal survey on self-improving agentic systems (score 11.75) from arXiv—core agents research that should survive TTL."
     },
     {
-      "url": "https://arxiv.org/abs/2607.13998",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive agent evaluation research (DVM-HALL and NHAS metrics) with clear relevance to agentic AI assessment."
+      "url": "https://arxiv.org/abs/2607.13705",
+      "stage": "dropped_ttl",
+      "reason": "AgentCompass unified evaluation infrastructure (score 10.75)—benchmark work directly relevant to agent capability assessment."
     },
     {
-      "url": "https://arxiv.org/abs/2606.06223",
-      "stage": "dropped_source_cap",
-      "reason": "Critical safety research on reward hacking and mechanistic monitoring in LLM agents merits preservation."
+      "url": "https://arxiv.org/abs/2607.13071",
+      "stage": "dropped_ttl",
+      "reason": "Agentic LLM failure mode analysis on fabricated results (score 10.75)—substantive safety/reliability research."
     },
     {
-      "url": "https://arxiv.org/abs/2607.11098",
-      "stage": "dropped_source_cap",
-      "reason": "AgentCheck tool for LLM agent evaluation and mitigation is substantive technical contribution in agent development."
+      "url": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+      "stage": "dropped_ttl",
+      "reason": "GPT-Red self-improvement work (score 10.53) from OpenAI—official frontier lab release on core capability."
     },
     {
-      "url": "https://arxiv.org/abs/2607.13716",
-      "stage": "dropped_source_cap",
-      "reason": "CAVA runtime governance framework for agentic AI is directly relevant governance/safety research."
+      "url": "https://simonwillison.net/2026/Jul/16/kimi-k3/#atom-everything",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison analysis of Kimi K3 (score 9.94) from trusted source—substantive model evaluation."
     },
     {
-      "url": "https://arxiv.org/abs/2607.13081",
-      "stage": "dropped_source_cap",
-      "reason": "SingGuard-NSFA guardrails for agentic AI via generative reasoning addresses critical safety gap."
+      "url": "https://lmstudio.ai/blog/introducing-lm-studio-bionic",
+      "stage": "dropped_ttl",
+      "reason": "LM Studio agent product announcement (score 9.38)—open-source agentic tooling relevant to practitioners."
     },
     {
-      "url": "https://arxiv.org/abs/2607.13594",
-      "stage": "dropped_source_cap",
-      "reason": "SAFETY SENTRY framework for human intervention routing in agents is substantive safety contribution."
+      "url": "https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb",
+      "stage": "dropped_ttl",
+      "reason": "NVIDIA embedding model ranked #1 on RTEB (score 5.89) from Hugging Face—retrieval agents infrastructure."
     },
     {
-      "url": "https://arxiv.org/abs/2607.13618",
-      "stage": "dropped_source_cap",
-      "reason": "STOCKTAKE measurement framework for perception-action gaps in LLM agents addresses fundamental evaluation challenge."
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.13085",
-      "stage": "dropped_source_cap",
-      "reason": "Baseline evaluation of coding agents for autonomous penetration testing is timely security-focused research."
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.14037",
-      "stage": "dropped_source_cap",
-      "reason": "Early adoption analysis of agentic coding tools on GitHub is substantive real-world adoption study."
+      "url": "https://www.latent.space/p/ainews-thinkys-inkling-975b-a41b",
+      "stage": "dropped_ttl",
+      "reason": "Latent Space coverage of Inkling 975B multimodal open model (score 5.78)—significant open-weight release."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.pigeonsandplanes.com/read/music-piracy-what-cd-oink-nine-inch-nails-streaming",
-      "reason": "Music piracy history article has no AI/ML relevance and should not appear in AI news pipeline."
+      "url": "https://www.tryai.dev/blog/ai-music-video-arena-claude-vs-gpt-5.6",
+      "reason": "Vendor marketing comparison ($100 music video) with no technical substance or novel insights."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gpt-5-6-soul-vs-claude-fable-5-agentic-comparison/",
-      "reason": "Vendor comparison article from MindStudio lacks substantive technical content and reads as marketing."
+      "url": "https://www.theocharis.dev/blog/llm-critics-are-right-i-use-llms-anyway/",
+      "reason": "Personal opinion piece on LLM criticism with no new research, benchmarks, or actionable technical content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-agent-workflow-youtube-video-one-prompt/",
-      "reason": "Tutorial content from vendor blog on workflow generation is low-signal promotional material."
+      "url": "https://www.mindstudio.ai/blog/ai-agents-business-automation-workspace-capture-evals/",
+      "reason": "MindStudio vendor tutorial for their own product—low-signal promotional content."
     },
     {
-      "url": "https://joinedanthropic.com",
-      "reason": "YC founder history fact lacks actionable AI/ML news content and appears tangential to product."
+      "url": "https://www.mindstudio.ai/blog/ai-video-generation-content-marketing-multi-agent-workflow/",
+      "reason": "MindStudio how-to blog for video generation—marketing content without novel technical contribution."
     },
     {
-      "url": "https://openai.com/index/why-teens-deserve-access-safe-ai",
-      "reason": "Policy opinion piece lacks technical substance and reads more like advocacy than news."
-    },
-    {
-      "url": "https://openai.com/index/cars24",
-      "reason": "Customer case study is vendor marketing material without novel technical insights."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/ai-agent-harness-bloat-audit-clean/",
-      "reason": "Utility guide from MindStudio is promotional content without substantive research value."
-    },
-    {
-      "url": "https://deepmind.google/blog/our-approach-to-bioresilience/",
-      "reason": "High-level safety framing document lacks specific technical contribution or findings."
-    },
-    {
-      "url": "https://lmstudio.ai/blog/introducing-lm-studio-bionic",
-      "reason": "Product announcement/launch post from vendor lacks independent verification or technical depth."
-    },
-    {
-      "url": "https://openai.com/index/cars24",
-      "reason": "Case study content is vendor marketing example rather than substantive technical news."
+      "url": "https://www.mindstudio.ai/blog/gpt-56-ultra-mode-multi-agent-coordination/",
+      "reason": "MindStudio product explainer for GPT-5.6 features—vendor marketing without independent analysis."
     }
   ]
 }
