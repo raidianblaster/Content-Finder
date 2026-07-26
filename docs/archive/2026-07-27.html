@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-<title>Archive · Content Finder</title>
+<title>AI Digest — Mon 27 Jul 2026</title>
 <style>
 :root {
   /* Next Level — saturated, unified palette on deep neutral.
@@ -608,225 +608,116 @@ section.block:last-of-type { border-bottom: 0; }
     transition-duration: 0.001ms !important;
   }
 }
-
-body.archive { --col: 760px; }
-.arch-list { padding: 8px 0 24px; }
-.arch-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 24px;
-  align-items: center;
-  padding: 18px 4px;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  transition: background 140ms ease;
-}
-.arch-row::after {
-  content: '';
-  position: absolute; left: -12px; right: -12px; top: 0; bottom: 0;
-  border-radius: 10px; pointer-events: none;
-  background: transparent; transition: background 140ms ease;
-  z-index: -1;
-}
-.arch-row:hover::after { background: rgba(255,255,255,0.025); }
-.arch-row:hover .arch-date { color: var(--accent); }
-.arch-row:hover .arch-arrow { color: var(--accent); transform: translateX(4px); }
-.arch-row:last-child { border-bottom: 0; }
-.arch-date {
-  font-size: 19px;
-  font-weight: 500;
-  color: var(--fg);
-  letter-spacing: -0.012em;
-  transition: color 140ms ease;
-}
-.arch-day {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 12.5px;
-  color: var(--fg-3);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-align: right;
-  min-width: 90px;
-}
-.arch-arrow {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  color: var(--fg-4);
-  transition: transform 160ms ease, color 140ms ease;
-  min-width: 16px; text-align: right;
-}
-.arch-row.is-today { border-bottom-color: var(--accent-line); }
-.arch-row.is-today::after { background: var(--accent-soft); }
-.arch-row.is-today .arch-arrow { color: var(--accent); }
-.today-pill {
-  display: inline-flex;
-  margin-left: 12px;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 10.5px; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-ink);
-  background: var(--accent);
-  padding: 3px 8px; border-radius: 4px;
-  vertical-align: middle;
-}
-
-/* Topline row: latest link + count */
-.topline {
-  margin-top: 30px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px;
-}
-.latest-link {
-  display: inline-flex; align-items: center; gap: 10px;
-  text-decoration: none; color: var(--fg-2);
-  font-size: 14.5px; font-weight: 500;
-  padding: 6px 0;
-  transition: color 140ms ease;
-}
-.latest-link:hover { color: var(--accent); }
-.latest-link .back { font-family: "JetBrains Mono", ui-monospace, monospace; transition: transform 160ms ease; }
-.latest-link:hover .back { transform: translateX(-3px); }
-.count {
-  font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px;
-  color: var(--fg-3); letter-spacing: 0.1em; text-transform: uppercase;
-}
-.count b { color: var(--fg); font-weight: 500; }
-
-.arch-empty {
-  padding: 36px 4px; color: var(--fg-3); font-size: 15px;
-  text-align: center;
-  border-bottom: 1px solid var(--line);
-}
-
-@media (max-width: 640px) {
-  .arch-row {
-    grid-template-columns: 1fr auto;
-    gap: 14px;
-    padding: 16px 4px;
-  }
-  .arch-arrow { display: none; }
-  .arch-date { font-size: 17.5px; }
-  .arch-day { font-size: 11.5px; min-width: 72px; }
-  .arch-row.is-today .today-pill { font-size: 10px; padding: 2px 6px; }
-}
 </style>
-</head><body class="archive">
+</head><body>
+<a class="skip-link" href="#content">Skip to content</a>
 <header class="topbar">
 <div class="wrap topbar-inner">
-<a class="brand" href="index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
+<a class="brand" href="../index.html"><div class="brand-mark">CF</div><span>Content Finder</span></a>
 <nav class="topnav">
-<a href="index.html">Today</a>
-<a href="archive.html" class="active">Archive</a>
+<a href="../index.html" class="active">Today</a>
+<a href="../archive.html">Archive</a>
+<a href="#takeaways">Takeaways</a>
 </nav>
 </div>
 </header>
-<main class="wrap">
-<section class="masthead">
-<div class="kicker"><span class="dot"></span>AI Digest Archive</div>
-<h1 class="mast-title">All past <span class="accent">digests.</span></h1>
-<p class="mast-sub">Every issue, newest first. Click any date to read its digest.</p>
-<div class="topline">
-<a class="latest-link" href="index.html"><span class="back">←</span><span>Latest digest</span></a>
-<span class="count"><b>88</b> archived digests</span>
-</div>
-</section>
-<div class="arch-list">
-<a class="arch-row is-today" href="archive/2026-07-27.html"><span class="arch-date">27 Jul 2026 <span class="today-pill">Today</span></span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-26.html"><span class="arch-date">26 Jul 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-25.html"><span class="arch-date">25 Jul 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-24.html"><span class="arch-date">24 Jul 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-23.html"><span class="arch-date">23 Jul 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-22.html"><span class="arch-date">22 Jul 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-21.html"><span class="arch-date">21 Jul 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-20.html"><span class="arch-date">20 Jul 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-19.html"><span class="arch-date">19 Jul 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-18.html"><span class="arch-date">18 Jul 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-17.html"><span class="arch-date">17 Jul 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-16.html"><span class="arch-date">16 Jul 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-15.html"><span class="arch-date">15 Jul 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-14.html"><span class="arch-date">14 Jul 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-13.html"><span class="arch-date">13 Jul 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-12.html"><span class="arch-date">12 Jul 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-11.html"><span class="arch-date">11 Jul 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-10.html"><span class="arch-date">10 Jul 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-09.html"><span class="arch-date">09 Jul 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-08.html"><span class="arch-date">08 Jul 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-07.html"><span class="arch-date">07 Jul 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-06.html"><span class="arch-date">06 Jul 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-05.html"><span class="arch-date">05 Jul 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-04.html"><span class="arch-date">04 Jul 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-03.html"><span class="arch-date">03 Jul 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-02.html"><span class="arch-date">02 Jul 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-07-01.html"><span class="arch-date">01 Jul 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-30.html"><span class="arch-date">30 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-29.html"><span class="arch-date">29 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-28.html"><span class="arch-date">28 Jun 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-27.html"><span class="arch-date">27 Jun 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-26.html"><span class="arch-date">26 Jun 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-25.html"><span class="arch-date">25 Jun 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-24.html"><span class="arch-date">24 Jun 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-23.html"><span class="arch-date">23 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-22.html"><span class="arch-date">22 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-21.html"><span class="arch-date">21 Jun 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-20.html"><span class="arch-date">20 Jun 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-19.html"><span class="arch-date">19 Jun 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-18.html"><span class="arch-date">18 Jun 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-17.html"><span class="arch-date">17 Jun 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-16.html"><span class="arch-date">16 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-15.html"><span class="arch-date">15 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-14.html"><span class="arch-date">14 Jun 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-13.html"><span class="arch-date">13 Jun 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-12.html"><span class="arch-date">12 Jun 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-11.html"><span class="arch-date">11 Jun 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-10.html"><span class="arch-date">10 Jun 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-09.html"><span class="arch-date">09 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-08.html"><span class="arch-date">08 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-07.html"><span class="arch-date">07 Jun 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-06.html"><span class="arch-date">06 Jun 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-05.html"><span class="arch-date">05 Jun 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-04.html"><span class="arch-date">04 Jun 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-03.html"><span class="arch-date">03 Jun 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-02.html"><span class="arch-date">02 Jun 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-06-01.html"><span class="arch-date">01 Jun 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-31.html"><span class="arch-date">31 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-30.html"><span class="arch-date">30 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-29.html"><span class="arch-date">29 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-28.html"><span class="arch-date">28 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-27.html"><span class="arch-date">27 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-26.html"><span class="arch-date">26 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-25.html"><span class="arch-date">25 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-24.html"><span class="arch-date">24 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-23.html"><span class="arch-date">23 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-22.html"><span class="arch-date">22 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-21.html"><span class="arch-date">21 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-20.html"><span class="arch-date">20 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-19.html"><span class="arch-date">19 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-18.html"><span class="arch-date">18 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-17.html"><span class="arch-date">17 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-16.html"><span class="arch-date">16 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-15.html"><span class="arch-date">15 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-14.html"><span class="arch-date">14 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-13.html"><span class="arch-date">13 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-12.html"><span class="arch-date">12 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-11.html"><span class="arch-date">11 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-10.html"><span class="arch-date">10 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-09.html"><span class="arch-date">09 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-08.html"><span class="arch-date">08 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-07.html"><span class="arch-date">07 May 2026</span><span class="arch-day">Thursday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-06.html"><span class="arch-date">06 May 2026</span><span class="arch-day">Wednesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-05.html"><span class="arch-date">05 May 2026</span><span class="arch-day">Tuesday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-04.html"><span class="arch-date">04 May 2026</span><span class="arch-day">Monday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-03.html"><span class="arch-date">03 May 2026</span><span class="arch-day">Sunday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-02.html"><span class="arch-date">02 May 2026</span><span class="arch-day">Saturday</span><span class="arch-arrow">→</span></a>
-<a class="arch-row" href="archive/2026-05-01.html"><span class="arch-date">01 May 2026</span><span class="arch-day">Friday</span><span class="arch-arrow">→</span></a>
-</div>
+<main class="wrap" id="content">
+<section class="masthead"><div class="mast-dateline"><span class="mast-dateline-day">Mon</span><span class="mast-dateline-date">27 Jul 2026</span></div><div class="kicker"><span class="dot"></span>AI Digest</div><h1 class="mast-title">What moved in AI <span class="accent">today.</span></h1><div class="mast-meta"><span>8 items</span></div></section>
+<div class="rail"><div class="wrap rail-inner" role="tablist"><button type="button" class="chip" role="tab" data-tag="all" aria-pressed="true"><span>All</span><span class="n">8</span></button><button type="button" class="chip" role="tab" data-tag="Models" aria-pressed="false"><span>Models</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Agents" aria-pressed="false"><span>Agents</span><span class="n">1</span></button><button type="button" class="chip" role="tab" data-tag="Tooling" aria-pressed="false"><span>Tooling</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Regulation" aria-pressed="false"><span>Regulation</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Enterprise" aria-pressed="false"><span>Enterprise</span><span class="n">4</span></button><button type="button" class="chip" role="tab" data-tag="Research" aria-pressed="false"><span>Research</span><span class="n">1</span></button></div></div>
+<section class="pulse" aria-hidden="true"><div class="pulse-head"><span class="pulse-label">Today's pulse</span><span class="pulse-sub">by category volume</span></div><div class="pulse-bar"><div class="pulse-seg" data-cat="Models" style="flex-grow:4" title="Models 4"></div><div class="pulse-seg" data-cat="Agents" style="flex-grow:1" title="Agents 1"></div><div class="pulse-seg" data-cat="Tooling" style="flex-grow:4" title="Tooling 4"></div><div class="pulse-seg" data-cat="Regulation" style="flex-grow:4" title="Regulation 4"></div><div class="pulse-seg" data-cat="Enterprise" style="flex-grow:4" title="Enterprise 4"></div><div class="pulse-seg" data-cat="Research" style="flex-grow:1" title="Research 1"></div></div><div class="pulse-legend"><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Models"></span>Models 4</span><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Agents"></span>Agents 1</span><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Tooling"></span>Tooling 4</span><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Regulation"></span>Regulation 4</span><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Enterprise"></span>Enterprise 4</span><span class="pulse-legend-item"><span class="pulse-dot" data-cat="Research"></span>Research 1</span></div></section>
+<section class="block" id="takeaways"><div class="sec-head"><h2 class="sec-title">Key takeaways</h2><span class="sec-meta">03 · The shortlist</span></div><div class="takes"><article class="take"><div class="take-num">01</div><div class="take-head">Context engineering becomes first-class discipline</div><div class="take-body">Anthropic&#x27;s explicit guidance on context engineering for Claude 5 signals that prompt/context design is maturing into a structured craft, meaning AI PMs should treat context architecture as a core product capability rather than an ad-hoc developer concern</div><div class="take-foot"><a class="take-link" href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models" data-item-url="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models">Anthropic →</a></div></article><article class="take"><div class="take-num">02</div><div class="take-head">Model reliability still a enterprise blocker</div><div class="take-body">Opus 5 elevated errors arriving so soon after launch, combined with a growing underground relay/fraud market around LLM API access, underscore that infrastructure stability and supply-chain integrity remain critical risks for any PM building on third-party model APIs</div><div class="take-foot"><a class="take-link" href="https://status.claude.com/incidents/zftg3gqkmv18" data-item-url="https://status.claude.com/incidents/zftg3gqkmv18">status.claude.com →</a><a class="take-link" href="https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything" data-item-url="https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything">Simon Willison →</a></div></article><article class="take"><div class="take-num">03</div><div class="take-head">AI moves hard into regulated verticals</div><div class="take-body">Education is the latest sector where frontier AI labs are offering subsidised, partnership-driven deployments, a pattern AI PMs in regulated industries should watch as a template for how vendors court institutional buyers</div><div class="take-foot"><a class="take-link" href="https://www.techmeme.com/260726/p9#a260726p9" data-item-url="https://www.techmeme.com/260726/p9#a260726p9">Financial Times via Techmeme →</a></div></article></div></section>
+<div class="article-list"><section class="block"><div class="sec-ghost" aria-hidden="true">01</div><div class="sec-head"><h2 class="sec-title">Top Story</h2><span class="sec-meta">01 · 1 story</span></div><div class="stories"><article class="story" data-tags="Models Tooling Enterprise" id="story-1"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-1"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Anthropic</span></div><h3 class="story-title">Anthropic publishes context engineering rules for Claude 5</h3><p class="story-summary">Anthropic released an official guide redefining best practices for constructing context windows with Claude 5-generation models, covering memory, tool use, and instruction hierarchy</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-1"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For AI PMs in regulated environments, this is a rare vendor-level signal about how the model &lt;em&gt;expects&lt;/em&gt; to be used — teams should audit existing prompts and system designs against these rules before deploying Claude 5 in production pipelines</p></div><div class="story-actions"><a class="read" href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Anthropic</span></div></div></div></div></article></div></section><section class="block"><div class="sec-ghost" aria-hidden="true">02</div><div class="sec-head"><h2 class="sec-title">Models &amp; Capabilities</h2><span class="sec-meta">02 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Models Enterprise" id="story-2"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-2"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">status.claude.com</span></div><h3 class="story-title">Opus 5 elevated errors on launch</h3><p class="story-summary">Anthropic's status page logged an elevated error incident for Opus 5 within days of its availability, drawing significant community attention</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-2"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">Regulated-environment PMs must build fallback and circuit-breaker logic into any Claude 5 integrations from day one — a flagship model experiencing instability at launch is a reminder that SLA assumptions cannot be borrowed from marketing timelines</p></div><div class="story-actions"><a class="read" href="https://status.claude.com/incidents/zftg3gqkmv18" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">status.claude.com</span></div></div></div></div></article><article class="story" data-tags="Models Research" id="story-3"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-3"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Research">Research</span><span class="src">Hacker News</span></div><h3 class="story-title">28.9M-parameter LLM runs on an $8 microcontroller</h3><p class="story-summary">A developer demonstrated running a small LLM entirely on an ESP32 microcontroller, showing that inference at the extreme edge is becoming practically achievable with off-the-shelf hardware</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-3"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs exploring on-device or air-gapped deployments for sensitive regulated data should track this space — edge inference removes a class of data-egress compliance concerns entirely</p></div><div class="story-actions"><a class="read" href="https://github.com/slvDev/esp32-ai" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Hacker News</span></div></div></div></div></article></div></section><section class="block"><div class="sec-ghost" aria-hidden="true">03</div><div class="sec-head"><h2 class="sec-title">Agentic Engineering</h2><span class="sec-meta">03 · 1 story</span></div><div class="stories"><article class="story" data-tags="Tooling Regulation" id="story-4"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-4"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Simon Willison</span></div><h3 class="story-title">Underground relay market enables LLM token fraud at scale</h3><p class="story-summary">An investigation surfaced a structured marketplace — largely operating out of China — where actors pool stolen or abused API keys to resell LLM access at steep discounts, exploiting free trials and unprotected support bots</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-4"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs managing API budgets and vendor contracts should push for anomaly-detection on token consumption and ensure vendor agreements include fraud liability protections, as abused intermediary proxies can distort cost baselines and introduce model-quality unpredictability</p></div><div class="story-actions"><a class="read" href="https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Simon Willison</span></div></div></div></div></article></div></section><section class="block"><div class="sec-ghost" aria-hidden="true">04</div><div class="sec-head"><h2 class="sec-title">Enterprise &amp; Regulation</h2><span class="sec-meta">04 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Enterprise Regulation" id="story-5"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-5"><div><div class="story-meta-row"><span class="tag" data-cat="Enterprise">Enterprise</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Financial Times via Techmeme</span></div><h3 class="story-title">AI labs subsidise education market entry</h3><p class="story-summary">Anthropic and OpenAI are partnering with schools and edtech startups to offer free or discounted tailored AI tools, mirroring enterprise land-and-expand strategies in a newly targeted vertical</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-5"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs in any regulated sector — healthcare, finance, government — should watch the education playbook closely: subsidised pilots with compliance carve-outs today tend to become entrenched, full-priced dependencies tomorrow, and procurement teams need lead time to evaluate lock-in risk</p></div><div class="story-actions"><a class="read" href="https://www.techmeme.com/260726/p9#a260726p9" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Financial Times via Techmeme</span></div></div></div></div></article><article class="story" data-tags="Regulation Enterprise" id="story-6"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-6"><div><div class="story-meta-row"><span class="tag" data-cat="Regulation">Regulation</span><span class="tag" data-cat="Enterprise">Enterprise</span><span class="src">Debian</span></div><h3 class="story-title">Debian community votes on formal LLM usage proposals</h3><p class="story-summary">The Debian project put three competing proposals on LLM usage to a formal vote, representing one of the first major open-source governance bodies to codify policy around AI-assisted contribution</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-6"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">For AI PMs in regulated industries that rely on open-source dependencies, this is a leading indicator that OSS communities will increasingly attach provenance and AI-use disclosure requirements to contributions — worth factoring into software supply-chain risk assessments</p></div><div class="story-actions"><a class="read" href="https://www.debian.org/vote/2026/vote_002" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Debian</span></div></div></div></div></article></div></section><section class="block"><div class="sec-ghost" aria-hidden="true">05</div><div class="sec-head"><h2 class="sec-title">Worth a Deeper Read</h2><span class="sec-meta">05 · 2 stories</span></div><div class="stories"><article class="story" data-tags="Models Tooling Agents" id="story-7"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-7"><div><div class="story-meta-row"><span class="tag" data-cat="Models">Models</span><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Agents">Agents</span><span class="src">Anthropic</span></div><h3 class="story-title">The new rules of context engineering (Anthropic blog)</h3><p class="story-summary">A detailed, opinionated guide from Anthropic on how Claude 5-generation models interpret and prioritise context, covering memory types, tool-call structure, and failure modes</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-7"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">This is required reading for any PM whose product surfaces Claude to end users — the guidance directly affects system prompt design, RAG pipeline architecture, and multi-agent orchestration patterns</p></div><div class="story-actions"><a class="read" href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Anthropic</span></div></div></div></div></article><article class="story" data-tags="Tooling Regulation" id="story-8"><div class="story-head" role="button" tabindex="0" aria-expanded="false" aria-controls="story-body-8"><div><div class="story-meta-row"><span class="tag" data-cat="Tooling">Tooling</span><span class="tag" data-cat="Regulation">Regulation</span><span class="src">Simon Willison</span></div><h3 class="story-title">Inside the LLM token relay and fraud market</h3><p class="story-summary">Matt Lenhard's investigation (surfaced by Simon Willison) provides a granular look at how a shadow economy has formed around arbitraging LLM API access, including the technical mechanisms exploited</p></div><span class="chev"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="story-body" id="story-body-8"><div class="inner"><div class="story-inner-pad"><div class="sowhat"><div class="sowhat-label">So what</div><p class="sowhat-body">AI PMs responsible for platform or API products need to understand this threat model — it affects both cost integrity and reputational risk if your infrastructure becomes an unwitting relay node</p></div><div class="story-actions"><a class="read" href="https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything" target="_blank" rel="noopener noreferrer">Read the article&nbsp;&nbsp;<span class="arrow">→</span></a><span class="src-full">Simon Willison</span></div></div></div></div></article></div></section></div>
 <footer class="site-footer">
 <span>Generated by <a href="https://github.com/raidianblaster/Content-Finder">Content Finder</a></span>
-<span>88 issues</span>
+<span>Mon 27 Jul 2026</span>
 </footer>
 </main>
+
+<script>
+(function () {
+  // Topic filter chips — V2 uses aria-pressed for active state.
+  var chips = document.querySelectorAll('.chip');
+  function applyFilter(tag) {
+    chips.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.tag === tag ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-tags]').forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      // Untagged items (e.g. Key takeaways bullets) stay visible under
+      // every filter — they're synthesis, not topic-scoped.
+      var show = tag === 'all' || tags.length === 0 || tags.indexOf(tag) !== -1;
+      el.classList.toggle('is-hidden', !show);
+    });
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      applyFilter(chip.dataset.tag);
+    });
+  });
+
+  // V2 story expand/collapse: clicking the head (or pressing Enter/Space
+  // when focused) toggles a `.open` class on the .story article, which the
+  // CSS animates via grid-template-rows 0fr → 1fr.
+  function toggleStory(head) {
+    var story = head.closest('.story');
+    if (!story) return;
+    var open = story.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.story-head').forEach(function (head) {
+    head.addEventListener('click', function () { toggleStory(head); });
+    head.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        toggleStory(head);
+      }
+    });
+  });
+
+  // Takeaways collapsible
+  // Takeaway → story navigation (V2). Each .take-link is a normal <a>
+  // with both href="<article-url>" and data-item-url. Default click would
+  // open the article in a new tab; we intercept when there's a matching
+  // in-page .story card and expand it instead. JS-off / unmatched falls
+  // back to following the href.
+  function navigateToItem(itemUrl) {
+    if (!itemUrl) return;
+    var safe = itemUrl.replace(/"/g, '\\"');
+    var matchLink = document.querySelector('.story .read[href="' + safe + '"]');
+    var story = matchLink ? matchLink.closest('.story') : null;
+    if (!story) {
+      window.open(itemUrl, '_blank', 'noopener');
+      return;
+    }
+    applyFilter('all');
+    document.querySelectorAll('.story.open').forEach(function (el) {
+      if (el !== story) {
+        el.classList.remove('open');
+        var h = el.querySelector('.story-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      }
+    });
+    story.classList.add('open');
+    var head = story.querySelector('.story-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
+    setTimeout(function () {
+      story.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
+  window.navigateToItem = navigateToItem;
+  document.querySelectorAll('.take-link').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      // If the matching story exists on this page, intercept. Otherwise
+      // let the browser follow the href (article URL in new tab via the
+      // anchor's default behaviour — handled by markup attrs in HTML).
+      var safe = (a.dataset.itemUrl || '').replace(/"/g, '\\"');
+      if (safe && document.querySelector('.story .read[href="' + safe + '"]')) {
+        ev.preventDefault();
+        navigateToItem(a.dataset.itemUrl);
+      }
+    });
+  });
+})();
+</script>
+
 </body></html>
