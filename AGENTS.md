@@ -139,10 +139,10 @@ scorer, structured-output synthesis, eval-gated prompts) → **M3** memory
 multi-agent rollup, source-scout, MCP server) → **M5** self-improving + edge
 capstone.
 
-Current checkpoint: **M0.1–M0.3 are landed in code** — the tracing ledger and the
-review/judge harness are real modules now (see Layout). The next move is **M0.4**
-(fix the quarantined archive "today" test and remove the CI deselect), then **M1
-eval harness**, then **M2.1 self-tuning scorer**.
+Current checkpoint: **Milestone 0 is complete** — the tracing ledger and the
+review/judge harness are real modules now (see Layout), and M0.4 removed the CI
+test quarantine (the full pytest suite runs with no `--deselect`). The next move
+is **M1 eval harness**, then **M2.1 self-tuning scorer**.
 
 Both former Phase 1 "now" items (cross-day dedup; `sources.yml`) are **landed**.
 

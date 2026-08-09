@@ -40,13 +40,12 @@ jobs:
             .github/workflows/*.yml
 
       - name: Run tests
-        # NOTE: test_archive_first_row_has_today_modifier_and_pill is a
-        # pre-existing time-dependent test (tests/test_archive_v2.py pins
-        # `base = date(2026, 5, 26)`), so it only passes when run on that exact
-        # date. Deselected here so CI is meaningful; tracked for a separate fix.
-        run: |
-          python -m pytest -q \
-            --deselect "tests/test_archive_v2.py::test_archive_first_row_has_today_modifier_and_pill"
+        # No deselects: the full suite must pass on any calendar date. The
+        # archive "today" test is no longer wall-clock dependent — the newest
+        # row is highlighted by position, not by comparing to datetime.now()
+        # (see render_archive_html). tests/test_archive_v2.py pins that
+        # contract from both directions so the quarantine can't come back.
+        run: python -m pytest -q
 
       - name: Key-free digest smoke (do-no-harm gate)
         # The guaranteed-free path must render with NO ANTHROPIC_API_KEY set.

@@ -47,10 +47,8 @@ Everything below is the path from where the project is today to that end-state.
 ## Current Checkpoint
 
 **Landed in code:** Milestone 0.1 tracing/cost ledger, Milestone 0.2 score-feature
-logging, and Milestone 0.3 CI/do-no-harm gate.
-
-**Current task:** fix the quarantined archive "today" test so CI can run the full
-suite without a deselect.
+logging, Milestone 0.3 CI/do-no-harm gate, and Milestone 0.4 quarantine removal.
+**Milestone 0 is complete.**
 
 **Next trunk task:** Milestone 1.1 — build the eval harness and frozen gold set.
 After that, Milestone 2.1 can train the first self-tuning scorer from the feedback
@@ -136,15 +134,14 @@ Start from reality. These are done; the roadmap does not re-list them as future 
 | Skill handoff seam | **Landed** | `latest.json` / `latest.judge.json` feed the *Hermes Discovery Queue* skill |
 | LLM trace/cost ledger | **Landed** | `tracing.py`, `traces.py`, traced synthesis + judge calls |
 | Score-feature logging (#9) | **Landed in code** | `_item_log_dict()` writes `summary` + `score_components`; daily artifacts refresh on the next run |
-| CI do-no-harm gate | **Landed with one quarantine** | `.github/workflows/ci.yml` runs tests + key-free smoke; archive today test is deselected pending fix |
+| CI do-no-harm gate | **Landed** | `.github/workflows/ci.yml` runs the full suite (no deselects) + workflow-schema check + key-free smoke |
 
 **The unrealized asset:** you collect a labelled preference stream daily and a judge
 flags mistakes — but nothing reads them back into the pipeline. The flywheel is
 built and *not spinning*. The trunk spins it.
 
-**The remaining cheap cleanup:** remove the CI quarantine by fixing the
-time-dependent archive test. After that, the next meaningful trunk work is the
-Milestone 1 eval harness.
+**The cheap cleanup is done:** the CI quarantine is gone (M0.4). The next
+meaningful trunk work is the Milestone 1 eval harness.
 
 ---
 
@@ -200,16 +197,20 @@ Add `summary` + the per-component score breakdown (`keyword_score`, `recency`,
 `src_bonus`, `hn_bonus`) to `_item_log_dict()`; propagate to the JSONL.
 > *L0 · feature logging for learning · news: indirect · ~1h · ~$0 · constraint: none · metric: a feedback row reconstructs the exact feature vector the scorer saw. **Unblocks the entire Learn track.***
 
-**0.3 · Adopt the gate + EDD — Landed, with one quarantined test**
+**0.3 · Adopt the gate + EDD — Landed**
 Wire `--no-summarize` into CI as the do-no-harm regression test; establish the
 "no scoring/prompt change without an eval delta" rule.
 > *L0 · engineering discipline · news: protects it · ~1h · ~$0 · constraint: formalizes the key-free fallback · metric: CI fails if the key-free daily path breaks.*
 
-**0.4 · Remove the archive-test quarantine**
-Fix `test_archive_first_row_has_today_modifier_and_pill` so it passes a pinned
-`today` value instead of depending on the wall-clock date, then remove the CI
-`--deselect`.
-> *L0 · test reliability · news: protects it · ~20m · ~$0 · constraint: none · metric: CI runs the full pytest suite with no deselected tests.*
+**0.4 · Remove the archive-test quarantine — Landed**
+The wall-clock dependency was already gone: `render_archive_html` highlights the
+newest row *by position* when `today=None`, so the test had been passing on every
+date while CI still deselected it. Removed the `--deselect`; CI now runs the full
+suite. Added three guards in `tests/test_archive_v2.py` pinning the contract from
+both directions — the default path must ignore the machine clock, and the
+explicit `today=` override (previously untested) must match by calendar date.
+Both directions are mutation-checked.
+> *L0 · test reliability · news: protects it · ~20m · ~$0 · constraint: none · metric: CI runs the full pytest suite with no deselected tests. **Met.***
 
 ---
 
@@ -257,7 +258,7 @@ them. A candidate **auto-promotes only on a win margin + your approval** (bump
 `PROMPT_VERSION`, commit).
 > *L3→L4 · LLM-as-judge, regression gating, the reward-hacking risk · news: medium · ~4h · ~$0.20/run · constraint: none · metric: every prompt promotion is backed by a logged eval win.*
 
-> **If you only do three things from here:** 0.4 (remove the test quarantine) → 1.1
+> **If you only do three things from here:** ~~0.4 (remove the test quarantine)~~ *done* → 1.1
 > (eval harness) → 2.1 (self-tuning scorer). That trio turns your idle feedback
 > stream into a system that measurably learns your taste — all local, ~$1 total —
 > and answers "does learned beat my heuristic at 10–25 items/day?" within a week of
@@ -408,8 +409,8 @@ Non-blocking; pick any time. Each is tagged with the trunk milestone it pairs wi
 
 | Phase | Trunk milestone | ~Effort | ~Cost | Note |
 |---|---|---|---|---|
-| Now | M0.4 | ~20m | $0 | Remove the archive-test quarantine so CI measures the full suite |
-| Next | M1 (1.1) | ~4h | ~$1 | The ruler |
+| ~~Now~~ **Done** | M0.4 | ~20m | $0 | Quarantine removed; CI measures the full suite |
+| Now | M1 (1.1) | ~4h | ~$1 | The ruler |
 | **Then** | **M2 (2.1→2.2→2.3)** | ~11h | ~$3/mo | **The self-learning flywheel — the payoff** |
 | | M3 (3.1; 3.2 optional) | ~6h (+5h) | ~$0.50 (+) | Memory substrate for the agentic core |
 | | M4 (4.1→4.2→4.3→4.4; 4.x opt) | ~17h | ~$10–15/mo | The agentic core; Exa enters here |
@@ -534,8 +535,7 @@ Proof the merge is lossless. `L` = already landed (§4).
 
 ## 11. The next move
 
-1. **Clean up M0.4:** fix the quarantined archive "today" test and remove the CI
-   deselect.
+1. ~~**Clean up M0.4:**~~ **Done** — quarantine removed, CI runs the full suite.
 2. **Build Milestone 1.1:** create `evals/gold.jsonl`, an eval CLI/report, and the
    first baseline. This is now the trunk's real next move.
 3. **Then build Milestone 2.1:** train the first self-tuning scorer from the

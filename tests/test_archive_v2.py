@@ -149,6 +149,62 @@ def test_archive_non_today_rows_omit_today_pill():
 
 
 # ---------------------------------------------------------------------------
+# Today highlight — wall-clock independence + the explicit `today=` override
+#
+# These pin the contract that let the CI --deselect be removed. The default
+# (today=None) path must never consult the machine clock, or this file goes
+# back to passing only on the date its fixtures are pinned to.
+# ---------------------------------------------------------------------------
+
+def _row_for(out: str, name: str) -> str:
+    """Return the full <a class="arch-row"> markup linking to `name`."""
+    m = re.search(
+        r'(<a class="arch-row[^"]*"[^>]*href="archive/' + re.escape(name) + r'"[^>]*>.*?</a>)',
+        out, re.DOTALL,
+    )
+    assert m, f"row for {name} not found"
+    return m.group(1)
+
+
+def test_archive_today_highlight_ignores_wall_clock():
+    """With today=None the newest row is 'Today' whatever the machine clock says.
+
+    Dates deliberately far from any plausible run date: if the renderer ever
+    reintroduces a datetime.now() comparison, row 0 stops being highlighted and
+    this fails on every day of the year rather than passing on exactly one.
+    """
+    entries = [
+        (datetime(2019, 3, 14), "2019-03-14.html"),
+        (datetime(2019, 3, 13), "2019-03-13.html"),
+    ]
+    out = ri.render_archive_html(entries)
+    assert "is-today" in _row_for(out, "2019-03-14.html")
+    assert "is-today" not in _row_for(out, "2019-03-13.html")
+    # Exactly one pill on the page.
+    assert out.count('<span class="today-pill">Today</span>') == 1
+
+
+def test_archive_explicit_today_matches_by_calendar_date():
+    """today=<date> highlights the row for that date, not merely the first row."""
+    out = ri.render_archive_html(_entries(3), today=date(2026, 5, 25))
+    assert "is-today" in _row_for(out, "2026-05-25.html")
+    assert "is-today" not in _row_for(out, "2026-05-26.html")
+    assert out.count('<span class="today-pill">Today</span>') == 1
+
+
+def test_archive_explicit_today_absent_from_entries_highlights_nothing():
+    """A today= with no matching entry leaves every row unhighlighted."""
+    out = ri.render_archive_html(_entries(3), today=date(2020, 1, 1))
+    # Scope to the list: the page's <style> block legitimately mentions
+    # .today-pill / .is-today as CSS selectors.
+    arch_list = re.search(r'<div class="arch-list">(.*?)</div>', out, re.DOTALL)
+    assert arch_list
+    rows = arch_list.group(1)
+    assert "today-pill" not in rows
+    assert "is-today" not in rows
+
+
+# ---------------------------------------------------------------------------
 # Masthead density + font parity with the homepage
 # ---------------------------------------------------------------------------
 
