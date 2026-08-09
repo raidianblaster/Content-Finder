@@ -140,6 +140,25 @@ Start from reality. These are done; the roadmap does not re-list them as future 
 flags mistakes — but nothing reads them back into the pipeline. The flywheel is
 built and *not spinning*. The trunk spins it.
 
+`judge_stats.py` now reads the judge half back out — for a human, not yet for the
+pipeline. That is the first turn of the wheel, and it immediately produced a
+finding (below).
+
+**Standing finding — the per-source cap is an arXiv throttle.** Over 83 days of
+judge reports, `dropped_source_cap` is the single most disputed stage (512 drops,
+~6.2/day), and **441 of those 512 (86%) are arxiv.org**. The cap of 3 in
+`apply_source_cap` exists to protect diversity on a hot day; in practice it is
+mostly discarding research the judge rates high-signal. Reproduce with:
+
+```bash
+.venv/bin/python judge_stats.py --stage dropped_source_cap
+```
+
+Do **not** retune the cap by hand off this number — that is a probabilistic
+change and per EDD it needs an eval delta. It is the strongest available
+motivation for building Milestone 1.1, and the first question the gold set should
+be able to answer.
+
 **The cheap cleanup is done:** the CI quarantine is gone (M0.4). The next
 meaningful trunk work is the Milestone 1 eval harness.
 

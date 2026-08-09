@@ -12,6 +12,7 @@ Live page: https://raidianblaster.github.io/Content-Finder/
   - `review.py` — `build <date>` emits the labelable `docs/review/<date>.html` from the filter log; `build-index` rebuilds `docs/review/index.html`. Verdicts persist to `feedback/<date>.jsonl`.
   - `judge.py` — `run <date>` sends a curated subset of filter decisions to Claude Haiku and writes `docs/review/<date>.judge.json`, inlined into the review HTML to flag suspect keeps/drops. Opt-in (needs a key); failures are swallowed so the digest still ships.
   - `tracing.py` / `traces.py` — every Claude call appends one row to `docs/logs/traces.jsonl` (tokens, cost, latency, model, prompt_version). `python traces.py` rolls it up. Tracing must never break the pipeline.
+  - `judge_stats.py` — read-only rollup of the *judge* ledger (`docs/review/*.judge.json`): totals plus disputes bucketed by pipeline stage and by source host. Companion to `traces.py` (which covers cost, not verdicts). Skips `latest.judge.json` deliberately — it duplicates the newest day. Use it to turn accumulated judge output into evidence before retuning anything in `score_item` / `apply_source_cap`.
 - `prompts/synthesis_system.md` — the synthesis system prompt lives **here**, not inline. `content_finder.py` reads it at import (`SYSTEM_PROMPT`) and stamps `PROMPT_VERSION` ("v1") into traces. Bump the version when the prompt changes.
 - `.github/workflows/daily.yml` — cron `7 22 * * *` UTC ≈ 06:07 HKT (off-peak; lands ~06:15–06:25). Steps run in order: digest → `render_index.py` → `review.py build` → `judge.py run` → rebuild review → refresh `latest.html` alias → `review.py build-index`. Uses `actions/checkout@v6` and `actions/setup-python@v6` (both bundle Node 24). Do **not** downgrade these to v4/v5 — that's what triggered the prior "Node.js 20 deprecated" warning. Node 20 is fully removed from runners September 2026.
 - `docs/` — GitHub Pages root. `index.html` is overwritten daily; `archive/YYYY-MM-DD.html` is preserved. `docs/logs/` (filter logs + trace ledger) and `docs/review/` (review pages + judge JSON) are generated, not hand-edited.
@@ -106,6 +107,11 @@ open docs/index.html
 
 # LLM cost/latency ledger
 .venv/bin/python traces.py                        # rollup of docs/logs/traces.jsonl
+
+# Judge-dispute ledger (which stage is throwing away good items, and from where)
+.venv/bin/python judge_stats.py --days 30                  # last 30 reports
+.venv/bin/python judge_stats.py --stage dropped_source_cap # drill into one stage
+.venv/bin/python judge_stats.py --json                     # raw rollup
 
 # Manually trigger the daily workflow
 # https://github.com/raidianblaster/Content-Finder/actions → Daily AI digest → Run workflow
