@@ -59,6 +59,18 @@ Edit `sources.yml` to change RSS feeds, Hacker News queries, keyword weights,
 and per-source trust bonuses. The loader validates HTTPS feed URLs, duplicate
 source names, trust ranges, and required top-level keys.
 
+## Review-page first-run setup (per device)
+
+Once per device/browser, to enable auto-save of keep/drop/unsure verdicts:
+
+1. github.com → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
+2. Repository access → **Only select repositories: Content-Finder**.
+3. Repository permissions → **Contents: Read and write** (everything else stays "No access").
+4. Generate, copy the `github_pat_…` string.
+5. Open any review page (e.g. https://raidianblaster.github.io/Content-Finder/review/latest.html), tap the ⚙ in the footer, paste the token, **Test connection** → **Save**.
+
+After that, every click on a keep/drop/unsure button schedules a debounced commit to `feedback/<date>.jsonl` ~10s later. The status pill in the footer reflects state (`ready` / `unsaved · saving in 10s` / `saving…` / `saved HH:MM` / `error: … · click to retry`). Token is stored in `localStorage` under the key `cf-review::__pat__`; on iOS Safari, iCloud Keychain prompts to save it and the other Apple Safaris will autofill on first paste.
+
 ## Roadmap status
 
 `ROADMAP.md` is the source of truth. Milestone 0.1 tracing, 0.2 score-feature

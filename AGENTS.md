@@ -23,7 +23,7 @@ Live page: https://raidianblaster.github.io/Content-Finder/
 
 - **PWA + GitHub Pages is the deliberate ceiling.** No backend service, no native app, no user accounts.
 - **No Anthropic API key in regular use.** Code must work end-to-end with `--no-summarize` / no key set. The `synthesize_with_claude` path is opt-in only.
-- **Dates anchor on HKT, not UTC.** GH Actions runs at 22:30 UTC, which is the *next* HKT day. Use `today_hkt()` for any user-visible date; never `datetime.now().date()`.
+- **Dates anchor on HKT, not UTC.** GH Actions runs at 22:07 UTC, which is the *next* HKT day. Use `today_hkt()` for any user-visible date; never `datetime.now().date()`.
 - **Regulated env.** Pipeline only handles public news. Don't introduce anything that ships internal/private data outbound.
 - **Trend-tracking framing.** User doesn't have hands-on access to bleeding-edge tools — phrase commentary at PM/strategy level, not "I ran this and...".
 - **Newsletter consolidation is the product north star.** A feature is worth building if it moves a newsletter the user currently subscribes to into the "unsubscribe-able" column. Capability for capability's sake doesn't pass the bar.
@@ -121,41 +121,21 @@ The shell alias `aidigest` runs the venv Python against `content_finder.py`.
 
 ### Review-page first-run setup (per device)
 
-Once per device/browser, to enable auto-save of keep/drop/unsure verdicts:
-
-1. github.com → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new token.
-2. Repository access → **Only select repositories: Content-Finder**.
-3. Repository permissions → **Contents: Read and write** (everything else stays "No access").
-4. Generate, copy the `github_pat_…` string.
-5. Open any review page (e.g. https://raidianblaster.github.io/Content-Finder/review/latest.html), tap the ⚙ in the footer, paste the token, **Test connection** → **Save**.
-
-After that, every click on a keep/drop/unsure button schedules a debounced commit to `feedback/<date>.jsonl` ~10s later. The status pill in the footer reflects state (`ready` / `unsaved · saving in 10s` / `saving…` / `saved HH:MM` / `error: … · click to retry`). Token is stored in `localStorage` under the key `cf-review::__pat__`; on iOS Safari, iCloud Keychain prompts to save it and the other Apple Safaris will autofill on first paste.
+One-time, per-device token setup for review-page auto-save is a human task; the steps live in
+`README.md` ("Review-page first-run setup"). The mechanism is the browser-side PAT bullet under Conventions.
 
 ## Roadmap
 
-`ROADMAP.md` is the source of truth — a single **unified** roadmap (vision, a
-six-milestone trunk, and optional side quests). The three prior roadmaps (v1
-product, v2 learning ladder, v3 self-improving) are consolidated there and archived
-under `roadmap-archive/` for provenance.
-
-Trunk: **M0** Foundations (tracing, log score features / issue #9, CI do-no-harm
-gate) → **M1** eval harness + gold set → **M2** self-learning core (self-tuning
-scorer, structured-output synthesis, eval-gated prompts) → **M3** memory
-(episodic; optional knowledge graph) → **M4** agentic core (deep-research agent,
-multi-agent rollup, source-scout, MCP server) → **M5** self-improving + edge
-capstone.
+`ROADMAP.md` is the source of truth — a single **unified** roadmap (vision, the M0–M5
+milestone trunk, optional side quests, and the anti-feature list in §9). Earlier roadmaps
+are archived under `roadmap-archive/` for provenance only.
 
 Current checkpoint: **Milestone 0 is complete** — the tracing ledger and the
 review/judge harness are real modules now (see Layout), and M0.4 removed the CI
 test quarantine (the full pytest suite runs with no `--deselect`). The next move
 is **M1 eval harness**, then **M2.1 self-tuning scorer**.
 
-Both former Phase 1 "now" items (cross-day dedup; `sources.yml`) are **landed**.
-
 Note: `ROADMAP.md` §3 defines where two constraints below intentionally bend *later* —
 the Anthropic-key path (key-free stays the CI gate + fallback) and the no-backend
 ceiling (relaxed only at the M5 edge capstone). Those constraints remain in force
 until that work ships.
-
-Anti-features (deliberately out of scope): native mobile app, multi-user, comments,
-real-time push. The full merged anti-feature list lives in `ROADMAP.md` §9.
