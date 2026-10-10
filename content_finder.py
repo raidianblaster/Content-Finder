@@ -1629,6 +1629,16 @@ def _html_text(value: str) -> str:
     return html.escape(html.unescape(value), quote=False)
 
 
+def _fragment_text(fragment: str) -> str:
+    """Plain text of a rendered-HTML fragment: tags stripped, entities decoded.
+
+    Values lifted out of the markdown-rendered body are still entity-encoded
+    ("M&amp;A"); the renderers escape on output, so decode here or the reader
+    sees a literal "M&amp;A".
+    """
+    return html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip()
+
+
 def _safe_http_url(url: str) -> str:
     """Return a link URL only when it is safe to render as an article href."""
     try:
@@ -1676,8 +1686,8 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
         url, source_name = "", ""
         link_m = _LI_LINK_RE.search(content)
         if link_m:
-            url = link_m.group(1)
-            source_name = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+            url = html.unescape(link_m.group(1))
+            source_name = _fragment_text(link_m.group(2))
         return _build_card_html(
             item_id=item_id,
             data_tags=data_tags,
@@ -1707,8 +1717,8 @@ def _parse_synthesis_li(li_html: str, item_id: int) -> str:
     all_links = list(_LI_LINK_RE.finditer(rest))
     if all_links:
         link_m = all_links[-1]
-        url = link_m.group(1)
-        source_name = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+        url = html.unescape(link_m.group(1))
+        source_name = _fragment_text(link_m.group(2))
         # Strip the source-link span out of whichever slice it landed in.
         link_slice_start, link_slice_end = link_m.span()
         if sw_m and link_slice_start >= sw_m.end():
@@ -1871,17 +1881,17 @@ def _extract_takeaways(
                 headline = ""
                 title_m = _LI_TITLE_RE.match(inner)
                 if title_m:
-                    headline = re.sub(r'<[^>]+>', '', title_m.group(1)).strip()
+                    headline = _fragment_text(title_m.group(1))
                     inner = inner[title_m.end():]
 
                 links: list[dict] = []
                 for link_m in _LI_LINK_ITER_RE.finditer(inner):
-                    label = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+                    label = _fragment_text(link_m.group(2))
                     if not label:
                         continue
-                    links.append({"href": link_m.group(1), "label": label})
+                    links.append({"href": html.unescape(link_m.group(1)), "label": label})
                 text_html = _LI_LINK_ITER_RE.sub('', inner)
-                text = re.sub(r'<[^>]+>', '', text_html).strip().rstrip(" .")
+                text = _fragment_text(text_html).rstrip(" .")
                 takeaways.append({"headline": headline, "text": text, "links": links})
         else:
             rest.append((title, content))
@@ -1903,8 +1913,8 @@ def _build_url_to_source_map(
             link_m = _LI_LINK_RE.search(li_m.group(0))
             if not link_m:
                 continue
-            url = link_m.group(1)
-            source = re.sub(r'<[^>]+>', '', link_m.group(2)).strip()
+            url = html.unescape(link_m.group(1))
+            source = _fragment_text(link_m.group(2))
             if url and source and url not in url_to_source:
                 url_to_source[url] = source
     return url_to_source
