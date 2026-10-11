@@ -1,98 +1,98 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.11370",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent/RAG paper with score 12.74 from trusted source dropped due to source cap despite clear relevance."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.11899",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv work on LLM-integrated applications and autonomous agents (score 12.74) dropped due to source cap."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.08364",
-      "stage": "dropped_source_cap",
-      "reason": "Core agent evaluation paper on long-horizon LLM agent observability (score 12.74) dropped due to source cap."
-    },
-    {
       "url": "https://arxiv.org/abs/2610.11600",
       "stage": "dropped_source_cap",
-      "reason": "Relevant multi-agent systems failure analysis paper (score 11.74) dropped due to source cap."
+      "reason": "High-signal arXiv agents paper on error propagation in multi-agent LLM systems with strong relevance score (11.75) dropped due to source cap despite trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.11559",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv research on realistic evaluation of coding assistants via long-horizon interaction (11.75 score) rejected by source cap despite clear agent/AI relevance."
     },
     {
       "url": "https://arxiv.org/abs/2610.12463",
       "stage": "dropped_source_cap",
-      "reason": "Security-critical analysis of OpenAI/Anthropic/Google agent incidents (score 11.74) dropped due to source cap."
+      "reason": "Highly relevant agent security paper referencing OpenAI, Anthropic, and Google incidents (11.75 score) dropped by source cap despite direct regulatory/corporate interest."
     },
     {
       "url": "https://arxiv.org/abs/2609.15066",
       "stage": "dropped_source_cap",
-      "reason": "Enterprise LLM for agentic tool use from Salesforce (score 11.74) dropped due to source cap."
+      "reason": "Salesforce Koa enterprise LLM for agentic tool use (11.75 score) is substantive vendor research dropped by source cap despite clear business relevance."
     },
     {
-      "url": "https://simonwillison.net/2026/Oct/8/ttok/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison update on ttok tooling (score 9.69) dropped by TTL cross-day filter despite trusted source."
-    },
-    {
-      "url": "https://www.latent.space/p/ainews-claude-haiku-55-better-than",
-      "stage": "dropped_ttl",
-      "reason": "Latent Space coverage of Claude Haiku 5.5 release (score 7.5) dropped by TTL despite high-signal news from trusted source."
-    },
-    {
-      "url": "https://openai.com/index/pollo-ai",
-      "stage": "dropped_ttl",
-      "reason": "Official OpenAI case study on creative campaign agents (score 8.55) dropped by TTL cross-day filter."
-    },
-    {
-      "url": "https://mtlynch.io/why-are-coding-agents-so-dumb/",
+      "url": "https://arxiv.org/abs/2610.12183",
       "stage": "dropped_source_cap",
-      "reason": "Substantive technical analysis piece on agent limitations (score 5.62) from trusted independent author dropped due to source cap."
+      "reason": "Strong arXiv paper on benchmarking LLM agents for black-box optimization (10.75 score) dropped by source cap despite high relevance to agentic systems evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.29405",
+      "stage": "dropped_source_cap",
+      "reason": "ArXiv research on validating agentic AI systems beyond component testing (10.75 score) dropped by source cap despite clear relevance to agent safety evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39607",
+      "stage": "dropped_source_cap",
+      "reason": "Agent security paper on defeating malicious skill detection frameworks (10.75 score) dropped by source cap despite high relevance to agent governance concerns."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.08993",
+      "stage": "dropped_ttl",
+      "reason": "Strong agent infrastructure paper on detecting interference in LLM system prompts (16.75 score) dropped by TTL despite very high relevance to agent safety."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.10858",
+      "stage": "dropped_ttl",
+      "reason": "High-signal multi-agentic AI system for chip design (14.75 score) dropped by TTL despite clear relevance to agent orchestration and specialized applications."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.10833",
+      "stage": "dropped_ttl",
+      "reason": "Substantive arXiv paper on time-budgeted AI agents (12.75 score) dropped by TTL despite direct relevance to practical agent deployment constraints."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/anthropic-claude-code-system-prompt-cut/",
-      "reason": "Vendor marketing blog post offering prompt optimization tips; marginal signal for a regulated environment."
+      "url": "https://cphpost.dk/2026-10-10/news/round-up/123456-password-used-in-massive-danish-cpr-data-breach/",
+      "reason": "Unrelated infrastructure/security news with no AI/agent content; kept despite score 8.59 merely reporting a data breach."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/run-claude-code-codex-inside-grok-bot/",
-      "reason": "Tool tutorial/marketing content mixing Claude and Grok; limited substantive signal."
+      "url": "https://www.businessinsider.com/personal-ai-agent-grok-bot-posted-bank-details-company-slack-2026-10",
+      "reason": "Anecdotal incident story about AI agent data leak; kept at 8.48 score but lacks substantive analysis of agent safety or system design lessons."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-haiku-5-5-vs-sonnet-opus/",
-      "reason": "Vendor model comparison post; low-substance comparison marketing rather than news."
+      "url": "https://www.techmeme.com/261010/p8#a261010p8",
+      "reason": "Revenue accounting comparison between Anthropic and OpenAI (6.78 score); vendor financial reporting with minimal substantive AI/agent content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/grok-bot-model-routing-upgrade/",
-      "reason": "Vendor product update marketing post; minor feature release announcement."
+      "url": "https://www.techmeme.com/261010/p12#a261010p12",
+      "reason": "Political/business deal reporting on Anthropic compute arrangements (5.87 score); corporate news without technical AI agent relevance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/how-to-build-jev-browser-agent/",
-      "reason": "Vendor tutorial content promoting their platform; low news value."
+      "url": "https://www.mindstudio.ai/blog/agentic-apps-vs-chat-agents/",
+      "reason": "Vendor marketing comparison piece (5.7 score) categorizing agent types without substantive technical insights or research."
     },
     {
-      "url": "https://digital-strategy.ec.europa.eu/en/news/commission-holds-special-meeting-scientific-panel-frontier-ai-safety-and-risks",
-      "reason": "Generic EU regulatory announcement with minimal substantive detail on panel conclusions."
+      "url": "https://www.mindstudio.ai/blog/ai-model-welfare-consciousness-debate/",
+      "reason": "Speculative think-piece on AI consciousness (5.7 score) kept despite low substance; lacks rigorous analysis relevant to agent systems."
     },
     {
-      "url": "https://www.techmeme.com/261009/p25#a261009p25",
-      "reason": "Unconfirmed internal Google staff rumor about Gemini version naming; low factuality."
+      "url": "https://www.mindstudio.ai/blog/openai-decisions-api/",
+      "reason": "Vendor blog speculation on OpenAI API directions (7.7 score); marketing content without technical depth or confirmed information."
     },
     {
-      "url": "https://www.reddit.com/r/ClaudeAI/s/mbe5IY2LF9",
-      "reason": "Reddit anecdote about using Claude Code for astronomy; low-substance user story."
+      "url": "https://www.techmeme.com/261010/p14#a261010p14",
+      "reason": "Policy/regulatory roundup on CMS Slack participation (4.9 score); peripheral governance news lacking direct agent technical content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/fine-tune-embedding-gemma-lora/",
-      "reason": "Generic tutorial on fine-tuning embeddings; vendor marketing content."
+      "url": "https://simonwillison.net/2026/Oct/10/the-new-york-times/",
+      "reason": "Meta-commentary on quoting practices (6.73 score) from trusted source but entirely unrelated to AI agents or LLM systems."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/openai-math-proofs-mathematicians-backlash/",
-      "reason": "Vendor blog take on math proof criticism; secondary commentary without unique insight."
+      "url": "https://www.mindstudio.ai/blog/ai-game-dev-cost-opus-sonnet-haiku/",
+      "reason": "Vendor blog on cost comparison for game development (3.7 score); promotional content without substantive agent system insights."
     }
   ]
 }
