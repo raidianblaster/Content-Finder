@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-12",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://github.com/rociiu/talorys",
+      "stage": "dropped_ttl",
+      "reason": "High-signal AI agents content (10.75 score) on self-hosted personal AI agent deserved cross-day retention despite TTL filter."
+    },
+    {
+      "url": "https://www.businessinsider.com/personal-ai-agent-grok-bot-posted-bank-details-company-slack-2026-10",
+      "stage": "dropped_ttl",
+      "reason": "High-value AI agents risk/security incident (8.22 score) with clear relevance to regulated corporate AI deployment concerns."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/10/the-new-york-times/",
+      "stage": "dropped_ttl",
+      "reason": "Content from trusted Simon Willison (6.44 score) dropped by TTL despite proven signal from this high-quality source."
+    },
+    {
+      "url": "https://www.techmeme.com/261011/p11#a261011p11",
+      "stage": "dropped_source_cap",
+      "reason": "Major AI acquisition news (Amazon-Decart $7B deal, 4.95 score) warranted keeping despite source cap limits."
+    },
+    {
+      "url": "https://wsj.com/tech/ai/tom-brown-athropic-669005ad",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive Anthropic leadership/infrastructure story (4.94 score) with compute deal implications relevant to AI product context."
+    },
+    {
+      "url": "https://www.techmeme.com/261011/p9#a261011p9",
+      "stage": "dropped_source_cap",
+      "reason": "Key Anthropic infrastructure/economics analysis (4.92 score) with $1.3B/mo estimates should have cleared source cap."
+    },
+    {
+      "url": "https://www.latent.space/p/standard-bots",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space content on AI execution reliability (3.58 score) from trusted source wrongly filtered despite agents/robotics relevance."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-typesafejev-at-100m-arr-75b",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space AI industry news (3.49 score) on major startup valuation milestone from trusted source should not be keyword-dropped."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://rews.cc/a/anthropic-bans-cruelty-to-claude-still-won-t-say-what-it-pro-bd99f6",
+      "reason": "Low-substance editorial opinion on Anthropic policy with minimal technical/business insight, appears to be hot-take content."
+    },
+    {
+      "url": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
+      "reason": "Duplicate/near-duplicate of rews.cc story with same subject matter and minimal substantive value beyond headline novelty."
+    },
+    {
+      "url": "https://twitter.com/karpathy/status/2109361546505966046",
+      "reason": "Vague tweet about LLM capability perception gaps lacks concrete analysis or actionable insights for AI product decision-making."
+    },
+    {
+      "url": "https://www.techmeme.com/261011/p12#a261011p12",
+      "reason": "Palantir CTO opinion piece on geopolitics and ethics lacks direct AI product relevance; appears to be general interview content."
+    },
+    {
+      "url": "https://www.techmeme.com/261011/p4#a261011p4",
+      "reason": "Rein Security funding announcement is standard venture news with limited technical depth or market intelligence value."
+    }
+  ]
+}

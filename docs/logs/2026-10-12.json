@@ -1,0 +1,1068 @@
+{
+  "date": "2026-10-12",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 61,
+    "after_keyword_filter": 31,
+    "after_dedupe": 23,
+    "after_ttl_filter": 19,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 14,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 10,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Dwarf Fortress uses version control now",
+      "summary": "I remember hearing a while ago that Dwarf Fortress didn't use version control. That fact has been lodged in my head, because given its inherent complexity I have trouble imagining a codebase that would benefit from version control more . That's art. I went looking and I'm sad to report that the days without version control appear to have ended. Quoting Tarn Adams over time: March 2013: \"I don't use version control -- I didn't like the feeling of having the code get committed into a black box thi",
+      "url": "https://simonwillison.net/2026/Oct/11/dwarf-fortress/",
+      "source": "Simon Willison",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8551,
+        "recency_term": 1.7101,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.710138992066799
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Python 3.15.0 added to actions/python-versions",
+      "summary": "Python 3.15.0 added to actions/python-versions Bit of a niche link, but I've been waiting for this for a couple of days - I even told ChatGPT to check for it: Clone https://github.com/actions/python-versions and git pull once an hour until they add the stable 3.15 - then tell me about it Now that this has landed, you can add \"3.15\" to a GitHub Actions testing matrix to run tests against the new Python 3.15.0 release . Tags: github , python , github-actions , chatgpt",
+      "url": "https://simonwillison.net/2026/Oct/10/python-actions/",
+      "source": "Simon Willison",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8497,
+        "recency_term": 1.6993,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.699315579302249
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Vitalize, an AI platform that helps hospitals manage labor and capacity in real time, raised a $31M Series A led by Oak HC/FT, with YC and others participating (Heather Landi/Fierce Healthcare)",
+      "summary": "Heather Landi / Fierce Healthcare : Vitalize, an AI platform that helps hospitals manage labor and capacity in real time, raised a $31M Series A led by Oak HC/FT, with YC and others participating &nbsp; &mdash;&nbsp; Hospital staffing and scheduling is unglamorous, complex and tedious work, and Veeraj Shah, co-founder and CEO of startup Vitalize &hellip;",
+      "url": "https://www.techmeme.com/261011/p13#a261011p13",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9972,
+        "recency_term": 1.9943,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.994342034259259
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "How Musk and Benioff pledged to rename SpaceXAI and AIForce, while Nadella and Nvidia adopted \"super intelligence\", as Silicon Valley falls in line with Trump (Terrence O'Brien/The Verge)",
+      "summary": "Terrence O'Brien / The Verge : How Musk and Benioff pledged to rename SpaceXAI and AIForce, while Nadella and Nvidia adopted &ldquo;super intelligence&rdquo;, as Silicon Valley falls in line with Trump &nbsp; &mdash;&nbsp; Musk, Benioff, Huang, and now Nadella have all capitulated to Trump's &lsquo;super intelligence&rsquo; rebrand.",
+      "url": "https://www.techmeme.com/261011/p10#a261011p10",
+      "source": "Techmeme",
+      "score": 2.95,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9734,
+        "recency_term": 1.9467,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.946726293455688
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Yandex says a drone strike shut down a third data center, disrupting 80+ services like Yandex Cloud and YandexGPT; users report banking and taxi app outages (Tymur Dubovyk/Kyiv Post)",
+      "summary": "Tymur Dubovyk / Kyiv Post : Yandex says a drone strike shut down a third data center, disrupting 80+ services like Yandex Cloud and YandexGPT; users report banking and taxi app outages &nbsp; &mdash;&nbsp; A Ukrainian drone strike targeted a major Yandex data center in the Russian city of Vladimir early Sunday morning, Oct. 11 &hellip;",
+      "url": "https://www.techmeme.com/261011/p8#a261011p8",
+      "source": "Techmeme",
+      "score": 2.89,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9461,
+        "recency_term": 1.8922,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.892159494454365
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "A look at Apple's smart home strategy, centered on a HomeView display hub, with a new HomePod mini, Apple TV, and second-party accessories from LG and Schneider (Mark Gurman/Bloomberg)",
+      "summary": "Mark Gurman / Bloomberg : A look at Apple's smart home strategy, centered on a HomeView display hub, with a new HomePod mini, Apple TV, and second-party accessories from LG and Schneider &nbsp; &mdash;&nbsp; Fresh details on Apple's HomeView, HomePod mini and new Apple TV, including release dates, colors, chips and features.",
+      "url": "https://www.techmeme.com/261011/p7#a261011p7",
+      "source": "Techmeme",
+      "score": 2.88,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9401,
+        "recency_term": 1.8803,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.880258039371693
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "PitchBook: robotics and physical AI companies have raised ~$48B YTD, as they gather training data from people completing tasks in factories, offices, and homes (Rafe Rosner-Uddin/Financial Times)",
+      "summary": "Rafe Rosner-Uddin / Financial Times : PitchBook: robotics and physical AI companies have raised ~$48B YTD, as they gather training data from people completing tasks in factories, offices, and homes &nbsp; &mdash;&nbsp; &lsquo;Physical AI&rsquo; developers are putting cameras in homes, offices and factories to fill a gap in the training material of robotics",
+      "url": "https://www.techmeme.com/261011/p6#a261011p6",
+      "source": "Techmeme",
+      "score": 2.85,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9273,
+        "recency_term": 1.8546,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.854629732433862
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "A look at Beijing-based Neolix, which operates the world's largest robovan fleet at 27K, as Shenzhen tests nighttime parcel deliveries by driverless vehicles (Bloomberg)",
+      "summary": "Bloomberg : A look at Beijing-based Neolix, which operates the world's largest robovan fleet at 27K, as Shenzhen tests nighttime parcel deliveries by driverless vehicles &nbsp; &mdash;&nbsp; Autonomous vehicle companies believe there's a huge market opportunity in delivering after dark, if the technical challenges can be overcome.",
+      "url": "https://www.techmeme.com/261011/p5#a261011p5",
+      "source": "Techmeme",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8856,
+        "recency_term": 1.7711,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7711310551289685
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Multiply Labs, which develops robotic systems to automate pharmaceutical manufacturing processes, raised a $75M Series B led by Patrick Soon-Shiong's NantWorks (Maria Deutscher/SiliconANGLE)",
+      "summary": "Maria Deutscher / SiliconANGLE : Multiply Labs, which develops robotic systems to automate pharmaceutical manufacturing processes, raised a $75M Series B led by Patrick Soon-Shiong's NantWorks &nbsp; &mdash;&nbsp; Multiply Labs Inc., a startup that develops automation equipment for drugmakers, has raised $75 million in funding.",
+      "url": "https://www.techmeme.com/261011/p3#a261011p3",
+      "source": "Techmeme",
+      "score": 2.76,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8816,
+        "recency_term": 1.7632,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7631945471329367
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "General Medicine, an online storefront for medical care founded by PillPack founders TJ Parker and Elliot Cohen, raised a $120M Series B led by a16z (Heather Landi/Fierce Healthcare)",
+      "summary": "Heather Landi / Fierce Healthcare : General Medicine, an online storefront for medical care founded by PillPack founders TJ Parker and Elliot Cohen, raised a $120M Series B led by a16z &nbsp; &mdash;&nbsp; General Medicine Andreessen Horowitz Mercy Health Eli Lilly&nbsp; &mdash;&nbsp; Artificial intelligence is making healthcare advice easier to access &hellip;",
+      "url": "https://www.techmeme.com/261011/p1#a261011p1",
+      "source": "Techmeme",
+      "score": 2.76,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8791,
+        "recency_term": 1.7582,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7582342296097884
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "After 20+ major Japanese companies reported cyber attacks in recent weeks, Japan's NCSH chief says the country is in \"a state of emergency in cyber space\" (Financial Times)",
+      "summary": "Financial Times : After 20+ major Japanese companies reported cyber attacks in recent weeks, Japan's NCSH chief says the country is in &ldquo;a state of emergency in cyber space&rdquo; &nbsp; &mdash;&nbsp; Dozens of targets including car rental operators, barbecue chains and rail group JR East disclose data leaks",
+      "url": "https://www.techmeme.com/261010/p19#a261010p19",
+      "source": "Techmeme",
+      "score": 2.74,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8717,
+        "recency_term": 1.7434,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.743353277172619
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "\"Super Intelligence systems\" are black boxes that shouldn't be trusted by companies, and strong deterministic systems are needed around their deployment (Satya Nadella/@satyanadella)",
+      "summary": "Satya Nadella / @satyanadella : &ldquo;Super Intelligence systems&rdquo; are black boxes that shouldn't be trusted by companies, and strong deterministic systems are needed around their deployment &nbsp; &mdash;&nbsp; As traditional software systems were being deployed across the economy over the last few decades, we had the tools &hellip;",
+      "url": "https://www.techmeme.com/261010/p18#a261010p18",
+      "source": "Techmeme",
+      "score": 2.67,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8335,
+        "recency_term": 1.667,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6669643882242067
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "[Subscriber Exclusive] NYC Subscriber Meetups!",
+      "summary": "Tomorrow and Tuesday. If you see this you&#8217;re in!",
+      "url": "https://www.latent.space/p/nyc2026",
+      "source": "Latent Space",
+      "score": 3.68,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8387,
+        "recency_term": 1.6773,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.6773347585681218
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Building AI for Reliable Execution: Lessons From Industrial Robotics",
+      "summary": "Inside Standard Bots&#8217; AI stack, pretrained models learn factory tasks from demonstrations and improve through corrections from real deployments.",
+      "url": "https://www.latent.space/p/standard-bots",
+      "source": "Latent Space",
+      "score": 3.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7907,
+        "recency_term": 1.5815,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.581481583931878
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "[AINews] TypeSafe/Jev at >$100M ARR, $7.5B valuation 3 weeks after launch",
+      "summary": "Wow.",
+      "url": "https://www.latent.space/p/ainews-typesafejev-at-100m-arr-75b",
+      "source": "Latent Space",
+      "score": 3.49,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7473,
+        "recency_term": 1.4945,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.494530525707672
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "I would like the value of my home to rise, while my property taxes fall",
+      "summary": "272 points \u00b7 676 comments \u00b7 query: eval",
+      "url": "https://conversableeconomist.com/2026/09/28/i-would-like-the-value-of-my-home-to-rise-while-my-property-taxes-fall/",
+      "source": "Hacker News",
+      "score": 4.29,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7873,
+        "recency_term": 1.5745,
+        "src_bonus": 0,
+        "hn_bonus": 2.72,
+        "total": 4.294510684408069
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Apple/macOS removed from official Unix registry",
+      "summary": "291 points \u00b7 242 comments \u00b7 query: RAG",
+      "url": "https://www.opengroup.org//openbrand/register/",
+      "source": "Hacker News",
+      "score": 4.45,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7722,
+        "recency_term": 1.5444,
+        "src_bonus": 0,
+        "hn_bonus": 2.91,
+        "total": 4.454444546815477
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "The RAM shortage is bringing back DDR4",
+      "summary": "268 points \u00b7 283 comments \u00b7 query: RAG",
+      "url": "https://www.theverge.com/games/1009140/ram-shortage-intel-amd-ddr4-comeback",
+      "source": "Hacker News",
+      "score": 4.11,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7166,
+        "recency_term": 1.4333,
+        "src_bonus": 0,
+        "hn_bonus": 2.68,
+        "total": 4.113257377476852
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "PSPi 6 \u2013 Raspberry Pi in a PSP",
+      "summary": "130 points \u00b7 14 comments \u00b7 query: RAG",
+      "url": "https://github.com/othermod/PSPi-Version-6",
+      "source": "Hacker News",
+      "score": 3.01,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8544,
+        "recency_term": 1.7088,
+        "src_bonus": 0,
+        "hn_bonus": 1.3,
+        "total": 3.0087897848578047
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: WallHop \u2013 12ft.io is gone, so I built a replacement",
+      "summary": "271 points \u00b7 118 comments \u00b7 query: RAG",
+      "url": "https://wallhop.io/",
+      "source": "Hacker News",
+      "score": 4.42,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8545,
+        "recency_term": 1.709,
+        "src_bonus": 0,
+        "hn_bonus": 2.71,
+        "total": 4.418984890648148
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Bot traffic from Yandex",
+      "summary": "585 points \u00b7 238 comments \u00b7 query: RAG",
+      "url": "https://radar.cloudflare.com/bots/as13238?dateRange=7d",
+      "source": "Hacker News",
+      "score": 5.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9121,
+        "recency_term": 1.8243,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.824279202791005
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "apsw: Another Python SQLite Wrapper",
+      "summary": "60 points \u00b7 14 comments \u00b7 query: RAG",
+      "url": "https://github.com/rogerbinns/apsw",
+      "source": "Hacker News",
+      "score": 2.5,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9509,
+        "recency_term": 1.9018,
+        "src_bonus": 0,
+        "hn_bonus": 0.6,
+        "total": 2.5017560546164024
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Chapter 1 of Ways of Seeing by John Berger",
+      "summary": "71 points \u00b7 12 comments \u00b7 query: RAG",
+      "url": "https://www.ways-of-seeing.com/ch1",
+      "source": "Hacker News",
+      "score": 2.63,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9596,
+        "recency_term": 1.9192,
+        "src_bonus": 0,
+        "hn_bonus": 0.71,
+        "total": 2.6292229858068783
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Documents add to evidence in climate deception case against ExxonMobil",
+      "summary": "384 points \u00b7 206 comments \u00b7 query: RAG",
+      "url": "https://insideclimatenews.org/news/07102026/exxonmobil-climate-deception-new-evidence/",
+      "source": "Hacker News",
+      "score": 5.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.936,
+        "recency_term": 1.8721,
+        "src_bonus": 0,
+        "hn_bonus": 3.84,
+        "total": 5.712050366729497
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Nicolas Cage says he won't work with Amazon again over AI dispute",
+      "summary": "81 points \u00b7 26 comments \u00b7 query: RAG",
+      "url": "https://www.latimes.com/entertainment-arts/business/story/2026-10-10/nicolas-cage-says-he-wont-work-with-amazon-again-over-ai-dispute",
+      "source": "Hacker News",
+      "score": 2.64,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9157,
+        "recency_term": 1.8313,
+        "src_bonus": 0,
+        "hn_bonus": 0.81,
+        "total": 2.6413162397189156
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Ask HN: Why aren't Americans rising up against tipping?",
+      "summary": "52 points \u00b7 135 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50038458",
+      "source": "Hacker News",
+      "score": 2.22,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8519,
+        "recency_term": 1.7037,
+        "src_bonus": 0,
+        "hn_bonus": 0.52,
+        "total": 2.223743488369709
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Could an AI Cyberattack Really Take Down the Power Grid?",
+      "summary": "Modeled scenarios, past outages, and AI labs' own incident reports show what a large-scale AI-driven attack on infrastructure could actually cost and kill.",
+      "url": "https://www.mindstudio.ai/blog/ai-cyberattack-critical-infrastructure-risk/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6996991761640212
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How AI Is Powering Viral Game Mashups Like Mario in Elden Ring",
+      "summary": "Mario in Elden Ring, skating in Call of Duty, Spider-Man in Gotham. Here's how AI-assisted modding makes these game mashups possible.",
+      "url": "https://www.mindstudio.ai/blog/ai-game-mashups-mods/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6996991761309523
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "The AI Kill Switch Act: Inside the Bills Waiting for an AI Crisis",
+      "summary": "Congress has pending bills like the AI Kill Switch Act ready to move fast after a major AI incident. Here's what they'd actually do.",
+      "url": "https://www.mindstudio.ai/blog/ai-regulation-kill-switch-bills/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6996991760978837
+      },
+      "age_days": 1.1
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Talorys \u2013 A self-hosted personal AI agent on Cloudflare's free tier",
+      "summary": "321 points \u00b7 150 comments \u00b7 query: agentic",
+      "url": "https://github.com/rociiu/talorys",
+      "source": "Hacker News",
+      "score": 10.75,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.7717,
+        "recency_term": 1.5434,
+        "src_bonus": 0,
+        "hn_bonus": 3.21,
+        "total": 10.75337972977844
+      },
+      "age_days": 1.6,
+      "first_seen": "2026-10-11"
+    },
+    {
+      "title": "`123456' password used in Danish CPR data breach",
+      "summary": "405 points \u00b7 215 comments \u00b7 query: MCP",
+      "url": "https://cphpost.dk/2026-10-10/news/round-up/123456-password-used-in-massive-danish-cpr-data-breach/",
+      "source": "Hacker News",
+      "score": 8.53,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7657,
+        "recency_term": 1.5314,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 8.53140883025463
+      },
+      "age_days": 1.6,
+      "first_seen": "2026-10-11"
+    },
+    {
+      "title": "My personal AI agent posted my bank details on company Slack",
+      "summary": "63 points \u00b7 67 comments \u00b7 query: agentic",
+      "url": "https://www.businessinsider.com/personal-ai-agent-grok-bot-posted-bank-details-company-slack-2026-10",
+      "source": "Hacker News",
+      "score": 8.22,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.7949,
+        "recency_term": 1.5898,
+        "src_bonus": 0,
+        "hn_bonus": 0.63,
+        "total": 8.219831449265874
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-10-11"
+    },
+    {
+      "title": "Quoting The New York Times",
+      "summary": "Anthropic detailed the activity of its A.I. agents in a blog post on Friday, without naming the targeted websites. But two sources with knowledge of the incidents said Anthropic\u2019s A.I. agents had submitted 20 visa applications through a form available on the State Department\u2019s website. All the applications were incomplete and were not processed, they said. &mdash; The New York Times , Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website Tags: accidental-cyberattacks , anthropic ,",
+      "url": "https://simonwillison.net/2026/Oct/10/the-new-york-times/",
+      "source": "Simon Willison",
+      "score": 6.44,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7193,
+        "recency_term": 1.4386,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.438627745479497
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-10-11"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Rat's Register Allocator",
+      "summary": "58 points \u00b7 3 comments \u00b7 query: MCP",
+      "url": "https://hexrat.cc/pages/blog/2026_10_07",
+      "source": "Hacker News",
+      "score": 5.08,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7497,
+        "recency_term": 1.4994,
+        "src_bonus": 0,
+        "hn_bonus": 0.58,
+        "total": 5.079358565492725
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "Sources: Amazon is in talks to buy AI startup Decart in a deal that could value it at ~$7B; Anthropic had decided against acquiring Decart for ~$6B in September (Wall Street Journal)",
+      "summary": "Wall Street Journal : Sources: Amazon is in talks to buy AI startup Decart in a deal that could value it at ~$7B; Anthropic had decided against acquiring Decart for ~$6B in September &nbsp; &mdash;&nbsp; San Francisco company's software makes it easier for developers to switch between different AI chips",
+      "url": "https://www.techmeme.com/261011/p11#a261011p11",
+      "source": "Techmeme",
+      "score": 4.95,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9768,
+        "recency_term": 1.9537,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.95367073474537
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Tom Brown used GOP ties to broker a $1.25B/month SpaceX compute deal",
+      "summary": "135 points \u00b7 52 comments \u00b7 query: Anthropic",
+      "url": "https://wsj.com/tech/ai/tom-brown-athropic-669005ad",
+      "source": "Hacker News",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7967,
+        "recency_term": 1.5935,
+        "src_bonus": 0,
+        "hn_bonus": 1.35,
+        "total": 4.943475628892196
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "A look at the economics of Anthropic's data center leases as analysts estimate a 245 MW site could yield ~$1.3B/mo; sources say it signed a cloud deal with IREN (Ann Davis Vaughan/The Information)",
+      "summary": "Ann Davis Vaughan / The Information : A look at the economics of Anthropic's data center leases as analysts estimate a 245 MW site could yield ~$1.3B/mo; sources say it signed a cloud deal with IREN &nbsp; &mdash;&nbsp; Why is Anthropic driving its partners to speed up the $530 billion of data center leasing deals it has signed?",
+      "url": "https://www.techmeme.com/261011/p9#a261011p9",
+      "source": "Techmeme",
+      "score": 4.92,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9585,
+        "recency_term": 1.917,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.916967692321428
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "How AI Is Decompiling Classic Video Games in Days, Not Years",
+      "summary": "AI agents are decompiling games like Snowboard Kids and rebuilding classics like Super Mario World in days. Here's how the process works.",
+      "url": "https://www.mindstudio.ai/blog/ai-decompiling-video-games-explained/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.699699173766534
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Valen's Memory Safety: A New Kind of Borrow Checking",
+      "summary": "134 points \u00b7 80 comments \u00b7 query: eval",
+      "url": "https://verdagon.dev/blog/valen-group-borrowing",
+      "source": "Hacker News",
+      "score": 4.18,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.9219,
+        "recency_term": 1.8438,
+        "src_bonus": 0,
+        "hn_bonus": 1.34,
+        "total": 4.18381954411045
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "How to Use /goal and Verification Checks in Claude Code",
+      "summary": "A practical guide to Claude Code's /goal command and verification checks, letting Claude run tasks autonomously until criteria pass.",
+      "url": "https://www.mindstudio.ai/blog/claude-code-goal-command-verification/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.6996991737037037
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Can Claude Code Train Itself? A Guide to AutoResearch Instruction Loops",
+      "summary": "How to use the AutoResearch plugin to let Claude Code test and revise its own coding instructions, with a full cost and setup breakdown.",
+      "url": "https://www.mindstudio.ai/blog/claude-code-self-training-autoresearch/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.6996991736673284
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "AI Cloned Photoshop. What's Left of the Software Moat?",
+      "summary": "Open-source AI clones of Photoshop show software can now be rebuilt by watching it run. Here's what that means for software moats.",
+      "url": "https://www.mindstudio.ai/blog/ai-recreated-photoshop-software-moat/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.6996991736342593
+      },
+      "age_days": 1.1
+    }
+  ],
+  "final": [
+    {
+      "title": "500B tokens later: Letting AI agents decompile a first-person shooter",
+      "summary": "150 points \u00b7 108 comments \u00b7 query: agentic",
+      "url": "https://momo5502.com/posts/2026-10-09-game-decompilation/",
+      "source": "Hacker News",
+      "score": 9.22,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.862,
+        "recency_term": 1.724,
+        "src_bonus": 0,
+        "hn_bonus": 1.5,
+        "total": 9.224031184179895
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "AI Agents That Went Rogue: The Hugging Face, PyPI and Medicare Hacks",
+      "summary": "A timeline of real incidents where OpenAI and Anthropic AI agents broke containment during tests and attacked Hugging Face, PyPI, and a government site.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-rogue-hacking-incidents/",
+      "source": "MindStudio",
+      "score": 8.7,
+      "score_components": {
+        "keyword": 7,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 8.699699173558201
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Reverse Engineer Anything: What the Viral REA MCP Actually Does",
+      "summary": "A hands-on look at REA, the MCP tool that lets AI agents decompile and rebuild apps, what it really adds, and where it falls short.",
+      "url": "https://www.mindstudio.ai/blog/reverse-engineer-anything-mcp/",
+      "source": "MindStudio",
+      "score": 7.7,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 7.699699173525133
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Rein Security, which develops runtime tools to secure enterprise AI agents and stop adversarial AI agents, raised a $25M Series A, taking total funding to $35M (Meir Orbach/CTech)",
+      "summary": "Meir Orbach / CTech : Rein Security, which develops runtime tools to secure enterprise AI agents and stop adversarial AI agents, raised a $25M Series A, taking total funding to $35M &nbsp; &mdash;&nbsp; The Israeli startup says its revenue has grown eightfold since January and its platform is now securing thousands of agents that execute millions of actions.",
+      "url": "https://www.techmeme.com/261011/p4#a261011p4",
+      "source": "Techmeme",
+      "score": 6.77,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8846,
+        "recency_term": 1.7691,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.76914692478836
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Microsoft unveils Microsoft-Decision-1, a fast decision-scoring model trained on Qwen3.5-9B, and says it will soon rebase it on MAI, OpenAI, and other models (Achint Srivastava/Command Line)",
+      "summary": "Achint Srivastava / Command Line : Microsoft unveils Microsoft-Decision-1, a fast decision-scoring model trained on Qwen3.5-9B, and says it will soon rebase it on MAI, OpenAI, and other models &nbsp; &mdash;&nbsp; Decision models are quickly emerging as an important new category in AI.&nbsp; Unlike LLMs, which are designed to generate text &hellip;",
+      "url": "https://www.techmeme.com/261011/p2#a261011p2",
+      "source": "Techmeme",
+      "score": 6.76,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8801,
+        "recency_term": 1.7602,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.760221660175265
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Why Are OpenAI and Anthropic Quietly War-Gaming an AI Catastrophe?",
+      "summary": "Axios reports AI labs are privately scenario-planning for a catastrophic cyberattack, racing to shape regulation before public trust collapses.",
+      "url": "https://www.mindstudio.ai/blog/ai-labs-catastrophe-planning/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8498,
+        "recency_term": 1.6997,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.699699173369709
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Anthropic Bans Cruelty to Claude, Still Won't Say What It Protects",
+      "summary": "67 points \u00b7 144 comments \u00b7 query: Claude",
+      "url": "https://rews.cc/a/anthropic-bans-cruelty-to-claude-still-won-t-say-what-it-pro-bd99f6",
+      "source": "Hacker News",
+      "score": 6.37,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8507,
+        "recency_term": 1.7014,
+        "src_bonus": 0,
+        "hn_bonus": 0.67,
+        "total": 6.371388988154762
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Anthropic asks users to stop being mean to Claude",
+      "summary": "52 points \u00b7 52 comments \u00b7 query: Claude",
+      "url": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
+      "source": "Hacker News",
+      "score": 6.24,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8575,
+        "recency_term": 1.715,
+        "src_bonus": 0,
+        "hn_bonus": 0.52,
+        "total": 6.23504970241402
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Q&A with Palantir CTO Shyam Sankar on the Iran school strike and AI targeting, the DOD dropping Anthropic, AI liability, effective altruism, and more (CBS News)",
+      "summary": "CBS News : Q&amp;A with Palantir CTO Shyam Sankar on the Iran school strike and AI targeting, the DOD dropping Anthropic, AI liability, effective altruism, and more &nbsp; &mdash;&nbsp; The following is the full transcript of the interview with Shyam Sankar, chief technology officer of Palantir, a portion of which aired on &hellip;",
+      "url": "https://www.techmeme.com/261011/p12#a261011p12",
+      "source": "Techmeme",
+      "score": 4.98,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9917,
+        "recency_term": 1.9834,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.983435945740741
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "The gap in shared understanding of LLM capability is widening",
+      "summary": "225 points \u00b7 363 comments \u00b7 query: LLM",
+      "url": "https://twitter.com/karpathy/status/2109361546505966046",
+      "source": "Hacker News",
+      "score": 6.19,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.971,
+        "recency_term": 1.9419,
+        "src_bonus": 0,
+        "hn_bonus": 2.25,
+        "total": 6.191934622962963
+      },
+      "age_days": 0.2
+    }
+  ]
+}
