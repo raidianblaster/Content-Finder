@@ -1,68 +1,98 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://github.com/rociiu/talorys",
-      "stage": "dropped_ttl",
-      "reason": "High-signal AI agents content (10.75 score) on self-hosted personal AI agent deserved cross-day retention despite TTL filter."
-    },
-    {
-      "url": "https://www.businessinsider.com/personal-ai-agent-grok-bot-posted-bank-details-company-slack-2026-10",
-      "stage": "dropped_ttl",
-      "reason": "High-value AI agents risk/security incident (8.22 score) with clear relevance to regulated corporate AI deployment concerns."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Oct/10/the-new-york-times/",
-      "stage": "dropped_ttl",
-      "reason": "Content from trusted Simon Willison (6.44 score) dropped by TTL despite proven signal from this high-quality source."
-    },
-    {
-      "url": "https://www.techmeme.com/261011/p11#a261011p11",
+      "url": "https://arxiv.org/abs/2603.07427",
       "stage": "dropped_source_cap",
-      "reason": "Major AI acquisition news (Amazon-Decart $7B deal, 4.95 score) warranted keeping despite source cap limits."
+      "reason": "High-quality frontier AI safety research on risk evaluation for autonomous agents from trusted arXiv source deserves coverage despite source cap."
     },
     {
-      "url": "https://wsj.com/tech/ai/tom-brown-athropic-669005ad",
+      "url": "https://arxiv.org/abs/2606.04296",
       "stage": "dropped_source_cap",
-      "reason": "Substantive Anthropic leadership/infrastructure story (4.94 score) with compute deal implications relevant to AI product context."
+      "reason": "Substantive research on multi-agent LLM intervention timing and failure attribution—core agent reliability topic dropped by source cap."
     },
     {
-      "url": "https://www.techmeme.com/261011/p9#a261011p9",
+      "url": "https://arxiv.org/abs/2610.13438",
       "stage": "dropped_source_cap",
-      "reason": "Key Anthropic infrastructure/economics analysis (4.92 score) with $1.3B/mo estimates should have cleared source cap."
+      "reason": "Novel agentic RL technique (rollout-time intervention) addressing fundamental agent capability limits deserves preservation over quota."
     },
     {
-      "url": "https://www.latent.space/p/standard-bots",
-      "stage": "dropped_keyword",
-      "reason": "Latent Space content on AI execution reliability (3.58 score) from trusted source wrongly filtered despite agents/robotics relevance."
+      "url": "https://arxiv.org/abs/2609.37686",
+      "stage": "dropped_source_cap",
+      "reason": "Direct evaluation of frontier agents in real professional domains (engineering) is high-signal frontier capability assessment work."
     },
     {
-      "url": "https://www.latent.space/p/ainews-typesafejev-at-100m-arr-75b",
-      "stage": "dropped_keyword",
-      "reason": "Latent Space AI industry news (3.49 score) on major startup valuation milestone from trusted source should not be keyword-dropped."
+      "url": "https://arxiv.org/abs/2610.13663",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent LLM system for neural network tuning—practical agentic application with optimization focus dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.08861",
+      "stage": "dropped_source_cap",
+      "reason": "Important empirical finding on API-to-chatbot transfer gap challenges common evaluation assumptions for frontier models."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.06202",
+      "stage": "dropped_source_cap",
+      "reason": "Critical meta-analysis of AI benchmark gaps (modality, search, citations) directly impacts safety evaluation methodology—high utility."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.09769",
+      "stage": "dropped_source_cap",
+      "reason": "Bolzano represents frontier agent progress on open mathematical problems—rare evidence of agent reasoning capability at research scale."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.12593",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic data synthesis via generative evolution for closed-loop learning is novel frontier agent training approach with clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13075",
+      "stage": "dropped_source_cap",
+      "reason": "LongHarness advances agentic reasoning over 100M-token corpora—substantive frontier challenge on context and evidence management."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://rews.cc/a/anthropic-bans-cruelty-to-claude-still-won-t-say-what-it-pro-bd99f6",
-      "reason": "Low-substance editorial opinion on Anthropic policy with minimal technical/business insight, appears to be hot-take content."
+      "url": "https://www.techmeme.com/261012/p38#a261012p38",
+      "reason": "Suki healthcare fundraise announcement is earnings/funding news with minimal technical or capability signal; primarily vendor marketing."
     },
     {
-      "url": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
-      "reason": "Duplicate/near-duplicate of rews.cc story with same subject matter and minimal substantive value beyond headline novelty."
+      "url": "https://www.mindstudio.ai/blog/copilot-local-actions-files-update/",
+      "reason": "Product feature summary for Copilot local file access is promotional blog content lacking technical depth or research contribution."
     },
     {
-      "url": "https://twitter.com/karpathy/status/2109361546505966046",
-      "reason": "Vague tweet about LLM capability perception gaps lacks concrete analysis or actionable insights for AI product decision-making."
+      "url": "https://www.mindstudio.ai/blog/microsoft-decision-1-fast-routing-model/",
+      "reason": "MindStudio benchmark reporting on Decision-1 appears to be vendor/affiliate content rather than independent analysis."
     },
     {
-      "url": "https://www.techmeme.com/261011/p12#a261011p12",
-      "reason": "Palantir CTO opinion piece on geopolitics and ethics lacks direct AI product relevance; appears to be general interview content."
+      "url": "https://www.techmeme.com/261012/p44#a261012p44",
+      "reason": "Meta executive Q&A on Muse is primarily promotional framing of commercial product rather than substantive capability or research disclosure."
     },
     {
-      "url": "https://www.techmeme.com/261011/p4#a261011p4",
-      "reason": "Rein Security funding announcement is standard venture news with limited technical depth or market intelligence value."
+      "url": "https://z.ai/blog/glm-legal",
+      "reason": "GLM-Legal title alone lacks sufficient context; appears to be unvetted vendor/product announcement without clear technical substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/best-claude-github-repos-workflow/",
+      "reason": "GitHub repo listicle is curator content without original research, analysis, or technical contribution to frontier AI knowledge."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-token-saving-plugins-tested/",
+      "reason": "Plugin testing blog is lightweight tutorial/product coverage lacking substantive empirical rigor or methodological contribution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/windows-hybrid-intelligence-explained/",
+      "reason": "Explainer post on Windows Hybrid Intelligence is generic product education content without frontier AI research value."
+    },
+    {
+      "url": "https://www.theguardian.com/technology/2026/oct/12/ai-less-regulated-than-milk-microsoft-president-calls-for-tougher-rules",
+      "reason": "Policy opinion piece from Microsoft executive lacks technical substance; reframes company messaging as news."
+    },
+    {
+      "url": "https://www.techmeme.com/261012/p31#a261012p31",
+      "reason": "Meta product announcement (Muse Wonder) framed as news but is promotional launch coverage without independent technical validation."
     }
   ]
 }

@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-13",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2603.07427",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality frontier AI safety research on risk evaluation for autonomous agents from trusted arXiv source deserves coverage despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.04296",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive research on multi-agent LLM intervention timing and failure attribution—core agent reliability topic dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13438",
+      "stage": "dropped_source_cap",
+      "reason": "Novel agentic RL technique (rollout-time intervention) addressing fundamental agent capability limits deserves preservation over quota."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.37686",
+      "stage": "dropped_source_cap",
+      "reason": "Direct evaluation of frontier agents in real professional domains (engineering) is high-signal frontier capability assessment work."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13663",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent LLM system for neural network tuning—practical agentic application with optimization focus dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.08861",
+      "stage": "dropped_source_cap",
+      "reason": "Important empirical finding on API-to-chatbot transfer gap challenges common evaluation assumptions for frontier models."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.06202",
+      "stage": "dropped_source_cap",
+      "reason": "Critical meta-analysis of AI benchmark gaps (modality, search, citations) directly impacts safety evaluation methodology—high utility."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.09769",
+      "stage": "dropped_source_cap",
+      "reason": "Bolzano represents frontier agent progress on open mathematical problems—rare evidence of agent reasoning capability at research scale."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.12593",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic data synthesis via generative evolution for closed-loop learning is novel frontier agent training approach with clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13075",
+      "stage": "dropped_source_cap",
+      "reason": "LongHarness advances agentic reasoning over 100M-token corpora—substantive frontier challenge on context and evidence management."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261012/p38#a261012p38",
+      "reason": "Suki healthcare fundraise announcement is earnings/funding news with minimal technical or capability signal; primarily vendor marketing."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/copilot-local-actions-files-update/",
+      "reason": "Product feature summary for Copilot local file access is promotional blog content lacking technical depth or research contribution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/microsoft-decision-1-fast-routing-model/",
+      "reason": "MindStudio benchmark reporting on Decision-1 appears to be vendor/affiliate content rather than independent analysis."
+    },
+    {
+      "url": "https://www.techmeme.com/261012/p44#a261012p44",
+      "reason": "Meta executive Q&A on Muse is primarily promotional framing of commercial product rather than substantive capability or research disclosure."
+    },
+    {
+      "url": "https://z.ai/blog/glm-legal",
+      "reason": "GLM-Legal title alone lacks sufficient context; appears to be unvetted vendor/product announcement without clear technical substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/best-claude-github-repos-workflow/",
+      "reason": "GitHub repo listicle is curator content without original research, analysis, or technical contribution to frontier AI knowledge."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-token-saving-plugins-tested/",
+      "reason": "Plugin testing blog is lightweight tutorial/product coverage lacking substantive empirical rigor or methodological contribution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/windows-hybrid-intelligence-explained/",
+      "reason": "Explainer post on Windows Hybrid Intelligence is generic product education content without frontier AI research value."
+    },
+    {
+      "url": "https://www.theguardian.com/technology/2026/oct/12/ai-less-regulated-than-milk-microsoft-president-calls-for-tougher-rules",
+      "reason": "Policy opinion piece from Microsoft executive lacks technical substance; reframes company messaging as news."
+    },
+    {
+      "url": "https://www.techmeme.com/261012/p31#a261012p31",
+      "reason": "Meta product announcement (Muse Wonder) framed as news but is promotional launch coverage without independent technical validation."
+    }
+  ]
+}
