@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-14",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://simonwillison.net/2026/Oct/12/llm-meta-ai/",
+      "stage": "dropped_source_cap",
+      "reason": "High-score (8.7) Simon Willison content on LLM tooling should survive source cap despite volume."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/12/python-3-15-web-edit-profiling/",
+      "stage": "dropped_source_cap",
+      "reason": "Score 8.62 Simon Willison post on Python profiling and web-edit is substantive developer content."
+    },
+    {
+      "url": "https://www.latent.space/p/claude-dynamic-workflows",
+      "stage": "dropped_ttl",
+      "reason": "Latent Space deep-dive on Anthropic's Claude Dynamic Workflows (score 7.63) is high-value AI agent architecture analysis."
+    },
+    {
+      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/",
+      "stage": "dropped_ttl",
+      "reason": "Score 10.21 Ars Technica analysis on AI coding agent limitations is substantive and directly relevant."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/12/web-edit/",
+      "stage": "dropped_ttl",
+      "reason": "Score 10.6 Simon Willison release of web-edit 0.1a0 is high-signal tool announcement that deserved final inclusion."
+    },
+    {
+      "url": "https://www.anthropic.com/research/self-replicating-ai",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic research on self-replicating AI capabilities (score 4.71) is substantive and from trusted source."
+    },
+    {
+      "url": "https://github.com/prabanta-dev/janas",
+      "stage": "dropped_source_cap",
+      "reason": "Score 5.82 GitHub project on streaming LLM experts from SSD is relevant AI/ML infrastructure work."
+    },
+    {
+      "url": "https://github.com/morluto/rea",
+      "stage": "dropped_source_cap",
+      "reason": "Score 5.58 agent-based reverse engineering tool shows practical AI agents application."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt-6-1-astra-accident-risk/",
+      "reason": "Vendor speculation content (MindStudio) about OpenAI delay lacks substantive reporting."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/intent-engineering-ai-coding-skill/",
+      "reason": "MindStudio filler content on general AI coding concepts lacks depth or novel insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/firecrawl-alexandria-pricing/",
+      "reason": "Vendor marketing angle on Firecrawl pricing lacks independent analysis or substance."
+    },
+    {
+      "url": "https://micahflee.com/just-say-no-to-openai-and-anthropic/",
+      "reason": "Opinion piece critical of major AI providers lacks technical substance or reporting."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-math-breakthroughs-zeta-shortcut/",
+      "reason": "MindStudio hype-driven narrative about OpenAI math claims without technical rigor."
+    }
+  ]
+}

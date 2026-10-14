@@ -1,0 +1,1535 @@
+{
+  "date": "2026-10-14",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 92,
+    "after_keyword_filter": 66,
+    "after_dedupe": 56,
+    "after_ttl_filter": 50,
+    "after_source_cap": 17
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 9,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 7,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 16,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 18,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+      "summary": "",
+      "url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
+      "source": "Hugging Face Blog",
+      "score": 2.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9521,
+        "recency_term": 1.9042,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9041865887863754
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Albert Invent, which launched an AI model trained on chemical patents and data about 15M molecules, raised a $55M Series B, a source says at a $340M valuation (Rashi Shrivastava/Forbes)",
+      "summary": "Rashi Shrivastava / Forbes : Albert Invent, which launched an AI model trained on chemical patents and data about 15M molecules, raised a $55M Series B, a source says at a $340M valuation &nbsp; &mdash;&nbsp; Scientists at manufacturing conglomerates like Kenvue and Henkel use Albert Invent's AI tools to design experiments.",
+      "url": "https://www.techmeme.com/261013/p48#a261013p48",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9937,
+        "recency_term": 1.9874,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.987364498743386
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Tencent raised ~$5.7B via US dollar and offshore yuan debt offerings, drawing $23B+ in orders; source: it had initially been expected to raise at least $4.5B (Reuters)",
+      "summary": "Reuters : Tencent raised ~$5.7B via US dollar and offshore yuan debt offerings, drawing $23B+ in orders; source: it had initially been expected to raise at least $4.5B &nbsp; &mdash;&nbsp; Tencent Holdings (0700.HK) has raised about $5.7 billion through US dollar and offshore yuan debt offerings on Tuesday &hellip;",
+      "url": "https://www.techmeme.com/261013/p46#a261013p46",
+      "source": "Techmeme",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9873,
+        "recency_term": 1.9746,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9745933346461637
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "The FBI says it worked with CrowdStrike to dismantle 40+ laptop farms across Texas used to help North Koreans get remote US tech jobs under stolen identities (Dustin Volz/New York Times)",
+      "summary": "Dustin Volz / New York Times : The FBI says it worked with CrowdStrike to dismantle 40+ laptop farms across Texas used to help North Koreans get remote US tech jobs under stolen identities &nbsp; &mdash;&nbsp; F.B.I. investigators worked with the cybersecurity firm CrowdStrike to dismantle so-called laptop farms that steal American identities to earn cash for Pyongyang.",
+      "url": "https://www.techmeme.com/261013/p43#a261013p43",
+      "source": "Techmeme",
+      "score": 2.95,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9758,
+        "recency_term": 1.9517,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9516535197453706
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "A Delaware jury awards Qualcomm $2 in nominal damages after finding Arm breached its architectural license agreement and sought to disrupt Qualcomm's business (Tom Hals/Reuters)",
+      "summary": "Tom Hals / Reuters : A Delaware jury awards Qualcomm $2 in nominal damages after finding Arm breached its architectural license agreement and sought to disrupt Qualcomm's business &nbsp; &mdash;&nbsp; Chip technology supplier Arm Holdings (O9Ty.F) breached a licensing agreement with Qualcomm (QCOM.O) and intentionally interfered &hellip;",
+      "url": "https://www.techmeme.com/261013/p37#a261013p37",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9585,
+        "recency_term": 1.9171,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9170801069708996
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Quoting Geoffrey Huntley",
+      "summary": "If the agent isn't using my diagnostics library, I could introspect and update AGENTS.md, but there's still a delta, and it'll drift. Instead, I write a pre-commit hook that checks the git diff for direct calls to observability modules that bypass my diagnostics module. Boom: fail the commit, inject a prompt telling the agent to use the diagnostics library. All of a sudden it's ten out of ten. &mdash; Geoffrey Huntley , nobody should type code by hand anymore. here's what's left. Tags: coding-ag",
+      "url": "https://simonwillison.net/2026/Oct/13/geoffrey-huntley/",
+      "source": "Simon Willison",
+      "score": 4.86,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9309,
+        "recency_term": 1.8618,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.861765953452381
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "datasette-ports 0.4",
+      "summary": "Release: datasette-ports 0.4 My plugin for detecting and listing all Datasette instances on the current machine now works with the latest version, and displays the detected PID as well. Knowing the PID makes it easier to attach the new Python 3.15 profiler . Tags: datasette",
+      "url": "https://simonwillison.net/2026/Oct/12/datasette-ports/",
+      "source": "Simon Willison",
+      "score": 4.47,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7369,
+        "recency_term": 1.4739,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.473892276147486
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular",
+      "summary": "SpaceX's mobile strategy is becoming clearly with its latest spectrum purchase, and it might work.",
+      "url": "https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/",
+      "source": "Stratechery",
+      "score": 3.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9099,
+        "recency_term": 1.8197,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.8197024612896824
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Personal Day",
+      "summary": "Personal Day \u2014 No Update",
+      "url": "https://stratechery.com/2026/personal-day-4/",
+      "source": "Stratechery",
+      "score": 3.53,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.767,
+        "recency_term": 1.534,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.533988175542328
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Dyna-2: General Purpose Physical Agents with Hour-Long Autonomy \u2014 Jason Ma, Dyna Robotics",
+      "summary": "Our first robotics pod with Dyna&#8217;s Chief Scientist on their big bet on World Action Models & the Next Frontier of Physical AI",
+      "url": "https://www.latent.space/p/dyna",
+      "source": "Latent Space",
+      "score": 3.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9839,
+        "recency_term": 1.9677,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.9677017998214286
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Building resilient AI-powered software, and planning for when things go wrong",
+      "summary": "How to handle uncertainty with AI vendors and disaster recovery (DR) approaches to consider. An excerpt from the book Building Resilient Distributed Systems by Sam Newman",
+      "url": "https://newsletter.pragmaticengineer.com/p/building-resilient-systems",
+      "source": "The Pragmatic Engineer",
+      "score": 2.89,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9459,
+        "recency_term": 1.8918,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8918353976554236
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Deloitte falsified documents to evade tax on Abramovich's wealth",
+      "summary": "618 points \u00b7 202 comments \u00b7 query: eval",
+      "url": "https://www.bbc.com/news/articles/c64g1l5389kvo",
+      "source": "Hacker News",
+      "score": 5.54,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7691,
+        "recency_term": 1.5382,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.538244127774471
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Turn a WiFi 7 Router into a 320Msps Software Defined Radio Receiver",
+      "summary": "411 points \u00b7 120 comments \u00b7 query: RAG",
+      "url": "https://github.com/h0m3us3r/w1700k-sdr",
+      "source": "Hacker News",
+      "score": 5.57,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7831,
+        "recency_term": 1.5661,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.566124418740079
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Show HN: How Random Are You?",
+      "summary": "70 points \u00b7 40 comments \u00b7 query: RAG",
+      "url": "https://lab.specr.net/rigged-draw/",
+      "source": "Hacker News",
+      "score": 2.6,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9513,
+        "recency_term": 1.9026,
+        "src_bonus": 0,
+        "hn_bonus": 0.7,
+        "total": 2.6026290483366403
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Yandex bot traffic down 99% after data center attack",
+      "summary": "222 points \u00b7 114 comments \u00b7 query: RAG",
+      "url": "https://radar.cloudflare.com/bots/as13238?dateRange=7d#bot-traffic",
+      "source": "Hacker News",
+      "score": 3.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7367,
+        "recency_term": 1.4733,
+        "src_bonus": 0,
+        "hn_bonus": 2.22,
+        "total": 3.6933135721097887
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "A plea not to use uv-build",
+      "summary": "78 points \u00b7 122 comments \u00b7 query: RAG",
+      "url": "https://blogs.gentoo.org/mgorny/2026/10/12/a-plea-not-to-use-uv-build/",
+      "source": "Hacker News",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9584,
+        "recency_term": 1.9168,
+        "src_bonus": 0,
+        "hn_bonus": 0.78,
+        "total": 2.6968122493253968
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Citroen revives the 2CV for an electric age",
+      "summary": "406 points \u00b7 466 comments \u00b7 query: RAG",
+      "url": "https://www.bbc.com/news/articles/c620r33plgppo",
+      "source": "Hacker News",
+      "score": 5.56,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7798,
+        "recency_term": 1.5596,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.559613175214947
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Making big downloads resumable in Firefox",
+      "summary": "277 points \u00b7 132 comments \u00b7 query: RAG",
+      "url": "https://lunarwatcher.codeberg.page/til/firefox/resumable-big-downloads.html",
+      "source": "Hacker News",
+      "score": 4.42,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8241,
+        "recency_term": 1.6483,
+        "src_bonus": 0,
+        "hn_bonus": 2.77,
+        "total": 4.418280503227513
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "RJ Mitte has died",
+      "summary": "211 points \u00b7 71 comments \u00b7 query: RAG",
+      "url": "https://news.sky.com/story/breaking-bad-star-rj-mitte-dies-aged-34-13598332",
+      "source": "Hacker News",
+      "score": 3.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.84,
+        "recency_term": 1.6799,
+        "src_bonus": 0,
+        "hn_bonus": 2.11,
+        "total": 3.789917407956349
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "MiniCPM-V 4.7 35B-A3B: Local Testing Results for OCR, SQL and Physics",
+      "summary": "Hands-on local test of MiniCPM-V 4.7, an Apache 2.0 vision MoE model, covering OCR, SQL debugging, physics reasoning and multilingual translation.",
+      "url": "https://www.mindstudio.ai/blog/minicpm-v-4-7-local-test/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7006548417724867
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Muse Wonder Pricing Explained: API Costs, Muse Code Tiers, and 429 Errors",
+      "summary": "Muse Wonder and Muse Wonder Full pricing, Muse Code subscription tiers, API token costs versus GPT 6.1 Soul and Opus 5.5, and the quota errors at launch.",
+      "url": "https://www.mindstudio.ai/blog/muse-wonder-pricing-and-quota-limits/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7006548417228835
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Strata Local AI on One RTX 3060 12GB: A $769 Budget Rig Test",
+      "summary": "Can Strata's local AI engine run on a single RTX 3060 12GB? Here's the hardware cost breakdown, performance numbers, and Hermes agent setup.",
+      "url": "https://www.mindstudio.ai/blog/strata-local-ai-single-3060-budget-build/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7006548416798941
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Who Approved That Refund? Governing AI-Built Apps at Work",
+      "summary": "How Superblocks adds permissions, SSO, security scans and audit logs to AI-built internal apps, using a CRM refund workflow as a case study.",
+      "url": "https://www.mindstudio.ai/blog/superblocks-enterprise-vibe-coding-governance/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7006548416402116
+      },
+      "age_days": 1.0
+    }
+  ],
+  "dropped_dedupe": [
+    {
+      "title": "Redesigning source control at Anthropic",
+      "summary": "527 points \u00b7 515 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "source": "Hacker News",
+      "score": 7.89,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9446,
+        "recency_term": 1.8891,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.889133674070767
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Gemini 4 Argon for Robotics",
+      "summary": "194 points \u00b7 45 comments \u00b7 query: RAG",
+      "url": "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
+      "source": "Hacker News",
+      "score": 5.84,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9511,
+        "recency_term": 1.9022,
+        "src_bonus": 0,
+        "hn_bonus": 1.94,
+        "total": 5.842199150201719
+      },
+      "age_days": 0.3
+    }
+  ],
+  "dropped_ttl": [
+    {
+      "title": "web-edit 0.1a0",
+      "summary": "Release: web-edit 0.1a0 I was working on a project from my phone using Codex Remote when I found myself wanting to edit a credentials file without round-tripping those credentials through the LLM itself. So... I had Codex and GPT-6 Astra Extra High build this Python web app which provides a web UI for viewing and editing files in a folder. It's intended to be run over Tailscale, so I can have an agent start this running and then edit files via my Tailscale network directly from my phone. Here's ",
+      "url": "https://simonwillison.net/2026/Oct/12/web-edit/",
+      "source": "Simon Willison",
+      "score": 10.6,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8022,
+        "recency_term": 1.6043,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 10.604345313346561
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-10-13"
+    },
+    {
+      "title": "AI coding agents generate more code, but not more software",
+      "summary": "359 points \u00b7 299 comments \u00b7 query: AI agents",
+      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/",
+      "source": "Hacker News",
+      "score": 10.21,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8101,
+        "recency_term": 1.6201,
+        "src_bonus": 0,
+        "hn_bonus": 3.59,
+        "total": 10.210102588419312
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-10-13"
+    },
+    {
+      "title": "How Anthropic\u2019s Dynamic Workflows Coordinate Claude Agents",
+      "summary": "At AI Engineer New York, Anthropic drew on lessons from Unix and Linux to explain how agents can tackle bigger projects without overwhelming developers.",
+      "url": "https://www.latent.space/p/claude-dynamic-workflows",
+      "source": "Latent Space",
+      "score": 7.63,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8164,
+        "recency_term": 1.6329,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 7.632853911097884
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-10-13"
+    },
+    {
+      "title": "GLM-Legal",
+      "summary": "665 points \u00b7 358 comments \u00b7 query: LLM",
+      "url": "https://z.ai/blog/glm-legal",
+      "source": "Hacker News",
+      "score": 7.61,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8039,
+        "recency_term": 1.6077,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.607748090958995
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-10-13"
+    },
+    {
+      "title": "Hackers activate automatic defrosting in supermarket fridges across Europe",
+      "summary": "883 points \u00b7 986 comments \u00b7 query: LLM",
+      "url": "https://www.tomshardware.com/tech-industry/cyber-security/unprecedented-cyberattack-cripples-supermarket-fridges-across-europe-as-hackers-activate-automatic-defrosting-delivery-and-store-prices-also-impacted-by-incident",
+      "source": "Hacker News",
+      "score": 7.56,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7806,
+        "recency_term": 1.5611,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.5611111861541005
+      },
+      "age_days": 1.5,
+      "first_seen": "2026-10-13"
+    },
+    {
+      "title": "Hello Python 3.15, goodbye 3.10, and now I can use 3.11",
+      "summary": "Python 3.15 is here ! Here's the essential What's new in Python 3.15 guide, this year curated by 3.14 and 3.15 release manager Hugo van Kemenade. As someone who builds open source software that works in every supported Python version, I get to say goodbye to Python 3.10 and start embracing features from Python 3.11. First, some highlights from Python 3.15. Explicit lazy imports I'm most excited about Explicit lazy imports from PEP 810 . These let you import modules like so: lazy import json lazy",
+      "url": "https://simonwillison.net/2026/Oct/12/python-3-15/",
+      "source": "Simon Willison",
+      "score": 5.63,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8162,
+        "recency_term": 1.6323,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 5.632328117285053
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-10-13"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "llm-meta-ai 0.2",
+      "summary": "Release: llm-meta-ai 0.2 Meta AI release Muse Wonder (and Muse Wonder Full), their new \"most capable models\". These look like they may be Meta's first Fable class models - Artificial Analysis scores Muse Wonder (Max) as equivalent to GPT-6.1 Sol. I updated my llm-meta-ai plugin for the new model. Here are pelicans for Muse Wonder for the six reasoning levels: minimal, low, medium, high, xhigh, max. This is the max one: For comparison, here are pelicans for Muse 1.3 (released September 2nd) and M",
+      "url": "https://simonwillison.net/2026/Oct/12/llm-meta-ai/",
+      "source": "Simon Willison",
+      "score": 8.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8502,
+        "recency_term": 1.7004,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.700410127714946
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Profiling web-edit with Python 3.15: flame graphs and source heatmaps",
+      "summary": "Research: Profiling web-edit with Python 3.15: flame graphs and source heatmaps I put the new Python 3.15 profiler through its paces by having GPT-6 Astra Extra High in Codex run it against my new web-edit app : I need a Python 3.15 flame graph and heatmap demo of the \"web-edit\" app from PyPI - research first then make me those demos Here's the resulting example flame graph and heatmap . Tags: profiling , python , codex",
+      "url": "https://simonwillison.net/2026/Oct/12/python-3-15-web-edit-profiling/",
+      "source": "Simon Willison",
+      "score": 8.62,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8085,
+        "recency_term": 1.6169,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.61692467790344
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "How Meta Rebuilt Its AI Lab to Challenge OpenAI and Google",
+      "summary": "Meta went from the Llama 4 benchmark scandal to six frontier model releases in six months. Here's how Alexander Wang's lab pulled it off.",
+      "url": "https://www.mindstudio.ai/blog/meta-ai-turnaround-six-models-six-months/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.700654836583995
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Launch HN: Agent37 (YC F26) \u2013 Low-cost agent sandboxes for running agents",
+      "summary": "157 points \u00b7 111 comments \u00b7 query: AI agents",
+      "url": "https://news.ycombinator.com/item?id=50059096",
+      "source": "Hacker News",
+      "score": 6.18,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8073,
+        "recency_term": 1.6147,
+        "src_bonus": 0,
+        "hn_bonus": 1.57,
+        "total": 6.1846561592890215
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "A look at the math that OpenAI claims computes faster Fourier transforms",
+      "summary": "237 points \u00b7 158 comments \u00b7 query: RAG",
+      "url": "https://www.argmin.net/p/faster-fourier-transforms",
+      "source": "Hacker News",
+      "score": 6.1,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8669,
+        "recency_term": 1.7337,
+        "src_bonus": 0,
+        "hn_bonus": 2.37,
+        "total": 6.10373354020172
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Sources: OpenAI is in early talks to buy Trail of Bits, which finds and fixes vulnerabilities in open-source software; founded in 2012, it has 40+ employees (The Information)",
+      "summary": "The Information : Sources: OpenAI is in early talks to buy Trail of Bits, which finds and fixes vulnerabilities in open-source software; founded in 2012, it has 40+ employees &nbsp; &mdash;&nbsp; OpenAI, which is trying to develop a substantial cybersecurity business, is in early talks to buy Trail of Bits &hellip;",
+      "url": "https://www.techmeme.com/261013/p47#a261013p47",
+      "source": "Techmeme",
+      "score": 5.98,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9892,
+        "recency_term": 1.9784,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.978435921008598
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Sources: Decagon, which offers AI customer service agents and was last valued at $4.5B, hired a bank and is in early talks with buyers, including ServiceNow (Katie Roof/Business Insider)",
+      "summary": "Katie Roof / Business Insider : Sources: Decagon, which offers AI customer service agents and was last valued at $4.5B, hired a bank and is in early talks with buyers, including ServiceNow &nbsp; &mdash;&nbsp; - AI startup Decagon builds AI agents to automate customer support for enterprise customers.&nbsp; &mdash; The company has hired an investment bank to evaluate M&amp;A interest.",
+      "url": "https://www.techmeme.com/261013/p36#a261013p36",
+      "source": "Techmeme",
+      "score": 5.91,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9571,
+        "recency_term": 1.9141,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.914120444732143
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Pluto Security, which monitors AI agents and vibe-coded apps, exits stealth with $42M, including a $34M Series A, and says it has hit $2M+ in ARR since April (Ram Iyer/TechCrunch)",
+      "summary": "Ram Iyer / TechCrunch : Pluto Security, which monitors AI agents and vibe-coded apps, exits stealth with $42M, including a $34M Series A, and says it has hit $2M+ in ARR since April &nbsp; &mdash;&nbsp; The problem with giving everyone in a company access to AI tools is that people will use them in unexpected ways.",
+      "url": "https://www.techmeme.com/261013/p35#a261013p35",
+      "source": "Techmeme",
+      "score": 5.91,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9565,
+        "recency_term": 1.913,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.912959730373677
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'",
+      "summary": "242 points \u00b7 217 comments \u00b7 query: Anthropic",
+      "url": "https://www.cnbc.com/2026/10/07/anthropic-will-be-most-ridiculous-ipo-of-year-analyst-says.html",
+      "source": "Hacker News",
+      "score": 5.9,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7376,
+        "recency_term": 1.4752,
+        "src_bonus": 0,
+        "hn_bonus": 2.42,
+        "total": 5.895215021335979
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "Janas: Run LLMs larger than RAM by streaming experts from SSD",
+      "summary": "214 points \u00b7 86 comments \u00b7 query: LLM",
+      "url": "https://github.com/prabanta-dev/janas",
+      "source": "Hacker News",
+      "score": 5.82,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.839,
+        "recency_term": 1.678,
+        "src_bonus": 0,
+        "hn_bonus": 2.14,
+        "total": 5.817979571564154
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Is a Major AI Breach Inevitable? What Lab Leaders Are Saying",
+      "summary": "AI executives at OpenAI and Anthropic increasingly describe a catastrophic AI breach as likely, not hypothetical. Here's why containment is slipping.",
+      "url": "https://www.mindstudio.ai/blog/ai-breach-inevitable-lab-warnings/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.700654836064815
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Reverse engineer anything with agents, from app behavior down to native binaries",
+      "summary": "97 points \u00b7 32 comments \u00b7 query: agentic",
+      "url": "https://github.com/morluto/rea",
+      "source": "Hacker News",
+      "score": 5.58,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8059,
+        "recency_term": 1.6117,
+        "src_bonus": 0,
+        "hn_bonus": 0.97,
+        "total": 5.581749412744709
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Show HN: An experimental pattern-first DAW that supports MCP",
+      "summary": "83 points \u00b7 35 comments \u00b7 query: MCP",
+      "url": "https://github.com/andrewfader/blokkily",
+      "source": "Hacker News",
+      "score": 5.52,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.83,
+        "total": 5.522956423290344
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Blood cells from 80-year-old donor become stem cells with molecular age under 20",
+      "summary": "173 points \u00b7 125 comments \u00b7 query: LLM",
+      "url": "https://doi.org/10.1111/acel.70751",
+      "source": "Hacker News",
+      "score": 5.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8478,
+        "recency_term": 1.6956,
+        "src_bonus": 0,
+        "hn_bonus": 1.73,
+        "total": 5.425568857113095
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to engineer an AI harness for game development",
+      "summary": "129 points \u00b7 58 comments \u00b7 query: Claude",
+      "url": "https://kylekukshtel.com/ai-harness-engineering-game-development-claude-code",
+      "source": "Hacker News",
+      "score": 5.16,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9351,
+        "recency_term": 1.8702,
+        "src_bonus": 0,
+        "hn_bonus": 1.29,
+        "total": 5.160175338558201
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Filing: Abdulrahman Alfozan, the OpenAI staffer charged with bugging a conference room, used a Seeed Xiao ESP32-S3 Sense dev board; a website sells it for $14 (Bloomberg)",
+      "summary": "Bloomberg : Filing: Abdulrahman Alfozan, the OpenAI staffer charged with bugging a conference room, used a Seeed Xiao ESP32-S3 Sense dev board; a website sells it for $14 &nbsp; &mdash;&nbsp; An employee at OpenAI was arrested and charged with using a hidden recording device in one of the company's San Francisco offices &hellip;",
+      "url": "https://www.techmeme.com/261013/p49#a261013p49",
+      "source": "Techmeme",
+      "score": 4.99,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9967,
+        "recency_term": 1.9933,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.99332017975529
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Apple v. OpenAI: a US judge partly grants Apple's motion for expedited discovery, ordering OpenAI to hand over forensic images of devices and other documents (Annelise Levy/Bloomberg Law)",
+      "summary": "Annelise Levy / Bloomberg Law : Apple v. OpenAI: a US judge partly grants Apple's motion for expedited discovery, ordering OpenAI to hand over forensic images of devices and other documents &nbsp; &mdash;&nbsp; Apple Inc. convinced a federal judge in California to force OpenAI Inc. to expedite turning over documents concerning its alleged theft &hellip;",
+      "url": "https://www.techmeme.com/261013/p44#a261013p44",
+      "source": "Techmeme",
+      "score": 4.96,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9779,
+        "recency_term": 1.9558,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.95583010030754
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Xbox CEO Asha Sharma announces Xbox Labs, a small team to test emerging ideas, citing recent game ports and mashups, many of them built with AI tools (Jon Hicks/GamesIndustry.biz)",
+      "summary": "Jon Hicks / GamesIndustry.biz : Xbox CEO Asha Sharma announces Xbox Labs, a small team to test emerging ideas, citing recent game ports and mashups, many of them built with AI tools &nbsp; &mdash;&nbsp; New business unit is charged with testing new projects and judging them by user feedback, spurred by recent mashups and ports delivered with AI coding tools",
+      "url": "https://www.techmeme.com/261013/p42#a261013p42",
+      "source": "Techmeme",
+      "score": 4.95,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9734,
+        "recency_term": 1.9469,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.946881687526455
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Federal prosecutors say a Saudi national was arrested over bugging an OpenAI executive conference room; OpenAI found the audio recorder around September 30 (The San Francisco Standard)",
+      "summary": "The San Francisco Standard : Federal prosecutors say a Saudi national was arrested over bugging an OpenAI executive conference room; OpenAI found the audio recorder around September 30 &nbsp; &mdash;&nbsp; An OpenAI engineer has been arrested on suspicion of hiding an audio recording device in an executive conference room &hellip;",
+      "url": "https://www.techmeme.com/261013/p41#a261013p41",
+      "source": "Techmeme",
+      "score": 4.95,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9728,
+        "recency_term": 1.9455,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.945529174219576
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "OpenAI says the FBI arrested one of its staffers after the company found a hidden recording device in its offices and used its models to understand the device (@openainewsroom)",
+      "summary": "@openainewsroom : OpenAI says the FBI arrested one of its staffers after the company found a hidden recording device in its offices and used its models to understand the device &nbsp; &mdash;&nbsp; We discovered a sophisticated recording device that was hidden inside one of our offices. We used our models to understand the device and where it had come from, identifying that a specific employee had planted it a few days earlier. We referred the matter to the FBI, and we're grateful to the agen...",
+      "url": "https://www.techmeme.com/261013/p40#a261013p40",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9696,
+        "recency_term": 1.9392,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.939193195291005
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "AWS Lambda Web Functions",
+      "summary": "103 points \u00b7 95 comments \u00b7 query: LLM",
+      "url": "https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/",
+      "source": "Hacker News",
+      "score": 4.85,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9106,
+        "recency_term": 1.8211,
+        "src_bonus": 0,
+        "hn_bonus": 1.03,
+        "total": 4.8511012640443125
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "AI models may be capable of self-replicating without access to a datacenter",
+      "summary": "106 points \u00b7 109 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/research/self-replicating-ai",
+      "source": "Hacker News",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8231,
+        "recency_term": 1.6462,
+        "src_bonus": 0,
+        "hn_bonus": 1.06,
+        "total": 4.706187242840608
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Muse Wonder vs Opus 5.5 and GPT6 Astra: The Benchmark Numbers",
+      "summary": "Muse Wonder's scores on the Personal Super Intelligence Index, Deep SWE, SWE Marathon, and the AA Intelligence Index, compared to rival frontier models.",
+      "url": "https://www.mindstudio.ai/blog/muse-wonder-benchmarks-vs-opus-gpt6/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.700654835386905
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Muse Wonder Pricing: Why Meta's New Frontier Model Costs So Much",
+      "summary": "Meta's Muse Wonder impresses on coding benchmarks, but early reports put input token pricing around $4, a real barrier for developers.",
+      "url": "https://www.mindstudio.ai/blog/muse-wonder-pricing-access/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.700654835343915
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Denmark set to allow return of 'physical force' in school",
+      "summary": "77 points \u00b7 65 comments \u00b7 query: LLM",
+      "url": "https://www.lemonde.fr/en/international/article/2026/10/10/denmark-set-to-allow-the-return-of-physical-force-to-maintain-order-in-schools_6758443_4.html",
+      "source": "Hacker News",
+      "score": 4.55,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8887,
+        "recency_term": 1.7775,
+        "src_bonus": 0,
+        "hn_bonus": 0.77,
+        "total": 4.547450470228174
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "\"Just Ask Claude\" Is a Rare and Valuable Skill",
+      "summary": "55 points \u00b7 66 comments \u00b7 query: Claude",
+      "url": "https://justismills.substack.com/p/just-ask-claude-is-a-rare-and-valuable",
+      "source": "Hacker News",
+      "score": 4.12,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7868,
+        "recency_term": 1.5737,
+        "src_bonus": 0,
+        "hn_bonus": 0.55,
+        "total": 4.123683935803571
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Budget AI Rig Cost: A Local LLM Server Parts Breakdown Under $800",
+      "summary": "Full parts and pricing for a sub-$800 local AI server: Xeon CPU, 64GB RAM, and one RTX 3060 12GB, with real token speeds tested.",
+      "url": "https://www.mindstudio.ai/blog/budget-ai-rig-cost-breakdown/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7006548352314814
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Build an AI Board of Advisors in Claude Code With a Free Skill",
+      "summary": "How the free \"Roast Room\" Claude Code skill simulates a debate among AI personas like Bezos and Buffett to help you make decisions.",
+      "url": "https://www.mindstudio.ai/blog/claude-skill-ai-board-of-advisors/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.700654835188492
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "OpenAI's Zeta Shortcut: The AI Math Proof That Stunned Researchers",
+      "summary": "OpenAI's model produced hundreds of math proofs, including one tied to the quasi-Riemann hypothesis, surprising mathematicians who track AI's reasoning limits.",
+      "url": "https://www.mindstudio.ai/blog/openai-math-breakthroughs-zeta-shortcut/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.700654835138889
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Meta Muse Wonder Explained: Active Memory, Active Focus, and the Hype",
+      "summary": "Meta's Muse Wonder and Muse Wonder Full explained: what active memory and active focus do, how benchmarks stack up, and where it falls short.",
+      "url": "https://www.mindstudio.ai/blog/meta-muse-wonder-launch/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.7006548350925925
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "MiniCPM-V 4.7 vs Qwen 3.6: Who Wins Which Benchmarks?",
+      "summary": "MiniCPM-V 4.7's benchmark results against Qwen 3.6 and Gemma, showing where the Apache 2.0 vision MoE model wins, ties, and falls short.",
+      "url": "https://www.mindstudio.ai/blog/minicpm-v-4-7-benchmarks-vs-qwen/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.700654835049603
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Underdog Saluki 27B: An 8GB Model That Beats Its 54GB Base on Tool Calls",
+      "summary": "Underdog Saluki 27B compresses Qwen3.8-27B to under 8GB and still beats the full model on BFCL tool-calling benchmarks. Here's the data.",
+      "url": "https://www.mindstudio.ai/blog/underdog-saluki-27b-benchmarks-tool-calling/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.700654835009921
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "The US-China AI Race: Can Safety and Speed Coexist?",
+      "summary": "Dario Amodei and Sam Altman say beating China forces them to keep scaling AI fast. Here's why that argument is doing so much work.",
+      "url": "https://www.mindstudio.ai/blog/us-china-ai-race-safety-tension/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.7006548349669313
+      },
+      "age_days": 1.0
+    }
+  ],
+  "final": [
+    {
+      "title": "Redesigning source control at Anthropic",
+      "summary": "Redesigning source control at Anthropic Interesting piece from Anthropic describing why and how they built their own custom alternative to Git, based on the dramatic increase in rate of changes to their code after the past six months. In May 2026, Anthropic averaged around 2,500 code changes merged per day; as of September, we merged over 30,000 per day. They included a chart showing those changes. I had Claude modify their chart ( code here ) to add markers for the public releases of each of th",
+      "url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/",
+      "source": "Simon Willison",
+      "score": 8.97,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9872,
+        "recency_term": 1.9745,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.974484199957011
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "llm-gemini 0.35",
+      "summary": "Release: llm-gemini 0.35 I added support to llm-gemini for the new Gemini 4 Argon model, made available today via the Gemini API and for customers of their $100/month subscription plan. Here are the low, medium and high pelicans . As expected, they are all excellent: Gemini has a track record of producing great SVGs, and are the only lab where I know their staff have invested in SVG specifically (and who have boasted about their pelicans before.) Here's the \"high\" illustration, which cost me 17.",
+      "url": "https://simonwillison.net/2026/Oct/13/llm-gemini/",
+      "source": "Simon Willison",
+      "score": 8.97,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9841,
+        "recency_term": 1.9683,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.968293723690476
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "web-edit 0.1a1",
+      "summary": "Release: web-edit 0.1a1 Includes performance optimizations written by Claude Opus 5.5 after I fed it this Python 3.15 profiling report generated by GPT-6 Astra. Tags: profiling , projects",
+      "url": "https://simonwillison.net/2026/Oct/13/web-edit/",
+      "source": "Simon Willison",
+      "score": 8.72,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8603,
+        "recency_term": 1.7205,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.720512638988096
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "A look at OpenAI's safety concerns over loop transformers before shipping its next major model; Microsoft accidentally confirmed GPT-6.1 Sol uses the technique (The Information)",
+      "summary": "The Information : A look at OpenAI's safety concerns over loop transformers before shipping its next major model; Microsoft accidentally confirmed GPT-6.1 Sol uses the technique &nbsp; &mdash;&nbsp; OpenAI is grappling with fallout from its use of a controversial innovation in AI design as it works to get its next unreleased model &hellip;",
+      "url": "https://www.techmeme.com/261013/p45#a261013p45",
+      "source": "Techmeme",
+      "score": 7.96,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.9809,
+        "recency_term": 1.9618,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 7.961779173303571
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Gemini 4 Argon",
+      "summary": "973 points \u00b7 739 comments \u00b7 query: RAG",
+      "url": "https://deepmind.google/models/gemini/",
+      "source": "Hacker News",
+      "score": 7.89,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9459,
+        "recency_term": 1.8918,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.891779173273809
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "[AINews] Meta Muse Wonder & Wonder Full: MSL\u2019s Claude 5.5-tier Frontier Model",
+      "summary": "MSL&#8217;s emergence as a frontier lab is finally complete.",
+      "url": "https://www.latent.space/p/ainews-meta-muse-wonder-and-wonder",
+      "source": "Latent Space",
+      "score": 7.82,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9076,
+        "recency_term": 1.8152,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 7.815152189093915
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Just say no to OpenAI and Anthropic",
+      "summary": "168 points \u00b7 162 comments \u00b7 query: Anthropic",
+      "url": "https://micahflee.com/just-say-no-to-openai-and-anthropic/",
+      "source": "Hacker News",
+      "score": 7.31,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8163,
+        "recency_term": 1.6327,
+        "src_bonus": 0,
+        "hn_bonus": 1.68,
+        "total": 7.312695178475529
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Show HN: SolidCraft \u2013 Open-Source Parametric CAD in Rust (With MCP Support)",
+      "summary": "133 points \u00b7 45 comments \u00b7 query: MCP",
+      "url": "https://github.com/bherbruck/solidcraft",
+      "source": "Hacker News",
+      "score": 7.03,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8514,
+        "recency_term": 1.7029,
+        "src_bonus": 0,
+        "hn_bonus": 1.33,
+        "total": 7.032850601709656
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Sources: self-driving simulation software maker Applied Intuition has received investment offers that would value it at $30B+, up from $15B in June (Stephanie Palazzolo/The Information)",
+      "summary": "Stephanie Palazzolo / The Information : Sources: self-driving simulation software maker Applied Intuition has received investment offers that would value it at $30B+, up from $15B in June &nbsp; &mdash;&nbsp; For the last three years, AI labs like OpenAI, Anthropic and xAI have sucked up a lot of investor attention&mdash;as well as nosebleed valuations.",
+      "url": "https://www.techmeme.com/261013/p39#a261013p39",
+      "source": "Techmeme",
+      "score": 6.94,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9684,
+        "recency_term": 1.9368,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.9367692524206355
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Developing Gemini 4 Argon responsibly and safely",
+      "summary": "",
+      "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+      "source": "Google DeepMind",
+      "score": 6.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9677,
+        "recency_term": 1.9354,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.935400204771826
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Anthropic details Scion, a git replacement for its monorepo, built by seven engineers with Claude in five months, as daily merges rose from 2.5K in May to 30K+ (Anthropic)",
+      "summary": "Anthropic : Anthropic details Scion, a git replacement for its monorepo, built by seven engineers with Claude in five months, as daily merges rose from 2.5K in May to 30K+ &nbsp; &mdash;&nbsp; As our merges per day grew more than tenfold, source control became our biggest development bottleneck.",
+      "url": "https://www.techmeme.com/261013/p38#a261013p38",
+      "source": "Techmeme",
+      "score": 6.93,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9645,
+        "recency_term": 1.929,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.9290013951752645
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Gemini 4 Argon for Robotics",
+      "summary": "",
+      "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+      "source": "Google DeepMind",
+      "score": 6.89,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9458,
+        "recency_term": 1.8915,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.891521236418651
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "summary": "",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "source": "Google DeepMind",
+      "score": 6.89,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9458,
+        "recency_term": 1.8915,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.891501395119048
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Higgsfield takes AI video from 1 minute to over 10",
+      "summary": "Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live.",
+      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "source": "OpenAI News",
+      "score": 6.84,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9218,
+        "recency_term": 1.8435,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.843511977089947
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Firecrawl Alexandria: Free Data Access for AI Coding Agents",
+      "summary": "Firecrawl's Alexandria library gives coding agents access to over 100 data providers via MCP, with free monthly credits to get started.",
+      "url": "https://www.mindstudio.ai/blog/firecrawl-alexandria-pricing/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.700654834186508
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "GPT-6.1 Astra: Why Sam Altman Delayed It Over Accident Risk",
+      "summary": "Sam Altman says OpenAI held back GPT-6.1 Astra because it leaned too far toward accident risk, not misalignment. Here's what that means.",
+      "url": "https://www.mindstudio.ai/blog/gpt-6-1-astra-accident-risk/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.700654834140211
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Intent Engineering: The Coding Skill AI Agents Still Can't Replace",
+      "summary": "As AI coding agents improve, intent engineering, not prompt tricks, is becoming the skill that determines whether their output is actually useful.",
+      "url": "https://www.mindstudio.ai/blog/intent-engineering-ai-coding-skill/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8503,
+        "recency_term": 1.7007,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.700654834093916
+      },
+      "age_days": 1.0
+    }
+  ]
+}
