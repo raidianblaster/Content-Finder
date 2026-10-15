@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-15",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.15292",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive agent/RAG research from arXiv cs.AI on ontology-guided agentic systems with clear relevance to agent pipeline design."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.15529",
+      "stage": "dropped_source_cap",
+      "reason": "Rigorous empirical work on multi-agent protocol risk evaluation—core agent safety and coordination research that should survive source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.16867",
+      "stage": "dropped_source_cap",
+      "reason": "Tool-use supervision and agentic scaling paper addressing verifiable executable environments—directly relevant to regulated agent deployment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2602.03100",
+      "stage": "final",
+      "reason": "Made it to final despite weak score (13.76); indicates inconsistency—many higher-scoring agent safety papers were dropped at source_cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.14228",
+      "stage": "dropped_source_cap",
+      "reason": "Design space analysis of AI agent systems with Claude Code reference—substantive agent architecture work from arXiv that deserves coverage."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14334",
+      "stage": "dropped_source_cap",
+      "reason": "Controlled empirical study of LLM tool selection in MCP with metadata ablations—methodologically sound agent tooling research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.17020",
+      "stage": "dropped_source_cap",
+      "reason": "Security-focused agent benchmark (CWE-bench) shifting from exploitation to defense—critical for regulated agent environments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18449",
+      "stage": "dropped_source_cap",
+      "reason": "Autonomous Science Bench evaluating agents for scientific discovery—high-impact application domain with clear relevance and rigor."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14028",
+      "stage": "dropped_source_cap",
+      "reason": "Data selection for LLMs via mixture-level decisions—foundational technique for agent training that rates 8.76 but was source-capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14238",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic data engineering with controlled empirical study design—directly addresses agent post-training pipeline construction."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://petal.live/",
+      "reason": "Generic open-source tool announcement with no AI/agent substance; lacks relevance to agentic systems or LLM pipeline evaluation."
+    },
+    {
+      "url": "https://openai.com/index/sentinelone",
+      "reason": "Vendor case study (SentinelOne) of malware analysis—marketing content without methodological rigor or novel agent/LLM contribution."
+    },
+    {
+      "url": "https://openai.com/index/block-ai-powered-security",
+      "reason": "Corporate partnership announcement lacking technical depth; reads as vendor marketing rather than substantive AI research or agent evaluation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-4-argon-overview-and-pricing/",
+      "reason": "Commercial blog post on model pricing and access—promotional content without research contribution or agent-specific insights."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/kv-cache-explained-llm-agents/",
+      "reason": "Explainer blog on KV cache mechanics; while tangentially relevant to agent efficiency, lacks original research or benchmarking."
+    },
+    {
+      "url": "https://blog.lorenzano.eu/pulsar-at-esug-2026/",
+      "reason": "Smalltalk IDE announcement unrelated to AI agents, LLMs, or the core evaluation pipeline focus area."
+    },
+    {
+      "url": "https://github.com/bealesh/neckbeard",
+      "reason": "DevOps tool for agents without demonstrated empirical validation or research contribution; minimal substantive content."
+    },
+    {
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm?",
+      "reason": "Economic data release (CPI report) with zero relevance to AI, agents, or LLM evaluation; clear off-topic inclusion."
+    },
+    {
+      "url": "https://kylekukshtel.com/ai-harness-engineering-game-development-claude-code",
+      "reason": "Personal blog post on game dev with Claude; anecdotal application content lacking experimental rigor or generalizable insights."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/reverse-engineer-anything-repo/",
+      "reason": "Blog post linking to GitHub repo with no peer review or validation; promotional content disguised as technical journalism."
+    }
+  ]
+}
