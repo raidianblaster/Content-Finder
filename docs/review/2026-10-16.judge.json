@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-16",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2604.14228",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality Anthropic-authored work on AI agent systems design space with strong score (12.76) dropped purely by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14334",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive agents research on LLM tool selection and metadata importance (score 11.76) dropped by source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.16315",
+      "stage": "dropped_source_cap",
+      "reason": "Novel agentic reasoning work on video spatial tasks (ReTAC, score 11.76) dropped by source cap from trusted arXiv cs.AI."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.17020",
+      "stage": "dropped_source_cap",
+      "reason": "Critical agent security work (CWE-bench) on defensive security, not exploitation (score 11.76), dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.06068",
+      "stage": "dropped_source_cap",
+      "reason": "Novel work on AI agents building LLM serving systems (VibeServe, score 11.76) demonstrates agents autonomy; dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13438",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive agentic RL research unlocking new capabilities beyond policy limits (score 11.76) dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.15077",
+      "stage": "dropped_source_cap",
+      "reason": "Practical agents work on concurrent function calling without model changes (score 11.76) dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14382",
+      "stage": "dropped_source_cap",
+      "reason": "Framework for spatial agentic AI architecture (ANASSA, score 10.76) dropped by source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18567",
+      "stage": "dropped_source_cap",
+      "reason": "Practical RAG systems configuration work identifying what breaks (score 10.76) dropped by source cap from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.08304",
+      "stage": "dropped_source_cap",
+      "reason": "Comprehensive survey of secure RAG (score 10.76) provides foundation for understanding agent safety; dropped by source cap."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-motion-ai-video-generator/",
+      "reason": "Vendor marketing guide for Claude Motion video tool with minimal substantive AI content; unlikely high-signal for regulated environment."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-4-argon-cybersecurity/",
+      "reason": "Generic vendor blog post on Gemini capabilities for cybersecurity; low substance and promotional framing."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-reverse-engineering-software-gpt6-astra/",
+      "reason": "Clickbait-style vendor content ('How AI Models Now Reverse Engineer Apps') with speculative framing and low substantive value."
+    },
+    {
+      "url": "https://www.techmeme.com/261015/p52#a261015p52",
+      "reason": "Investor valuation rumor on Anthropic IPO; corporate financial gossip unrelated to AI/ML technical or product advances."
+    },
+    {
+      "url": "https://www.techmeme.com/261015/p47#a261015p47",
+      "reason": "Corporate partnership announcement repackaging; Perplexity SPACE sandbox open-source is news but wrapped in vendor attribution."
+    },
+    {
+      "url": "https://arcfu.com/post/the-emperor-pelican-has-no-clothes/",
+      "reason": "Speculative, low-substance post about LLM image generation anomalies ('why do LLM pelicans look like this'); not substantive research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/google-anti-gravity-teamwork-preview/",
+      "reason": "Vendor blog explainer for Google's multi-agent coding; marketing content with minimal technical depth."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/agent-native-framework-claude-code/",
+      "reason": "Tutorial-style vendor post on building with Claude Code; promotional rather than substantive technical content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-news-content-engine-skill/",
+      "reason": "Low-value how-to guide for building personal news digest; vendor marketing without technical rigor."
+    },
+    {
+      "url": "https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage",
+      "reason": "Off-topic entertainment industry story about AI erasing TV footage; not substantive AI/ML product or research content."
+    }
+  ]
+}
