@@ -1,98 +1,98 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2604.14228",
+      "url": "https://arxiv.org/abs/2610.22316",
       "stage": "dropped_source_cap",
-      "reason": "High-quality Anthropic-authored work on AI agent systems design space with strong score (12.76) dropped purely by source cap."
+      "reason": "High-scoring (11.76) arXiv agent steering research from trusted source dropped due to source cap despite clear relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.14334",
+      "url": "https://arxiv.org/abs/2610.21109",
       "stage": "dropped_source_cap",
-      "reason": "Substantive agents research on LLM tool selection and metadata importance (score 11.76) dropped by source cap despite clear relevance."
+      "reason": "Kolab benchmark on human-agent collaboration (10.76) is substantive agent research dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2610.16315",
+      "url": "https://arxiv.org/abs/2610.20776",
       "stage": "dropped_source_cap",
-      "reason": "Novel agentic reasoning work on video spatial tasks (ReTAC, score 11.76) dropped by source cap from trusted arXiv cs.AI."
+      "reason": "INFUSE prompt injection benchmark (10.76) addresses critical agent safety concern but dropped due to source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2610.17020",
+      "url": "https://arxiv.org/abs/2610.21029",
       "stage": "dropped_source_cap",
-      "reason": "Critical agent security work (CWE-bench) on defensive security, not exploitation (score 11.76), dropped by source cap."
+      "reason": "SCARCE multi-agent emergent institutions research (10.76) is substantive but dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2605.06068",
+      "url": "https://arxiv.org/abs/2610.14730",
       "stage": "dropped_source_cap",
-      "reason": "Novel work on AI agents building LLM serving systems (VibeServe, score 11.76) demonstrates agents autonomy; dropped by source cap."
+      "reason": "Self-improving embedding adaptation (10.76) is scalable ML advancement dropped due to source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2610.13438",
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
       "stage": "dropped_source_cap",
-      "reason": "Substantive agentic RL research unlocking new capabilities beyond policy limits (score 11.76) dropped by source cap."
+      "reason": "Anthropic's official code review practices (8.01) from trusted source dropped by source cap despite high relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2605.15077",
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
       "stage": "dropped_source_cap",
-      "reason": "Practical agents work on concurrent function calling without model changes (score 11.76) dropped by source cap."
+      "reason": "Anthropic research on quantum circuits with Claude (6.79) from official source dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2610.14382",
-      "stage": "dropped_source_cap",
-      "reason": "Framework for spatial agentic AI architecture (ANASSA, score 10.76) dropped by source cap despite clear relevance."
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI's Rosalind academic research initiative dropped by TTL filter despite substantive academic AI news."
     },
     {
-      "url": "https://arxiv.org/abs/2610.18567",
-      "stage": "dropped_source_cap",
-      "reason": "Practical RAG systems configuration work identifying what breaks (score 10.76) dropped by source cap from trusted source."
+      "url": "https://simonwillison.net/2026/Oct/15/anthropic-tells-investors/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison's Anthropic revenue/IPO reporting (6.58) from trusted source dropped by TTL cross-day filter."
     },
     {
-      "url": "https://arxiv.org/abs/2604.08304",
-      "stage": "dropped_source_cap",
-      "reason": "Comprehensive survey of secure RAG (score 10.76) provides foundation for understanding agent safety; dropped by source cap."
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
+      "stage": "dropped_ttl",
+      "reason": "Pragmatic Engineer's OpenAI security news (6.63) dropped by TTL despite substantive industry reporting."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/claude-motion-ai-video-generator/",
-      "reason": "Vendor marketing guide for Claude Motion video tool with minimal substantive AI content; unlikely high-signal for regulated environment."
+      "url": "https://www.foxbusiness.com/technology/teslas-new-roadster-makes-flying-debut-hitting-60-mph-under-second",
+      "reason": "Tesla Roadster flying debut is unrelated automotive/hardware hype with no AI/ML substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-argon-cybersecurity/",
-      "reason": "Generic vendor blog post on Gemini capabilities for cybersecurity; low substance and promotional framing."
+      "url": "https://www.sandordargo.com/blog/2026/09/30/cpp26-debugging",
+      "reason": "C++26 debugging header is general programming language news unrelated to AI/ML agents."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-reverse-engineering-software-gpt6-astra/",
-      "reason": "Clickbait-style vendor content ('How AI Models Now Reverse Engineer Apps') with speculative framing and low substantive value."
+      "url": "https://www.cppstories.com/2026/cpp26_contracts/",
+      "reason": "C++26 contracts article is generic programming language content with no AI relevance."
     },
     {
-      "url": "https://www.techmeme.com/261015/p52#a261015p52",
-      "reason": "Investor valuation rumor on Anthropic IPO; corporate financial gossip unrelated to AI/ML technical or product advances."
+      "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+      "reason": "Anthropic junk credit rating is financial/corporate news not substantive AI product or research content."
     },
     {
-      "url": "https://www.techmeme.com/261015/p47#a261015p47",
-      "reason": "Corporate partnership announcement repackaging; Perplexity SPACE sandbox open-source is news but wrapped in vendor attribution."
+      "url": "https://www.techmeme.com/261016/p17#a261016p17",
+      "reason": "PostgreSQL 19 delay attributed to LLM-assisted code reviews is tangential vendor/tooling news, not core AI advancement."
     },
     {
-      "url": "https://arcfu.com/post/the-emperor-pelican-has-no-clothes/",
-      "reason": "Speculative, low-substance post about LLM image generation anomalies ('why do LLM pelicans look like this'); not substantive research."
+      "url": "https://www.mindstudio.ai/blog/ai-emergency-preparedness-cybersecurity/",
+      "reason": "Generic cybersecurity preparedness checklist from low-signal vendor blog lacks technical substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/google-anti-gravity-teamwork-preview/",
-      "reason": "Vendor blog explainer for Google's multi-agent coding; marketing content with minimal technical depth."
+      "url": "https://www.mindstudio.ai/blog/claude-code-usage-limits-parallel-sessions/",
+      "reason": "MindStudio operational guide on Claude quota management is vendor tutorial content, not research or news."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/agent-native-framework-claude-code/",
-      "reason": "Tutorial-style vendor post on building with Claude Code; promotional rather than substantive technical content."
+      "url": "https://www.mindstudio.ai/blog/ling-3-1-flash-deployment-sglang-vllm/",
+      "reason": "Deployment tutorial on infrastructure tools lacks substantive AI model or agent content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-news-content-engine-skill/",
-      "reason": "Low-value how-to guide for building personal news digest; vendor marketing without technical rigor."
+      "url": "https://openai.com/index/itau-generative-ai",
+      "reason": "Bank customer GenAI case study is vendor marketing content rather than substantive research or technical news."
     },
     {
-      "url": "https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage",
-      "reason": "Off-topic entertainment industry story about AI erasing TV footage; not substantive AI/ML product or research content."
+      "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
+      "reason": "Stack Overflow ChatGPT plugin signup growth is product marketing metrics, not substantive AI/agent advancement."
     }
   ]
 }

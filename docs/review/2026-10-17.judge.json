@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-17",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.22316",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring (11.76) arXiv agent steering research from trusted source dropped due to source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21109",
+      "stage": "dropped_source_cap",
+      "reason": "Kolab benchmark on human-agent collaboration (10.76) is substantive agent research dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.20776",
+      "stage": "dropped_source_cap",
+      "reason": "INFUSE prompt injection benchmark (10.76) addresses critical agent safety concern but dropped due to source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21029",
+      "stage": "dropped_source_cap",
+      "reason": "SCARCE multi-agent emergent institutions research (10.76) is substantive but dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14730",
+      "stage": "dropped_source_cap",
+      "reason": "Self-improving embedding adaptation (10.76) is scalable ML advancement dropped due to source cap."
+    },
+    {
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic's official code review practices (8.01) from trusted source dropped by source cap despite high relevance."
+    },
+    {
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic research on quantum circuits with Claude (6.79) from official source dropped by source cap."
+    },
+    {
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI's Rosalind academic research initiative dropped by TTL filter despite substantive academic AI news."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/15/anthropic-tells-investors/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison's Anthropic revenue/IPO reporting (6.58) from trusted source dropped by TTL cross-day filter."
+    },
+    {
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
+      "stage": "dropped_ttl",
+      "reason": "Pragmatic Engineer's OpenAI security news (6.63) dropped by TTL despite substantive industry reporting."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.foxbusiness.com/technology/teslas-new-roadster-makes-flying-debut-hitting-60-mph-under-second",
+      "reason": "Tesla Roadster flying debut is unrelated automotive/hardware hype with no AI/ML substance."
+    },
+    {
+      "url": "https://www.sandordargo.com/blog/2026/09/30/cpp26-debugging",
+      "reason": "C++26 debugging header is general programming language news unrelated to AI/ML agents."
+    },
+    {
+      "url": "https://www.cppstories.com/2026/cpp26_contracts/",
+      "reason": "C++26 contracts article is generic programming language content with no AI relevance."
+    },
+    {
+      "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+      "reason": "Anthropic junk credit rating is financial/corporate news not substantive AI product or research content."
+    },
+    {
+      "url": "https://www.techmeme.com/261016/p17#a261016p17",
+      "reason": "PostgreSQL 19 delay attributed to LLM-assisted code reviews is tangential vendor/tooling news, not core AI advancement."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-emergency-preparedness-cybersecurity/",
+      "reason": "Generic cybersecurity preparedness checklist from low-signal vendor blog lacks technical substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-code-usage-limits-parallel-sessions/",
+      "reason": "MindStudio operational guide on Claude quota management is vendor tutorial content, not research or news."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ling-3-1-flash-deployment-sglang-vllm/",
+      "reason": "Deployment tutorial on infrastructure tools lacks substantive AI model or agent content."
+    },
+    {
+      "url": "https://openai.com/index/itau-generative-ai",
+      "reason": "Bank customer GenAI case study is vendor marketing content rather than substantive research or technical news."
+    },
+    {
+      "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
+      "reason": "Stack Overflow ChatGPT plugin signup growth is product marketing metrics, not substantive AI/agent advancement."
+    }
+  ]
+}
