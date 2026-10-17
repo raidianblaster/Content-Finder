@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-18",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.20776",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv paper on prompt injection in agentic systems with score 10.76 from trusted source deserves inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21029",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv research on multi-agent coding systems and emergent institutions with score 10.76 was cut by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.14730",
+      "stage": "dropped_source_cap",
+      "reason": "Relevant arXiv paper on self-improving data synthesis for embedding models (score 10.76) should have survived source capping."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21135",
+      "stage": "dropped_source_cap",
+      "reason": "Important arXiv research on LLM evaluation blindness with score 9.76 was dropped despite high relevance to agent reliability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21571",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv paper on tool graph memory in multi-turn agent interactions (score 9.76) merited retention."
+    },
+    {
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "stage": "dropped_source_cap",
+      "reason": "Official Anthropic research on quantum circuits and Claude capabilities should not have been source-capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.22124",
+      "stage": "dropped_ttl",
+      "reason": "High-signal arXiv paper on auditing agent policy compliance (score 12.76) should not have been dropped by TTL filter."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21597",
+      "stage": "dropped_ttl",
+      "reason": "Substantive arXiv research on iOS security and LLM tool-making (score 11.76) was prematurely TTL-dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21914",
+      "stage": "dropped_ttl",
+      "reason": "Pre-registered arXiv study on agent code review costs (score 11.76) deserved to survive TTL stage."
+    },
+    {
+      "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "stage": "dropped_ttl",
+      "reason": "Official Anthropic research on cryptographic analysis should not have been dropped by TTL filter."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.lemonde.fr/en/international/article/2026/10/17/israeli-settlers-attack-european-diplomatic-cars-in-west-bank-beat-french-mayor-say-witnesses_6758711_4.html",
+      "reason": "News article about diplomatic incident unrelated to AI/ML and inappropriate for a regulated AI product pipeline."
+    },
+    {
+      "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+      "reason": "Generic incident reporting on competitor with vague description lacks substantive technical content for product decision-making."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-recording-device-security-leak/",
+      "reason": "Sensationalized security reporting lacks verification and is primarily vendor blog speculation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-to-install-lean-rea-skill/",
+      "reason": "Tutorial content on third-party tool installation is operational documentation, not high-signal product intelligence."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/msi-rtx-spark-laptop-review/",
+      "reason": "Hardware product review from vendor blog lacks relevance to core AI/agents product pipeline."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/learn-ai-roadmap-one-week/",
+      "reason": "Generic educational content on learning AI basics is not high-signal market or product intelligence."
+    },
+    {
+      "url": "https://openai.com/index/benefit-street-partners/",
+      "reason": "Vendor case study marketing content about customer adoption lacks technical substance."
+    },
+    {
+      "url": "https://www.sandordargo.com/blog/2026/09/30/cpp26-debugging",
+      "reason": "C++ language feature article is unrelated to AI/ML and outside scope of agent systems pipeline."
+    },
+    {
+      "url": "https://llmspeed.dev/",
+      "reason": "Tool demo for hardware LLM benchmarking is promotional and lacks substantive product intelligence."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-emergency-preparedness-cybersecurity/",
+      "reason": "Generic cybersecurity checklist blog post lacks technical depth and is primarily vendor marketing content."
+    }
+  ]
+}
