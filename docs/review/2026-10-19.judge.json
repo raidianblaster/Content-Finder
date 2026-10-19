@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-19",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://llmspeed.dev/",
+      "stage": "dropped_source_cap",
+      "reason": "Practical AI/ML tool for benchmarking local LLMs with solid HN score (6.69) deserves pipeline inclusion despite source cap."
+    },
+    {
+      "url": "https://blog.picheta.me/post/killswitch-lang/",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive AI safety content about LLM-resistant programming language; relevant to agent/AI control discussions."
+    },
+    {
+      "url": "https://www.anthropic.com/research/employment-at-anthropic",
+      "stage": "dropped_source_cap",
+      "reason": "Direct Anthropic research on employment trends; high-signal from trusted source despite source cap limit."
+    },
+    {
+      "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+      "stage": "dropped_source_cap",
+      "reason": "Material AI safety/security incident disclosure deserves coverage despite source cap; highly relevant to AI governance."
+    },
+    {
+      "url": "https://www.latent.space/p/ainews-high-taste-testers-ep-1",
+      "stage": "dropped_keyword",
+      "reason": "Latent Space is a trusted AI industry source; editorial content on AI news should not be filtered by generic keyword rules."
+    },
+    {
+      "url": "https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open",
+      "stage": "dropped_keyword",
+      "reason": "Substantive AI analysis from Interconnects on Meta's AI strategy; directly relevant to frontier AI developments."
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/search/",
+      "stage": "dropped_keyword",
+      "reason": "DeepSeek API documentation for search is relevant AI/ML infrastructure content that was incorrectly dropped."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261017/p20#a261017p20",
+      "reason": "Microsoft Windows/Nadella interview lacks substantive AI content; mostly generic product positioning for Surface hardware."
+    },
+    {
+      "url": "https://www.techmeme.com/261018/p10#a261018p10",
+      "reason": "Anthropic share pledge announcement is corporate governance/PR; low signal compared to substantive AI research or policy."
+    },
+    {
+      "url": "https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/",
+      "reason": "Flock camera integration is unrelated to AI/ML; belongs in general tech/privacy, not AI news pipeline."
+    }
+  ]
+}

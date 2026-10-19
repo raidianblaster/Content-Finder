@@ -1,0 +1,983 @@
+{
+  "date": "2026-10-19",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 59,
+    "after_keyword_filter": 29,
+    "after_dedupe": 20,
+    "after_ttl_filter": 20,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 17,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Inline rendering with document\u200b.currentScript",
+      "summary": "Inline rendering with document\u200b.currentScript Lean Rada describes a neat trick that takes advantage of the document.currentScript property. You can use that to drop in a tiny inline &lt;script&gt; element that replaces itself when the page loads: The year is &lt;script&gt; document.currentScript.replaceWith( new Date().getFullYear())&lt;/script&gt; If you define a shortcut function like this: $=(...n)=&gt;document.currentScript.replaceWith(...n) You get a tiny template language: The year is &lt;",
+      "url": "https://simonwillison.net/2026/Oct/17/document-currentscript/",
+      "source": "Simon Willison",
+      "score": 4.68,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8395,
+        "recency_term": 1.679,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.679026515780423
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "web-edit 0.1a2",
+      "summary": "Release: web-edit 0.1a2 web-edit ( previously ) is my tiny web app for browsing and editing files in a folder. I mainly built it for editing files on different machines via Tailscale. I added a \"copy to clipboard\" option for both text and image data. I needed this because I was running pelican prompts on a laptop from my phone (here's DeepSeek 4.1 Flash 1017 ) and I wanted an easy way to copy the resulting logs into a Gist. Tags: projects , pelican-riding-a-bicycle , deepseek",
+      "url": "https://simonwillison.net/2026/Oct/17/web-edit/",
+      "source": "Simon Willison",
+      "score": 4.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7925,
+        "recency_term": 1.5849,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.5849028384457675
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Sources: Nscale faces investor pushback on its ~$30B IPO valuation, with some urging a lower valuation of $16B to $19B, as Microsoft exits a UK data center deal (Bailey Lipschultz/Bloomberg)",
+      "summary": "Bailey Lipschultz / Bloomberg : Sources: Nscale faces investor pushback on its ~$30B IPO valuation, with some urging a lower valuation of $16B to $19B, as Microsoft exits a UK data center deal &nbsp; &mdash;&nbsp; Nscale Ltd. is facing opposition to the valuation target it's pursuing in its initial public offering, according to people familiar &hellip;",
+      "url": "https://www.techmeme.com/261018/p12#a261018p12",
+      "source": "Techmeme",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9887,
+        "recency_term": 1.9774,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.977399531491402
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Sources: industry execs expect only 7-10 of hundreds of neoclouds to survive, as Nvidia supports them with easier credit terms, site finding, and $20B in leases (Phoebe Liu/The Information)",
+      "summary": "Phoebe Liu / The Information : Sources: industry execs expect only 7-10 of hundreds of neoclouds to survive, as Nvidia supports them with easier credit terms, site finding, and $20B in leases &nbsp; &mdash;&nbsp; How many young AI cloud providers can the market, and Nvidia, support?&nbsp; &mdash;&nbsp; That's one of the big questions after a week &hellip;",
+      "url": "https://www.techmeme.com/261018/p11#a261018p11",
+      "source": "Techmeme",
+      "score": 2.95,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9748,
+        "recency_term": 1.9496,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9496250605224867
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: Nvidia asked Samsung, SK Hynix, and Micron to make base dies for its custom NVHBM memory on TSMC's 3nm process; Samsung agreed, its first use of TSMC (Kyu-Seok Shim/Reuters)",
+      "summary": "Kyu-Seok Shim / Reuters : Sources: Nvidia asked Samsung, SK Hynix, and Micron to make base dies for its custom NVHBM memory on TSMC's 3nm process; Samsung agreed, its first use of TSMC &nbsp; &mdash;&nbsp; Samsung Electronics (005930.KS) will use TSMC's (2330.TW) 3-nanometre process to produce base dies for Nvidia's (NVDA.O) &hellip;",
+      "url": "https://www.techmeme.com/261018/p9#a261018p9",
+      "source": "Techmeme",
+      "score": 2.93,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9644,
+        "recency_term": 1.9288,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9287917271263226
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: HomeView units sat in warehouses for months; Apple plans a Nov. 6 store reset, likely for new Macs; iPhone Duo preorder mess could boost 18 Pro sales (Mark Gurman/Bloomberg)",
+      "summary": "Mark Gurman / Bloomberg : Sources: HomeView units sat in warehouses for months; Apple plans a Nov. 6 store reset, likely for new Macs; iPhone Duo preorder mess could boost 18 Pro sales &nbsp; &mdash;&nbsp; Also: The company is planning Nov. 6 retail store reset, indicating potential Mac release date.",
+      "url": "https://www.techmeme.com/261018/p8#a261018p8",
+      "source": "Techmeme",
+      "score": 2.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9485,
+        "recency_term": 1.897,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8970456953141532
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "An interview with Apple's new VP of the App Store, Carson Oliver, on Apple's gaming vision, Apple Arcade, providing tools for indie game developers, and more (Giovanni Colantonio/Polygon)",
+      "summary": "Giovanni Colantonio / Polygon : An interview with Apple's new VP of the App Store, Carson Oliver, on Apple's gaming vision, Apple Arcade, providing tools for indie game developers, and more &nbsp; &mdash;&nbsp; Back when Apple Arcade launched in 2019, there was a resounding belief among gamers that the mobile gaming service wasn't long for this world.",
+      "url": "https://www.techmeme.com/261018/p7#a261018p7",
+      "source": "Techmeme",
+      "score": 2.85,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9232,
+        "recency_term": 1.8464,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.846447150274471
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "RegLayer: 47+ large US data center projects were delayed, withdrawn, or blocked in 2026; Bernstein says ~35% of the planned US data center pipeline is credible (Financial Times)",
+      "summary": "Financial Times : RegLayer: 47+ large US data center projects were delayed, withdrawn, or blocked in 2026; Bernstein says ~35% of the planned US data center pipeline is credible &nbsp; &mdash;&nbsp; A vast bet on the future of the technology is running into the unforgiving economics of the physical world",
+      "url": "https://www.techmeme.com/261018/p6#a261018p6",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8935,
+        "recency_term": 1.7869,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7869266475628307
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "AI debt worries mount as CoreWeave's bond yield tops 15%, insuring SoftBank debt gets pricier, and some Oracle debt trades near 80 to 90 cents on the dollar (New York Times)",
+      "summary": "New York Times : AI debt worries mount as CoreWeave's bond yield tops 15%, insuring SoftBank debt gets pricier, and some Oracle debt trades near 80 to 90 cents on the dollar &nbsp; &mdash;&nbsp; Debt trouble at CoreWeave, Oracle and SoftBank raises questions about whether there are broader problems with the data center build-out.",
+      "url": "https://www.techmeme.com/261018/p5#a261018p5",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.893,
+        "recency_term": 1.7859,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7859445046461637
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Microsoft cancels its deal to be the anchor tenant and rent 23K Nvidia AI chips at Nscale's Essex, UK, data center, which may not get grid power until the 2030s (James Titcomb/Telegraph)",
+      "summary": "James Titcomb / Telegraph : Microsoft cancels its deal to be the anchor tenant and rent 23K Nvidia AI chips at Nscale's Essex, UK, data center, which may not get grid power until the 2030s &nbsp; &mdash;&nbsp; US tech giant pulls the plug on Nscale deal in threat to multibillion-dollar listing&nbsp; &mdash;&nbsp; Microsoft has pulled &hellip;",
+      "url": "https://www.techmeme.com/261018/p4#a261018p4",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8925,
+        "recency_term": 1.7849,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7849392135714286
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Holyvolt, which develops AI tools for making and testing new battery materials, raised $45M from Zone II, CC.VC, and others, a source says at a $245M valuation (Nick Lichtenberg/Fortune)",
+      "summary": "Nick Lichtenberg / Fortune : Holyvolt, which develops AI tools for making and testing new battery materials, raised $45M from Zone II, CC.VC, and others, a source says at a $245M valuation &nbsp; &mdash;&nbsp; Steven Prast is old enough to remember when a mobile phone came in a bag.&nbsp; It was too heavy to carry around, so most people mounted it in the car.",
+      "url": "https://www.techmeme.com/261018/p3#a261018p3",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.89,
+        "recency_term": 1.78,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7799822029199737
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "GTCR and Elliott agree to acquire and take private CCC, a Nasdaq-listed car insurance software provider, for $4.6B; the deal values CCC at $6.1B including debt (Bloomberg)",
+      "summary": "Bloomberg : GTCR and Elliott agree to acquire and take private CCC, a Nasdaq-listed car insurance software provider, for $4.6B; the deal values CCC at $6.1B including debt &nbsp; &mdash;&nbsp; GTCR and Elliott Investment Management are acquiring car-insurance software provider CCC Intelligent Solutions Holdings Inc &hellip;",
+      "url": "https://www.techmeme.com/261018/p1#a261018p1",
+      "source": "Techmeme",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8835,
+        "recency_term": 1.7671,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7670853774570108
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Filing: Disney agreed to hire 60+ staff from Character.AI and pay them ~$180M over three years, plus $30M for retention awards; a bankruptcy judge must approve (Bloomberg)",
+      "summary": "Bloomberg : Filing: Disney agreed to hire 60+ staff from Character.AI and pay them ~$180M over three years, plus $30M for retention awards; a bankruptcy judge must approve &nbsp; &mdash;&nbsp; More than 60 workers at Character.AI are being offered a lifeline from the media giant &hellip; Soft Landing&nbsp; &mdash;&nbsp; Layoffs are common in bankruptcy.",
+      "url": "https://www.techmeme.com/261017/p21#a261017p21",
+      "source": "Techmeme",
+      "score": 2.76,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8791,
+        "recency_term": 1.7582,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7581568059623014
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Google says \"magic state cultivation\" works in practice on its Willow quantum processor, calling it a breakthrough that reduces errors by about 40x (Google)",
+      "summary": "Google : Google says &ldquo;magic state cultivation&rdquo; works in practice on its Willow quantum processor, calling it a breakthrough that reduces errors by about 40x &nbsp; &mdash;&nbsp; We've shown that magic state cultivation works on Google Quantum AI hardware.&nbsp; &mdash;&nbsp; Google Quantum AI has demonstratively opened &hellip;",
+      "url": "https://www.techmeme.com/261017/p19#a261017p19",
+      "source": "Techmeme",
+      "score": 2.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8538,
+        "recency_term": 1.7076,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.707561567800926
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Meta shakes up the frontiers, open and closed",
+      "summary": "US open weights are back!",
+      "url": "https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open",
+      "source": "Interconnects (Lambert)",
+      "score": 3.59,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7974,
+        "recency_term": 1.5948,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.5948400069279103
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "[AINews] High Taste Testers Ep. 1",
+      "summary": "a quiet day lets us pilot a new show",
+      "url": "https://www.latent.space/p/ainews-high-taste-testers-ep-1",
+      "source": "Latent Space",
+      "score": 3.52,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7598,
+        "recency_term": 1.5196,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.519588684146825
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "NY announces game ownership bill requiring ownership rather than licensing",
+      "summary": "426 points \u00b7 196 comments \u00b7 query: RAG",
+      "url": "https://www.tomshardware.com/video-games/new-york-rep-announces-game-ownership-bill-that-would-require-consumer-ownership-rather-than-sale-of-licenses-would-also-require-publishers-to-keep-the-game-functional-after-support-ends",
+      "source": "Hacker News",
+      "score": 5.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8577,
+        "recency_term": 1.7154,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.715369107390873
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "A Mole Infiltrated the Highest Ranks of American Militias (2025)",
+      "summary": "128 points \u00b7 28 comments \u00b7 query: RAG",
+      "url": "https://www.propublica.org/article/ap3-oath-keepers-militia-mole",
+      "source": "Hacker News",
+      "score": 3.05,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.886,
+        "recency_term": 1.7719,
+        "src_bonus": 0,
+        "hn_bonus": 1.28,
+        "total": 3.05192334015873
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Microsoft Teams is a red flag",
+      "summary": "95 points \u00b7 70 comments \u00b7 query: RAG",
+      "url": "https://blog.raed.dev/posts/microsoft-teams-red-flag/",
+      "source": "Hacker News",
+      "score": 2.52,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7835,
+        "recency_term": 1.5671,
+        "src_bonus": 0,
+        "hn_bonus": 0.95,
+        "total": 2.5170853771660053
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "The Intel 8087 chip: floating-point addition and subtraction",
+      "summary": "86 points \u00b7 27 comments \u00b7 query: RAG",
+      "url": "https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html",
+      "source": "Hacker News",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9535,
+        "recency_term": 1.9071,
+        "src_bonus": 0,
+        "hn_bonus": 0.86,
+        "total": 2.767052308346561
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "GLP-1 may slow biological aging",
+      "summary": "181 points \u00b7 180 comments \u00b7 query: RAG",
+      "url": "https://www.universityofcalifornia.edu/news/new-study-shows-popular-glp-1-weight-loss-drug-may-slow-biological-aging",
+      "source": "Hacker News",
+      "score": 3.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8097,
+        "recency_term": 1.6193,
+        "src_bonus": 0,
+        "hn_bonus": 1.81,
+        "total": 3.429334054348545
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Will it be a golden age or a dark age for mathematics (and science)?",
+      "summary": "122 points \u00b7 159 comments \u00b7 query: RAG",
+      "url": "https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/",
+      "source": "Hacker News",
+      "score": 3.11,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9456,
+        "recency_term": 1.8912,
+        "src_bonus": 0,
+        "hn_bonus": 1.22,
+        "total": 3.111222281825397
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Dogs seem to agree with humans that 'bouba' is round and 'kiki' is spiky",
+      "summary": "106 points \u00b7 71 comments \u00b7 query: RAG",
+      "url": "https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky",
+      "source": "Hacker News",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.866,
+        "recency_term": 1.732,
+        "src_bonus": 0,
+        "hn_bonus": 1.06,
+        "total": 2.7919894775595235
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Solar surpasses nuclear power globally for first time",
+      "summary": "673 points \u00b7 431 comments \u00b7 query: RAG",
+      "url": "https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/",
+      "source": "Hacker News",
+      "score": 5.59,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7968,
+        "recency_term": 1.5937,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.593672678584657
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "DeepSeek search and fetch \u2013 $0.75 per 1000 successful requests",
+      "summary": "531 points \u00b7 255 comments \u00b7 query: RAG",
+      "url": "https://api-docs.deepseek.com/guides/search/",
+      "source": "Hacker News",
+      "score": 5.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.897,
+        "recency_term": 1.794,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.7939868319808205
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Source code of the Estonian online voting system",
+      "summary": "230 points \u00b7 219 comments \u00b7 query: eval",
+      "url": "https://github.com/valimised/ivxv",
+      "source": "Hacker News",
+      "score": 3.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7331,
+        "recency_term": 1.4662,
+        "src_bonus": 0,
+        "hn_bonus": 2.3,
+        "total": 3.766218974804894
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "How Far Will AI Assistants Go for a Refund They Can't Get?",
+      "summary": "77 points \u00b7 96 comments \u00b7 query: eval",
+      "url": "https://www.vals.ai/blogs/impossible-refund",
+      "source": "Hacker News",
+      "score": 2.63,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.93,
+        "recency_term": 1.8599,
+        "src_bonus": 0,
+        "hn_bonus": 0.77,
+        "total": 2.6299325991104494
+      },
+      "age_days": 0.5
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [],
+  "dropped_source_cap": [
+    {
+      "title": "Show HN: Llmspeed \u2013 feel how fast a local LLM runs before you buy the hardware",
+      "summary": "321 points \u00b7 86 comments \u00b7 query: LLM",
+      "url": "https://llmspeed.dev/",
+      "source": "Hacker News",
+      "score": 6.69,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7409,
+        "recency_term": 1.4817,
+        "src_bonus": 0,
+        "hn_bonus": 3.21,
+        "total": 6.6917414592989415
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "There's never been a better time to go into math (by: 3blue1brown) [video]",
+      "summary": "118 points \u00b7 58 comments \u00b7 query: MCP",
+      "url": "https://www.youtube.com/watch?v=LKrwhjOI8Nc",
+      "source": "Hacker News",
+      "score": 5.89,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8529,
+        "recency_term": 1.7059,
+        "src_bonus": 0,
+        "hn_bonus": 1.18,
+        "total": 5.885888284636243
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: The Zelda timeline to catch up before the Ocarina of Time remake",
+      "summary": "157 points \u00b7 93 comments \u00b7 query: Claude",
+      "url": "https://legendofhyrule.com/",
+      "source": "Hacker News",
+      "score": 5.44,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9343,
+        "recency_term": 1.8686,
+        "src_bonus": 0,
+        "hn_bonus": 1.57,
+        "total": 5.438649527979497
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Israeli settlers attack European diplomatic cars in West Bank beat French mayor",
+      "summary": "147 points \u00b7 21 comments \u00b7 query: LLM",
+      "url": "https://www.lemonde.fr/en/international/article/2026/10/17/israeli-settlers-attack-european-diplomatic-cars-in-west-bank-beat-french-mayor-say-witnesses_6758711_4.html",
+      "source": "Hacker News",
+      "score": 5.11,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8195,
+        "recency_term": 1.6389,
+        "src_bonus": 0,
+        "hn_bonus": 1.47,
+        "total": 5.10894053323082
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "OpenAI discloses four more rogue incidents",
+      "summary": "130 points \u00b7 157 comments \u00b7 query: RAG",
+      "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+      "source": "Hacker News",
+      "score": 4.92,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8117,
+        "recency_term": 1.6235,
+        "src_bonus": 0,
+        "hn_bonus": 1.3,
+        "total": 4.923470956474868
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "How employment is changing at Anthropic",
+      "summary": "107 points \u00b7 190 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/research/employment-at-anthropic",
+      "source": "Hacker News",
+      "score": 4.91,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9207,
+        "recency_term": 1.8414,
+        "src_bonus": 0,
+        "hn_bonus": 1.07,
+        "total": 4.911374395591931
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "PalmOS Lemmings",
+      "summary": "81 points \u00b7 22 comments \u00b7 query: LLM",
+      "url": "https://github.com/ardiri/palmos-lemmings",
+      "source": "Hacker News",
+      "score": 4.74,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9631,
+        "recency_term": 1.9262,
+        "src_bonus": 0,
+        "hn_bonus": 0.81,
+        "total": 4.7362057447718255
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Show HN: 500 clocks in one 6.3 MB HTML file by Opus 5.5",
+      "summary": "64 points \u00b7 27 comments \u00b7 query: Claude",
+      "url": "https://tkgally.github.io/500-clocks/",
+      "source": "Hacker News",
+      "score": 4.4,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8806,
+        "recency_term": 1.7611,
+        "src_bonus": 0,
+        "hn_bonus": 0.64,
+        "total": 4.401123072777778
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Why Math Dumped OpenAI",
+      "summary": "82 points \u00b7 14 comments \u00b7 query: RAG",
+      "url": "https://raymyers.org/post/math-dumped-openai/",
+      "source": "Hacker News",
+      "score": 4.32,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7511,
+        "recency_term": 1.5021,
+        "src_bonus": 0,
+        "hn_bonus": 0.82,
+        "total": 4.322148205023148
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "I built a programming language that LLMs can't use",
+      "summary": "59 points \u00b7 57 comments \u00b7 query: LLM",
+      "url": "https://blog.picheta.me/post/killswitch-lang/",
+      "source": "Hacker News",
+      "score": 4.28,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.847,
+        "recency_term": 1.694,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 4.2840232049900795
+      },
+      "age_days": 1.1
+    }
+  ],
+  "final": [
+    {
+      "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+      "summary": "153 points \u00b7 161 comments \u00b7 query: agentic",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+      "source": "Hacker News",
+      "score": 9.42,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.9426,
+        "recency_term": 1.8852,
+        "src_bonus": 0,
+        "hn_bonus": 1.53,
+        "total": 9.415226908650792
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Websites are closing their doors to AI agents",
+      "summary": "133 points \u00b7 125 comments \u00b7 query: agentic",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+      "source": "Hacker News",
+      "score": 9.22,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.9454,
+        "recency_term": 1.8907,
+        "src_bonus": 0,
+        "hn_bonus": 1.33,
+        "total": 9.220726247238757
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+      "summary": "158 points \u00b7 95 comments \u00b7 query: agentic",
+      "url": "https://arxiv.org/abs/2610.18861",
+      "source": "Hacker News",
+      "score": 8.54,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.9801,
+        "recency_term": 1.9602,
+        "src_bonus": 0,
+        "hn_bonus": 1.58,
+        "total": 8.540183919156746
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Sources: Anthropic is consulting law firms on deal negotiation tactics as it develops AI agents to negotiate on humans' behalf and interact with AI counterparts (Cristina Criddle/Financial Times)",
+      "summary": "Cristina Criddle / Financial Times : Sources: Anthropic is consulting law firms on deal negotiation tactics as it develops AI agents to negotiate on humans' behalf and interact with AI counterparts &nbsp; &mdash;&nbsp; Tech companies are being forced to confront the rules of negotiation when machines act on humans' behalf",
+      "url": "https://www.techmeme.com/261018/p2#a261018p2",
+      "source": "Techmeme",
+      "score": 7.77,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.887,
+        "recency_term": 1.774,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 7.774029818554894
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "llm-tools-datasette 0.1.1",
+      "summary": "Release: llm-tools-datasette 0.1.1 When I switched LLM over to httpx2 in LLM 0.33 I forget that this would break any plugins which used https without directly depending on it. llm-tools-datasette was one of those plugins, now fixed. Tags: datasette , llm",
+      "url": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
+      "source": "Simon Willison",
+      "score": 6.99,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9974,
+        "recency_term": 1.9949,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.994889606861772
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "llm-echo 0.5",
+      "summary": "Release: llm-echo 0.5 I'm working towards a new LLM release, and testing PRs caused me to revisit the llm-echo debug plugin. This plugin provides a \"model\" which doesn't involve an LLM at all - it just repeats back the prompts that have been fed to it. The new release now updates the simulated token usage counts to take tool calls, system prompts, and reasoning tokens into account. Example usage: uvx --with llm-echo llm -m echo 'hi there' -o thinking 1 --usage Outputs: First I consider the promp",
+      "url": "https://simonwillison.net/2026/Oct/18/llm-echo/",
+      "source": "Simon Willison",
+      "score": 6.99,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9948,
+        "recency_term": 1.9896,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.989555612080027
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "An interview with Microsoft CEO Satya Nadella on the Nvidia RTX Spark-powered Surface Laptop Ultra, plans to make Windows a safer OS to run AI agents, and more (Joanna Stern/The New Things)",
+      "summary": "Joanna Stern / The New Things : An interview with Microsoft CEO Satya Nadella on the Nvidia RTX Spark-powered Surface Laptop Ultra, plans to make Windows a safer OS to run AI agents, and more &nbsp; &mdash;&nbsp; My exclusive interview with Satya Nadella on the new Surface Laptop Ultra and Microsoft's plan to make Windows safer for AI agents",
+      "url": "https://www.techmeme.com/261017/p20#a261017p20",
+      "source": "Techmeme",
+      "score": 5.73,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8642,
+        "recency_term": 1.7284,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.728398204599868
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Anthropic says it's committing 5% of its shares to a Public Benefit Fund, for a total of ~20% with co-founder and staff pledges, plus 2% per 50% valuation rise (Anthropic)",
+      "summary": "Anthropic : Anthropic says it's committing 5% of its shares to a Public Benefit Fund, for a total of ~20% with co-founder and staff pledges, plus 2% per 50% valuation rise &nbsp; &mdash;&nbsp; Today, we're committing a portion of Anthropic's shares to the Anthropic Public Benefit Fund, a new entity with a structure that increases the stake as the company grows.",
+      "url": "https://www.techmeme.com/261018/p10#a261018p10",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9703,
+        "recency_term": 1.9407,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.940693178075397
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "MapQuest will now show you where Flock cameras are in your neighborhood",
+      "summary": "325 points \u00b7 50 comments \u00b7 query: MCP",
+      "url": "https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/",
+      "source": "Hacker News",
+      "score": 7.81,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7788,
+        "recency_term": 1.5577,
+        "src_bonus": 0,
+        "hn_bonus": 3.25,
+        "total": 7.807660770631614
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Show HN: Sphinx \u2013 A hook that quizzes you on your AI's code before shipping",
+      "summary": "239 points \u00b7 81 comments \u00b7 query: AI agents",
+      "url": "https://sphinx-six-theta.vercel.app/",
+      "source": "Hacker News",
+      "score": 7.16,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8834,
+        "recency_term": 1.7668,
+        "src_bonus": 0,
+        "hn_bonus": 2.39,
+        "total": 7.156847278525133
+      },
+      "age_days": 0.8
+    }
+  ]
+}
