@@ -1,55 +1,98 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://llmspeed.dev/",
-      "stage": "dropped_source_cap",
-      "reason": "Practical AI/ML tool for benchmarking local LLMs with solid HN score (6.69) deserves pipeline inclusion despite source cap."
+      "url": "https://arxiv.org/abs/2610.18861",
+      "stage": "dropped_ttl",
+      "reason": "High-quality ArXiv research on hybrid reasoning agents with score 10.66 should not be TTL-dropped regardless of age."
     },
     {
-      "url": "https://blog.picheta.me/post/killswitch-lang/",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+      "stage": "dropped_ttl",
+      "reason": "Substantive reporting on AI agents and web blocking (score 9.12) from trusted source merits keeping despite 1.4-day age."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison release on LLM tools (score 6.7) is core AI/ML content from a trusted source that should survive TTL filter."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/18/llm-echo/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison LLM tool release (score 6.69) from trusted source should not be dropped by TTL despite 1.1-day age."
+    },
+    {
+      "url": "https://crystl.dev/guides/tmux-for-ai-agents/",
       "stage": "dropped_source_cap",
-      "reason": "Substantive AI safety content about LLM-resistant programming language; relevant to agent/AI control discussions."
+      "reason": "Substantive technical guide on Claude Code agents and tmux (score 8.25) merits inclusion despite source cap."
+    },
+    {
+      "url": "https://github.com/google-research/harness2",
+      "stage": "dropped_source_cap",
+      "reason": "Google Research agent framework (score 5.56) is core AI/ML research that should survive source cap limits."
     },
     {
       "url": "https://www.anthropic.com/research/employment-at-anthropic",
       "stage": "dropped_source_cap",
-      "reason": "Direct Anthropic research on employment trends; high-signal from trusted source despite source cap limit."
+      "reason": "Official Anthropic research post (score 5.05) from trusted source should not be dropped by source cap."
     },
     {
-      "url": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+      "url": "https://www.anthropic.com/news/public-benefit-fund",
       "stage": "dropped_source_cap",
-      "reason": "Material AI safety/security incident disclosure deserves coverage despite source cap; highly relevant to AI governance."
+      "reason": "Official Anthropic announcement (score 4.2) from trusted source should survive source cap filtering."
     },
     {
-      "url": "https://www.latent.space/p/ainews-high-taste-testers-ep-1",
-      "stage": "dropped_keyword",
-      "reason": "Latent Space is a trusted AI industry source; editorial content on AI news should not be filtered by generic keyword rules."
+      "url": "https://madrobot.blog/2026/10/19/us-bans-deepseek-federal-agencies-dhs-order-remove-third-party/",
+      "stage": "dropped_source_cap",
+      "reason": "Timely policy news on DeepSeek ban (score 5.5) with regulatory relevance should not be dropped by source cap."
     },
     {
-      "url": "https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open",
-      "stage": "dropped_keyword",
-      "reason": "Substantive AI analysis from Interconnects on Meta's AI strategy; directly relevant to frontier AI developments."
-    },
-    {
-      "url": "https://api-docs.deepseek.com/guides/search/",
-      "stage": "dropped_keyword",
-      "reason": "DeepSeek API documentation for search is relevant AI/ML infrastructure content that was incorrectly dropped."
+      "url": "https://www.tom shardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+      "stage": "dropped_ttl",
+      "reason": "Substantive policy analysis on Anthropic's AI safety bill (score 6.29) should not be TTL-dropped regardless of 1.4-day age."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.techmeme.com/261017/p20#a261017p20",
-      "reason": "Microsoft Windows/Nadella interview lacks substantive AI content; mostly generic product positioning for Surface hardware."
+      "url": "https://www.mindstudio.ai/blog/free-claude-code-local-proxy/",
+      "reason": "MindStudio vendor content comparing Claude Code pricing lacks editorial substance and appears to be marketing."
     },
     {
-      "url": "https://www.techmeme.com/261018/p10#a261018p10",
-      "reason": "Anthropic share pledge announcement is corporate governance/PR; low signal compared to substantive AI research or policy."
+      "url": "https://www.mindstudio.ai/blog/elorian-glimpse-pricing-vs-gpt6-opus/",
+      "reason": "MindStudio pricing comparison post is vendor-driven promotional content without substantive research value."
     },
     {
-      "url": "https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/",
-      "reason": "Flock camera integration is unrelated to AI/ML; belongs in general tech/privacy, not AI news pipeline."
+      "url": "https://www.mindstudio.ai/blog/ling-3-1-flash-inclusionai/",
+      "reason": "MindStudio benchmark comparison appears promotional rather than independent analysis of model performance."
+    },
+    {
+      "url": "https://www.techmeme.com/261019/p49#a261019p49",
+      "reason": "Speculative venture funding gossip about OpenAI and Anthropic valuations lacks substantive information density."
+    },
+    {
+      "url": "https://www.techmeme.com/261019/p46#a261019p46",
+      "reason": "Gossip about Eric Schmidt's potential IPO gains is financial speculation without AI/ML relevance."
+    },
+    {
+      "url": "https://www.wjcl.com/article/savannah-police-officer-ice-flock-access/74135816",
+      "reason": "Local crime/access control story tangentially mentioning Flock surveillance tool lacks AI/ML substance."
+    },
+    {
+      "url": "https://openai.com/index/low-resource-programming-languages",
+      "reason": "While relevant, this OpenAI post on coding is outcompeted by higher-quality agent and system content."
+    },
+    {
+      "url": "https://www.techmeme.com/261019/p45#a261019p45",
+      "reason": "Cloudflare extraction model announcement is vendor marketing without independent validation or detailed analysis."
+    },
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
+      "reason": "EU regulatory filing on AI Act standard lacks immediate news value and substance compared to agent/research content."
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
+      "reason": "Security incident framed as 'army of AI agents' is hype-driven framing without substantive agent architecture discussion."
     }
   ]
 }

@@ -1,0 +1,1342 @@
+{
+  "date": "2026-10-20",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 91,
+    "after_keyword_filter": 59,
+    "after_dedupe": 42,
+    "after_ttl_filter": 36,
+    "after_source_cap": 11
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 10,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 7,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 20,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 11,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "My obituary for programming",
+      "summary": "My obituary for programming Jeremy Scheff poignantly captures the key loss caused by coding agents for career programmers who enjoyed the puzzle of developing code: Programming turned into one of the greatest jobs you could imagine. You got paid to work on tricky little logic puzzles. The trickier the puzzle, the more you got paid. But even pretty simple puzzles were worth a lot of money because regular people just couldn't do it! No, they needed us. They would give us a problem and we would sol",
+      "url": "https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/",
+      "source": "Simon Willison",
+      "score": 4.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9936,
+        "recency_term": 1.9872,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.987241426068122
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "TorchNeuron: running HF models on AWS Trainium is easier than ever",
+      "summary": "",
+      "url": "https://huggingface.co/blog/hf-torchneuron",
+      "source": "Hugging Face Blog",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.701841293746693
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Korean data-center company Elice falls 30%+ in Kosdaq trading debut; sources: Australian data center operator AirTrunk delays real estate investment trust IPO (Bloomberg)",
+      "summary": "Bloomberg : Korean data-center company Elice falls 30%+ in Kosdaq trading debut; sources: Australian data center operator AirTrunk delays real estate investment trust IPO &nbsp; &mdash;&nbsp; Data-center infrastructure company Elice Inc. plunged in its trading debut on South Korea's tech-heavy Kosdaq market after raising 201 billion won &hellip;",
+      "url": "https://www.techmeme.com/261019/p50#a261019p50",
+      "source": "Techmeme",
+      "score": 3.0,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9994,
+        "recency_term": 1.9988,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9988386481646825
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Source: Netflix execs have been overriding the recommendation algorithm in recent months to push core movies and TV offerings over games and podcasts (Wall Street Journal)",
+      "summary": "Wall Street Journal : Source: Netflix execs have been overriding the recommendation algorithm in recent months to push core movies and TV offerings over games and podcasts &nbsp; &mdash;&nbsp; Company is overhauling creative leadership as it struggles to get domestic audiences to watch more&nbsp; &mdash;&nbsp; Netflix is writing a new script.",
+      "url": "https://www.techmeme.com/261019/p48#a261019p48",
+      "source": "Techmeme",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9908,
+        "recency_term": 1.9816,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9816065052314813
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Sources: Waymo aims to expand its fleet to 8K by the end of this year, up from 4K today, and to 20K by the end of 2027, after raising $5B in debt this month (Ellen DiMauro/Semafor)",
+      "summary": "Ellen DiMauro / Semafor : Sources: Waymo aims to expand its fleet to 8K by the end of this year, up from 4K today, and to 20K by the end of 2027, after raising $5B in debt this month &nbsp; &mdash;&nbsp; THE SCOOP&nbsp; &mdash;&nbsp; As Waymo expands into new cities with its self-driving cars, the company plans to use the $5 billion it recently borrowed to massively increase its fleet.",
+      "url": "https://www.techmeme.com/261019/p47#a261019p47",
+      "source": "Techmeme",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9888,
+        "recency_term": 1.9776,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.977641558068783
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "The US FTC clears Publicis' $2.2B LiveRamp acquisition, subject to a consent decree requiring equal access to LiveRamp's data connectivity tools for all clients (Leah Nylen/Bloomberg)",
+      "summary": "Leah Nylen / Bloomberg : The US FTC clears Publicis' $2.2B LiveRamp acquisition, subject to a consent decree requiring equal access to LiveRamp's data connectivity tools for all clients &nbsp; &mdash;&nbsp; The US Federal Trade Commission said it will allow Publicis Groupe SA to complete the $2.2 billion acquisition of LiveRamp Holdings Inc &hellip;",
+      "url": "https://www.techmeme.com/261019/p44#a261019p44",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9814,
+        "recency_term": 1.9628,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9627539918584658
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Ramp says it applied to the US OCC for a trust bank charter that, if approved, would allow it to offer fiduciary investment management and digital asset custody (Paige Smith/Bloomberg)",
+      "summary": "Paige Smith / Bloomberg : Ramp says it applied to the US OCC for a trust bank charter that, if approved, would allow it to offer fiduciary investment management and digital asset custody &nbsp; &mdash;&nbsp; Financial technology firm Ramp said it applied with the Office of the Comptroller of the Currency for a trust bank charter &hellip;",
+      "url": "https://www.techmeme.com/261019/p42#a261019p42",
+      "source": "Techmeme",
+      "score": 2.94,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.97,
+        "recency_term": 1.94,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9399861346395504
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Meta details Prometheus, its gigawatt-scale supercluster in Ohio, which will have ~1M GPUs at full scale and was used to train its Muse foundational models (Engineering at Meta)",
+      "summary": "Engineering at Meta : Meta details Prometheus, its gigawatt-scale supercluster in Ohio, which will have ~1M GPUs at full scale and was used to train its Muse foundational models &nbsp; &mdash;&nbsp; - With the recent release of the Muse family of foundational models, we want to take you inside the infrastructure that has made it all possible.",
+      "url": "https://www.techmeme.com/261019/p40#a261019p40",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9605,
+        "recency_term": 1.9211,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.921090631921296
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Prism Data, which provides credit-scoring data and analytics that help lenders assess borrowers, raised a $20M Series A led by Story Ventures (Ryan Lawler/Axios)",
+      "summary": "Ryan Lawler / Axios : Prism Data, which provides credit-scoring data and analytics that help lenders assess borrowers, raised a $20M Series A led by Story Ventures &nbsp; &mdash;&nbsp; Prism Data, which helps lenders assess credit risk using bank transaction data, raised $20 million in Series A funding, CEO Jason Rosen tells Axios Pro exclusively.",
+      "url": "https://www.techmeme.com/261019/p37#a261019p37",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9571,
+        "recency_term": 1.9142,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9141528011673277
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Tolan, an AI assistant focused on users that are not tech-savvy, raised $30M from USV, Khosla Ventures, and Homebrew, and says 70% of its users are women (Alex Konrad/Upstarts Media)",
+      "summary": "Alex Konrad / Upstarts Media : Tolan, an AI assistant focused on users that are not tech-savvy, raised $30M from USV, Khosla Ventures, and Homebrew, and says 70% of its users are women &nbsp; &mdash;&nbsp; Far from Silicon Valley's echo chamber, about 250,000 everyday people turn to AI app Tolan as a friendly voice, or to help organize their lives and families.",
+      "url": "https://www.techmeme.com/261019/p36#a261019p36",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9536,
+        "recency_term": 1.9072,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9072017428968255
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Do You Trust Apple?",
+      "summary": "Apple has a lot of trust in terms of delivering integrated products and preserving privacy; the real trust question is if you think Siri AI will justify investing more in their ecosystem.",
+      "url": "https://stratechery.com/2026/do-you-trust-apple/",
+      "source": "Stratechery",
+      "score": 3.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9104,
+        "recency_term": 1.8209,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.820888912166005
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Ukraine carries out aerial drone evacuation of a wounded soldier",
+      "summary": "120 points \u00b7 2 comments \u00b7 query: eval",
+      "url": "https://www.dailymail.com/news/article-16220441/Ukraine-carries-aerial-drone-evacuation-wounded-soldier-frontline.html",
+      "source": "Hacker News",
+      "score": 3.11,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9548,
+        "recency_term": 1.9095,
+        "src_bonus": 0,
+        "hn_bonus": 1.2,
+        "total": 3.1095066369973545
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Ukraine claims first drone evacuation of wounded soldier",
+      "summary": "93 points \u00b7 81 comments \u00b7 query: eval",
+      "url": "https://www.nbcnews.com/world/ukraine/ukraine-first-drone-evacuation-wounded-soldier-frontlines-hexacopter-rcna604310",
+      "source": "Hacker News",
+      "score": 2.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9433,
+        "recency_term": 1.8867,
+        "src_bonus": 0,
+        "hn_bonus": 0.93,
+        "total": 2.816675949126984
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Let's Encrypt is adding two additional remote perspectives for domain validation",
+      "summary": "242 points \u00b7 76 comments \u00b7 query: eval",
+      "url": "https://community.letsencrypt.org/t/lets-encrypt-is-adding-two-additional-remote-perspectives-for-domain-validation/252166",
+      "source": "Hacker News",
+      "score": 4.25,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9158,
+        "recency_term": 1.8315,
+        "src_bonus": 0,
+        "hn_bonus": 2.42,
+        "total": 4.251533753320105
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "How Far Will AI Assistants Go for a Refund They Can't Get?",
+      "summary": "102 points \u00b7 122 comments \u00b7 query: eval",
+      "url": "https://www.vals.ai/blogs/impossible-refund",
+      "source": "Hacker News",
+      "score": 2.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7818,
+        "recency_term": 1.5635,
+        "src_bonus": 0,
+        "hn_bonus": 1.02,
+        "total": 2.5835410284193125
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "A Mole Infiltrated the Highest Ranks of American Militias (2025)",
+      "summary": "131 points \u00b7 28 comments \u00b7 query: RAG",
+      "url": "https://www.propublica.org/article/ap3-oath-keepers-militia-mole",
+      "source": "Hacker News",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7378,
+        "recency_term": 1.4755,
+        "src_bonus": 0,
+        "hn_bonus": 1.31,
+        "total": 2.7855317691236774
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "Verisign .com Domain Name Registry Consumer Class Action",
+      "summary": "111 points \u00b7 65 comments \u00b7 query: RAG",
+      "url": "https://www.hbsslaw.com/cases/verisign-com-domain-name-registry-consumer-class-action",
+      "source": "Hacker News",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8787,
+        "recency_term": 1.7575,
+        "src_bonus": 0,
+        "hn_bonus": 1.11,
+        "total": 2.8674563722652118
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Germany's far-right AfD: half a million internal documents leaked",
+      "summary": "92 points \u00b7 50 comments \u00b7 query: RAG",
+      "url": "https://hexane.cc/",
+      "source": "Hacker News",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9731,
+        "recency_term": 1.9461,
+        "src_bonus": 0,
+        "hn_bonus": 0.92,
+        "total": 2.866103859001323
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "OpenBSD 8.0 release will have inteldrm/radeondrm/amdgpu drivers from Linux 6.18",
+      "summary": "75 points \u00b7 10 comments \u00b7 query: RAG",
+      "url": "https://bsd.network/@brynet/117407035545900963",
+      "source": "Hacker News",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9771,
+        "recency_term": 1.9542,
+        "src_bonus": 0,
+        "hn_bonus": 0.75,
+        "total": 2.7041726420370367
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "The Intel 8087 chip: floating-point addition and subtraction",
+      "summary": "122 points \u00b7 35 comments \u00b7 query: RAG",
+      "url": "https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html",
+      "source": "Hacker News",
+      "score": 2.83,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8053,
+        "recency_term": 1.6107,
+        "src_bonus": 0,
+        "hn_bonus": 1.22,
+        "total": 2.830660737242064
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Dogs seem to agree with humans that 'bouba' is round and 'kiki' is spiky",
+      "summary": "342 points \u00b7 211 comments \u00b7 query: RAG",
+      "url": "https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky",
+      "source": "Hacker News",
+      "score": 4.86,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7178,
+        "recency_term": 1.4356,
+        "src_bonus": 0,
+        "hn_bonus": 3.42,
+        "total": 4.855597906517858
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Degraded availability for GitHub Actions, GitHub Pages and Webhooks",
+      "summary": "150 points \u00b7 124 comments \u00b7 query: RAG",
+      "url": "https://www.githubstatus.com/incidents/8tzbpcnl75jp",
+      "source": "Hacker News",
+      "score": 3.39,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9454,
+        "recency_term": 1.8908,
+        "src_bonus": 0,
+        "hn_bonus": 1.5,
+        "total": 3.3908161604497353
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Will it be a golden age or a dark age for mathematics (and science)?",
+      "summary": "148 points \u00b7 170 comments \u00b7 query: RAG",
+      "url": "https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/",
+      "source": "Hacker News",
+      "score": 3.07,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7974,
+        "recency_term": 1.5948,
+        "src_bonus": 0,
+        "hn_bonus": 1.48,
+        "total": 3.074830710681217
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Ask HN: How to deal with shipping AI-written code you don't understand?",
+      "summary": "246 points \u00b7 389 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50151036",
+      "source": "Hacker News",
+      "score": 4.3,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9188,
+        "recency_term": 1.8377,
+        "src_bonus": 0,
+        "hn_bonus": 2.46,
+        "total": 4.297668012146164
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Starcraft: Ashfall",
+      "summary": "303 points \u00b7 103 comments \u00b7 query: RAG",
+      "url": "https://starcraft-shooter-2026.pages.dev/",
+      "source": "Hacker News",
+      "score": 4.75,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8587,
+        "recency_term": 1.7173,
+        "src_bonus": 0,
+        "hn_bonus": 3.03,
+        "total": 4.747324096759259
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Maybe There Was an Egg Cartel After All",
+      "summary": "200 points \u00b7 126 comments \u00b7 query: RAG",
+      "url": "https://www.politico.com/news/magazine/2026/10/18/egg-prices-conspiracy-affordability-issue-01100411",
+      "source": "Hacker News",
+      "score": 3.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9373,
+        "recency_term": 1.8747,
+        "src_bonus": 0,
+        "hn_bonus": 2.0,
+        "total": 3.8746951284689155
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Elorian Glimpse: A Hands-On Look at the New Visual Thinking AI Model",
+      "summary": "Elorian's Glimpse model tested on AI video detection, real footage, and multi-image reasoning against pricier frontier vision models.",
+      "url": "https://www.mindstudio.ai/blog/elorian-glimpse-visual-thinking-model/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7018412924437831
+      },
+      "age_days": 1.0
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+      "summary": "502 points \u00b7 236 comments \u00b7 query: agentic",
+      "url": "https://arxiv.org/abs/2610.18861",
+      "source": "Hacker News",
+      "score": 10.66,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8319,
+        "recency_term": 1.6638,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 10.663792347060184
+      },
+      "age_days": 1.2,
+      "first_seen": "2026-10-19"
+    },
+    {
+      "title": "Websites are closing their doors to AI agents",
+      "summary": "153 points \u00b7 149 comments \u00b7 query: agentic",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+      "source": "Hacker News",
+      "score": 9.12,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.7972,
+        "recency_term": 1.5943,
+        "src_bonus": 0,
+        "hn_bonus": 1.53,
+        "total": 9.124334675033069
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-10-19"
+    },
+    {
+      "title": "Show HN: Sphinx \u2013 A hook that quizzes you on your AI's code before shipping",
+      "summary": "252 points \u00b7 89 comments \u00b7 query: AI agents",
+      "url": "https://sphinx-six-theta.vercel.app/",
+      "source": "Hacker News",
+      "score": 6.99,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7352,
+        "recency_term": 1.4705,
+        "src_bonus": 0,
+        "hn_bonus": 2.52,
+        "total": 6.990455706722884
+      },
+      "age_days": 1.9,
+      "first_seen": "2026-10-19"
+    },
+    {
+      "title": "llm-tools-datasette 0.1.1",
+      "summary": "Release: llm-tools-datasette 0.1.1 When I switched LLM over to httpx2 in LLM 0.33 I forget that this would break any plugins which used httpx without directly depending on it. llm-tools-datasette was one of those plugins, now fixed. Tags: datasette , llm",
+      "url": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
+      "source": "Simon Willison",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8492,
+        "recency_term": 1.6985,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.698498034705688
+      },
+      "age_days": 1.1,
+      "first_seen": "2026-10-19"
+    },
+    {
+      "title": "llm-echo 0.5",
+      "summary": "Release: llm-echo 0.5 I'm working towards a new LLM release, and testing PRs caused me to revisit the llm-echo debug plugin. This plugin provides a \"model\" which doesn't involve an LLM at all - it just repeats back the prompts that have been fed to it. The new release now updates the simulated token usage counts to take tool calls, system prompts, and reasoning tokens into account. Example usage: uvx --with llm-echo llm -m echo 'hi there' -o thinking 1 --usage Outputs: First I consider the promp",
+      "url": "https://simonwillison.net/2026/Oct/18/llm-echo/",
+      "source": "Simon Willison",
+      "score": 6.69,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8466,
+        "recency_term": 1.6932,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.693164039917328
+      },
+      "age_days": 1.1,
+      "first_seen": "2026-10-19"
+    },
+    {
+      "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+      "summary": "170 points \u00b7 166 comments \u00b7 query: Anthropic",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+      "source": "Hacker News",
+      "score": 6.29,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7944,
+        "recency_term": 1.5888,
+        "src_bonus": 0,
+        "hn_bonus": 1.7,
+        "total": 6.288835336173942
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-10-19"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling",
+      "summary": "148 points \u00b7 114 comments \u00b7 query: AI agents",
+      "url": "https://crystl.dev/guides/tmux-for-ai-agents/",
+      "source": "Hacker News",
+      "score": 8.25,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8862,
+        "recency_term": 1.7724,
+        "src_bonus": 0,
+        "hn_bonus": 1.48,
+        "total": 8.25238030961971
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "If you don't run your own LLM proxy, how do you know whats going on?",
+      "summary": "292 points \u00b7 209 comments \u00b7 query: LLM",
+      "url": "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/",
+      "source": "Hacker News",
+      "score": 6.59,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.834,
+        "recency_term": 1.668,
+        "src_bonus": 0,
+        "hn_bonus": 2.92,
+        "total": 6.587952399523809
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Show HN: KiviDB, a faster Redis-compatible memory database and vector cache",
+      "summary": "62 points \u00b7 39 comments \u00b7 query: MCP",
+      "url": "https://github.com/kividbio/kividb",
+      "source": "Hacker News",
+      "score": 6.49,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9336,
+        "recency_term": 1.8673,
+        "src_bonus": 0,
+        "hn_bonus": 0.62,
+        "total": 6.487291023822752
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Superlite: A Faster Alternatie to Superpowers",
+      "summary": "144 points \u00b7 67 comments \u00b7 query: agentic",
+      "url": "https://contextfirst.blog/superlite-hand-an-agent-a-spec/",
+      "source": "Hacker News",
+      "score": 6.17,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.863,
+        "recency_term": 1.7259,
+        "src_bonus": 0,
+        "hn_bonus": 1.44,
+        "total": 6.165902134900794
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: The Zelda timeline to catch up before the Ocarina of Time remake",
+      "summary": "213 points \u00b7 126 comments \u00b7 query: Claude",
+      "url": "https://legendofhyrule.com/",
+      "source": "Hacker News",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7861,
+        "recency_term": 1.5723,
+        "src_bonus": 0,
+        "hn_bonus": 2.13,
+        "total": 5.702257954966931
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Harness2 by Google Research \u2013 Recursive Agent Harnessing",
+      "summary": "72 points \u00b7 17 comments \u00b7 query: agentic",
+      "url": "https://github.com/google-research/harness2",
+      "source": "Hacker News",
+      "score": 5.56,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9192,
+        "recency_term": 1.8385,
+        "src_bonus": 0,
+        "hn_bonus": 0.72,
+        "total": 5.558498034289021
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "The US orders every civilian agency to rip out DeepSeek, even tools built on it",
+      "summary": "58 points \u00b7 34 comments \u00b7 query: agentic",
+      "url": "https://madrobot.blog/2026/10/19/us-bans-deepseek-federal-agencies-dhs-order-remove-third-party/",
+      "source": "Hacker News",
+      "score": 5.5,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9621,
+        "recency_term": 1.9243,
+        "src_bonus": 0,
+        "hn_bonus": 0.58,
+        "total": 5.504294991921297
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Europe EV sales rose 70.3% in September, 32.6% of market share",
+      "summary": "140 points \u00b7 139 comments \u00b7 query: LLM",
+      "url": "https://www.reuters.com/business/europe-ev-sales-rose-70-september-almost-30-market-share-2026-10-19/",
+      "source": "Hacker News",
+      "score": 5.31,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9551,
+        "recency_term": 1.9103,
+        "src_bonus": 0,
+        "hn_bonus": 1.4,
+        "total": 5.31026060035053
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "The obscure trust looming over Anthropic's IPO",
+      "summary": "130 points \u00b7 107 comments \u00b7 query: Anthropic",
+      "url": "https://www.wsj.com/tech/ai/anthropic-ipo-private-trust-188f41f7?st=RtdGHg&reflink=desktopwebshare_permalink",
+      "source": "Hacker News",
+      "score": 5.15,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9229,
+        "recency_term": 1.8459,
+        "src_bonus": 0,
+        "hn_bonus": 1.3,
+        "total": 5.145898827830687
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Harness Engineering 101: The LLM is the brain, the harness is the body",
+      "summary": "128 points \u00b7 64 comments \u00b7 query: LLM",
+      "url": "https://github.com/IsuruMaduranga/harness-engineering-101",
+      "source": "Hacker News",
+      "score": 5.13,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9231,
+        "recency_term": 1.8462,
+        "src_bonus": 0,
+        "hn_bonus": 1.28,
+        "total": 5.1262229018683865
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "How employment is changing at Anthropic",
+      "summary": "151 points \u00b7 251 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/research/employment-at-anthropic",
+      "source": "Hacker News",
+      "score": 5.05,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7725,
+        "recency_term": 1.545,
+        "src_bonus": 0,
+        "hn_bonus": 1.51,
+        "total": 5.0549828224702384
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Dream Labs, which offers an API for its Dream-1 robot foundation model trained on human videos, raised a $90M seed led by B Capital and Kindred Ventures (John Koetsier/Forbes)",
+      "summary": "John Koetsier / Forbes : Dream Labs, which offers an API for its Dream-1 robot foundation model trained on human videos, raised a $90M seed led by B Capital and Kindred Ventures &nbsp; &mdash;&nbsp; This voice experience is generated by AI.&nbsp; Learn more. &hellip; Want to make your dumb robot smart? $3 an hour is all it costs.",
+      "url": "https://www.techmeme.com/261019/p43#a261019p43",
+      "source": "Techmeme",
+      "score": 4.96,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9784,
+        "recency_term": 1.9568,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.956808219226191
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Sources: Nscale is in talks for a second deal with Anthropic worth ~$45B to deliver 460MW of computing power at its West Virginia campus using Vera Rubin chips (Bloomberg)",
+      "summary": "Bloomberg : Sources: Nscale is in talks for a second deal with Anthropic worth ~$45B to deliver 460MW of computing power at its West Virginia campus using Vera Rubin chips &nbsp; &mdash;&nbsp; Nscale Ltd., the AI cloud computing firm, is in talks to sell computing power to Anthropic PBC in a deal that could be worth about $45 billion &hellip;",
+      "url": "https://www.techmeme.com/261019/p41#a261019p41",
+      "source": "Techmeme",
+      "score": 4.94,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9695,
+        "recency_term": 1.939,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.93895438317791
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Developers and vibe coders are using AI tools like Claude Code to get rid of sponsored ads on their smart TVs, disable tracking features, and more (Sarah Perez/TechCrunch)",
+      "summary": "Sarah Perez / TechCrunch : Developers and vibe coders are using AI tools like Claude Code to get rid of sponsored ads on their smart TVs, disable tracking features, and more &nbsp; &mdash;&nbsp; The latest use case for AI?&nbsp; Dumbing down your smart TV to get rid of the bloat.&nbsp; A number of developers and vibe coders have recently &hellip;",
+      "url": "https://www.techmeme.com/261019/p38#a261019p38",
+      "source": "Techmeme",
+      "score": 4.92,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9586,
+        "recency_term": 1.9171,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.917125679401455
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Self-Replicating AI Agent Swarms Are Already on the Open Internet",
+      "summary": "Researchers made contact with a self-replicating AI agent fleet on the public internet, a sign cyber defense now has to treat agents as a new kind of user.",
+      "url": "https://www.mindstudio.ai/blog/ai-agent-swarms-wild-internet/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.701841287820767
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "How to Protect Your Website and Business From Rogue AI Agents",
+      "summary": "A practical guide to defending websites, data, and accounts against adversarial AI agents and self-replicating swarms now roaming the open internet.",
+      "url": "https://www.mindstudio.ai/blog/how-to-protect-against-rogue-ai-agents/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.701841287777778
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Investing in the public benefit",
+      "summary": "57 points \u00b7 47 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/news/public-benefit-fund",
+      "source": "Hacker News",
+      "score": 4.2,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8167,
+        "recency_term": 1.6334,
+        "src_bonus": 0,
+        "hn_bonus": 0.57,
+        "total": 4.203421975575397
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Show HN: 500 clocks in one 6.3 MB HTML file by Opus 5.5",
+      "summary": "72 points \u00b7 29 comments \u00b7 query: Claude",
+      "url": "https://tkgally.github.io/500-clocks/",
+      "source": "Hacker News",
+      "score": 4.18,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7324,
+        "recency_term": 1.4647,
+        "src_bonus": 0,
+        "hn_bonus": 0.72,
+        "total": 4.184731499351852
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Town, which develops enterprise AI assistants, raised a $108M Series B at a $1B valuation, after announcing a $55M Series A in June (Dominic-Madori Davis/TechCrunch)",
+      "summary": "Dominic-Madori Davis / TechCrunch : Town, which develops enterprise AI assistants, raised a $108M Series B at a $1B valuation, after announcing a $55M Series A in June &nbsp; &mdash;&nbsp; Town, a two-year-old, San Francisco-based startup developing AI assistants, nabbed a unicorn valuation on Monday, announcing a $108 million Series B funding round co-led &hellip;",
+      "url": "https://www.techmeme.com/261019/p39#a261019p39",
+      "source": "Techmeme",
+      "score": 3.92,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.96,
+        "recency_term": 1.9201,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.920095255892857
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "What Orchestrated AI Coding Agent Teams Actually Cost in Tokens",
+      "summary": "A token and dollar breakdown of five orchestrated AI coding agent pairings shows costs ranging from roughly $57 to $124 per task set.",
+      "url": "https://www.mindstudio.ai/blog/ai-coding-agent-team-token-cost-comparison/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7018412875958995
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Anthropic's Public Benefit Fund: What the 20% Equity Pledge Means",
+      "summary": "Anthropic is committing up to 20% of company equity to a public benefit fund. Here's how the structure works and what \"direct distribution\" could mean.",
+      "url": "https://www.mindstudio.ai/blog/anthropic-public-benefit-fund-equity/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.70184128755291
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Is Free Claude Code Really Free? What the Limits Actually Look Like",
+      "summary": "Free Claude Code promises a billion free tokens a month. Here's what that claim means in practice, and the rate limits you'll actually hit.",
+      "url": "https://www.mindstudio.ai/blog/free-claude-code-is-it-really-free/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7018412875132274
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Opus + Sol vs GPT and Astra: Which AI Coding Team Actually Wins?",
+      "summary": "Five lead-worker AI model pairings were scored on six coding tasks. Here's which orchestration setup delivered the most usable code.",
+      "url": "https://www.mindstudio.ai/blog/opus-sol-ai-coding-team-benchmark/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7018412874702378
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Big Tech Oligarchs Have a Terrible Plan for Humanity",
+      "summary": "68 points \u00b7 39 comments \u00b7 query: AI regulation",
+      "url": "https://www.theatlantic.com/ideas/2026/10/ai-regulation-transhumanism-oligarchs/689013/",
+      "source": "Hacker News",
+      "score": 3.56,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.9409,
+        "recency_term": 1.8818,
+        "src_bonus": 0,
+        "hn_bonus": 0.68,
+        "total": 3.5618379805588627
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "How to Build a Personal AI Knowledge Base (Step by Step)",
+      "summary": "Build a searchable personal AI knowledge base using connectors, recency weighting, and plain-text search instead of vector RAG.",
+      "url": "https://www.mindstudio.ai/blog/how-to-build-personal-knowledge-base-ai/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.701841287397487
+      },
+      "age_days": 1.0
+    }
+  ],
+  "final": [
+    {
+      "title": "Show HN: WhatsApp MCP running free on Cloudflare",
+      "summary": "146 points \u00b7 78 comments \u00b7 query: agentic",
+      "url": "https://github.com/finereli/whatsapp-mcp",
+      "source": "Hacker News",
+      "score": 9.13,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8367,
+        "recency_term": 1.6733,
+        "src_bonus": 0,
+        "hn_bonus": 1.46,
+        "total": 9.133302927569446
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
+      "summary": "624 points \u00b7 360 comments \u00b7 query: agentic",
+      "url": "https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816",
+      "source": "Hacker News",
+      "score": 8.83,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9149,
+        "recency_term": 1.8299,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 8.829863774090608
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Free Claude Code: Run AI Coding Agents Without Paying for Tokens",
+      "summary": "A practical guide to Free Claude Code, an open-source proxy that routes your coding agent to free or local LLMs instead of paid APIs.",
+      "url": "https://www.mindstudio.ai/blog/free-claude-code-local-proxy/",
+      "source": "MindStudio",
+      "score": 8.7,
+      "score_components": {
+        "keyword": 7,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 8.701841287275132
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "A hacker broke into John Deere and SharkNinja with an army of AI agents",
+      "summary": "59 points \u00b7 3 comments \u00b7 query: agentic",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
+      "source": "Hacker News",
+      "score": 8.46,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.9366,
+        "recency_term": 1.8731,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 8.463127662900133
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Advancing coding in low\u2011resource programming languages",
+      "summary": "Learn how OpenAI is improving ChatGPT across low-resource programming languages, with new evaluations for software engineering, SQLite, and COBOL migration.",
+      "url": "https://openai.com/index/low-resource-programming-languages",
+      "source": "OpenAI News",
+      "score": 7.84,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9223,
+        "recency_term": 1.8447,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 7.844698430036376
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Sources: OpenAI is racing to secure investor commitments before Anthropic's expected IPO in mid-Nov. and aims to raise ~$30B; the round could value it at $1.4T+ (Reuters)",
+      "summary": "Reuters : Sources: OpenAI is racing to secure investor commitments before Anthropic's expected IPO in mid-Nov. and aims to raise ~$30B; the round could value it at $1.4T+ &nbsp; &mdash;&nbsp; OpenAI is racing to secure investor commitments before rival Anthropic's expected public market debut in mid-November &hellip;",
+      "url": "https://www.techmeme.com/261019/p49#a261019p49",
+      "source": "Techmeme",
+      "score": 6.98,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9916,
+        "recency_term": 1.9833,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.983286392933201
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Elorian Glimpse Pricing vs GPT-6 Astra and Opus 5.5: Is It Worth It?",
+      "summary": "Elorian Glimpse claims up to 94% lower cost than GPT-6 Astra. Here's how its pricing and vision benchmarks stack up against frontier models.",
+      "url": "https://www.mindstudio.ai/blog/elorian-glimpse-pricing-vs-gpt6-opus/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.701841287066799
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Ling-3.1-Flash: InclusionAI's 560B Hybrid Reasoning Model, Benchmarked",
+      "summary": "InclusionAI's Ling-3.1-flash is a 560B-parameter hybrid MoE model with 25B active params and 1M context, tested on coding and agentic benchmarks.",
+      "url": "https://www.mindstudio.ai/blog/ling-3-1-flash-inclusionai/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8509,
+        "recency_term": 1.7018,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.701841287027117
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Sources: Eric Schmidt, who owns ~1% of Anthropic after investing tens of millions in its Series A, is poised to have one of the largest windfalls from its IPO (Bloomberg)",
+      "summary": "Bloomberg : Sources: Eric Schmidt, who owns ~1% of Anthropic after investing tens of millions in its Series A, is poised to have one of the largest windfalls from its IPO &nbsp; &mdash;&nbsp; Former Google Chief Executive Officer Eric Schmidt owns around 1% of Anthropic PBC thanks to his early investment in the startup &hellip;",
+      "url": "https://www.techmeme.com/261019/p46#a261019p46",
+      "source": "Techmeme",
+      "score": 4.97,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9858,
+        "recency_term": 1.9717,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.971692477433862
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Cloudflare debuts Clairic, a System One-class extraction model it says processes unstructured data faster, more cheaply, and more accurately than normal LLMs (Cloudflare)",
+      "summary": "Cloudflare : Cloudflare debuts Clairic, a System One-class extraction model it says processes unstructured data faster, more cheaply, and more accurately than normal LLMs &nbsp; &mdash;&nbsp; Today, we're announcing a preview of a new class of System One-style models: extraction models.",
+      "url": "https://www.techmeme.com/261019/p45#a261019p45",
+      "source": "Techmeme",
+      "score": 4.97,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9853,
+        "recency_term": 1.9707,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.970690493240741
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "First harmonised standard supporting the AI Act published in the Official Journal",
+      "summary": "First harmonised standard supporting the AI Act published in the Official Journal Anonymous (not verified) Mon, 10/19/2026 - 09:37 The European Commission has published the reference to the first harmonised standard supporting the implementation of the AI Act in the Official Journal of the European Union. The standard, EN 18286:2026 - Artificial intelligence - Quality management system for EU AI Act regulatory purposes , developed by CEN and CENELEC, provides a clear legal pathway for providers ",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
+      "source": "EU AI Office",
+      "score": 4.79,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8963,
+        "recency_term": 1.7927,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 4.792694461418651
+      },
+      "age_days": 0.7
+    }
+  ]
+}
