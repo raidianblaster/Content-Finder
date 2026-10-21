@@ -1,98 +1,98 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.18861",
-      "stage": "dropped_ttl",
-      "reason": "High-quality ArXiv research on hybrid reasoning agents with score 10.66 should not be TTL-dropped regardless of age."
-    },
-    {
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
-      "stage": "dropped_ttl",
-      "reason": "Substantive reporting on AI agents and web blocking (score 9.12) from trusted source merits keeping despite 1.4-day age."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison release on LLM tools (score 6.7) is core AI/ML content from a trusted source that should survive TTL filter."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Oct/18/llm-echo/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison LLM tool release (score 6.69) from trusted source should not be dropped by TTL despite 1.1-day age."
-    },
-    {
-      "url": "https://crystl.dev/guides/tmux-for-ai-agents/",
+      "url": "https://arxiv.org/abs/2610.24628",
       "stage": "dropped_source_cap",
-      "reason": "Substantive technical guide on Claude Code agents and tmux (score 8.25) merits inclusion despite source cap."
+      "reason": "Muse Glimmer 30B is a substantive on-device agentic model paper from arXiv with score 13.76, highly relevant to agent systems."
     },
     {
-      "url": "https://github.com/google-research/harness2",
+      "url": "https://arxiv.org/abs/2610.26826",
       "stage": "dropped_source_cap",
-      "reason": "Google Research agent framework (score 5.56) is core AI/ML research that should survive source cap limits."
+      "reason": "RefCraft benchmarks visual-reference-conditioned agentic generation with score 13.76, directly relevant to agent evaluation."
     },
     {
-      "url": "https://www.anthropic.com/research/employment-at-anthropic",
+      "url": "https://arxiv.org/abs/2610.23921",
       "stage": "dropped_source_cap",
-      "reason": "Official Anthropic research post (score 5.05) from trusted source should not be dropped by source cap."
+      "reason": "Principled exploration of agentic computing architectural choices with score 12.76, foundational agent research."
     },
     {
-      "url": "https://www.anthropic.com/news/public-benefit-fund",
+      "url": "https://arxiv.org/abs/2610.24264",
       "stage": "dropped_source_cap",
-      "reason": "Official Anthropic announcement (score 4.2) from trusted source should survive source cap filtering."
+      "reason": "AM-Bench provides unified taxonomy for agentic misalignment evaluation with score 12.76, critical safety benchmark."
     },
     {
-      "url": "https://madrobot.blog/2026/10/19/us-bans-deepseek-federal-agencies-dhs-order-remove-third-party/",
+      "url": "https://arxiv.org/abs/2610.25096",
       "stage": "dropped_source_cap",
-      "reason": "Timely policy news on DeepSeek ban (score 5.5) with regulatory relevance should not be dropped by source cap."
+      "reason": "Addresses RAG for enterprise workflows with agentic systems at score 12.76, highly practical agent application."
     },
     {
-      "url": "https://www.tom shardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
-      "stage": "dropped_ttl",
-      "reason": "Substantive policy analysis on Anthropic's AI safety bill (score 6.29) should not be TTL-dropped regardless of 1.4-day age."
+      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic research on Claude-designed protein binders represents high-signal capability demonstration from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.26860",
+      "stage": "dropped_source_cap",
+      "reason": "OpenVLHarness demonstrates real-world visual agent tool-use with multimodal memory at score 12.76, substantive agent contribution."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.09907",
+      "stage": "dropped_source_cap",
+      "reason": "Benchmarks LLM multimodal reasoning on plant phenotyping with score 8.76, relevant cross-domain agent evaluation."
+    },
+    {
+      "url": "https://benjamincongdon.me/blog/2026/10/19/Agentic-Monitoring/",
+      "stage": "dropped_source_cap",
+      "reason": "Benjamin Congdon's blog on agentic monitoring addresses operational concerns for deployed agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.14590",
+      "stage": "dropped_source_cap",
+      "reason": "Survey of safe LLM agents covering specification and verification with score 6.76, foundational safety resource."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/free-claude-code-local-proxy/",
-      "reason": "MindStudio vendor content comparing Claude Code pricing lacks editorial substance and appears to be marketing."
+      "url": "https://www.reuters.com/business/europe-ev-sales-rose-70-september-almost-30-market-share-2026-10-19/",
+      "reason": "EV sales statistics unrelated to AI/ML/agent content, belongs in automotive/business vertical not AI pipeline."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/elorian-glimpse-pricing-vs-gpt6-opus/",
-      "reason": "MindStudio pricing comparison post is vendor-driven promotional content without substantive research value."
+      "url": "https://www.theatlantic.com/ideas/2026/10/ai-regulation-transhumanism-oligarchs/689013/",
+      "reason": "Opinion piece on oligarchs and transhumanism is editorial commentary, not substantive AI research or product news."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ling-3-1-flash-inclusionai/",
-      "reason": "MindStudio benchmark comparison appears promotional rather than independent analysis of model performance."
+      "url": "https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816",
+      "reason": "Local crime story about police access misuse, not AI agent or LLM content, should not be in AI news."
     },
     {
-      "url": "https://www.techmeme.com/261019/p49#a261019p49",
-      "reason": "Speculative venture funding gossip about OpenAI and Anthropic valuations lacks substantive information density."
+      "url": "https://deathplanswitch.com/",
+      "reason": "Personal project about dead man's switch has minimal AI content, vendor-adjacent tool announcement."
     },
     {
-      "url": "https://www.techmeme.com/261019/p46#a261019p46",
-      "reason": "Gossip about Eric Schmidt's potential IPO gains is financial speculation without AI/ML relevance."
+      "url": "https://www.techmeme.com/261020/p53#a261020p53",
+      "reason": "Brief Gemini Android Auto feature snippet lacks substance and is primarily product marketing."
     },
     {
-      "url": "https://www.wjcl.com/article/savannah-police-officer-ice-flock-access/74135816",
-      "reason": "Local crime/access control story tangentially mentioning Flock surveillance tool lacks AI/ML substance."
+      "url": "https://entropicthoughts.com/nixos-is-making-me-less-afraid",
+      "reason": "Blog post about NixOS is unrelated to AI agents/ML, pure infrastructure/OS content."
     },
     {
-      "url": "https://openai.com/index/low-resource-programming-languages",
-      "reason": "While relevant, this OpenAI post on coding is outcompeted by higher-quality agent and system content."
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "reason": "Analysis piece mixing device strategy with minimal substantive Muse Spark Open model content."
     },
     {
-      "url": "https://www.techmeme.com/261019/p45#a261019p45",
-      "reason": "Cloudflare extraction model announcement is vendor marketing without independent validation or detailed analysis."
+      "url": "https://www.mindstudio.ai/blog/meta-muse-personal-agent-app/",
+      "reason": "Product marketing blog from MindStudio lacks independent verification or technical depth on Muse internals."
     },
     {
-      "url": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
-      "reason": "EU regulatory filing on AI Act standard lacks immediate news value and substance compared to agent/research content."
+      "url": "https://peec.ai/blog/publish-stats-get-cited-the-tactic-that-put-my-data-all-over-the-web",
+      "reason": "Casual blog about citation gaming and fake stats, not rigorous analysis or research contribution."
     },
     {
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
-      "reason": "Security incident framed as 'army of AI agents' is hype-driven framing without substantive agent architecture discussion."
+      "url": "https://3anddoneapp.com/try",
+      "reason": "Personal productivity app announcement lacks AI relevance, pure project showcase."
     }
   ]
 }

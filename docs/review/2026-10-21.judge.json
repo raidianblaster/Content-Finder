@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-21",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.24628",
+      "stage": "dropped_source_cap",
+      "reason": "Muse Glimmer 30B is a substantive on-device agentic model paper from arXiv with score 13.76, highly relevant to agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.26826",
+      "stage": "dropped_source_cap",
+      "reason": "RefCraft benchmarks visual-reference-conditioned agentic generation with score 13.76, directly relevant to agent evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.23921",
+      "stage": "dropped_source_cap",
+      "reason": "Principled exploration of agentic computing architectural choices with score 12.76, foundational agent research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.24264",
+      "stage": "dropped_source_cap",
+      "reason": "AM-Bench provides unified taxonomy for agentic misalignment evaluation with score 12.76, critical safety benchmark."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.25096",
+      "stage": "dropped_source_cap",
+      "reason": "Addresses RAG for enterprise workflows with agentic systems at score 12.76, highly practical agent application."
+    },
+    {
+      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic research on Claude-designed protein binders represents high-signal capability demonstration from trusted source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.26860",
+      "stage": "dropped_source_cap",
+      "reason": "OpenVLHarness demonstrates real-world visual agent tool-use with multimodal memory at score 12.76, substantive agent contribution."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.09907",
+      "stage": "dropped_source_cap",
+      "reason": "Benchmarks LLM multimodal reasoning on plant phenotyping with score 8.76, relevant cross-domain agent evaluation."
+    },
+    {
+      "url": "https://benjamincongdon.me/blog/2026/10/19/Agentic-Monitoring/",
+      "stage": "dropped_source_cap",
+      "reason": "Benjamin Congdon's blog on agentic monitoring addresses operational concerns for deployed agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.14590",
+      "stage": "dropped_source_cap",
+      "reason": "Survey of safe LLM agents covering specification and verification with score 6.76, foundational safety resource."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.reuters.com/business/europe-ev-sales-rose-70-september-almost-30-market-share-2026-10-19/",
+      "reason": "EV sales statistics unrelated to AI/ML/agent content, belongs in automotive/business vertical not AI pipeline."
+    },
+    {
+      "url": "https://www.theatlantic.com/ideas/2026/10/ai-regulation-transhumanism-oligarchs/689013/",
+      "reason": "Opinion piece on oligarchs and transhumanism is editorial commentary, not substantive AI research or product news."
+    },
+    {
+      "url": "https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816",
+      "reason": "Local crime story about police access misuse, not AI agent or LLM content, should not be in AI news."
+    },
+    {
+      "url": "https://deathplanswitch.com/",
+      "reason": "Personal project about dead man's switch has minimal AI content, vendor-adjacent tool announcement."
+    },
+    {
+      "url": "https://www.techmeme.com/261020/p53#a261020p53",
+      "reason": "Brief Gemini Android Auto feature snippet lacks substance and is primarily product marketing."
+    },
+    {
+      "url": "https://entropicthoughts.com/nixos-is-making-me-less-afraid",
+      "reason": "Blog post about NixOS is unrelated to AI agents/ML, pure infrastructure/OS content."
+    },
+    {
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "reason": "Analysis piece mixing device strategy with minimal substantive Muse Spark Open model content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/meta-muse-personal-agent-app/",
+      "reason": "Product marketing blog from MindStudio lacks independent verification or technical depth on Muse internals."
+    },
+    {
+      "url": "https://peec.ai/blog/publish-stats-get-cited-the-tactic-that-put-my-data-all-over-the-web",
+      "reason": "Casual blog about citation gaming and fake stats, not rigorous analysis or research contribution."
+    },
+    {
+      "url": "https://3anddoneapp.com/try",
+      "reason": "Personal productivity app announcement lacks AI relevance, pure project showcase."
+    }
+  ]
+}
