@@ -1,98 +1,78 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.28397",
+      "url": "https://arxiv.org/abs/2511.14130",
       "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent/multi-agent safety research (MAS-Guard) with strong relevance score (12.75) from trusted source."
+      "reason": "High-scoring arXiv agent/LLM research (10.76) from trusted source dropped due to source cap despite clear relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.24264",
+      "url": "https://arxiv.org/abs/2608.26950",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv agent alignment benchmark (AM-Bench) with score 12.75, core to agentic AI evaluation."
+      "reason": "Agent evaluation benchmark paper (10.76) on LLM agentic capabilities dropped at source cap despite substantive contribution."
     },
     {
-      "url": "https://arxiv.org/abs/2610.27816",
+      "url": "https://arxiv.org/abs/2610.27307",
       "stage": "dropped_source_cap",
-      "reason": "Important RAG benchmarking framework from arXiv (score 11.75) addressing automated configuration analysis."
+      "reason": "Benchmark on long-horizon tool use for agents (10.76) dropped at source cap—directly relevant to agentic AI focus."
     },
     {
-      "url": "https://arxiv.org/abs/2610.27027",
+      "url": "https://arxiv.org/abs/2610.29504",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv research on multi-agent collaboration and hallucination in clinical settings (score 10.75)."
+      "reason": "Agent orchestration for time series (9.76) dropped at source cap despite agent-specific relevance."
     },
     {
-      "url": "https://openai.com/index/empowering-cyber-defenders",
+      "url": "https://arxiv.org/abs/2610.29823",
       "stage": "dropped_source_cap",
-      "reason": "OpenAI governance research on frontier AI and cyber defense, trusted source with policy relevance (score 7.71)."
+      "reason": "Agent memory analysis paper (9.76) dropped at source cap—substantive agent systems research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.24061",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent collaboration benchmark (9.76) dropped at source cap—key agentic research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.27548",
+      "stage": "dropped_source_cap",
+      "reason": "Agent authorization safety benchmark (9.76) dropped at source cap despite security relevance."
     },
     {
       "url": "https://www.anthropic.com/research/attack-surface-reduction",
       "stage": "dropped_source_cap",
-      "reason": "Anthropic research on using Claude for security, substantive contribution from trusted vendor-researcher (score 7.05)."
+      "reason": "Anthropic research on using Claude for security (6.8) from trusted org dropped—directly relevant to AI tooling."
     },
     {
-      "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "url": "https://arxiv.org/abs/2608.14590",
       "stage": "dropped_source_cap",
-      "reason": "Anthropic agent research on protein design, demonstrates real agentic capability in scientific domain (score 6.8)."
+      "reason": "Survey on safe LLM agents (6.76) dropped at source cap—foundational safety and agent verification work."
     },
     {
-      "url": "https://simonwillison.net/2026/Oct/20/battledrones/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison coverage of agentic/audio-based AI system deserves retention despite TTL drop (score 6.65)."
-    },
-    {
-      "url": "https://huggingface.co/blog/allenai/fairstress",
-      "stage": "dropped_ttl",
-      "reason": "Hugging Face/Allen AI research on fairness evaluation in LLM decision-making, substantive ML safety work (score 5.61)."
-    },
-    {
-      "url": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
-      "stage": "dropped_ttl",
-      "reason": "Hugging Face IBM research on learned memory beating frontier models on customer service tasks (score 4.6)."
+      "url": "https://arxiv.org/abs/2609.38645",
+      "stage": "dropped_source_cap",
+      "reason": "Alignment research via probe training (5.76) dropped at source cap—substantive safety methodology."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.neowin.net/news/google-cloud-outage-takes-down-hsbc-revolut-bank-of-scotland-llyods-equifax-more/",
-      "reason": "Google Cloud infrastructure incident unrelated to AI/ML; generic tech ops coverage."
+      "url": "https://www.techmeme.com/261022/p52#a261022p52",
+      "reason": "OpenAI funding round speculation (4.95)—earnings/valuation gossip without operational insight."
     },
     {
-      "url": "https://peec.ai/blog/publish-stats-get-cited-the-tactic-that-put-my-data-all-over-the-web",
-      "reason": "Tangential meta-commentary on misinformation; low substance for AI product pipeline despite AI-in-abstract angle."
+      "url": "https://www.techmeme.com/261022/p48#a261022p48",
+      "reason": "Microsoft marketing claim on Diagnostic Orchestrator (4.93)—vendor marketing without substantive technical detail."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/best-mac-for-ai-agents/",
-      "reason": "Hardware buying guide (MindStudio vendor content) lacks substantive technical/ML/agent research contribution."
+      "url": "https://www.techmeme.com/261022/p55#a261022p55",
+      "reason": "OpenAI valuation cut rumor (4.98)—financial gossip with minimal operational relevance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/panda-code-vs-terminal-coding-agents/",
-      "reason": "Tool comparison/vendor opinion piece from MindStudio without research or technical depth."
+      "url": "https://www.techmeme.com/261022/p45#a261022p45",
+      "reason": "SoftBank IPO speculation (6.93)—tangential corporate finance with minimal AI/agent insight."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/panda-code-desktop-ai-coding-agent-gui/",
-      "reason": "Product announcement for MindStudio's own tool; vendor marketing masquerading as coverage."
-    },
-    {
-      "url": "https://openai.com/index/building-chatgpt-ad-stack",
-      "reason": "OpenAI ad/monetization strategy content; corporate marketing rather than substantive AI research."
-    },
-    {
-      "url": "https://www.techmeme.com/261021/p51#a261021p51",
-      "reason": "Zuckerberg Muse user-count/revenue claim; financial/business gossip without technical or research substance."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/mac-ai-agent-memory-management/",
-      "reason": "Troubleshooting/tips content from vendor blog; minor utility, not substantive research."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/become-ai-solopreneur-with-claude-code/",
-      "reason": "Business/lifestyle advice from MindStudio; vendor marketing, not technical or ML research."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/nvidia-dory-1-0-4b-benchmarks/",
-      "reason": "Casual benchmark comparison blog post lacking rigor; vendor-created opinion rather than peer-reviewed analysis."
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-do-we-need-to-rethink-software",
+      "reason": "Generic opinion piece on security rethinking (4.88)—broad commentary without concrete agent/AI technical content."
     }
   ]
 }

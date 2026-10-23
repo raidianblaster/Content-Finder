@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-23",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2511.14130",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent/LLM research (10.76) from trusted source dropped due to source cap despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.26950",
+      "stage": "dropped_source_cap",
+      "reason": "Agent evaluation benchmark paper (10.76) on LLM agentic capabilities dropped at source cap despite substantive contribution."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.27307",
+      "stage": "dropped_source_cap",
+      "reason": "Benchmark on long-horizon tool use for agents (10.76) dropped at source cap—directly relevant to agentic AI focus."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.29504",
+      "stage": "dropped_source_cap",
+      "reason": "Agent orchestration for time series (9.76) dropped at source cap despite agent-specific relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.29823",
+      "stage": "dropped_source_cap",
+      "reason": "Agent memory analysis paper (9.76) dropped at source cap—substantive agent systems research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.24061",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent collaboration benchmark (9.76) dropped at source cap—key agentic research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.27548",
+      "stage": "dropped_source_cap",
+      "reason": "Agent authorization safety benchmark (9.76) dropped at source cap despite security relevance."
+    },
+    {
+      "url": "https://www.anthropic.com/research/attack-surface-reduction",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic research on using Claude for security (6.8) from trusted org dropped—directly relevant to AI tooling."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.14590",
+      "stage": "dropped_source_cap",
+      "reason": "Survey on safe LLM agents (6.76) dropped at source cap—foundational safety and agent verification work."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.38645",
+      "stage": "dropped_source_cap",
+      "reason": "Alignment research via probe training (5.76) dropped at source cap—substantive safety methodology."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261022/p52#a261022p52",
+      "reason": "OpenAI funding round speculation (4.95)—earnings/valuation gossip without operational insight."
+    },
+    {
+      "url": "https://www.techmeme.com/261022/p48#a261022p48",
+      "reason": "Microsoft marketing claim on Diagnostic Orchestrator (4.93)—vendor marketing without substantive technical detail."
+    },
+    {
+      "url": "https://www.techmeme.com/261022/p55#a261022p55",
+      "reason": "OpenAI valuation cut rumor (4.98)—financial gossip with minimal operational relevance."
+    },
+    {
+      "url": "https://www.techmeme.com/261022/p45#a261022p45",
+      "reason": "SoftBank IPO speculation (6.93)—tangential corporate finance with minimal AI/agent insight."
+    },
+    {
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-do-we-need-to-rethink-software",
+      "reason": "Generic opinion piece on security rethinking (4.88)—broad commentary without concrete agent/AI technical content."
+    }
+  ]
+}
