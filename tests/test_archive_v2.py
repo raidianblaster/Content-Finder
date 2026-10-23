@@ -124,7 +124,7 @@ def test_archive_row_links_to_dated_html_files():
 
 def test_archive_first_row_has_today_modifier_and_pill():
     """First entry is the newest = today, gets .is-today + a Today pill."""
-    out = ri.render_archive_html(_entries(3))
+    out = ri.render_archive_html(_entries(3), today=date(2026, 5, 26))
     # First row carries .is-today
     first_row = re.search(
         r'(<a class="arch-row[^"]*"[^>]*href="archive/2026-05-26\.html"[^>]*>.*?</a>)',
@@ -137,7 +137,7 @@ def test_archive_first_row_has_today_modifier_and_pill():
 
 
 def test_archive_non_today_rows_omit_today_pill():
-    out = ri.render_archive_html(_entries(3))
+    out = ri.render_archive_html(_entries(3), today=date(2026, 5, 26))
     # The second row (25 May) must NOT carry the Today pill
     second_row_m = re.search(
         r'<a class="arch-row[^"]*"[^>]*href="archive/2026-05-25\.html"[^>]*>(.*?)</a>',
