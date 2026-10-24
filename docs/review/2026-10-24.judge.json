@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-24",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.30151",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agents paper on handshake overhead in AI agent communication protocols with solid score (10.76) deserved retention over lower-scored content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.30755",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv work questioning RAG complexity with score 10.76 represents important research on agent memory efficiency that merited final inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.30445",
+      "stage": "dropped_source_cap",
+      "reason": "Governance framework for trustworthy AI agents (score 9.76) from trusted arXiv source is directly relevant to regulated corporate environment needs."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.30491",
+      "stage": "dropped_source_cap",
+      "reason": "Agent evaluation methodology paper (score 9.76) addresses auditing behavioral detectors, critical for compliance-focused product managers."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31351",
+      "stage": "dropped_source_cap",
+      "reason": "Industrial multi-agent LLM systems case study from DoorDash (score 8.76) demonstrates production-scale agentic AI implementation highly relevant to PM context."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison trusted source on donating agent skills to Agentic AI Foundation (score 17.64) is substantive agentic content dropped only by TTL cross-day filter."
+    },
+    {
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "stage": "dropped_ttl",
+      "reason": "NVIDIA's OpenShell safe runtime for autonomous AI agent fleets (score 11.63) is substantive infrastructure work for agentic systems dropped by TTL."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.30188",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic verified optimization of real-world software (score 6.76) represents practical agent application work from trusted arXiv deserving inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.30738",
+      "stage": "dropped_source_cap",
+      "reason": "Agent security diagnostics work (AgentTriage, score 6.76) addresses security concerns critical for regulated corporate deployments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31404",
+      "stage": "dropped_source_cap",
+      "reason": "Agent security benchmark under phishing attack (score 6.76) provides practical safety evaluation directly relevant to corporate risk assessment."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/carbon-x-benchmarks-vs-gpt/",
+      "reason": "Vendor-adjacent benchmarking content comparing Carbon-X DNA model to GPT lacks substantive relevance to general AI/agents pipeline."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-agent-teams-worth-it/",
+      "reason": "Product-focused promotional comparison content from MindStudio lacks independent research value or substantive technical insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/hy-memory-benchmark-vs-alternatives/",
+      "reason": "Vendor comparison piece making unsubstantiated claims about model performance lacks credible benchmarking methodology."
+    },
+    {
+      "url": "https://www.cbc.ca/news/investigates/gambling-ads-restrictions-canada-9.7388888",
+      "reason": "Canadian gambling ad regulation article is unrelated to AI/agents and included only through keyword drift."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/fish-audio-drama-3-emotive-voice-model/",
+      "reason": "Voice synthesis product feature article lacks substantive AI research content or strategic relevance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/goodfire-ai-interpretability-research/",
+      "reason": "Vendor marketing of Goodfire service disguised as interpretability research, minimal substantive technical contribution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/cozy-clay-free-3d-previz-tool/",
+      "reason": "3D tool product feature article lacks AI research substance or agentic relevance."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50200997",
+      "reason": "Meta-discussion thread asking why OpenAI doesn't start companies lacks substantive AI research or technical content."
+    },
+    {
+      "url": "https://blog.alexewerlof.com/p/rise-and-fall-of-jev-eval-hype-vs-llm",
+      "reason": "Opinion piece on evaluation hype lacks peer-review rigor and substantive methodology compared to research papers."
+    },
+    {
+      "url": "https://swurf.org/",
+      "reason": "Web browser product demo lacks technical substance or relevance to AI agents research and development."
+    }
+  ]
+}
