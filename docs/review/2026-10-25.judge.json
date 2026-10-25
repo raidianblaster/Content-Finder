@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-25",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+      "stage": "dropped_ttl",
+      "reason": "High-quality analysis from trusted source Simon Willison on major model release (Kimi K3.1 Pro) with score 9.66 should survive TTL cross-day filtering."
+    },
+    {
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "stage": "dropped_ttl",
+      "reason": "Official OpenAI security research on frontier model training with score 9.54 is substantive AI/ML content from primary source."
+    },
+    {
+      "url": "https://www.techmeme.com/261023/p25#a261023p25",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI's offline training world for frontier models (score 6.72) is significant AI infrastructure content that merits retention."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-duet-anthropic-personal-assistant/",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive analysis of Anthropic's Claude Duet from MindStudio (score 5.71) covers major product announcement but sacrificed to source cap."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-role-engineering-managing-claude-agents/",
+      "stage": "dropped_source_cap",
+      "reason": "Technical AI agent management guidance (score 4.71) is substantive operational content relevant to AI practitioners."
+    },
+    {
+      "url": "https://blog.alexewerlof.com/p/rise-and-fall-of-jev-eval-hype-vs-llm",
+      "stage": "dropped_source_cap",
+      "reason": "Critical analysis of LLM evaluation hype (score 4.45) provides substantive technical perspective on ML methodology."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-duet-vs-muse-grokbot-dots/",
+      "reason": "Vendor comparison tool content that reads like marketing material for multiple AI products with limited independent analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-5-agent-orchestration-workflow/",
+      "reason": "Process guide on Claude agents borders on generic productivity advice without novel technical insights or research."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/24/battledrones/",
+      "reason": "Game update post from Simon Willison lacks relevance to AI/ML/agents news pipeline regardless of source authority."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-token-costs-managing-ai-agent-spend/",
+      "reason": "Cost calculation guide is practical but formulaic content without substantive research or novel analysis."
+    },
+    {
+      "url": "https://www.techmeme.com/261024/p2#a261024p2",
+      "reason": "OpenAI Project Daybreak coverage (score 4.79) focuses on security testing partnership utility rather than core AI/ML advancement."
+    }
+  ]
+}
