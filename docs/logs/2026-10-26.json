@@ -1,0 +1,970 @@
+{
+  "date": "2026-10-26",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 50,
+    "after_keyword_filter": 24,
+    "after_dedupe": 22,
+    "after_ttl_filter": 20,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 10,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 12,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Moderators of r/opensource ban submissions of projects using, made by, or intended for AI, exclude non-English speakers over AI translation concerns, and more (Terrence O'Brien/The Verge)",
+      "summary": "Terrence O'Brien / The Verge : Moderators of r/opensource ban submissions of projects using, made by, or intended for AI, exclude non-English speakers over AI translation concerns, and more &nbsp; &mdash;&nbsp; The opensource subreddit's new rules against AI have sparked a revolt. &hellip; The post made Saturday evening opens by saying &hellip;",
+      "url": "https://www.techmeme.com/261025/p12#a261025p12",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9965,
+        "recency_term": 1.993,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9930065584523806
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Elon Musk says SpaceX closed $40B in GPU debt, debt markets have shut off credit for AI data center firms, and 200+ neoclouds face \"death and consolidation\" (Elon Musk/@elonmusk)",
+      "summary": "Elon Musk / @elonmusk : Elon Musk says SpaceX closed $40B in GPU debt, debt markets have shut off credit for AI data center firms, and 200+ neoclouds face &ldquo;death and consolidation&rdquo; &nbsp; &mdash;&nbsp; Pretty much. As of the past few weeks, debt markets have almost entirely shut off access to money for any company that doesn't have substantial revenue independent of AI data centers. SpaceX closed $40B of debt for GPUs, but we're investment grade and have Starlink &amp; launch revenue",
+      "url": "https://www.techmeme.com/261025/p11#a261025p11",
+      "source": "Techmeme",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9846,
+        "recency_term": 1.9692,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9691970345304233
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Data center tenants now demand $5M+ a day in late-delivery fees, up from $1M this spring, spawning new \"delay-in-delivery\" coverage from brokers like Marsh (Ann Davis Vaughan/The Information)",
+      "summary": "Ann Davis Vaughan / The Information : Data center tenants now demand $5M+ a day in late-delivery fees, up from $1M this spring, spawning new &ldquo;delay-in-delivery&rdquo; coverage from brokers like Marsh &nbsp; &mdash;&nbsp; This spring, Mike Mathews, who leads the global digital infrastructure practice at insurance broker Marsh &hellip;",
+      "url": "https://www.techmeme.com/261025/p10#a261025p10",
+      "source": "Techmeme",
+      "score": 2.94,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9702,
+        "recency_term": 1.9405,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9404668757175925
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "The iTunes Store is re-emerging as a venue for big pop stars, including Taylor Swift, to hawk collectibles to superfans and bolster their chart positions (Tom Matsuda/Financial Times)",
+      "summary": "Tom Matsuda / Financial Times : The iTunes Store is re-emerging as a venue for big pop stars, including Taylor Swift, to hawk collectibles to superfans and bolster their chart positions &nbsp; &mdash;&nbsp; Record labels and artists including Taylor Swift and Ariana Grande are using the throwback music store to bolster their chart position and cash in on their fandom",
+      "url": "https://www.techmeme.com/261025/p9#a261025p9",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9574,
+        "recency_term": 1.9148,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.914779044940476
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Sources: Apple tweaked macOS for its OLED touch MacBook Pro, due Wednesday, with a dynamic interface that adapts to whether touch or the trackpad was last used (Mark Gurman/Bloomberg)",
+      "summary": "Mark Gurman / Bloomberg : Sources: Apple tweaked macOS for its OLED touch MacBook Pro, due Wednesday, with a dynamic interface that adapts to whether touch or the trackpad was last used &nbsp; &mdash;&nbsp; Also: The company rolls out a retail store tool to reduce wasted inventory.&nbsp; &mdash;&nbsp; Apple's touch-screen MacBook Pro will arrive on Wednesday &hellip;",
+      "url": "https://www.techmeme.com/261025/p8#a261025p8",
+      "source": "Techmeme",
+      "score": 2.89,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9455,
+        "recency_term": 1.8909,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8909265316369046
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Lawmakers and Hill staffers in both parties say AI leaders are becoming a political liability as they swing between claims of prosperity and existential dangers (Maria Curi/Axios)",
+      "summary": "Maria Curi / Axios : Lawmakers and Hill staffers in both parties say AI leaders are becoming a political liability as they swing between claims of prosperity and existential dangers &nbsp; &mdash;&nbsp; Washington has always viewed Silicon Valley as culturally strange.&nbsp; But the current crop of AI leaders is becoming &hellip;",
+      "url": "https://www.techmeme.com/261025/p7#a261025p7",
+      "source": "Techmeme",
+      "score": 2.84,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9217,
+        "recency_term": 1.8434,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8433802352645503
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "How a Blackstone-led $2.3B private credit loan to CoreWeave in 2023 became a blueprint for chip-backed debt, which is on track to become a $1T market (Bloomberg)",
+      "summary": "Bloomberg : How a Blackstone-led $2.3B private credit loan to CoreWeave in 2023 became a blueprint for chip-backed debt, which is on track to become a $1T market &nbsp; &mdash;&nbsp; &ldquo;What is a GPU?&rdquo;&nbsp; Blackstone Inc. executives asked CoreWeave Inc.'s leadership.&nbsp; Also: &ldquo;Is AI real?&rdquo;&nbsp; &mdash;&nbsp; These were entirely logical queries &hellip;",
+      "url": "https://www.techmeme.com/261025/p6#a261025p6",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8919,
+        "recency_term": 1.7838,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7838498119113755
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Baba, which develops AI tools to help Medicare and Medicaid patients connect to care teams and handle advocacy tasks, raised a $40M Series A led by FirstMark (Cailey Gleeson/Fierce Healthcare)",
+      "summary": "Cailey Gleeson / Fierce Healthcare : Baba, which develops AI tools to help Medicare and Medicaid patients connect to care teams and handle advocacy tasks, raised a $40M Series A led by FirstMark &nbsp; &mdash;&nbsp; Applied artificial intelligence company Baba secured $40 million in series A funding to modernize the Medicare and Medicaid experience.",
+      "url": "https://www.techmeme.com/261025/p5#a261025p5",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8899,
+        "recency_term": 1.7797,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7797096001884922
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "CapitalOS, which helps vertical software platforms offer spend management, cards, and bill payment tools to SMB customers, raised a $21.9M Series A led by LGVP (Ryan Lawler/Axios)",
+      "summary": "Ryan Lawler / Axios : CapitalOS, which helps vertical software platforms offer spend management, cards, and bill payment tools to SMB customers, raised a $21.9M Series A led by LGVP &nbsp; &mdash;&nbsp; CapitalOS, which helps vertical software platforms offer cards and bill-pay tools to their SMB customers, has raised $21.9 million &hellip;",
+      "url": "https://www.techmeme.com/261025/p4#a261025p4",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8894,
+        "recency_term": 1.7787,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7787175366203702
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Instagram launches an Apple TV app for watching Reels, longer videos, and live shows; the app previously launched on Fire TV, Google TV, and Samsung smart TVs (Hartley Charlton/MacRumors)",
+      "summary": "Hartley Charlton / MacRumors : Instagram launches an Apple TV app for watching Reels, longer videos, and live shows; the app previously launched on Fire TV, Google TV, and Samsung smart TVs &nbsp; &mdash;&nbsp; Instagram is now available on the Apple TV, bringing Reels, longer videos, and live shows via the platform to Apple's streaming device for the first time.",
+      "url": "https://www.techmeme.com/261025/p3#a261025p3",
+      "source": "Techmeme",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8864,
+        "recency_term": 1.7728,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7727684624636244
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "LSEG agrees to acquire Octus, an NY-based provider of credit intelligence, data, and workflow software, from Permira and Octus' management for $3.54B in cash (Dominic Chopping/Wall Street Journal)",
+      "summary": "Dominic Chopping / Wall Street Journal : LSEG agrees to acquire Octus, an NY-based provider of credit intelligence, data, and workflow software, from Permira and Octus' management for $3.54B in cash &nbsp; &mdash;&nbsp; The group said the acquisition would transform its presence in credit and private markets data&nbsp; &mdash;&nbsp; London Stock Exchange Group &hellip;",
+      "url": "https://www.techmeme.com/261025/p1#a261025p1",
+      "source": "Techmeme",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8839,
+        "recency_term": 1.7678,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.767808144920635
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "A look at Meta's role in Brazil's runoff, where Lula da Silva alleges Meta restricts his content and a court ordered it not to interfere; Meta cites glitches (Augusta Saraiva/Bloomberg)",
+      "summary": "Augusta Saraiva / Bloomberg : A look at Meta's role in Brazil's runoff, where Lula da Silva alleges Meta restricts his content and a court ordered it not to interfere; Meta cites glitches &nbsp; &mdash;&nbsp; A new villain is emerging in the closing stretch of Brazil's bitterly contested presidential election: Meta Platforms Inc.",
+      "url": "https://www.techmeme.com/261024/p10#a261024p10",
+      "source": "Techmeme",
+      "score": 2.73,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8651,
+        "recency_term": 1.7301,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7301229596593917
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Outside of tech there has been no financial payoff to US companies for using AI, now viewed as a margin-hurting cost center, as VC-backed firms burn more tokens (Torsten Slok/Apollo Global Management)",
+      "summary": "Torsten Slok / Apollo Global Management : Outside of tech there has been no financial payoff to US companies for using AI, now viewed as a margin-hurting cost center, as VC-backed firms burn more tokens &nbsp; &mdash;&nbsp; Despite massive investments and widespread hype around artificial intelligence, the technology has delivered zero financial payoff to corporate America outside of tech.",
+      "url": "https://www.techmeme.com/261024/p9#a261024p9",
+      "source": "Techmeme",
+      "score": 2.68,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8412,
+        "recency_term": 1.6825,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6824906844411376
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
+      "summary": "#20",
+      "url": "https://www.interconnects.ai/p/podcast-kimi-k31-pro-the-new-cyber",
+      "source": "Interconnects (Lambert)",
+      "score": 3.85,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9265,
+        "recency_term": 1.8529,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.852923885469577
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "GPU-unlock: FP/BF16 instruction issue rate on Nvidia 3000's cards",
+      "summary": "336 points \u00b7 80 comments \u00b7 query: RAG",
+      "url": "https://github.com/Zagitta/gpu-unlock",
+      "source": "Hacker News",
+      "score": 4.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7726,
+        "recency_term": 1.5453,
+        "src_bonus": 0,
+        "hn_bonus": 3.36,
+        "total": 4.905275075909391
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Neural chip decodes interactions between brain regions",
+      "summary": "135 points \u00b7 50 comments \u00b7 query: RAG",
+      "url": "https://actu.epfl.ch/news/neural-chip-decodes-interactions-between-brain-r-2/",
+      "source": "Hacker News",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8082,
+        "recency_term": 1.6165,
+        "src_bonus": 0,
+        "hn_bonus": 1.35,
+        "total": 2.9664721658201056
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Small Programs and Languages",
+      "summary": "184 points \u00b7 29 comments \u00b7 query: RAG",
+      "url": "https://ratfactor.com/cards/pl-small",
+      "source": "Hacker News",
+      "score": 3.53,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8427,
+        "recency_term": 1.6853,
+        "src_bonus": 0,
+        "hn_bonus": 1.84,
+        "total": 3.525341213406085
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "In Nigeria, Solar Panels Are the New Wedding Gift",
+      "summary": "51 points \u00b7 12 comments \u00b7 query: RAG",
+      "url": "https://www.bloomberg.com/news/features/2026-10-23/nigeria-embraces-solar-energy-as-panels-become-popular-on-wedding-registries",
+      "source": "Hacker News",
+      "score": 2.18,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8335,
+        "recency_term": 1.667,
+        "src_bonus": 0,
+        "hn_bonus": 0.51,
+        "total": 2.1769681975
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "fheroes2: A recreation of Heroes of Might and Magic II game engine",
+      "summary": "201 points \u00b7 71 comments \u00b7 query: RAG",
+      "url": "https://github.com/ihhub/fheroes2",
+      "source": "Hacker News",
+      "score": 3.86,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9225,
+        "recency_term": 1.845,
+        "src_bonus": 0,
+        "hn_bonus": 2.01,
+        "total": 3.8550270598974867
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "OBS Studio 33",
+      "summary": "468 points \u00b7 177 comments \u00b7 query: RAG",
+      "url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
+      "source": "Hacker News",
+      "score": 5.48,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.742,
+        "recency_term": 1.4841,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.484068065162037
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "Show HN: Autonomous root for Tcl Android TV via CVE-2022-22706",
+      "summary": "57 points \u00b7 19 comments \u00b7 query: RAG",
+      "url": "https://gitlab.com/c4psu13/mali-pagecache-root",
+      "source": "Hacker News",
+      "score": 2.13,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7779,
+        "recency_term": 1.5558,
+        "src_bonus": 0,
+        "hn_bonus": 0.57,
+        "total": 2.1258174037499997
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Dream-1",
+      "summary": "179 points \u00b7 77 comments \u00b7 query: RAG",
+      "url": "https://dreamlabs.ai/research/dream-1/",
+      "source": "Hacker News",
+      "score": 3.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8227,
+        "recency_term": 1.6455,
+        "src_bonus": 0,
+        "hn_bonus": 1.79,
+        "total": 3.435463567744709
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Dessa: Block's Unreleased Full-Duplex Voice AI, Explained",
+      "summary": "Dessa is Block's unreleased speech-to-speech model trained on audio alone. Here's what it claims and how natural it actually sounds.",
+      "url": "https://www.mindstudio.ai/blog/dessa-voice-ai-block-jack-dorsey/",
+      "source": "MindStudio",
+      "score": 1.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.712249281987434
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Why AI Inference Costs Matter More Than Training Costs",
+      "summary": "DeepSeek's own numbers show inference can outweigh training compute 12x over a model's life. Here's why that changes how you pick models.",
+      "url": "https://www.mindstudio.ai/blog/why-inference-matters-more-than-training/",
+      "source": "MindStudio",
+      "score": 1.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.7122492819444446
+      },
+      "age_days": 1.0
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Source: Replit recently moved most AI spend from Anthropic to OpenAI, which gave 30%+ off in a deal worth $100M+/year, after Anthropic discontinued its discount (The Information)",
+      "summary": "The Information : Source: Replit recently moved most AI spend from Anthropic to OpenAI, which gave 30%+ off in a deal worth $100M+/year, after Anthropic discontinued its discount &nbsp; &mdash;&nbsp; OpenAI's efforts to undercut Anthropic on price are producing some results.&nbsp; &mdash;&nbsp; For instance, in May, Anthropic models powered 57% &hellip;",
+      "url": "https://www.techmeme.com/261024/p8#a261024p8",
+      "source": "Techmeme",
+      "score": 6.66,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8308,
+        "recency_term": 1.6617,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.661657348766534
+      },
+      "age_days": 1.2,
+      "first_seen": "2026-10-25"
+    },
+    {
+      "title": "battledrones v14: Compass Rose, a four player map",
+      "summary": "Release: battledrones v14: Compass Rose, a four player map I added four player online mode to Battledrones - previous maps were limited to two. Here's the initial prompt I used: Add a new map for a four player battle - four way rotational symmetry, up to four AI players, works with the WebSocket non-audio based multiplayer mode so up to four human players can join (any spare slots use AI) Claude Opus 5.5 added a new map called \"Compass Rose\" and modified the WebSockets multiplayer network code t",
+      "url": "https://simonwillison.net/2026/Oct/24/battledrones/",
+      "source": "Simon Willison",
+      "score": 6.47,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7371,
+        "recency_term": 1.4741,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.474144121140873
+      },
+      "age_days": 1.8,
+      "first_seen": "2026-10-25"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "The Importance of Limitations for Creativity and Learning (2023)",
+      "summary": "116 points \u00b7 40 comments \u00b7 query: LLM",
+      "url": "https://ratfactor.com/cards/limitations",
+      "source": "Hacker News",
+      "score": 4.85,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8425,
+        "recency_term": 1.685,
+        "src_bonus": 0,
+        "hn_bonus": 1.16,
+        "total": 4.845023750644842
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "What Adobe v ArtCraft teaches us",
+      "summary": "84 points \u00b7 96 comments \u00b7 query: Anthropic",
+      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
+      "source": "Hacker News",
+      "score": 4.74,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9489,
+        "recency_term": 1.8977,
+        "src_bonus": 0,
+        "hn_bonus": 0.84,
+        "total": 4.737712242665344
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "AI Is Making Kernel Exploit Creation Faster, Says Linux Maintainers",
+      "summary": "Kernel maintainers say LLMs now speed up both vulnerability discovery and exploit writing, raising new open source security response concerns.",
+      "url": "https://www.mindstudio.ai/blog/ai-generated-exploits-kernel-security/",
+      "source": "MindStudio",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.7122492796494715
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Harness\u00b2 Explained: How Self-Evolving AI Agents Rewrite Their Own Tools",
+      "summary": "Harness\u00b2 lets AI agents rewrite their own tools, skills, and control loop mid-task. Here's how the self-evolving harness works and where it fails.",
+      "url": "https://www.mindstudio.ai/blog/harness-squared-self-evolving-agents/",
+      "source": "MindStudio",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.712249279593254
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "How to Run Spark-X2.6-4B Locally: Ollama, LM Studio, MLX, and More",
+      "summary": "Run Spark-X2.6-4B locally with Ollama, LM Studio, llama.cpp, MLX, or SGLang. A practical setup guide for on-device AI agents.",
+      "url": "https://www.mindstudio.ai/blog/run-spark-x2-6-4b-locally-ollama/",
+      "source": "MindStudio",
+      "score": 4.71,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.712249279550265
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Eunice is almost here",
+      "summary": "55 points \u00b7 47 comments \u00b7 query: LLM",
+      "url": "https://armincat.com/articles/eunice-is-almost-here",
+      "source": "Hacker News",
+      "score": 4.5,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9732,
+        "recency_term": 1.9465,
+        "src_bonus": 0,
+        "hn_bonus": 0.55,
+        "total": 4.496465549361773
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "PHP, eMudhra, LightLLM: Inside October's AI-Driven Security Breaches",
+      "summary": "PHP vulnerabilities, weak eMudhra keys, and a LightLLM supply-chain hack defined a brutal October. Here's what happened and why AI changed the stakes.",
+      "url": "https://www.mindstudio.ai/blog/ai-cybersecurity-week-php-emudhra-lightllm/",
+      "source": "MindStudio",
+      "score": 3.71,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7122492794708997
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "How LLM Inference Works: Prefill, Decode, and the KV Cache",
+      "summary": "A technical breakdown of how an LLM request moves through routing, prefill, decode, and KV caching, and why inference costs dwarf training over time.",
+      "url": "https://www.mindstudio.ai/blog/how-llm-inference-works-prefill-decode/",
+      "source": "MindStudio",
+      "score": 3.71,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.71224927942791
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Linus Torvalds on AI-Written Linux Kernel Patches: Inside the Debate",
+      "summary": "How the Linux kernel maintainer summit tackled LLM-generated patches, the Sashiko review bot, and why Torvalds now won't code without an LLM.",
+      "url": "https://www.mindstudio.ai/blog/linus-torvalds-ai-linux-kernel-patches/",
+      "source": "MindStudio",
+      "score": 3.71,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.7122492793816138
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "NVIDIA Nemotron 3.5 Bolt E4B: Benchmarks vs. Hands-On Reality",
+      "summary": "NVIDIA's 4B small model claims speed and smarts gains over rivals. Here's how those benchmark claims hold up against coding, math, and language tests.",
+      "url": "https://www.mindstudio.ai/blog/nemotron-3-5-bolt-e4b-benchmarks/",
+      "source": "MindStudio",
+      "score": 2.71,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.712249279338624
+      },
+      "age_days": 1.0
+    }
+  ],
+  "final": [
+    {
+      "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+      "summary": "80 points \u00b7 104 comments \u00b7 query: LLM",
+      "url": "https://minimaxir.com/2026/10/cheap-llms/",
+      "source": "Hacker News",
+      "score": 8.76,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.9823,
+        "recency_term": 1.9645,
+        "src_bonus": 0,
+        "hn_bonus": 0.8,
+        "total": 8.764534332208996
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+      "summary": "387 points \u00b7 184 comments \u00b7 query: LLM",
+      "url": "https://lynchlab.net/llm-skin-cancer",
+      "source": "Hacker News",
+      "score": 7.79,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9589,
+        "recency_term": 1.9177,
+        "src_bonus": 0,
+        "hn_bonus": 3.87,
+        "total": 7.7877320834887565
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "AI Agents in Cyber Defense vs Offense: Why the Strongest Model Wins",
+      "summary": "Attackers now use agentic AI to find and exploit flaws at scale. Here's why defenders need the strongest models available, not weaker ones.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
+      "source": "MindStudio",
+      "score": 7.71,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 7.712249279206349
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "CLI-Anything: Turn Any App Into a CLI for Claude Code and Codex",
+      "summary": "CLI-Anything auto-generates command-line interfaces for GIMP, Blender, LibreOffice and more, giving AI coding agents real tool access.",
+      "url": "https://www.mindstudio.ai/blog/cli-anything-turn-apps-into-cli-for-ai-agents/",
+      "source": "MindStudio",
+      "score": 7.71,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 7.712249279160053
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Bbtree: Fastest Ordered Map",
+      "summary": "154 points \u00b7 21 comments \u00b7 query: MCP",
+      "url": "https://bbtree.xiangpeng.systems/post/",
+      "source": "Hacker News",
+      "score": 6.19,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8226,
+        "recency_term": 1.6452,
+        "src_bonus": 0,
+        "hn_bonus": 1.54,
+        "total": 6.185232083363095
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Your Claude and Codex API Keys Are a Target. Here's How to Protect Them",
+      "summary": "A practical guide to auditing connected apps, rotating Claude and Codex API keys, and using AI itself to find exposed secrets after recent breaches.",
+      "url": "https://www.mindstudio.ai/blog/protect-stolen-ai-api-keys/",
+      "source": "MindStudio",
+      "score": 5.71,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8561,
+        "recency_term": 1.7122,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.712249279083995
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Kimi K3.1 Pro's debut draws scrutiny over allegations that influencers were asked to promote the model without disclosing a commercial relationship to Moonshot (Carl Franzen/VentureBeat)",
+      "summary": "Carl Franzen / VentureBeat : Kimi K3.1 Pro's debut draws scrutiny over allegations that influencers were asked to promote the model without disclosing a commercial relationship to Moonshot &nbsp; &mdash;&nbsp; That's because Kimi K3.1 Pro scores so high on third-party benchmarks &mdash; according to both Moonshot and third-party AI model &hellip;",
+      "url": "https://www.techmeme.com/261025/p2#a261025p2",
+      "source": "Techmeme",
+      "score": 3.77,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8849,
+        "recency_term": 1.7698,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.7697922684193124
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "R/open source bans all solo projects and projects using LLMs",
+      "summary": "76 points \u00b7 106 comments \u00b7 query: LLM",
+      "url": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
+      "source": "Hacker News",
+      "score": 5.64,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.94,
+        "recency_term": 1.8799,
+        "src_bonus": 0,
+        "hn_bonus": 0.76,
+        "total": 5.639917929761904
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Show HN: Farol \u2013 A risk map of a pull request for the person who approves it",
+      "summary": "58 points \u00b7 37 comments \u00b7 query: MCP",
+      "url": "https://github.com/winnin/farol",
+      "source": "Hacker News",
+      "score": 5.45,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9363,
+        "recency_term": 1.8726,
+        "src_bonus": 0,
+        "hn_bonus": 0.58,
+        "total": 5.452586580512566
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Proton hosts Flock map revealing over 300k cameras, defying cease-and-desist",
+      "summary": "59 points \u00b7 9 comments \u00b7 query: MCP",
+      "url": "https://www.tomshardware.com/software/maps/proton-hosts-flock-map-revealing-over-300-000-cameras-defying-cease-and-desist-threats-against-creator-privacy-focused-company-hosts-site-on-swiss-servers-says-users-have-the-right-to-know-whos-recording-them",
+      "source": "Hacker News",
+      "score": 5.21,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8087,
+        "recency_term": 1.6173,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 5.20732203021164
+      },
+      "age_days": 1.3
+    }
+  ]
+}

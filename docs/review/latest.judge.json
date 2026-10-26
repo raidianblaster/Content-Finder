@@ -1,58 +1,55 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+      "url": "https://www.techmeme.com/261024/p8#a261024p8",
       "stage": "dropped_ttl",
-      "reason": "High-quality analysis from trusted source Simon Willison on major model release (Kimi K3.1 Pro) with score 9.66 should survive TTL cross-day filtering."
+      "reason": "High-signal business intelligence about major AI vendor consolidation ($100M+ Replit deal) warranted cross-day retention despite TTL."
     },
     {
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-      "stage": "dropped_ttl",
-      "reason": "Official OpenAI security research on frontier model training with score 9.54 is substantive AI/ML content from primary source."
-    },
-    {
-      "url": "https://www.techmeme.com/261023/p25#a261023p25",
-      "stage": "dropped_ttl",
-      "reason": "OpenAI's offline training world for frontier models (score 6.72) is significant AI infrastructure content that merits retention."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/claude-duet-anthropic-personal-assistant/",
+      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
       "stage": "dropped_source_cap",
-      "reason": "Substantive analysis of Anthropic's Claude Duet from MindStudio (score 5.71) covers major product announcement but sacrificed to source cap."
+      "reason": "Substantive AI policy analysis on copyright litigation with high score (4.74) was cut by source cap despite relevance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-role-engineering-managing-claude-agents/",
-      "stage": "dropped_source_cap",
-      "reason": "Technical AI agent management guidance (score 4.71) is substantive operational content relevant to AI practitioners."
-    },
-    {
-      "url": "https://blog.alexewerlof.com/p/rise-and-fall-of-jev-eval-hype-vs-llm",
-      "stage": "dropped_source_cap",
-      "reason": "Critical analysis of LLM evaluation hype (score 4.45) provides substantive technical perspective on ML methodology."
+      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
+      "stage": "final",
+      "reason": "Note: This reached final despite MindStudio cap—but agents/security analysis is core AI signal worth preserving."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/claude-duet-vs-muse-grokbot-dots/",
-      "reason": "Vendor comparison tool content that reads like marketing material for multiple AI products with limited independent analysis."
+      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
+      "reason": "MindStudio vendor blog on agents makes final; substantive but appears to exceed source cap policy."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-opus-5-5-agent-orchestration-workflow/",
-      "reason": "Process guide on Claude agents borders on generic productivity advice without novel technical insights or research."
+      "url": "https://www.mindstudio.ai/blog/cli-anything-turn-apps-into-cli-for-ai-agents/",
+      "reason": "MindStudio vendor blog on Claude tooling makes final; marketing-leaning developer content."
     },
     {
-      "url": "https://simonwillison.net/2026/Oct/24/battledrones/",
-      "reason": "Game update post from Simon Willison lacks relevance to AI/ML/agents news pipeline regardless of source authority."
+      "url": "https://www.mindstudio.ai/blog/protect-stolen-ai-api-keys/",
+      "reason": "MindStudio vendor blog on API security makes final; generic best-practices content with light substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-token-costs-managing-ai-agent-spend/",
-      "reason": "Cost calculation guide is practical but formulaic content without substantive research or novel analysis."
+      "url": "https://www.techmeme.com/261025/p2#a261025p2",
+      "reason": "Influencer disclosure controversy around Kimi K3.1 is tangential marketing drama, not core AI research/capability signal."
     },
     {
-      "url": "https://www.techmeme.com/261024/p2#a261024p2",
-      "reason": "OpenAI Project Daybreak coverage (score 4.79) focuses on security testing partnership utility rather than core AI/ML advancement."
+      "url": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
+      "reason": "Community drama headline appears sensationalized; actual policy signal unclear and likely low-substance."
+    },
+    {
+      "url": "https://www.tomshardware.com/software/maps/proton-hosts-flock-map-revealing-over-300-000-cameras-defying-cease-and-desist-threats-against-creator-privacy-focused-company-hosts-site-on-swiss-servers-says-users-have-the-right-to-know-whos-recording-them",
+      "reason": "Privacy/surveillance story unrelated to AI/ML development and capability; tangential tech policy."
+    },
+    {
+      "url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
+      "reason": "OBS Studio release is generic software maintenance, dropped by keyword filter—correctly excluded."
+    },
+    {
+      "url": "https://bbtree.xiangpeng.systems/post/",
+      "reason": "Data structure optimization unrelated to AI/ML; infrastructure content with no AI signal."
     }
   ]
 }

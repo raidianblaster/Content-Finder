@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-26",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://www.techmeme.com/261024/p8#a261024p8",
+      "stage": "dropped_ttl",
+      "reason": "High-signal business intelligence about major AI vendor consolidation ($100M+ Replit deal) warranted cross-day retention despite TTL."
+    },
+    {
+      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive AI policy analysis on copyright litigation with high score (4.74) was cut by source cap despite relevance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
+      "stage": "final",
+      "reason": "Note: This reached final despite MindStudio cap—but agents/security analysis is core AI signal worth preserving."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
+      "reason": "MindStudio vendor blog on agents makes final; substantive but appears to exceed source cap policy."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/cli-anything-turn-apps-into-cli-for-ai-agents/",
+      "reason": "MindStudio vendor blog on Claude tooling makes final; marketing-leaning developer content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/protect-stolen-ai-api-keys/",
+      "reason": "MindStudio vendor blog on API security makes final; generic best-practices content with light substance."
+    },
+    {
+      "url": "https://www.techmeme.com/261025/p2#a261025p2",
+      "reason": "Influencer disclosure controversy around Kimi K3.1 is tangential marketing drama, not core AI research/capability signal."
+    },
+    {
+      "url": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
+      "reason": "Community drama headline appears sensationalized; actual policy signal unclear and likely low-substance."
+    },
+    {
+      "url": "https://www.tomshardware.com/software/maps/proton-hosts-flock-map-revealing-over-300-000-cameras-defying-cease-and-desist-threats-against-creator-privacy-focused-company-hosts-site-on-swiss-servers-says-users-have-the-right-to-know-whos-recording-them",
+      "reason": "Privacy/surveillance story unrelated to AI/ML development and capability; tangential tech policy."
+    },
+    {
+      "url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
+      "reason": "OBS Studio release is generic software maintenance, dropped by keyword filter—correctly excluded."
+    },
+    {
+      "url": "https://bbtree.xiangpeng.systems/post/",
+      "reason": "Data structure optimization unrelated to AI/ML; infrastructure content with no AI signal."
+    }
+  ]
+}
