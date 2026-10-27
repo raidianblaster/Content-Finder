@@ -1,55 +1,98 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://www.techmeme.com/261024/p8#a261024p8",
-      "stage": "dropped_ttl",
-      "reason": "High-signal business intelligence about major AI vendor consolidation ($100M+ Replit deal) warranted cross-day retention despite TTL."
-    },
-    {
-      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
+      "url": "https://arxiv.org/abs/2610.32555",
       "stage": "dropped_source_cap",
-      "reason": "Substantive AI policy analysis on copyright litigation with high score (4.74) was cut by source cap despite relevance."
+      "reason": "High-quality arXiv agent research on MCP fault tolerance with strong relevance to LLM agents; score 12.75 justifies keeping despite source cap."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
-      "stage": "final",
-      "reason": "Note: This reached final despite MindStudio cap—but agents/security analysis is core AI signal worth preserving."
+      "url": "https://arxiv.org/abs/2609.31963",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv research on multi-agent coordination with symbolic guidance; score 12.75 indicates clear signal that should survive source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.24264",
+      "stage": "dropped_source_cap",
+      "reason": "Novel benchmark (AM-Bench) for agentic misalignment evaluation from trusted source; score 12.75 warrants inclusion over source cap limits."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32851",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive work on multi-agent RAG systems with clear enterprise relevance; score 11.75 suggests source cap was too aggressive."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32285",
+      "stage": "dropped_source_cap",
+      "reason": "Important benchmark for agent reliability and failure attribution (Trial by Trace); score 10.75 merits preservation despite cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31971",
+      "stage": "dropped_source_cap",
+      "reason": "Research on trust and negotiation in multi-agent LLM systems with practical relevance; score 8.75 represents solid agent-focused content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32060",
+      "stage": "dropped_source_cap",
+      "reason": "Addresses communication failures in multi-agent systems, critical safety/reliability topic; score 8.75 indicates meaningful contribution."
+    },
+    {
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "stage": "dropped_source_cap",
+      "reason": "OpenAI News on research collaboration with academia; trusted source and substantive despite score 6.87."
+    },
+    {
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "stage": "dropped_source_cap",
+      "reason": "OpenAI News on GPT model application to security; from trusted source and directly product-relevant despite score 6.86."
+    },
+    {
+      "url": "https://www.ubicloud.com/blog/fixing-tool-call-accuracy-in-vllm",
+      "stage": "dropped_source_cap",
+      "reason": "Technical deep-dive on tool-call accuracy (core agent capability) in vLLM; substantive implementation guidance despite score 5.3."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/ai-agents-cyber-defense-vs-offense/",
-      "reason": "MindStudio vendor blog on agents makes final; substantive but appears to exceed source cap policy."
+      "url": "https://english.elpais.com/technology/2026-10-25/peter-thiel-the-tech-oligarch-who-believes-in-the-antichrist.html",
+      "reason": "Peter Thiel biography/opinion piece unrelated to AI/ML/agents; score 6.32 does not justify inclusion."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/cli-anything-turn-apps-into-cli-for-ai-agents/",
-      "reason": "MindStudio vendor blog on Claude tooling makes final; marketing-leaning developer content."
+      "url": "https://iosiflazaridis.github.io/battles-of-the-romans/",
+      "reason": "Interactive map of Roman battles; historical content entirely unrelated to AI/agents; score 6.09."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/protect-stolen-ai-api-keys/",
-      "reason": "MindStudio vendor blog on API security makes final; generic best-practices content with light substance."
+      "url": "https://proton.me/flock-camera-map",
+      "reason": "Camera/privacy tool unrelated to AI agents or ML; score 5.88 does not justify inclusion in AI pipeline."
     },
     {
-      "url": "https://www.techmeme.com/261025/p2#a261025p2",
-      "reason": "Influencer disclosure controversy around Kimi K3.1 is tangential marketing drama, not core AI research/capability signal."
+      "url": "https://www.showbiz411.com/2026/10/23/controversial-musk-documentary-pulled-from-almost-every-one-of-472-theaters-after-one-week-by-newly-sold-bleecker-street-films",
+      "reason": "Entertainment news about documentary release; no AI/ML relevance; score 3.95."
     },
     {
-      "url": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
-      "reason": "Community drama headline appears sensationalized; actual policy signal unclear and likely low-substance."
+      "url": "https://www.mindstudio.ai/blog/deepseek-v41-flash-pricing-cost/",
+      "reason": "Vendor pricing comparison blog post; low-substance marketing content; score 3.7."
     },
     {
-      "url": "https://www.tomshardware.com/software/maps/proton-hosts-flock-map-revealing-over-300-000-cameras-defying-cease-and-desist-threats-against-creator-privacy-focused-company-hosts-site-on-swiss-servers-says-users-have-the-right-to-know-whos-recording-them",
-      "reason": "Privacy/surveillance story unrelated to AI/ML development and capability; tangential tech policy."
+      "url": "https://www.mindstudio.ai/blog/lean-rea-deepseek-v41-flash-setup/",
+      "reason": "Vendor setup tutorial; low-signal promotional content; score 3.7."
     },
     {
-      "url": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
-      "reason": "OBS Studio release is generic software maintenance, dropped by keyword filter—correctly excluded."
+      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
+      "reason": "Speculative opinion on Adobe/art lawsuit; tangential tech commentary without clear AI signal; score 4.5."
     },
     {
-      "url": "https://bbtree.xiangpeng.systems/post/",
-      "reason": "Data structure optimization unrelated to AI/ML; infrastructure content with no AI signal."
+      "url": "https://armincat.com/articles/eunice-is-almost-here",
+      "reason": "Non-AI technology announcement; unrelated to AI agents or ML; score 4.46."
+    },
+    {
+      "url": "https://www.techmeme.com/261026/p38#a261026p38",
+      "reason": "Anecdotal security incident from a single vendor eval; lack of reproducibility and low substantive value; score 3.91."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/carbon-x-benchmark-clinical-genomics/",
+      "reason": "Vendor benchmark marketing post; low-substance model comparison; score 4.7."
     }
   ]
 }
