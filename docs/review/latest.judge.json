@@ -1,98 +1,98 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.32555",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent research on MCP fault tolerance with strong relevance to LLM agents; score 12.75 justifies keeping despite source cap."
-    },
-    {
-      "url": "https://arxiv.org/abs/2609.31963",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv research on multi-agent coordination with symbolic guidance; score 12.75 indicates clear signal that should survive source cap."
-    },
-    {
       "url": "https://arxiv.org/abs/2610.24264",
       "stage": "dropped_source_cap",
-      "reason": "Novel benchmark (AM-Bench) for agentic misalignment evaluation from trusted source; score 12.75 warrants inclusion over source cap limits."
+      "reason": "High-scoring arXiv agent safety benchmark (AM-Bench) from trusted source deserved retention over vendor content."
     },
     {
       "url": "https://arxiv.org/abs/2610.32851",
       "stage": "dropped_source_cap",
-      "reason": "Substantive work on multi-agent RAG systems with clear enterprise relevance; score 11.75 suggests source cap was too aggressive."
+      "reason": "Substantive arXiv work on Enterprise RAG for multi-agent systems (11.75 score) was dropped despite clear relevance to agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31882",
+      "stage": "dropped_source_cap",
+      "reason": "Tool-driven agentic circuit synthesis paper from arXiv (10.75 score) is directly relevant to agent tooling but was source-capped."
     },
     {
       "url": "https://arxiv.org/abs/2610.32285",
       "stage": "dropped_source_cap",
-      "reason": "Important benchmark for agent reliability and failure attribution (Trial by Trace); score 10.75 merits preservation despite cap."
+      "reason": "Trial by Trace benchmarking agent harnesses (10.75) is core agent reliability content from trusted source."
     },
     {
-      "url": "https://arxiv.org/abs/2610.31971",
-      "stage": "dropped_source_cap",
-      "reason": "Research on trust and negotiation in multi-agent LLM systems with practical relevance; score 8.75 represents solid agent-focused content."
+      "url": "https://simonwillison.net/2026/Oct/26/gpt-61-terra/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison (trusted source) GPT-6.1 Terra post was dropped by TTL despite 11.7 score and agent relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.32060",
-      "stage": "dropped_source_cap",
-      "reason": "Addresses communication failures in multi-agent systems, critical safety/reliability topic; score 8.75 indicates meaningful contribution."
+      "url": "https://arxiv.org/abs/2610.31974",
+      "stage": "dropped_ttl",
+      "reason": "Agentic AI Defense paper on MCP provenance binding (15.75) is high-signal agent security work unfairly TTL-dropped."
     },
     {
-      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
-      "stage": "dropped_source_cap",
-      "reason": "OpenAI News on research collaboration with academia; trusted source and substantive despite score 6.87."
+      "url": "https://arxiv.org/abs/2610.31703",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring arXiv work on agentic LLM assistant for HPC support (13.75) dropped despite clear practical agent application."
     },
     {
-      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
-      "stage": "dropped_source_cap",
-      "reason": "OpenAI News on GPT model application to security; from trusted source and directly product-relevant despite score 6.86."
+      "url": "https://arxiv.org/abs/2610.32738",
+      "stage": "dropped_ttl",
+      "reason": "Agentic Hazard Mapper paper (12.75) demonstrates real agent application but was unfairly filtered by TTL."
     },
     {
-      "url": "https://www.ubicloud.com/blog/fixing-tool-call-accuracy-in-vllm",
+      "url": "https://github.com/FrigadeHQ/hob",
+      "stage": "dropped_ttl",
+      "reason": "Show HN: On-device agent alternative to Claude/ChatGPT (9.25) is substantive tool announcement but TTL-dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32229",
       "stage": "dropped_source_cap",
-      "reason": "Technical deep-dive on tool-call accuracy (core agent capability) in vLLM; substantive implementation guidance despite score 5.3."
+      "reason": "MoE LLM training in MXFP4 (9.75) is substantive AI infrastructure work relevant to agent deployment efficiency."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://english.elpais.com/technology/2026-10-25/peter-thiel-the-tech-oligarch-who-believes-in-the-antichrist.html",
-      "reason": "Peter Thiel biography/opinion piece unrelated to AI/ML/agents; score 6.32 does not justify inclusion."
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-5-vs-gpt-6-1-soul-3d-test/",
+      "reason": "Vendor benchmark comparison blog post lacks substantive analysis and is primarily promotional content."
     },
     {
-      "url": "https://iosiflazaridis.github.io/battles-of-the-romans/",
-      "reason": "Interactive map of Roman battles; historical content entirely unrelated to AI/agents; score 6.09."
+      "url": "https://www.mindstudio.ai/blog/anthropic-ipo-s1-filing/",
+      "reason": "Business/IPO filing summary is financial news rather than substantive AI/ML/agents technical content."
     },
     {
-      "url": "https://proton.me/flock-camera-map",
-      "reason": "Camera/privacy tool unrelated to AI agents or ML; score 5.88 does not justify inclusion in AI pipeline."
+      "url": "https://www.mindstudio.ai/blog/openai-ai-discoveries-math-physics-cs/",
+      "reason": "Speculative post questioning AI science claims lacks rigor and is more opinion than technical substance."
     },
     {
-      "url": "https://www.showbiz411.com/2026/10/23/controversial-musk-documentary-pulled-from-almost-every-one-of-472-theaters-after-one-week-by-newly-sold-bleecker-street-films",
-      "reason": "Entertainment news about documentary release; no AI/ML relevance; score 3.95."
+      "url": "https://www.mindstudio.ai/blog/exponential-time-hypothesis-disproven/",
+      "reason": "Clickbait-style headline about ETH refutation lacks technical depth and verification."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/deepseek-v41-flash-pricing-cost/",
-      "reason": "Vendor pricing comparison blog post; low-substance marketing content; score 3.7."
+      "url": "https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/",
+      "reason": "Unsubstantiated allegation story is journalism, not technical AI/ML content; lacks verified reporting."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/lean-rea-deepseek-v41-flash-setup/",
-      "reason": "Vendor setup tutorial; low-signal promotional content; score 3.7."
+      "url": "https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/",
+      "reason": "Business/financial analysis of Anthropic S-1 is economic commentary rather than AI technical content."
     },
     {
-      "url": "https://techbronerd.substack.com/p/openai-and-anthropic-wanted-to-replace",
-      "reason": "Speculative opinion on Adobe/art lawsuit; tangential tech commentary without clear AI signal; score 4.5."
+      "url": "https://openai.com/index/retell-ai",
+      "reason": "Vendor success story is corporate marketing; lacks technical depth on agent capabilities."
     },
     {
-      "url": "https://armincat.com/articles/eunice-is-almost-here",
-      "reason": "Non-AI technology announcement; unrelated to AI agents or ML; score 4.46."
+      "url": "https://www.techmeme.com/261027/p39#a261027p39",
+      "reason": "Rumor about OpenAI TPU plans is speculative industry gossip rather than substantive technical content."
     },
     {
-      "url": "https://www.techmeme.com/261026/p38#a261026p38",
-      "reason": "Anecdotal security incident from a single vendor eval; lack of reproducibility and low substantive value; score 3.91."
+      "url": "https://www.mindstudio.ai/blog/shopify-ai-design-workflow/",
+      "reason": "Case study blog lacks technical depth and reads primarily as marketing narrative."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/carbon-x-benchmark-clinical-genomics/",
-      "reason": "Vendor benchmark marketing post; low-substance model comparison; score 4.7."
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "reason": "Partnership announcement is business/product news rather than technical AI/agents content."
     }
   ]
 }

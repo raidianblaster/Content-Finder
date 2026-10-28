@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-28",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.24264",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent safety benchmark (AM-Bench) from trusted source deserved retention over vendor content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32851",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv work on Enterprise RAG for multi-agent systems (11.75 score) was dropped despite clear relevance to agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31882",
+      "stage": "dropped_source_cap",
+      "reason": "Tool-driven agentic circuit synthesis paper from arXiv (10.75 score) is directly relevant to agent tooling but was source-capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32285",
+      "stage": "dropped_source_cap",
+      "reason": "Trial by Trace benchmarking agent harnesses (10.75) is core agent reliability content from trusted source."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/26/gpt-61-terra/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison (trusted source) GPT-6.1 Terra post was dropped by TTL despite 11.7 score and agent relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31974",
+      "stage": "dropped_ttl",
+      "reason": "Agentic AI Defense paper on MCP provenance binding (15.75) is high-signal agent security work unfairly TTL-dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.31703",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring arXiv work on agentic LLM assistant for HPC support (13.75) dropped despite clear practical agent application."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32738",
+      "stage": "dropped_ttl",
+      "reason": "Agentic Hazard Mapper paper (12.75) demonstrates real agent application but was unfairly filtered by TTL."
+    },
+    {
+      "url": "https://github.com/FrigadeHQ/hob",
+      "stage": "dropped_ttl",
+      "reason": "Show HN: On-device agent alternative to Claude/ChatGPT (9.25) is substantive tool announcement but TTL-dropped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.32229",
+      "stage": "dropped_source_cap",
+      "reason": "MoE LLM training in MXFP4 (9.75) is substantive AI infrastructure work relevant to agent deployment efficiency."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-5-vs-gpt-6-1-soul-3d-test/",
+      "reason": "Vendor benchmark comparison blog post lacks substantive analysis and is primarily promotional content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-ipo-s1-filing/",
+      "reason": "Business/IPO filing summary is financial news rather than substantive AI/ML/agents technical content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-ai-discoveries-math-physics-cs/",
+      "reason": "Speculative post questioning AI science claims lacks rigor and is more opinion than technical substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/exponential-time-hypothesis-disproven/",
+      "reason": "Clickbait-style headline about ETH refutation lacks technical depth and verification."
+    },
+    {
+      "url": "https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/",
+      "reason": "Unsubstantiated allegation story is journalism, not technical AI/ML content; lacks verified reporting."
+    },
+    {
+      "url": "https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/",
+      "reason": "Business/financial analysis of Anthropic S-1 is economic commentary rather than AI technical content."
+    },
+    {
+      "url": "https://openai.com/index/retell-ai",
+      "reason": "Vendor success story is corporate marketing; lacks technical depth on agent capabilities."
+    },
+    {
+      "url": "https://www.techmeme.com/261027/p39#a261027p39",
+      "reason": "Rumor about OpenAI TPU plans is speculative industry gossip rather than substantive technical content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/shopify-ai-design-workflow/",
+      "reason": "Case study blog lacks technical depth and reads primarily as marketing narrative."
+    },
+    {
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "reason": "Partnership announcement is business/product news rather than technical AI/agents content."
+    }
+  ]
+}
