@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-29",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2610.36108",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal security research on prompt injection attacks against LLM agents via MCP protocol; directly relevant to agent safety."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.36444",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive agent systems work on routing and control for multimodal document RAG; core agent infrastructure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.36325",
+      "stage": "dropped_source_cap",
+      "reason": "Novel application of multi-agent reasoning with ontologies for medical diagnosis; demonstrates practical agentic reasoning."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/28/vibe-game-development/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison trusted source commentary on inflection point in AI-driven game development; editorial insight from trusted observer."
+    },
+    {
+      "url": "https://cursor.com/blog/agent-sdk",
+      "stage": "dropped_source_cap",
+      "reason": "Cursor Agent SDK announcement; major developer tool release for agentic systems from legitimate source."
+    },
+    {
+      "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic official privacy documentation on data usage; directly relevant to understanding Claude training practices."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.36151",
+      "stage": "dropped_source_cap",
+      "reason": "Formal framework for evidential dependence in multi-agent debate; addresses fundamental agent reasoning verification challenge."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.35595",
+      "stage": "dropped_source_cap",
+      "reason": "LLMs proposing formal proofs of algorithm runtime bounds via agentic reasoning; high-quality research on agent-assisted theorem proving."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.36484",
+      "stage": "dropped_source_cap",
+      "reason": "CogArena benchmark for multimodal agents on behavioral experiments; substantial evaluation framework for agent capabilities."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.03918",
+      "stage": "dropped_source_cap",
+      "reason": "Hedge-Bench for agent financial reasoning on hard real-world tasks; rigorous benchmark from established research venue."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents/",
+      "reason": "Security/privacy incident unrelated to AI agents or LLMs; false positive in news pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/261028/p59#a261028p59",
+      "reason": "Cognition funding round valuation is venture/corporate news, not substantive AI research or product development content."
+    },
+    {
+      "url": "https://www.techmeme.com/261028/p53#a261028p53",
+      "reason": "Microsoft-OpenAI financial reporting is earnings/business intelligence, not technical AI advancement or agent capability."
+    },
+    {
+      "url": "https://www.techmeme.com/261028/p57#a261028p57",
+      "reason": "Antitrust regulatory inquiry is policy news, not substantive AI or agent systems content."
+    },
+    {
+      "url": "https://allmodels.io/llm/abliterated",
+      "reason": "Deployment availability notice for uncensored model variant; minimal signal beyond vendor listing."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50271808",
+      "reason": "Generic labor strike announcement unrelated to AI; off-topic meta-discussion."
+    }
+  ]
+}
