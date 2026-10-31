@@ -1,78 +1,98 @@
 {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.35930",
+      "url": "https://arxiv.org/abs/2610.39109",
       "stage": "dropped_source_cap",
-      "reason": "High-signal agent research on LLM persuasion in multi-agent systems (score 10.74) from trusted arXiv source deserves inclusion over lower-scoring kept items."
+      "reason": "High-quality multi-agent communication protocol paper from ArXiv with strong relevance to agentic AI deserves inclusion over lower-scoring kept items."
     },
     {
-      "url": "https://arxiv.org/abs/2506.19846",
+      "url": "https://arxiv.org/abs/2610.39532",
       "stage": "dropped_source_cap",
-      "reason": "Substantive multi-agent benchmark for e-commerce assistants (score 10.74) should not be capped when lower-quality vendor content makes final stage."
+      "reason": "Substantive multi-agent privacy research from ArXiv addressing critical safety concerns in agentic systems."
     },
     {
-      "url": "https://arxiv.org/abs/2610.36325",
+      "url": "https://arxiv.org/abs/2610.19345",
       "stage": "dropped_source_cap",
-      "reason": "Highly relevant agents + reasoning work on differential diagnosis (score 9.74) from arXiv cut despite clear AI/ML signal."
+      "reason": "Directly addresses efficient agentic AI scaling—a core topic for regulated corporate AI deployments."
     },
     {
-      "url": "https://arxiv.org/abs/2610.37481",
+      "url": "https://arxiv.org/abs/2610.38869",
       "stage": "dropped_source_cap",
-      "reason": "Safety-critical research on tracing LLM degradation to training data (score 9.74) from arXiv is substantive and should survive source cap."
+      "reason": "Safety-critical research on auditable belief updates for multi-agent LLM systems, high relevance to governance."
     },
     {
-      "url": "https://simonwillison.net/2026/Oct/28/vibe-game-development/",
+      "url": "https://arxiv.org/abs/2610.39377",
       "stage": "dropped_source_cap",
-      "reason": "Simon Willison (trusted source) commentary on inflection point in game development with AI (score 6.57) cut by source cap despite relevance."
+      "reason": "Benchmark for deceptive behavior in tool-using agents addresses core risk assessment for agentic systems."
     },
     {
-      "url": "https://cursor.com/blog/agent-sdk",
-      "stage": "dropped_source_cap",
-      "reason": "Direct product announcement of Agent SDK from Cursor (score 5.98), high-signal for agentic ecosystem, should not be source-capped."
+      "url": "https://simonwillison.net/2026/Oct/29/how-i-built-the-most-ai-pilled-company-in-the-world/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison (trusted source) on building multiplayer game worlds with agentic models—substantive practitioner insight."
+    },
+    {
+      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
+      "stage": "dropped_ttl",
+      "reason": "Frontier model safety detection directly relevant to regulated corporate AI risk governance."
     },
     {
       "url": "https://martinfowler.com/rachels-ramblings/good-devs-wary.html",
       "stage": "dropped_source_cap",
-      "reason": "Martin Fowler (trusted engineering voice) substantive take on developer skepticism of agents (score 5.72), deserves to clear source cap."
+      "reason": "Martin Fowler on developer skepticism toward agentic development addresses real organizational concerns."
     },
     {
-      "url": "https://arxiv.org/abs/2609.11115",
-      "stage": "dropped_ttl",
-      "reason": "High-signal benchmark radar tool for AI evaluation (score 14.74) should survive TTL filter as infrastructure contribution to the field."
+      "url": "https://cyberplace.social/@GossiTheDog/117528831681803563",
+      "stage": "dropped_source_cap",
+      "reason": "Security vulnerability in official Claude Code extensions is critical for risk assessment and product governance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.36335",
-      "stage": "dropped_ttl",
-      "reason": "Ontology-based agentic RAG work (score 13.74) addresses core challenge in LLM reasoning and deserves to survive TTL given recency and relevance."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.36229",
-      "stage": "dropped_ttl",
-      "reason": "Substantive research on detecting AI-generated commits (score 12.74) is timely safety/security work that should clear TTL filter."
+      "url": "https://arxiv.org/abs/2610.38426",
+      "stage": "dropped_source_cap",
+      "reason": "AI agents for hardware design synthesis represents novel agentic application area with substantive technical contribution."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-carbon-benchmarks/",
-      "reason": "Vendor marketing content (MindStudio blog) benchmarking Google's model lacks independent analysis and is primarily promotional."
+      "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/",
+      "reason": "Financial/credit rating news with limited product or technical relevance; earnings/valuation content typically lower signal."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-agents-found-in-bank-accounts/",
-      "reason": "Sensationalist headline on 'rogue AI agents' lacks substantive reporting and reads as clickbait vendor content."
+      "url": "https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f",
+      "reason": "IPO investment-grade rating concern is financial news, not substantive AI/product content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-carbon-frontier-model/",
-      "reason": "Repeated vendor coverage (MindStudio) of same Google model announcement without independent substance."
+      "url": "https://www.washingtonpost.com/climate-environment/2026/10/27/i-saw-future-driving-mexico-its-off-limits-americans/",
+      "reason": "Auto industry article unrelated to AI, LLMs, or agents; appears to be noise in the pipeline."
     },
     {
-      "url": "https://www.techmeme.com/261029/p56#a261029p56",
-      "reason": "Roblox earnings report (stock drop headline) is unrelated to AI/agents and appears misclassified."
+      "url": "https://cormacmccarthy.lib.utk.edu/",
+      "reason": "Literary archive link has no AI/ML relevance; inclusion suggests overly broad keyword matching."
     },
     {
-      "url": "https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce",
-      "reason": "Unverified GitHub gist claiming Claude Code surveillance lacks editorial validation and may spread misinformation."
+      "url": "https://www.nytimes.com/2026/10/29/world/europe/karl-bushby-walking-globe-uk.html",
+      "reason": "Travel/human interest story unrelated to AI, LLMs, or technology; clear false positive."
+    },
+    {
+      "url": "https://frvr.com/blog/news/openai-ceo-sam-altman-says-its-terrible-to-have-everybody-have-a-bunch-of-the-worlds-limited-supply-of-dram-instead-of-shoving-it-all-in-datacentres/",
+      "reason": "Sam Altman DRAM commentary is inflationary opinion content without substantive technical or product insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-code-api-pricing-experiment-cost/",
+      "reason": "Pricing experiment blog post lacks technical depth; vendor marketing about cost tracking."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/google-elephant-goldfish-model-egm/",
+      "reason": "Speculative 'what is this model' explainer with low substance; appears to be vendor content."
+    },
+    {
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-anthropic-kills-the-coding",
+      "reason": "Title overstates Anthropic's impact on coding interviews; low-substance opinion content."
+    },
+    {
+      "url": "https://www.techmeme.com/261030/p30#a261030p30",
+      "reason": "OpenAI funding valuation gossip is financial/investor news without product or technical relevance."
     }
   ]
 }
