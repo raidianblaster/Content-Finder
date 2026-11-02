@@ -1,98 +1,68 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.39532",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agents paper on privacy in multi-agent systems with 11.75 score dropped by source cap despite strong relevance."
+      "url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "stage": "dropped_ttl",
+      "reason": "High-signal security research from trusted Simon Willison source on ChatGPT account compromise deserves retention despite TTL conflict."
     },
     {
-      "url": "https://arxiv.org/abs/2608.24069",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv research on adversarial vulnerabilities in multi-agent trading systems (11.75 score) lost to source cap."
+      "reason": "Substantive Anthropic safety policy article with 6.3 score dropped by source cap despite clear AI/ML relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.19345",
+      "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
       "stage": "dropped_source_cap",
-      "reason": "Relevant agentic AI efficiency paper on right-sizing language models (11.75 score) dropped despite clear signal."
+      "reason": "Novel AI-security intersection content (malware using LLMs) with 6.15 score warrants inclusion over lower-scoring items."
     },
     {
-      "url": "https://arxiv.org/abs/2610.37830",
+      "url": "https://github.com/kerlenton/bootgpt",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv work on intent loss in agentic smart contract synthesis (10.75 score) culled by source cap."
+      "reason": "Show HN creative ML engineering project (LLM in boot sector) with 5.52 score has high signal for technical audience."
     },
     {
-      "url": "https://arxiv.org/abs/2610.38426",
-      "stage": "dropped_source_cap",
-      "reason": "Technical arXiv paper on AI agents for analog layout generation (10.75 score) dropped despite domain relevance."
+      "url": "https://simonwillison.net/2026/Oct/31/datasette-llm/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison datasette-llm release (6.68 score) is substantive tooling content dropped by TTL despite trusted source."
     },
     {
-      "url": "https://arxiv.org/abs/2610.28176",
+      "url": "https://www.indiatoday.in/technology/news/story/ai-startup-hacks-anthropic-in-12-hours-gains-access-to-employee-details-and-internal-messages-3025452-2026-10-26",
       "stage": "dropped_source_cap",
-      "reason": "Solid arXiv research on LLM reasoning over temporal knowledge graphs (10.75 score) lost to overly aggressive source cap."
+      "reason": "Anthropic security breach story (4.31 score) is high-signal AI/ML news despite source cap pressure."
     },
     {
-      "url": "https://arxiv.org/abs/2610.38691",
+      "url": "https://eva.ac/blog/llms/",
       "stage": "dropped_source_cap",
-      "reason": "Important arXiv study on AI research agents' fabrication errors (9.75 score) dropped despite safety-relevant findings."
+      "reason": "Substantive philosophical piece on LLM adoption with 4.59 score and fresh age_days (0.2) merits inclusion."
     },
     {
-      "url": "https://arxiv.org/abs/2610.38869",
+      "url": "https://www.thebignewsletter.com/p/why-anthropics-filing-crushed-tech",
       "stage": "dropped_source_cap",
-      "reason": "Security-focused arXiv paper on auditable belief updates in multi-agent LLM systems (9.75 score) culled by source cap."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.39377",
-      "stage": "dropped_source_cap",
-      "reason": "Relevant benchmark paper on deceptive behavior in LLM agents under pressure (9.75 score) dropped despite high signal."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.40071",
-      "stage": "dropped_source_cap",
-      "reason": "Agentic process evidence paper (9.75 score) dropped; appears to be legitimate research axis relevant to agents work."
+      "reason": "Anthropic-focused analysis piece (4.09 score) relevant to AI/ML ecosystem despite source cap."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/chatgpt-plan-usage-limits-doubled/",
-      "reason": "Vendor marketing content about ChatGPT plan changes; low substance, commercial blog post."
+      "url": "https://www.mindstudio.ai/blog/anthropic-ai-disempowerment-study/",
+      "reason": "MindStudio vendor content repackaging Anthropic study lacks original analysis; reads as marketing."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-models-explained-haiku-sonnet-opus-fable/",
-      "reason": "Comparison blog post from vendor platform; marketing-oriented product explanation lacking original analysis."
+      "url": "https://www.mindstudio.ai/blog/openai-gpt6-ai-safety-monitoring-gaps/",
+      "reason": "MindStudio vendor blog summarizing external safety audit lacks independent reporting value."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/deepseek-stack-skills-opus-level-coding/",
-      "reason": "Promotional content for vendor's tool/service; low-signal installation guide disguised as product comparison."
+      "url": "https://www.mindstudio.ai/blog/personal-ai-agents-comparison-dots-muse-grokbot/",
+      "reason": "Product comparison listicle from MindStudio vendor lacks substantive technical or research content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gpt-6-1-terra-hands-on-test/",
-      "reason": "Vendor blog post comparing models; promotional content lacking depth or novel insights."
+      "url": "https://www.techmeme.com/261101/p16#a261101p16",
+      "reason": "OpenAI PR/policy announcement via Techmeme aggregation is company messaging, not independent journalism."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/supabase-ai-agent-database-growth/",
-      "reason": "Speculative vendor content about why coding agents default to Supabase; lacks substantive evidence."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-code-skills/",
-      "reason": "Vendor how-to guide; promotional content without research value or novel findings."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/everyone-can-build-software-ai-agents/",
-      "reason": "Speculative vendor opinion piece on democratization; lacks data or substantive analysis."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/anthropic-ipo-valuation-payout/",
-      "reason": "Vendor speculation on Anthropic IPO details; lacks reliable sources and substantive analysis."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/claude-duet-agent-app/",
-      "reason": "Vendor product explanation blog; marketing content without independent analysis."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/ai-personal-database-control-tower/",
-      "reason": "Vendor how-to guide for building personal AI systems; low-substance promotional content."
+      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
+      "reason": "Twitter screenshot of Anthropic usage policy observation lacks verification and original reporting."
     }
   ]
 }

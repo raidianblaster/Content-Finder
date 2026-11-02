@@ -1,0 +1,1371 @@
+{
+  "date": "2026-11-02",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 82,
+    "after_keyword_filter": 44,
+    "after_dedupe": 36,
+    "after_ttl_filter": 33,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 7,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 16,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 24,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "If in doubt, delete the uv.lock file",
+      "summary": "I've been getting the occasional confusing Python dependency error since switching over to Python 3.15 and the rule I'm having to remember is: If in doubt, delete the uv.lock file Most of my projects are libraries which don't include a uv.lock file, since it's rude for a library dependency to lock versions for anything else that uses it. Running uv run pytest etc tends to leave uv.lock files lying around, which are listed in .gitignore and so do not get committed to my repositories. But... somet",
+      "url": "https://simonwillison.net/2026/Nov/1/delete-uv-lock-first/",
+      "source": "Simon Willison",
+      "score": 4.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9877,
+        "recency_term": 1.9755,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.975481752417328
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Hyperbolic, which lets companies rent AI compute across ~30 neoclouds, raised a $30M Series A-1 led by Lip-Bu Tan's Walden Catalyst; it has raised $50M to date (Geoff Weiss/Business Insider)",
+      "summary": "Geoff Weiss / Business Insider : Hyperbolic, which lets companies rent AI compute across ~30 neoclouds, raised a $30M Series A-1 led by Lip-Bu Tan's Walden Catalyst; it has raised $50M to date &nbsp; &mdash;&nbsp; Intel CEO Lip-Bu Tan is backing an infrastructure startup that has raised $30 million to help companies rent compute across hundreds of different AI cloud providers.",
+      "url": "https://www.techmeme.com/261101/p20#a261101p20",
+      "source": "Techmeme",
+      "score": 3.0,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9987,
+        "recency_term": 1.9974,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9974328105191796
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "A look at Binance's efforts to contain the hack, including creating a global war room of ~100 people, coordinating with other crypto firms and the FBI, and more (Bloomberg)",
+      "summary": "Bloomberg : A look at Binance's efforts to contain the hack, including creating a global war room of ~100 people, coordinating with other crypto firms and the FBI, and more &nbsp; &mdash;&nbsp; The biggest crypto hack in history began with a rehearsal.&nbsp; &mdash;&nbsp; As trading hummed along on Binance at midweek &hellip;",
+      "url": "https://www.techmeme.com/261101/p19#a261101p19",
+      "source": "Techmeme",
+      "score": 2.99,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9928,
+        "recency_term": 1.9855,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9855313554166667
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "How IShowSpeed became YouTube's top livestreamer with 62M+ subscribers, as his 24/7 \"IRL streams\" that last days mingle childlike wonder with teenage mischief (Jon Caramanica/New York Times)",
+      "summary": "Jon Caramanica / New York Times : How IShowSpeed became YouTube's top livestreamer with 62M+ subscribers, as his 24/7 &ldquo;IRL streams&rdquo; that last days mingle childlike wonder with teenage mischief &nbsp; &mdash;&nbsp; IShowSpeed in Las Vegas during the Speed Does America bus tour.&nbsp; &mdash;&nbsp; With seven minutes left in the second quarter &hellip;",
+      "url": "https://www.techmeme.com/261101/p18#a261101p18",
+      "source": "Techmeme",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9868,
+        "recency_term": 1.9736,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9736232865608465
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Saudi Aramco acquires a 49% stake in AI startup Humain, contributing ~$2.6B in cash in 2026 plus AI, compute, and digital assets; Saudi Arabia's PIF retains 51% (Dean Takahashi/GamesBeat)",
+      "summary": "Dean Takahashi / GamesBeat : Saudi Aramco acquires a 49% stake in AI startup Humain, contributing ~$2.6B in cash in 2026 plus AI, compute, and digital assets; Saudi Arabia's PIF retains 51% &nbsp; &mdash;&nbsp; Join the Leaders Making Gaming's Next Big Deals.&nbsp; GamesBeat NEXT brings 500+ executives, CEOs, founders, and investors to San Francisco &hellip;",
+      "url": "https://www.techmeme.com/261101/p17#a261101p17",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9809,
+        "recency_term": 1.9617,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.961725138339947
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "How \"get-paid-to\" apps like Freecash, briefly a top five App Store app in September, pay users small sums to play games and help publishers find big spenders (John Herrman/New York Magazine)",
+      "summary": "John Herrman / New York Magazine : How &ldquo;get-paid-to&rdquo; apps like Freecash, briefly a top five App Store app in September, pay users small sums to play games and help publishers find big spenders &nbsp; &mdash;&nbsp; Is getting paid to scroll a symptom of the economy or its entire future?&nbsp; &mdash;&nbsp; Last year, Jeremiah's TikTok started feeding him ads for a new way to make money.",
+      "url": "https://www.techmeme.com/261101/p15#a261101p15",
+      "source": "Techmeme",
+      "score": 2.94,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9724,
+        "recency_term": 1.9449,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9448567520238096
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "ServiceNow confirms it acquired Israeli startup Sweep to speed up customers' migrations to its CRM, for an undisclosed price estimated at hundreds of millions (Allon Sinai/CTech)",
+      "summary": "Allon Sinai / CTech : ServiceNow confirms it acquired Israeli startup Sweep to speed up customers' migrations to its CRM, for an undisclosed price estimated at hundreds of millions &nbsp; &mdash;&nbsp; Bill McDermott said rollouts now take &ldquo;a month ... 30 days, 60 days&rdquo; for large companies, as ServiceNow pushes into CRM.",
+      "url": "https://www.techmeme.com/261101/p14#a261101p14",
+      "source": "Techmeme",
+      "score": 2.93,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9665,
+        "recency_term": 1.9329,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.932948683171296
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Analysis: candidates backing a data center moratorium could win up to 15 of 36 US governors' races on Tuesday, including in Texas, Ohio, Michigan, and New York (Shane Burke/The Information)",
+      "summary": "Shane Burke / The Information : Analysis: candidates backing a data center moratorium could win up to 15 of 36 US governors' races on Tuesday, including in Texas, Ohio, Michigan, and New York &nbsp; &mdash;&nbsp; As data centers have gone from obscurity to the top of voters' minds, midterm candidates are taking a stance on the issue.",
+      "url": "https://www.techmeme.com/261101/p13#a261101p13",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.96,
+        "recency_term": 1.9201,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9200584714616404
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "A look at VC-backed glossy magazine Colossus, whose glowing profiles of Zuckerberg and other tech titans win industry praise, while Kara Swisher says it is PR (Andrew Fedorov/The San Francisco Standard)",
+      "summary": "Andrew Fedorov / The San Francisco Standard : A look at VC-backed glossy magazine Colossus, whose glowing profiles of Zuckerberg and other tech titans win industry praise, while Kara Swisher says it is PR &nbsp; &mdash;&nbsp; Inside tech's corner offices, there's no love left for the news media.&nbsp; &ldquo;I think you're the problem, the media,&rdquo; &hellip;",
+      "url": "https://www.techmeme.com/261101/p12#a261101p12",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9571,
+        "recency_term": 1.9141,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.914102783561508
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Binance says net outflows were $3.64B, or 2.1% of assets, in the 9.5 hours after it began restoring withdrawals; DefiLlama puts 24-hour net outflows at $4.05B (Zack Abrams/The Block)",
+      "summary": "Zack Abrams / The Block : Binance says net outflows were $3.64B, or 2.1% of assets, in the 9.5 hours after it began restoring withdrawals; DefiLlama puts 24-hour net outflows at $4.05B &nbsp; &mdash;&nbsp; The exchange said the outflows equal 2.1% of its assets and that withdrawal volumes have eased after an initial spike.",
+      "url": "https://www.techmeme.com/261101/p11#a261101p11",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9536,
+        "recency_term": 1.9072,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.907158339050926
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Google's data center energy head says space data centers cost up to 100x more than Earth-based ones, and US power supply is sufficient but permits are slow (Amir Efrati/The Information)",
+      "summary": "Amir Efrati / The Information : Google's data center energy head says space data centers cost up to 100x more than Earth-based ones, and US power supply is sufficient but permits are slow &nbsp; &mdash;&nbsp; Data centers in space could cost up to 100 times as much as those on Earth, Google's head of data center energy said this week &hellip;",
+      "url": "https://www.techmeme.com/261101/p10#a261101p10",
+      "source": "Techmeme",
+      "score": 2.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9501,
+        "recency_term": 1.9002,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.90021058765873
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "A profile of White House OSTP Director Michael Kratsios, an ex-Peter Thiel aide who is among a handful of players steering the Trump administration's AI policy (Harry Lambert/Colossus)",
+      "summary": "Harry Lambert / Colossus : A profile of White House OSTP Director Michael Kratsios, an ex-Peter Thiel aide who is among a handful of players steering the Trump administration's AI policy &nbsp; &mdash;&nbsp; The fight to regulate AI and reform American science runs through a little-known White House office, and the Thiel-turned-Trump aide in charge of it",
+      "url": "https://www.techmeme.com/261101/p9#a261101p9",
+      "source": "Techmeme",
+      "score": 2.88,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9407,
+        "recency_term": 1.8814,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8813613812400796
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Solve: the cost of insuring against debt defaults at hyperscalers Amazon, Alphabet, Microsoft, Meta, and Oracle has hit its highest level since 2021 (Gunjan Banerji/Wall Street Journal)",
+      "summary": "Gunjan Banerji / Wall Street Journal : Solve: the cost of insuring against debt defaults at hyperscalers Amazon, Alphabet, Microsoft, Meta, and Oracle has hit its highest level since 2021 &nbsp; &mdash;&nbsp; With trillions riding on the artificial-intelligence trade, investors, traders and tech executives alike are hunting for high-stakes protection",
+      "url": "https://www.techmeme.com/261101/p8#a261101p8",
+      "source": "Techmeme",
+      "score": 2.83,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9139,
+        "recency_term": 1.8278,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8277932594742063
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "A look at a crude campaign of cyberattacks by Russia-linked hacktivist groups that have caused physical damage in NATO-aligned countries over the past two years (Ryan Gallagher/Bloomberg)",
+      "summary": "Ryan Gallagher / Bloomberg : A look at a crude campaign of cyberattacks by Russia-linked hacktivist groups that have caused physical damage in NATO-aligned countries over the past two years &nbsp; &mdash;&nbsp; Cyberattacks causing physical damage are on the rise in NATO countries, and the hackers carrying them out don't always understand what they're doing.",
+      "url": "https://www.techmeme.com/261101/p7#a261101p7",
+      "source": "Techmeme",
+      "score": 2.77,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8841,
+        "recency_term": 1.7683,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7682694498776454
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Lumaril, which develops AI software for optimizing industrial production by connecting to existing control systems, raised a $66M Series A at a $400M valuation (Sarah Klearman/Wall Street Journal)",
+      "summary": "Sarah Klearman / Wall Street Journal : Lumaril, which develops AI software for optimizing industrial production by connecting to existing control systems, raised a $66M Series A at a $400M valuation &nbsp; &mdash;&nbsp; The AI-for-manufacturers company has raised $66 million at a $400 million valuation&nbsp; &mdash;&nbsp; Think of running a production line on a factory floor as a kind of art.",
+      "url": "https://www.techmeme.com/261101/p6#a261101p6",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8876,
+        "recency_term": 1.7752,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7752105873710318
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Tell HN: Scribd Breached",
+      "summary": "353 points \u00b7 123 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50312756",
+      "source": "Hacker News",
+      "score": 4.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7221,
+        "recency_term": 1.4442,
+        "src_bonus": 0,
+        "hn_bonus": 3.53,
+        "total": 4.974178841306217
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Leaking Secrets from Air-Gap Computers by Spelling Radio Signals from RAM (2024)",
+      "summary": "181 points \u00b7 92 comments \u00b7 query: RAG",
+      "url": "https://arxiv.org/abs/2409.02292",
+      "source": "Hacker News",
+      "score": 3.53,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.859,
+        "recency_term": 1.718,
+        "src_bonus": 0,
+        "hn_bonus": 1.81,
+        "total": 3.5279652169279103
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Seoul Viosys begins production of rare-earth-free white light emitter",
+      "summary": "135 points \u00b7 33 comments \u00b7 query: RAG",
+      "url": "https://www.semiconductor-today.com/news_items/2026/oct/seoul-291026.shtml",
+      "source": "Hacker News",
+      "score": 3.24,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.946,
+        "recency_term": 1.892,
+        "src_bonus": 0,
+        "hn_bonus": 1.35,
+        "total": 3.24196323276455
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Why Did Meta Suspend a US Senate Candidate's Instagram in the Middle of a Rally?",
+      "summary": "86 points \u00b7 107 comments \u00b7 query: RAG",
+      "url": "https://newrepublic.com/post/217281/meta-suspend-democratic-candidate-angie-nixon-instagram-account",
+      "source": "Hacker News",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7827,
+        "recency_term": 1.5654,
+        "src_bonus": 0,
+        "hn_bonus": 0.86,
+        "total": 2.4253924655324077
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Ask HN: Which TV do you recommend for privacy?",
+      "summary": "131 points \u00b7 236 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50328896",
+      "source": "Hacker News",
+      "score": 3.24,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.965,
+        "recency_term": 1.9301,
+        "src_bonus": 0,
+        "hn_bonus": 1.31,
+        "total": 3.240061777668651
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "It wasn't AI that flipped Proton's charge",
+      "summary": "141 points \u00b7 81 comments \u00b7 query: RAG",
+      "url": "https://blog.raed.dev/posts/proton-loser-thinking/",
+      "source": "Hacker News",
+      "score": 3.33,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9609,
+        "recency_term": 1.9218,
+        "src_bonus": 0,
+        "hn_bonus": 1.41,
+        "total": 3.331821036894841
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Sam Altman says DRAM capacity should go to data centers, not personal computers",
+      "summary": "59 points \u00b7 75 comments \u00b7 query: RAG",
+      "url": "https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization",
+      "source": "Hacker News",
+      "score": 2.41,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9108,
+        "recency_term": 1.8215,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 2.411513497175926
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Nurses Sound Alarm as 'Uber for Nursing' Apps Push to Deregulate Healthcare",
+      "summary": "158 points \u00b7 153 comments \u00b7 query: RAG",
+      "url": "https://nurse.org/news/uber-for-nursing-gig-apps-report/",
+      "source": "Hacker News",
+      "score": 3.5,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9609,
+        "recency_term": 1.9218,
+        "src_bonus": 0,
+        "hn_bonus": 1.58,
+        "total": 3.501791274920635
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Prospero: A new coding harness for a more civilized age",
+      "summary": "204 points \u00b7 132 comments \u00b7 query: RAG",
+      "url": "https://nullprogram.com/blog/2026/10/31/",
+      "source": "Hacker News",
+      "score": 3.59,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7765,
+        "recency_term": 1.553,
+        "src_bonus": 0,
+        "hn_bonus": 2.04,
+        "total": 3.5929850579530425
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Retired professor arrested for blocking delivery robot. Will do it again",
+      "summary": "90 points \u00b7 137 comments \u00b7 query: RAG",
+      "url": "https://www.cnn.com/2026/10/31/us/philadelphia-woman-delivery-robots-cec",
+      "source": "Hacker News",
+      "score": 2.47,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7869,
+        "recency_term": 1.5738,
+        "src_bonus": 0,
+        "hn_bonus": 0.9,
+        "total": 2.473811777427249
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Show HN: OmniDiff \u2013 Opensource, super fast, content aware Git difftool, in Rust",
+      "summary": "156 points \u00b7 40 comments \u00b7 query: RAG",
+      "url": "https://github.com/ivankovic/omnidiff",
+      "source": "Hacker News",
+      "score": 3.41,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.926,
+        "recency_term": 1.8521,
+        "src_bonus": 0,
+        "hn_bonus": 1.56,
+        "total": 3.412095507526455
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Show HN: NES Contra (1987) port (ASM \u2013> C and then C \u2013> WebAssembly)",
+      "summary": "89 points \u00b7 81 comments \u00b7 query: RAG",
+      "url": "https://epoyraz.github.io/nes-contra-us/",
+      "source": "Hacker News",
+      "score": 2.53,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8205,
+        "recency_term": 1.641,
+        "src_bonus": 0,
+        "hn_bonus": 0.89,
+        "total": 2.5310439201818786
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Amazon vs Walmart: Why Retailers Are Split on AI Shopping Agents",
+      "summary": "Amazon blocks third-party AI shopping agents while Walmart builds an official gateway. Here's what the split means for holiday shopping with AI.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-shopping-access-wars/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375709358465
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "What Is Benchmaxing? Why AI Labs Are Hiding Test Questions",
+      "summary": "Benchmaxing explained: why AI labs train toward public test questions, and why independent scorers are now hiding theirs to keep leaderboards honest.",
+      "url": "https://www.mindstudio.ai/blog/ai-benchmark-maxing-private-tests/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375708928571
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Binance Hack: How $6.36 Billion Vanished in 20 Minutes",
+      "summary": "How a sweeper script and 50 rotating permission slips drained $6.36 billion from Binance in 20 minutes, with Lazarus Group ties and a 54-minute gap.",
+      "url": "https://www.mindstudio.ai/blog/binance-hack-6-billion/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375708531747
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Linux on the Nvidia RTX Spark Laptop: What Actually Works",
+      "summary": "A hands-on look at dual-booting Linux on the Nvidia RTX Spark laptop, the GPU clock throttling bug found, and why WSL still wins.",
+      "url": "https://www.mindstudio.ai/blog/linux-nvidia-rtx-spark-laptop/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375708134922
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Run MOSS-Image 5B Locally with ComfyUI",
+      "summary": "Install MOSS-Image, a 5B open-weight text-to-image model, in ComfyUI. Covers file placement, VRAM needs, and JSON layout control.",
+      "url": "https://www.mindstudio.ai/blog/moss-image-5b-local-install/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375707771164
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "MOSS-Image 5B Tested: Strong Realism, Shaky Layout and Text Control",
+      "summary": "Hands-on tests of MOSS-Image's photorealism, bounding-box layout control, and text rendering across a dozen global scene prompts, run locally.",
+      "url": "https://www.mindstudio.ai/blog/moss-image-5b-tested-realism-text/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.696837570734127
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "SenseNova-Loop-9B-Preview: Inside the Looped Transformer You Can Run Now",
+      "summary": "SenseNova-Loop-9B-Preview reuses 24 layers twice for 56 decoder executions from 32 stored layers. Specs, setup, and deployment explained.",
+      "url": "https://www.mindstudio.ai/blog/sensenova-loop-9b-looped-transformer/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375706944445
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Why Are Big Companies Switching to Chinese AI Models?",
+      "summary": "Coinbase, Airbnb and DoorDash now run Chinese open-weight models like Kimi K2 for lower cost, data control, and no vendor lock-in.",
+      "url": "https://www.mindstudio.ai/blog/why-companies-switch-chinese-ai-models/",
+      "source": "MindStudio",
+      "score": 1.7,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6968375706547618
+      },
+      "age_days": 1.1
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
+      "summary": "181 points \u00b7 111 comments \u00b7 query: Claude",
+      "url": "https://mashable.com/tech/anthropic-takes-steps-to-block-video-game-cloning-and-reverse-engineering",
+      "source": "Hacker News",
+      "score": 7.47,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8314,
+        "recency_term": 1.6627,
+        "src_bonus": 0,
+        "hn_bonus": 1.81,
+        "total": 7.472703970042989
+      },
+      "age_days": 1.2,
+      "first_seen": "2026-11-01"
+    },
+    {
+      "title": "How We Took Over ChatGPT Accounts",
+      "summary": "How We Took Over ChatGPT Accounts Parameter Labs describe an exploit they found against ChatGPT's implementation of the artifacts pattern (OpenAI used to call this \"Canvas\" but it looks like the latest revision is called HTML previews ), where interactive custom HTML apps are displayed in a sandboxed iframe. It's important that HTML in these stays tightly sandboxed to avoid untrusted code interacting with OpenAI APIs and accessing private data. Parameter found quite a complex attack chain. OpenA",
+      "url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "source": "Simon Willison",
+      "score": 6.69,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.844,
+        "recency_term": 1.688,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.687981747592593
+      },
+      "age_days": 1.1,
+      "first_seen": "2026-11-01"
+    },
+    {
+      "title": "datasette-llm 0.1a9",
+      "summary": "Release: datasette-llm 0.1a9 I have some big upgrades to Datasette Agent in the pipeline, but in the meantime here's a tiny user experience improvement to the underlying datasette-llm plugin. It now picks up the default model used by LLM , which means you can start using Datasette Agent without needing to explicitly configure a default model: uvx --with datasette-agent datasette content.db --internal internal.db Previously you would also need to specify a model with -s plugins.datasette-agent.de",
+      "url": "https://simonwillison.net/2026/Oct/31/datasette-llm/",
+      "source": "Simon Willison",
+      "score": 6.68,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8375,
+        "recency_term": 1.675,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.675015477645503
+      },
+      "age_days": 1.1,
+      "first_seen": "2026-11-01"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "UK Green party drops longstanding opposition to nuclear power",
+      "summary": "236 points \u00b7 318 comments \u00b7 query: MCP",
+      "url": "https://www.theguardian.com/politics/2026/oct/05/green-party-nuclear-power-policy",
+      "source": "Hacker News",
+      "score": 6.98,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8105,
+        "recency_term": 1.6209,
+        "src_bonus": 0,
+        "hn_bonus": 2.36,
+        "total": 6.9809182552678575
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Digital minimalism",
+      "summary": "343 points \u00b7 266 comments \u00b7 query: LLM",
+      "url": "https://vitalik.eth.limo/general/2026/10/31/digital_minimalism.html",
+      "source": "Hacker News",
+      "score": 6.92,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7429,
+        "recency_term": 1.4858,
+        "src_bonus": 0,
+        "hn_bonus": 3.43,
+        "total": 6.9158455039021165
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "RTX Spark Benchmarks: Windows vs WSL vs Native Linux for Local LLMs",
+      "summary": "GPT-OSS-120B benchmarks on RTX Spark show Windows and WSL hit 65 tok/s while plugged-in Linux drops to 14, due to a hidden power controller.",
+      "url": "https://www.mindstudio.ai/blog/rtx-spark-windows-vs-linux-vs-wsl-benchmark/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.696837567347884
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Anthropic's Claude AI blocks video game cloning and reverse-engineering",
+      "summary": "73 points \u00b7 43 comments \u00b7 query: Claude",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
+      "source": "Hacker News",
+      "score": 6.3,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.7854,
+        "recency_term": 1.5708,
+        "src_bonus": 0,
+        "hn_bonus": 0.73,
+        "total": 6.300845503816138
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Malware uses LLMs to rank victims by how much they're worth",
+      "summary": "257 points \u00b7 137 comments \u00b7 query: LLM",
+      "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
+      "source": "Hacker News",
+      "score": 6.15,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7918,
+        "recency_term": 1.5836,
+        "src_bonus": 0,
+        "hn_bonus": 2.57,
+        "total": 6.153553837113096
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Grok 5 vs GPT-6 and Gemini 4: Can xAI Catch Up?",
+      "summary": "Grok 5 faces Gemini 4 Carbon and GPT-6 Astra on the Artificial Analysis Index. Here's the real gap xAI needs to close to compete.",
+      "url": "https://www.mindstudio.ai/blog/grok-5-vs-gpt6-gemini-benchmarks/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.696837567228836
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Stop Your AI Coding Agent From Making Your Decisions",
+      "summary": "Three practical strategies to keep real judgment in your coding agent planning sessions, based on Anthropic's research on AI deference.",
+      "url": "https://www.mindstudio.ai/blog/how-to-avoid-ai-agent-deference-coding/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.696837567185847
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Install Mesh LLM and Pool GPUs Into One Local API",
+      "summary": "Mesh LLM pools GPU memory across machines into one OpenAI-compatible API. Here's how installation, Docker setup, and model routing work.",
+      "url": "https://www.mindstudio.ai/blog/mesh-llm-pool-gpus-local-api/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.696837567146164
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "SenseNova-Loop-9B-Preview: What a Looped Decoder Means for Agentic AI",
+      "summary": "SenseNova-Loop-9B-Preview reuses 24 decoder layers twice via a looped architecture. Here's what that means for coding and agentic benchmarks.",
+      "url": "https://www.mindstudio.ai/blog/sensenova-loop-9b-benchmarks/",
+      "source": "MindStudio",
+      "score": 5.7,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.696837567103175
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Show HN: A language model that lives in a boot sector",
+      "summary": "95 points \u00b7 6 comments \u00b7 query: agentic",
+      "url": "https://github.com/kerlenton/bootgpt",
+      "source": "Hacker News",
+      "score": 5.52,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7828,
+        "recency_term": 1.5656,
+        "src_bonus": 0,
+        "hn_bonus": 0.95,
+        "total": 5.515584260191799
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "OpenAI raises less than half of $30B target",
+      "summary": "186 points \u00b7 200 comments \u00b7 query: RAG",
+      "url": "https://www.wsj.com/tech/ai/openai-raises-less-than-half-of-30-billion-target-in-latest-round-91aecdc5",
+      "source": "Hacker News",
+      "score": 5.31,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7257,
+        "recency_term": 1.4513,
+        "src_bonus": 0,
+        "hn_bonus": 1.86,
+        "total": 5.311348149044313
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Banks Can't Tell Your AI Agent From a Hacker Inside Your Account",
+      "summary": "US banks are finding unauthorized AI agents in customer accounts and can't reliably tell approved assistants from attackers. Here's why.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-banking-security-risk/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.696837566990741
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "AI Agents Are Finding Bizarre Ways to Outsmart Their Sandboxes",
+      "summary": "AI agents have been caught signaling through CPU cache timing, inventing afterlife belief systems, and coordinating attacks. Here's what's documented.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-rogue-behavior-cybersecurity/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.696837566951058
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How Websites Decide Which AI Agents Get In the Door",
+      "summary": "Visa, Cloudflare, Google and Stripe are building competing systems to authorize AI agents online. Here's how the new access rules work.",
+      "url": "https://www.mindstudio.ai/blog/ai-agents-web-authorization-protocols/",
+      "source": "MindStudio",
+      "score": 4.7,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.696837566911375
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "So I guess everyone uses LLMs to think now",
+      "summary": "63 points \u00b7 86 comments \u00b7 query: LLM",
+      "url": "https://eva.ac/blog/llms/",
+      "source": "Hacker News",
+      "score": 4.59,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9783,
+        "recency_term": 1.9566,
+        "src_bonus": 0,
+        "hn_bonus": 0.63,
+        "total": 4.586573016613756
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "AI startup hacks Anthropic, gains access to employee details, internal messages",
+      "summary": "74 points \u00b7 18 comments \u00b7 query: Anthropic",
+      "url": "https://www.indiatoday.in/technology/news/story/ai-startup-hacks-anthropic-in-12-hours-gains-access-to-employee-details-and-internal-messages-3025452-2026-10-26",
+      "source": "Hacker News",
+      "score": 4.31,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7854,
+        "recency_term": 1.5709,
+        "src_bonus": 0,
+        "hn_bonus": 0.74,
+        "total": 4.31087857212963
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "I'm a Proton employee and I'm breaking my silence",
+      "summary": "59 points \u00b7 34 comments \u00b7 query: LLM",
+      "url": "https://www.reddit.com/r/ProtonMail/comments/1xkezig/im_a_proton_employee_and_im_breaking_my_silence/",
+      "source": "Hacker News",
+      "score": 4.21,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8081,
+        "recency_term": 1.6162,
+        "src_bonus": 0,
+        "hn_bonus": 0.59,
+        "total": 4.206196032410714
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Why Anthropic's filing crushed tech stocks",
+      "summary": "53 points \u00b7 79 comments \u00b7 query: Anthropic",
+      "url": "https://www.thebignewsletter.com/p/why-anthropics-filing-crushed-tech",
+      "source": "Hacker News",
+      "score": 4.09,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7802,
+        "recency_term": 1.5604,
+        "src_bonus": 0,
+        "hn_bonus": 0.53,
+        "total": 4.090362699044312
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "GPT-6 Rollout: Pricing, Sol vs Luna, and the New $500 Plan Explained",
+      "summary": "GPT-6 Sol and Luna are live in ChatGPT, with a new $500/month tier, halved usage caps on $200 plans, and a new Decisions API.",
+      "url": "https://www.mindstudio.ai/blog/gpt6-rollout-pricing-features/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.6968375667261903
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Choose the Right LLM for Your Business Tasks (Without Overpaying)",
+      "summary": "A practical framework for picking the cheapest LLM that still gets the job done, including when open-weight models beat frontier ones.",
+      "url": "https://www.mindstudio.ai/blog/how-to-choose-llm-for-business-tasks/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.696837566683201
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Kimi K3.1 Pro Pricing vs GPT and Claude: How Much Cheaper Is It?",
+      "summary": "Kimi K3.1 Pro starts at $2 per million input tokens, versus $2-$60 for Claude and GPT. Here's the full pricing breakdown and what it means.",
+      "url": "https://www.mindstudio.ai/blog/kimi-k2-pricing-vs-gpt-claude/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.6968375666435183
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Run SenseNova-Loop-9B-Preview Locally: Setup Guide",
+      "summary": "Step-by-step guide to running SenseNova-Loop-9B-Preview locally with Transformers, LightLLM, or SGLang, including setup and config details.",
+      "url": "https://www.mindstudio.ai/blog/run-sensenova-loop-9b-locally/",
+      "source": "MindStudio",
+      "score": 3.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.696837566600529
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Grok 5: Release Date, Specs, and Elon Musk's AGI Claims Explained",
+      "summary": "Elon Musk says Grok 5 is a 6 trillion parameter model with a shot at AGI. Here's what's confirmed about specs, timeline, and benchmarks.",
+      "url": "https://www.mindstudio.ai/blog/grok-5-release-date-specs/",
+      "source": "MindStudio",
+      "score": 2.7,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.6968375665608466
+      },
+      "age_days": 1.1
+    }
+  ],
+  "final": [
+    {
+      "title": "AI agent swarms in Minecraft fail to build civilization, drown in bureaucracy",
+      "summary": "149 points \u00b7 72 comments \u00b7 query: agentic",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-swarms-unleashed-in-minecraft-to-build-a-thriving-civilization-50-agent-teams-fail-after-falling-into-paralyzing-bureaucracy",
+      "source": "Hacker News",
+      "score": 9.35,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.9305,
+        "recency_term": 1.861,
+        "src_bonus": 0,
+        "hn_bonus": 1.49,
+        "total": 9.351004233184524
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "TCP Use-After-Free: CVE-2026-98432 / CVSS 9.8",
+      "summary": "703 points \u00b7 325 comments \u00b7 query: MCP",
+      "url": "https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf",
+      "source": "Hacker News",
+      "score": 8.64,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8203,
+        "recency_term": 1.6406,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 8.640587566484788
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Show HN: HackerBooks \u2013 HackerTube, but for books mentioned on HN",
+      "summary": "908 points \u00b7 178 comments \u00b7 query: Claude",
+      "url": "https://hackerbooks.org",
+      "source": "Hacker News",
+      "score": 7.89,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9435,
+        "recency_term": 1.887,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.887009524113757
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Quoting Kyle Kingsbury",
+      "summary": "More broadly, the use of LLMs erodes trust in documentation, in software, and in the organizations which produce them. Perhaps engineers will begin to treat any new software project with suspicion\u2014the signals we used to rely on as markers of a mature system are now easier to counterfeit. [...] In the age of LLMs, what can maintainers do to ensure correct software and accurate documentation? Having done that work, how can they demonstrate its quality to users? &mdash; Kyle Kingsbury , Jepsen resu",
+      "url": "https://simonwillison.net/2026/Nov/1/kyle-kingsbury/",
+      "source": "Simon Willison",
+      "score": 6.9,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9485,
+        "recency_term": 1.897,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.897049206560847
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Anthropic Study: You're Deferring More Judgment to AI Than You Think",
+      "summary": "Anthropic found experts followed their AI agent's hidden bias 86% of the time, then called the reasoning their own. Here's what that means.",
+      "url": "https://www.mindstudio.ai/blog/anthropic-ai-disempowerment-study/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.6968375663062165
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "OpenAI's AI Monitoring Has Gaps, Independent Safety Audit Finds",
+      "summary": "METR and Redwood Research found OpenAI's monitoring missed a chunk of model traffic, with some Codex sessions escaping oversight entirely.",
+      "url": "https://www.mindstudio.ai/blog/openai-gpt6-ai-safety-monitoring-gaps/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.696837566263227
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Dots vs Muse vs Grokbot vs Instinct: Which AI Agent Fits Your Tasks?",
+      "summary": "A hands-on comparison of personal AI agents Dots, Muse, Grokbot, Instinct, and Claude Duet across coding, shopping, travel, and proactive tasks.",
+      "url": "https://www.mindstudio.ai/blog/personal-ai-agents-comparison-dots-muse-grokbot/",
+      "source": "MindStudio",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.8484,
+        "recency_term": 1.6968,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 6.696837566220238
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "OpenAI plans a post-midterms policy and PR blitz, pushing mandatory \"speed limits\" for powerful AI and rebranding its data centers as \"AI compute campuses\" (Axios)",
+      "summary": "Axios : OpenAI plans a post-midterms policy and PR blitz, pushing mandatory &ldquo;speed limits&rdquo; for powerful AI and rebranding its data centers as &ldquo;AI compute campuses&rdquo; &nbsp; &mdash;&nbsp; Right after Tuesday's midterms, OpenAI will unleash a policy and PR blitz to try to get in sync with the new Washington &hellip;",
+      "url": "https://www.techmeme.com/261101/p16#a261101p16",
+      "source": "Techmeme",
+      "score": 4.95,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9764,
+        "recency_term": 1.9528,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.952793253981481
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "ChatGPT and Codex usage limits merging",
+      "summary": "216 points \u00b7 161 comments \u00b7 query: LLM",
+      "url": "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits",
+      "source": "Hacker News",
+      "score": 7.83,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8354,
+        "recency_term": 1.6709,
+        "src_bonus": 0,
+        "hn_bonus": 2.16,
+        "total": 7.830868650777116
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Anthropic blocks users for anything touching training larger models",
+      "summary": "455 points \u00b7 254 comments \u00b7 query: Anthropic",
+      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
+      "source": "Hacker News",
+      "score": 7.65,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8226,
+        "recency_term": 1.6451,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.645114682480159
+      },
+      "age_days": 1.2
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-02",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "stage": "dropped_ttl",
+      "reason": "High-signal security research from trusted Simon Willison source on ChatGPT account compromise deserves retention despite TTL conflict."
+    },
+    {
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive Anthropic safety policy article with 6.3 score dropped by source cap despite clear AI/ML relevance."
+    },
+    {
+      "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
+      "stage": "dropped_source_cap",
+      "reason": "Novel AI-security intersection content (malware using LLMs) with 6.15 score warrants inclusion over lower-scoring items."
+    },
+    {
+      "url": "https://github.com/kerlenton/bootgpt",
+      "stage": "dropped_source_cap",
+      "reason": "Show HN creative ML engineering project (LLM in boot sector) with 5.52 score has high signal for technical audience."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Oct/31/datasette-llm/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison datasette-llm release (6.68 score) is substantive tooling content dropped by TTL despite trusted source."
+    },
+    {
+      "url": "https://www.indiatoday.in/technology/news/story/ai-startup-hacks-anthropic-in-12-hours-gains-access-to-employee-details-and-internal-messages-3025452-2026-10-26",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic security breach story (4.31 score) is high-signal AI/ML news despite source cap pressure."
+    },
+    {
+      "url": "https://eva.ac/blog/llms/",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive philosophical piece on LLM adoption with 4.59 score and fresh age_days (0.2) merits inclusion."
+    },
+    {
+      "url": "https://www.thebignewsletter.com/p/why-anthropics-filing-crushed-tech",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic-focused analysis piece (4.09 score) relevant to AI/ML ecosystem despite source cap."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-ai-disempowerment-study/",
+      "reason": "MindStudio vendor content repackaging Anthropic study lacks original analysis; reads as marketing."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-gpt6-ai-safety-monitoring-gaps/",
+      "reason": "MindStudio vendor blog summarizing external safety audit lacks independent reporting value."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/personal-ai-agents-comparison-dots-muse-grokbot/",
+      "reason": "Product comparison listicle from MindStudio vendor lacks substantive technical or research content."
+    },
+    {
+      "url": "https://www.techmeme.com/261101/p16#a261101p16",
+      "reason": "OpenAI PR/policy announcement via Techmeme aggregation is company messaging, not independent journalism."
+    },
+    {
+      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
+      "reason": "Twitter screenshot of Anthropic usage policy observation lacks verification and original reporting."
+    }
+  ]
+}
