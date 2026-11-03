@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-03",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2603.07379",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality taxonomy paper on agentic RAG from trusted arXiv source with score 11.73 deserved retention."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.41149",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive ML research on LLM judge calibration from arXiv with score 10.73 should have survived source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.41435",
+      "stage": "dropped_source_cap",
+      "reason": "Agent behavior evaluation research from arXiv (score 10.73) is core AI/agents content for this pipeline."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.41124",
+      "stage": "dropped_source_cap",
+      "reason": "Behavioral study of LLM search patterns (score 9.73) represents substantive agent research that warranted keeping."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.41172",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic systems architecture paper on knowledge compilation (score 9.73) is directly on-topic for AI agents focus."
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.12787",
+      "stage": "dropped_source_cap",
+      "reason": "Ax-Prover agentic reasoning framework (score 9.73) combines agents, reasoning, and math—high-signal content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.40721",
+      "stage": "dropped_source_cap",
+      "reason": "MetaVul agentic framework for vulnerability detection (score 8.73) is security-relevant agent application."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.41291",
+      "stage": "dropped_source_cap",
+      "reason": "In-model context compression for long-horizon agents (score 8.73) addresses practical agent scalability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.23058",
+      "stage": "dropped_source_cap",
+      "reason": "LazyAgent on demand-driven materialization (score 7.73) is substantive agentic systems research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.36991",
+      "stage": "dropped_source_cap",
+      "reason": "SpectRAG weighted chunk graphs for multi-hop RAG (score 7.73) is high-quality RAG/agent infrastructure research."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/microsoft-salesforce-oracle-openai-agent-wars/",
+      "reason": "Vendor marketing content comparing agent platforms; lacks technical substance despite agent topic."
+    },
+    {
+      "url": "https://www.cnbc.com/2026/11/02/anthropic-ant-s-1-quarter-financials.html",
+      "reason": "Earnings/IPO financial report; not technical content about AI/agents despite appearing in pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/261102/p44#a261102p44",
+      "reason": "Anthropic IPO regulatory disclosure snippet; company financial risk disclosure rather than AI/agent research."
+    },
+    {
+      "url": "https://www.techmeme.com/261102/p45#a261102p45",
+      "reason": "Venture funding announcement for Trajectory; startup funding news lacks technical AI substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-code-beginners-guide/",
+      "reason": "Basic product tutorial/beginner guide; low-substance instructional content rather than substantive AI/agent research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/panda-router-ai-model-orchestration/",
+      "reason": "Marketing-oriented model routing overview; light on technical depth for a specialized pipeline."
+    },
+    {
+      "url": "https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11",
+      "reason": "Company operational/financial metric; interesting narrative but not technical AI/agent research."
+    },
+    {
+      "url": "https://www.techmeme.com/261102/p36#a261102p36",
+      "reason": "Brief research claim aggregate without depth; summarized finding lacks sufficient technical substance."
+    },
+    {
+      "url": "https://twitter.com/OcanaSantero/status/2115442964574908902",
+      "reason": "Social media hype claim about AI performing surgery; lacks technical documentation or peer review."
+    },
+    {
+      "url": "https://longcat.ai/blog/longcat-2.5/",
+      "reason": "Product announcement for LongCat multimodal model; vendor marketing framed as technical release blog."
+    }
+  ]
+}
