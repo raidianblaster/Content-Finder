@@ -1,98 +1,98 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2603.07379",
+      "url": "https://arxiv.org/abs/2611.00138",
       "stage": "dropped_source_cap",
-      "reason": "High-quality taxonomy paper on agentic RAG from trusted arXiv source with score 11.73 deserved retention."
+      "reason": "High-quality arXiv agent security research on structured-output backdoors in coding agents deserves retention over lower-scoring content."
     },
     {
-      "url": "https://arxiv.org/abs/2610.41149",
+      "url": "https://arxiv.org/abs/2611.02269",
       "stage": "dropped_source_cap",
-      "reason": "Substantive ML research on LLM judge calibration from arXiv with score 10.73 should have survived source cap."
+      "reason": "Substantive arXiv research on multi-agent LLM collaboration for quantum compilation is core agentic AI content."
     },
     {
-      "url": "https://arxiv.org/abs/2610.41435",
+      "url": "https://arxiv.org/abs/2607.15593",
       "stage": "dropped_source_cap",
-      "reason": "Agent behavior evaluation research from arXiv (score 10.73) is core AI/agents content for this pipeline."
+      "reason": "Scaling LLM agent tool access via MCP Gateway is directly relevant to agent infrastructure and tool integration."
     },
     {
-      "url": "https://arxiv.org/abs/2610.41124",
+      "url": "https://arxiv.org/abs/2611.03233",
       "stage": "dropped_source_cap",
-      "reason": "Behavioral study of LLM search patterns (score 9.73) represents substantive agent research that warranted keeping."
+      "reason": "Axion open agent foundation models paper addresses core agentic AI capabilities with high relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2610.41172",
+      "url": "https://arxiv.org/abs/2611.01918",
       "stage": "dropped_source_cap",
-      "reason": "Agentic systems architecture paper on knowledge compilation (score 9.73) is directly on-topic for AI agents focus."
+      "reason": "AgenticMobility open-source platform for multi-agent systems is substantive infrastructure research."
     },
     {
-      "url": "https://arxiv.org/abs/2510.12787",
+      "url": "https://arxiv.org/abs/2611.03412",
       "stage": "dropped_source_cap",
-      "reason": "Ax-Prover agentic reasoning framework (score 9.73) combines agents, reasoning, and math—high-signal content."
+      "reason": "DeliverBench benchmarking realistic multi-stage agent tasks is high-signal research on agent evaluation."
     },
     {
-      "url": "https://arxiv.org/abs/2610.40721",
+      "url": "https://arxiv.org/abs/2611.01976",
       "stage": "dropped_source_cap",
-      "reason": "MetaVul agentic framework for vulnerability detection (score 8.73) is security-relevant agent application."
+      "reason": "Tool update gap in LLM agent security addresses critical safety considerations for deployed agents."
     },
     {
-      "url": "https://arxiv.org/abs/2610.41291",
+      "url": "https://arxiv.org/abs/2610.38691",
       "stage": "dropped_source_cap",
-      "reason": "In-model context compression for long-horizon agents (score 8.73) addresses practical agent scalability."
+      "reason": "Misattributed numbers in AI research agent papers is substantive work on agent reliability and trustworthiness."
     },
     {
-      "url": "https://arxiv.org/abs/2609.23058",
+      "url": "https://arxiv.org/abs/2611.02162",
       "stage": "dropped_source_cap",
-      "reason": "LazyAgent on demand-driven materialization (score 7.73) is substantive agentic systems research."
+      "reason": "Alignment training and conditional compliance examines fundamental safety properties of agent alignment."
     },
     {
-      "url": "https://arxiv.org/abs/2610.36991",
+      "url": "https://arxiv.org/abs/2611.02815",
       "stage": "dropped_source_cap",
-      "reason": "SpectRAG weighted chunk graphs for multi-hop RAG (score 7.73) is high-quality RAG/agent infrastructure research."
+      "reason": "Predictive safety guardrails limitations in LLM agents addresses critical safety evaluation gaps."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/microsoft-salesforce-oracle-openai-agent-wars/",
-      "reason": "Vendor marketing content comparing agent platforms; lacks technical substance despite agent topic."
+      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "reason": "Hiring announcement with marginal substance; corporate personnel news typically lower value than technical/research content."
     },
     {
-      "url": "https://www.cnbc.com/2026/11/02/anthropic-ant-s-1-quarter-financials.html",
-      "reason": "Earnings/IPO financial report; not technical content about AI/agents despite appearing in pipeline."
+      "url": "https://openai.com/index/grid-protectors-program",
+      "reason": "Policy/program announcement with limited substantive technical detail; lacks research or implementation depth."
     },
     {
-      "url": "https://www.techmeme.com/261102/p44#a261102p44",
-      "reason": "Anthropic IPO regulatory disclosure snippet; company financial risk disclosure rather than AI/agent research."
+      "url": "https://github.com/finic-ai/kairos",
+      "reason": "Generic fraud decisioning platform launch; no clear AI/agent innovation beyond standard risk modeling."
     },
     {
-      "url": "https://www.techmeme.com/261102/p45#a261102p45",
-      "reason": "Venture funding announcement for Trajectory; startup funding news lacks technical AI substance."
+      "url": "https://www.mindstudio.ai/blog/openai-next-frontier-model-bell/",
+      "reason": "Speculative think-piece on OpenAI internal debate lacks substantive reporting or technical insight."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/how-to-use-claude-code-beginners-guide/",
-      "reason": "Basic product tutorial/beginner guide; low-substance instructional content rather than substantive AI/agent research."
+      "url": "https://www.mindstudio.ai/blog/anthropic-dario-amodei-ai-safety-criticism/",
+      "reason": "Opinion-driven critique of safety narrative rather than technical or factual analysis."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/panda-router-ai-model-orchestration/",
-      "reason": "Marketing-oriented model routing overview; light on technical depth for a specialized pipeline."
+      "url": "https://www.mindstudio.ai/blog/gpt-6-astra-physics-benchmark-errors/",
+      "reason": "Clickbait framing of benchmark issues; lacks substantive technical content or rigorous analysis."
     },
     {
-      "url": "https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11",
-      "reason": "Company operational/financial metric; interesting narrative but not technical AI/agent research."
+      "url": "https://mapwriting.substack.com/p/too-expensive-to-exist",
+      "reason": "Vague opinion piece on AI economics without concrete data or technical insight."
     },
     {
-      "url": "https://www.techmeme.com/261102/p36#a261102p36",
-      "reason": "Brief research claim aggregate without depth; summarized finding lacks sufficient technical substance."
+      "url": "https://www.ft.com/content/4d91dbab-6fe4-45ab-beee-d77e091cb37f",
+      "reason": "Corporate spending/IPO announcement; financial news rather than technical AI/agent content."
     },
     {
-      "url": "https://twitter.com/OcanaSantero/status/2115442964574908902",
-      "reason": "Social media hype claim about AI performing surgery; lacks technical documentation or peer review."
+      "url": "https://www.mindstudio.ai/blog/claude-code-pass-pricing/",
+      "reason": "Pricing plan summary without technical substance or product innovation insight."
     },
     {
-      "url": "https://longcat.ai/blog/longcat-2.5/",
-      "reason": "Product announcement for LongCat multimodal model; vendor marketing framed as technical release blog."
+      "url": "https://www.mindstudio.ai/blog/elon-musk-spacex-shares-kids/",
+      "reason": "Completely unrelated to AI/agents; off-topic personal finance speculation."
     }
   ]
 }

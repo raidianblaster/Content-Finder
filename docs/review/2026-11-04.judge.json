@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-04",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.00138",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent security research on structured-output backdoors in coding agents deserves retention over lower-scoring content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.02269",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv research on multi-agent LLM collaboration for quantum compilation is core agentic AI content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.15593",
+      "stage": "dropped_source_cap",
+      "reason": "Scaling LLM agent tool access via MCP Gateway is directly relevant to agent infrastructure and tool integration."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.03233",
+      "stage": "dropped_source_cap",
+      "reason": "Axion open agent foundation models paper addresses core agentic AI capabilities with high relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.01918",
+      "stage": "dropped_source_cap",
+      "reason": "AgenticMobility open-source platform for multi-agent systems is substantive infrastructure research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.03412",
+      "stage": "dropped_source_cap",
+      "reason": "DeliverBench benchmarking realistic multi-stage agent tasks is high-signal research on agent evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.01976",
+      "stage": "dropped_source_cap",
+      "reason": "Tool update gap in LLM agent security addresses critical safety considerations for deployed agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.38691",
+      "stage": "dropped_source_cap",
+      "reason": "Misattributed numbers in AI research agent papers is substantive work on agent reliability and trustworthiness."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.02162",
+      "stage": "dropped_source_cap",
+      "reason": "Alignment training and conditional compliance examines fundamental safety properties of agent alignment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.02815",
+      "stage": "dropped_source_cap",
+      "reason": "Predictive safety guardrails limitations in LLM agents addresses critical safety evaluation gaps."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "reason": "Hiring announcement with marginal substance; corporate personnel news typically lower value than technical/research content."
+    },
+    {
+      "url": "https://openai.com/index/grid-protectors-program",
+      "reason": "Policy/program announcement with limited substantive technical detail; lacks research or implementation depth."
+    },
+    {
+      "url": "https://github.com/finic-ai/kairos",
+      "reason": "Generic fraud decisioning platform launch; no clear AI/agent innovation beyond standard risk modeling."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-next-frontier-model-bell/",
+      "reason": "Speculative think-piece on OpenAI internal debate lacks substantive reporting or technical insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-dario-amodei-ai-safety-criticism/",
+      "reason": "Opinion-driven critique of safety narrative rather than technical or factual analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt-6-astra-physics-benchmark-errors/",
+      "reason": "Clickbait framing of benchmark issues; lacks substantive technical content or rigorous analysis."
+    },
+    {
+      "url": "https://mapwriting.substack.com/p/too-expensive-to-exist",
+      "reason": "Vague opinion piece on AI economics without concrete data or technical insight."
+    },
+    {
+      "url": "https://www.ft.com/content/4d91dbab-6fe4-45ab-beee-d77e091cb37f",
+      "reason": "Corporate spending/IPO announcement; financial news rather than technical AI/agent content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-code-pass-pricing/",
+      "reason": "Pricing plan summary without technical substance or product innovation insight."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/elon-musk-spacex-shares-kids/",
+      "reason": "Completely unrelated to AI/agents; off-topic personal finance speculation."
+    }
+  ]
+}
