@@ -1,98 +1,98 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.00138",
+      "url": "https://arxiv.org/abs/2611.04556",
       "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agent security research on structured-output backdoors in coding agents deserves retention over lower-scoring content."
-    },
-    {
-      "url": "https://arxiv.org/abs/2611.02269",
-      "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv research on multi-agent LLM collaboration for quantum compilation is core agentic AI content."
-    },
-    {
-      "url": "https://arxiv.org/abs/2607.15593",
-      "stage": "dropped_source_cap",
-      "reason": "Scaling LLM agent tool access via MCP Gateway is directly relevant to agent infrastructure and tool integration."
+      "reason": "High-quality arXiv agents research on multi-agent influence/deception deserves inclusion despite source cap."
     },
     {
       "url": "https://arxiv.org/abs/2611.03233",
       "stage": "dropped_source_cap",
-      "reason": "Axion open agent foundation models paper addresses core agentic AI capabilities with high relevance."
+      "reason": "Axion 1.0 agent foundation models paper is substantive open-weight work that should survive source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.01918",
+      "url": "https://arxiv.org/abs/2611.03662",
       "stage": "dropped_source_cap",
-      "reason": "AgenticMobility open-source platform for multi-agent systems is substantive infrastructure research."
+      "reason": "MCPGuard conformance testing for MCP SDKs is directly relevant to agentic infrastructure reliability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.04507",
+      "stage": "dropped_source_cap",
+      "reason": "Signals framework for continuous diagnostics of AI agents is substantive agentic systems work."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.04289",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent safety deliberation research addresses critical governance concerns for agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.02978",
+      "stage": "dropped_source_cap",
+      "reason": "CAREFUL-Bench for multi-turn LLM function calling evaluation is core agentic capability work."
     },
     {
       "url": "https://arxiv.org/abs/2611.03412",
       "stage": "dropped_source_cap",
-      "reason": "DeliverBench benchmarking realistic multi-stage agent tasks is high-signal research on agent evaluation."
+      "reason": "DeliverBench multi-stage professional project benchmark is high-signal agentic evaluation work."
     },
     {
-      "url": "https://arxiv.org/abs/2611.01976",
-      "stage": "dropped_source_cap",
-      "reason": "Tool update gap in LLM agent security addresses critical safety considerations for deployed agents."
+      "url": "https://news.ycombinator.com/item?id=50352757",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI silently re-enabling model training on Codex chats is substantive policy/governance signal."
     },
     {
-      "url": "https://arxiv.org/abs/2610.38691",
-      "stage": "dropped_source_cap",
-      "reason": "Misattributed numbers in AI research agent papers is substantive work on agent reliability and trustworthiness."
+      "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison coverage of open-weight model capability (weight interpretation) is high-signal."
     },
     {
-      "url": "https://arxiv.org/abs/2611.02162",
-      "stage": "dropped_source_cap",
-      "reason": "Alignment training and conditional compliance examines fundamental safety properties of agent alignment."
-    },
-    {
-      "url": "https://arxiv.org/abs/2611.02815",
-      "stage": "dropped_source_cap",
-      "reason": "Predictive safety guardrails limitations in LLM agents addresses critical safety evaluation gaps."
+      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+      "stage": "dropped_ttl",
+      "reason": "Google DeepMind agentic cheminformatics application is trusted-source substantive agentic work."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
-      "reason": "Hiring announcement with marginal substance; corporate personnel news typically lower value than technical/research content."
+      "url": "https://www.techmeme.com/261104/p56#a261104p56",
+      "reason": "Isomorphic Labs fundraising gossip is vendor/financials noise, not substantive AI/agents content."
     },
     {
-      "url": "https://openai.com/index/grid-protectors-program",
-      "reason": "Policy/program announcement with limited substantive technical detail; lacks research or implementation depth."
+      "url": "https://www.tomshardware.com/pc-components/cpus/amd-expects-to-outsell-intel-in-q4-for-the-first-time-in-history-usd17b-guidance-would-exceed-intels-projections",
+      "reason": "AMD/Intel market share is unrelated to AI/agents; pure semiconductor industry reporting."
     },
     {
-      "url": "https://github.com/finic-ai/kairos",
-      "reason": "Generic fraud decisioning platform launch; no clear AI/agent innovation beyond standard risk modeling."
+      "url": "https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/",
+      "reason": "C++26 standards work is general programming infrastructure, not AI/agents-specific."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/openai-next-frontier-model-bell/",
-      "reason": "Speculative think-piece on OpenAI internal debate lacks substantive reporting or technical insight."
+      "url": "https://www.mindstudio.ai/blog/install-3d-mods-minecraft-terraria-3ds/",
+      "reason": "How-to guide for 3DS mods is low-substance consumer content, not substantive AI research."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/anthropic-dario-amodei-ai-safety-criticism/",
-      "reason": "Opinion-driven critique of safety narrative rather than technical or factual analysis."
+      "url": "https://www.mindstudio.ai/blog/meta-muse-ai-companion-lessons/",
+      "reason": "Meta Muse historical retrospective is marketing/retrospective fluff, not current substantive work."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gpt-6-astra-physics-benchmark-errors/",
-      "reason": "Clickbait framing of benchmark issues; lacks substantive technical content or rigorous analysis."
+      "url": "https://www.mindstudio.ai/blog/ai-vibe-coding-replace-paid-software/",
+      "reason": "Speculative think-piece about AI replacing software is opinion/hype rather than substantive content."
     },
     {
-      "url": "https://mapwriting.substack.com/p/too-expensive-to-exist",
-      "reason": "Vague opinion piece on AI economics without concrete data or technical insight."
+      "url": "https://www.techmeme.com/261104/p60#a261104p60",
+      "reason": "Cat Wu personnel movement from Anthropic to OpenAI is industry gossip, not substantive work."
     },
     {
-      "url": "https://www.ft.com/content/4d91dbab-6fe4-45ab-beee-d77e091cb37f",
-      "reason": "Corporate spending/IPO announcement; financial news rather than technical AI/agent content."
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "reason": "Corporate acquisition announcement is vendor marketing/M&A news, not substantive AI/agents content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-code-pass-pricing/",
-      "reason": "Pricing plan summary without technical substance or product innovation insight."
+      "url": "https://www.techmeme.com/261104/p57#a261104p57",
+      "reason": "Images 2.6 feature announcement is OpenAI product marketing, not substantive research."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/elon-musk-spacex-shares-kids/",
-      "reason": "Completely unrelated to AI/agents; off-topic personal finance speculation."
+      "url": "https://www.techmeme.com/261104/p58#a261104p58",
+      "reason": "Anthropic-AP licensing deal is business/licensing gossip, not substantive AI research content."
     }
   ]
 }

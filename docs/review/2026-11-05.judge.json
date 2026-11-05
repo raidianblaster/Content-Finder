@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-05",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.04556",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agents research on multi-agent influence/deception deserves inclusion despite source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.03233",
+      "stage": "dropped_source_cap",
+      "reason": "Axion 1.0 agent foundation models paper is substantive open-weight work that should survive source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.03662",
+      "stage": "dropped_source_cap",
+      "reason": "MCPGuard conformance testing for MCP SDKs is directly relevant to agentic infrastructure reliability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.04507",
+      "stage": "dropped_source_cap",
+      "reason": "Signals framework for continuous diagnostics of AI agents is substantive agentic systems work."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.04289",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent safety deliberation research addresses critical governance concerns for agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.02978",
+      "stage": "dropped_source_cap",
+      "reason": "CAREFUL-Bench for multi-turn LLM function calling evaluation is core agentic capability work."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.03412",
+      "stage": "dropped_source_cap",
+      "reason": "DeliverBench multi-stage professional project benchmark is high-signal agentic evaluation work."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50352757",
+      "stage": "dropped_ttl",
+      "reason": "OpenAI silently re-enabling model training on Codex chats is substantive policy/governance signal."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison coverage of open-weight model capability (weight interpretation) is high-signal."
+    },
+    {
+      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+      "stage": "dropped_ttl",
+      "reason": "Google DeepMind agentic cheminformatics application is trusted-source substantive agentic work."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261104/p56#a261104p56",
+      "reason": "Isomorphic Labs fundraising gossip is vendor/financials noise, not substantive AI/agents content."
+    },
+    {
+      "url": "https://www.tomshardware.com/pc-components/cpus/amd-expects-to-outsell-intel-in-q4-for-the-first-time-in-history-usd17b-guidance-would-exceed-intels-projections",
+      "reason": "AMD/Intel market share is unrelated to AI/agents; pure semiconductor industry reporting."
+    },
+    {
+      "url": "https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/",
+      "reason": "C++26 standards work is general programming infrastructure, not AI/agents-specific."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/install-3d-mods-minecraft-terraria-3ds/",
+      "reason": "How-to guide for 3DS mods is low-substance consumer content, not substantive AI research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/meta-muse-ai-companion-lessons/",
+      "reason": "Meta Muse historical retrospective is marketing/retrospective fluff, not current substantive work."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-vibe-coding-replace-paid-software/",
+      "reason": "Speculative think-piece about AI replacing software is opinion/hype rather than substantive content."
+    },
+    {
+      "url": "https://www.techmeme.com/261104/p60#a261104p60",
+      "reason": "Cat Wu personnel movement from Anthropic to OpenAI is industry gossip, not substantive work."
+    },
+    {
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "reason": "Corporate acquisition announcement is vendor marketing/M&A news, not substantive AI/agents content."
+    },
+    {
+      "url": "https://www.techmeme.com/261104/p57#a261104p57",
+      "reason": "Images 2.6 feature announcement is OpenAI product marketing, not substantive research."
+    },
+    {
+      "url": "https://www.techmeme.com/261104/p58#a261104p58",
+      "reason": "Anthropic-AP licensing deal is business/licensing gossip, not substantive AI research content."
+    }
+  ]
+}
