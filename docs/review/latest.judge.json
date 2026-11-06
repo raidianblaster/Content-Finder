@@ -1,98 +1,90 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.04556",
+      "url": "https://arxiv.org/abs/2610.04672",
       "stage": "dropped_source_cap",
-      "reason": "High-quality arXiv agents research on multi-agent influence/deception deserves inclusion despite source cap."
+      "reason": "High-quality agent benchmarking paper (MASBench) with strong score 12.75 from trusted arXiv source deserved inclusion over lower-scoring content."
     },
     {
-      "url": "https://arxiv.org/abs/2611.03233",
+      "url": "https://arxiv.org/abs/2611.05953",
       "stage": "dropped_source_cap",
-      "reason": "Axion 1.0 agent foundation models paper is substantive open-weight work that should survive source cap."
+      "reason": "Substantive research on graph-mediated LLM agents in agentic era (score 11.75) from arXiv; core AI/agents topic."
     },
     {
-      "url": "https://arxiv.org/abs/2611.03662",
+      "url": "https://arxiv.org/abs/2609.02459",
       "stage": "dropped_source_cap",
-      "reason": "MCPGuard conformance testing for MCP SDKs is directly relevant to agentic infrastructure reliability."
+      "reason": "CivBench agent evaluation paper (score 11.75) addresses long-horizon tool-mediated agent behavior, directly relevant to product concerns."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.05771",
+      "stage": "dropped_source_cap",
+      "reason": "LLM author impersonation evaluation (score 10.75) addresses safety and alignment concerns for deployed agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.21095",
+      "stage": "dropped_source_cap",
+      "reason": "Trustworthy RAG and hallucination detection in agents (score 10.75) addresses critical safety gap for production deployments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.05586",
+      "stage": "dropped_source_cap",
+      "reason": "Sybil-resistant agentic marketplace reputation system (score 9.75) addresses emerging security concern for multi-agent systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.06841",
+      "stage": "dropped_source_cap",
+      "reason": "ServerBench on LLM-based coding agents designing systems (score 9.75) directly relevant to agent capabilities in regulated environment."
     },
     {
       "url": "https://arxiv.org/abs/2611.04507",
       "stage": "dropped_source_cap",
-      "reason": "Signals framework for continuous diagnostics of AI agents is substantive agentic systems work."
+      "reason": "Signals framework for continuous agent diagnostics (score 9.75) addresses monitoring and observability gap for production agents."
     },
     {
-      "url": "https://arxiv.org/abs/2611.04289",
+      "url": "https://www.anthropic.com/research/provable-inference",
       "stage": "dropped_source_cap",
-      "reason": "Multi-agent safety deliberation research addresses critical governance concerns for agent systems."
+      "reason": "Anthropic research on provable inference for LLMs (score 5.96) from highly-trusted source; foundational for trustworthy agents."
     },
     {
-      "url": "https://arxiv.org/abs/2611.02978",
-      "stage": "dropped_source_cap",
-      "reason": "CAREFUL-Bench for multi-turn LLM function calling evaluation is core agentic capability work."
-    },
-    {
-      "url": "https://arxiv.org/abs/2611.03412",
-      "stage": "dropped_source_cap",
-      "reason": "DeliverBench multi-stage professional project benchmark is high-signal agentic evaluation work."
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50352757",
+      "url": "https://simonwillison.net/2026/Nov/4/datasette-llm/",
       "stage": "dropped_ttl",
-      "reason": "OpenAI silently re-enabling model training on Codex chats is substantive policy/governance signal."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison coverage of open-weight model capability (weight interpretation) is high-signal."
-    },
-    {
-      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
-      "stage": "dropped_ttl",
-      "reason": "Google DeepMind agentic cheminformatics application is trusted-source substantive agentic work."
+      "reason": "Simon Willison datasette-llm release (score 6.59) from trusted source on practical agent tooling; TTL drop was premature."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.techmeme.com/261104/p56#a261104p56",
-      "reason": "Isomorphic Labs fundraising gossip is vendor/financials noise, not substantive AI/agents content."
+      "url": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+      "reason": "Unrelated news about historical communist-era agents; not AI/ML/agents product content despite keyword match."
     },
     {
-      "url": "https://www.tomshardware.com/pc-components/cpus/amd-expects-to-outsell-intel-in-q4-for-the-first-time-in-history-usd17b-guidance-would-exceed-intels-projections",
-      "reason": "AMD/Intel market share is unrelated to AI/agents; pure semiconductor industry reporting."
+      "url": "https://www.dana-farber.org/newsroom/news-releases/2026/study-reveals-distinct-cellular-and-genetic-differences-in-colorectal-cancer-in-younger-patients",
+      "reason": "Medical research announcement with no AI/LLM relevance; made final despite being off-topic."
     },
     {
-      "url": "https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/",
-      "reason": "C++26 standards work is general programming infrastructure, not AI/agents-specific."
+      "url": "https://www.techmeme.com/261105/p60#a261105p60",
+      "reason": "Techmeme Anthropic IPO valuation gossip (score 4.97) is market speculation noise, not substantive product/technical content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/install-3d-mods-minecraft-terraria-3ds/",
-      "reason": "How-to guide for 3DS mods is low-substance consumer content, not substantive AI research."
+      "url": "https://www.techmeme.com/261105/p65#a261105p65",
+      "reason": "Artificial Analysis benchmark claim (score 4.98) lacks primary evidence; aggregator commentary rather than original research or announcement."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/meta-muse-ai-companion-lessons/",
-      "reason": "Meta Muse historical retrospective is marketing/retrospective fluff, not current substantive work."
+      "url": "https://www.mindstudio.ai/blog/grok-ai-agent-cost-problem/",
+      "reason": "Vendor-adjacent blog post on agent ROI calculations; editorial/advisory content rather than news or technical depth."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-vibe-coding-replace-paid-software/",
-      "reason": "Speculative think-piece about AI replacing software is opinion/hype rather than substantive content."
+      "url": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+      "reason": "Anecdotal human-interest story about high token spend; low substance and primarily entertainment value."
     },
     {
-      "url": "https://www.techmeme.com/261104/p60#a261104p60",
-      "reason": "Cat Wu personnel movement from Anthropic to OpenAI is industry gossip, not substantive work."
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
+      "reason": "Vendor case study/marketing on Codex usage (score 6.93); promotional content for OpenAI product adoption."
     },
     {
-      "url": "https://openai.com/index/openai-to-acquire-pierre",
-      "reason": "Corporate acquisition announcement is vendor marketing/M&A news, not substantive AI/agents content."
-    },
-    {
-      "url": "https://www.techmeme.com/261104/p57#a261104p57",
-      "reason": "Images 2.6 feature announcement is OpenAI product marketing, not substantive research."
-    },
-    {
-      "url": "https://www.techmeme.com/261104/p58#a261104p58",
-      "reason": "Anthropic-AP licensing deal is business/licensing gossip, not substantive AI research content."
+      "url": "https://www.mindstudio.ai/blog/open-weight-models-vs-frontier-ai-coding/",
+      "reason": "Comparison-guide blog (score 8.69) from MindStudio; evaluative content rather than substantive technical research or news."
     }
   ]
 }
