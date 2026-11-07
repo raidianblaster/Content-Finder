@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-07",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.07667",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agents/LLM research (multi-agent economies, information design) from trusted arXiv source with strong score (11.75) deserved retention."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.07689",
+      "stage": "dropped_source_cap",
+      "reason": "MCP agent hallucination benchmarking is directly relevant to agentic systems reliability, score 11.75, should not have been capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.08315",
+      "stage": "dropped_source_cap",
+      "reason": "Core LLM reasoning and hallucination mitigation research with strong score (11.75) and fresh timestamp dropped despite clear relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.07650",
+      "stage": "dropped_source_cap",
+      "reason": "LLM API relay behavior and cost analysis is substantive agent/infrastructure research with score 10.75 that merited inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.06996",
+      "stage": "dropped_source_cap",
+      "reason": "Runtime authorization for agentic AI systems addresses critical safety concerns; score 9.75 from trusted source warrants retention."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.07554",
+      "stage": "dropped_source_cap",
+      "reason": "Agent memory safety research ('Memory Trap') is high-signal agentic AI work with score 9.75 addressing real deployment risks."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.07286",
+      "stage": "dropped_source_cap",
+      "reason": "Code representation for agentic SE systems is substantive and novel research angle for agent capabilities, score 8.75."
+    },
+    {
+      "url": "https://www.anthropic.com/research/how-researchers-use-claude",
+      "stage": "dropped_source_cap",
+      "reason": "Anthropic official research on researcher use patterns is high-authority content on AI application; score 6.67 from trusted source."
+    },
+    {
+      "url": "https://github.com/rivet-dev/rivet",
+      "stage": "dropped_source_cap",
+      "reason": "YC-backed agent orchestration infrastructure (Rivet) is substantive tooling news with practical relevance, score 5.79."
+    },
+    {
+      "url": "https://github.com/AGGIB/Stroq",
+      "stage": "dropped_source_cap",
+      "reason": "Local audit tool for coding agents addresses transparency/safety in agentic systems; score 5.5 is high-signal infrastructure work."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
+      "reason": "IPO valuation speculation (score 6.17) is financial/earnings content, not substantive AI/agent research."
+    },
+    {
+      "url": "https://www.techmeme.com/261106/p21#a261106p21",
+      "reason": "Anthropic IPO timing/valuation rumors (score 6.95) are corporate finance, not technical AI content."
+    },
+    {
+      "url": "https://www.techmeme.com/261106/p22#a261106p22",
+      "reason": "OpenAI funding round details (score 4.95) are business/valuation news, not substantive technical content."
+    },
+    {
+      "url": "https://www.techmeme.com/261106/p20#a261106p20",
+      "reason": "Quantum conjecture proof claim (score 4.93) is marketing/hype with unverified attribution; low substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/mit-hydrogen-science-model/",
+      "reason": "Speculative/unverified model comparison (score 4.69) from non-authoritative source; low signal."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-astra-covert-underperformance/",
+      "reason": "Conspiratorial framing ('sabotaged safety work', score 4.69) from blog source lacks substantiation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-bell-leaks/",
+      "reason": "Aggregation of unverified OpenAI leaks (score 6.69) is speculation/hype rather than confirmed technical content."
+    },
+    {
+      "url": "https://markblah.github.io/lemmings/",
+      "reason": "CSS animation demo (score 7.47) is off-topic technical trivia, not AI/agent related."
+    },
+    {
+      "url": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+      "reason": "Historical/political news about communist agents (score 6.98) has no relevance to AI/ML pipeline."
+    },
+    {
+      "url": "https://jhr.pensoft.net/articles.php?id=9096",
+      "reason": "Biology article about ants in pitfall (score 5.43) is completely unrelated to AI/agents."
+    }
+  ]
+}
