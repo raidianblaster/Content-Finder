@@ -1,0 +1,1019 @@
+{
+  "date": "2026-11-08",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 58,
+    "after_keyword_filter": 27,
+    "after_dedupe": 19,
+    "after_ttl_filter": 16,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "datasette #3046: Don't serve link: rel=next HTTP headers to Firefox for HTML pages",
+      "summary": "datasette #3046: Don&#x27;t serve link: rel=next HTTP headers to Firefox for HTML pages I was looking at the Firefox network panel today when I noticed that requests to a Datasette table page were triggering an HTTP prefetch to the next page of rows in that table. This was happening because Datasette pages serve an HTTP link header like this: link: &lt;https://latest.datasette.io/fixtures/compound_three_primary_keys?_next=a%2Cd%2Cv&gt;; rel=\"next\" This is bad. A tiny fraction of the visitors to ",
+      "url": "https://simonwillison.net/2026/Nov/7/link-rel-next/",
+      "source": "Simon Willison",
+      "score": 4.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.992,
+        "recency_term": 1.9839,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.9839007990773805
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Quoting Nilay Patel",
+      "summary": "The products aren't good enough to sell people on the costs. You cannot tell people that you have to listen to the whine of a data center in their backyard for AI overviews and some of the most hilarious deep fake slop in history. It's not worth it. It just isn't worth it to anyone. And agents aren't real and they might not be being used the way that anyone wants them to yet. All these companies are spending more than they're making on these products. Refrigerators holding blood storage in Europ",
+      "url": "https://simonwillison.net/2026/Nov/6/nilay-patel/",
+      "source": "Simon Willison",
+      "score": 4.62,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.809,
+        "recency_term": 1.6179,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.617915349246031
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "US Treasury moves to cut crypto exchange MEXC off from the US financial system, alleging $16B+ in illicit flows, including Russian and Iranian sanctions evasion (Francisco Rodrigues/CoinDesk)",
+      "summary": "Francisco Rodrigues / CoinDesk : US Treasury moves to cut crypto exchange MEXC off from the US financial system, alleging $16B+ in illicit flows, including Russian and Iranian sanctions evasion &nbsp; &mdash;&nbsp; The U.S. Treasury is moving to cut off crypto exchange MEXC from the U.S. financial system, alleging that it handled &hellip;",
+      "url": "https://www.techmeme.com/261107/p16#a261107p16",
+      "source": "Techmeme",
+      "score": 2.97,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9847,
+        "recency_term": 1.9695,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9694662750892857
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Report: SEA makes up ~50% of APAC data center capacity being built, led by Malaysia and Thailand, which paused 49 and delayed approvals of 117 projects in Sept. (Arundhati Hazra/The Guardian)",
+      "summary": "Arundhati Hazra / The Guardian : Report: SEA makes up ~50% of APAC data center capacity being built, led by Malaysia and Thailand, which paused 49 and delayed approvals of 117 projects in Sept. &nbsp; &mdash;&nbsp; Power and water constraints are pressuring what seemed like a juggernaut of growth for the region just months ago",
+      "url": "https://www.techmeme.com/261107/p15#a261107p15",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9783,
+        "recency_term": 1.9566,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.956566142744709
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Public records appear to show SpaceX building a \"Starbase supercomputer\" in TX, but Gina Hinojosa's election as governor may delay some of the data center plans (Ann Davis Vaughan/The Information)",
+      "summary": "Ann Davis Vaughan / The Information : Public records appear to show SpaceX building a &ldquo;Starbase supercomputer&rdquo; in TX, but Gina Hinojosa's election as governor may delay some of the data center plans &nbsp; &mdash;&nbsp; Elon Musk moved early to build AI data centers in Tennessee and Mississippi and reaped the rewards.",
+      "url": "https://www.techmeme.com/261107/p14#a261107p14",
+      "source": "Techmeme",
+      "score": 2.93,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9664,
+        "recency_term": 1.9328,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9327698463723544
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Binance says CFO Kaiser Ng is leaving to \"pursue a new venture\" days after a $6.3B hack, citing a six-month transition plan, and names Justin Yek as CFO (Bloomberg)",
+      "summary": "Bloomberg : Binance says CFO Kaiser Ng is leaving to &ldquo;pursue a new venture&rdquo; days after a $6.3B hack, citing a six-month transition plan, and names Justin Yek as CFO &nbsp; &mdash;&nbsp; Kaiser Ng, the chief financial officer at Binance Holdings Ltd., the world's largest crypto exchange &hellip;",
+      "url": "https://www.techmeme.com/261107/p13#a261107p13",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9566,
+        "recency_term": 1.9132,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9132460367857145
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Investigation: some Chinese companies approved by the US Commerce Department to handle Nvidia's H200 chips have empty offices and ties to firms under sanctions (New York Times)",
+      "summary": "New York Times : Investigation: some Chinese companies approved by the US Commerce Department to handle Nvidia's H200 chips have empty offices and ties to firms under sanctions &nbsp; &mdash;&nbsp; The Commerce Department has approved dozens of Chinese companies to handle Nvidia's H200 chips, some of which have ties to firms under sanctions over national security.",
+      "url": "https://www.techmeme.com/261107/p9#a261107p9",
+      "source": "Techmeme",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9356,
+        "recency_term": 1.8713,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8712619097321426
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Nasscom President Rajesh Nambiar warns AI could make it harder for fresh Indian engineering graduates to find jobs, urging an immediate CS curriculum overhaul (Sayan Chakraborty/Nikkei Asia)",
+      "summary": "Sayan Chakraborty / Nikkei Asia : Nasscom President Rajesh Nambiar warns AI could make it harder for fresh Indian engineering graduates to find jobs, urging an immediate CS curriculum overhaul &nbsp; &mdash;&nbsp; BENGALURU &mdash; Recent college graduates in India could struggle to land technology jobs as companies automate entry-level coding &hellip;",
+      "url": "https://www.techmeme.com/261107/p8#a261107p8",
+      "source": "Techmeme",
+      "score": 2.84,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9188,
+        "recency_term": 1.8375,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.837521830294312
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "How differences in economics, public policy, and cultural patterns could explain greater pessimism about AI in the West than in Asia and emerging economies (Gillian Tett/Financial Times)",
+      "summary": "Gillian Tett / Financial Times : How differences in economics, public policy, and cultural patterns could explain greater pessimism about AI in the West than in Asia and emerging economies &nbsp; &mdash;&nbsp; Voter hostility to Big Tech helped shape the US midterms, and similar fears are spreading through the west.",
+      "url": "https://www.techmeme.com/261107/p7#a261107p7",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.895,
+        "recency_term": 1.7899,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.789902782602513
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Global tablet shipments fell 23% YoY to 32M units in Q3 2026, their lowest level in nearly three years; Apple's iPad shipments fell 27.5% YoY to ~11.58M (Omdia)",
+      "summary": "Omdia : Global tablet shipments fell 23% YoY to 32M units in Q3 2026, their lowest level in nearly three years; Apple's iPad shipments fell 27.5% YoY to ~11.58M &nbsp; &mdash;&nbsp; The global tablet market fell 23% year-over-year (YoY) to 32 million units in Q3 2026, marking its lowest shipment level in nearly three years &hellip;",
+      "url": "https://www.techmeme.com/261107/p6#a261107p6",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.894,
+        "recency_term": 1.7879,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7879186555555555
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Shenzhen, home to tech giants and an illicit trade of smuggled chips and stolen iPhones, is clearing out its illegitimate markets ahead of the APEC summit (William Langley/Financial Times)",
+      "summary": "William Langley / Financial Times : Shenzhen, home to tech giants and an illicit trade of smuggled chips and stolen iPhones, is clearing out its illegitimate markets ahead of the APEC summit &nbsp; &mdash;&nbsp; Shenzhen clears out illicit markets for smuggled chips and stolen iPhones as it prepares to host gathering of international leaders",
+      "url": "https://www.techmeme.com/261107/p4#a261107p4",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8885,
+        "recency_term": 1.777,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.777005957070106
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Huawei unveils HarmonyOS-powered Qinyun HM650 series desktop PCs for enterprise and government users, saying they use \"100% domestically made\" components (Iris Deng/South China Morning Post)",
+      "summary": "Iris Deng / South China Morning Post : Huawei unveils HarmonyOS-powered Qinyun HM650 series desktop PCs for enterprise and government users, saying they use &ldquo;100% domestically made&rdquo; components &nbsp; &mdash;&nbsp; Huawei Technologies has launched its first desktop computer powered by its proprietary operating system, HarmonyOS &hellip;",
+      "url": "https://www.techmeme.com/261107/p3#a261107p3",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8875,
+        "recency_term": 1.775,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.775041671283069
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "2026.45: Falling Leaves (and Stocks)",
+      "summary": "The best Stratechery content from the week of November 2, 2026, including AI on the ballot, a Google state of the union, and China.",
+      "url": "https://stratechery.com/2026/falling-leaves-and-stocks/",
+      "source": "Stratechery",
+      "score": 3.63,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8151,
+        "recency_term": 1.6301,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.6301177294444447
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google\u2019s Response to AI",
+      "summary": "Sharp Tech is, for the first time, available on video. You have two ways to consume it: YouTube, and here on Stratechery",
+      "url": "https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/",
+      "source": "Stratechery",
+      "score": 3.54,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7719,
+        "recency_term": 1.5439,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.5438677293882277
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Commission preliminarily finds TikTok\u2019s \u2018For You\u2019 feed in breach of Digital Services Act for harmful \u2018rabbit holes\u2019 effect",
+      "summary": "Commission preliminarily finds TikTok\u2019s \u2018For You\u2019 feed in breach of Digital Services Act for harmful \u2018rabbit holes\u2019 effect Anonymous (not verified) Fri, 11/06/2026 - 12:09 The European Commission has preliminarily found TikTok in breach of the Digital Services Act (DSA) for the so-called \u2018rabbit hole effect\u2019 of its recommender system. TikTok's \u2018For You' feed shows users a continuous stream of personalised videos, even when those are related to mental health struggles and body image. The more a u",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/commission-preliminarily-finds-tiktoks-you-feed-breach-digital-services-act-harmful-rabbit-holes",
+      "source": "EU AI Office",
+      "score": 3.55,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7728,
+        "recency_term": 1.5457,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.5456931261243385
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "The Pragmatic Summit 2027",
+      "summary": "The Summit is back in San Francisco, for the second year, and registrations are open for February 10, 2027",
+      "url": "https://newsletter.pragmaticengineer.com/p/the-pragmatic-summit-2027",
+      "source": "The Pragmatic Engineer",
+      "score": 2.65,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8234,
+        "recency_term": 1.6469,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6468935229133597
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "The Valley Bubble Breaks",
+      "summary": "72 points \u00b7 85 comments \u00b7 query: eval",
+      "url": "https://quirksmode.org/quirksblog/2026/1106-valley-bubble.html",
+      "source": "Hacker News",
+      "score": 2.38,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8297,
+        "recency_term": 1.6594,
+        "src_bonus": 0,
+        "hn_bonus": 0.72,
+        "total": 2.379370374732143
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Silicon Valley's Bad Night",
+      "summary": "50 points \u00b7 92 comments \u00b7 query: eval",
+      "url": "https://www.theatlantic.com/technology/2026/11/americans-really-dont-like-data-centers-elections/689284/",
+      "source": "Hacker News",
+      "score": 1.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7297,
+        "recency_term": 1.4594,
+        "src_bonus": 0,
+        "hn_bonus": 0.5,
+        "total": 1.9594365122619046
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Upload Your RAM",
+      "summary": "265 points \u00b7 247 comments \u00b7 query: RAG",
+      "url": "https://uploadyourram.org",
+      "source": "Hacker News",
+      "score": 4.47,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9104,
+        "recency_term": 1.8207,
+        "src_bonus": 0,
+        "hn_bonus": 2.65,
+        "total": 4.470739422285053
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller",
+      "summary": "191 points \u00b7 39 comments \u00b7 query: RAG",
+      "url": "https://github.com/hedgerow-dev/coldframe",
+      "source": "Hacker News",
+      "score": 3.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9532,
+        "recency_term": 1.9065,
+        "src_bonus": 0,
+        "hn_bonus": 1.91,
+        "total": 3.8164669354695766
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Ask HN: How did you convince family and friends to join your XMPP/Matrix server?",
+      "summary": "76 points \u00b7 69 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50405250",
+      "source": "Hacker News",
+      "score": 2.64,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9401,
+        "recency_term": 1.8801,
+        "src_bonus": 0,
+        "hn_bonus": 0.76,
+        "total": 2.6401111153273806
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Every Windows 11 app should kill Electron, and Discord just showed why",
+      "summary": "210 points \u00b7 211 comments \u00b7 query: RAG",
+      "url": "https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/",
+      "source": "Hacker News",
+      "score": 3.93,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9159,
+        "recency_term": 1.8318,
+        "src_bonus": 0,
+        "hn_bonus": 2.1,
+        "total": 3.9318141576190477
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "RealPage rent-pricing case wraps with nearly $360M to renters",
+      "summary": "177 points \u00b7 167 comments \u00b7 query: RAG",
+      "url": "https://www.multifamilydive.com/news/realpage-rent-pricing-case-360m-renters/873553/",
+      "source": "Hacker News",
+      "score": 3.46,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8471,
+        "recency_term": 1.6941,
+        "src_bonus": 0,
+        "hn_bonus": 1.77,
+        "total": 3.4641289723974866
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Ozempic-style drugs now in trials for heart failure, addiction and even aging",
+      "summary": "99 points \u00b7 98 comments \u00b7 query: RAG",
+      "url": "https://maccus.fr/en/ozempic-drugs-trials-beyond-diabetes/",
+      "source": "Hacker News",
+      "score": 2.59,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7982,
+        "recency_term": 1.5964,
+        "src_bonus": 0,
+        "hn_bonus": 0.99,
+        "total": 2.5863611152182537
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "GitHub New pull request overview page in public preview",
+      "summary": "51 points \u00b7 31 comments \u00b7 query: RAG",
+      "url": "https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview/",
+      "source": "Hacker News",
+      "score": 2.48,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9872,
+        "recency_term": 1.9744,
+        "src_bonus": 0,
+        "hn_bonus": 0.51,
+        "total": 2.4843571469312167
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Ask HN: What in the world is taking Ubuntu so long?",
+      "summary": "215 points \u00b7 138 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50393105",
+      "source": "Hacker News",
+      "score": 3.74,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7956,
+        "recency_term": 1.5912,
+        "src_bonus": 0,
+        "hn_bonus": 2.15,
+        "total": 3.7411990781150797
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Sodium-ion batteries approach cost parity with LFP",
+      "summary": "213 points \u00b7 104 comments \u00b7 query: RAG",
+      "url": "https://www.pv-magazine.com/2026/11/06/sodium-ion-batteries-approach-cost-parity-with-lfp-with-70-gwh-covered-by-supply-agreements/",
+      "source": "Hacker News",
+      "score": 3.82,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8434,
+        "recency_term": 1.6869,
+        "src_bonus": 0,
+        "hn_bonus": 2.13,
+        "total": 3.8168769881316136
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Hardcoded credentials and other issues in Tata Motors App",
+      "summary": "87 points \u00b7 18 comments \u00b7 query: RAG",
+      "url": "https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0537",
+      "source": "Hacker News",
+      "score": 2.37,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.751,
+        "recency_term": 1.5019,
+        "src_bonus": 0,
+        "hn_bonus": 0.87,
+        "total": 2.371933205029762
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "Tesla and SpaceX lose over $420B in combined market cap in the two days",
+      "summary": "84 points \u00b7 66 comments \u00b7 query: RAG",
+      "url": "https://techlaws.pages.dev/tesla-and-spacex-lose-over-420b-in-combined-market-cap-in-the-two-days/",
+      "source": "Hacker News",
+      "score": 2.28,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7214,
+        "recency_term": 1.4428,
+        "src_bonus": 0,
+        "hn_bonus": 0.84,
+        "total": 2.282759924510582
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Size-It-Up (Game)",
+      "summary": "81 points \u00b7 27 comments \u00b7 query: RAG",
+      "url": "https://magnitudle.com/size-it-up",
+      "source": "Hacker News",
+      "score": 2.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8136,
+        "recency_term": 1.6272,
+        "src_bonus": 0,
+        "hn_bonus": 0.81,
+        "total": 2.4371977551587305
+      },
+      "age_days": 1.3
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Perplexity launches AI agents for work",
+      "summary": "64 points \u00b7 54 comments \u00b7 query: agentic",
+      "url": "https://www.perplexity.ai/en-GB/hub/blog/teammates-are-agents-for-complex-ongoing-work",
+      "source": "Hacker News",
+      "score": 8.27,
+      "score_components": {
+        "keyword": 6,
+        "recency": 0.8136,
+        "recency_term": 1.6271,
+        "src_bonus": 0,
+        "hn_bonus": 0.64,
+        "total": 8.267138229345239
+      },
+      "age_days": 1.3,
+      "first_seen": "2026-11-07"
+    },
+    {
+      "title": "Partnering with Hacktron to find vulnerabilities in OpenAI\u2019s systems",
+      "summary": "OpenAI is partnering with Hacktron to find vulnerabilities, test connections with third-party services, and strengthen defenses with frontier AI.",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "source": "OpenAI News",
+      "score": 6.51,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7541,
+        "recency_term": 1.5082,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.5081534408928565
+      },
+      "age_days": 1.7,
+      "first_seen": "2026-11-07"
+    },
+    {
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "summary": "",
+      "url": "https://huggingface.co/blog/allenai/toyblocks",
+      "source": "Hugging Face Blog",
+      "score": 3.58,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.7899,
+        "recency_term": 1.5797,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.579740742437169
+      },
+      "age_days": 1.5,
+      "first_seen": "2026-11-07"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Living beyond the limits of survival: wood ants trapped in a gigantic pitfall (2016)",
+      "summary": "179 points \u00b7 60 comments \u00b7 query: LLM",
+      "url": "https://jhr.pensoft.net/articles.php?id=9096",
+      "source": "Hacker News",
+      "score": 5.33,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7681,
+        "recency_term": 1.5362,
+        "src_bonus": 0,
+        "hn_bonus": 1.79,
+        "total": 5.326179234384921
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "Memorilla: Latent Semantic Memory for LLMs",
+      "summary": "115 points \u00b7 13 comments \u00b7 query: LLM",
+      "url": "https://arxiv.org/abs/2610.21375",
+      "source": "Hacker News",
+      "score": 4.78,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.814,
+        "recency_term": 1.6279,
+        "src_bonus": 0,
+        "hn_bonus": 1.15,
+        "total": 4.777905424818122
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Anthropic IPO valuation talks drop to $1.3T",
+      "summary": "93 points \u00b7 2 comments \u00b7 query: Anthropic",
+      "url": "https://epyhia.com/anthropic-ipo-valuation-talks-drop-to-1-3-trillion-as-major-investors",
+      "source": "Hacker News",
+      "score": 4.55,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8098,
+        "recency_term": 1.6195,
+        "src_bonus": 0,
+        "hn_bonus": 0.93,
+        "total": 4.549512567638889
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Swipeblocked: The phrases your iPhone won't suggest",
+      "summary": "77 points \u00b7 23 comments \u00b7 query: LLM",
+      "url": "https://swipeblocked.com/",
+      "source": "Hacker News",
+      "score": 4.37,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8019,
+        "recency_term": 1.6038,
+        "src_bonus": 0,
+        "hn_bonus": 0.77,
+        "total": 4.373768519983466
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Democratic wins could slow AI investment and safeguard the US economy against a downturn by pacing it over time, as Deutsche Bank sees \"shaky\" projects killed (Cecile Daurat/Bloomberg)",
+      "summary": "Cecile Daurat / Bloomberg : Democratic wins could slow AI investment and safeguard the US economy against a downturn by pacing it over time, as Deutsche Bank sees &ldquo;shaky&rdquo; projects killed &nbsp; &mdash;&nbsp; Guardrails against data-center expansion in states won by Democrats may help spread investment over time.",
+      "url": "https://www.techmeme.com/261107/p11#a261107p11",
+      "source": "Techmeme",
+      "score": 3.9,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.948,
+        "recency_term": 1.8961,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.896053572820767
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Censys finds 800+ publicly exposed copies of ARTEX, a Chinese-made, AI-powered, open-source penetration testing tool linked to several cyberattacks since July (Zack Whittaker/TechCrunch)",
+      "summary": "Zack Whittaker / TechCrunch : Censys finds 800+ publicly exposed copies of ARTEX, a Chinese-made, AI-powered, open-source penetration testing tool linked to several cyberattacks since July &nbsp; &mdash;&nbsp; Security researchers have discovered hundreds of copies of a Chinese-made AI hacking tool publicly exposed to the internet for anyone to access &hellip;",
+      "url": "https://www.techmeme.com/261107/p5#a261107p5",
+      "source": "Techmeme",
+      "score": 3.78,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8911,
+        "recency_term": 1.7822,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.782167990734127
+      },
+      "age_days": 0.8
+    }
+  ],
+  "final": [
+    {
+      "title": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+      "summary": "164 points \u00b7 113 comments \u00b7 query: agentic",
+      "url": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+      "source": "Hacker News",
+      "score": 8.59,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.9729,
+        "recency_term": 1.9458,
+        "src_bonus": 0,
+        "hn_bonus": 1.64,
+        "total": 8.585759260535715
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost",
+      "summary": "572 points \u00b7 146 comments \u00b7 query: LLM",
+      "url": "https://hightouch.com/blog/llm-judges-identity-resolution",
+      "source": "Hacker News",
+      "score": 7.65,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8244,
+        "recency_term": 1.6488,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.648798281660053
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Anthropic IPO buyers see valuation as low as $1.1T",
+      "summary": "309 points \u00b7 612 comments \u00b7 query: Anthropic",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
+      "source": "Hacker News",
+      "score": 6.7,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8071,
+        "recency_term": 1.6142,
+        "src_bonus": 0,
+        "hn_bonus": 3.09,
+        "total": 6.7042248689219575
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "Anthropic-backed AI safety super PAC Public First spent $63M+ in the 2026 midterms, and 10 of the 17 congressional candidates it backed won their elections (Emily Birnbaum/Bloomberg)",
+      "summary": "Emily Birnbaum / Bloomberg : Anthropic-backed AI safety super PAC Public First spent $63M+ in the 2026 midterms, and 10 of the 17 congressional candidates it backed won their elections &nbsp; &mdash;&nbsp; Candidates who favor stricter oversight of artificial intelligence racked up wins in key congressional races, aided &hellip;",
+      "url": "https://www.techmeme.com/261107/p17#a261107p17",
+      "source": "Techmeme",
+      "score": 5.99,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9966,
+        "recency_term": 1.9933,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.993275794778439
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Chicago-based data analytics company Ocient raised a $100M Series C co-led by Boka Capital and OCA Ventures to grow its agentic AI analytics business (Paul Gillin/SiliconANGLE)",
+      "summary": "Paul Gillin / SiliconANGLE : Chicago-based data analytics company Ocient raised a $100M Series C co-led by Boka Capital and OCA Ventures to grow its agentic AI analytics business &nbsp; &mdash;&nbsp; Ocient Inc., the maker of a speedy data analytics platform, today said it has raised $100 million in a Series C funding to expand &hellip;",
+      "url": "https://www.techmeme.com/261107/p10#a261107p10",
+      "source": "Techmeme",
+      "score": 5.88,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9416,
+        "recency_term": 1.8832,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.88315674708664
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Exponential Time Hypothesis co-proposer Russell Impagliazzo calls OpenAI's disproof \"shocking news\"; it could one day speed up chip design and break encryption (Cade Metz/New York Times)",
+      "summary": "Cade Metz / New York Times : Exponential Time Hypothesis co-proposer Russell Impagliazzo calls OpenAI's disproof &ldquo;shocking news&rdquo;; it could one day speed up chip design and break encryption &nbsp; &mdash;&nbsp; A longstanding hypothesis held that some problems would always be hard for computers to solve quickly.",
+      "url": "https://www.techmeme.com/261107/p12#a261107p12",
+      "source": "Techmeme",
+      "score": 4.9,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.952,
+        "recency_term": 1.904,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.903990080350529
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "AI for scientific discovery: How researchers use Claude",
+      "summary": "101 points \u00b7 39 comments \u00b7 query: Anthropic",
+      "url": "https://www.anthropic.com/research/how-researchers-use-claude",
+      "source": "Hacker News",
+      "score": 6.53,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.7614,
+        "recency_term": 1.5227,
+        "src_bonus": 0,
+        "hn_bonus": 1.01,
+        "total": 6.532736773439153
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "The Components of Agent Memory",
+      "summary": "151 points \u00b7 78 comments \u00b7 query: agentic",
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "source": "Hacker News",
+      "score": 6.29,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8889,
+        "recency_term": 1.7778,
+        "src_bonus": 0,
+        "hn_bonus": 1.51,
+        "total": 6.287809524725529
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "How Long Can Life Wait?",
+      "summary": "124 points \u00b7 73 comments \u00b7 query: MCP",
+      "url": "https://mceglowski.substack.com/p/how-long-can-life-wait",
+      "source": "Hacker News",
+      "score": 6.13,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9468,
+        "recency_term": 1.8937,
+        "src_bonus": 0,
+        "hn_bonus": 1.24,
+        "total": 6.133666006177249
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Every processor die anyone has photographed and given away",
+      "summary": "73 points \u00b7 16 comments \u00b7 query: MCP",
+      "url": "https://sheets.works/data-viz/cpu-dies",
+      "source": "Hacker News",
+      "score": 5.62,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9467,
+        "recency_term": 1.8934,
+        "src_bonus": 0,
+        "hn_bonus": 0.73,
+        "total": 5.623391535241403
+      },
+      "age_days": 0.4
+    }
+  ]
+}
