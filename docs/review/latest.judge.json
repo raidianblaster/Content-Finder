@@ -1,48 +1,59 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2610.21375",
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "stage": "dropped_ttl",
+      "reason": "High-quality agent memory research from Anthropic, a core trusted source, dropped only due to age (1.8 days) despite strong relevance."
+    },
+    {
+      "url": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+      "stage": "dropped_ttl",
+      "reason": "High-signal security finding (10.66 score) about Claude Code credential leakage in GitHub; substantive and timely despite 1.2-day age."
+    },
+    {
+      "url": "https://www.lorekit.io/blog/open-agent-memory-format",
       "stage": "dropped_source_cap",
-      "reason": "Substantive LLM memory research from ArXiv with solid score (4.78) should not be capped by source limits."
+      "reason": "Substantive agent architecture content directly relevant to AI systems; dropped by source cap despite strong signal (6.55 score)."
     },
     {
-      "url": "https://www.perplexity.ai/en-GB/hub/blog/teammates-are-agents-for-complex-ongoing-work",
-      "stage": "dropped_ttl",
-      "reason": "High-score AI agents product launch (8.27) from major vendor dropped by cross-day TTL despite strong relevance."
+      "url": "https://www.techmeme.com/261108/p8#a261108p8",
+      "stage": "dropped_source_cap",
+      "reason": "Major infrastructure investment by Anthropic ($3.4B for power) is high-signal AI capex news; dropped by source cap despite 4.87 score."
     },
     {
-      "url": "https://openai.com/index/partnering-with-hacktron",
-      "stage": "dropped_ttl",
-      "reason": "Official OpenAI security partnership announcement (6.51) dropped by TTL; substantive AI safety content from trusted source."
+      "url": "https://www.techmeme.com/261108/p16#a261108p16",
+      "stage": "dropped_source_cap",
+      "reason": "AI safety governance story (CAISSI independence concerns) is substantive policy content; dropped by source cap despite relevance."
     },
     {
-      "url": "https://huggingface.co/blog/allenai/toyblocks",
-      "stage": "dropped_ttl",
-      "reason": "Hugging Face robotics learning research dropped by TTL; trusted source with clear AI/ML relevance despite modest score."
+      "url": "https://www.polso.info/why-i-will-not-be-using-llms-coding",
+      "stage": "dropped_source_cap",
+      "reason": "Critical technical perspective on LLM limitations in coding; substantive analysis dropped by source cap (4.91 score)."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
-      "reason": "IPO valuation speculation is vendor financial news, not substantive AI/agent product or research content."
+      "url": "https://www.mindstudio.ai/blog/replit-vibe-coding-origin-story/",
+      "reason": "Vendor marketing/interview content from MindStudio lacks substantive technical depth; framed as origin story rather than analysis."
     },
     {
-      "url": "https://www.techmeme.com/261107/p10#a261107p10",
-      "reason": "Ocient funding round is corporate earnings/investment news lacking technical substance about agents or AI capabilities."
+      "url": "https://www.mindstudio.ai/blog/chatgpt-free-vs-paid-image-models/",
+      "reason": "Shallow comparison content with low substance (3.69 score); vendor-adjacent MindStudio blog lacks novel insights."
     },
     {
-      "url": "https://hightouch.com/blog/llm-judges-identity-resolution",
-      "reason": "Vendor marketing blog post (Hightouch) promoting cost comparison lacks substantive technical depth or independent validation."
+      "url": "https://www.mindstudio.ai/blog/chatgpt-images-2-6-review/",
+      "reason": "Incremental product changelog reporting (2.5 vs 2.6); low-substance vendor blog content with no analysis."
     },
     {
-      "url": "https://www.techmeme.com/261107/p17#a261107p17",
-      "reason": "Political spending and election coverage, while mentioning Anthropic, is not core AI/agents product or research content."
+      "url": "https://caleb.software/posts/claude-to-pi.html",
+      "reason": "Personal switching story lacks substantive technical analysis; anecdotal user preference rather than signal-bearing content."
     },
     {
-      "url": "https://mceglowski.substack.com/p/how-long-can-life-wait",
-      "reason": "Substack essay with unclear relevance to AI/agents; generic title provides no signal of substantive technical content."
+      "url": "https://www.techmeme.com/261108/p10#a261108p10",
+      "stage": "final",
+      "reason": "Market saturation speculation about AI stock supply; financial punditry rather than substantive AI/ML content."
     }
   ]
 }
