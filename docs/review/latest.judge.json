@@ -1,59 +1,98 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://www.anthropic.com/research/components-of-agent-memory",
-      "stage": "dropped_ttl",
-      "reason": "High-quality agent memory research from Anthropic, a core trusted source, dropped only due to age (1.8 days) despite strong relevance."
-    },
-    {
-      "url": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
-      "stage": "dropped_ttl",
-      "reason": "High-signal security finding (10.66 score) about Claude Code credential leakage in GitHub; substantive and timely despite 1.2-day age."
-    },
-    {
-      "url": "https://www.lorekit.io/blog/open-agent-memory-format",
+      "url": "https://arxiv.org/abs/2611.09414",
       "stage": "dropped_source_cap",
-      "reason": "Substantive agent architecture content directly relevant to AI systems; dropped by source cap despite strong signal (6.55 score)."
+      "reason": "High-signal agents/GraphRAG research from arXiv with score 12.73; substantive agentic reasoning work deserves consideration over source cap."
     },
     {
-      "url": "https://www.techmeme.com/261108/p8#a261108p8",
+      "url": "https://arxiv.org/abs/2611.09792",
       "stage": "dropped_source_cap",
-      "reason": "Major infrastructure investment by Anthropic ($3.4B for power) is high-signal AI capex news; dropped by source cap despite 4.87 score."
+      "reason": "Strong agents paper on causal evaluation of AI agents (score 11.73) dropped by source cap despite clear relevance to agentic AI."
     },
     {
-      "url": "https://www.techmeme.com/261108/p16#a261108p16",
+      "url": "https://arxiv.org/abs/2509.14956",
       "stage": "dropped_source_cap",
-      "reason": "AI safety governance story (CAISSI independence concerns) is substantive policy content; dropped by source cap despite relevance."
+      "reason": "Sentinel Agents for multi-agent system security (score 11.73) is substantive safety-critical agents work dropped by source cap."
     },
     {
-      "url": "https://www.polso.info/why-i-will-not-be-using-llms-coding",
+      "url": "https://arxiv.org/abs/2611.09407",
       "stage": "dropped_source_cap",
-      "reason": "Critical technical perspective on LLM limitations in coding; substantive analysis dropped by source cap (4.91 score)."
+      "reason": "Retrieval-augmented optimization for agentic planning (ROAM, score 10.73) is core agents/RAG work dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2509.00761",
+      "stage": "dropped_source_cap",
+      "reason": "L-MARS: Legal multi-agent system (score 10.73) demonstrates domain-specific agentic application, dropped despite relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.16426",
+      "stage": "dropped_source_cap",
+      "reason": "AuthGateBench evaluates LLMs as authorization systems (score 10.73), security-relevant agents work dropped by cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.09326",
+      "stage": "dropped_source_cap",
+      "reason": "ABHBench: moral decision-making evaluation of foundation models from agentic perspective (score 9.73), substantive but capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.09730",
+      "stage": "dropped_source_cap",
+      "reason": "Human preferences for agentic AI (score 9.73) is directly relevant HCI/agentic work dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.08780",
+      "stage": "dropped_source_cap",
+      "reason": "Guardrail erosion in domain-specific LLMs (score 9.73) addresses safety concerns in specialized agentic deployments."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/9/hn-50421091/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison commentary (trusted source, score 6.72) dropped by cap despite consistent high-signal output on developer tools and AI."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/replit-vibe-coding-origin-story/",
-      "reason": "Vendor marketing/interview content from MindStudio lacks substantive technical depth; framed as origin story rather than analysis."
+      "url": "https://247wallst.com/investing/2026/11/07/openai-just-raised-11B-at-a-1-25-trillion-valuation-below-the-1-4-trillion-it-first-sought/",
+      "reason": "Funding/valuation news is vendor/financial reporting with low technical substance; doesn't address AI capabilities or research."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/chatgpt-free-vs-paid-image-models/",
-      "reason": "Shallow comparison content with low substance (3.69 score); vendor-adjacent MindStudio blog lacks novel insights."
+      "url": "https://observer.co.uk/news/national/article/fight-to-block-child-sexual-abuse-images-unites-peers-and-mps-in-cross-party-campaign",
+      "reason": "UK CSAM detection policy discussion unrelated to AI/ML product development; regulatory policy rather than technical content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/chatgpt-images-2-6-review/",
-      "reason": "Incremental product changelog reporting (2.5 vs 2.6); low-substance vendor blog content with no analysis."
+      "url": "https://www.techmeme.com/261109/p48#a261109p48",
+      "reason": "Anthropic IPO filing details are financial/corporate news, not technical AI/ML substance; vendor marketing."
     },
     {
-      "url": "https://caleb.software/posts/claude-to-pi.html",
-      "reason": "Personal switching story lacks substantive technical analysis; anecdotal user preference rather than signal-bearing content."
+      "url": "https://www.techmeme.com/261109/p43#a261109p43",
+      "reason": "Jensen Huang personal/board governance news is corporate gossip unrelated to AI systems or technical progress."
     },
     {
-      "url": "https://www.techmeme.com/261108/p10#a261108p10",
-      "stage": "final",
-      "reason": "Market saturation speculation about AI stock supply; financial punditry rather than substantive AI/ML content."
+      "url": "https://www.mindstudio.ai/blog/run-arete-27b-locally/",
+      "reason": "Hardware tutorial on running models locally is practical but low-substance; appears to be vendor blog promotion from non-trusted source."
+    },
+    {
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "reason": "CodeRabbit vendor product announcement in final stage; promotional content from vendor rather than independent analysis."
+    },
+    {
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
+      "reason": "Model benchmark score announcement lacks substantive technical analysis; low-signal metrics repackaging."
+    },
+    {
+      "url": "https://www.techmeme.com/261109/p40#a261109p40",
+      "reason": "Pricing announcement for Anthropic models is corporate/financial news, not technical substance or research."
+    },
+    {
+      "url": "https://www.techmeme.com/261109/p39#a261109p39",
+      "reason": "Hype-driven claims about solving open physics problems lack technical depth; unverified marketing assertions."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50427934",
+      "reason": "DBDelve is an unrelated database client tool; has no AI/ML relevance despite HN placement."
     }
   ]
 }
