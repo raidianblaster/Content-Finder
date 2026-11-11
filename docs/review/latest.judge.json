@@ -1,98 +1,94 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.09414",
+      "url": "https://arxiv.org/abs/2611.03555",
       "stage": "dropped_source_cap",
-      "reason": "High-signal agents/GraphRAG research from arXiv with score 12.73; substantive agentic reasoning work deserves consideration over source cap."
+      "reason": "High-signal security research on MCP tool poisoning in agentic AI frameworks with strong score (14.75) from trusted arXiv source."
     },
     {
-      "url": "https://arxiv.org/abs/2611.09792",
+      "url": "https://arxiv.org/abs/2611.11796",
       "stage": "dropped_source_cap",
-      "reason": "Strong agents paper on causal evaluation of AI agents (score 11.73) dropped by source cap despite clear relevance to agentic AI."
+      "reason": "Substantive benchmark work on AI agents in spatial transcriptomics with score 13.75 from arXiv, directly relevant to agent evaluation."
     },
     {
-      "url": "https://arxiv.org/abs/2509.14956",
+      "url": "https://arxiv.org/abs/2611.10224",
       "stage": "dropped_source_cap",
-      "reason": "Sentinel Agents for multi-agent system security (score 11.73) is substantive safety-critical agents work dropped by source cap."
+      "reason": "Arabic-centric agentic AI research with score 12.75, addressing underrepresented language coverage in agent systems."
     },
     {
-      "url": "https://arxiv.org/abs/2611.09407",
+      "url": "https://arxiv.org/abs/2611.10748",
       "stage": "dropped_source_cap",
-      "reason": "Retrieval-augmented optimization for agentic planning (ROAM, score 10.73) is core agents/RAG work dropped by source cap."
+      "reason": "REINS agent framework for real-time trajectory planning with score 12.75, substantive agentic systems research."
     },
     {
-      "url": "https://arxiv.org/abs/2509.00761",
+      "url": "https://arxiv.org/abs/2611.10404",
       "stage": "dropped_source_cap",
-      "reason": "L-MARS: Legal multi-agent system (score 10.73) demonstrates domain-specific agentic application, dropped despite relevance."
+      "reason": "Evaluation of frontier coding LLMs with score 11.75, high-signal assessment of agentic coding capabilities."
     },
     {
-      "url": "https://arxiv.org/abs/2610.16426",
+      "url": "https://arxiv.org/abs/2611.11539",
       "stage": "dropped_source_cap",
-      "reason": "AuthGateBench evaluates LLMs as authorization systems (score 10.73), security-relevant agents work dropped by cap."
+      "reason": "PRISM framework for agent tool privilege minimization with score 11.75, critical security research for agentic systems."
     },
     {
-      "url": "https://arxiv.org/abs/2611.09326",
+      "url": "https://arxiv.org/abs/2610.17020",
       "stage": "dropped_source_cap",
-      "reason": "ABHBench: moral decision-making evaluation of foundation models from agentic perspective (score 9.73), substantive but capped."
+      "reason": "CWE-bench agentic security research shifting focus from exploitation to defense with score 11.75."
     },
     {
-      "url": "https://arxiv.org/abs/2611.09730",
+      "url": "https://arxiv.org/abs/2611.09917",
       "stage": "dropped_source_cap",
-      "reason": "Human preferences for agentic AI (score 9.73) is directly relevant HCI/agentic work dropped by source cap."
+      "reason": "Survey on human-agent collaboration in scientific innovation with score 10.75, addressing critical agent-human interaction patterns."
     },
     {
-      "url": "https://arxiv.org/abs/2611.08780",
+      "url": "https://arxiv.org/abs/2611.03412",
       "stage": "dropped_source_cap",
-      "reason": "Guardrail erosion in domain-specific LLMs (score 9.73) addresses safety concerns in specialized agentic deployments."
+      "reason": "DeliverBench for multi-stage professional agent projects with score 9.75, practical agentic system evaluation."
     },
     {
-      "url": "https://simonwillison.net/2026/Nov/9/hn-50421091/",
+      "url": "https://simonwillison.net/2026/Nov/10/yonkers-rises/",
       "stage": "dropped_source_cap",
-      "reason": "Simon Willison commentary (trusted source, score 6.72) dropped by cap despite consistent high-signal output on developer tools and AI."
+      "reason": "Simon Willison post (trusted source) with score 6.74, likely substantive AI/ML commentary despite modest score."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://247wallst.com/investing/2026/11/07/openai-just-raised-11B-at-a-1-25-trillion-valuation-below-the-1-4-trillion-it-first-sought/",
-      "reason": "Funding/valuation news is vendor/financial reporting with low technical substance; doesn't address AI capabilities or research."
+      "url": "https://www.techmeme.com/261110/p50#a261110p50",
+      "reason": "Vendor earnings/financial news (Nvidia IPO investment announcement) with score 4.94, belongs in business news not AI tech pipeline."
     },
     {
-      "url": "https://observer.co.uk/news/national/article/fight-to-block-child-sexual-abuse-images-unites-peers-and-mps-in-cross-party-campaign",
-      "reason": "UK CSAM detection policy discussion unrelated to AI/ML product development; regulatory policy rather than technical content."
+      "url": "https://www.techmeme.com/261110/p51#a261110p51",
+      "reason": "OpenAI earnings report (revenue/growth metrics) with score 4.95, financial reporting rather than substantive AI research or product."
     },
     {
-      "url": "https://www.techmeme.com/261109/p48#a261109p48",
-      "reason": "Anthropic IPO filing details are financial/corporate news, not technical AI/ML substance; vendor marketing."
+      "url": "https://www.techmeme.com/261110/p56#a261110p56",
+      "reason": "OpenAI operating margin metrics with score 4.97, financial data not technical AI content."
     },
     {
-      "url": "https://www.techmeme.com/261109/p43#a261109p43",
-      "reason": "Jensen Huang personal/board governance news is corporate gossip unrelated to AI systems or technical progress."
+      "url": "https://www.wsj.com/finance/stocks/anthropic-to-seek-1-3-trillion-valuation-in-ipo-8337b669",
+      "reason": "IPO valuation news with score 4.43, corporate finance content, not AI capability or research signal."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/run-arete-27b-locally/",
-      "reason": "Hardware tutorial on running models locally is practical but low-substance; appears to be vendor blog promotion from non-trusted source."
+      "url": "https://www.mindstudio.ai/blog/meta-muse-ember-hands-on-test/",
+      "reason": "Vendor blog review with score 2.69, low substantive content and vendor marketing."
     },
     {
-      "url": "https://openai.com/index/coderabbit-codex-daybreak",
-      "reason": "CodeRabbit vendor product announcement in final stage; promotional content from vendor rather than independent analysis."
+      "url": "https://babuschk.in/posts/2026-01-25-life-on-claude-nine.html",
+      "reason": "Personal blog post with score 4.71, low signal and lacks clear technical contribution."
     },
     {
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
-      "reason": "Model benchmark score announcement lacks substantive technical analysis; low-signal metrics repackaging."
+      "url": "https://www.anthropocenemagazine.org/2026/10/magenta-solar-panels-may-be-agrivoltaics-cleverest-trick-yet/",
+      "reason": "Solar panel research with score 7.05, unrelated to AI/ML despite appearing in final."
     },
     {
-      "url": "https://www.techmeme.com/261109/p40#a261109p40",
-      "reason": "Pricing announcement for Anthropic models is corporate/financial news, not technical substance or research."
+      "url": "https://letoverlambda.com/",
+      "reason": "2008 Lisp book repost with score 4.6, unrelated to current AI/agents despite Hacker News link."
     },
     {
-      "url": "https://www.techmeme.com/261109/p39#a261109p39",
-      "reason": "Hype-driven claims about solving open physics problems lack technical depth; unverified marketing assertions."
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50427934",
-      "reason": "DBDelve is an unrelated database client tool; has no AI/ML relevance despite HN placement."
+      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
+      "reason": "Tech industry commentary with score 4.82, strategic analysis not AI research or capability news."
     }
   ]
 }
