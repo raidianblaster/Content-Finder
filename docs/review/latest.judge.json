@@ -1,94 +1,98 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.03555",
+      "url": "https://arxiv.org/abs/2611.10602",
       "stage": "dropped_source_cap",
-      "reason": "High-signal security research on MCP tool poisoning in agentic AI frameworks with strong score (14.75) from trusted arXiv source."
+      "reason": "Agentic discrete-event simulation for manufacturing is substantive agent systems research with clear enterprise relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2611.11796",
+      "url": "https://arxiv.org/abs/2611.11306",
       "stage": "dropped_source_cap",
-      "reason": "Substantive benchmark work on AI agents in spatial transcriptomics with score 13.75 from arXiv, directly relevant to agent evaluation."
+      "reason": "ScrapeBench evaluating legal compliance of AI agents is high-signal work on agent safety and regulatory alignment."
     },
     {
-      "url": "https://arxiv.org/abs/2611.10224",
+      "url": "https://arxiv.org/abs/2611.12941",
       "stage": "dropped_source_cap",
-      "reason": "Arabic-centric agentic AI research with score 12.75, addressing underrepresented language coverage in agent systems."
+      "reason": "AI governance piece on control and knowledge boundaries is substantive policy-relevant AI safety content."
     },
     {
-      "url": "https://arxiv.org/abs/2611.10748",
+      "url": "https://arxiv.org/abs/2611.12953",
       "stage": "dropped_source_cap",
-      "reason": "REINS agent framework for real-time trajectory planning with score 12.75, substantive agentic systems research."
+      "reason": "Agent architecture cost-success trade-offs evaluating enterprise SOPs is directly relevant to deployed agent systems."
     },
     {
-      "url": "https://arxiv.org/abs/2611.10404",
+      "url": "https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/",
       "stage": "dropped_source_cap",
-      "reason": "Evaluation of frontier coding LLMs with score 11.75, high-signal assessment of agentic coding capabilities."
+      "reason": "Simon Willison coverage of Anthropic IPO roadshow from trusted source with typically high signal."
     },
     {
-      "url": "https://arxiv.org/abs/2611.11539",
+      "url": "https://arxiv.org/abs/2611.13217",
       "stage": "dropped_source_cap",
-      "reason": "PRISM framework for agent tool privilege minimization with score 11.75, critical security research for agentic systems."
+      "reason": "Reliability of Claude Code as agentic grading system is substantive evaluation of Claude's agent capabilities in practice."
     },
     {
-      "url": "https://arxiv.org/abs/2610.17020",
+      "url": "https://arxiv.org/abs/2611.13196",
       "stage": "dropped_source_cap",
-      "reason": "CWE-bench agentic security research shifting focus from exploitation to defense with score 11.75."
+      "reason": "BPMN and agentic workflows combining enterprise knowledge is high-signal work on practical agent orchestration."
     },
     {
-      "url": "https://arxiv.org/abs/2611.09917",
+      "url": "https://news.ycombinator.com/item?id=50455811",
       "stage": "dropped_source_cap",
-      "reason": "Survey on human-agent collaboration in scientific innovation with score 10.75, addressing critical agent-human interaction patterns."
+      "reason": "Pomerado Launch HN showing website-to-MCP conversion for agents is substantive agent infrastructure content."
     },
     {
-      "url": "https://arxiv.org/abs/2611.03412",
+      "url": "https://arxiv.org/abs/2611.12970",
       "stage": "dropped_source_cap",
-      "reason": "DeliverBench for multi-stage professional agent projects with score 9.75, practical agentic system evaluation."
+      "reason": "TrustMod-SM benchmark for LLM trustworthiness in content moderation is relevant evaluative work for agent safety."
     },
     {
-      "url": "https://simonwillison.net/2026/Nov/10/yonkers-rises/",
+      "url": "https://arxiv.org/abs/2611.13960",
       "stage": "dropped_source_cap",
-      "reason": "Simon Willison post (trusted source) with score 6.74, likely substantive AI/ML commentary despite modest score."
+      "reason": "Compositional security for agentic coding harnesses addresses critical safety concerns in deployed agent systems."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.techmeme.com/261110/p50#a261110p50",
-      "reason": "Vendor earnings/financial news (Nvidia IPO investment announcement) with score 4.94, belongs in business news not AI tech pipeline."
+      "url": "https://www.mindstudio.ai/blog/claude-mythos-5-2-cybersecurity/",
+      "reason": "Speculative marketing content claiming restricted Anthropic model without verification—likely vendor promotion."
     },
     {
-      "url": "https://www.techmeme.com/261110/p51#a261110p51",
-      "reason": "OpenAI earnings report (revenue/growth metrics) with score 4.95, financial reporting rather than substantive AI research or product."
-    },
-    {
-      "url": "https://www.techmeme.com/261110/p56#a261110p56",
-      "reason": "OpenAI operating margin metrics with score 4.97, financial data not technical AI content."
-    },
-    {
-      "url": "https://www.wsj.com/finance/stocks/anthropic-to-seek-1-3-trillion-valuation-in-ipo-8337b669",
-      "reason": "IPO valuation news with score 4.43, corporate finance content, not AI capability or research signal."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/meta-muse-ember-hands-on-test/",
-      "reason": "Vendor blog review with score 2.69, low substantive content and vendor marketing."
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-2-science-discoveries/",
+      "reason": "Unverified claims about Claude physics proofs lack substance and appear to be promotional hype."
     },
     {
       "url": "https://babuschk.in/posts/2026-01-25-life-on-claude-nine.html",
-      "reason": "Personal blog post with score 4.71, low signal and lacks clear technical contribution."
+      "reason": "Personal anecdotal piece about speculative Claude version lacks editorial rigor or verifiable reporting."
     },
     {
-      "url": "https://www.anthropocenemagazine.org/2026/10/magenta-solar-panels-may-be-agrivoltaics-cleverest-trick-yet/",
-      "reason": "Solar panel research with score 7.05, unrelated to AI/ML despite appearing in final."
+      "url": "https://www.mindstudio.ai/blog/gemini-4-carbon-native-app-development/",
+      "reason": "Tutorial-style marketing content for model features lacks novel insight or critical analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/run-large-models-gmk-tech-evo-x5-pro/",
+      "reason": "Hardware vendor partnership puff piece masquerading as technical content with minimal substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/arete-27b-model/",
+      "reason": "Vendor-adjacent promotional coverage of model fine-tune without independent evaluation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/arete-27b-benchmark-results/",
+      "reason": "Marketing-driven benchmark interpretation lacking critical distance from promotional framing."
+    },
+    {
+      "url": "https://www.wsj.com/finance/stocks/anthropic-to-seek-1-3-trillion-valuation-in-ipo-8337b669",
+      "reason": "Earnings/valuation IPO reporting is corporate finance content, not substantive AI/ML research or product news."
+    },
+    {
+      "url": "https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp",
+      "reason": "Gaming artifact built by model is demo novelty lacking technical substance or research value."
     },
     {
       "url": "https://letoverlambda.com/",
-      "reason": "2008 Lisp book repost with score 4.6, unrelated to current AI/agents despite Hacker News link."
-    },
-    {
-      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
-      "reason": "Tech industry commentary with score 4.82, strategic analysis not AI research or capability news."
+      "reason": "2008 Lisp textbook unrelated to AI agents or contemporary ML—off-topic archive link."
     }
   ]
 }
