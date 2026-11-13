@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-13",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://ipo.anthropic.com/us/",
+      "stage": "dropped_source_cap",
+      "reason": "Major AI company IPO from trusted source (Hacker News) with high score (7.82); substantive corporate milestone, not marketing noise."
+    },
+    {
+      "url": "https://blog.atuin.sh/threads-agent-sessions/",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-focused technical launch (Atuin Threads) from Hacker News with solid score (6.91); directly relevant to agents pipeline."
+    },
+    {
+      "url": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
+      "stage": "dropped_source_cap",
+      "reason": "Open-source self-improving managed agents project with score 6.68; core agent infrastructure content from HN."
+    },
+    {
+      "url": "https://machinelearning.apple.com/research/faster-retrieval",
+      "stage": "dropped_source_cap",
+      "reason": "Apple ML research on RAG optimization (score 5.92); substantive from trusted source despite source cap."
+    },
+    {
+      "url": "https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html",
+      "stage": "dropped_source_cap",
+      "reason": "AWS Emulator + agent code generation analysis from All Things Distributed (score 5.73); high-signal infrastructure content."
+    },
+    {
+      "url": "https://github.com/klad-app/klad",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-drivable paint application (score 5.42); demonstrates practical agent capability with source-available code."
+    },
+    {
+      "url": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+      "stage": "dropped_ttl",
+      "reason": "Significant policy impact story (score 11.65) on AI agent regulation; cross-day freshness shouldn't override high signal."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/11/gemini-decisions-api/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison analysis of Gemini Decisions API (score 10.66); trusted source on substantive API feature with high relevance."
+    },
+    {
+      "url": "https://huggingface.co/blog/qvac/botpsy",
+      "stage": "dropped_ttl",
+      "reason": "Hugging Face research on sub-billion parameter agentic LLM (score 5.46); trusted source on agent efficiency despite TTL drop."
+    },
+    {
+      "url": "https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias",
+      "stage": "dropped_ttl",
+      "reason": "Last Week in AI aggregate digest (score 8.57) covering major topics including Anthropic IPO; curated trusted source despite cross-day filtering."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/best-gpu-for-running-local-llms-24gb/",
+      "reason": "MindStudio vendor blog with generic GPU/LLM buying guide; soft promotional content masquerading as analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-2-game-demos-cost/",
+      "reason": "MindStudio cost-breakdown marketing for Claude; vendor content designed to drive engagement, not independent analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-4-carbon-vs-claude-fable-5-2/",
+      "reason": "MindStudio model comparison blog; vendor content comparisons lack critical rigor and primarily serve to build traffic."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/rex-terminal-mitchell-hashimoto/",
+      "reason": "MindStudio promotional write-up of third-party tool (Rex); soft coverage that benefits from tool hype."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/n8n-nod-personal-agent-review/",
+      "reason": "MindStudio vendor review of n8n product; surface-level hands-on that serves as soft marketing for competing platforms."
+    },
+    {
+      "url": "https://www.techmeme.com/261112/p59#a261112p59",
+      "reason": "Techmeme Bloomberg report on OpenAI policy positions; low-substance policy gossip rather than substantive AI/ML content."
+    },
+    {
+      "url": "https://www.techmeme.com/261112/p55#a261112p55",
+      "reason": "Techmeme IPO gossip (oversubscription numbers); financial speculation without technical or product substance."
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "reason": "OpenAI customer success story; vendor case study designed to drive adoption rather than substantive technical content."
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/gondola",
+      "reason": "OpenAI customer narrative (revenue doubling); marketing collateral that inflates customer wins without technical depth."
+    },
+    {
+      "url": "https://www.mcmillen.dev/sigbovik/",
+      "reason": "Perl joke post about paint splatters (2019 repost); unrelated novelty content without AI/ML relevance despite high score."
+    }
+  ]
+}
