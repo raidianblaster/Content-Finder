@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-14",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.14581",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive arXiv agents/evaluation research with high score (12.75) on tau2-bench LLM evaluation—core AI/agents relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.25096",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic RAG for enterprise workflows—directly relevant to agent systems with high score (12.75) from trusted arXiv source."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.10224",
+      "stage": "dropped_source_cap",
+      "reason": "Jais 3 Arabic-centric agentic AI—significant multilingual foundation model advance with score 12.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.02721",
+      "stage": "dropped_source_cap",
+      "reason": "GrandCode competitive programming via agentic RL—novel benchmark application with score 11.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.11306",
+      "stage": "dropped_source_cap",
+      "reason": "ScrapeBench legal compliance evaluation for agents—critical governance/safety research with score 11.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.14571",
+      "stage": "dropped_source_cap",
+      "reason": "MechFoundry agentic engineering analysis—domain-specific agent application with score 9.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.14935",
+      "stage": "dropped_source_cap",
+      "reason": "Bias audit across major LLMs (GPT, Claude, Gemini, Llama, DeepSeek, Qwen) in pain management—critical safety benchmark."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.15521",
+      "stage": "dropped_source_cap",
+      "reason": "DecArena large-scale decentralized multi-agent evaluation—important agent coordination benchmark with score 9.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.34872",
+      "stage": "dropped_source_cap",
+      "reason": "Conformal factuality in agentic RAG—key reliability work for production agents with score 10.75."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/12/llm-gemini/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison trusted source on llm-gemini tooling update—core practitioner resource."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://ipo.anthropic.com/us/",
+      "reason": "Corporate IPO announcement is financial/market news, not substantive AI/ML research or product technical content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/jensen-huang-nvidia-ouster-ai-impact/",
+      "reason": "Vendor blog speculating on Nvidia leadership change—editorial commentary lacking technical substance."
+    },
+    {
+      "url": "https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f",
+      "reason": "Headline-driven news about executive departure—business/leadership content without AI technical depth."
+    },
+    {
+      "url": "https://www.techmeme.com/261113/p37#a261113p37",
+      "reason": "Amazon data collection strategy news—corporate strategy/business reporting, not AI/ML research or innovation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-2-creative-demos/",
+      "reason": "Vendor blog promotional content on demo videos—marketing-focused rather than substantive technical analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/how-llms-are-trained-explained/",
+      "reason": "General educational overview of LLM training—basic explainer content without novel research or product news."
+    },
+    {
+      "url": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
+      "reason": "GitHub project showcase from small vendor—low-signal self-promotion via HN."
+    },
+    {
+      "url": "https://isometricsf.com/",
+      "reason": "Pixel-art map visualization—completely unrelated to AI/ML, appears misrouted."
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/shield",
+      "reason": "Vendor customer success story—marketing content emphasizing business outcomes over technical innovation."
+    },
+    {
+      "url": "https://www.techmeme.com/261113/p25#a261113p25",
+      "reason": "Anthropic business/finance quote—market/competitive commentary without technical or research substance."
+    }
+  ]
+}

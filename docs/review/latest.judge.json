@@ -1,98 +1,98 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://ipo.anthropic.com/us/",
+      "url": "https://arxiv.org/abs/2611.14581",
       "stage": "dropped_source_cap",
-      "reason": "Major AI company IPO from trusted source (Hacker News) with high score (7.82); substantive corporate milestone, not marketing noise."
+      "reason": "Substantive arXiv agents/evaluation research with high score (12.75) on tau2-bench LLM evaluation—core AI/agents relevance."
     },
     {
-      "url": "https://blog.atuin.sh/threads-agent-sessions/",
+      "url": "https://arxiv.org/abs/2610.25096",
       "stage": "dropped_source_cap",
-      "reason": "Agent-focused technical launch (Atuin Threads) from Hacker News with solid score (6.91); directly relevant to agents pipeline."
+      "reason": "Agentic RAG for enterprise workflows—directly relevant to agent systems with high score (12.75) from trusted arXiv source."
     },
     {
-      "url": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
+      "url": "https://arxiv.org/abs/2611.10224",
       "stage": "dropped_source_cap",
-      "reason": "Open-source self-improving managed agents project with score 6.68; core agent infrastructure content from HN."
+      "reason": "Jais 3 Arabic-centric agentic AI—significant multilingual foundation model advance with score 12.75."
     },
     {
-      "url": "https://machinelearning.apple.com/research/faster-retrieval",
+      "url": "https://arxiv.org/abs/2604.02721",
       "stage": "dropped_source_cap",
-      "reason": "Apple ML research on RAG optimization (score 5.92); substantive from trusted source despite source cap."
+      "reason": "GrandCode competitive programming via agentic RL—novel benchmark application with score 11.75."
     },
     {
-      "url": "https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html",
+      "url": "https://arxiv.org/abs/2611.11306",
       "stage": "dropped_source_cap",
-      "reason": "AWS Emulator + agent code generation analysis from All Things Distributed (score 5.73); high-signal infrastructure content."
+      "reason": "ScrapeBench legal compliance evaluation for agents—critical governance/safety research with score 11.75."
     },
     {
-      "url": "https://github.com/klad-app/klad",
+      "url": "https://arxiv.org/abs/2611.14571",
       "stage": "dropped_source_cap",
-      "reason": "Agent-drivable paint application (score 5.42); demonstrates practical agent capability with source-available code."
+      "reason": "MechFoundry agentic engineering analysis—domain-specific agent application with score 9.75."
     },
     {
-      "url": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+      "url": "https://arxiv.org/abs/2611.14935",
+      "stage": "dropped_source_cap",
+      "reason": "Bias audit across major LLMs (GPT, Claude, Gemini, Llama, DeepSeek, Qwen) in pain management—critical safety benchmark."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.15521",
+      "stage": "dropped_source_cap",
+      "reason": "DecArena large-scale decentralized multi-agent evaluation—important agent coordination benchmark with score 9.75."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.34872",
+      "stage": "dropped_source_cap",
+      "reason": "Conformal factuality in agentic RAG—key reliability work for production agents with score 10.75."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/12/llm-gemini/",
       "stage": "dropped_ttl",
-      "reason": "Significant policy impact story (score 11.65) on AI agent regulation; cross-day freshness shouldn't override high signal."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Nov/11/gemini-decisions-api/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison analysis of Gemini Decisions API (score 10.66); trusted source on substantive API feature with high relevance."
-    },
-    {
-      "url": "https://huggingface.co/blog/qvac/botpsy",
-      "stage": "dropped_ttl",
-      "reason": "Hugging Face research on sub-billion parameter agentic LLM (score 5.46); trusted source on agent efficiency despite TTL drop."
-    },
-    {
-      "url": "https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias",
-      "stage": "dropped_ttl",
-      "reason": "Last Week in AI aggregate digest (score 8.57) covering major topics including Anthropic IPO; curated trusted source despite cross-day filtering."
+      "reason": "Simon Willison trusted source on llm-gemini tooling update—core practitioner resource."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/best-gpu-for-running-local-llms-24gb/",
-      "reason": "MindStudio vendor blog with generic GPU/LLM buying guide; soft promotional content masquerading as analysis."
+      "url": "https://ipo.anthropic.com/us/",
+      "reason": "Corporate IPO announcement is financial/market news, not substantive AI/ML research or product technical content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-opus-5-2-game-demos-cost/",
-      "reason": "MindStudio cost-breakdown marketing for Claude; vendor content designed to drive engagement, not independent analysis."
+      "url": "https://www.mindstudio.ai/blog/jensen-huang-nvidia-ouster-ai-impact/",
+      "reason": "Vendor blog speculating on Nvidia leadership change—editorial commentary lacking technical substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-carbon-vs-claude-fable-5-2/",
-      "reason": "MindStudio model comparison blog; vendor content comparisons lack critical rigor and primarily serve to build traffic."
+      "url": "https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f",
+      "reason": "Headline-driven news about executive departure—business/leadership content without AI technical depth."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/rex-terminal-mitchell-hashimoto/",
-      "reason": "MindStudio promotional write-up of third-party tool (Rex); soft coverage that benefits from tool hype."
+      "url": "https://www.techmeme.com/261113/p37#a261113p37",
+      "reason": "Amazon data collection strategy news—corporate strategy/business reporting, not AI/ML research or innovation."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/n8n-nod-personal-agent-review/",
-      "reason": "MindStudio vendor review of n8n product; surface-level hands-on that serves as soft marketing for competing platforms."
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-2-creative-demos/",
+      "reason": "Vendor blog promotional content on demo videos—marketing-focused rather than substantive technical analysis."
     },
     {
-      "url": "https://www.techmeme.com/261112/p59#a261112p59",
-      "reason": "Techmeme Bloomberg report on OpenAI policy positions; low-substance policy gossip rather than substantive AI/ML content."
+      "url": "https://www.mindstudio.ai/blog/how-llms-are-trained-explained/",
+      "reason": "General educational overview of LLM training—basic explainer content without novel research or product news."
     },
     {
-      "url": "https://www.techmeme.com/261112/p55#a261112p55",
-      "reason": "Techmeme IPO gossip (oversubscription numbers); financial speculation without technical or product substance."
+      "url": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
+      "reason": "GitHub project showcase from small vendor—low-signal self-promotion via HN."
     },
     {
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "reason": "OpenAI customer success story; vendor case study designed to drive adoption rather than substantive technical content."
+      "url": "https://isometricsf.com/",
+      "reason": "Pixel-art map visualization—completely unrelated to AI/ML, appears misrouted."
     },
     {
-      "url": "https://openai.com/business/customer-stories/gondola",
-      "reason": "OpenAI customer narrative (revenue doubling); marketing collateral that inflates customer wins without technical depth."
+      "url": "https://openai.com/business/customer-stories/shield",
+      "reason": "Vendor customer success story—marketing content emphasizing business outcomes over technical innovation."
     },
     {
-      "url": "https://www.mcmillen.dev/sigbovik/",
-      "reason": "Perl joke post about paint splatters (2019 repost); unrelated novelty content without AI/ML relevance despite high score."
+      "url": "https://www.techmeme.com/261113/p25#a261113p25",
+      "reason": "Anthropic business/finance quote—market/competitive commentary without technical or research substance."
     }
   ]
 }
