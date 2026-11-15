@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-16",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://github.com/paul-nameless/agweb",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal Show HN about agent browser tool with solid score (5.68) likely dropped only due to source cap despite clear AI/agents relevance."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50494696",
+      "stage": "dropped_source_cap",
+      "reason": "Ask HN discussion on concrete AI skills is substantive learning content with score 5.41, likely dropped only by source cap."
+    },
+    {
+      "url": "https://www.netmeister.org/blog/claude-delusion.html",
+      "stage": "dropped_source_cap",
+      "reason": "Critical analysis of Claude capabilities from established source (score 5.12) appears dropped by source cap despite clear AI/LLM relevance."
+    },
+    {
+      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
+      "stage": "dropped_source_cap",
+      "reason": "Technical LLM inference guide from official Nvidia developer blog (score 5.05) dropped despite strong relevance to AI deployment."
+    },
+    {
+      "url": "https://claude.com/resources/articles/projects-redesigned",
+      "stage": "dropped_ttl",
+      "reason": "Official Anthropic announcement about Claude Code Projects parallel workers (score 6.45) is high-signal product news incorrectly filtered by age."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/14/datasette-llm/",
+      "stage": "dropped_ttl",
+      "reason": "Simon Willison release post for datasette-llm (score 8.73) from trusted source dropped by TTL despite AI/LLM tooling relevance."
+    },
+    {
+      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
+      "stage": "dropped_keyword",
+      "reason": "Major v1.0 release of foundational GGML ML inference library (score 5.47) likely over-filtered by keyword despite clear AI infrastructure relevance."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/14/datasette-vega/",
+      "stage": "dropped_keyword",
+      "reason": "Simon Willison datasette plugin release (score 4.65) from trusted data-tools author dropped despite relevance to AI/data tooling ecosystem."
+    },
+    {
+      "url": "https://www.interconnects.ai/p/open-source-ai-without-jensen",
+      "stage": "dropped_ttl",
+      "reason": "Analysis from Interconnects (Lambert Wässer, trusted AI analyst) on open-source AI hardware economics (score 4.59) dropped by TTL filter."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/13/datasette-cluster-map/",
+      "stage": "dropped_keyword",
+      "reason": "Simon Willison datasette-cluster-map release (score 4.43) from established trusted source dropped despite data-tools relevance."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "reason": "Physics research announcement tangentially related to AI but lacks substantive AI/ML content; appears to be off-topic scientific content."
+    },
+    {
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "reason": "Meta-announcement about a new science blog with no concrete AI/ML substance; low-signal organizational news."
+    },
+    {
+      "url": "https://www.techmeme.com/261115/p3#a261115p3",
+      "reason": "Venture funding announcement for Nebuly is vendor marketing/earnings news rather than substantive technical or product content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/agentic-operating-system-explained/",
+      "reason": "Vendor-authored explainer from MindStudio product platform; likely promotional content rather than independent analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/forward-deployed-engineer-career-path/",
+      "reason": "Career advice post from vendor platform with limited substantive technical content; appears promotional rather than news-worthy."
+    },
+    {
+      "url": "https://www.techmeme.com/261115/p17#a261115p17",
+      "reason": "Amazon satellite launch failure is aerospace/infrastructure news unrelated to AI/ML content; should have been filtered."
+    },
+    {
+      "url": "https://citizenlab.ca/security-agencies-worldwide-found-to-use-ad-based-surveillance-system/",
+      "reason": "Security/surveillance story with marginal AI relevance; primarily cybersecurity/privacy rather than AI-focused content."
+    },
+    {
+      "url": "https://www.eff.org/deeplinks/2026/11/tech-companies-are-trying-shift-entire-concept-privacy-again",
+      "reason": "Privacy policy commentary with no specific AI angle; general tech policy rather than AI/ML substantive content."
+    },
+    {
+      "url": "https://gitlab.com/snipedbywifi/terminactory",
+      "stage": "final",
+      "reason": "Terminal factory game written in Rust is creative but unrelated to AI/ML news; entertainment project, not AI-relevant."
+    },
+    {
+      "url": "https://magazine.sebastianraschka.com/p/understanding-positional-embeddings",
+      "reason": "While technical, this is an educational explainer on standard ML concepts; lower-signal than novel research or product launches."
+    }
+  ]
+}
