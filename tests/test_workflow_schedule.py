@@ -50,15 +50,19 @@ def test_cron_minute_avoids_peak_congestion():
     )
 
 
-def test_cron_minute_targets_morning_hkt_delivery():
-    """22:00–23:00 UTC = 06:00–07:00 HKT. Anything outside that window means
-    the digest stops arriving when the user wakes up."""
+def test_cron_hour_absorbs_scheduler_delay():
+    """Free-tier scheduled runs have been starting 3-6 hours late (Nov 2026:
+    a 22:07 UTC cron started 09:40-12:00 HKT). We schedule at 18:xx UTC
+    (02:xx HKT) so that, with that delay, the digest still lands around
+    05:00-08:00 HKT. Must stay in the 16-21 UTC band: 16:00 UTC is 00:00 HKT,
+    so anything earlier would stamp the digest with the previous HKT date."""
     text = WORKFLOW.read_text()
     m = re.search(r'cron:\s*"\d+\s+(\d+)\s+\*\s+\*\s+\*"', text)
     assert m, "missing cron"
     hour_utc = int(m.group(1))
-    assert hour_utc == 22, (
-        f"cron hour is {hour_utc} UTC; digest target is 06:xx HKT (= 22:xx UTC)."
+    assert hour_utc == 18, (
+        f"cron hour is {hour_utc} UTC; target is 18:xx UTC (02:xx HKT) to "
+        "absorb GH Actions' multi-hour scheduled-job delay."
     )
 
 
