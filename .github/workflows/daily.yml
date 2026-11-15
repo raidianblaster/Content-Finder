@@ -1,14 +1,16 @@
 name: Daily AI digest
 
 on:
-  # 22:07 UTC = 06:07 Hong Kong (HKT, UTC+8)
-  # GitHub Actions queues scheduled jobs behind paid traffic, and the queue
-  # is heaviest at :00 and :30. Running at :30 was landing the digest around
-  # 07:27 HKT (≈57 min late). Off-peak minutes typically deliver in <15 min,
-  # so the digest now lands around 06:15–06:25 HKT. If you change this,
-  # avoid :00 and :30 — see tests/test_workflow_schedule.py.
+  # 18:07 UTC = 02:07 Hong Kong (HKT, UTC+8)
+  # GitHub doesn't guarantee start times for scheduled jobs on the free tier.
+  # A 22:07 UTC cron was starting 3-6 hours late by Nov 2026 (09:40-12:00
+  # HKT), so we schedule early and let the queue delay land the digest
+  # around 05:00-08:00 HKT. The look-back window is relative to when the job
+  # actually runs, so news is still current at run time. Keep the hour in
+  # 16-21 UTC (16:00 UTC = 00:00 HKT) and avoid minutes :00 and :30 (peak
+  # congestion) - see tests/test_workflow_schedule.py.
   schedule:
-    - cron: "7 22 * * *"
+    - cron: "7 18 * * *"
   workflow_dispatch:  # also run manually from the Actions tab
 
 permissions:
