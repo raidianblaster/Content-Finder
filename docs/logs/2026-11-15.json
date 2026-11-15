@@ -1,0 +1,1371 @@
+{
+  "date": "2026-11-15",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 84,
+    "after_keyword_filter": 31,
+    "after_dedupe": 24,
+    "after_ttl_filter": 21,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 5,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 6,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 19,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 14,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+      "summary": "",
+      "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+      "source": "Hugging Face Blog",
+      "score": 2.62,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8108,
+        "recency_term": 1.6217,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6216861399041007
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "XYBench: Helping with the problem behind the question",
+      "summary": "",
+      "url": "https://huggingface.co/blog/allenai/xybench",
+      "source": "Hugging Face Blog",
+      "score": 2.61,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8051,
+        "recency_term": 1.6102,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6101649758432544
+      },
+      "age_days": 1.4
+    },
+    {
+      "title": "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem",
+      "summary": "",
+      "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+      "source": "Hugging Face Blog",
+      "score": 2.58,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7875,
+        "recency_term": 1.575,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.5750029387698414
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "datasette-vega 0.7",
+      "summary": "Release: datasette-vega 0.7 A new release of Datasette's longest untouched plugin, for rendering charts (using Vega-Lite ) against data in a table or custom query. The last release was in July 2018! I finally bumped it for compatibility with the latest Datasette alphas, plus some cosmetic tweaks to make it work better with Datasette Lite . (Datasette Lite just gained the ability to run JavaScript plugins like this! I'll write more about that soon.) Since it works with Datasette Lite, the live de",
+      "url": "https://simonwillison.net/2026/Nov/14/datasette-vega/",
+      "source": "Simon Willison",
+      "score": 4.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9486,
+        "recency_term": 1.8972,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.897182171498016
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "datasette-cluster-map 0.19",
+      "summary": "Release: datasette-cluster-map 0.19 One of the oldest Datasette plugins, and still one of my favorites. It now works with Datasette 1.0a42, and depends on the new datasette-leaflet to ensure OpenStreetMap tiles are requested with a referrer header. Here's a map of power plants owned by California's PG&amp;E , also demonstrating Datasette's recently redesigned facets : Tags: datasette , geospatial , openstreetmap",
+      "url": "https://simonwillison.net/2026/Nov/13/datasette-cluster-map/",
+      "source": "Simon Willison",
+      "score": 4.68,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8408,
+        "recency_term": 1.6816,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.681626615876323
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "datasette-leaflet 0.3",
+      "summary": "Release: datasette-leaflet 0.3 OpenStreetMap have a very reasonable policy that hits to their hosted tile server should send a referrer header . Datasette table pages used the Referrer-Policy: no-referrer HTTP header, causing plugins that loaded tiles from OpenStreetMap to violate that policy. datasette-leaflet is the plugin that loads a bundled Leaflet so other Datasette plugins can depend on it. It now sets the referrer policy on the tile requests themselves to strict-origin-when-cross-origin ",
+      "url": "https://simonwillison.net/2026/Nov/13/datasette-leaflet/",
+      "source": "Simon Willison",
+      "score": 4.68,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8377,
+        "recency_term": 1.6753,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.675307171359127
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Source: Applied Digital has asked tenants like Oracle and Meta for billions in guarantees since at least last year to secure power before finalizing leases (Bloomberg)",
+      "summary": "Bloomberg : Source: Applied Digital has asked tenants like Oracle and Meta for billions in guarantees since at least last year to secure power before finalizing leases &nbsp; &mdash;&nbsp; Tech giants chasing the infinite promise of AI are finding themselves increasingly on the hook for something far earthier &mdash; the electrical grid.",
+      "url": "https://www.techmeme.com/261114/p21#a261114p21",
+      "source": "Techmeme",
+      "score": 2.98,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9898,
+        "recency_term": 1.9797,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9796987056845237
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Unlike other larger-than-life tech founders, Jensen Huang lacked super-voting shares in Nvidia, making it easier for him to lose control of the company (Forbes)",
+      "summary": "Forbes : Unlike other larger-than-life tech founders, Jensen Huang lacked super-voting shares in Nvidia, making it easier for him to lose control of the company &nbsp; &mdash;&nbsp; This voice experience is generated by AI.&nbsp; Learn more.&nbsp; &mdash;&nbsp; Many tech CEOs including Mark Zuckerberg, Michael Dell and Evan Spiegel have majority voting power.",
+      "url": "https://www.techmeme.com/261114/p20#a261114p20",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9779,
+        "recency_term": 1.9559,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9558858749239416
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "USD-pegged stablecoins are taking a growing share of Latin America's crypto activity, serving as a store of value and an efficient cross-border payment system (Maria Clara Cobo/Bloomberg)",
+      "summary": "Maria Clara Cobo / Bloomberg : USD-pegged stablecoins are taking a growing share of Latin America's crypto activity, serving as a store of value and an efficient cross-border payment system &nbsp; &mdash;&nbsp; Stablecoins are proving useful not only as a store of value but as a payment system &mdash; including for users who don't know anything about the blockchain.",
+      "url": "https://www.techmeme.com/261114/p19#a261114p19",
+      "source": "Techmeme",
+      "score": 2.94,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9701,
+        "recency_term": 1.9401,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9401219859656083
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Letter: Altimeter's Brad Gerstner and Atreides's Gavin Baker urge Nvidia's board to consider \"the potential return of Jensen Huang\"; they own $2.13B in Nvidia (Katie Tarasov/CNBC)",
+      "summary": "Katie Tarasov / CNBC : Letter: Altimeter's Brad Gerstner and Atreides's Gavin Baker urge Nvidia's board to consider &ldquo;the potential return of Jensen Huang&rdquo;; they own $2.13B in Nvidia &nbsp; &mdash;&nbsp; Two major Nvidia shareholders are calling on the board of directors to weigh all options for the company's future leadership &hellip;",
+      "url": "https://www.techmeme.com/261114/p18#a261114p18",
+      "source": "Techmeme",
+      "score": 2.93,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.965,
+        "recency_term": 1.9301,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.930092223991402
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "A petition to reinstate Jensen Huang as Nvidia CEO tops 100K signatures, including Elon Musk, Tim Sweeney, and Garry Tan; organizers say 5K+ Nvidia staff signed (Lauren Edmonds/Business Insider)",
+      "summary": "Lauren Edmonds / Business Insider : A petition to reinstate Jensen Huang as Nvidia CEO tops 100K signatures, including Elon Musk, Tim Sweeney, and Garry Tan; organizers say 5K+ Nvidia staff signed &nbsp; &mdash;&nbsp; Some people aren't ready to let former CEO Jensen Huang go.&nbsp; &mdash;&nbsp; A petition to reinstate Huang as Nvidia's CEO has some 97,000 signatures &hellip;",
+      "url": "https://www.techmeme.com/261114/p17#a261114p17",
+      "source": "Techmeme",
+      "score": 2.92,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9597,
+        "recency_term": 1.9194,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9194209276190475
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Databento, which offers market data APIs and says it has contracts with five of the six largest frontier AI labs, raised a $100M Series C at a $1.1B valuation (FinTech Global)",
+      "summary": "FinTech Global : Databento, which offers market data APIs and says it has contracts with five of the six largest frontier AI labs, raised a $100M Series C at a $1.1B valuation &nbsp; &mdash;&nbsp; Databento, a platform supplying market data to the modern financial industry, has secured $100m in a Series C round that values the business at $1.1bn.",
+      "url": "https://www.techmeme.com/261114/p16#a261114p16",
+      "source": "Techmeme",
+      "score": 2.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9571,
+        "recency_term": 1.9142,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9142291286111113
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Sean Duffy blames Friday's FAA outage on copper-to-fiber wiring work at a remote facility, saying contractor L3Harris may have installed a \"faulty router\" (Joseph Pisani/Wall Street Journal)",
+      "summary": "Joseph Pisani / Wall Street Journal : Sean Duffy blames Friday's FAA outage on copper-to-fiber wiring work at a remote facility, saying contractor L3Harris may have installed a &ldquo;faulty router&rdquo; &nbsp; &mdash;&nbsp; Work at a single remote location caused instability that led authorities to order nationwide groundstop; airlines continue to cancel flights as they rush to reset",
+      "url": "https://www.techmeme.com/261114/p14#a261114p14",
+      "source": "Techmeme",
+      "score": 2.9,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9492,
+        "recency_term": 1.8984,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.898438784623016
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Trump Media faces a Nov. 30 deadline to repay up to $1B in convertible bonds sold last May to fund a \"bitcoin treasury,\" as its shares are down 60+% this year (Financial Times)",
+      "summary": "Financial Times : Trump Media faces a Nov. 30 deadline to repay up to $1B in convertible bonds sold last May to fund a &ldquo;bitcoin treasury,&rdquo; as its shares are down 60+% this year &nbsp; &mdash;&nbsp; Plunge in shares and cryptocurrency prices could force Truth Social owner to sell assets or take on costly new debt",
+      "url": "https://www.techmeme.com/261114/p13#a261114p13",
+      "source": "Techmeme",
+      "score": 2.89,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9452,
+        "recency_term": 1.8904,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8904096840277775
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Tesla's Cybercab Autonomy Subscription agreement states the vehicles will only work inside Tesla-enabled geofences, which the company can change at any time (Fred Lambert/Electrek)",
+      "summary": "Fred Lambert / Electrek : Tesla's Cybercab Autonomy Subscription agreement states the vehicles will only work inside Tesla-enabled geofences, which the company can change at any time &nbsp; &mdash;&nbsp; Tesla has posted the agreement that comes with its $29,990 Cybercab, and it's even worse than the order page suggested.",
+      "url": "https://www.techmeme.com/261114/p12#a261114p12",
+      "source": "Techmeme",
+      "score": 2.88,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9419,
+        "recency_term": 1.8837,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8837463241732806
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Italy's data protection agency fines Meta \u20ac805M for allegedly accessing Android users' photos and videos without their consent or informing them (Reuters)",
+      "summary": "Reuters : Italy's data protection agency fines Meta &euro;805M for allegedly accessing Android users' photos and videos without their consent or informing them &nbsp; &mdash;&nbsp; Italy's data protection agency said on Saturday it had fined Meta Platforms (META.O) &euro;805 million ($887 million) &hellip;",
+      "url": "https://www.techmeme.com/261114/p11#a261114p11",
+      "source": "Techmeme",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9368,
+        "recency_term": 1.8735,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.873547911392196
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "How Marco Rubio helped topple Jensen Huang; source: Rubio used a CIA report about Alice Huang to write his own, recasting CIA reporting in more assertive terms (Washington Post)",
+      "summary": "Washington Post : How Marco Rubio helped topple Jensen Huang; source: Rubio used a CIA report about Alice Huang to write his own, recasting CIA reporting in more assertive terms &nbsp; &mdash;&nbsp; Rubio's intervention helped topple one of Washington's most influential corporate voices on China, giving momentum to officials pushing for tougher restrictions.",
+      "url": "https://www.techmeme.com/261114/p10#a261114p10",
+      "source": "Techmeme",
+      "score": 2.87,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9328,
+        "recency_term": 1.8657,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8656808478306877
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "The Swiss city of Lugano is trying to reinvent itself as a crypto hub and boost its economy by launching its own token LVGA, partnering with Tether, and more (Financial Times)",
+      "summary": "Financial Times : The Swiss city of Lugano is trying to reinvent itself as a crypto hub and boost its economy by launching its own token LVGA, partnering with Tether, and more &nbsp; &mdash;&nbsp; Lugano bets digital assets and a joint venture with the stablecoin giant can boost its economy, but some warn of dangers",
+      "url": "https://www.techmeme.com/261114/p9#a261114p9",
+      "source": "Techmeme",
+      "score": 2.84,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9184,
+        "recency_term": 1.8368,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8368382551719575
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Microsoft says all Microsoft 365 products are operational, ending an outage that disrupted governments, traders, hospitals, and businesses around the world (Bloomberg)",
+      "summary": "Bloomberg : Microsoft says all Microsoft 365 products are operational, ending an outage that disrupted governments, traders, hospitals, and businesses around the world &nbsp; &mdash;&nbsp; Microsoft Corp. said access has been fully restored to its flagship software, ending an outage that paralyzed government offices, traders and businesses around the world.",
+      "url": "https://www.techmeme.com/261114/p8#a261114p8",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8945,
+        "recency_term": 1.789,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.78897119161045
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Sources: despite Nvidia's 20+ years of business in China, Jensen Huang struggled to gain access to policymakers driving Beijing's chip self-sufficiency campaign (Eleanor Olcott/Financial Times)",
+      "summary": "Eleanor Olcott / Financial Times : Sources: despite Nvidia's 20+ years of business in China, Jensen Huang struggled to gain access to policymakers driving Beijing's chip self-sufficiency campaign &nbsp; &mdash;&nbsp; Former Nvidia chief executive facing intense scrutiny over ties to Beijing&nbsp; &mdash;&nbsp; In January 2024, Nvidia's chief executive Jensen Huang ended &hellip;",
+      "url": "https://www.techmeme.com/261114/p7#a261114p7",
+      "source": "Techmeme",
+      "score": 2.78,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8911,
+        "recency_term": 1.7823,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7822979111111112
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "2026.46: The End of Jensen",
+      "summary": "The best Stratechery content from the week of November 9, 2026, including the shocking demise of Jensen Huang; enterprise, consumer and Intel; and professional basketbal.",
+      "url": "https://stratechery.com/2026/the-end-of-jensen/",
+      "source": "Stratechery",
+      "score": 3.62,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8108,
+        "recency_term": 1.6216,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.6215571703306875
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Sharp Tech on Video: Nvidia After Jensen Huang, Ominous News for American AI, D.C. Gets Its Revenge",
+      "summary": "Sharp Tech is, for the first time, available on video. You have three ways to consume it: YouTube, Spotify, and here on Stratechery",
+      "url": "https://stratechery.com/2026/sharp-tech-on-video-nvidia-after-jensen-huang-ominous-news-for-american-ai-d-c-gets-its-revenge/",
+      "source": "Stratechery",
+      "score": 3.45,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7262,
+        "recency_term": 1.4525,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.4524830962136246
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "National Weather Service reports nationwide radar website outage amid FAA stop",
+      "summary": "62 points \u00b7 16 comments \u00b7 query: RAG",
+      "url": "https://www.news9.com/oklahoma-city-news/national-weather-service-reports-nationwide-radar-website-outage",
+      "source": "Hacker News",
+      "score": 2.29,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8362,
+        "recency_term": 1.6724,
+        "src_bonus": 0,
+        "hn_bonus": 0.62,
+        "total": 2.292387196706349
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "The 'europoors' rants reflect an American insecurity",
+      "summary": "57 points \u00b7 103 comments \u00b7 query: RAG",
+      "url": "https://davekeating.substack.com/p/the-europoors-rants-reflect-an-american",
+      "source": "Hacker News",
+      "score": 2.47,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9522,
+        "recency_term": 1.9044,
+        "src_bonus": 0,
+        "hn_bonus": 0.57,
+        "total": 2.474411006193783
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "'The Netherlands is negotiating dismantling the International Criminal Court'",
+      "summary": "159 points \u00b7 70 comments \u00b7 query: RAG",
+      "url": "https://rightsforum.org/en/diplomatic-sources-the-netherlands-is-negotiating-the-dismantling-of-the-international-criminal-court/",
+      "source": "Hacker News",
+      "score": 3.09,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7508,
+        "recency_term": 1.5017,
+        "src_bonus": 0,
+        "hn_bonus": 1.59,
+        "total": 3.091679524672619
+      },
+      "age_days": 1.7
+    },
+    {
+      "title": "Italy fines Meta \u20ac805M over photo privacy",
+      "summary": "131 points \u00b7 61 comments \u00b7 query: RAG",
+      "url": "https://www.rapporteur.com/news/italy-fines-meta-880mn-over-photo-privacy-authority/",
+      "source": "Hacker News",
+      "score": 3.19,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9418,
+        "recency_term": 1.8835,
+        "src_bonus": 0,
+        "hn_bonus": 1.31,
+        "total": 3.193508228343254
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Jensen Huang Admitted He Was Facing an \"Avalanche\" of Excess Wafers and Memory",
+      "summary": "73 points \u00b7 79 comments \u00b7 query: eval",
+      "url": "https://respawnfirst.com/before-resigning-jensen-huang-admitted-he-was-facing-an-avalanche-of-excess-wafers-and-memory-new-report-sheds-more-light-on-the-gpu-ram-crisis/",
+      "source": "Hacker News",
+      "score": 2.29,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7819,
+        "recency_term": 1.5638,
+        "src_bonus": 0,
+        "hn_bonus": 0.73,
+        "total": 2.2937793923280423
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Tech companies are trying to shift the concept of privacy again",
+      "summary": "464 points \u00b7 174 comments \u00b7 query: RAG",
+      "url": "https://www.eff.org/deeplinks/2026/11/tech-companies-are-trying-shift-entire-concept-privacy-again",
+      "source": "Hacker News",
+      "score": 5.84,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9225,
+        "recency_term": 1.8449,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.84492026530754
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Found: A protein that drives ageing without unleashing inflammation",
+      "summary": "251 points \u00b7 90 comments \u00b7 query: RAG",
+      "url": "https://www.nature.com/articles/d41586-026-03638-3",
+      "source": "Hacker News",
+      "score": 4.15,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8192,
+        "recency_term": 1.6385,
+        "src_bonus": 0,
+        "hn_bonus": 2.51,
+        "total": 4.1484916938459
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "PyPI's redesigned project pages with clearer security signals are now live",
+      "summary": "203 points \u00b7 93 comments \u00b7 query: RAG",
+      "url": "https://blog.pypi.org/posts/2026-11-06-ui-updates-complete/",
+      "source": "Hacker News",
+      "score": 3.91,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9398,
+        "recency_term": 1.8797,
+        "src_bonus": 0,
+        "hn_bonus": 2.03,
+        "total": 3.909665635608466
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "CERN Built the Large Hadron Collider's Next-Gen Magnets",
+      "summary": "90 points \u00b7 10 comments \u00b7 query: RAG",
+      "url": "https://spectrum.ieee.org/large-hadron-collider-superconducting-magnets",
+      "source": "Hacker News",
+      "score": 2.48,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7895,
+        "recency_term": 1.5791,
+        "src_bonus": 0,
+        "hn_bonus": 0.9,
+        "total": 2.4790505562103173
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Monkey Island: all 13 versions side by side",
+      "summary": "466 points \u00b7 147 comments \u00b7 query: RAG",
+      "url": "https://monkeyisland.pages.dev/",
+      "source": "Hacker News",
+      "score": 5.75,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8726,
+        "recency_term": 1.7453,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 5.745267487397487
+      },
+      "age_days": 0.9
+    },
+    {
+      "title": "Ggml v1.0.0",
+      "summary": "399 points \u00b7 67 comments \u00b7 query: RAG",
+      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
+      "source": "Hacker News",
+      "score": 5.71,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8612,
+        "recency_term": 1.7224,
+        "src_bonus": 0,
+        "hn_bonus": 3.99,
+        "total": 5.712446720175265
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Lonewolf 0.3 \u2013 A standalone XMPP server written in Rust",
+      "summary": "156 points \u00b7 55 comments \u00b7 query: RAG",
+      "url": "https://github.com/lonewolf-im/lonewolf/releases/tag/v0.3.0",
+      "source": "Hacker News",
+      "score": 3.14,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7898,
+        "recency_term": 1.5796,
+        "src_bonus": 0,
+        "hn_bonus": 1.56,
+        "total": 3.1396259529398147
+      },
+      "age_days": 1.5
+    },
+    {
+      "title": "Dartmouth (Guarini) will not admit math PhD cohort this year",
+      "summary": "80 points \u00b7 28 comments \u00b7 query: RAG",
+      "url": "https://www.thedartmouth.com/article/2026/11/gandhi-fagell-guarini-will-not-admit-math-ph-d-cohort-this-year",
+      "source": "Hacker News",
+      "score": 2.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9619,
+        "recency_term": 1.9239,
+        "src_bonus": 0,
+        "hn_bonus": 0.8,
+        "total": 2.723871984652778
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "How to Create Your Own Decentralized Messenger Protocol",
+      "summary": "56 points \u00b7 11 comments \u00b7 query: RAG",
+      "url": "https://karboosx.net/post/5j7jdDM3/how-to-create-your-own-decentralized-messenger-protocol",
+      "source": "Hacker News",
+      "score": 2.44,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9418,
+        "recency_term": 1.8837,
+        "src_bonus": 0,
+        "hn_bonus": 0.56,
+        "total": 2.4436735719212965
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Perplexity Decider v1.3: Training, eval, and use cases",
+      "summary": "144 points \u00b7 26 comments \u00b7 query: eval",
+      "url": "https://www.perplexity.ai/hub/blog/perplexity-decider",
+      "source": "Hacker News",
+      "score": 3.08,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8192,
+        "recency_term": 1.6384,
+        "src_bonus": 0,
+        "hn_bonus": 1.44,
+        "total": 3.0783792597222224
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "The avalanche that hit math is coming for AI development",
+      "summary": "Why I now expect superintelligence by 2030",
+      "url": "https://www.dwarkesh.com/p/rsi",
+      "source": "Dwarkesh Podcast",
+      "score": 3.63,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8145,
+        "recency_term": 1.6291,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 3.629067090376984
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "When Will AI Automate AI Research? The Timeline Explained",
+      "summary": "Why forecasters now think AI could match top AI researchers within a few years, and what that implies for superintelligence timelines.",
+      "url": "https://www.mindstudio.ai/blog/ai-automating-ai-research-timeline/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857411309523
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "AI and Math: From Broken Arithmetic to a Millennium Prize Problem",
+      "summary": "How AI models went from failing basic arithmetic in 2023 to winning IMO gold and solving a Millennium Prize problem by 2025.",
+      "url": "https://www.mindstudio.ai/blog/ai-solving-math-olympiad-millennium-problems/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.692985741087963
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Edge0-145B: How a 145B-Parameter Model Fits on One RTX 5090",
+      "summary": "Edge0-145B packs 145 billion parameters into 24GB VRAM using native 4-bit quantization and a sparse MoE design. Here's how it works.",
+      "url": "https://www.mindstudio.ai/blog/edge0-145b-nvfp4-consumer-gpu/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857410515872
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Edge0-145B NVFP4: A 145B Agent Model on One RTX 5090",
+      "summary": "Edge0-145B is a 145B-parameter sparse MoE model quantized to NVFP4, built to run locally on a single 24GB consumer GPU for agent tasks.",
+      "url": "https://www.mindstudio.ai/blog/edge0-145b-nvfp4-local-model/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857410119047
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Local AI GPU Prices: Is the Hardware Bubble Finally Popping?",
+      "summary": "High-end GPU prices for local AI are dipping while AMD cards climb. Here's what the latest second-hand market data shows and what it means.",
+      "url": "https://www.mindstudio.ai/blog/local-ai-gpu-prices-november/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857409722222
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Can Nvidia Keep Its Customers Without Jensen Huang?",
+      "summary": "Jensen Huang's exit puts Nvidia's CUDA moat, chip financing deals, and political clout to the test. Here's what's actually at risk.",
+      "url": "https://www.mindstudio.ai/blog/nvidia-without-jensen-huang-customers/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857409325397
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "How to Run Zonos 3 Mini TTS Locally on Your Own GPU",
+      "summary": "Step-by-step look at self-hosting Zyphra's Zonos 3 Mini TTS model locally, covering VRAM needs, architecture, and setup commands.",
+      "url": "https://www.mindstudio.ai/blog/run-zonos-3-mini-locally/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.692985740896164
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Software-Only Singularity vs. a Spark: Two Takes on AI Takeoff",
+      "summary": "What happens once AI automates its own research? A look at the 'software-only singularity' and 'spark' scenarios for AI takeoff speed.",
+      "url": "https://www.mindstudio.ai/blog/software-only-singularity-explained/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.6929857408564817
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Zonos 3 Mini TTS Review: 43 Languages, Voice Cloning, Hands-On Test",
+      "summary": "Hands-on testing of Zyphra's Zonos 3 Mini text-to-speech model across a dozen languages, checking voice cloning quality and local GPU requirements.",
+      "url": "https://www.mindstudio.ai/blog/zonos-3-mini-tts-review/",
+      "source": "MindStudio",
+      "score": 1.69,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.692985740813492
+      },
+      "age_days": 1.1
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+      "summary": "493 points \u00b7 390 comments \u00b7 query: Claude",
+      "url": "https://status.claude.com/incidents/nn11wk485zfn",
+      "source": "Hacker News",
+      "score": 7.53,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.765,
+        "recency_term": 1.5299,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.529933489656084
+      },
+      "age_days": 1.6,
+      "first_seen": "2026-11-14"
+    },
+    {
+      "title": "Introducing ChatGPT Wallet",
+      "summary": "Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "source": "OpenAI News",
+      "score": 6.59,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7929,
+        "recency_term": 1.5858,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.585842881114418
+      },
+      "age_days": 1.4,
+      "first_seen": "2026-11-14"
+    },
+    {
+      "title": "Shield helps technicians hand off legacy portal work with OpenAI",
+      "summary": "Shield uses OpenAI to help IT technicians hand off work in legacy portals. Its Forge agents navigate systems so technicians can focus on issues needing their judgment.",
+      "url": "https://openai.com/business/customer-stories/shield",
+      "source": "OpenAI News",
+      "score": 6.5,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7513,
+        "recency_term": 1.5025,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 6.502509547728175
+      },
+      "age_days": 1.7,
+      "first_seen": "2026-11-14"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Show HN: A terminal-native idle factory game, written in Rust with ratatui",
+      "summary": "137 points \u00b7 28 comments \u00b7 query: AI agents",
+      "url": "https://gitlab.com/snipedbywifi/terminactory",
+      "source": "Hacker News",
+      "score": 6.23,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9304,
+        "recency_term": 1.8608,
+        "src_bonus": 0,
+        "hn_bonus": 1.37,
+        "total": 6.2308230396759265
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Security Agencies Worldwide Found to Use Ad-Based Surveillance System",
+      "summary": "143 points \u00b7 14 comments \u00b7 query: agentic",
+      "url": "https://citizenlab.ca/security-agencies-worldwide-found-to-use-ad-based-surveillance-system/",
+      "source": "Hacker News",
+      "score": 6.15,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.86,
+        "recency_term": 1.7199,
+        "src_bonus": 0,
+        "hn_bonus": 1.43,
+        "total": 6.149907034338624
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Show HN: Agweb \u2013 a browser for agents that stays out of your way",
+      "summary": "87 points \u00b7 25 comments \u00b7 query: agentic",
+      "url": "https://github.com/paul-nameless/agweb",
+      "source": "Hacker News",
+      "score": 5.73,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9306,
+        "recency_term": 1.8613,
+        "src_bonus": 0,
+        "hn_bonus": 0.87,
+        "total": 5.73127938879299
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Show HN: Fursoy \u2013 Out-of-order RV64IMAFDV core in SystemVerilog (Linux 6.6)",
+      "summary": "70 points \u00b7 23 comments \u00b7 query: MCP",
+      "url": "https://github.com/FURSOY/fursoy-cpu",
+      "source": "Hacker News",
+      "score": 5.56,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9305,
+        "recency_term": 1.861,
+        "src_bonus": 0,
+        "hn_bonus": 0.7,
+        "total": 5.560955314675926
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Ask HN: What are the most useful, concrete AI skills to independently learn?",
+      "summary": "78 points \u00b7 49 comments \u00b7 query: AI agents",
+      "url": "https://news.ycombinator.com/item?id=50494696",
+      "source": "Hacker News",
+      "score": 5.56,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8878,
+        "recency_term": 1.7757,
+        "src_bonus": 0,
+        "hn_bonus": 0.78,
+        "total": 5.5556643093452385
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "Claude Is Down",
+      "summary": "199 points \u00b7 179 comments \u00b7 query: Claude",
+      "url": "https://status.claude.com/history",
+      "source": "Hacker News",
+      "score": 5.52,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.7652,
+        "recency_term": 1.5303,
+        "src_bonus": 0,
+        "hn_bonus": 1.99,
+        "total": 5.520317087093254
+      },
+      "age_days": 1.6
+    },
+    {
+      "title": "The Claude Delusion",
+      "summary": "145 points \u00b7 182 comments \u00b7 query: Claude",
+      "url": "https://www.netmeister.org/blog/claude-delusion.html",
+      "source": "Hacker News",
+      "score": 5.3,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9275,
+        "recency_term": 1.8549,
+        "src_bonus": 0,
+        "hn_bonus": 1.45,
+        "total": 5.304946716693122
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Serving GLM-5.3 at 607.8 tok/s across two Nvidia DGX stations with vLLM",
+      "summary": "128 points \u00b7 65 comments \u00b7 query: LLM",
+      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
+      "source": "Hacker News",
+      "score": 5.14,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9308,
+        "recency_term": 1.8615,
+        "src_bonus": 0,
+        "hn_bonus": 1.28,
+        "total": 5.14152079073082
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Claude Meetings",
+      "summary": "109 points \u00b7 87 comments \u00b7 query: Claude",
+      "url": "https://claude.com/resources/articles/claude-meetings",
+      "source": "Hacker News",
+      "score": 4.77,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.8385,
+        "recency_term": 1.677,
+        "src_bonus": 0,
+        "hn_bonus": 1.09,
+        "total": 4.76696391239418
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Edge0-145B Benchmarks: Terminal-Bench, GPQA, HLE, and IFBench Explained",
+      "summary": "Edge0-145B's NVFP4 build hits 86.5 on Terminal-Bench 2.1. Here's how it stacks up on GPQA-Diamond, HLE, and IFBench, and the NVFP4 vs Q3_K tradeoff.",
+      "url": "https://www.mindstudio.ai/blog/edge0-145b-benchmark-scores/",
+      "source": "MindStudio",
+      "score": 2.69,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.692985737744709
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Run Qwen3.8-27B Faster Locally With Speculative Decoding",
+      "summary": "How to speed up Qwen3.8-27B locally using DSpine or DFlash2 draft models with SGLang, plus VRAM needs and benchmark numbers.",
+      "url": "https://www.mindstudio.ai/blog/run-qwen-27b-faster-speculative-decoding/",
+      "source": "MindStudio",
+      "score": 2.69,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.692985737705026
+      },
+      "age_days": 1.1
+    }
+  ],
+  "final": [
+    {
+      "title": "Is Google Behind in the AI Coding Agent Race? The Data Says Yes, Sort Of",
+      "summary": "Google's Gemini 4 Hydrogen, Carbon, and Argon lag Anthropic and OpenAI on coding-agent benchmarks, even as Google wins on price and reach.",
+      "url": "https://www.mindstudio.ai/blog/is-google-behind-in-ai-coding-race/",
+      "source": "MindStudio",
+      "score": 10.69,
+      "score_components": {
+        "keyword": 9,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 10.69298573765873
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "datasette-llm 0.1a11",
+      "summary": "Release: datasette-llm 0.1a11 datasette-llm is the intermediate plugin for Datasette that supports configuring LLMs for use with other Datasette plugins. This release adds support for OpenAI-compatible endpoints, so you can configure Datasette to use an LLM hosted anywhere that talks the OpenAI pseudo-standard web protocol. This means that if you're running local models with LM Studio or Ollama or llama.cpp (which just hit v1.0.0 ) you can run Datasette via uvx like this: wget https://datasette.",
+      "url": "https://simonwillison.net/2026/Nov/14/datasette-llm/",
+      "source": "Simon Willison",
+      "score": 8.98,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.9893,
+        "recency_term": 1.9786,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 8.978594203191138
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "Show HN: Isometric SF \u2013 A pixel-art map of the SF Bay Area",
+      "summary": "249 points \u00b7 74 comments \u00b7 query: MCP",
+      "url": "https://isometricsf.com/",
+      "source": "Hacker News",
+      "score": 7.11,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8106,
+        "recency_term": 1.6213,
+        "src_bonus": 0,
+        "hn_bonus": 2.49,
+        "total": 7.111282695214948
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Brave Search API now accepts agentic payments via the x402 protocol",
+      "summary": "260 points \u00b7 151 comments \u00b7 query: agentic",
+      "url": "https://brave.com/blog/search-api-agentic-payments/",
+      "source": "Hacker News",
+      "score": 7.04,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.7223,
+        "recency_term": 1.4446,
+        "src_bonus": 0,
+        "hn_bonus": 2.6,
+        "total": 7.0445994941170635
+      },
+      "age_days": 1.9
+    },
+    {
+      "title": "Show HN: Live map of U.S. flights during tonight's FAA nationwide ground stop",
+      "summary": "211 points \u00b7 27 comments \u00b7 query: MCP",
+      "url": "https://grounds.top/",
+      "source": "Hacker News",
+      "score": 6.79,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.8423,
+        "recency_term": 1.6846,
+        "src_bonus": 0,
+        "hn_bonus": 2.11,
+        "total": 6.794582959672619
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "GPT-6 Cyber: Why OpenAI Built an AI It Won't Let You Use",
+      "summary": "GPT-6 Cyber found hundreds of real exploits and dozens of Firefox bugs, but OpenAI locked it to approved security teams only. Here's why.",
+      "url": "https://www.mindstudio.ai/blog/gpt6-cyber-openai-restricted-model/",
+      "source": "MindStudio",
+      "score": 5.69,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.692985737410714
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Open-source AI without Jensen",
+      "summary": "A decapitation. It&#8217;s time to rebuild.",
+      "url": "https://www.interconnects.ai/p/open-source-ai-without-jensen",
+      "source": "Interconnects (Lambert)",
+      "score": 4.84,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.9202,
+        "recency_term": 1.8405,
+        "src_bonus": 2,
+        "hn_bonus": 0.0,
+        "total": 4.840455975476191
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Jensen Huang's resignation is a setback for US open models, as his funding gave open-source developers time to find their footing and will very likely dry up (Nathan Lambert/Interconnects AI)",
+      "summary": "Nathan Lambert / Interconnects AI : Jensen Huang's resignation is a setback for US open models, as his funding gave open-source developers time to find their footing and will very likely dry up &nbsp; &mdash;&nbsp; A decapitation.&nbsp; It's time to rebuild. &hellip; Audio playback is not supported on your browser.&nbsp; Please upgrade.",
+      "url": "https://www.techmeme.com/261114/p15#a261114p15",
+      "source": "Techmeme",
+      "score": 3.91,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.9541,
+        "recency_term": 1.9083,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 3.9082701288425925
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "DSpine vs DFlash2: Which Speculative Decoding Draft Model Wins?",
+      "summary": "A hands-on H100 benchmark pits Tencent's DSpine against Z-Lab's DFlash2 on Qwen3.8-27B, comparing real tokens-per-second results.",
+      "url": "https://www.mindstudio.ai/blog/dspine-vs-dflash2-speculative-decoding/",
+      "source": "MindStudio",
+      "score": 2.69,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.8465,
+        "recency_term": 1.693,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.6929857372685184
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Anthropic upgrades Claude Code Projects to run parallel AI workers",
+      "summary": "98 points \u00b7 91 comments \u00b7 query: Anthropic",
+      "url": "https://claude.com/resources/articles/projects-redesigned",
+      "source": "Hacker News",
+      "score": 6.68,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.8493,
+        "recency_term": 1.6986,
+        "src_bonus": 0,
+        "hn_bonus": 0.98,
+        "total": 6.6785776684490745
+      },
+      "age_days": 1.1
+    }
+  ]
+}

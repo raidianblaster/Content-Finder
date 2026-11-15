@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-15",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://github.com/paul-nameless/agweb",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-focused browser tool from trusted developer addressing a core AI/agents use case; high relevance despite source cap."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50494696",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal Ask HN about concrete AI skills to learn; substantive community discussion directly relevant to AI practitioners."
+    },
+    {
+      "url": "https://www.netmeister.org/blog/claude-delusion.html",
+      "stage": "dropped_source_cap",
+      "reason": "Critical analysis of Claude capabilities by respected security researcher; substantive technical critique deserves coverage."
+    },
+    {
+      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
+      "stage": "dropped_source_cap",
+      "reason": "Nvidia technical post on serving large models with vLLM; practical AI infrastructure content from vendor authority."
+    },
+    {
+      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
+      "stage": "dropped_keyword",
+      "reason": "Major v1.0 release of foundational ML framework used across open-source AI; dropped despite clear relevance."
+    },
+    {
+      "url": "https://www.dwarkesh.com/p/rsi",
+      "stage": "dropped_keyword",
+      "reason": "Thoughtful analysis from Dwarkesh on AI development challenges and parallels to mathematical advances; substantive AI commentary."
+    },
+    {
+      "url": "https://stratechery.com/2026/the-end-of-jensen/",
+      "stage": "dropped_keyword",
+      "reason": "High-signal analysis from Ben Thompson on major AI industry shift (Nvidia leadership change); dropped despite clear relevance."
+    },
+    {
+      "url": "https://www.perplexity.ai/hub/blog/perplexity-decider",
+      "stage": "dropped_keyword",
+      "reason": "Perplexity product update on decision-making AI; relevant agent/AI capability announcement dropped likely by overly broad keyword filter."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://isometricsf.com/",
+      "reason": "Pixel-art map visualization; unrelated to AI/ML and low substantive value for regulated corporate AI environment."
+    },
+    {
+      "url": "https://grounds.top/",
+      "reason": "Live flight tracking during FAA ground stop; unrelated to AI/ML core pipeline scope despite technical merit."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt6-cyber-openai-restricted-model/",
+      "reason": "Speculative vendor analysis with unclear sourcing; not from primary sources and lacks substantive technical rigor."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/dspine-vs-dflash2-speculative-decoding/",
+      "reason": "Vendor benchmark comparison with limited signal; kept despite low score and vendor-promotional characteristics."
+    },
+    {
+      "url": "https://www.techmeme.com/261114/p15#a261114p15",
+      "reason": "Aggregated news headline with speculation on Jensen Huang resignation impact; low original analysis from secondary source."
+    }
+  ]
+}

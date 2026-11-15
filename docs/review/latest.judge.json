@@ -1,98 +1,68 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.14581",
+      "url": "https://github.com/paul-nameless/agweb",
       "stage": "dropped_source_cap",
-      "reason": "Substantive arXiv agents/evaluation research with high score (12.75) on tau2-bench LLM evaluation—core AI/agents relevance."
+      "reason": "Agent-focused browser tool from trusted developer addressing a core AI/agents use case; high relevance despite source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2610.25096",
+      "url": "https://news.ycombinator.com/item?id=50494696",
       "stage": "dropped_source_cap",
-      "reason": "Agentic RAG for enterprise workflows—directly relevant to agent systems with high score (12.75) from trusted arXiv source."
+      "reason": "High-signal Ask HN about concrete AI skills to learn; substantive community discussion directly relevant to AI practitioners."
     },
     {
-      "url": "https://arxiv.org/abs/2611.10224",
+      "url": "https://www.netmeister.org/blog/claude-delusion.html",
       "stage": "dropped_source_cap",
-      "reason": "Jais 3 Arabic-centric agentic AI—significant multilingual foundation model advance with score 12.75."
+      "reason": "Critical analysis of Claude capabilities by respected security researcher; substantive technical critique deserves coverage."
     },
     {
-      "url": "https://arxiv.org/abs/2604.02721",
+      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
       "stage": "dropped_source_cap",
-      "reason": "GrandCode competitive programming via agentic RL—novel benchmark application with score 11.75."
+      "reason": "Nvidia technical post on serving large models with vLLM; practical AI infrastructure content from vendor authority."
     },
     {
-      "url": "https://arxiv.org/abs/2611.11306",
-      "stage": "dropped_source_cap",
-      "reason": "ScrapeBench legal compliance evaluation for agents—critical governance/safety research with score 11.75."
+      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
+      "stage": "dropped_keyword",
+      "reason": "Major v1.0 release of foundational ML framework used across open-source AI; dropped despite clear relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2611.14571",
-      "stage": "dropped_source_cap",
-      "reason": "MechFoundry agentic engineering analysis—domain-specific agent application with score 9.75."
+      "url": "https://www.dwarkesh.com/p/rsi",
+      "stage": "dropped_keyword",
+      "reason": "Thoughtful analysis from Dwarkesh on AI development challenges and parallels to mathematical advances; substantive AI commentary."
     },
     {
-      "url": "https://arxiv.org/abs/2611.14935",
-      "stage": "dropped_source_cap",
-      "reason": "Bias audit across major LLMs (GPT, Claude, Gemini, Llama, DeepSeek, Qwen) in pain management—critical safety benchmark."
+      "url": "https://stratechery.com/2026/the-end-of-jensen/",
+      "stage": "dropped_keyword",
+      "reason": "High-signal analysis from Ben Thompson on major AI industry shift (Nvidia leadership change); dropped despite clear relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2611.15521",
-      "stage": "dropped_source_cap",
-      "reason": "DecArena large-scale decentralized multi-agent evaluation—important agent coordination benchmark with score 9.75."
-    },
-    {
-      "url": "https://arxiv.org/abs/2610.34872",
-      "stage": "dropped_source_cap",
-      "reason": "Conformal factuality in agentic RAG—key reliability work for production agents with score 10.75."
-    },
-    {
-      "url": "https://simonwillison.net/2026/Nov/12/llm-gemini/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison trusted source on llm-gemini tooling update—core practitioner resource."
+      "url": "https://www.perplexity.ai/hub/blog/perplexity-decider",
+      "stage": "dropped_keyword",
+      "reason": "Perplexity product update on decision-making AI; relevant agent/AI capability announcement dropped likely by overly broad keyword filter."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://ipo.anthropic.com/us/",
-      "reason": "Corporate IPO announcement is financial/market news, not substantive AI/ML research or product technical content."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/jensen-huang-nvidia-ouster-ai-impact/",
-      "reason": "Vendor blog speculating on Nvidia leadership change—editorial commentary lacking technical substance."
-    },
-    {
-      "url": "https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f",
-      "reason": "Headline-driven news about executive departure—business/leadership content without AI technical depth."
-    },
-    {
-      "url": "https://www.techmeme.com/261113/p37#a261113p37",
-      "reason": "Amazon data collection strategy news—corporate strategy/business reporting, not AI/ML research or innovation."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/claude-fable-5-2-creative-demos/",
-      "reason": "Vendor blog promotional content on demo videos—marketing-focused rather than substantive technical analysis."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/how-llms-are-trained-explained/",
-      "reason": "General educational overview of LLM training—basic explainer content without novel research or product news."
-    },
-    {
-      "url": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
-      "reason": "GitHub project showcase from small vendor—low-signal self-promotion via HN."
-    },
-    {
       "url": "https://isometricsf.com/",
-      "reason": "Pixel-art map visualization—completely unrelated to AI/ML, appears misrouted."
+      "reason": "Pixel-art map visualization; unrelated to AI/ML and low substantive value for regulated corporate AI environment."
     },
     {
-      "url": "https://openai.com/business/customer-stories/shield",
-      "reason": "Vendor customer success story—marketing content emphasizing business outcomes over technical innovation."
+      "url": "https://grounds.top/",
+      "reason": "Live flight tracking during FAA ground stop; unrelated to AI/ML core pipeline scope despite technical merit."
     },
     {
-      "url": "https://www.techmeme.com/261113/p25#a261113p25",
-      "reason": "Anthropic business/finance quote—market/competitive commentary without technical or research substance."
+      "url": "https://www.mindstudio.ai/blog/gpt6-cyber-openai-restricted-model/",
+      "reason": "Speculative vendor analysis with unclear sourcing; not from primary sources and lacks substantive technical rigor."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/dspine-vs-dflash2-speculative-decoding/",
+      "reason": "Vendor benchmark comparison with limited signal; kept despite low score and vendor-promotional characteristics."
+    },
+    {
+      "url": "https://www.techmeme.com/261114/p15#a261114p15",
+      "reason": "Aggregated news headline with speculation on Jensen Huang resignation impact; low original analysis from secondary source."
     }
   ]
 }
