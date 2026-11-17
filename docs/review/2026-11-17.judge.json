@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-17",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.17539",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agents paper on LLM-driven structure determination with clear relevance to agentic AI."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.17610",
+      "stage": "dropped_source_cap",
+      "reason": "Direct multi-agent LLM coordination research comparing key design tradeoffs for agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.17820",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive research on alignment within AI teams, relevant to regulated corporate environments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.17620",
+      "stage": "dropped_source_cap",
+      "reason": "Safety-focused empirical audit of persona steering effects in LLMs, critical for compliance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.18514",
+      "stage": "dropped_source_cap",
+      "reason": "Mechanistic interpretability approach to understanding and fixing LLM agent failures on real tasks."
+    },
+    {
+      "url": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive investigative analysis of OS telemetry collection on coding agents, timely regulatory concern."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/15/datasette-apps/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison update on agent-enabling tooling, trusted source on AI developer infrastructure."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/15/datasette-agent/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison release of agentic tooling, directly relevant to agent development ecosystem."
+    },
+    {
+      "url": "https://github.com/withcoral/coral",
+      "stage": "dropped_source_cap",
+      "reason": "Open-source agent gateway where agents author their own tools, substantive agent infrastructure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.17880",
+      "stage": "dropped_source_cap",
+      "reason": "Formally verified planning with runtime enforcement for safe LLM agents, critical for regulated use."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "reason": "Corporate partnership announcement lacks technical substance for AI/ML product team."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/qwen4-max-review/",
+      "reason": "Model review with vendor marketing framing rather than rigorous benchmarking."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-mythos-cyber-access/",
+      "reason": "Access guide blog post is tactical coverage lacking technical or strategic substance."
+    },
+    {
+      "url": "https://bruceroettgers.eu/blog/protomaps/",
+      "reason": "Self-hosted mapping infrastructure unrelated to AI/ML/agent development."
+    },
+    {
+      "url": "https://www.breck-mckye.com/blog/2026/11/software-is-breaking-down-at-a-systemic-level/",
+      "reason": "Generic software quality criticism lacking AI-specific analysis or substance."
+    }
+  ]
+}

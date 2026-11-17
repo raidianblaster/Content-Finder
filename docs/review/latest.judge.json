@@ -1,99 +1,78 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://github.com/paul-nameless/agweb",
+      "url": "https://arxiv.org/abs/2611.17539",
       "stage": "dropped_source_cap",
-      "reason": "High-signal Show HN about agent browser tool with solid score (5.68) likely dropped only due to source cap despite clear AI/agents relevance."
+      "reason": "High-signal agents paper on LLM-driven structure determination with clear relevance to agentic AI."
     },
     {
-      "url": "https://news.ycombinator.com/item?id=50494696",
+      "url": "https://arxiv.org/abs/2611.17610",
       "stage": "dropped_source_cap",
-      "reason": "Ask HN discussion on concrete AI skills is substantive learning content with score 5.41, likely dropped only by source cap."
+      "reason": "Direct multi-agent LLM coordination research comparing key design tradeoffs for agents."
     },
     {
-      "url": "https://www.netmeister.org/blog/claude-delusion.html",
+      "url": "https://arxiv.org/abs/2611.17820",
       "stage": "dropped_source_cap",
-      "reason": "Critical analysis of Claude capabilities from established source (score 5.12) appears dropped by source cap despite clear AI/LLM relevance."
+      "reason": "Substantive research on alignment within AI teams, relevant to regulated corporate environments."
     },
     {
-      "url": "https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/",
+      "url": "https://arxiv.org/abs/2611.17620",
       "stage": "dropped_source_cap",
-      "reason": "Technical LLM inference guide from official Nvidia developer blog (score 5.05) dropped despite strong relevance to AI deployment."
+      "reason": "Safety-focused empirical audit of persona steering effects in LLMs, critical for compliance."
     },
     {
-      "url": "https://claude.com/resources/articles/projects-redesigned",
-      "stage": "dropped_ttl",
-      "reason": "Official Anthropic announcement about Claude Code Projects parallel workers (score 6.45) is high-signal product news incorrectly filtered by age."
+      "url": "https://arxiv.org/abs/2611.18514",
+      "stage": "dropped_source_cap",
+      "reason": "Mechanistic interpretability approach to understanding and fixing LLM agent failures on real tasks."
     },
     {
-      "url": "https://simonwillison.net/2026/Nov/14/datasette-llm/",
-      "stage": "dropped_ttl",
-      "reason": "Simon Willison release post for datasette-llm (score 8.73) from trusted source dropped by TTL despite AI/LLM tooling relevance."
+      "url": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive investigative analysis of OS telemetry collection on coding agents, timely regulatory concern."
     },
     {
-      "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0",
-      "stage": "dropped_keyword",
-      "reason": "Major v1.0 release of foundational GGML ML inference library (score 5.47) likely over-filtered by keyword despite clear AI infrastructure relevance."
+      "url": "https://simonwillison.net/2026/Nov/15/datasette-apps/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison update on agent-enabling tooling, trusted source on AI developer infrastructure."
     },
     {
-      "url": "https://simonwillison.net/2026/Nov/14/datasette-vega/",
-      "stage": "dropped_keyword",
-      "reason": "Simon Willison datasette plugin release (score 4.65) from trusted data-tools author dropped despite relevance to AI/data tooling ecosystem."
+      "url": "https://simonwillison.net/2026/Nov/15/datasette-agent/",
+      "stage": "dropped_source_cap",
+      "reason": "Simon Willison release of agentic tooling, directly relevant to agent development ecosystem."
     },
     {
-      "url": "https://www.interconnects.ai/p/open-source-ai-without-jensen",
-      "stage": "dropped_ttl",
-      "reason": "Analysis from Interconnects (Lambert Wässer, trusted AI analyst) on open-source AI hardware economics (score 4.59) dropped by TTL filter."
+      "url": "https://github.com/withcoral/coral",
+      "stage": "dropped_source_cap",
+      "reason": "Open-source agent gateway where agents author their own tools, substantive agent infrastructure."
     },
     {
-      "url": "https://simonwillison.net/2026/Nov/13/datasette-cluster-map/",
-      "stage": "dropped_keyword",
-      "reason": "Simon Willison datasette-cluster-map release (score 4.43) from established trusted source dropped despite data-tools relevance."
+      "url": "https://arxiv.org/abs/2611.17880",
+      "stage": "dropped_source_cap",
+      "reason": "Formally verified planning with runtime enforcement for safe LLM agents, critical for regulated use."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
-      "reason": "Physics research announcement tangentially related to AI but lacks substantive AI/ML content; appears to be off-topic scientific content."
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "reason": "Corporate partnership announcement lacks technical substance for AI/ML product team."
     },
     {
-      "url": "https://openai.com/index/our-new-blog-for-science",
-      "reason": "Meta-announcement about a new science blog with no concrete AI/ML substance; low-signal organizational news."
+      "url": "https://www.mindstudio.ai/blog/qwen4-max-review/",
+      "reason": "Model review with vendor marketing framing rather than rigorous benchmarking."
     },
     {
-      "url": "https://www.techmeme.com/261115/p3#a261115p3",
-      "reason": "Venture funding announcement for Nebuly is vendor marketing/earnings news rather than substantive technical or product content."
+      "url": "https://www.mindstudio.ai/blog/anthropic-mythos-cyber-access/",
+      "reason": "Access guide blog post is tactical coverage lacking technical or strategic substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/agentic-operating-system-explained/",
-      "reason": "Vendor-authored explainer from MindStudio product platform; likely promotional content rather than independent analysis."
+      "url": "https://bruceroettgers.eu/blog/protomaps/",
+      "reason": "Self-hosted mapping infrastructure unrelated to AI/ML/agent development."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/forward-deployed-engineer-career-path/",
-      "reason": "Career advice post from vendor platform with limited substantive technical content; appears promotional rather than news-worthy."
-    },
-    {
-      "url": "https://www.techmeme.com/261115/p17#a261115p17",
-      "reason": "Amazon satellite launch failure is aerospace/infrastructure news unrelated to AI/ML content; should have been filtered."
-    },
-    {
-      "url": "https://citizenlab.ca/security-agencies-worldwide-found-to-use-ad-based-surveillance-system/",
-      "reason": "Security/surveillance story with marginal AI relevance; primarily cybersecurity/privacy rather than AI-focused content."
-    },
-    {
-      "url": "https://www.eff.org/deeplinks/2026/11/tech-companies-are-trying-shift-entire-concept-privacy-again",
-      "reason": "Privacy policy commentary with no specific AI angle; general tech policy rather than AI/ML substantive content."
-    },
-    {
-      "url": "https://gitlab.com/snipedbywifi/terminactory",
-      "stage": "final",
-      "reason": "Terminal factory game written in Rust is creative but unrelated to AI/ML news; entertainment project, not AI-relevant."
-    },
-    {
-      "url": "https://magazine.sebastianraschka.com/p/understanding-positional-embeddings",
-      "reason": "While technical, this is an educational explainer on standard ML concepts; lower-signal than novel research or product launches."
+      "url": "https://www.breck-mckye.com/blog/2026/11/software-is-breaking-down-at-a-systemic-level/",
+      "reason": "Generic software quality criticism lacking AI-specific analysis or substance."
     }
   ]
 }
