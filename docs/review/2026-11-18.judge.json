@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-18",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.19871",
+      "stage": "dropped_source_cap",
+      "reason": "High-scoring arXiv agent reasoning paper (12.76) on structured environment scaling for LLM agents—core agentic AI content that merits inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.18908",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv agent ethics/survival tradeoff paper (11.76)—substantive agentic content examining LLM agent behavior under constraints."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.19275",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv paper (11.76) on improving agent tool-calling via cueing and spotting—directly relevant to core agentic challenges."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.19982",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv agent systems paper (11.76) on multi-modal agents for observability—applied agentic AI with operational relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.20915",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv paper (11.76) on multi-LLM agent scheduling at edge—infrastructure-critical agentic research deserving visibility."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.20643",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv safety paper (9.76) on medical LLM fine-tuning preserving safety—high-impact for regulated deployment of agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.21053",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv paper (8.76) on System 1 agents for local/reliable/fast agentic AI—addresses key production deployment constraints."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.18612",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv safety paper (8.76) on harmful LLM agents in economic simulations—substantive agentic safety evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.20045",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv security paper (8.76) on deep research agent attack surface—critical for agentic AI security in regulated contexts."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.16591",
+      "stage": "dropped_source_cap",
+      "reason": "arXiv benchmark (7.76) 'Singularity-Bench: Can Agents Build Agents?'—directly addresses meta-agentic capabilities."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "reason": "Regional market expansion announcement with minimal technical content; low signal for a regulated AI/ML audience."
+    },
+    {
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-says-claude-mythos-slashed-software-work-to-onboard-amd-gpus-from-up-to-12-months-to-around-three-days-writing-almost-100-percent-of-kernels-autonomously-chips-away-at-nvidias-cuda-moat",
+      "reason": "Hardware vendor coverage dressed as AI news; primarily about GPU/CUDA competition rather than substantive ML research or capability."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-reward-hacking-hugging-face-incident/",
+      "reason": "Generic explainer on reward hacking with weak editorial signal; lacks depth or novel insight for a regulated AI product team."
+    },
+    {
+      "url": "https://www.zerohedge.com/political/anthropic-paid-rubios-ex-chief-staffs-firm-740000-after-jensen-memo-it-lobbied-his-nsc",
+      "reason": "Political/lobbying gossip from tabloid source; irrelevant to AI product governance or technical AI strategy."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50513451",
+      "reason": "Meta-discussion about HN scraping for scams; not AI/ML content, low signal noise."
+    },
+    {
+      "url": "https://nitter.cf/kevinnbass/status/2099621874279817638",
+      "reason": "Twitter commentary on regulatory capture via METR; speculative opinion without substantive technical or policy detail."
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/revolut",
+      "reason": "Customer case study marketing; lacks technical depth on AI/ML methods or findings for a regulated product context."
+    },
+    {
+      "url": "https://www.techmeme.com/261117/p55#a261117p55",
+      "reason": "Brief benchmark comparison gossip aggregation; insufficient depth for decision-making or technical evaluation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-rsi-threshold-ipo-filing/",
+      "reason": "Financial/IPO speculation commentary; not substantive AI safety or technical content for product governance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/box-architect-ai-agent-builder/",
+      "reason": "Vendor product announcement rewritten as news; marketing content rather than independent analysis or capability research."
+    }
+  ]
+}
