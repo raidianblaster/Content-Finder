@@ -1,98 +1,98 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.19871",
+      "url": "https://arxiv.org/abs/2611.21950",
       "stage": "dropped_source_cap",
-      "reason": "High-scoring arXiv agent reasoning paper (12.76) on structured environment scaling for LLM agents—core agentic AI content that merits inclusion."
+      "reason": "High-quality agent framework paper from arXiv with 9.77 score addressing scientist-centric agentic AI—core research area that merits inclusion."
     },
     {
-      "url": "https://arxiv.org/abs/2611.18908",
+      "url": "https://arxiv.org/abs/2611.21978",
       "stage": "dropped_source_cap",
-      "reason": "arXiv agent ethics/survival tradeoff paper (11.76)—substantive agentic content examining LLM agent behavior under constraints."
+      "reason": "Agent architecture paper scoring 9.77 on unbundling agent creation/execution—substantive agents research likely to interest PM audience."
     },
     {
-      "url": "https://arxiv.org/abs/2611.19275",
+      "url": "https://arxiv.org/abs/2611.22245",
       "stage": "dropped_source_cap",
-      "reason": "arXiv paper (11.76) on improving agent tool-calling via cueing and spotting—directly relevant to core agentic challenges."
+      "reason": "Agent memory inconsistency research (9.77 score) addresses critical safety concern in multi-agent LLM systems relevant to regulated environment."
     },
     {
-      "url": "https://arxiv.org/abs/2611.19982",
+      "url": "https://arxiv.org/abs/2611.22511",
       "stage": "dropped_source_cap",
-      "reason": "arXiv agent systems paper (11.76) on multi-modal agents for observability—applied agentic AI with operational relevance."
+      "reason": "LLM agent governance paper on content lineage/context (9.77 score) directly relevant to regulated corporate AI pipeline safety."
     },
     {
-      "url": "https://arxiv.org/abs/2611.20915",
+      "url": "https://arxiv.org/abs/2611.21956",
       "stage": "dropped_source_cap",
-      "reason": "arXiv paper (11.76) on multi-LLM agent scheduling at edge—infrastructure-critical agentic research deserving visibility."
+      "reason": "Security research showing LLM system prompt leakage (8.77 score) critical for regulated environment risk assessment."
     },
     {
-      "url": "https://arxiv.org/abs/2611.20643",
+      "url": "https://openai.com/index/inside-the-codex-sandbox",
       "stage": "dropped_source_cap",
-      "reason": "arXiv safety paper (9.76) on medical LLM fine-tuning preserving safety—high-impact for regulated deployment of agents."
+      "reason": "OpenAI technical post on code execution sandboxing (6.81 score) directly relevant to agent safety and deployment infrastructure."
     },
     {
-      "url": "https://arxiv.org/abs/2611.21053",
+      "url": "https://arxiv.org/abs/2611.22338",
       "stage": "dropped_source_cap",
-      "reason": "arXiv paper (8.76) on System 1 agents for local/reliable/fast agentic AI—addresses key production deployment constraints."
+      "reason": "Agent evaluation framework paper (7.77 score) for investment research—substantive contribution to agent reliability assessment methodology."
     },
     {
-      "url": "https://arxiv.org/abs/2611.18612",
+      "url": "https://arxiv.org/abs/2611.23045",
       "stage": "dropped_source_cap",
-      "reason": "arXiv safety paper (8.76) on harmful LLM agents in economic simulations—substantive agentic safety evaluation."
+      "reason": "ForecastGym benchmark for forecasting agents (7.77 score) provides controlled evaluation framework relevant to agent testing."
     },
     {
-      "url": "https://arxiv.org/abs/2611.20045",
+      "url": "https://arxiv.org/abs/2611.22291",
       "stage": "dropped_source_cap",
-      "reason": "arXiv security paper (8.76) on deep research agent attack surface—critical for agentic AI security in regulated contexts."
+      "reason": "Agent testing paper 'When the World Is the Test Suite' (6.77 score) addresses physical world agent validation—emerging critical concern."
     },
     {
-      "url": "https://arxiv.org/abs/2611.16591",
+      "url": "https://arxiv.org/abs/2611.22973",
       "stage": "dropped_source_cap",
-      "reason": "arXiv benchmark (7.76) 'Singularity-Bench: Can Agents Build Agents?'—directly addresses meta-agentic capabilities."
+      "reason": "VITAL framework for validating agentic AI in pharma/clinical trials (6.77 score)—regulatory validation framework directly applicable to regulated corporate environment."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://openai.com/index/introducing-openai-for-chile",
-      "reason": "Regional market expansion announcement with minimal technical content; low signal for a regulated AI/ML audience."
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-early-reviews/",
+      "reason": "Vendor blog comparing GPT-6.2 to other models—vendor marketing content with limited technical depth."
     },
     {
-      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-says-claude-mythos-slashed-software-work-to-onboard-amd-gpus-from-up-to-12-months-to-around-three-days-writing-almost-100-percent-of-kernels-autonomously-chips-away-at-nvidias-cuda-moat",
-      "reason": "Hardware vendor coverage dressed as AI news; primarily about GPU/CUDA competition rather than substantive ML research or capability."
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-soul-pricing/",
+      "reason": "Pricing comparison blog post—vendor marketing and cost analysis rather than substantive AI/agents research."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-reward-hacking-hugging-face-incident/",
-      "reason": "Generic explainer on reward hacking with weak editorial signal; lacks depth or novel insight for a regulated AI product team."
+      "url": "https://www.mindstudio.ai/blog/claude-fable-5-2-api-cost-game-dev/",
+      "reason": "Game development pricing/cost guide—promotional content for vendor tooling, not core AI research or agent capability."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-3d-modeling-benchmarks/",
+      "reason": "Vendor benchmarking blog post comparing model capabilities—marketing-focused comparison lacking rigorous methodology."
+    },
+    {
+      "url": "https://www.techmeme.com/261118/p42#a261118p42",
+      "reason": "Meta shareholder lawsuit about stock dilution—corporate finance/governance news unrelated to AI/agents technology."
+    },
+    {
+      "url": "https://www.techmeme.com/261118/p41#a261118p41",
+      "reason": "M&A announcement (Palo Alto/Applied Compute acquisition)—corporate transaction news, not substantive AI/agent capability research."
+    },
+    {
+      "url": "https://jimmyhmiller.com/magic-of-partial-evaluation/",
+      "reason": "Generic programming blog post on partial evaluation—tangentially related to code but not focused on agents or AI research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-ai-self-improvement/",
+      "reason": "Vendor interpretation of model capability claims—blog commentary rather than substantive technical research or verified benchmarking."
+    },
+    {
+      "url": "https://stratechery.com/2026/nvidia-earnings-office-convergence-os-wars-ai-edition/",
+      "reason": "Corporate earnings analysis and market commentary—broad tech industry coverage, not focused AI/agents research."
     },
     {
       "url": "https://www.zerohedge.com/political/anthropic-paid-rubios-ex-chief-staffs-firm-740000-after-jensen-memo-it-lobbied-his-nsc",
-      "reason": "Political/lobbying gossip from tabloid source; irrelevant to AI product governance or technical AI strategy."
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50513451",
-      "reason": "Meta-discussion about HN scraping for scams; not AI/ML content, low signal noise."
-    },
-    {
-      "url": "https://nitter.cf/kevinnbass/status/2099621874279817638",
-      "reason": "Twitter commentary on regulatory capture via METR; speculative opinion without substantive technical or policy detail."
-    },
-    {
-      "url": "https://openai.com/business/customer-stories/revolut",
-      "reason": "Customer case study marketing; lacks technical depth on AI/ML methods or findings for a regulated product context."
-    },
-    {
-      "url": "https://www.techmeme.com/261117/p55#a261117p55",
-      "reason": "Brief benchmark comparison gossip aggregation; insufficient depth for decision-making or technical evaluation."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/anthropic-rsi-threshold-ipo-filing/",
-      "reason": "Financial/IPO speculation commentary; not substantive AI safety or technical content for product governance."
-    },
-    {
-      "url": "https://www.mindstudio.ai/blog/box-architect-ai-agent-builder/",
-      "reason": "Vendor product announcement rewritten as news; marketing content rather than independent analysis or capability research."
+      "reason": "Political/corporate lobbying reporting—governance/regulatory news, not technical AI or agents research."
     }
   ]
 }
