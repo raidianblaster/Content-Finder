@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-21",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.25898",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality arXiv agent/agentic reasoning paper on medical LLMs with score 11.77 dropped purely by source cap despite strong relevance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.26171",
+      "stage": "dropped_source_cap",
+      "reason": "FrontierOR Challenge on agentic algorithm design (score 10.77) is substantive agent research dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.26248",
+      "stage": "dropped_source_cap",
+      "reason": "TwinLab-Bench evaluating AI scientists as agents (score 10.77) is core agent evaluation work dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25582",
+      "stage": "dropped_source_cap",
+      "reason": "AutoRAGBench for LLM agents automating RAG (score 10.77) is directly relevant agent/agentic benchmark dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25985",
+      "stage": "dropped_source_cap",
+      "reason": "Legal infrastructure for autonomous agents (AULA, score 10.77) is substantive agentic AI paper dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25360",
+      "stage": "dropped_source_cap",
+      "reason": "AppSci-Bench on LLMs building AI agents (score 9.77) is core agent research dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25905",
+      "stage": "dropped_source_cap",
+      "reason": "Validation-driven deployment of LLM inference for agentic workloads (score 9.77) is infrastructure for agents dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.26553",
+      "stage": "dropped_source_cap",
+      "reason": "ROGUE-AI on agentic security events (score 9.77) is high-relevance agent safety research dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25404",
+      "stage": "dropped_source_cap",
+      "reason": "\"Toward a Science of AI Agent Societies\" (score 6.77) is conceptual agent research with high signal dropped by source cap."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.26003",
+      "stage": "dropped_source_cap",
+      "reason": "AI agents redesigning engineering CAD with 1000+ parameters (score 6.77) demonstrates agent capability on hard tasks, dropped by source cap."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/gta-6-ai-slop-fakes-debunked/",
+      "reason": "GTA 6 AI fake debunking is entertainment/gaming gossip, not substantive AI research or product content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/why-ai-benchmarks-disagree-by-domain/",
+      "reason": "Generic model comparison blog (GPT vs Claude vs Gemini) lacks technical depth or novel insight, appears to be vendor marketing adjacent."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-claude-code-best-practices-2025/",
+      "reason": "Listicle on Claude best practices is tutorial/how-to content, not news or substantive research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-enterprise-product-expansion/",
+      "reason": "\"Claude squeezing SaaS stocks\" is vendor financial analysis/speculation, not technical AI content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-robotics-reorganization/",
+      "reason": "Speculative piece on OpenAI's robotics strategy lacks confirmed reporting, reads as opinion."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/hostinger-vps-claude-code-pricing/",
+      "reason": "VPS hosting pricing guide with Claude is vendor comparison marketing, not AI research or news."
+    },
+    {
+      "url": "https://claudia.gallery/fable/",
+      "reason": "\"Fable written and directed by Claude\" is creative output showcase, not substantive AI content."
+    },
+    {
+      "url": "https://www.stripes.com/branches/air_force/2026-11-17/jason-watson-pretrial-hearing-uscmj-charges-23498480.html",
+      "reason": "Military court-martial case is completely unrelated to AI/ML regardless of score."
+    },
+    {
+      "url": "https://www.techmeme.com/261120/p42#a261120p42",
+      "reason": "Stock market decline aggregation is financial news, not AI/ML research or product content."
+    },
+    {
+      "url": "https://seremot.com/p/vint-cerf-on-why-tcpip-was-never",
+      "reason": "TCP/IP patent history is networking history, unrelated to AI/agents/LLMs."
+    }
+  ]
+}

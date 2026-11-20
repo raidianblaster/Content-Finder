@@ -1,98 +1,98 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2503.01935",
+      "url": "https://arxiv.org/abs/2611.25898",
       "stage": "dropped_source_cap",
-      "reason": "High-scoring agent benchmark paper (12.77) on multi-agent LLM collaboration from trusted arXiv source deserves inclusion."
+      "reason": "High-quality arXiv agent/agentic reasoning paper on medical LLMs with score 11.77 dropped purely by source cap despite strong relevance."
     },
     {
-      "url": "https://arxiv.org/abs/2611.24294",
+      "url": "https://arxiv.org/abs/2611.26171",
       "stage": "dropped_source_cap",
-      "reason": "Agent knowledge engineering via hypergraphs (11.77) is substantive agentic AI research from arXiv that exceeds final-stage content quality."
+      "reason": "FrontierOR Challenge on agentic algorithm design (score 10.77) is substantive agent research dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.24039",
+      "url": "https://arxiv.org/abs/2611.26248",
       "stage": "dropped_source_cap",
-      "reason": "Capability framework for agentic AI in regulated enterprises (10.77) directly relevant to regulated corporate context and agent evaluation."
+      "reason": "TwinLab-Bench evaluating AI scientists as agents (score 10.77) is core agent evaluation work dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.23588",
+      "url": "https://arxiv.org/abs/2611.25582",
       "stage": "dropped_source_cap",
-      "reason": "ARISE on self-evolving memory for enterprise agents (8.77) addresses practical agent deployment in corporate settings."
+      "reason": "AutoRAGBench for LLM agents automating RAG (score 10.77) is directly relevant agent/agentic benchmark dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.23678",
+      "url": "https://arxiv.org/abs/2611.25985",
       "stage": "dropped_source_cap",
-      "reason": "LLM-driven ML experimentation governance (8.77) covers lifecycle and provenance tracking critical for regulated AI pipelines."
+      "reason": "Legal infrastructure for autonomous agents (AULA, score 10.77) is substantive agentic AI paper dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.24324",
+      "url": "https://arxiv.org/abs/2611.25360",
       "stage": "dropped_source_cap",
-      "reason": "Cost-efficient inference for coding agents (8.77) via timeout cascades is high-value operational research on agent efficiency."
+      "reason": "AppSci-Bench on LLMs building AI agents (score 9.77) is core agent research dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.23309",
+      "url": "https://arxiv.org/abs/2611.25905",
       "stage": "dropped_source_cap",
-      "reason": "Repository-grounded evaluation of coding agents (7.77) provides practical benchmarking methodology for agentic systems."
+      "reason": "Validation-driven deployment of LLM inference for agentic workloads (score 9.77) is infrastructure for agents dropped by source cap."
     },
     {
-      "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+      "url": "https://arxiv.org/abs/2611.26553",
       "stage": "dropped_source_cap",
-      "reason": "Direct Anthropic IPO announcement (7.7) from trusted source deserves final ranking given corporate regulatory relevance."
+      "reason": "ROGUE-AI on agentic security events (score 9.77) is high-relevance agent safety research dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.23309",
+      "url": "https://arxiv.org/abs/2611.25404",
       "stage": "dropped_source_cap",
-      "reason": "Agent-focused evaluation frameworks (7.77) on coding tasks are substantive and actionable for enterprise agent assessment."
+      "reason": "\"Toward a Science of AI Agent Societies\" (score 6.77) is conceptual agent research with high signal dropped by source cap."
     },
     {
-      "url": "https://arxiv.org/abs/2611.24313",
+      "url": "https://arxiv.org/abs/2611.26003",
       "stage": "dropped_source_cap",
-      "reason": "AutoPI on prompt injection red-teaming for agents (6.77) addresses critical security concern for regulated agent deployment."
+      "reason": "AI agents redesigning engineering CAD with 1000+ parameters (score 6.77) demonstrates agent capability on hard tasks, dropped by source cap."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.mindstudio.ai/blog/victrex-arena-ai-coding-battles/",
-      "reason": "Speculative gaming content about AI coding battles lacks substantive technical or business insight for corporate AI context."
+      "url": "https://www.mindstudio.ai/blog/gta-6-ai-slop-fakes-debunked/",
+      "reason": "GTA 6 AI fake debunking is entertainment/gaming gossip, not substantive AI research or product content."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-neon-vs-claude-opus-gpt-6-2/",
-      "reason": "Generic model comparison benchmarks are vendor marketing content lacking original research or regulated enterprise relevance."
+      "url": "https://www.mindstudio.ai/blog/why-ai-benchmarks-disagree-by-domain/",
+      "reason": "Generic model comparison blog (GPT vs Claude vs Gemini) lacks technical depth or novel insight, appears to be vendor marketing adjacent."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/ai-model-nerfing-after-launch/",
-      "reason": "Speculative blog post on model performance changes after launch lacks rigor and primary evidence."
+      "url": "https://www.mindstudio.ai/blog/anthropic-claude-code-best-practices-2025/",
+      "reason": "Listicle on Claude best practices is tutorial/how-to content, not news or substantive research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-enterprise-product-expansion/",
+      "reason": "\"Claude squeezing SaaS stocks\" is vendor financial analysis/speculation, not technical AI content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/openai-robotics-reorganization/",
+      "reason": "Speculative piece on OpenAI's robotics strategy lacks confirmed reporting, reads as opinion."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/hostinger-vps-claude-code-pricing/",
+      "reason": "VPS hosting pricing guide with Claude is vendor comparison marketing, not AI research or news."
     },
     {
       "url": "https://claudia.gallery/fable/",
-      "reason": "Creative fiction piece generated by Claude has no substantive AI/ML or business content for corporate pipeline."
+      "reason": "\"Fable written and directed by Claude\" is creative output showcase, not substantive AI content."
     },
     {
-      "url": "https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/",
-      "reason": "Financial/IPO earnings coverage is investor-focused commentary rather than technical or operational AI content."
+      "url": "https://www.stripes.com/branches/air_force/2026-11-17/jason-watson-pretrial-hearing-uscmj-charges-23498480.html",
+      "reason": "Military court-martial case is completely unrelated to AI/ML regardless of score."
     },
     {
-      "url": "https://www.techmeme.com/261119/p54#a261119p54",
-      "reason": "M&A rumor about Nvidia acquiring diffusion startup is financial news, not operational AI agent or ML content."
+      "url": "https://www.techmeme.com/261120/p42#a261120p42",
+      "reason": "Stock market decline aggregation is financial news, not AI/ML research or product content."
     },
     {
-      "url": "https://www.techmeme.com/261119/p40#a261119p40",
-      "reason": "Stock price movement reporting on Anthropic IPO is financial data, not substantive AI research or operational content."
-    },
-    {
-      "url": "https://newsletter.pragmaticengineer.com/p/the-pulse-is-amazons-writing-culture",
-      "reason": "Corporate culture opinion piece about AI impact on writing lacks technical depth or regulated agent methodology."
-    },
-    {
-      "url": "https://www.techmeme.com/261119/p47#a261119p47",
-      "reason": "Product feature announcement (Gemini computer use) is marketing-driven news without technical evaluation."
-    },
-    {
-      "url": "https://www.techmeme.com/261119/p52#a261119p52",
-      "reason": "Job listing speculation about Apple's AI agent plans is rumor-based content lacking substantive information."
+      "url": "https://seremot.com/p/vint-cerf-on-why-tcpip-was-never",
+      "reason": "TCP/IP patent history is networking history, unrelated to AI/agents/LLMs."
     }
   ]
 }
