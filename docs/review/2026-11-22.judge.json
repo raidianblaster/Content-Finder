@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-22",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://architectlabs.com/blog/frostbite",
+      "stage": "dropped_ttl",
+      "reason": "High-signal AI/ML content (AI-designed CPU architecture) with strong score (8.56) from trusted source deserved retention despite TTL."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/",
+      "stage": "dropped_ttl",
+      "reason": "Substantive security/fraud content from trusted authority Simon Willison (7.47 score) dropped by TTL despite clear relevance."
+    },
+    {
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "stage": "dropped_ttl",
+      "reason": "Direct research from OpenAI on adversarial robustness (6.56 score) dropped by TTL despite technical significance."
+    },
+    {
+      "url": "https://github.com/diggerhq/opencomputer",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality open-source AI agent alternative (6.84 score, Show HN) dropped by source cap despite substantive technical merit."
+    },
+    {
+      "url": "https://www.researchgate.net/publication/418143113_The_Hungry_Butler_Effect_Concealed_Commercial_Incentives_and_the_Erosion_of_Epistemic_Rigour_in_Large_Language_Models",
+      "stage": "dropped_source_cap",
+      "reason": "Research on commercial bias in LLMs (4.24 score) addresses critical epistemic concerns deserving retention over marketing content."
+    },
+    {
+      "url": "https://institute.deepmind.com/essays/what-comes-after-agi/",
+      "stage": "dropped_keyword",
+      "reason": "Deep technical essay from DeepMind on AGI implications dropped by keyword filter despite clear AI/ML relevance and 3.19 score."
+    },
+    {
+      "url": "https://openai.com/index/introducing-medchembench",
+      "stage": "dropped_keyword",
+      "reason": "Direct OpenAI research output on AI for drug discovery (4.44 score) dropped by keyword despite substantive technical content."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/gta-6-ai-slop-fakes-debunked/",
+      "reason": "MindStudio vendor content debunking game leaks—tangential to AI policy/safety, low substance for regulated environment."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/why-ai-benchmarks-disagree-by-domain/",
+      "reason": "MindStudio blog comparison content lacks original research; commodity benchmark roundup from vendor platform."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/forward-deployed-engineer-salary-pay/",
+      "reason": "MindStudio salary survey—HR/compensation content with vendor bias, low policy/research signal for regulated pipeline."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50583761",
+      "reason": "Generic career advice thread unrelated to AI/ML content; personal employment question lacks substantive technical signal."
+    },
+    {
+      "url": "https://www.techmeme.com/261121/p7#a261121p7",
+      "reason": "Geopolitical capex data on China tech investment—tangential to AI content, dominated by financial/political angle over technical substance."
+    }
+  ]
+}
