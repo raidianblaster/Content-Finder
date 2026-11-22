@@ -1,0 +1,1179 @@
+{
+  "date": "2026-11-23",
+  "prompt_version": "v2",
+  "pipeline": {
+    "fetched": 67,
+    "after_keyword_filter": 30,
+    "after_dedupe": 24,
+    "after_ttl_filter": 21,
+    "after_source_cap": 10
+  },
+  "fetch_status": [
+    {
+      "source": "Latent Space",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Marcus on AI (Gary Marcus)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "AI Snake Oil",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Import AI (Jack Clark)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Hugging Face Blog",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Google DeepMind",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Anthropic News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Simon Willison",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Techmeme",
+      "kind": "rss",
+      "ok": true,
+      "items": 15,
+      "error": null
+    },
+    {
+      "source": "arXiv cs.AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Interconnects (Lambert)",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "OpenAI News",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "Stratechery",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "NIST News",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "Last Week in AI",
+      "kind": "rss",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "EU AI Office",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: AI agents",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: agentic",
+      "kind": "hn",
+      "ok": true,
+      "items": 2,
+      "error": null
+    },
+    {
+      "source": "HN: LLM",
+      "kind": "hn",
+      "ok": true,
+      "items": 3,
+      "error": null
+    },
+    {
+      "source": "One Useful Thing",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "The Pragmatic Engineer",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Claude",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: Anthropic",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: MCP",
+      "kind": "hn",
+      "ok": true,
+      "items": 1,
+      "error": null
+    },
+    {
+      "source": "HN: AI regulation",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: fine-tuning",
+      "kind": "hn",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "HN: eval",
+      "kind": "hn",
+      "ok": true,
+      "items": 4,
+      "error": null
+    },
+    {
+      "source": "HN: RAG",
+      "kind": "hn",
+      "ok": true,
+      "items": 9,
+      "error": null
+    },
+    {
+      "source": "Dwarkesh Podcast",
+      "kind": "rss",
+      "ok": true,
+      "items": 0,
+      "error": null
+    },
+    {
+      "source": "MindStudio",
+      "kind": "rss",
+      "ok": true,
+      "items": 27,
+      "error": null
+    }
+  ],
+  "dropped_keyword": [
+    {
+      "title": "Muru",
+      "summary": "Muru Graham Dumpleton started mod_wsgi 20 years ago, and has been thinking about the ideal way to serve Python web applications in production ever since. Muru is his new, AI-assisted Rust server that aims to provide the best possible tools for running ASGI and WSGI Python apps both in development and production. As he did with wrapture , he's been publishing an extraordinarily detailed account of the project as he works on it - as part of his development process. Here's everything he's published",
+      "url": "https://simonwillison.net/2026/Nov/21/muru/",
+      "source": "Simon Willison",
+      "score": 4.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8595,
+        "recency_term": 1.719,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.718985189318783
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "After FAA, Microsoft, and bank outages, DNI Jay Clayton says Americans should prepare for \"bumps in the road\" as systems are upgraded to adapt to the AI age (Garrett Downs/CNBC)",
+      "summary": "Garrett Downs / CNBC : After FAA, Microsoft, and bank outages, DNI Jay Clayton says Americans should prepare for &ldquo;bumps in the road&rdquo; as systems are upgraded to adapt to the AI age &nbsp; &mdash;&nbsp; Director of National Intelligence Jay Clayton warned Americans to prepare for &ldquo;bumps in the road&rdquo; &hellip;",
+      "url": "https://www.techmeme.com/261122/p11#a261122p11",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9824,
+        "recency_term": 1.9647,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9647259299636244
+      },
+      "age_days": 0.1
+    },
+    {
+      "title": "A week after urging an Nvidia shake-up, Scott Bessent says Jensen Huang's return should depend on probes of its China chip sales and presses Nvidia for answers (Alan Rappeport/New York Times)",
+      "summary": "Alan Rappeport / New York Times : A week after urging an Nvidia shake-up, Scott Bessent says Jensen Huang's return should depend on probes of its China chip sales and presses Nvidia for answers &nbsp; &mdash;&nbsp; The treasury secretary said on CBS that it was too soon to say if Jensen Huang should return as the company's chief executive.",
+      "url": "https://www.techmeme.com/261122/p10#a261122p10",
+      "source": "Techmeme",
+      "score": 2.96,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9779,
+        "recency_term": 1.9558,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.9558006653373017
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Experts say AI has made planning cyberattacks on industrial equipment faster by helping attackers read manuals and research past accidents more quickly (Tom Wilson/Financial Times)",
+      "summary": "Tom Wilson / Financial Times : Experts say AI has made planning cyberattacks on industrial equipment faster by helping attackers read manuals and research past accidents more quickly &nbsp; &mdash;&nbsp; The freezer war is just a start.&nbsp; The year is 2027.&nbsp; You wake up one morning to find you cannot use email or send instant messages.",
+      "url": "https://www.techmeme.com/261122/p6#a261122p6",
+      "source": "Techmeme",
+      "score": 2.85,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9254,
+        "recency_term": 1.8509,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8508701097056877
+      },
+      "age_days": 0.5
+    },
+    {
+      "title": "Current and former officials from the US and other countries describe the Chinese spy agency MSS' campaign to help Chinese companies acquire advanced AI chips (New York Times)",
+      "summary": "New York Times : Current and former officials from the US and other countries describe the Chinese spy agency MSS' campaign to help Chinese companies acquire advanced AI chips &nbsp; &mdash;&nbsp; China's espionage agency has been running a secret campaign to help the country's companies acquire advanced A.I. chips &hellip;",
+      "url": "https://www.techmeme.com/261122/p5#a261122p5",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9016,
+        "recency_term": 1.8032,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.8031551625462963
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Tesla rolls out FSD v15, featuring a photorealistic rendering of car surroundings; Elon Musk says it is real-time AI video generation without using game engines (Mike Pearl/Gizmodo)",
+      "summary": "Mike Pearl / Gizmodo : Tesla rolls out FSD v15, featuring a photorealistic rendering of car surroundings; Elon Musk says it is real-time AI video generation without using game engines &nbsp; &mdash;&nbsp; FSD v15 was released to some vehicles on Saturday.&nbsp; Its visualization system may be the most remarkable part.",
+      "url": "https://www.techmeme.com/261122/p4#a261122p4",
+      "source": "Techmeme",
+      "score": 2.8,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8996,
+        "recency_term": 1.7991,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.799104236550926
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "A joint statement by the Lean and Mathlib communities says \"we have full confidence that Alp\u00f6ge's proof of the Riemann Hypothesis is correct\" (Lean community blog)",
+      "summary": "Lean community blog : A joint statement by the Lean and Mathlib communities says &ldquo;we have full confidence that Alp&ouml;ge's proof of the Riemann Hypothesis is correct&rdquo; &nbsp; &mdash;&nbsp; Joint statement by the Lean and Mathlib communities, endorsed by the Lean FRO and the Mathlib Initiative.",
+      "url": "https://www.techmeme.com/261122/p3#a261122p3",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8956,
+        "recency_term": 1.7911,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7911214322420634
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Sources: AI server suppliers like Dell, HPE, Lenovo, and Supermicro are demanding substantially higher prices from buyers, months after contracts were signed (Financial Times)",
+      "summary": "Financial Times : Sources: AI server suppliers like Dell, HPE, Lenovo, and Supermicro are demanding substantially higher prices from buyers, months after contracts were signed &nbsp; &mdash;&nbsp; Dell, HPE, Lenovo and Supermicro demand more for equipment, with the increased costs hitting trading firms",
+      "url": "https://www.techmeme.com/261122/p2#a261122p2",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8946,
+        "recency_term": 1.7891,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7891339983101853
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Sources: Alice Huang associate Li Ming, whom Singapore charged with fraud in 2025, was central to smuggling restricted AI chips from Southeast Asia to China (Stu Woo/Wall Street Journal)",
+      "summary": "Stu Woo / Wall Street Journal : Sources: Alice Huang associate Li Ming, whom Singapore charged with fraud in 2025, was central to smuggling restricted AI chips from Southeast Asia to China &nbsp; &mdash;&nbsp; Defendant in case involving chip smuggling worked with Jensen Huang's romantic partner&nbsp; &mdash;&nbsp; SINGAPORE&mdash;Jensen Huang's romantic partner &hellip;",
+      "url": "https://www.techmeme.com/261122/p1#a261122p1",
+      "source": "Techmeme",
+      "score": 2.79,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8941,
+        "recency_term": 1.7881,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7881419347453704
+      },
+      "age_days": 0.7
+    },
+    {
+      "title": "Matchmakers say more tech workers fear romantic espionage after the Jensen Huang scandal; an AI companion app pitches \"zero espionage\" executive girlfriends (Wired)",
+      "summary": "Wired : Matchmakers say more tech workers fear romantic espionage after the Jensen Huang scandal; an AI companion app pitches &ldquo;zero espionage&rdquo; executive girlfriends &nbsp; &mdash;&nbsp; The Jensen Huang scandal is the latest fuel for dating anxieties among newly rich and powerful tech workers.",
+      "url": "https://www.techmeme.com/261121/p11#a261121p11",
+      "source": "Techmeme",
+      "score": 2.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8608,
+        "recency_term": 1.7217,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.7216769875892854
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "Researchers used canary credentials in requests to AI routers like OpenRouter and Vercel, even under \"ZDR\" policies, and saw \"privacy\" often broken, keys stolen (Dan Goodin/Ars Technica)",
+      "summary": "Dan Goodin / Ars Technica : Researchers used canary credentials in requests to AI routers like OpenRouter and Vercel, even under &ldquo;ZDR&rdquo; policies, and saw &ldquo;privacy&rdquo; often broken, keys stolen &nbsp; &mdash;&nbsp; Researchers planted 2 million digital tripwires in requests sent through a sprawling network of AI services &hellip;",
+      "url": "https://www.techmeme.com/261121/p10#a261121p10",
+      "source": "Techmeme",
+      "score": 2.67,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.837,
+        "recency_term": 1.6741,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.674057939897487
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "Investigation: Alice Huang had ties to gaming firms, alleged Prince Group figures and hundreds of shell companies in a network moving Nvidia chips to China (Financial Times)",
+      "summary": "Financial Times : Investigation: Alice Huang had ties to gaming firms, alleged Prince Group figures and hundreds of shell companies in a network moving Nvidia chips to China &nbsp; &mdash;&nbsp; Chinese executive in romantic relationship with former Nvidia CEO Jensen Huang had connections to the lucrative trade moving chips to China",
+      "url": "https://www.techmeme.com/261121/p9#a261121p9",
+      "source": "Techmeme",
+      "score": 2.66,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8296,
+        "recency_term": 1.6592,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 2.6591736805687827
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "Perplexity and Intelligence",
+      "summary": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.",
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "source": "OpenAI News",
+      "score": 4.72,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8598,
+        "recency_term": 1.7197,
+        "src_bonus": 3,
+        "hn_bonus": 0.0,
+        "total": 4.719686246669974
+      },
+      "age_days": 1.0
+    },
+    {
+      "title": "What Happened to Silicon Valley?",
+      "summary": "326 points \u00b7 172 comments \u00b7 query: RAG",
+      "url": "https://www.oreilly.com/radar/what-happened-to-silicon-valley/",
+      "source": "Hacker News",
+      "score": 5.21,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9749,
+        "recency_term": 1.9499,
+        "src_bonus": 0,
+        "hn_bonus": 3.26,
+        "total": 5.209894579970237
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "Jensen Huang's fall is bad news for Silicon Valley's accelerationists",
+      "summary": "174 points \u00b7 376 comments \u00b7 query: eval",
+      "url": "https://www.economist.com/business/2026/11/19/jensen-huangs-fall-is-bad-news-for-silicon-valleys-accelerationists",
+      "source": "Hacker News",
+      "score": 3.39,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8241,
+        "recency_term": 1.6483,
+        "src_bonus": 0,
+        "hn_bonus": 1.74,
+        "total": 3.388254368287037
+      },
+      "age_days": 1.2
+    },
+    {
+      "title": "PostgreSQL Extensions in Go",
+      "summary": "165 points \u00b7 32 comments \u00b7 query: eval",
+      "url": "https://jespino.github.io/gopgext/",
+      "source": "Hacker News",
+      "score": 3.29,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.819,
+        "recency_term": 1.638,
+        "src_bonus": 0,
+        "hn_bonus": 1.65,
+        "total": 3.2879534423280425
+      },
+      "age_days": 1.3
+    },
+    {
+      "title": "Advice for the next 100 Rust GUIs",
+      "summary": "251 points \u00b7 145 comments \u00b7 query: RAG",
+      "url": "https://linebender.org/blog/next-100-guis/",
+      "source": "Hacker News",
+      "score": 4.2,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8438,
+        "recency_term": 1.6875,
+        "src_bonus": 0,
+        "hn_bonus": 2.51,
+        "total": 4.197520241240079
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "C++26 is done (again): November 2026 ISO C++ meeting trip report",
+      "summary": "56 points \u00b7 31 comments \u00b7 query: RAG",
+      "url": "https://herbsutter.com/2026/11/21/c26-is-done-again-trip-report-november-2026-iso-c-standards-meeting-buzios-brazil/",
+      "source": "Hacker News",
+      "score": 2.47,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.9551,
+        "recency_term": 1.9102,
+        "src_bonus": 0,
+        "hn_bonus": 0.56,
+        "total": 2.470159130089286
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Tell HN: OpenRouter prompts to Minimax may have been read",
+      "summary": "63 points \u00b7 11 comments \u00b7 query: RAG",
+      "url": "https://news.ycombinator.com/item?id=50585962",
+      "source": "Hacker News",
+      "score": 2.12,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.7439,
+        "recency_term": 1.4879,
+        "src_bonus": 0,
+        "hn_bonus": 0.63,
+        "total": 2.1178674633895502
+      },
+      "age_days": 1.8
+    },
+    {
+      "title": "The Birds of GTA 6: A Field Guide to Vice City and Leonida's Wildlife",
+      "summary": "280 points \u00b7 112 comments \u00b7 query: RAG",
+      "url": "https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife",
+      "source": "Hacker News",
+      "score": 4.75,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.974,
+        "recency_term": 1.948,
+        "src_bonus": 0,
+        "hn_bonus": 2.8,
+        "total": 4.747973283458995
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "AI Supply Chain Security: What Canary Tokens Found",
+      "summary": "97 points \u00b7 22 comments \u00b7 query: RAG",
+      "url": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+      "source": "Hacker News",
+      "score": 2.75,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.8908,
+        "recency_term": 1.7815,
+        "src_bonus": 0,
+        "hn_bonus": 0.97,
+        "total": 2.751534791359127
+      },
+      "age_days": 0.8
+    },
+    {
+      "title": "ChatGPT's Dictation, Dots, and Credit Card Features, Explained",
+      "summary": "ChatGPT is quietly rolling out visible dictation transcripts, an expanding 'dots' voice interface, and card-saving tools. Here's what's actually changing.",
+      "url": "https://www.mindstudio.ai/blog/chatgpt-credit-card-dots-updates/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.433971960628307
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Become a Forward Deployed Engineer: 2027 Career Roadmap",
+      "summary": "A practical roadmap to becoming a forward deployed engineer, covering the skills, salary range, hiring companies, and steps to land the role.",
+      "url": "https://www.mindstudio.ai/blog/forward-deployed-engineer-career-guide/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719605853176
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Hy4 Flash API Pricing: What Tencent's Model Actually Costs",
+      "summary": "Hy4 Flash API pricing explained: per-token rates, the half-price Cloud Token Hub promo through year-end, and how it stacks up on cost per task.",
+      "url": "https://www.mindstudio.ai/blog/hy4-flash-pricing-api-cost/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.433971960542328
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Inkling 2 Mini: Run Thinking Machines' Open Model Locally",
+      "summary": "Inkling 2 Mini is a 26.4B-parameter open-weight multimodal model from Thinking Machines Lab, runnable locally on a 32GB Mac or DGX Spark.",
+      "url": "https://www.mindstudio.ai/blog/inkling-2-mini-local-benchmarks/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719605026455
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "How to Run Inkling 2 Mini Locally on a Mac or DGX Spark",
+      "summary": "Inkling 2 Mini is a 26B-parameter open-weight model that fits in 20GB. Here's how to run it locally on Mac, DGX Spark, or GPU.",
+      "url": "https://www.mindstudio.ai/blog/inkling-2-mini-local-setup/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719604662697
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Microsoft Aion 1.0 Instruct: The Small Language Model Headed to Windows",
+      "summary": "Microsoft released Aion 1.0 Instruct, a 2.3B-parameter on-device model set to become the Windows OS SLM by January 2027. Here's what's inside.",
+      "url": "https://www.mindstudio.ai/blog/microsoft-aion-1-0-instruct-windows-slm/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719604232803
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Microsoft Aion 1.0 Instruct: A 2.3B On-Device Model Built for Windows",
+      "summary": "Microsoft's Aion 1.0 Instruct is a 2.3B parameter on-device model with 32K context, built to become the next Windows OS SLM.",
+      "url": "https://www.mindstudio.ai/blog/microsoft-aion-windows-slm-local/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719603835979
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "MiniCPM M1 1105: Does a 350M Model's Thinking Dial Actually Work?",
+      "summary": "A 229MB reasoning model with five thinking levels was tested locally on sarcasm, texting, and battery math. Here's what the dial actually changed.",
+      "url": "https://www.mindstudio.ai/blog/minicpm-m1-1105-thinking-dial-test/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719603406085
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Compactify API Pricing: Running GLM 5.3 and Quasar for Less",
+      "summary": "How Multiverse Computing's Compactify API prices GLM 5.3 and its Quasar model, and what that means for agent running costs.",
+      "url": "https://www.mindstudio.ai/blog/multiverse-compactify-api-pricing/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719603042327
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Google Project Genie: What Is the AI World Model and How to Try It",
+      "summary": "Google's Project Genie turns text prompts into playable 3D worlds generated in real time. Here's what it is and how to access it.",
+      "url": "https://www.mindstudio.ai/blog/project-genie-google-world-model/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719602612433
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Project Genie Pricing: What It Costs to Access Google's World Model",
+      "summary": "Project Genie requires a Google AI Ultra subscription near $100/month plus regional access via labs.google/fx. Here's what that gets you.",
+      "url": "https://www.mindstudio.ai/blog/project-genie-pricing-access/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719602215608
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "RTX Spark Laptop Battery Life: ASUS ProArt vs MSI Prestige Tested",
+      "summary": "A controlled battery drain test pits the ASUS ProArt P16 against the MSI Prestige N16 RTX Spark laptop, with an ARM app caveat that changed everything.",
+      "url": "https://www.mindstudio.ai/blog/rtx-spark-laptop-battery-life-test/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719601785714
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "RTX Spark Laptops Compared: HP, Surface, MSI, and ASUS",
+      "summary": "Four NVIDIA RTX Spark laptops from HP, Microsoft, MSI, and ASUS compared on displays, ports, memory, and battery life to help you pick one.",
+      "url": "https://www.mindstudio.ai/blog/rtx-spark-laptops-comparison/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.433971960138889
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Tencent Hy4 Tested: Does Its New Vision Model Actually Work?",
+      "summary": "Tencent's Hy4 brings vision to its open model lineup. Here's how it performed on real receipts, charts, and sketches via the Work Buddy agent.",
+      "url": "https://www.mindstudio.ai/blog/tencent-hy4-vision-workbuddy/",
+      "source": "MindStudio",
+      "score": 1.43,
+      "score_components": {
+        "keyword": 0,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 1.4339719600992065
+      },
+      "age_days": 2.0
+    }
+  ],
+  "dropped_dedupe": [],
+  "dropped_ttl": [
+    {
+      "title": "ClawDOS \u2013 An AI coding agent for DOS",
+      "summary": "172 points \u00b7 52 comments \u00b7 query: AI agents",
+      "url": "http://ricapar.net/ClawDOS/",
+      "source": "Hacker News",
+      "score": 8.22,
+      "score_components": {
+        "keyword": 5,
+        "recency": 0.7505,
+        "recency_term": 1.501,
+        "src_bonus": 0,
+        "hn_bonus": 1.72,
+        "total": 8.221038756712963
+      },
+      "age_days": 1.7,
+      "first_seen": "2026-11-22"
+    },
+    {
+      "title": "Last Week in AI #348 - IPO->Correction, new GPTs and Geminis, Nvidia\u2019s Fate",
+      "summary": "Anthropic's $81B IPO, AI stocks enter a correction, Huang resigns from Nvidia, Trump and Xi agree on military AI",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-348-ipo-correction",
+      "source": "Last Week in AI",
+      "score": 6.54,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.7687,
+        "recency_term": 1.5375,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 6.537487169325397
+      },
+      "age_days": 1.6,
+      "first_seen": "2026-11-22"
+    },
+    {
+      "title": "Forward Deployed Engineer Salary: What OpenAI, Anthropic & Others Pay",
+      "summary": "Forward deployed engineer salary data from 200 job postings at 24 AI companies, including OpenAI's $325K base and typical total pay ranges.",
+      "url": "https://www.mindstudio.ai/blog/forward-deployed-engineer-salary-pay/",
+      "source": "MindStudio",
+      "score": 5.43,
+      "score_components": {
+        "keyword": 4,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 5.433971957628968
+      },
+      "age_days": 2.0,
+      "first_seen": "2026-11-22"
+    }
+  ],
+  "dropped_source_cap": [
+    {
+      "title": "Jony Ive, ex-OpenAI product designer Joey Flynn, and others on Silicon Valley's obsession with \"taste\" as a moat against AI slop and whether AI can learn it (Jonah Weiner/New York Times)",
+      "summary": "Jonah Weiner / New York Times : Jony Ive, ex-OpenAI product designer Joey Flynn, and others on Silicon Valley's obsession with &ldquo;taste&rdquo; as a moat against AI slop and whether AI can learn it &nbsp; &mdash;&nbsp; To move through A.I.-era San Francisco as a relatively normal person is to confront the sheer volume of bewildering concepts that tech has lately thrust upon us.",
+      "url": "https://www.techmeme.com/261122/p7#a261122p7",
+      "source": "Techmeme",
+      "score": 4.9,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9492,
+        "recency_term": 1.8984,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.898370105605158
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "Harsher on Male? Evaluating LLMs on Gender-Asymmetric Moral Framing in Conflicts",
+      "summary": "89 points \u00b7 77 comments \u00b7 query: LLM",
+      "url": "https://arxiv.org/abs/2606.14068",
+      "source": "Hacker News",
+      "score": 4.72,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9153,
+        "recency_term": 1.8305,
+        "src_bonus": 0,
+        "hn_bonus": 0.89,
+        "total": 4.720519576458333
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Did Claude Really Solve the Riemann Hypothesis? What We Know",
+      "summary": "Levent Alpoge says he and Claude proved the Riemann Hypothesis in six weeks. Here's the claim, the evidence, and what's still unverified.",
+      "url": "https://www.mindstudio.ai/blog/claude-reimann-hypothesis-proof/",
+      "source": "MindStudio",
+      "score": 3.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.433971957364418
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Microsoft Ignite 2026: Why the Copilot Harness Beats the Models",
+      "summary": "Microsoft Ignite's models grabbed headlines, but the real story is Copilot Fusion's router and Foundry's harness strategy outshining them.",
+      "url": "https://www.mindstudio.ai/blog/microsoft-ignite-copilot-harness-strategy/",
+      "source": "MindStudio",
+      "score": 3.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.4339719573181213
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Hy4 Flash: Inside Tencent's 220B MoE Model Built for Cheap Speed",
+      "summary": "Tencent's Hy4 Flash pairs a 220B-parameter MoE design with Engram embeddings and DFly2 decoding to cut inference cost sharply.",
+      "url": "https://www.mindstudio.ai/blog/hy4-flash-model-architecture/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.433971957275132
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Inkling 2 Mini Benchmarks: How It Stacks Up Against Rivals",
+      "summary": "Inkling 2 Mini's SWEBench, Terminal Bench and FrontierCode scores compared against Gemma 4 31B, Qwen3.8-27B and Nemotron 3.5.",
+      "url": "https://www.mindstudio.ai/blog/inkling-2-mini-benchmark-scores/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.4339719572387564
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Inkling 2 Mini Benchmarks: How Thinking Machines' Open Model Scores",
+      "summary": "Inkling 2 Mini posts strong SWE-Bench and coding scores for a 26B MoE model. Here's how it stacks up against Gemma 4, Qwen, and Nemotron.",
+      "url": "https://www.mindstudio.ai/blog/inkling-2-mini-benchmarks/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.433971957195767
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Microsoft Aion 1.0 Instruct: Run Windows' Future SLM Locally Today",
+      "summary": "Microsoft's 2.3B-parameter Aion 1.0 Instruct model previews Windows' on-device AI. Here are its specs, benchmarks, and how to run it now.",
+      "url": "https://www.mindstudio.ai/blog/microsoft-aion-1-0-local-windows/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.4339719571560847
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Microsoft Decision 1.1: A Gemma Fine-Tune Microsoft Didn't Mention On Stage",
+      "summary": "Microsoft's Decision 1.1 model beats Google on decision benchmarks, but it's quietly fine-tuned on Google's own Gemma 4 model.",
+      "url": "https://www.mindstudio.ai/blog/microsoft-decision-model-gemma-quen-base/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.433971957113095
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "MongoDB Atlas Agent Engine: Guardrails, Memory, Observability Explained",
+      "summary": "MongoDB Atlas agent engine bundles permissions, human-in-the-loop, network limits, memory and observability for LangGraph agents in one deploy.",
+      "url": "https://www.mindstudio.ai/blog/mongodb-atlas-agent-engine/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.433971957070106
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "PxPipe: How Turning Context Into Images Cuts Coding Agent Costs",
+      "summary": "PxPipe is an open-source proxy that renders coding agent context as images to cut input token bills, but only some models can actually read the pages.",
+      "url": "https://www.mindstudio.ai/blog/pxpipe-token-compression-coding-agents/",
+      "source": "MindStudio",
+      "score": 2.43,
+      "score_components": {
+        "keyword": 1,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 2.433971957023809
+      },
+      "age_days": 2.0
+    }
+  ],
+  "final": [
+    {
+      "title": "Pandex \u2013 Official European Law for AI Agents, over MCP",
+      "summary": "139 points \u00b7 33 comments \u00b7 query: agentic",
+      "url": "https://www.pandex.io",
+      "source": "Hacker News",
+      "score": 12.07,
+      "score_components": {
+        "keyword": 9,
+        "recency": 0.8408,
+        "recency_term": 1.6815,
+        "src_bonus": 0,
+        "hn_bonus": 1.39,
+        "total": 12.071528173912037
+      },
+      "age_days": 1.1
+    },
+    {
+      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+      "summary": "843 points \u00b7 861 comments \u00b7 query: Anthropic",
+      "url": "https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/",
+      "source": "Hacker News",
+      "score": 7.83,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9132,
+        "recency_term": 1.8263,
+        "src_bonus": 0,
+        "hn_bonus": 4.0,
+        "total": 7.826346295565476
+      },
+      "age_days": 0.6
+    },
+    {
+      "title": "Show HN: I built a game where you are an LLM's subagent",
+      "summary": "255 points \u00b7 59 comments \u00b7 query: LLM",
+      "url": "https://github.com/gulivan/worker755",
+      "source": "Hacker News",
+      "score": 6.44,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9429,
+        "recency_term": 1.8858,
+        "src_bonus": 0,
+        "hn_bonus": 2.55,
+        "total": 6.435751057433862
+      },
+      "age_days": 0.4
+    },
+    {
+      "title": "OpenAI shares its models' perplexity, or how well they predict data, and urges pacing limits based on such metrics, citing a possible 2027 avalanche of AI gains (Jakub Pachocki/OpenAI)",
+      "summary": "Jakub Pachocki / OpenAI : OpenAI shares its models' perplexity, or how well they predict data, and urges pacing limits based on such metrics, citing a possible 2027 avalanche of AI gains &nbsp; &mdash;&nbsp; - Difficulty of comparison across labs. &hellip; - Detachment from actionable evaluations. &hellip; - Not accounting for advances outside of pretraining.",
+      "url": "https://www.techmeme.com/261122/p9#a261122p9",
+      "source": "Techmeme",
+      "score": 5.94,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.9695,
+        "recency_term": 1.9389,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 5.938935581167328
+      },
+      "age_days": 0.2
+    },
+    {
+      "title": "How Dario Amodei built Anthropic's tightly knit culture with essays, Slack memos, and \"Vision Quest\" talks, as Anthropic seeds his ideas with opinion-makers (Nitasha Tiku/Washington Post)",
+      "summary": "Nitasha Tiku / Washington Post : How Dario Amodei built Anthropic's tightly knit culture with essays, Slack memos, and &ldquo;Vision Quest&rdquo; talks, as Anthropic seeds his ideas with opinion-makers &nbsp; &mdash;&nbsp; Anthropic is worth more than $1 trillion.&nbsp; CEO Dario Amodei also wants to sell the world on his philosophy of the future.",
+      "url": "https://www.techmeme.com/261122/p12#a261122p12",
+      "source": "Techmeme",
+      "score": 5.0,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9987,
+        "recency_term": 1.9975,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.997490475274471
+      },
+      "age_days": 0.0
+    },
+    {
+      "title": "Sources: amid leak fears, Anthropic limited some IPO banks to four-person teams, used a view-logging file platform, and sought six-month bans on advising rivals (Reuters)",
+      "summary": "Reuters : Sources: amid leak fears, Anthropic limited some IPO banks to four-person teams, used a view-logging file platform, and sought six-month bans on advising rivals &nbsp; &mdash;&nbsp; For the second time this year, Wall Street bankers and lawyers took home a massive paycheck from a record-setting initial public offering.",
+      "url": "https://www.techmeme.com/261122/p8#a261122p8",
+      "source": "Techmeme",
+      "score": 4.93,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9625,
+        "recency_term": 1.925,
+        "src_bonus": 1,
+        "hn_bonus": 0.0,
+        "total": 4.9250466921362435
+      },
+      "age_days": 0.3
+    },
+    {
+      "title": "Why Do AI Agents Forget Decisions You Already Made?",
+      "summary": "A practical guide to structuring context, decisions, and skills as a repo so AI agents can handle long runs without repeating mistakes.",
+      "url": "https://www.mindstudio.ai/blog/ai-agent-long-running-tasks-context-engineering/",
+      "source": "MindStudio",
+      "score": 4.43,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.433971956643519
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Shared Skills Repos: How Multi-Agent Teams Avoid AI Merge Conflicts",
+      "summary": "Why teams should store AI skills and project knowledge in a shared repo instead of letting each person build their own agent setup from scratch.",
+      "url": "https://www.mindstudio.ai/blog/multi-agent-team-skills-knowledge-base/",
+      "source": "MindStudio",
+      "score": 4.43,
+      "score_components": {
+        "keyword": 3,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 4.433971956600529
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "What a Riemann Hypothesis Proof Claim Means for AI Self-Improvement",
+      "summary": "A mathematician says Claude helped crack the Riemann hypothesis. Here's why that claim matters for AI accelerating its own research.",
+      "url": "https://www.mindstudio.ai/blog/ai-math-recursive-self-improvement/",
+      "source": "MindStudio",
+      "score": 3.43,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.717,
+        "recency_term": 1.434,
+        "src_bonus": 0,
+        "hn_bonus": 0.0,
+        "total": 3.4339719565575395
+      },
+      "age_days": 2.0
+    },
+    {
+      "title": "Europe weakens chemical rules as science links them to 'lifestyle diseases'",
+      "summary": "146 points \u00b7 127 comments \u00b7 query: LLM",
+      "url": "https://www.lemonde.fr/en/opinion/article/2026/11/22/as-science-increasingly-shows-the-role-chemical-substances-play-in-lifestyle-diseases-europe-weakens-its-regulations_6786595_23.html",
+      "source": "Hacker News",
+      "score": 5.37,
+      "score_components": {
+        "keyword": 2,
+        "recency": 0.9534,
+        "recency_term": 1.9067,
+        "src_bonus": 0,
+        "hn_bonus": 1.46,
+        "total": 5.366723279272486
+      },
+      "age_days": 0.3
+    }
+  ]
+}

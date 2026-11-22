@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-23",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2606.14068",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive peer-reviewed LLM research on gender bias from ArXiv via Hacker News deserved to pass source cap."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/21/muru/",
+      "stage": "dropped_keyword",
+      "reason": "Simon Willison is a trusted AI/ML expert whose brief posts often signal important developments; keyword filtering seems overly aggressive here."
+    },
+    {
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "stage": "dropped_keyword",
+      "reason": "Direct OpenAI research post on perplexity as an intelligence metric is high-signal despite keyword drop; directly relevant to core audience."
+    },
+    {
+      "url": "http://ricapar.net/ClawDOS/",
+      "stage": "dropped_ttl",
+      "reason": "High-scoring (8.22) AI coding agent project was dropped by cross-day TTL despite fresh relevance; high engagement signal was ignored."
+    },
+    {
+      "url": "https://lastweekin.ai/p/last-week-in-ai-348-ipo-correction",
+      "stage": "dropped_ttl",
+      "reason": "Last Week in AI curated newsletter covering broad AI ecosystem including Nvidia/Gemini/GPT updates was dropped by TTL despite strong signal (6.54)."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.pandex.io",
+      "reason": "URL resolves to a homepage without substantive content; claim about 'Official European Law for AI Agents, over MCP' is vague marketing language and likely unverifiable."
+    },
+    {
+      "url": "https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/",
+      "reason": "Speculative reporting on Anthropic's 2028 power sourcing mix is infrastructure/ESG gossip, not core AI/ML development or research."
+    },
+    {
+      "url": "https://www.techmeme.com/261122/p8#a261122p8",
+      "reason": "IPO leaks and internal compliance procedures are corporate news, not substantive AI/ML signal; Reuters sources on banker secrecy are low substance."
+    },
+    {
+      "url": "https://www.techmeme.com/261122/p12#a261122p12",
+      "reason": "Leadership profile and culture narrative piece is journalism about Dario Amodei, not technical AI content or research; belongs in business coverage."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-math-recursive-self-improvement/",
+      "reason": "Speculative post linking Riemann Hypothesis claim to recursive self-improvement is hype-driven commentary without rigorous analysis."
+    }
+  ]
+}
