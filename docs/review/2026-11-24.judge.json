@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-24",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.27116",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agents research (recursive co-evolution) from trusted arXiv source with score 9.73 should not be capped."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27138",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive LLM reasoning work on evidence fusion and posterior inference with score 9.73 deserves inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27483",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-centric research on agentic AI for simulation generation (score 9.73) is core to agents pipeline."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27139",
+      "stage": "dropped_source_cap",
+      "reason": "Agents research on role integrity and agent behavior (score 9.73) is directly relevant to agentic systems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27443",
+      "stage": "dropped_source_cap",
+      "reason": "Agent training research on SLM agents with score 9.73 represents high-value agents content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.26782",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent LLM system for molecular dynamics (score 8.73) demonstrates applied agentic research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27090",
+      "stage": "dropped_source_cap",
+      "reason": "Agents operations research examining recovery in 50 AI agent harnesses (score 8.73) is production-focused insight."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.27876",
+      "stage": "dropped_source_cap",
+      "reason": "LesionAgent agentic tumor tracking demonstrates high-value medical AI agents application (score 8.73)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.22082",
+      "stage": "dropped_source_cap",
+      "reason": "CodeTeam multi-agent framework for repository code generation (score 8.73) is substantive agents research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25705",
+      "stage": "dropped_source_cap",
+      "reason": "STARK personalization and memory in agents (score 8.73) addresses critical agent capabilities."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261123/p52#a261123p52",
+      "reason": "GPT-6.2 Sol release announcement is vendor marketing and product news, not substantive AI/agents research."
+    },
+    {
+      "url": "https://openai.com/index/introducing-shirudo",
+      "reason": "OpenAI-Cisco partnership announcement reads as vendor marketing without technical depth."
+    },
+    {
+      "url": "https://www.techmeme.com/261123/p50#a261123p50",
+      "reason": "Legal/criminal case about ex-OpenAI engineer is corporate news/governance, not AI/agents research."
+    },
+    {
+      "url": "https://www.techmeme.com/261123/p49#a261123p49",
+      "reason": "Prosecutors' statement on recorded meetings is corporate espionage news, not AI/agents content."
+    },
+    {
+      "url": "https://www.techmeme.com/261123/p41#a261123p41",
+      "reason": "Claude Ship announcement is vendor product marketing for PR rather than substantive technical content."
+    },
+    {
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "reason": "OpenAI business/solutions page is vendor marketing material disguised as educational content."
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "reason": "Customer success story is vendor marketing and earnings-adjacent content, not research."
+    }
+  ]
+}
