@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-25",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.28003",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal agents/coding research from arXiv (score 11.75) on data curation with AI agents deserves inclusion over lower-scoring content."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.28103",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive multi-agent coordination research (score 11.75) on decentralized LLM agent architectures is core agent research worth keeping."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.29162",
+      "stage": "dropped_source_cap",
+      "reason": "Direct relevance to AI agent safety and repair (score 11.75); external feedback mechanisms for coding agents are high-signal."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31033",
+      "stage": "dropped_source_cap",
+      "reason": "AI-assisted auto-formalization for scientific computing (score 10.75) addresses trustworthiness in agentic systems, substantive research worth preserving."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31063",
+      "stage": "dropped_source_cap",
+      "reason": "Error propagation modeling in multi-agent LLM systems (score 10.75) is critical for agent reliability and system safety assessment."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.17610",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal research on coordination vs. compute trade-offs in multi-agent LLMs (score 10.75) directly relevant to agent design principles."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.30750",
+      "stage": "dropped_source_cap",
+      "reason": "SchemaCaps addresses silent authority escalation in agent tool use (score 9.75), a critical safety concern for deployed agents."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.28469",
+      "stage": "dropped_source_cap",
+      "reason": "Automated safety analysis for agentic workflows (score 9.75) is substantive governance research directly applicable to regulated environments."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.25360",
+      "stage": "dropped_source_cap",
+      "reason": "AppSci-Bench on self-improving agent capabilities (score 9.75) addresses meta-level agent performance and evolution, high-signal research."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.28341",
+      "stage": "dropped_source_cap",
+      "reason": "Silent failure and verification-first oversight in tool-using agents (score 5.75) is critical safety research for production agent systems."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/deploy-ai-app-hostinger-vps-codex/",
+      "reason": "Vendor-adjacent tutorial content (MindStudio) lacks substantive research or novel insights; deployment guides are low-signal."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/px-pipe-token-savings-coding-agents/",
+      "reason": "Promotional content on proprietary token-saving technique; lacks peer review or independent validation of claims."
+    },
+    {
+      "url": "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
+      "reason": "Sensationalized claim reporting without substantive evidence; unverified allegation from tabloid-style source."
+    },
+    {
+      "url": "https://salvageyarddrone.wordpress.com/",
+      "reason": "Drone imagery of salvage yards is unrelated to AI/ML; inclusion suggests filter noise rather than intentional curation."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50630809",
+      "reason": "Generic HN discussion thread about distillation accusations lacks substantive technical content or resolution."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ernie-5-5-flash-preview-baidu/",
+      "reason": "MindStudio marketing content on Baidu model; lacks independent analysis or technical depth beyond vendor announcements."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/paul-christiano-ai-takeover-risk-warning/",
+      "reason": "Speculative secondary reporting on researcher comments; not primary research or peer-reviewed content."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/riemann-hypothesis-claude-ai-proof/",
+      "reason": "Sensationalized speculation about Claude solving Riemann hypothesis; lacks mathematical rigor or peer verification."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/glm-5-4-coding-benchmark-review/",
+      "reason": "Vendor comparison blog lacks independent methodology; marketing-driven benchmarking without reproducible standards."
+    },
+    {
+      "url": "https://www.techmeme.com/261124/p49#a261124p49",
+      "reason": "Anecdotal claim about GPT-6.2 solving historical mystery lacks verification and is speculative news gossip rather than substantive research."
+    }
+  ]
+}
