@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-26",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2511.21460",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality multi-agent AI research (11.75 score) from trusted arXiv source on risk-aware embodied planning deserves coverage."
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.08340",
+      "stage": "dropped_source_cap",
+      "reason": "Substantive multi-agent coordination benchmarking (11.75 score) directly relevant to agent capability evaluation."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31284",
+      "stage": "dropped_source_cap",
+      "reason": "Novel governance structure for autonomous agents (10.75 score) addresses critical AI systems safety and coordination."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33098",
+      "stage": "dropped_source_cap",
+      "reason": "Cost-efficiency optimization for multi-agent systems (10.75 score) has practical relevance for deployment at scale."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31254",
+      "stage": "dropped_source_cap",
+      "reason": "LLM evaluation methodology paper (10.75 score) on hidden confounding variables in benchmarking is methodologically important."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31312",
+      "stage": "dropped_source_cap",
+      "reason": "Safety analysis of evolutionary AI systems (10.75 score) addresses population-level risks in emerging agent paradigms."
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50630809",
+      "stage": "dropped_source_cap",
+      "reason": "High-signal discussion of model distillation accusations by Anthropic reflects important industry debate on IP and model replication."
+    },
+    {
+      "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+      "stage": "dropped_ttl",
+      "reason": "Analysis from trusted Simon Willison source on major LLM capability inflection points deserves extended coverage despite TTL."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31543",
+      "stage": "dropped_source_cap",
+      "reason": "Emergent social structure in multi-agent LLM systems (8.75 score) is substantive research on agent behavior and interaction patterns."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.31873",
+      "stage": "dropped_source_cap",
+      "reason": "Agent-based evidence synthesis for repository QA (8.75 score) demonstrates practical agent capabilities in code understanding tasks."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.mindstudio.ai/blog/anthropic-claude-math-proofs-ai-research/",
+      "reason": "Speculative reporting on unreleased Claude model solving Riemann Hypothesis lacks substantiation and relies on unverified rumors."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-opus-5-6-stealth-testing/",
+      "reason": "Pure speculation about secret model testing without evidence; reads as low-substance hype designed for engagement."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/cia-hack-ai-agents-data-breach/",
+      "reason": "Sensationalist headline about CIA breach from unestablished source; lacks credible reporting on AI-agent specifics."
+    },
+    {
+      "url": "https://www.forbes.com/sites/siladityaray/2026/11/24/anthropic-ceo-dario-amodei-sold-280-million-in-shares-as-part-of-record-ipo/",
+      "reason": "Corporate insider trading news is routine disclosure, not substantive AI/ML development content for specialized audience."
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading",
+      "reason": "Stock price movement reporting is financial news, not AI capability or research content relevant to core pipeline mission."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/kolibri-1-1-german-english-reasoning-model/",
+      "reason": "Vendor-adjacent coverage of Aleph Alpha model reads more as product promotion than independent technical analysis."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/qwen-3-8-27b-harness-adapter-benchmark/",
+      "reason": "MindStudio blog posts lack editorial rigor; this benchmarking claim needs verification from established technical sources."
+    },
+    {
+      "url": "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
+      "reason": "Sensationalist framing of controversial claims by Tegmark; lacks substantive reporting on actual AI safety concerns."
+    },
+    {
+      "url": "https://www.techmeme.com/261125/p42#a261125p42",
+      "reason": "Amazon FTC regulatory compliance story is unrelated tech news; not relevant to AI/ML/agent-focused pipeline."
+    },
+    {
+      "url": "https://www.techmeme.com/261125/p43#a261125p43",
+      "reason": "Neuralink BCI trial approval is biotech/medical device news, not AI/ML/agent development content."
+    }
+  ]
+}
