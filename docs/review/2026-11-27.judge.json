@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-27",
+  "judge_prompt_version": "v1",
+  "suspect_drops": [
+    {
+      "url": "https://arxiv.org/abs/2611.18359",
+      "stage": "dropped_source_cap",
+      "reason": "High-quality ArXiv agents paper on agentic robotics with score 13.75 from trusted source deserves inclusion."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.34290",
+      "stage": "dropped_source_cap",
+      "reason": "Multi-agent coordination for video generation (score 11.75) is substantive agents research that merits publication."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.06068",
+      "stage": "dropped_source_cap",
+      "reason": "AI agents building LLM serving systems (score 11.75) addresses practical agent capabilities and infrastructure."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.29162",
+      "stage": "dropped_source_cap",
+      "reason": "Coding agents with external feedback (score 11.75) demonstrates agent self-improvement mechanisms worth covering."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33973",
+      "stage": "dropped_source_cap",
+      "reason": "Agentic framework for RTL generation (score 10.75) shows novel agents application in hardware design."
+    },
+    {
+      "url": "https://arxiv.org/abs/2508.20637",
+      "stage": "dropped_source_cap",
+      "reason": "Graph algorithmic reasoning with agents (score 10.75) demonstrates agents solving structured reasoning problems."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33706",
+      "stage": "dropped_source_cap",
+      "reason": "Evidence-seeking visual agent for hallucination resistance (score 9.75) addresses critical multimodal agent reliability."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33519",
+      "stage": "dropped_source_cap",
+      "reason": "Security self-improvement in coding agents (score 9.75) is high-signal security research on agent evolution."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33893",
+      "stage": "dropped_source_cap",
+      "reason": "Parallel subagents for coding tasks (score 9.75) empirically studies agent parallelization effectiveness."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.27879",
+      "stage": "dropped_source_cap",
+      "reason": "Faithful agentic explainability verification (score 9.75) addresses interpretability of autonomous agent behavior."
+    }
+  ],
+  "suspect_keeps": [
+    {
+      "url": "https://www.techmeme.com/261126/p17#a261126p17",
+      "reason": "UK FCA DeFi regulatory announcement unrelated to AI/ML/agents content."
+    },
+    {
+      "url": "https://www.techmeme.com/261126/p18#a261126p18",
+      "reason": "TrustedRouter cryptographic infrastructure piece lacks direct AI/agents relevance despite enterprise framing."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/claude-code-pricing-subscription-value/",
+      "reason": "Vendor pricing comparison content is marketing-adjacent rather than substantive technical research."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/gemini-4-neon-anti-gravity-ultra-pricing/",
+      "reason": "Pricing comparison and subscription value analysis is promotional content lacking technical substance."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/hack-yourself-first-ai-security-skill/",
+      "reason": "Generic security skills tutorial with minimal AI/agents depth or novelty."
+    }
+  ]
+}
