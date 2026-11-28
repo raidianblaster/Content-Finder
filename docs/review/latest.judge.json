@@ -1,78 +1,98 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "judge_prompt_version": "v1",
   "suspect_drops": [
     {
-      "url": "https://arxiv.org/abs/2611.18359",
-      "stage": "dropped_source_cap",
-      "reason": "High-quality ArXiv agents paper on agentic robotics with score 13.75 from trusted source deserves inclusion."
-    },
-    {
-      "url": "https://arxiv.org/abs/2611.34290",
-      "stage": "dropped_source_cap",
-      "reason": "Multi-agent coordination for video generation (score 11.75) is substantive agents research that merits publication."
-    },
-    {
-      "url": "https://arxiv.org/abs/2605.06068",
-      "stage": "dropped_source_cap",
-      "reason": "AI agents building LLM serving systems (score 11.75) addresses practical agent capabilities and infrastructure."
-    },
-    {
       "url": "https://arxiv.org/abs/2611.29162",
       "stage": "dropped_source_cap",
-      "reason": "Coding agents with external feedback (score 11.75) demonstrates agent self-improvement mechanisms worth covering."
+      "reason": "High-quality arXiv agents paper on AI coding repair with strong score (11.76) from trusted source."
     },
     {
       "url": "https://arxiv.org/abs/2611.33973",
       "stage": "dropped_source_cap",
-      "reason": "Agentic framework for RTL generation (score 10.75) shows novel agents application in hardware design."
+      "reason": "arXiv agents framework for RTL generation, substantive ML content with score 10.76."
     },
     {
       "url": "https://arxiv.org/abs/2508.20637",
       "stage": "dropped_source_cap",
-      "reason": "Graph algorithmic reasoning with agents (score 10.75) demonstrates agents solving structured reasoning problems."
+      "reason": "Agent reasoning benchmark from arXiv, core agents/AI topic with score 10.76."
     },
     {
       "url": "https://arxiv.org/abs/2611.33706",
       "stage": "dropped_source_cap",
-      "reason": "Evidence-seeking visual agent for hallucination resistance (score 9.75) addresses critical multimodal agent reliability."
+      "reason": "Visual agent paper addressing hallucination, substantive multimodal reasoning work (9.76)."
     },
     {
       "url": "https://arxiv.org/abs/2611.33519",
       "stage": "dropped_source_cap",
-      "reason": "Security self-improvement in coding agents (score 9.75) is high-signal security research on agent evolution."
+      "reason": "Agent security via self-improvement, directly relevant to regulated AI governance (9.76)."
     },
     {
       "url": "https://arxiv.org/abs/2611.33893",
       "stage": "dropped_source_cap",
-      "reason": "Parallel subagents for coding tasks (score 9.75) empirically studies agent parallelization effectiveness."
+      "reason": "Empirical study on multi-agent coding patterns, substantive agents research (9.76)."
     },
     {
       "url": "https://arxiv.org/abs/2605.27879",
       "stage": "dropped_source_cap",
-      "reason": "Faithful agentic explainability verification (score 9.75) addresses interpretability of autonomous agent behavior."
+      "reason": "Agent explainability and verification benchmark, compliance-relevant topic (9.76)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.33394",
+      "stage": "dropped_source_cap",
+      "reason": "LLM gating/confidence for automation, risk management for regulated environments (8.76)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.34112",
+      "stage": "dropped_source_cap",
+      "reason": "Unifies expert routing and agent orchestration patterns, foundational multi-agent work (8.76)."
+    },
+    {
+      "url": "https://arxiv.org/abs/2511.18467",
+      "stage": "dropped_source_cap",
+      "reason": "Security risks in LLM multi-agent systems, critical for regulated risk assessment (8.76)."
     }
   ],
   "suspect_keeps": [
     {
-      "url": "https://www.techmeme.com/261126/p17#a261126p17",
-      "reason": "UK FCA DeFi regulatory announcement unrelated to AI/ML/agents content."
+      "url": "https://www.mindstudio.ai/blog/ai-2027-intelligence-explosion-forecast/",
+      "reason": "Speculative timeline piece lacks substantive technical contribution; vendor blog hype."
     },
     {
-      "url": "https://www.techmeme.com/261126/p18#a261126p18",
-      "reason": "TrustedRouter cryptographic infrastructure piece lacks direct AI/agents relevance despite enterprise framing."
+      "url": "https://www.mindstudio.ai/blog/m6-macbook-pro-benchmark-developer/",
+      "reason": "MacBook hardware review unrelated to AI agents or core ML topics."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/claude-code-pricing-subscription-value/",
-      "reason": "Vendor pricing comparison content is marketing-adjacent rather than substantive technical research."
+      "url": "https://www.techmeme.com/261127/p12#a261127p12",
+      "reason": "Legal dispute summary between OpenAI and Apple, corporate news not technical substance."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/gemini-4-neon-anti-gravity-ultra-pricing/",
-      "reason": "Pricing comparison and subscription value analysis is promotional content lacking technical substance."
+      "url": "https://www.mindstudio.ai/blog/ernie-5-5-flash-preview-benchmarks/",
+      "reason": "Benchmark marketing content from vendor; lacks original research or analysis."
     },
     {
-      "url": "https://www.mindstudio.ai/blog/hack-yourself-first-ai-security-skill/",
-      "reason": "Generic security skills tutorial with minimal AI/agents depth or novelty."
+      "url": "https://twitter.com/ElliotC1/status/2125689373337489419",
+      "reason": "Personal anecdote unrelated to AI agents or technical topics; social commentary noise."
+    },
+    {
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4qm5o/heads_up_if_you_wire_notions_official_mcp_into/",
+      "reason": "Reddit speculation about hidden upsell instructions; unverified claim, low-substance gossip."
+    },
+    {
+      "url": "https://twitter.com/RealAstropulse/status/2126119408997466389",
+      "reason": "Twitter anecdote claiming Claude sabotage without verification; unsubstantiated allegation."
+    },
+    {
+      "url": "https://www.mindstudio.ai/blog/ai-automating-ai-research-2026/",
+      "reason": "Vendor blog claiming AI automates research with minimal evidence; marketing framing."
+    },
+    {
+      "url": "https://herecomesthemoon.net/2026/11/whats-claudes-fursona/",
+      "reason": "Lighthearted Q&A about Claude's personality traits; entertainment, not technical substance."
+    },
+    {
+      "url": "https://www.techmeme.com/261127/p14#a261127p14",
+      "reason": "Meta-commentary on sabotage claims without independent verification; aggregation noise."
     }
   ]
 }
